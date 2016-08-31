@@ -1,0 +1,1747 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sbgn xmlns="http://sbgn.org/libsbgn/0.2">
+    <map language="process description">
+        <bbox y="0.0" x="0.0" h="4820.0" w="3552.0"/>
+        <glyph id="Membrane3541.6" orientation="horizontal" class="compartment">
+            <label text="Intracellular Space"/>
+            <bbox y="374.0" x="378.0" h="3654.0" w="2843.0"/>
+        </glyph>
+        <glyph id="Membrane3542.6" orientation="horizontal" class="compartment">
+            <label text="Intracellular Space"/>
+            <bbox y="125.0" x="125.0" h="4705.0" w="3302.0"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction2958.20606" orientation="horizontal" class="process">
+            <bbox y="688.0" x="1606.0" h="20.0" w="20.0"/>
+            <port y="698.0" x="1626.0" id="Reaction2958.20606.1"/>
+            <port y="698.0" x="1606.0" id="Reaction2958.20606.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6010.32519" orientation="horizontal" class="macromolecule multimer">
+            <label text="Glucose-6-phosphate isomerase"/>
+            <bbox y="808.0" x="1536.0" h="80.0" w="160.0"/>
+            <glyph id="Protein6010.32519.Cardinality" class="unit of information">
+                <label text="N:2"/>
+                <bbox y="798.0" x="1546.0" h="20.0" w="40.0"/>
+            </glyph>
+            <port y="808.0" x="1616.0" id="Protein6010.32519.0"/>
+            <port y="848.0" x="1696.0" id="Protein6010.32519.1"/>
+            <port y="888.0" x="1616.0" id="Protein6010.32519.2"/>
+            <port y="848.0" x="1536.0" id="Protein6010.32519.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40947.70861" orientation="horizontal" class="simple chemical">
+            <label text=" β-D-glucose 6-phosphate"/>
+            <bbox y="648.0" x="1786.0" h="100.0" w="100.0"/>
+            <port y="648.0" x="1836.0" id="Compound40947.70861.0"/>
+            <port y="698.0" x="1886.0" id="Compound40947.70861.1"/>
+            <port y="748.0" x="1836.0" id="Compound40947.70861.2"/>
+            <port y="698.0" x="1786.0" id="Compound40947.70861.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40941.70862" orientation="horizontal" class="simple chemical">
+            <label text="β-D-fructofuranose 6-phosphate"/>
+            <bbox y="648.0" x="1336.0" h="100.0" w="100.0"/>
+            <port y="648.0" x="1386.0" id="Compound40941.70862.0"/>
+            <port y="698.0" x="1436.0" id="Compound40941.70862.1"/>
+            <port y="748.0" x="1386.0" id="Compound40941.70862.2"/>
+            <port y="698.0" x="1336.0" id="Compound40941.70862.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction3307.20607" orientation="vertical" class="process">
+            <bbox y="935.0" x="1376.0" h="20.0" w="20.0"/>
+            <port y="935.0" x="1386.0" id="Reaction3307.20607.1"/>
+            <port y="955.0" x="1386.0" id="Reaction3307.20607.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6361.32520" orientation="horizontal" class="macromolecule multimer">
+            <label text="Glucosamine--fructose-6-phosphate aminotransferase [isomerizing]"/>
+            <bbox y="905.0" x="1496.0" h="80.0" w="160.0"/>
+            <glyph id="Protein6361.32520.Cardinality" class="unit of information">
+                <label text="N:2"/>
+                <bbox y="895.0" x="1506.0" h="20.0" w="40.0"/>
+            </glyph>
+            <port y="905.0" x="1576.0" id="Protein6361.32520.0"/>
+            <port y="945.0" x="1656.0" id="Protein6361.32520.1"/>
+            <port y="985.0" x="1576.0" id="Protein6361.32520.2"/>
+            <port y="945.0" x="1496.0" id="Protein6361.32520.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound500.70863" orientation="horizontal" class="simple chemical">
+            <label text="L-Glutamine"/>
+            <bbox y="738.0" x="1191.0" h="100.0" w="100.0"/>
+            <port y="738.0" x="1241.0" id="Compound500.70863.0"/>
+            <port y="788.0" x="1291.0" id="Compound500.70863.1"/>
+            <port y="838.0" x="1241.0" id="Compound500.70863.2"/>
+            <port y="788.0" x="1191.0" id="Compound500.70863.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound969.70864" orientation="horizontal" class="simple chemical">
+            <label text="Glucosamine 6-phosphate"/>
+            <bbox y="1148.0" x="1336.0" h="100.0" w="100.0"/>
+            <port y="1148.0" x="1386.0" id="Compound969.70864.0"/>
+            <port y="1198.0" x="1436.0" id="Compound969.70864.1"/>
+            <port y="1248.0" x="1386.0" id="Compound969.70864.2"/>
+            <port y="1198.0" x="1336.0" id="Compound969.70864.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound95.70865" orientation="horizontal" class="simple chemical">
+            <label text="L-Glutamic acid"/>
+            <clone/>
+            <bbox y="1043.0" x="1186.0" h="100.0" w="100.0"/>
+            <port y="1043.0" x="1236.0" id="Compound95.70865.0"/>
+            <port y="1093.0" x="1286.0" id="Compound95.70865.1"/>
+            <port y="1143.0" x="1236.0" id="Compound95.70865.2"/>
+            <port y="1093.0" x="1186.0" id="Compound95.70865.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction3312.20608" orientation="horizontal" class="process">
+            <bbox y="1188.0" x="1576.0" h="20.0" w="20.0"/>
+            <port y="1198.0" x="1596.0" id="Reaction3312.20608.1"/>
+            <port y="1198.0" x="1576.0" id="Reaction3312.20608.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6501.32521" orientation="horizontal" class="macromolecule">
+            <label text="Phosphoglucosamine mutase"/>
+            <bbox y="1308.0" x="1511.0" h="70.0" w="150.0"/>
+            <port y="1308.0" x="1586.0" id="Protein6501.32521.0"/>
+            <port y="1343.0" x="1661.0" id="Protein6501.32521.1"/>
+            <port y="1378.0" x="1586.0" id="Protein6501.32521.2"/>
+            <port y="1343.0" x="1511.0" id="Protein6501.32521.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound868.70866" orientation="horizontal" class="simple chemical">
+            <label text="Glucosamine-1P"/>
+            <bbox y="1148.0" x="1736.0" h="100.0" w="100.0"/>
+            <port y="1148.0" x="1786.0" id="Compound868.70866.0"/>
+            <port y="1198.0" x="1836.0" id="Compound868.70866.1"/>
+            <port y="1248.0" x="1786.0" id="Compound868.70866.2"/>
+            <port y="1198.0" x="1736.0" id="Compound868.70866.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction3313.20609" orientation="horizontal" class="process">
+            <bbox y="1188.0" x="2066.0" h="20.0" w="20.0"/>
+            <port y="1198.0" x="2086.0" id="Reaction3313.20609.1"/>
+            <port y="1198.0" x="2066.0" id="Reaction3313.20609.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6211.32522" orientation="horizontal" class="macromolecule multimer">
+            <label text="Bifunctional protein glmU"/>
+            <clone/>
+            <bbox y="1308.0" x="1991.0" h="90.0" w="170.0"/>
+            <glyph id="Protein6211.32522.Cardinality" class="unit of information">
+                <label text="N:3"/>
+                <bbox y="1298.0" x="2001.0" h="20.0" w="40.0"/>
+            </glyph>
+            <port y="1308.0" x="2076.0" id="Protein6211.32522.0"/>
+            <port y="1353.0" x="2161.0" id="Protein6211.32522.1"/>
+            <port y="1398.0" x="2076.0" id="Protein6211.32522.2"/>
+            <port y="1353.0" x="1991.0" id="Protein6211.32522.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound940.70867" orientation="horizontal" class="simple chemical">
+            <label text="Acetyl-CoA"/>
+            <bbox y="1028.0" x="1841.0" h="100.0" w="100.0"/>
+            <port y="1028.0" x="1891.0" id="Compound940.70867.0"/>
+            <port y="1078.0" x="1941.0" id="Compound940.70867.1"/>
+            <port y="1128.0" x="1891.0" id="Compound940.70867.2"/>
+            <port y="1078.0" x="1841.0" id="Compound940.70867.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1055.70868" orientation="horizontal" class="simple chemical">
+            <label text="N-Acetyl-glucosamine 1-phosphate"/>
+            <bbox y="1148.0" x="2386.0" h="100.0" w="100.0"/>
+            <port y="1148.0" x="2436.0" id="Compound1055.70868.0"/>
+            <port y="1198.0" x="2486.0" id="Compound1055.70868.1"/>
+            <port y="1248.0" x="2436.0" id="Compound1055.70868.2"/>
+            <port y="1198.0" x="2386.0" id="Compound1055.70868.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1099.70869" orientation="horizontal" class="simple chemical">
+            <label text="CoA"/>
+            <bbox y="1063.0" x="2241.0" h="50.0" w="50.0"/>
+            <port y="1063.0" x="2266.0" id="Compound1099.70869.0"/>
+            <port y="1088.0" x="2291.0" id="Compound1099.70869.1"/>
+            <port y="1113.0" x="2266.0" id="Compound1099.70869.2"/>
+            <port y="1088.0" x="2241.0" id="Compound1099.70869.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40034.70870" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="1028.0" x="2327.0" h="78.0" w="78.0"/>
+            <port y="1028.0" x="2366.0" id="Compound40034.70870.0"/>
+            <port y="1067.0" x="2405.0" id="Compound40034.70870.1"/>
+            <port y="1106.0" x="2366.0" id="Compound40034.70870.2"/>
+            <port y="1067.0" x="2327.0" id="Compound40034.70870.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction3314.20610" orientation="vertical" class="process">
+            <bbox y="1435.0" x="2427.0" h="20.0" w="20.0"/>
+            <port y="1435.0" x="2437.0" id="Reaction3314.20610.1"/>
+            <port y="1455.0" x="2437.0" id="Reaction3314.20610.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6211.32523" orientation="horizontal" class="macromolecule multimer">
+            <label text="Bifunctional protein glmU"/>
+            <clone/>
+            <bbox y="1400.0" x="2547.0" h="90.0" w="170.0"/>
+            <glyph id="Protein6211.32523.Cardinality" class="unit of information">
+                <label text="N:3"/>
+                <bbox y="1390.0" x="2557.0" h="20.0" w="40.0"/>
+            </glyph>
+            <port y="1400.0" x="2632.0" id="Protein6211.32523.0"/>
+            <port y="1445.0" x="2717.0" id="Protein6211.32523.1"/>
+            <port y="1490.0" x="2632.0" id="Protein6211.32523.2"/>
+            <port y="1445.0" x="2547.0" id="Protein6211.32523.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound192.70871" orientation="horizontal" class="simple chemical">
+            <label text="Uridine triphosphate"/>
+            <bbox y="1238.0" x="2518.0" h="100.0" w="100.0"/>
+            <port y="1238.0" x="2568.0" id="Compound192.70871.0"/>
+            <port y="1288.0" x="2618.0" id="Compound192.70871.1"/>
+            <port y="1338.0" x="2568.0" id="Compound192.70871.2"/>
+            <port y="1288.0" x="2518.0" id="Compound192.70871.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40034.70872" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="1259.0" x="2288.0" h="78.0" w="78.0"/>
+            <port y="1259.0" x="2327.0" id="Compound40034.70872.0"/>
+            <port y="1298.0" x="2366.0" id="Compound40034.70872.1"/>
+            <port y="1337.0" x="2327.0" id="Compound40034.70872.2"/>
+            <port y="1298.0" x="2288.0" id="Compound40034.70872.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound196.70873" orientation="horizontal" class="simple chemical">
+            <label text="Uridine diphosphate-N-acetylglucosamine"/>
+            <clone/>
+            <bbox y="1643.0" x="2386.0" h="100.0" w="100.0"/>
+            <port y="1643.0" x="2436.0" id="Compound196.70873.0"/>
+            <port y="1693.0" x="2486.0" id="Compound196.70873.1"/>
+            <port y="1743.0" x="2436.0" id="Compound196.70873.2"/>
+            <port y="1693.0" x="2386.0" id="Compound196.70873.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound170.70874" orientation="horizontal" class="simple chemical">
+            <label text="PPi"/>
+            <bbox y="1540.0" x="2480.0" h="64.0" w="64.0"/>
+            <port y="1540.0" x="2512.0" id="Compound170.70874.0"/>
+            <port y="1572.0" x="2544.0" id="Compound170.70874.1"/>
+            <port y="1604.0" x="2512.0" id="Compound170.70874.2"/>
+            <port y="1572.0" x="2480.0" id="Compound170.70874.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction3317.20611" orientation="horizontal" class="process">
+            <bbox y="1683.0" x="2076.0" h="20.0" w="20.0"/>
+            <port y="1693.0" x="2096.0" id="Reaction3317.20611.1"/>
+            <port y="1693.0" x="2076.0" id="Reaction3317.20611.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6030.32524" orientation="horizontal" class="macromolecule">
+            <label text="UDP-N-acetylglucosamine 1-carboxyvinyltransferase"/>
+            <bbox y="1803.0" x="2011.0" h="70.0" w="150.0"/>
+            <port y="1803.0" x="2086.0" id="Protein6030.32524.0"/>
+            <port y="1838.0" x="2161.0" id="Protein6030.32524.1"/>
+            <port y="1873.0" x="2086.0" id="Protein6030.32524.2"/>
+            <port y="1838.0" x="2011.0" id="Protein6030.32524.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound180.70875" orientation="horizontal" class="simple chemical">
+            <label text="Phosphoenolpyruvic acid"/>
+            <bbox y="1538.0" x="2241.0" h="100.0" w="100.0"/>
+            <port y="1538.0" x="2291.0" id="Compound180.70875.0"/>
+            <port y="1588.0" x="2341.0" id="Compound180.70875.1"/>
+            <port y="1638.0" x="2291.0" id="Compound180.70875.2"/>
+            <port y="1588.0" x="2241.0" id="Compound180.70875.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1104.70876" orientation="horizontal" class="simple chemical">
+            <label text="Pi"/>
+            <clone/>
+            <bbox y="1582.0" x="1874.0" h="44.0" w="44.0"/>
+            <port y="1582.0" x="1896.0" id="Compound1104.70876.0"/>
+            <port y="1604.0" x="1918.0" id="Compound1104.70876.1"/>
+            <port y="1626.0" x="1896.0" id="Compound1104.70876.2"/>
+            <port y="1604.0" x="1874.0" id="Compound1104.70876.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound41114.70877" orientation="horizontal" class="simple chemical">
+            <label text="UDP-N-acetyl-α-D-glucosamine-enolpyruvate"/>
+            <bbox y="1641.0" x="1746.0" h="100.0" w="100.0"/>
+            <port y="1641.0" x="1796.0" id="Compound41114.70877.0"/>
+            <port y="1691.0" x="1846.0" id="Compound41114.70877.1"/>
+            <port y="1741.0" x="1796.0" id="Compound41114.70877.2"/>
+            <port y="1691.0" x="1746.0" id="Compound41114.70877.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction3318.20612" orientation="horizontal" class="process">
+            <bbox y="1681.0" x="1411.0" h="20.0" w="20.0"/>
+            <port y="1691.0" x="1431.0" id="Reaction3318.20612.1"/>
+            <port y="1691.0" x="1411.0" id="Reaction3318.20612.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein5949.32525" orientation="horizontal" class="macromolecule">
+            <label text="UDP-N-acetylenolpyruvoylglucosamine reductase"/>
+            <bbox y="1801.0" x="1346.0" h="70.0" w="150.0"/>
+            <port y="1801.0" x="1421.0" id="Protein5949.32525.0"/>
+            <port y="1836.0" x="1496.0" id="Protein5949.32525.1"/>
+            <port y="1871.0" x="1421.0" id="Protein5949.32525.2"/>
+            <port y="1836.0" x="1346.0" id="Protein5949.32525.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound146.70878" orientation="horizontal" class="simple chemical">
+            <label text="NADPH"/>
+            <bbox y="1551.0" x="1566.0" h="50.0" w="50.0"/>
+            <port y="1551.0" x="1591.0" id="Compound146.70878.0"/>
+            <port y="1576.0" x="1616.0" id="Compound146.70878.1"/>
+            <port y="1601.0" x="1591.0" id="Compound146.70878.2"/>
+            <port y="1576.0" x="1566.0" id="Compound146.70878.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound41026.70879" orientation="horizontal" class="simple chemical">
+            <label text="Hydrogen ion"/>
+            <bbox y="1511.0" x="1656.0" h="100.0" w="100.0"/>
+            <port y="1511.0" x="1706.0" id="Compound41026.70879.0"/>
+            <port y="1561.0" x="1756.0" id="Compound41026.70879.1"/>
+            <port y="1611.0" x="1706.0" id="Compound41026.70879.2"/>
+            <port y="1561.0" x="1656.0" id="Compound41026.70879.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound143.70880" orientation="horizontal" class="simple chemical">
+            <label text="NADP"/>
+            <bbox y="1561.0" x="1181.0" h="50.0" w="50.0"/>
+            <port y="1561.0" x="1206.0" id="Compound143.70880.0"/>
+            <port y="1586.0" x="1231.0" id="Compound143.70880.1"/>
+            <port y="1611.0" x="1206.0" id="Compound143.70880.2"/>
+            <port y="1586.0" x="1181.0" id="Compound143.70880.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound41115.70881" orientation="horizontal" class="simple chemical">
+            <label text="UDP-N-acetyl-α-D-muramate"/>
+            <bbox y="1643.0" x="988.0" h="100.0" w="100.0"/>
+            <port y="1643.0" x="1038.0" id="Compound41115.70881.0"/>
+            <port y="1693.0" x="1088.0" id="Compound41115.70881.1"/>
+            <port y="1743.0" x="1038.0" id="Compound41115.70881.2"/>
+            <port y="1693.0" x="988.0" id="Compound41115.70881.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction2515.20615" orientation="vertical" class="process">
+            <bbox y="2313.0" x="741.0" h="20.0" w="20.0"/>
+            <port y="2313.0" x="751.0" id="Reaction2515.20615.1"/>
+            <port y="2333.0" x="751.0" id="Reaction2515.20615.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6411.32528" orientation="horizontal" class="macromolecule">
+            <label text="Glutamate racemase"/>
+            <bbox y="2288.0" x="861.0" h="70.0" w="150.0"/>
+            <port y="2288.0" x="936.0" id="Protein6411.32528.0"/>
+            <port y="2323.0" x="1011.0" id="Protein6411.32528.1"/>
+            <port y="2358.0" x="936.0" id="Protein6411.32528.2"/>
+            <port y="2323.0" x="861.0" id="Protein6411.32528.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound95.70895" orientation="horizontal" class="simple chemical">
+            <label text="L-Glutamic acid"/>
+            <clone/>
+            <bbox y="2113.0" x="701.0" h="100.0" w="100.0"/>
+            <port y="2113.0" x="751.0" id="Compound95.70895.0"/>
+            <port y="2163.0" x="801.0" id="Compound95.70895.1"/>
+            <port y="2213.0" x="751.0" id="Compound95.70895.2"/>
+            <port y="2163.0" x="701.0" id="Compound95.70895.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1849.70891" orientation="horizontal" class="simple chemical">
+            <label text="D-Glutamic acid"/>
+            <bbox y="2443.0" x="701.0" h="100.0" w="100.0"/>
+            <port y="2443.0" x="751.0" id="Compound1849.70891.0"/>
+            <port y="2493.0" x="801.0" id="Compound1849.70891.1"/>
+            <port y="2543.0" x="751.0" id="Compound1849.70891.2"/>
+            <port y="2493.0" x="701.0" id="Compound1849.70891.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction3450.20616" orientation="horizontal" class="process">
+            <bbox y="2813.0" x="1453.0" h="20.0" w="20.0"/>
+            <port y="2823.0" x="1473.0" id="Reaction3450.20616.1"/>
+            <port y="2823.0" x="1453.0" id="Reaction3450.20616.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6405.32529" orientation="horizontal" class="macromolecule">
+            <label text="UDP-N-acetylmuramoyl-L-alanyl-D-glutamate--2,6-diaminopimelate ligase"/>
+            <bbox y="2933.0" x="1388.0" h="70.0" w="150.0"/>
+            <port y="2933.0" x="1463.0" id="Protein6405.32529.0"/>
+            <port y="2968.0" x="1538.0" id="Protein6405.32529.1"/>
+            <port y="3003.0" x="1463.0" id="Protein6405.32529.2"/>
+            <port y="2968.0" x="1388.0" id="Protein6405.32529.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40829.70894" orientation="horizontal" class="simple chemical">
+            <label text="UDP-N-acetylmuramoyl-L-alanyl-D-glutamate"/>
+            <bbox y="2773.0" x="988.0" h="100.0" w="100.0"/>
+            <port y="2773.0" x="1038.0" id="Compound40829.70894.0"/>
+            <port y="2823.0" x="1088.0" id="Compound40829.70894.1"/>
+            <port y="2873.0" x="1038.0" id="Compound40829.70894.2"/>
+            <port y="2823.0" x="988.0" id="Compound40829.70894.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40841.70896" orientation="horizontal" class="simple chemical">
+            <label text="meso-diaminopimelate"/>
+            <bbox y="2953.0" x="1098.0" h="100.0" w="100.0"/>
+            <port y="2953.0" x="1148.0" id="Compound40841.70896.0"/>
+            <port y="3003.0" x="1198.0" id="Compound40841.70896.1"/>
+            <port y="3053.0" x="1148.0" id="Compound40841.70896.2"/>
+            <port y="3003.0" x="1098.0" id="Compound40841.70896.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound414.70897" orientation="horizontal" class="simple chemical">
+            <label text="ATP"/>
+            <clone/>
+            <bbox y="2978.0" x="1228.0" h="50.0" w="50.0"/>
+            <port y="2978.0" x="1253.0" id="Compound414.70897.0"/>
+            <port y="3003.0" x="1278.0" id="Compound414.70897.1"/>
+            <port y="3028.0" x="1253.0" id="Compound414.70897.2"/>
+            <port y="3003.0" x="1228.0" id="Compound414.70897.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1034.70898" orientation="horizontal" class="simple chemical">
+            <label text="ADP"/>
+            <clone/>
+            <bbox y="2955.0" x="1688.0" h="50.0" w="50.0"/>
+            <port y="2955.0" x="1713.0" id="Compound1034.70898.0"/>
+            <port y="2980.0" x="1738.0" id="Compound1034.70898.1"/>
+            <port y="3005.0" x="1713.0" id="Compound1034.70898.2"/>
+            <port y="2980.0" x="1688.0" id="Compound1034.70898.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1104.70899" orientation="horizontal" class="simple chemical">
+            <label text="Pi"/>
+            <clone/>
+            <bbox y="2714.0" x="1746.0" h="44.0" w="44.0"/>
+            <port y="2714.0" x="1768.0" id="Compound1104.70899.0"/>
+            <port y="2736.0" x="1790.0" id="Compound1104.70899.1"/>
+            <port y="2758.0" x="1768.0" id="Compound1104.70899.2"/>
+            <port y="2736.0" x="1746.0" id="Compound1104.70899.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40034.70900" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="2943.0" x="1779.0" h="78.0" w="78.0"/>
+            <port y="2943.0" x="1818.0" id="Compound40034.70900.0"/>
+            <port y="2982.0" x="1857.0" id="Compound40034.70900.1"/>
+            <port y="3021.0" x="1818.0" id="Compound40034.70900.2"/>
+            <port y="2982.0" x="1779.0" id="Compound40034.70900.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound41232.70901" orientation="horizontal" class="simple chemical">
+            <label text="UDP-N-Acetylmuramoyl-L-alanyl-D-gamma-glutamyl-meso-2,6-diaminopimelate"/>
+            <bbox y="2771.0" x="1853.0" h="100.0" w="100.0"/>
+            <port y="2771.0" x="1903.0" id="Compound41232.70901.0"/>
+            <port y="2821.0" x="1953.0" id="Compound41232.70901.1"/>
+            <port y="2871.0" x="1903.0" id="Compound41232.70901.2"/>
+            <port y="2821.0" x="1853.0" id="Compound41232.70901.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction2513.20619" orientation="horizontal" class="process">
+            <bbox y="2419.0" x="2475.0" h="20.0" w="20.0"/>
+            <port y="2429.0" x="2495.0" id="Reaction2513.20619.1"/>
+            <port y="2429.0" x="2475.0" id="Reaction2513.20619.2"/>
+        </glyph>
+        <glyph id="ProteinComplex1228.27356" orientation="horizontal" class="complex">
+            <bbox y="2539.0" x="2362.5" h="130.0" w="245.0"/>
+            <glyph compartmentRef="Membrane3541.6" id="Protein5935.32532" orientation="horizontal" class="macromolecule">
+                <label text="D-alanine--D-alanine ligase B"/>
+                <bbox y="2549.0" x="2447.5" h="70.0" w="150.0"/>
+                <port y="2549.0" x="2522.5" id="Protein5935.32532.0"/>
+                <port y="2584.0" x="2597.5" id="Protein5935.32532.1"/>
+                <port y="2619.0" x="2522.5" id="Protein5935.32532.2"/>
+                <port y="2584.0" x="2447.5" id="Protein5935.32532.3"/>
+            </glyph>
+            <glyph compartmentRef="Membrane3541.6" id="Protein5997.32533" orientation="horizontal" class="macromolecule">
+                <label text="D-alanine--D-alanine ligase A"/>
+                <bbox y="2589.0" x="2372.5" h="70.0" w="150.0"/>
+                <port y="2589.0" x="2447.5" id="Protein5997.32533.0"/>
+                <port y="2624.0" x="2522.5" id="Protein5997.32533.1"/>
+                <port y="2659.0" x="2447.5" id="Protein5997.32533.2"/>
+                <port y="2624.0" x="2372.5" id="Protein5997.32533.3"/>
+            </glyph>
+            <port y="2539.0" x="2485.0" id="ProteinComplex1228.27356.0"/>
+            <port y="2604.0" x="2607.5" id="ProteinComplex1228.27356.1"/>
+            <port y="2669.0" x="2485.0" id="ProteinComplex1228.27356.2"/>
+            <port y="2604.0" x="2362.5" id="ProteinComplex1228.27356.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1009.70911" orientation="horizontal" class="simple chemical">
+            <label text="D-Alanine"/>
+            <clone/>
+            <bbox y="2397.0" x="2783.0" h="100.0" w="100.0"/>
+            <port y="2397.0" x="2833.0" id="Compound1009.70911.0"/>
+            <port y="2447.0" x="2883.0" id="Compound1009.70911.1"/>
+            <port y="2497.0" x="2833.0" id="Compound1009.70911.2"/>
+            <port y="2447.0" x="2783.0" id="Compound1009.70911.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound414.70912" orientation="horizontal" class="simple chemical">
+            <label text="ATP"/>
+            <clone/>
+            <bbox y="2497.0" x="2678.0" h="50.0" w="50.0"/>
+            <port y="2497.0" x="2703.0" id="Compound414.70912.0"/>
+            <port y="2522.0" x="2728.0" id="Compound414.70912.1"/>
+            <port y="2547.0" x="2703.0" id="Compound414.70912.2"/>
+            <port y="2522.0" x="2678.0" id="Compound414.70912.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1900.70902" orientation="horizontal" class="simple chemical">
+            <label text="D-Alanyl-D-alanine"/>
+            <clone/>
+            <bbox y="2396.0" x="2098.0" h="100.0" w="100.0"/>
+            <port y="2396.0" x="2148.0" id="Compound1900.70902.0"/>
+            <port y="2446.0" x="2198.0" id="Compound1900.70902.1"/>
+            <port y="2496.0" x="2148.0" id="Compound1900.70902.2"/>
+            <port y="2446.0" x="2098.0" id="Compound1900.70902.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1034.70913" orientation="horizontal" class="simple chemical">
+            <label text="ADP"/>
+            <clone/>
+            <bbox y="2518.0" x="2223.0" h="50.0" w="50.0"/>
+            <port y="2518.0" x="2248.0" id="Compound1034.70913.0"/>
+            <port y="2543.0" x="2273.0" id="Compound1034.70913.1"/>
+            <port y="2568.0" x="2248.0" id="Compound1034.70913.2"/>
+            <port y="2543.0" x="2223.0" id="Compound1034.70913.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1104.70914" orientation="horizontal" class="simple chemical">
+            <label text="Pi"/>
+            <clone/>
+            <bbox y="2317.0" x="2251.0" h="44.0" w="44.0"/>
+            <port y="2317.0" x="2273.0" id="Compound1104.70914.0"/>
+            <port y="2339.0" x="2295.0" id="Compound1104.70914.1"/>
+            <port y="2361.0" x="2273.0" id="Compound1104.70914.2"/>
+            <port y="2339.0" x="2251.0" id="Compound1104.70914.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Reaction3455.20622" orientation="horizontal" class="process">
+            <bbox y="4380.0" x="699.0" h="20.0" w="20.0"/>
+            <port y="4390.0" x="719.0" id="Reaction3455.20622.1"/>
+            <port y="4390.0" x="699.0" id="Reaction3455.20622.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Or.Reaction3455.20622" orientation="horizontal" class="or">
+            <bbox y="4500.0" x="699.0" h="20.0" w="20.0"/>
+            <port y="4510.0" x="719.0" id="Or.Reaction3455.20622.1"/>
+            <port y="4510.0" x="699.0" id="Or.Reaction3455.20622.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Protein7280.32539" orientation="horizontal" class="macromolecule">
+            <label text="Penicillin-binding protein 2"/>
+            <bbox y="4620.0" x="249.0" h="70.0" w="150.0"/>
+            <port y="4620.0" x="324.0" id="Protein7280.32539.0"/>
+            <port y="4655.0" x="399.0" id="Protein7280.32539.1"/>
+            <port y="4690.0" x="324.0" id="Protein7280.32539.2"/>
+            <port y="4655.0" x="249.0" id="Protein7280.32539.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Protein6217.32540" orientation="horizontal" class="macromolecule">
+            <label text="Peptidoglycan synthase ftsI"/>
+            <bbox y="4620.0" x="499.0" h="70.0" w="150.0"/>
+            <port y="4620.0" x="574.0" id="Protein6217.32540.0"/>
+            <port y="4655.0" x="649.0" id="Protein6217.32540.1"/>
+            <port y="4690.0" x="574.0" id="Protein6217.32540.2"/>
+            <port y="4655.0" x="499.0" id="Protein6217.32540.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Protein5861.32541" orientation="horizontal" class="macromolecule multimer">
+            <label text="Penicillin-binding protein 1A"/>
+            <clone/>
+            <bbox y="4620.0" x="749.0" h="80.0" w="160.0"/>
+            <glyph id="Protein5861.32541.Cardinality" class="unit of information">
+                <label text="N:2"/>
+                <bbox y="4610.0" x="759.0" h="20.0" w="40.0"/>
+            </glyph>
+            <port y="4620.0" x="829.0" id="Protein5861.32541.0"/>
+            <port y="4660.0" x="909.0" id="Protein5861.32541.1"/>
+            <port y="4700.0" x="829.0" id="Protein5861.32541.2"/>
+            <port y="4660.0" x="749.0" id="Protein5861.32541.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Protein5862.32542" orientation="horizontal" class="macromolecule multimer">
+            <label text="Penicillin-binding protein 1B"/>
+            <clone/>
+            <bbox y="4620.0" x="1009.0" h="80.0" w="160.0"/>
+            <glyph id="Protein5862.32542.Cardinality" class="unit of information">
+                <label text="N:2"/>
+                <bbox y="4610.0" x="1019.0" h="20.0" w="40.0"/>
+            </glyph>
+            <port y="4620.0" x="1089.0" id="Protein5862.32542.0"/>
+            <port y="4660.0" x="1169.0" id="Protein5862.32542.1"/>
+            <port y="4700.0" x="1089.0" id="Protein5862.32542.2"/>
+            <port y="4660.0" x="1009.0" id="Protein5862.32542.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound1009.70925" orientation="horizontal" class="simple chemical">
+            <label text="D-Alanine"/>
+            <clone/>
+            <bbox y="4224.0" x="406.0" h="100.0" w="100.0"/>
+            <port y="4224.0" x="456.0" id="Compound1009.70925.0"/>
+            <port y="4274.0" x="506.0" id="Compound1009.70925.1"/>
+            <port y="4324.0" x="456.0" id="Compound1009.70925.2"/>
+            <port y="4274.0" x="406.0" id="Compound1009.70925.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="GenericCompound220.1481" orientation="horizontal" class="simple chemical">
+            <label text=" a peptidoglycan dimer (meso-diaminopimelate containing)"/>
+            <bbox y="4329.0" x="906.0" h="100.0" w="100.0"/>
+            <port y="4329.0" x="956.0" id="GenericCompound220.1481.0"/>
+            <port y="4379.0" x="1006.0" id="GenericCompound220.1481.1"/>
+            <port y="4429.0" x="956.0" id="GenericCompound220.1481.2"/>
+            <port y="4379.0" x="906.0" id="GenericCompound220.1481.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="GenericCompound221.1482" orientation="horizontal" class="simple chemical">
+            <label text="a peptidoglycan with D,D cross-links (meso-diaminopimelate containing)"/>
+            <bbox y="4319.0" x="301.0" h="100.0" w="100.0"/>
+            <port y="4319.0" x="351.0" id="GenericCompound221.1482.0"/>
+            <port y="4369.0" x="401.0" id="GenericCompound221.1482.1"/>
+            <port y="4419.0" x="351.0" id="GenericCompound221.1482.2"/>
+            <port y="4369.0" x="301.0" id="GenericCompound221.1482.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction6016.20626" orientation="horizontal" class="process">
+            <bbox y="3541.0" x="2230.0" h="20.0" w="20.0"/>
+            <port y="3551.0" x="2250.0" id="Reaction6016.20626.1"/>
+            <port y="3551.0" x="2230.0" id="Reaction6016.20626.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6363.32557" orientation="horizontal" class="macromolecule">
+            <label text="UDP-N-acetylglucosamine--N-acetylmuramyl-(pentapeptide) pyrophosphoryl-undecaprenol N-acetylglucosamine transferase"/>
+            <bbox y="3661.0" x="2165.0" h="70.0" w="150.0"/>
+            <port y="3661.0" x="2240.0" id="Protein6363.32557.0"/>
+            <port y="3696.0" x="2315.0" id="Protein6363.32557.1"/>
+            <port y="3731.0" x="2240.0" id="Protein6363.32557.2"/>
+            <port y="3696.0" x="2165.0" id="Protein6363.32557.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound41270.70959" orientation="horizontal" class="simple chemical">
+            <label text="N-Acetylmuramoyl-L-alanyl-D-glutamyl-meso-2,6-diaminopimelyl-D-alanyl-D-alanine-diphosphoundecaprenol"/>
+            <bbox y="3504.0" x="2740.0" h="100.0" w="100.0"/>
+            <port y="3504.0" x="2790.0" id="Compound41270.70959.0"/>
+            <port y="3554.0" x="2840.0" id="Compound41270.70959.1"/>
+            <port y="3604.0" x="2790.0" id="Compound41270.70959.2"/>
+            <port y="3554.0" x="2740.0" id="Compound41270.70959.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound196.70960" orientation="horizontal" class="simple chemical">
+            <label text="Uridine diphosphate-N-acetylglucosamine"/>
+            <clone/>
+            <bbox y="3634.0" x="2515.0" h="100.0" w="100.0"/>
+            <port y="3634.0" x="2565.0" id="Compound196.70960.0"/>
+            <port y="3684.0" x="2615.0" id="Compound196.70960.1"/>
+            <port y="3734.0" x="2565.0" id="Compound196.70960.2"/>
+            <port y="3684.0" x="2515.0" id="Compound196.70960.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound41238.70961" orientation="horizontal" class="simple chemical">
+            <label text="Undecaprenyl-diphospho-N-acetylmuramoyl-(N-acetylglucosamine)-L-alanyl-D-glutaminyl-meso-2,6-diaminopimeloyl-D-alanyl-D-alanine"/>
+            <bbox y="3502.0" x="1605.0" h="100.0" w="100.0"/>
+            <port y="3502.0" x="1655.0" id="Compound41238.70961.0"/>
+            <port y="3552.0" x="1705.0" id="Compound41238.70961.1"/>
+            <port y="3602.0" x="1655.0" id="Compound41238.70961.2"/>
+            <port y="3552.0" x="1605.0" id="Compound41238.70961.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound201.70962" orientation="horizontal" class="simple chemical">
+            <label text="Uridine 5'-diphosphate"/>
+            <bbox y="3632.0" x="1820.0" h="100.0" w="100.0"/>
+            <port y="3632.0" x="1870.0" id="Compound201.70962.0"/>
+            <port y="3682.0" x="1920.0" id="Compound201.70962.1"/>
+            <port y="3732.0" x="1870.0" id="Compound201.70962.2"/>
+            <port y="3682.0" x="1820.0" id="Compound201.70962.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40034.70963" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="3672.0" x="1981.0" h="78.0" w="78.0"/>
+            <port y="3672.0" x="2020.0" id="Compound40034.70963.0"/>
+            <port y="3711.0" x="2059.0" id="Compound40034.70963.1"/>
+            <port y="3750.0" x="2020.0" id="Compound40034.70963.2"/>
+            <port y="3711.0" x="1981.0" id="Compound40034.70963.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction6022.20630" orientation="vertical" class="process">
+            <bbox y="3201.0" x="2780.0" h="20.0" w="20.0"/>
+            <port y="3201.0" x="2790.0" id="Reaction6022.20630.1"/>
+            <port y="3221.0" x="2790.0" id="Reaction6022.20630.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6018.32561" orientation="horizontal" class="macromolecule">
+            <label text="Phospho-N-acetylmuramoyl-pentapeptide-transferase"/>
+            <bbox y="3176.0" x="2900.0" h="70.0" w="150.0"/>
+            <port y="3176.0" x="2975.0" id="Protein6018.32561.0"/>
+            <port y="3211.0" x="3050.0" id="Protein6018.32561.1"/>
+            <port y="3246.0" x="2975.0" id="Protein6018.32561.2"/>
+            <port y="3211.0" x="2900.0" id="Protein6018.32561.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound43200.70980" orientation="horizontal" class="simple chemical">
+            <label text="N-Acetylmuramoyl-L-alanyl-D-glutamyl-L-lysyl-D-alanyl-D-alanine-diphosphoundecaprenyl-N-acetylglucosamine"/>
+            <bbox y="2774.0" x="2740.0" h="100.0" w="100.0"/>
+            <port y="2774.0" x="2790.0" id="Compound43200.70980.0"/>
+            <port y="2824.0" x="2840.0" id="Compound43200.70980.1"/>
+            <port y="2874.0" x="2790.0" id="Compound43200.70980.2"/>
+            <port y="2824.0" x="2740.0" id="Compound43200.70980.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound42617.70981" orientation="horizontal" class="simple chemical">
+            <label text="di-trans,octa-cis-undecaprenyl phosphate"/>
+            <bbox y="2909.0" x="2890.0" h="100.0" w="100.0"/>
+            <port y="2909.0" x="2940.0" id="Compound42617.70981.0"/>
+            <port y="2959.0" x="2990.0" id="Compound42617.70981.1"/>
+            <port y="3009.0" x="2940.0" id="Compound42617.70981.2"/>
+            <port y="2959.0" x="2890.0" id="Compound42617.70981.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound194.70982" orientation="horizontal" class="simple chemical">
+            <label text="Uridine 5'-monophosphate"/>
+            <bbox y="3384.0" x="2910.0" h="100.0" w="100.0"/>
+            <port y="3384.0" x="2960.0" id="Compound194.70982.0"/>
+            <port y="3434.0" x="3010.0" id="Compound194.70982.1"/>
+            <port y="3484.0" x="2960.0" id="Compound194.70982.2"/>
+            <port y="3434.0" x="2910.0" id="Compound194.70982.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction6023.20631" orientation="horizontal" class="process">
+            <bbox y="2813.0" x="2336.0" h="20.0" w="20.0"/>
+            <port y="2823.0" x="2356.0" id="Reaction6023.20631.1"/>
+            <port y="2823.0" x="2336.0" id="Reaction6023.20631.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6318.32562" orientation="horizontal" class="macromolecule">
+            <label text="UDP-N-acetylmuramoyl-tripeptide--D-alanyl-D-alanine ligase"/>
+            <bbox y="2933.0" x="2271.0" h="70.0" w="150.0"/>
+            <port y="2933.0" x="2346.0" id="Protein6318.32562.0"/>
+            <port y="2968.0" x="2421.0" id="Protein6318.32562.1"/>
+            <port y="3003.0" x="2346.0" id="Protein6318.32562.2"/>
+            <port y="2968.0" x="2271.0" id="Protein6318.32562.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1900.70983" orientation="horizontal" class="simple chemical">
+            <label text="D-Alanyl-D-alanine"/>
+            <clone/>
+            <bbox y="2916.0" x="2028.0" h="100.0" w="100.0"/>
+            <port y="2916.0" x="2078.0" id="Compound1900.70983.0"/>
+            <port y="2966.0" x="2128.0" id="Compound1900.70983.1"/>
+            <port y="3016.0" x="2078.0" id="Compound1900.70983.2"/>
+            <port y="2966.0" x="2028.0" id="Compound1900.70983.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound414.70984" orientation="horizontal" class="simple chemical">
+            <label text="ATP"/>
+            <clone/>
+            <bbox y="2691.0" x="2088.0" h="50.0" w="50.0"/>
+            <port y="2691.0" x="2113.0" id="Compound414.70984.0"/>
+            <port y="2716.0" x="2138.0" id="Compound414.70984.1"/>
+            <port y="2741.0" x="2113.0" id="Compound414.70984.2"/>
+            <port y="2716.0" x="2088.0" id="Compound414.70984.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1034.70985" orientation="horizontal" class="simple chemical">
+            <label text="ADP"/>
+            <clone/>
+            <bbox y="2708.0" x="2550.0" h="50.0" w="50.0"/>
+            <port y="2708.0" x="2575.0" id="Compound1034.70985.0"/>
+            <port y="2733.0" x="2600.0" id="Compound1034.70985.1"/>
+            <port y="2758.0" x="2575.0" id="Compound1034.70985.2"/>
+            <port y="2733.0" x="2550.0" id="Compound1034.70985.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1104.70986" orientation="horizontal" class="simple chemical">
+            <label text="Pi"/>
+            <clone/>
+            <bbox y="2762.0" x="2633.0" h="44.0" w="44.0"/>
+            <port y="2762.0" x="2655.0" id="Compound1104.70986.0"/>
+            <port y="2784.0" x="2677.0" id="Compound1104.70986.1"/>
+            <port y="2806.0" x="2655.0" id="Compound1104.70986.2"/>
+            <port y="2784.0" x="2633.0" id="Compound1104.70986.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40034.70987" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="2951.0" x="2586.0" h="78.0" w="78.0"/>
+            <port y="2951.0" x="2625.0" id="Compound40034.70987.0"/>
+            <port y="2990.0" x="2664.0" id="Compound40034.70987.1"/>
+            <port y="3029.0" x="2625.0" id="Compound40034.70987.2"/>
+            <port y="2990.0" x="2586.0" id="Compound40034.70987.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Reaction6024.20633" orientation="horizontal" class="process">
+            <bbox y="4403.0" x="1332.0" h="20.0" w="20.0"/>
+            <port y="4413.0" x="1352.0" id="Reaction6024.20633.1"/>
+            <port y="4413.0" x="1332.0" id="Reaction6024.20633.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Or.Reaction6024.20633" orientation="horizontal" class="or">
+            <bbox y="4523.0" x="1332.0" h="20.0" w="20.0"/>
+            <port y="4533.0" x="1352.0" id="Or.Reaction6024.20633.1"/>
+            <port y="4533.0" x="1332.0" id="Or.Reaction6024.20633.2"/>
+        </glyph>
+        <glyph id="ProteinComplex3682.27388" orientation="horizontal" class="complex">
+            <bbox y="4643.0" x="872.0" h="177.0" w="170.0"/>
+            <glyph compartmentRef="Membrane3542.6" id="Protein10119.32567" orientation="horizontal" class="macromolecule">
+                <label text="biosynthetic peptidoglycan transglycosylase"/>
+                <bbox y="4653.0" x="882.0" h="70.0" w="150.0"/>
+                <port y="4653.0" x="957.0" id="Protein10119.32567.0"/>
+                <port y="4688.0" x="1032.0" id="Protein10119.32567.1"/>
+                <port y="4723.0" x="957.0" id="Protein10119.32567.2"/>
+                <port y="4688.0" x="882.0" id="Protein10119.32567.3"/>
+            </glyph>
+            <glyph compartmentRef="Membrane3542.6" id="Compound353.70998" orientation="horizontal" class="simple chemical">
+                <label text="Calcium"/>
+                <bbox y="4710.0" x="917.0" h="100.0" w="100.0"/>
+                <port y="4710.0" x="967.0" id="Compound353.70998.0"/>
+                <port y="4760.0" x="1017.0" id="Compound353.70998.1"/>
+                <port y="4735.0" x="967.0" id="Compound353.70998.2"/>
+                <port y="4760.0" x="917.0" id="Compound353.70998.3"/>
+            </glyph>
+            <glyph compartmentRef="Membrane3542.6" id="Compound472.70999" orientation="horizontal" class="simple chemical">
+                <label text="Cobalt"/>
+                <bbox y="4690.0" x="917.0" h="100.0" w="100.0"/>
+                <port y="4690.0" x="967.0" id="Compound472.70999.0"/>
+                <port y="4740.0" x="1017.0" id="Compound472.70999.1"/>
+                <port y="4715.0" x="967.0" id="Compound472.70999.2"/>
+                <port y="4740.0" x="917.0" id="Compound472.70999.3"/>
+            </glyph>
+            <glyph compartmentRef="Membrane3542.6" id="Compound1027.71000" orientation="horizontal" class="simple chemical">
+                <label text="Manganese"/>
+                <bbox y="4670.0" x="917.0" h="100.0" w="100.0"/>
+                <port y="4670.0" x="967.0" id="Compound1027.71000.0"/>
+                <port y="4720.0" x="1017.0" id="Compound1027.71000.1"/>
+                <port y="4695.0" x="967.0" id="Compound1027.71000.2"/>
+                <port y="4720.0" x="917.0" id="Compound1027.71000.3"/>
+            </glyph>
+            <port y="4643.0" x="957.0" id="ProteinComplex3682.27388.0"/>
+            <port y="4731.5" x="1042.0" id="ProteinComplex3682.27388.1"/>
+            <port y="4820.0" x="957.0" id="ProteinComplex3682.27388.2"/>
+            <port y="4731.5" x="872.0" id="ProteinComplex3682.27388.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Protein5861.32568" orientation="horizontal" class="macromolecule multimer">
+            <label text="Penicillin-binding protein 1A"/>
+            <clone/>
+            <bbox y="4643.0" x="1142.0" h="80.0" w="160.0"/>
+            <glyph id="Protein5861.32568.Cardinality" class="unit of information">
+                <label text="N:2"/>
+                <bbox y="4633.0" x="1152.0" h="20.0" w="40.0"/>
+            </glyph>
+            <port y="4643.0" x="1222.0" id="Protein5861.32568.0"/>
+            <port y="4683.0" x="1302.0" id="Protein5861.32568.1"/>
+            <port y="4723.0" x="1222.0" id="Protein5861.32568.2"/>
+            <port y="4683.0" x="1142.0" id="Protein5861.32568.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Protein5862.32569" orientation="horizontal" class="macromolecule multimer">
+            <label text="Penicillin-binding protein 1B"/>
+            <clone/>
+            <bbox y="4643.0" x="1402.0" h="80.0" w="160.0"/>
+            <glyph id="Protein5862.32569.Cardinality" class="unit of information">
+                <label text="N:2"/>
+                <bbox y="4633.0" x="1412.0" h="20.0" w="40.0"/>
+            </glyph>
+            <port y="4643.0" x="1482.0" id="Protein5862.32569.0"/>
+            <port y="4683.0" x="1562.0" id="Protein5862.32569.1"/>
+            <port y="4723.0" x="1482.0" id="Protein5862.32569.2"/>
+            <port y="4683.0" x="1402.0" id="Protein5862.32569.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Protein7245.32570" orientation="horizontal" class="macromolecule">
+            <label text="Penicillin-binding protein 1C"/>
+            <bbox y="4643.0" x="1662.0" h="70.0" w="150.0"/>
+            <port y="4643.0" x="1737.0" id="Protein7245.32570.0"/>
+            <port y="4678.0" x="1812.0" id="Protein7245.32570.1"/>
+            <port y="4713.0" x="1737.0" id="Protein7245.32570.2"/>
+            <port y="4678.0" x="1662.0" id="Protein7245.32570.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound41238.70995" orientation="horizontal" class="simple chemical">
+            <label text="Undecaprenyl-diphospho-N-acetylmuramoyl-(N-acetylglucosamine)-L-alanyl-D-glutaminyl-meso-2,6-diaminopimeloyl-D-alanyl-D-alanine"/>
+            <clone/>
+            <bbox y="4357.0" x="1606.0" h="100.0" w="100.0"/>
+            <port y="4357.0" x="1656.0" id="Compound41238.70995.0"/>
+            <port y="4407.0" x="1706.0" id="Compound41238.70995.1"/>
+            <port y="4457.0" x="1656.0" id="Compound41238.70995.2"/>
+            <port y="4407.0" x="1606.0" id="Compound41238.70995.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound1130.70996" orientation="horizontal" class="simple chemical">
+            <label text="Undecaprenyl diphosphate"/>
+            <bbox y="4176.0" x="921.0" h="100.0" w="100.0"/>
+            <port y="4176.0" x="971.0" id="Compound1130.70996.0"/>
+            <port y="4226.0" x="1021.0" id="Compound1130.70996.1"/>
+            <port y="4276.0" x="971.0" id="Compound1130.70996.2"/>
+            <port y="4226.0" x="921.0" id="Compound1130.70996.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound40034.70997" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="4481.0" x="1012.0" h="78.0" w="78.0"/>
+            <port y="4481.0" x="1051.0" id="Compound40034.70997.0"/>
+            <port y="4520.0" x="1090.0" id="Compound40034.70997.1"/>
+            <port y="4559.0" x="1051.0" id="Compound40034.70997.2"/>
+            <port y="4520.0" x="1012.0" id="Compound40034.70997.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction6033.20646" orientation="vertical" class="process">
+            <bbox y="2603.0" x="1026.0" h="20.0" w="20.0"/>
+            <port y="2603.0" x="1036.0" id="Reaction6033.20646.1"/>
+            <port y="2623.0" x="1036.0" id="Reaction6033.20646.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6337.32590" orientation="horizontal" class="macromolecule">
+            <label text="UDP-N-acetylmuramoylalanine--D-glutamate ligase"/>
+            <bbox y="2578.0" x="1146.0" h="70.0" w="150.0"/>
+            <port y="2578.0" x="1221.0" id="Protein6337.32590.0"/>
+            <port y="2613.0" x="1296.0" id="Protein6337.32590.1"/>
+            <port y="2648.0" x="1221.0" id="Protein6337.32590.2"/>
+            <port y="2613.0" x="1146.0" id="Protein6337.32590.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound44523.71065" orientation="horizontal" class="simple chemical">
+            <label text="UDP-N-Acetylmuramyl-L-Ala"/>
+            <bbox y="2363.0" x="986.0" h="100.0" w="100.0"/>
+            <port y="2363.0" x="1036.0" id="Compound44523.71065.0"/>
+            <port y="2413.0" x="1086.0" id="Compound44523.71065.1"/>
+            <port y="2463.0" x="1036.0" id="Compound44523.71065.2"/>
+            <port y="2413.0" x="986.0" id="Compound44523.71065.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound414.71066" orientation="horizontal" class="simple chemical">
+            <label text="ATP"/>
+            <clone/>
+            <bbox y="2463.0" x="1116.0" h="50.0" w="50.0"/>
+            <port y="2463.0" x="1141.0" id="Compound414.71066.0"/>
+            <port y="2488.0" x="1166.0" id="Compound414.71066.1"/>
+            <port y="2513.0" x="1141.0" id="Compound414.71066.2"/>
+            <port y="2488.0" x="1116.0" id="Compound414.71066.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1034.71067" orientation="horizontal" class="simple chemical">
+            <label text="ADP"/>
+            <clone/>
+            <bbox y="2733.0" x="1139.0" h="50.0" w="50.0"/>
+            <port y="2733.0" x="1164.0" id="Compound1034.71067.0"/>
+            <port y="2758.0" x="1189.0" id="Compound1034.71067.1"/>
+            <port y="2783.0" x="1164.0" id="Compound1034.71067.2"/>
+            <port y="2758.0" x="1139.0" id="Compound1034.71067.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1104.71068" orientation="horizontal" class="simple chemical">
+            <label text="Pi"/>
+            <clone/>
+            <bbox y="2745.0" x="904.0" h="44.0" w="44.0"/>
+            <port y="2745.0" x="926.0" id="Compound1104.71068.0"/>
+            <port y="2767.0" x="948.0" id="Compound1104.71068.1"/>
+            <port y="2789.0" x="926.0" id="Compound1104.71068.2"/>
+            <port y="2767.0" x="904.0" id="Compound1104.71068.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Reaction6034.20647" orientation="vertical" class="process">
+            <bbox y="2020.0" x="1027.0" h="20.0" w="20.0"/>
+            <port y="2020.0" x="1037.0" id="Reaction6034.20647.1"/>
+            <port y="2040.0" x="1037.0" id="Reaction6034.20647.2"/>
+        </glyph>
+        <glyph id="ProteinComplex3675.27412" orientation="horizontal" class="complex">
+            <bbox y="1956.0" x="1147.0" h="148.0" w="230.0"/>
+            <glyph compartmentRef="Membrane3541.6" id="Protein6368.32591" orientation="horizontal" class="macromolecule multimer">
+                <label text="UDP-N-acetylmuramate--L-alanine ligase"/>
+                <bbox y="2014.0" x="1157.0" h="80.0" w="160.0"/>
+                <glyph id="Protein6368.32591.Cardinality" class="unit of information">
+                    <label text="N:2"/>
+                    <bbox y="2004.0" x="1167.0" h="20.0" w="40.0"/>
+                </glyph>
+                <port y="2014.0" x="1237.0" id="Protein6368.32591.0"/>
+                <port y="2054.0" x="1317.0" id="Protein6368.32591.1"/>
+                <port y="2094.0" x="1237.0" id="Protein6368.32591.2"/>
+                <port y="2054.0" x="1157.0" id="Protein6368.32591.3"/>
+            </glyph>
+            <glyph compartmentRef="Membrane3541.6" id="Compound423.71073" orientation="horizontal" class="simple chemical">
+                <label text="Magnesium"/>
+                <bbox y="1986.0" x="1267.0" h="100.0" w="100.0"/>
+                <port y="1986.0" x="1317.0" id="Compound423.71073.0"/>
+                <port y="2036.0" x="1367.0" id="Compound423.71073.1"/>
+                <port y="2011.0" x="1317.0" id="Compound423.71073.2"/>
+                <port y="2036.0" x="1267.0" id="Compound423.71073.3"/>
+            </glyph>
+            <glyph compartmentRef="Membrane3541.6" id="Compound1027.71074" orientation="horizontal" class="simple chemical">
+                <label text="Manganese"/>
+                <bbox y="1966.0" x="1267.0" h="100.0" w="100.0"/>
+                <port y="1966.0" x="1317.0" id="Compound1027.71074.0"/>
+                <port y="2016.0" x="1367.0" id="Compound1027.71074.1"/>
+                <port y="1991.0" x="1317.0" id="Compound1027.71074.2"/>
+                <port y="2016.0" x="1267.0" id="Compound1027.71074.3"/>
+            </glyph>
+            <port y="1956.0" x="1262.0" id="ProteinComplex3675.27412.0"/>
+            <port y="2030.0" x="1377.0" id="ProteinComplex3675.27412.1"/>
+            <port y="2104.0" x="1262.0" id="ProteinComplex3675.27412.2"/>
+            <port y="2030.0" x="1147.0" id="ProteinComplex3675.27412.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound414.71069" orientation="horizontal" class="simple chemical">
+            <label text="ATP"/>
+            <clone/>
+            <bbox y="1793.0" x="896.0" h="50.0" w="50.0"/>
+            <port y="1793.0" x="921.0" id="Compound414.71069.0"/>
+            <port y="1818.0" x="946.0" id="Compound414.71069.1"/>
+            <port y="1843.0" x="921.0" id="Compound414.71069.2"/>
+            <port y="1818.0" x="896.0" id="Compound414.71069.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound105.70928" orientation="horizontal" class="simple chemical">
+            <label text="L-Alanine"/>
+            <bbox y="1738.0" x="681.0" h="100.0" w="100.0"/>
+            <port y="1738.0" x="731.0" id="Compound105.70928.0"/>
+            <port y="1788.0" x="781.0" id="Compound105.70928.1"/>
+            <port y="1838.0" x="731.0" id="Compound105.70928.2"/>
+            <port y="1788.0" x="681.0" id="Compound105.70928.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1034.71070" orientation="horizontal" class="simple chemical">
+            <label text="ADP"/>
+            <clone/>
+            <bbox y="2268.0" x="879.0" h="50.0" w="50.0"/>
+            <port y="2268.0" x="904.0" id="Compound1034.71070.0"/>
+            <port y="2293.0" x="929.0" id="Compound1034.71070.1"/>
+            <port y="2318.0" x="904.0" id="Compound1034.71070.2"/>
+            <port y="2293.0" x="879.0" id="Compound1034.71070.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1104.71071" orientation="horizontal" class="simple chemical">
+            <label text="Pi"/>
+            <clone/>
+            <bbox y="2285.0" x="964.0" h="44.0" w="44.0"/>
+            <port y="2285.0" x="986.0" id="Compound1104.71071.0"/>
+            <port y="2307.0" x="1008.0" id="Compound1104.71071.1"/>
+            <port y="2329.0" x="986.0" id="Compound1104.71071.2"/>
+            <port y="2307.0" x="964.0" id="Compound1104.71071.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40034.71072" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="2269.0" x="1128.0" h="78.0" w="78.0"/>
+            <port y="2269.0" x="1167.0" id="Compound40034.71072.0"/>
+            <port y="2308.0" x="1206.0" id="Compound40034.71072.1"/>
+            <port y="2347.0" x="1167.0" id="Compound40034.71072.2"/>
+            <port y="2308.0" x="1128.0" id="Compound40034.71072.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="ReactionCoupledTransport144.437" orientation="horizontal" class="process">
+            <bbox y="371.0" x="1374.0" h="20.0" w="20.0"/>
+            <port y="381.0" x="1394.0" id="ReactionCoupledTransport144.437.1"/>
+            <port y="381.0" x="1374.0" id="ReactionCoupledTransport144.437.2"/>
+        </glyph>
+        <glyph id="ProteinComplex1560.27368" orientation="horizontal" class="complex">
+            <bbox y="491.0" x="1194.0" h="100.0" w="380.0"/>
+            <glyph compartmentRef="Membrane3541.6" id="Protein7147.32545" orientation="horizontal" class="macromolecule multimer">
+                <label text="Mannose permease IID component"/>
+                <bbox y="501.0" x="1204.0" h="80.0" w="160.0"/>
+                <glyph id="Protein7147.32545.Cardinality" class="unit of information">
+                    <label text="N:2"/>
+                    <bbox y="491.0" x="1214.0" h="20.0" w="40.0"/>
+                </glyph>
+                <port y="501.0" x="1284.0" id="Protein7147.32545.0"/>
+                <port y="541.0" x="1364.0" id="Protein7147.32545.1"/>
+                <port y="581.0" x="1284.0" id="Protein7147.32545.2"/>
+                <port y="541.0" x="1204.0" id="Protein7147.32545.3"/>
+            </glyph>
+            <glyph compartmentRef="Membrane3541.6" id="Protein7146.32546" orientation="horizontal" class="macromolecule">
+                <label text="Mannose permease IIC component"/>
+                <bbox y="501.0" x="1414.0" h="70.0" w="150.0"/>
+                <port y="501.0" x="1489.0" id="Protein7146.32546.0"/>
+                <port y="536.0" x="1564.0" id="Protein7146.32546.1"/>
+                <port y="571.0" x="1489.0" id="Protein7146.32546.2"/>
+                <port y="536.0" x="1414.0" id="Protein7146.32546.3"/>
+            </glyph>
+            <glyph compartmentRef="Membrane3541.6" id="Protein6697.32547" orientation="horizontal" class="macromolecule multimer">
+                <label text="PTS system mannose-specific EIIAB component"/>
+                <bbox y="501.0" x="1309.0" h="80.0" w="160.0"/>
+                <glyph id="Protein6697.32547.Cardinality" class="unit of information">
+                    <label text="N:2"/>
+                    <bbox y="491.0" x="1319.0" h="20.0" w="40.0"/>
+                </glyph>
+                <port y="501.0" x="1389.0" id="Protein6697.32547.0"/>
+                <port y="541.0" x="1469.0" id="Protein6697.32547.1"/>
+                <port y="581.0" x="1389.0" id="Protein6697.32547.2"/>
+                <port y="541.0" x="1309.0" id="Protein6697.32547.3"/>
+            </glyph>
+            <port y="491.0" x="1384.0" id="ProteinComplex1560.27368.0"/>
+            <port y="541.0" x="1574.0" id="ProteinComplex1560.27368.1"/>
+            <port y="591.0" x="1384.0" id="ProteinComplex1560.27368.2"/>
+            <port y="541.0" x="1194.0" id="ProteinComplex1560.27368.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound41111.70926" orientation="horizontal" class="simple chemical">
+            <label text="β-D-fructofuranose"/>
+            <bbox y="188.0" x="1336.0" h="100.0" w="100.0"/>
+            <port y="188.0" x="1386.0" id="Compound41111.70926.0"/>
+            <port y="238.0" x="1436.0" id="Compound41111.70926.1"/>
+            <port y="288.0" x="1386.0" id="Compound41111.70926.2"/>
+            <port y="238.0" x="1336.0" id="Compound41111.70926.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein7464.32543" orientation="horizontal" class="macromolecule">
+            <label text="Phosphocarrier protein HPr"/>
+            <clone/>
+            <bbox y="478.0" x="961.0" h="70.0" w="150.0"/>
+            <port y="478.0" x="1036.0" id="Protein7464.32543.0"/>
+            <port y="513.0" x="1111.0" id="Protein7464.32543.1"/>
+            <port y="548.0" x="1036.0" id="Protein7464.32543.2"/>
+            <port y="513.0" x="961.0" id="Protein7464.32543.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein7464.32544" orientation="horizontal" class="macromolecule">
+            <label text="Phosphocarrier protein HPr"/>
+            <clone/>
+            <bbox y="478.0" x="1631.0" h="70.0" w="150.0"/>
+            <port y="478.0" x="1706.0" id="Protein7464.32544.0"/>
+            <port y="513.0" x="1781.0" id="Protein7464.32544.1"/>
+            <port y="548.0" x="1706.0" id="Protein7464.32544.2"/>
+            <port y="513.0" x="1631.0" id="Protein7464.32544.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Transport351.942" orientation="horizontal" class="process">
+            <bbox y="1777.0" x="406.0" h="20.0" w="20.0"/>
+            <port y="1787.0" x="426.0" id="Transport351.942.1"/>
+            <port y="1787.0" x="406.0" id="Transport351.942.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6861.32548" orientation="horizontal" class="macromolecule">
+            <label text="D-serine/D-alanine/glycine transporter"/>
+            <clone/>
+            <bbox y="1897.0" x="341.0" h="70.0" w="150.0"/>
+            <port y="1897.0" x="416.0" id="Protein6861.32548.0"/>
+            <port y="1932.0" x="491.0" id="Protein6861.32548.1"/>
+            <port y="1967.0" x="416.0" id="Protein6861.32548.2"/>
+            <port y="1932.0" x="341.0" id="Protein6861.32548.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound105.70927" orientation="horizontal" class="simple chemical">
+            <label text="L-Alanine"/>
+            <bbox y="1738.0" x="181.0" h="100.0" w="100.0"/>
+            <port y="1738.0" x="231.0" id="Compound105.70927.0"/>
+            <port y="1788.0" x="281.0" id="Compound105.70927.1"/>
+            <port y="1838.0" x="231.0" id="Compound105.70927.2"/>
+            <port y="1788.0" x="181.0" id="Compound105.70927.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound40034.70929" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="1898.0" x="237.0" h="78.0" w="78.0"/>
+            <port y="1898.0" x="276.0" id="Compound40034.70929.0"/>
+            <port y="1937.0" x="315.0" id="Compound40034.70929.1"/>
+            <port y="1976.0" x="276.0" id="Compound40034.70929.2"/>
+            <port y="1937.0" x="237.0" id="Compound40034.70929.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40034.70930" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="1618.0" x="587.0" h="78.0" w="78.0"/>
+            <port y="1618.0" x="626.0" id="Compound40034.70930.0"/>
+            <port y="1657.0" x="665.0" id="Compound40034.70930.1"/>
+            <port y="1696.0" x="626.0" id="Compound40034.70930.2"/>
+            <port y="1657.0" x="587.0" id="Compound40034.70930.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Transport369.943" orientation="horizontal" class="process">
+            <bbox y="2155.0" x="416.0" h="20.0" w="20.0"/>
+            <port y="2165.0" x="436.0" id="Transport369.943.1"/>
+            <port y="2165.0" x="416.0" id="Transport369.943.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein7048.32549" orientation="horizontal" class="macromolecule">
+            <label text="Sodium/glutamate symport carrier protein"/>
+            <bbox y="2275.0" x="351.0" h="70.0" w="150.0"/>
+            <port y="2275.0" x="426.0" id="Protein7048.32549.0"/>
+            <port y="2310.0" x="501.0" id="Protein7048.32549.1"/>
+            <port y="2345.0" x="426.0" id="Protein7048.32549.2"/>
+            <port y="2310.0" x="351.0" id="Protein7048.32549.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound95.70931" orientation="horizontal" class="simple chemical">
+            <label text="L-Glutamic acid"/>
+            <clone/>
+            <bbox y="2113.0" x="161.0" h="100.0" w="100.0"/>
+            <port y="2113.0" x="211.0" id="Compound95.70931.0"/>
+            <port y="2163.0" x="261.0" id="Compound95.70931.1"/>
+            <port y="2213.0" x="211.0" id="Compound95.70931.2"/>
+            <port y="2163.0" x="161.0" id="Compound95.70931.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound95.70932" orientation="horizontal" class="simple chemical">
+            <label text="L-Glutamic acid"/>
+            <clone/>
+            <bbox y="2113.0" x="701.0" h="100.0" w="100.0"/>
+            <port y="2113.0" x="751.0" id="Compound95.70932.0"/>
+            <port y="2163.0" x="801.0" id="Compound95.70932.1"/>
+            <port y="2213.0" x="751.0" id="Compound95.70932.2"/>
+            <port y="2163.0" x="701.0" id="Compound95.70932.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound458.70933" orientation="horizontal" class="simple chemical">
+            <label text="Na+"/>
+            <bbox y="2018.0" x="242.0" h="78.0" w="78.0"/>
+            <port y="2018.0" x="281.0" id="Compound458.70933.0"/>
+            <port y="2057.0" x="320.0" id="Compound458.70933.1"/>
+            <port y="2096.0" x="281.0" id="Compound458.70933.2"/>
+            <port y="2057.0" x="242.0" id="Compound458.70933.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound458.70934" orientation="horizontal" class="simple chemical">
+            <label text="Na+"/>
+            <bbox y="2018.0" x="562.0" h="78.0" w="78.0"/>
+            <port y="2018.0" x="601.0" id="Compound458.70934.0"/>
+            <port y="2057.0" x="640.0" id="Compound458.70934.1"/>
+            <port y="2096.0" x="601.0" id="Compound458.70934.2"/>
+            <port y="2057.0" x="562.0" id="Compound458.70934.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Transport371.944" orientation="horizontal" class="process">
+            <bbox y="2544.0" x="416.0" h="20.0" w="20.0"/>
+            <port y="2554.0" x="436.0" id="Transport371.944.1"/>
+            <port y="2554.0" x="416.0" id="Transport371.944.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein7203.32550" orientation="horizontal" class="macromolecule">
+            <label text="Proton glutamate symport protein"/>
+            <bbox y="2664.0" x="351.0" h="70.0" w="150.0"/>
+            <port y="2664.0" x="426.0" id="Protein7203.32550.0"/>
+            <port y="2699.0" x="501.0" id="Protein7203.32550.1"/>
+            <port y="2734.0" x="426.0" id="Protein7203.32550.2"/>
+            <port y="2699.0" x="351.0" id="Protein7203.32550.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound40034.70935" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="2413.0" x="252.0" h="78.0" w="78.0"/>
+            <port y="2413.0" x="291.0" id="Compound40034.70935.0"/>
+            <port y="2452.0" x="330.0" id="Compound40034.70935.1"/>
+            <port y="2491.0" x="291.0" id="Compound40034.70935.2"/>
+            <port y="2452.0" x="252.0" id="Compound40034.70935.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40034.70936" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="2518.0" x="552.0" h="78.0" w="78.0"/>
+            <port y="2518.0" x="591.0" id="Compound40034.70936.0"/>
+            <port y="2557.0" x="630.0" id="Compound40034.70936.1"/>
+            <port y="2596.0" x="591.0" id="Compound40034.70936.2"/>
+            <port y="2557.0" x="552.0" id="Compound40034.70936.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound95.70937" orientation="horizontal" class="simple chemical">
+            <label text="L-Glutamic acid"/>
+            <clone/>
+            <bbox y="2506.0" x="181.0" h="100.0" w="100.0"/>
+            <port y="2506.0" x="231.0" id="Compound95.70937.0"/>
+            <port y="2556.0" x="281.0" id="Compound95.70937.1"/>
+            <port y="2606.0" x="231.0" id="Compound95.70937.2"/>
+            <port y="2556.0" x="181.0" id="Compound95.70937.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound95.70938" orientation="horizontal" class="simple chemical">
+            <label text="L-Glutamic acid"/>
+            <clone/>
+            <bbox y="2111.0" x="701.0" h="100.0" w="100.0"/>
+            <port y="2111.0" x="751.0" id="Compound95.70938.0"/>
+            <port y="2161.0" x="801.0" id="Compound95.70938.1"/>
+            <port y="2211.0" x="751.0" id="Compound95.70938.2"/>
+            <port y="2161.0" x="701.0" id="Compound95.70938.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Transport424.945" orientation="horizontal" class="process">
+            <bbox y="2437.0" x="3116.0" h="20.0" w="20.0"/>
+            <port y="2447.0" x="3136.0" id="Transport424.945.1"/>
+            <port y="2447.0" x="3116.0" id="Transport424.945.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein6861.32551" orientation="horizontal" class="macromolecule">
+            <label text="D-serine/D-alanine/glycine transporter"/>
+            <clone/>
+            <bbox y="2557.0" x="3051.0" h="70.0" w="150.0"/>
+            <port y="2557.0" x="3126.0" id="Protein6861.32551.0"/>
+            <port y="2592.0" x="3201.0" id="Protein6861.32551.1"/>
+            <port y="2627.0" x="3126.0" id="Protein6861.32551.2"/>
+            <port y="2592.0" x="3051.0" id="Protein6861.32551.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound1009.70939" orientation="horizontal" class="simple chemical">
+            <label text="D-Alanine"/>
+            <clone/>
+            <bbox y="2396.0" x="3271.0" h="100.0" w="100.0"/>
+            <port y="2396.0" x="3321.0" id="Compound1009.70939.0"/>
+            <port y="2446.0" x="3371.0" id="Compound1009.70939.1"/>
+            <port y="2496.0" x="3321.0" id="Compound1009.70939.2"/>
+            <port y="2446.0" x="3271.0" id="Compound1009.70939.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound1009.70940" orientation="horizontal" class="simple chemical">
+            <label text="D-Alanine"/>
+            <clone/>
+            <bbox y="2396.0" x="2781.0" h="100.0" w="100.0"/>
+            <port y="2396.0" x="2831.0" id="Compound1009.70940.0"/>
+            <port y="2446.0" x="2881.0" id="Compound1009.70940.1"/>
+            <port y="2496.0" x="2831.0" id="Compound1009.70940.2"/>
+            <port y="2446.0" x="2781.0" id="Compound1009.70940.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound40034.70941" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="2303.0" x="3212.0" h="78.0" w="78.0"/>
+            <port y="2303.0" x="3251.0" id="Compound40034.70941.0"/>
+            <port y="2342.0" x="3290.0" id="Compound40034.70941.1"/>
+            <port y="2381.0" x="3251.0" id="Compound40034.70941.2"/>
+            <port y="2342.0" x="3212.0" id="Compound40034.70941.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Compound40034.70942" orientation="horizontal" class="simple chemical">
+            <label text="H+"/>
+            <clone/>
+            <bbox y="2318.0" x="2897.0" h="78.0" w="78.0"/>
+            <port y="2318.0" x="2936.0" id="Compound40034.70942.0"/>
+            <port y="2357.0" x="2975.0" id="Compound40034.70942.1"/>
+            <port y="2396.0" x="2936.0" id="Compound40034.70942.2"/>
+            <port y="2357.0" x="2897.0" id="Compound40034.70942.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Transport425.946" orientation="vertical" class="process">
+            <bbox y="3973.0" x="1346.0" h="20.0" w="20.0"/>
+            <port y="3973.0" x="1356.0" id="Transport425.946.1"/>
+            <port y="3993.0" x="1356.0" id="Transport425.946.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Protein7738.32552" orientation="horizontal" class="macromolecule">
+            <label text="Unknown"/>
+            <bbox y="3948.0" x="1466.0" h="70.0" w="150.0"/>
+            <port y="3948.0" x="1541.0" id="Protein7738.32552.0"/>
+            <port y="3983.0" x="1616.0" id="Protein7738.32552.1"/>
+            <port y="4018.0" x="1541.0" id="Protein7738.32552.2"/>
+            <port y="3983.0" x="1466.0" id="Protein7738.32552.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Transport426.947" orientation="vertical" class="process">
+            <bbox y="3963.0" x="1936.0" h="20.0" w="20.0"/>
+            <port y="3963.0" x="1946.0" id="Transport426.947.1"/>
+            <port y="3983.0" x="1946.0" id="Transport426.947.2"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3541.6" id="Protein10367.32553" orientation="horizontal" class="macromolecule">
+            <label text="FtsW"/>
+            <bbox y="3938.0" x="2056.0" h="70.0" w="150.0"/>
+            <port y="3938.0" x="2131.0" id="Protein10367.32553.0"/>
+            <port y="3973.0" x="2206.0" id="Protein10367.32553.1"/>
+            <port y="4008.0" x="2131.0" id="Protein10367.32553.2"/>
+            <port y="3973.0" x="2056.0" id="Protein10367.32553.3"/>
+        </glyph>
+        <glyph compartmentRef="Membrane3542.6" id="Compound41238.70988" orientation="horizontal" class="simple chemical">
+            <label text="Undecaprenyl-diphospho-N-acetylmuramoyl-(N-acetylglucosamine)-L-alanyl-D-glutaminyl-meso-2,6-diaminopimeloyl-D-alanyl-D-alanine"/>
+            <clone/>
+            <bbox y="4355.0" x="1604.0" h="100.0" w="100.0"/>
+            <port y="4355.0" x="1654.0" id="Compound41238.70988.0"/>
+            <port y="4405.0" x="1704.0" id="Compound41238.70988.1"/>
+            <port y="4455.0" x="1654.0" id="Compound41238.70988.2"/>
+            <port y="4405.0" x="1604.0" id="Compound41238.70988.3"/>
+        </glyph>
+        <arc target="Reaction2958.20606" source="Protein6010.32519" id="ReactionEnzymeArc.Reaction2958.20606.Protein6010.32519" class="catalysis">
+            <start y="808.0" x="1616.0"/>
+            <end y="708.0" x="1616.0"/>
+        </arc>
+        <arc target="Compound40947.70861" source="Reaction2958.20606" id="LeftArc.Reaction2958.20606.Compound40947.70861" class="production">
+            <start y="698.0" x="1626.0"/>
+            <end y="698.0" x="1786.0"/>
+        </arc>
+        <arc target="Compound40941.70862" source="Reaction2958.20606" id="RightArc.Reaction2958.20606.Compound40941.70862" class="production">
+            <start y="698.0" x="1606.0"/>
+            <end y="698.0" x="1436.0"/>
+        </arc>
+        <arc target="Reaction3307.20607" source="Protein6361.32520" id="ReactionEnzymeArc.Reaction3307.20607.Protein6361.32520" class="catalysis">
+            <start y="945.0" x="1496.0"/>
+            <end y="945.0" x="1396.0"/>
+        </arc>
+        <arc target="Compound40941.70862" source="Reaction3307.20607" id="LeftArc.Reaction3307.20607.Compound40941.70862" class="production">
+            <start y="935.0" x="1386.0"/>
+            <end y="748.0" x="1386.0"/>
+        </arc>
+        <arc target="Compound500.70863" source="Reaction3307.20607" id="LeftArc.Reaction3307.20607.Compound500.70863" class="production">
+            <start y="935.0" x="1386.0"/>
+            <end y="838.0" x="1241.0"/>
+        </arc>
+        <arc target="Compound969.70864" source="Reaction3307.20607" id="RightArc.Reaction3307.20607.Compound969.70864" class="production">
+            <start y="955.0" x="1386.0"/>
+            <end y="1148.0" x="1386.0"/>
+        </arc>
+        <arc target="Compound95.70865" source="Reaction3307.20607" id="RightArc.Reaction3307.20607.Compound95.70865" class="production">
+            <start y="955.0" x="1386.0"/>
+            <end y="1043.0" x="1236.0"/>
+        </arc>
+        <arc target="Reaction3312.20608" source="Protein6501.32521" id="ReactionEnzymeArc.Reaction3312.20608.Protein6501.32521" class="catalysis">
+            <start y="1308.0" x="1586.0"/>
+            <end y="1208.0" x="1586.0"/>
+        </arc>
+        <arc target="Compound969.70864" source="Reaction3312.20608" id="LeftArc.Reaction3312.20608.Compound969.70864" class="production">
+            <start y="1198.0" x="1576.0"/>
+            <end y="1198.0" x="1436.0"/>
+        </arc>
+        <arc target="Compound868.70866" source="Reaction3312.20608" id="RightArc.Reaction3312.20608.Compound868.70866" class="production">
+            <start y="1198.0" x="1596.0"/>
+            <end y="1198.0" x="1736.0"/>
+        </arc>
+        <arc target="Reaction3313.20609" source="Protein6211.32522" id="ReactionEnzymeArc.Reaction3313.20609.Protein6211.32522" class="catalysis">
+            <start y="1308.0" x="2076.0"/>
+            <end y="1208.0" x="2076.0"/>
+        </arc>
+        <arc target="Reaction3313.20609" source="Compound868.70866" id="LeftArc.Reaction3313.20609.Compound868.70866" class="consumption">
+            <start y="1198.0" x="1836.0"/>
+            <end y="1198.0" x="2066.0"/>
+        </arc>
+        <arc target="Reaction3313.20609" source="Compound940.70867" id="LeftArc.Reaction3313.20609.Compound940.70867" class="consumption">
+            <start y="1078.0" x="1941.0"/>
+            <end y="1198.0" x="2066.0"/>
+        </arc>
+        <arc target="Compound1055.70868" source="Reaction3313.20609" id="RightArc.Reaction3313.20609.Compound1055.70868" class="production">
+            <start y="1198.0" x="2086.0"/>
+            <end y="1198.0" x="2386.0"/>
+        </arc>
+        <arc target="Compound1099.70869" source="Reaction3313.20609" id="RightArc.Reaction3313.20609.Compound1099.70869" class="production">
+            <start y="1198.0" x="2086.0"/>
+            <end y="1088.0" x="2241.0"/>
+        </arc>
+        <arc target="Compound40034.70870" source="Reaction3313.20609" id="RightArc.Reaction3313.20609.Compound40034.70870" class="production">
+            <start y="1198.0" x="2086.0"/>
+            <end y="1067.0" x="2327.0"/>
+        </arc>
+        <arc target="Reaction3314.20610" source="Protein6211.32523" id="ReactionEnzymeArc.Reaction3314.20610.Protein6211.32523" class="catalysis">
+            <start y="1445.0" x="2547.0"/>
+            <end y="1445.0" x="2447.0"/>
+        </arc>
+        <arc target="Reaction3314.20610" source="Compound1055.70868" id="LeftArc.Reaction3314.20610.Compound1055.70868" class="consumption">
+            <start y="1248.0" x="2436.0"/>
+            <end y="1435.0" x="2437.0"/>
+        </arc>
+        <arc target="Reaction3314.20610" source="Compound192.70871" id="LeftArc.Reaction3314.20610.Compound192.70871" class="consumption">
+            <start y="1338.0" x="2568.0"/>
+            <end y="1435.0" x="2437.0"/>
+        </arc>
+        <arc target="Reaction3314.20610" source="Compound40034.70872" id="LeftArc.Reaction3314.20610.Compound40034.70872" class="consumption">
+            <start y="1337.0" x="2327.0"/>
+            <end y="1435.0" x="2437.0"/>
+        </arc>
+        <arc target="Compound196.70873" source="Reaction3314.20610" id="RightArc.Reaction3314.20610.Compound196.70873" class="production">
+            <start y="1455.0" x="2437.0"/>
+            <end y="1643.0" x="2436.0"/>
+        </arc>
+        <arc target="Compound170.70874" source="Reaction3314.20610" id="RightArc.Reaction3314.20610.Compound170.70874" class="production">
+            <start y="1455.0" x="2437.0"/>
+            <end y="1540.0" x="2512.0"/>
+        </arc>
+        <arc target="Reaction3317.20611" source="Protein6030.32524" id="ReactionEnzymeArc.Reaction3317.20611.Protein6030.32524" class="catalysis">
+            <start y="1803.0" x="2086.0"/>
+            <end y="1703.0" x="2086.0"/>
+        </arc>
+        <arc target="Reaction3317.20611" source="Compound196.70873" id="LeftArc.Reaction3317.20611.Compound196.70873" class="consumption">
+            <start y="1693.0" x="2386.0"/>
+            <end y="1693.0" x="2096.0"/>
+        </arc>
+        <arc target="Reaction3317.20611" source="Compound180.70875" id="LeftArc.Reaction3317.20611.Compound180.70875" class="consumption">
+            <start y="1588.0" x="2241.0"/>
+            <end y="1693.0" x="2096.0"/>
+        </arc>
+        <arc target="Compound1104.70876" source="Reaction3317.20611" id="RightArc.Reaction3317.20611.Compound1104.70876" class="production">
+            <start y="1693.0" x="2076.0"/>
+            <end y="1604.0" x="1918.0"/>
+        </arc>
+        <arc target="Compound41114.70877" source="Reaction3317.20611" id="RightArc.Reaction3317.20611.Compound41114.70877" class="production">
+            <start y="1693.0" x="2076.0"/>
+            <end y="1691.0" x="1846.0"/>
+        </arc>
+        <arc target="Reaction3318.20612" source="Protein5949.32525" id="ReactionEnzymeArc.Reaction3318.20612.Protein5949.32525" class="catalysis">
+            <start y="1801.0" x="1421.0"/>
+            <end y="1701.0" x="1421.0"/>
+        </arc>
+        <arc target="Reaction3318.20612" source="Compound41114.70877" id="LeftArc.Reaction3318.20612.Compound41114.70877" class="consumption">
+            <start y="1691.0" x="1746.0"/>
+            <end y="1691.0" x="1431.0"/>
+        </arc>
+        <arc target="Reaction3318.20612" source="Compound146.70878" id="LeftArc.Reaction3318.20612.Compound146.70878" class="consumption">
+            <start y="1576.0" x="1566.0"/>
+            <end y="1691.0" x="1431.0"/>
+        </arc>
+        <arc target="Reaction3318.20612" source="Compound41026.70879" id="LeftArc.Reaction3318.20612.Compound41026.70879" class="consumption">
+            <start y="1561.0" x="1656.0"/>
+            <end y="1691.0" x="1431.0"/>
+        </arc>
+        <arc target="Compound143.70880" source="Reaction3318.20612" id="RightArc.Reaction3318.20612.Compound143.70880" class="production">
+            <start y="1691.0" x="1411.0"/>
+            <end y="1586.0" x="1231.0"/>
+        </arc>
+        <arc target="Compound41115.70881" source="Reaction3318.20612" id="RightArc.Reaction3318.20612.Compound41115.70881" class="production">
+            <start y="1691.0" x="1411.0"/>
+            <end y="1693.0" x="1088.0"/>
+        </arc>
+        <arc target="Reaction2515.20615" source="Protein6411.32528" id="ReactionEnzymeArc.Reaction2515.20615.Protein6411.32528" class="catalysis">
+            <start y="2323.0" x="861.0"/>
+            <end y="2323.0" x="761.0"/>
+        </arc>
+        <arc target="Compound95.70895" source="Reaction2515.20615" id="LeftArc.Reaction2515.20615.Compound95.70895" class="production">
+            <start y="2313.0" x="751.0"/>
+            <end y="2213.0" x="751.0"/>
+        </arc>
+        <arc target="Compound1849.70891" source="Reaction2515.20615" id="RightArc.Reaction2515.20615.Compound1849.70891" class="production">
+            <start y="2333.0" x="751.0"/>
+            <end y="2443.0" x="751.0"/>
+        </arc>
+        <arc target="Reaction3450.20616" source="Protein6405.32529" id="ReactionEnzymeArc.Reaction3450.20616.Protein6405.32529" class="catalysis">
+            <start y="2933.0" x="1463.0"/>
+            <end y="2833.0" x="1463.0"/>
+        </arc>
+        <arc target="Reaction3450.20616" source="Compound40829.70894" id="LeftArc.Reaction3450.20616.Compound40829.70894" class="consumption">
+            <start y="2823.0" x="1088.0"/>
+            <end y="2823.0" x="1453.0"/>
+        </arc>
+        <arc target="Reaction3450.20616" source="Compound40841.70896" id="LeftArc.Reaction3450.20616.Compound40841.70896" class="consumption">
+            <start y="3003.0" x="1198.0"/>
+            <end y="2823.0" x="1453.0"/>
+        </arc>
+        <arc target="Reaction3450.20616" source="Compound414.70897" id="LeftArc.Reaction3450.20616.Compound414.70897" class="consumption">
+            <start y="3003.0" x="1278.0"/>
+            <end y="2823.0" x="1453.0"/>
+        </arc>
+        <arc target="Compound1034.70898" source="Reaction3450.20616" id="RightArc.Reaction3450.20616.Compound1034.70898" class="production">
+            <start y="2823.0" x="1473.0"/>
+            <end y="2980.0" x="1688.0"/>
+        </arc>
+        <arc target="Compound1104.70899" source="Reaction3450.20616" id="RightArc.Reaction3450.20616.Compound1104.70899" class="production">
+            <start y="2823.0" x="1473.0"/>
+            <end y="2736.0" x="1746.0"/>
+        </arc>
+        <arc target="Compound40034.70900" source="Reaction3450.20616" id="RightArc.Reaction3450.20616.Compound40034.70900" class="production">
+            <start y="2823.0" x="1473.0"/>
+            <end y="2982.0" x="1779.0"/>
+        </arc>
+        <arc target="Compound41232.70901" source="Reaction3450.20616" id="RightArc.Reaction3450.20616.Compound41232.70901" class="production">
+            <start y="2823.0" x="1473.0"/>
+            <end y="2821.0" x="1853.0"/>
+        </arc>
+        <arc target="Reaction2513.20619" source="ProteinComplex1228.27356" id="ReactionEnzymeArc.Reaction2513.20619.ProteinComplex1228.27356" class="catalysis">
+            <start y="2539.0" x="2485.0"/>
+            <end y="2439.0" x="2485.0"/>
+        </arc>
+        <arc target="Reaction2513.20619" source="Compound1009.70911" id="LeftArc.Reaction2513.20619.Compound1009.70911" class="consumption">
+            <start y="2447.0" x="2783.0"/>
+            <end y="2429.0" x="2495.0"/>
+        </arc>
+        <arc target="Reaction2513.20619" source="Compound414.70912" id="LeftArc.Reaction2513.20619.Compound414.70912" class="consumption">
+            <start y="2522.0" x="2678.0"/>
+            <end y="2429.0" x="2495.0"/>
+        </arc>
+        <arc target="Compound1900.70902" source="Reaction2513.20619" id="RightArc.Reaction2513.20619.Compound1900.70902" class="production">
+            <start y="2429.0" x="2475.0"/>
+            <end y="2446.0" x="2198.0"/>
+        </arc>
+        <arc target="Compound1034.70913" source="Reaction2513.20619" id="RightArc.Reaction2513.20619.Compound1034.70913" class="production">
+            <start y="2429.0" x="2475.0"/>
+            <end y="2543.0" x="2273.0"/>
+        </arc>
+        <arc target="Compound1104.70914" source="Reaction2513.20619" id="RightArc.Reaction2513.20619.Compound1104.70914" class="production">
+            <start y="2429.0" x="2475.0"/>
+            <end y="2339.0" x="2295.0"/>
+        </arc>
+        <arc target="Reaction3455.20622" source="Or.Reaction3455.20622" id="OrArc.Reaction3455.20622" class="catalysis">
+            <start y="4510.0" x="719.0"/>
+            <end y="4390.0" x="699.0"/>
+        </arc>
+        <arc target="Or.Reaction3455.20622" source="Protein7280.32539" id="OrArc.Or.Reaction3455.20622.Protein7280.32539" class="logic arc">
+            <start y="4620.0" x="324.0"/>
+            <end y="4510.0" x="699.0"/>
+        </arc>
+        <arc target="Or.Reaction3455.20622" source="Protein6217.32540" id="OrArc.Or.Reaction3455.20622.Protein6217.32540" class="logic arc">
+            <start y="4620.0" x="574.0"/>
+            <end y="4510.0" x="699.0"/>
+        </arc>
+        <arc target="Or.Reaction3455.20622" source="Protein5861.32541" id="OrArc.Or.Reaction3455.20622.Protein5861.32541" class="logic arc">
+            <start y="4620.0" x="829.0"/>
+            <end y="4510.0" x="699.0"/>
+        </arc>
+        <arc target="Or.Reaction3455.20622" source="Protein5862.32542" id="OrArc.Or.Reaction3455.20622.Protein5862.32542" class="logic arc">
+            <start y="4620.0" x="1089.0"/>
+            <end y="4510.0" x="699.0"/>
+        </arc>
+        <arc target="Compound1009.70925" source="Reaction3455.20622" id="RightArc.Reaction3455.20622.Compound1009.70925" class="production">
+            <start y="4390.0" x="699.0"/>
+            <end y="4274.0" x="506.0"/>
+        </arc>
+        <arc target="Reaction3455.20622" source="GenericCompound220.1481" id="LeftArc.Reaction3455.20622.GenericCompound220.1481" class="consumption">
+            <start y="4379.0" x="906.0"/>
+            <end y="4390.0" x="719.0"/>
+        </arc>
+        <arc target="GenericCompound221.1482" source="Reaction3455.20622" id="RightArc.Reaction3455.20622.GenericCompound221.1482" class="production">
+            <start y="4390.0" x="699.0"/>
+            <end y="4369.0" x="401.0"/>
+        </arc>
+        <arc target="Reaction6016.20626" source="Protein6363.32557" id="ReactionEnzymeArc.Reaction6016.20626.Protein6363.32557" class="catalysis">
+            <start y="3661.0" x="2240.0"/>
+            <end y="3561.0" x="2240.0"/>
+        </arc>
+        <arc target="Reaction6016.20626" source="Compound41270.70959" id="LeftArc.Reaction6016.20626.Compound41270.70959" class="consumption">
+            <start y="3554.0" x="2740.0"/>
+            <end y="3551.0" x="2250.0"/>
+        </arc>
+        <arc target="Reaction6016.20626" source="Compound196.70960" id="LeftArc.Reaction6016.20626.Compound196.70960" class="consumption">
+            <start y="3684.0" x="2515.0"/>
+            <end y="3551.0" x="2250.0"/>
+        </arc>
+        <arc target="Compound41238.70961" source="Reaction6016.20626" id="RightArc.Reaction6016.20626.Compound41238.70961" class="production">
+            <start y="3551.0" x="2230.0"/>
+            <end y="3552.0" x="1705.0"/>
+        </arc>
+        <arc target="Compound201.70962" source="Reaction6016.20626" id="RightArc.Reaction6016.20626.Compound201.70962" class="production">
+            <start y="3551.0" x="2230.0"/>
+            <end y="3682.0" x="1920.0"/>
+        </arc>
+        <arc target="Compound40034.70963" source="Reaction6016.20626" id="RightArc.Reaction6016.20626.Compound40034.70963" class="production">
+            <start y="3551.0" x="2230.0"/>
+            <end y="3711.0" x="2059.0"/>
+        </arc>
+        <arc target="Reaction6022.20630" source="Protein6018.32561" id="ReactionEnzymeArc.Reaction6022.20630.Protein6018.32561" class="catalysis">
+            <start y="3211.0" x="2900.0"/>
+            <end y="3211.0" x="2800.0"/>
+        </arc>
+        <arc target="Reaction6022.20630" source="Compound43200.70980" id="LeftArc.Reaction6022.20630.Compound43200.70980" class="consumption">
+            <start y="2874.0" x="2790.0"/>
+            <end y="3201.0" x="2790.0"/>
+        </arc>
+        <arc target="Reaction6022.20630" source="Compound42617.70981" id="LeftArc.Reaction6022.20630.Compound42617.70981" class="consumption">
+            <start y="3009.0" x="2940.0"/>
+            <end y="3201.0" x="2790.0"/>
+        </arc>
+        <arc target="Compound41270.70959" source="Reaction6022.20630" id="RightArc.Reaction6022.20630.Compound41270.70959" class="production">
+            <start y="3221.0" x="2790.0"/>
+            <end y="3504.0" x="2790.0"/>
+        </arc>
+        <arc target="Compound194.70982" source="Reaction6022.20630" id="RightArc.Reaction6022.20630.Compound194.70982" class="production">
+            <start y="3221.0" x="2790.0"/>
+            <end y="3384.0" x="2960.0"/>
+        </arc>
+        <arc target="Reaction6023.20631" source="Protein6318.32562" id="ReactionEnzymeArc.Reaction6023.20631.Protein6318.32562" class="catalysis">
+            <start y="2933.0" x="2346.0"/>
+            <end y="2833.0" x="2346.0"/>
+        </arc>
+        <arc target="Reaction6023.20631" source="Compound41232.70901" id="LeftArc.Reaction6023.20631.Compound41232.70901" class="consumption">
+            <start y="2821.0" x="1953.0"/>
+            <end y="2823.0" x="2336.0"/>
+        </arc>
+        <arc target="Reaction6023.20631" source="Compound1900.70983" id="LeftArc.Reaction6023.20631.Compound1900.70983" class="consumption">
+            <start y="2966.0" x="2128.0"/>
+            <end y="2823.0" x="2336.0"/>
+        </arc>
+        <arc target="Reaction6023.20631" source="Compound414.70984" id="LeftArc.Reaction6023.20631.Compound414.70984" class="consumption">
+            <start y="2716.0" x="2138.0"/>
+            <end y="2823.0" x="2336.0"/>
+        </arc>
+        <arc target="Compound43200.70980" source="Reaction6023.20631" id="RightArc.Reaction6023.20631.Compound43200.70980" class="production">
+            <start y="2823.0" x="2356.0"/>
+            <end y="2824.0" x="2740.0"/>
+        </arc>
+        <arc target="Compound1034.70985" source="Reaction6023.20631" id="RightArc.Reaction6023.20631.Compound1034.70985" class="production">
+            <start y="2823.0" x="2356.0"/>
+            <end y="2733.0" x="2550.0"/>
+        </arc>
+        <arc target="Compound1104.70986" source="Reaction6023.20631" id="RightArc.Reaction6023.20631.Compound1104.70986" class="production">
+            <start y="2823.0" x="2356.0"/>
+            <end y="2784.0" x="2633.0"/>
+        </arc>
+        <arc target="Compound40034.70987" source="Reaction6023.20631" id="RightArc.Reaction6023.20631.Compound40034.70987" class="production">
+            <start y="2823.0" x="2356.0"/>
+            <end y="2990.0" x="2586.0"/>
+        </arc>
+        <arc target="Reaction6024.20633" source="Or.Reaction6024.20633" id="OrArc.Reaction6024.20633" class="catalysis">
+            <start y="4533.0" x="1352.0"/>
+            <end y="4413.0" x="1332.0"/>
+        </arc>
+        <arc target="Or.Reaction6024.20633" source="ProteinComplex3682.27388" id="OrArc.Or.Reaction6024.20633.ProteinComplex3682.27388" class="logic arc">
+            <start y="4643.0" x="957.0"/>
+            <end y="4533.0" x="1332.0"/>
+        </arc>
+        <arc target="Or.Reaction6024.20633" source="Protein5861.32568" id="OrArc.Or.Reaction6024.20633.Protein5861.32568" class="logic arc">
+            <start y="4643.0" x="1222.0"/>
+            <end y="4533.0" x="1332.0"/>
+        </arc>
+        <arc target="Or.Reaction6024.20633" source="Protein5862.32569" id="OrArc.Or.Reaction6024.20633.Protein5862.32569" class="logic arc">
+            <start y="4643.0" x="1482.0"/>
+            <end y="4533.0" x="1332.0"/>
+        </arc>
+        <arc target="Or.Reaction6024.20633" source="Protein7245.32570" id="OrArc.Or.Reaction6024.20633.Protein7245.32570" class="logic arc">
+            <start y="4643.0" x="1737.0"/>
+            <end y="4533.0" x="1332.0"/>
+        </arc>
+        <arc target="Reaction6024.20633" source="Compound41238.70995" id="LeftArc.Reaction6024.20633.Compound41238.70995" class="consumption">
+            <start y="4407.0" x="1606.0"/>
+            <end y="4413.0" x="1352.0"/>
+        </arc>
+        <arc target="Compound1130.70996" source="Reaction6024.20633" id="RightArc.Reaction6024.20633.Compound1130.70996" class="production">
+            <start y="4413.0" x="1332.0"/>
+            <end y="4226.0" x="1021.0"/>
+        </arc>
+        <arc target="Compound40034.70997" source="Reaction6024.20633" id="RightArc.Reaction6024.20633.Compound40034.70997" class="production">
+            <start y="4413.0" x="1332.0"/>
+            <end y="4520.0" x="1090.0"/>
+        </arc>
+        <arc target="GenericCompound220.1481" source="Reaction6024.20633" id="RightArc.Reaction6024.20633.GenericCompound220.1481" class="production">
+            <start y="4413.0" x="1332.0"/>
+            <end y="4379.0" x="1006.0"/>
+        </arc>
+        <arc target="Reaction6033.20646" source="Protein6337.32590" id="ReactionEnzymeArc.Reaction6033.20646.Protein6337.32590" class="catalysis">
+            <start y="2613.0" x="1146.0"/>
+            <end y="2613.0" x="1046.0"/>
+        </arc>
+        <arc target="Reaction6033.20646" source="Compound44523.71065" id="LeftArc.Reaction6033.20646.Compound44523.71065" class="consumption">
+            <start y="2463.0" x="1036.0"/>
+            <end y="2603.0" x="1036.0"/>
+        </arc>
+        <arc target="Reaction6033.20646" source="Compound414.71066" id="LeftArc.Reaction6033.20646.Compound414.71066" class="consumption">
+            <start y="2513.0" x="1141.0"/>
+            <end y="2603.0" x="1036.0"/>
+        </arc>
+        <arc target="Reaction6033.20646" source="Compound1849.70891" id="LeftArc.Reaction6033.20646.Compound1849.70891" class="consumption">
+            <start y="2543.0" x="751.0"/>
+            <end y="2603.0" x="1036.0"/>
+        </arc>
+        <arc target="Compound40829.70894" source="Reaction6033.20646" id="RightArc.Reaction6033.20646.Compound40829.70894" class="production">
+            <start y="2623.0" x="1036.0"/>
+            <end y="2773.0" x="1038.0"/>
+        </arc>
+        <arc target="Compound1034.71067" source="Reaction6033.20646" id="RightArc.Reaction6033.20646.Compound1034.71067" class="production">
+            <start y="2623.0" x="1036.0"/>
+            <end y="2733.0" x="1164.0"/>
+        </arc>
+        <arc target="Compound1104.71068" source="Reaction6033.20646" id="RightArc.Reaction6033.20646.Compound1104.71068" class="production">
+            <start y="2623.0" x="1036.0"/>
+            <end y="2745.0" x="926.0"/>
+        </arc>
+        <arc target="Reaction6034.20647" source="ProteinComplex3675.27412" id="ReactionEnzymeArc.Reaction6034.20647.ProteinComplex3675.27412" class="catalysis">
+            <start y="2030.0" x="1147.0"/>
+            <end y="2030.0" x="1047.0"/>
+        </arc>
+        <arc target="Reaction6034.20647" source="Compound41115.70881" id="LeftArc.Reaction6034.20647.Compound41115.70881" class="consumption">
+            <start y="1743.0" x="1038.0"/>
+            <end y="2020.0" x="1037.0"/>
+        </arc>
+        <arc target="Reaction6034.20647" source="Compound414.71069" id="LeftArc.Reaction6034.20647.Compound414.71069" class="consumption">
+            <start y="1843.0" x="921.0"/>
+            <end y="2020.0" x="1037.0"/>
+        </arc>
+        <arc target="Reaction6034.20647" source="Compound105.70928" id="LeftArc.Reaction6034.20647.Compound105.70928" class="consumption">
+            <start y="1838.0" x="731.0"/>
+            <end y="2020.0" x="1037.0"/>
+        </arc>
+        <arc target="Compound44523.71065" source="Reaction6034.20647" id="RightArc.Reaction6034.20647.Compound44523.71065" class="production">
+            <start y="2040.0" x="1037.0"/>
+            <end y="2363.0" x="1036.0"/>
+        </arc>
+        <arc target="Compound1034.71070" source="Reaction6034.20647" id="RightArc.Reaction6034.20647.Compound1034.71070" class="production">
+            <start y="2040.0" x="1037.0"/>
+            <end y="2268.0" x="904.0"/>
+        </arc>
+        <arc target="Compound1104.71071" source="Reaction6034.20647" id="RightArc.Reaction6034.20647.Compound1104.71071" class="production">
+            <start y="2040.0" x="1037.0"/>
+            <end y="2285.0" x="986.0"/>
+        </arc>
+        <arc target="Compound40034.71072" source="Reaction6034.20647" id="RightArc.Reaction6034.20647.Compound40034.71072" class="production">
+            <start y="2040.0" x="1037.0"/>
+            <end y="2269.0" x="1167.0"/>
+        </arc>
+        <arc target="ReactionCoupledTransport144.437" source="ProteinComplex1560.27368" id="ReactionCoupledTransportEnzymeArc.ReactionCoupledTransport144.437.ProteinComplex1560.27368" class="catalysis">
+            <start y="491.0" x="1384.0"/>
+            <end y="391.0" x="1384.0"/>
+        </arc>
+        <arc target="ReactionCoupledTransport144.437" source="Compound41111.70926" id="LeftArc.ReactionCoupledTransport144.437.Compound41111.70926" class="consumption">
+            <start y="238.0" x="1436.0"/>
+            <end y="381.0" x="1374.0"/>
+        </arc>
+        <arc target="Compound40941.70862" source="ReactionCoupledTransport144.437" id="RightArc.ReactionCoupledTransport144.437.Compound40941.70862" class="production">
+            <start y="381.0" x="1374.0"/>
+            <end y="698.0" x="1436.0"/>
+        </arc>
+        <arc target="ReactionCoupledTransport144.437" source="Protein7464.32543" id="LeftArc.ReactionCoupledTransport144.437.Protein7464.32543" class="consumption">
+            <start y="513.0" x="1111.0"/>
+            <end y="381.0" x="1374.0"/>
+        </arc>
+        <arc target="Protein7464.32544" source="ReactionCoupledTransport144.437" id="RightArc.ReactionCoupledTransport144.437.Protein7464.32544" class="production">
+            <start y="381.0" x="1394.0"/>
+            <end y="513.0" x="1631.0"/>
+        </arc>
+        <arc target="Transport351.942" source="Protein6861.32548" id="TransportTransporterArc.Transport351.942.Protein6861.32548" class="catalysis">
+            <start y="1897.0" x="416.0"/>
+            <end y="1797.0" x="416.0"/>
+        </arc>
+        <arc target="Transport351.942" source="Compound105.70927" id="LeftArc.Transport351.942.Compound105.70927" class="consumption">
+            <start y="1788.0" x="281.0"/>
+            <end y="1787.0" x="406.0"/>
+        </arc>
+        <arc target="Compound105.70928" source="Transport351.942" id="RightArc.Transport351.942.Compound105.70928" class="production">
+            <start y="1787.0" x="426.0"/>
+            <end y="1788.0" x="681.0"/>
+        </arc>
+        <arc target="Transport351.942" source="Compound40034.70929" id="LeftArc.Transport351.942.Compound40034.70929" class="consumption">
+            <start y="1937.0" x="315.0"/>
+            <end y="1787.0" x="406.0"/>
+        </arc>
+        <arc target="Compound40034.70930" source="Transport351.942" id="RightArc.Transport351.942.Compound40034.70930" class="production">
+            <start y="1787.0" x="426.0"/>
+            <end y="1657.0" x="587.0"/>
+        </arc>
+        <arc target="Transport369.943" source="Protein7048.32549" id="TransportTransporterArc.Transport369.943.Protein7048.32549" class="catalysis">
+            <start y="2275.0" x="426.0"/>
+            <end y="2175.0" x="426.0"/>
+        </arc>
+        <arc target="Transport369.943" source="Compound95.70931" id="LeftArc.Transport369.943.Compound95.70931" class="consumption">
+            <start y="2163.0" x="261.0"/>
+            <end y="2165.0" x="416.0"/>
+        </arc>
+        <arc target="Compound95.70932" source="Transport369.943" id="RightArc.Transport369.943.Compound95.70932" class="production">
+            <start y="2165.0" x="436.0"/>
+            <end y="2163.0" x="701.0"/>
+        </arc>
+        <arc target="Transport369.943" source="Compound458.70933" id="LeftArc.Transport369.943.Compound458.70933" class="consumption">
+            <start y="2057.0" x="320.0"/>
+            <end y="2165.0" x="416.0"/>
+        </arc>
+        <arc target="Compound458.70934" source="Transport369.943" id="RightArc.Transport369.943.Compound458.70934" class="production">
+            <start y="2165.0" x="436.0"/>
+            <end y="2057.0" x="562.0"/>
+        </arc>
+        <arc target="Transport371.944" source="Protein7203.32550" id="TransportTransporterArc.Transport371.944.Protein7203.32550" class="catalysis">
+            <start y="2664.0" x="426.0"/>
+            <end y="2564.0" x="426.0"/>
+        </arc>
+        <arc target="Transport371.944" source="Compound40034.70935" id="LeftArc.Transport371.944.Compound40034.70935" class="consumption">
+            <start y="2452.0" x="330.0"/>
+            <end y="2554.0" x="416.0"/>
+        </arc>
+        <arc target="Compound40034.70936" source="Transport371.944" id="RightArc.Transport371.944.Compound40034.70936" class="production">
+            <start y="2554.0" x="436.0"/>
+            <end y="2557.0" x="552.0"/>
+        </arc>
+        <arc target="Transport371.944" source="Compound95.70937" id="LeftArc.Transport371.944.Compound95.70937" class="consumption">
+            <start y="2556.0" x="281.0"/>
+            <end y="2554.0" x="416.0"/>
+        </arc>
+        <arc target="Compound95.70938" source="Transport371.944" id="RightArc.Transport371.944.Compound95.70938" class="production">
+            <start y="2554.0" x="436.0"/>
+            <end y="2161.0" x="701.0"/>
+        </arc>
+        <arc target="Transport424.945" source="Protein6861.32551" id="TransportTransporterArc.Transport424.945.Protein6861.32551" class="catalysis">
+            <start y="2557.0" x="3126.0"/>
+            <end y="2457.0" x="3126.0"/>
+        </arc>
+        <arc target="Transport424.945" source="Compound1009.70939" id="LeftArc.Transport424.945.Compound1009.70939" class="consumption">
+            <start y="2446.0" x="3271.0"/>
+            <end y="2447.0" x="3136.0"/>
+        </arc>
+        <arc target="Compound1009.70940" source="Transport424.945" id="RightArc.Transport424.945.Compound1009.70940" class="production">
+            <start y="2447.0" x="3116.0"/>
+            <end y="2446.0" x="2881.0"/>
+        </arc>
+        <arc target="Transport424.945" source="Compound40034.70941" id="LeftArc.Transport424.945.Compound40034.70941" class="consumption">
+            <start y="2342.0" x="3212.0"/>
+            <end y="2447.0" x="3136.0"/>
+        </arc>
+        <arc target="Compound40034.70942" source="Transport424.945" id="RightArc.Transport424.945.Compound40034.70942" class="production">
+            <start y="2447.0" x="3116.0"/>
+            <end y="2357.0" x="2975.0"/>
+        </arc>
+        <arc target="Transport425.946" source="Protein7738.32552" id="TransportTransporterArc.Transport425.946.Protein7738.32552" class="catalysis">
+            <start y="3983.0" x="1466.0"/>
+            <end y="3983.0" x="1366.0"/>
+        </arc>
+        <arc target="Transport426.947" source="Protein10367.32553" id="TransportTransporterArc.Transport426.947.Protein10367.32553" class="catalysis">
+            <start y="3973.0" x="2056.0"/>
+            <end y="3973.0" x="1956.0"/>
+        </arc>
+    </map>
+</sbgn>
