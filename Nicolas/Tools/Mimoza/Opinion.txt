@@ -1,0 +1,52 @@
+- lots of dependencies needed to run mimoza locally:
+
+Dependencies
+==================
+
+*Mimoza* uses `libSBML <http://sbml.org/Software/libSBML>`_ library for python with the groups and layout extensions.
+Install it:
+  * sudo pip install python-libsbml-experimental
+
+*Mimoza* uses *Model Generalization* library for python to produce generalized views of the model.
+To install it, please download and extract the source files from `gforge.inria.fr <http://metamogen.gforge.inria.fr>`_.
+From the directory where you have extracted it, execute:
+  * sudo python setup.py
+
+ERROR:
+  
+C:\Users\Nicolas\Anaconda2\lib\distutils\dist.py:267: UserWarning: Unknown distribution option: 'platform'
+warnings.warn(msg)
+usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]
+   or: setup.py --help [cmd1 cmd2 ...]
+   or: setup.py --help-commands
+   or: setup.py cmd --help
+
+error: no commands supplied
+  
+  
+  
+*Mimoza* uses *Tulip 4.4* library for python to layout metabolic networks.
+To install it, please download and extract the source files from `sourceforge.net <https://sourceforge.net/projects/auber/files/tulip/tulip-4.4.0/>`_.
+From the directory where you have extracted it, execute:
+  * mkdir build
+  * cd build
+  * cmake ..
+  * make
+  * sudo make install
+
+*Mimoza* uses `SymPy <http://www.sympy.org/>`_, `Python bindings for geojson <https://pypi.python.org/pypi/geojson/>`_
+and `Jinja2 <http://jinja.pocoo.org/>`_:
+  * sudo pip install sympy
+  * sudo pip install geojson
+  * sudo pip install Jinja2
+
+If you want to have export of your maps in `SBGN PD<http://www.sbgn.org/>`_, install `libSBGN bindings for Python <https://github.com/matthiaskoenig/libsbgn-python>`_:
+  * sudo pip install libsbgnpy
+  
+
+How do they draw?
+-> python based software; they use the Tulip python API (Tulip is originally written in C++) 
+  
+  
+Opinion: since I was not able to install the Model Generalization library, I was not able to test Mimoza yet but idea of library sounds promising - look at the code!
+ 
