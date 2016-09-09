@@ -23,7 +23,9 @@ usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]
 
 error: no commands supplied
   
-  
+# Brett: the command they give is incorrect it should be::
+
+ sudo python setup.py install
   
 *Mimoza* uses *Tulip 4.4* library for python to layout metabolic networks.
 To install it, please download and extract the source files from `sourceforge.net <https://sourceforge.net/projects/auber/files/tulip/tulip-4.4.0/>`_.
