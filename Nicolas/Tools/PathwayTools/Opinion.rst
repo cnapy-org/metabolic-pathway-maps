@@ -1,0 +1,14 @@
+#################
+PathwayTools Test
+#################
+
+* closed software,  license needs to be requested
+
+* for commercial use the following data is necessary to register for a license:
+	Requestor's Name, Requestor's Email Address, Institution, Institution Address (city, state, country), Technical Contact Email Address
+
+*******
+Opinion 
+*******
+
+* does not meet the industries demands, source code not available 

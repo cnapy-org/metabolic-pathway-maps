@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arcadia Test</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>Arcadia Test</h1>
+    <!-- This data file has been placed in the public domain. -->
+    <!-- Derived from the Unicode character mappings available from
+&lt;http://www.w3.org/2003/entities/xml/&gt;.
+Processed by unicode2rstsubs.py, part of Docutils:
+&lt;http://docutils.sourceforge.net&gt;. -->
+    <ul>
+        <li>crashes with larger SBML files from BIGGS, etc. (tested with e_coli_core.xml) → too large?</li>
+        <li>"Internally, the data structure can be decomposed into three interconnected layers (Fig. 1). The first layer, or model layer, corresponds to the data available in the SBML file, interpreted as a directed bigraph. The last layer, or geometry layer, can display graphs as diagrams, according to a specific rendering style and local layout constraints. ... However the middle layer, or topology layer, is specific to Arcadia. At this level, the topology of the graph representation of the model can be modified without altering the model itself. This extra layer enables unique features." (from <a href="http://bioinformatics.oxfordjournals.org/content/26/11/1470.full">http://bioinformatics.oxfordjournals.org/content/26/11/1470.full</a>)</li>
+        <li>using yeast.xml (file included as test file, very small: 25 species, 19 reactions) a structured layout is produced!</li>
+    </ul>
+    <section id="how-do-they-draw">
+        <h2>How do they draw?</h2>
+        <ul>
+            <li>C++ based, creates SBGN maps from SBML input file; result can be saved in the SBML itself or exported as svg</li>
+        </ul>
+    </section>
+    <section id="opinion">
+        <h2>Opinion</h2>
+        <ul>
+            <li>can produce structured layout very similar to drawing by hand just with an SBML file as input but crashes with larger (even medium sized) files → source code available on sourceforge.net</li>
+        </ul>
+    </section>
+</body>
+</html>

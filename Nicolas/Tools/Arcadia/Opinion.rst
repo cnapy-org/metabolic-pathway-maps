@@ -1,0 +1,25 @@
+..	include:: <isonum.txt>
+
+############
+Arcadia Test
+############
+
+* crashes with larger SBML files from BIGGS, etc. (tested with e_coli_core.xml) |rarr| too large?
+
+* "Internally, the data structure can be decomposed into three interconnected layers (Fig. 1). The first layer, or model layer, corresponds to the data available in the SBML file, interpreted as a directed bigraph. The last layer, or geometry layer, can display graphs as diagrams, according to a specific rendering style and local layout constraints. ... However the middle layer, or topology layer, is specific to Arcadia. At this level, the topology of the graph representation of the model can be modified without altering the model itself. This extra layer enables unique features." (from http://bioinformatics.oxfordjournals.org/content/26/11/1470.full)
+
+* using yeast.xml (file included as test file, very small: 25 species, 19 	reactions) a structured layout is produced!
+
+*****************
+How do they draw?
+*****************
+
+* C++ based, creates SBGN maps from SBML input file; result can be saved in 	the SBML itself or exported as svg
+
+*******
+Opinion
+*******
+
+* can produce structured layout very similar to drawing by hand just with an SBML file as input but crashes with larger (even medium sized) files |rarr| source code available on sourceforge.net
+
+ 

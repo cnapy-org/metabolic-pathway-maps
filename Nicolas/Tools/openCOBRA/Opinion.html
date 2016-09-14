@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>openCOBRA Test</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>openCOBRA Test</h1>
+    <!-- This data file has been placed in the public domain. -->
+    <!-- Derived from the Unicode character mappings available from
+&lt;http://www.w3.org/2003/entities/xml/&gt;.
+Processed by unicode2rstsubs.py, part of Docutils:
+&lt;http://docutils.sourceforge.net&gt;. -->
+    <ul>
+        <li>
+            <dl>
+                <dt>fixes main problem with COBRA, namely that it was based on Matlab</dt>
+                <dd>→ can now be used also for industry development</dd>
+            </dl>
+        </li>
+        <li>"The openCOBRA project has arisen to provide researchers with easy access to core COBRA methodologies, and to provide a repository for community contributed modules that build off of these core COBRA Features. The openCOBRA Project was initiated with tools for MATLAB but has now grown to include Python-based modules for dealing with the complex relationships of the next generation of COBRA models." (from <a href="https://opencobra.github.io">https://opencobra.github.io</a>)</li>
+        <li>python library that can be installed via pip install cobra</li>
+        <li>cobrapy doesn't have an option to visualize the model as a map</li>
+        <li>drawing a map with cobra toolbox is possible but it implements escher (based on the look of the layout) -&gt; true, the function drawCbmap("map file") needs a map file which you can export from the BIGG database which in turn implements escher for the visualization of the metabolic maps so you end up with an escher map in the end (see target.svg in Cobra Toolbox Matlab FIles - 2016 - source: <a href="https://systemsbiology.usu.edu/cobra_toolbox.php">https://systemsbiology.usu.edu/cobra_toolbox.php</a>)</li>
+        <li>Matlab commands:</li>
+    </ul>
+    <pre>&gt;&gt; map=readCbMap('ecoli_Textbook_ExportMap');
+&gt;&gt; drawCbMap(map)</pre>
+    <section id="how-do-they-draw">
+        <h2>How do they draw?</h2>
+        <ul>
+            <li>matlab based software; they implement escher</li>
+        </ul>
+    </section>
+    <section id="opinion">
+        <h2>Opinion</h2>
+        <ul>
+            <li>neither cobrapy nor cobra toolbox for matlab provides what we need: the former has no map drawing capabilities, the latter both runs on Matlab and uses Escher maps</li>
+        </ul>
+    </section>
+</body>
+</html>

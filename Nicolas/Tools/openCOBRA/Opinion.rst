@@ -1,0 +1,35 @@
+..	include:: <isonum.txt>
+
+##############
+openCOBRA Test
+##############
+
+* fixes main problem with COBRA, namely that it was based on Matlab
+	|rarr| can now be used also for industry development
+
+* "The openCOBRA project has arisen to provide researchers with easy access to core COBRA methodologies, and to provide a repository for community contributed modules that build off of these core COBRA Features. The openCOBRA Project was initiated with tools for MATLAB but has now grown to include Python-based modules for dealing with the complex relationships of the next generation of COBRA models." (from https://opencobra.github.io)
+
+* python library that can be installed via pip install cobra
+
+* cobrapy doesn't have an option to visualize the model as a map
+
+* drawing a map with cobra toolbox is possible but it implements escher (based on the look of the layout) -> true, the function drawCbmap("map file") needs a map file which you can export from the BIGG database which in turn implements escher for the visualization of the metabolic maps so you end up with an escher map in the end (see target.svg in Cobra Toolbox Matlab FIles - 2016 - source: https://systemsbiology.usu.edu/cobra_toolbox.php)
+
+* Matlab commands: 
+
+::
+
+	>> map=readCbMap('ecoli_Textbook_ExportMap');
+	>> drawCbMap(map)
+
+*****************
+How do they draw?
+*****************
+
+* matlab based software; they implement escher
+
+*******
+Opinion
+*******
+
+* neither cobrapy nor cobra toolbox for matlab provides what we need: the former has no map drawing capabilities, the latter both runs on Matlab and uses Escher maps
