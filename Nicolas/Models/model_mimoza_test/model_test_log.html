@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test MIMOZA with different model files</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>Test MIMOZA with different model files</h1>
+    <!-- This data file has been placed in the public domain. -->
+    <!-- Derived from the Unicode character mappings available from
+&lt;http://www.w3.org/2003/entities/xml/&gt;.
+Processed by unicode2rstsubs.py, part of Docutils:
+&lt;http://docutils.sourceforge.net&gt;. -->
+    <section id="ecoli-iaf1260-glc-l3-xml">
+        <h2>Ecoli_iAF1260.glc.l3.xml</h2>
+        <blockquote>
+            <p>→ partial success, id: aaccc933ca825cee2a9e80e08d47c3f2</p>
+        </blockquote>
+        <ul>
+            <li>after saving the model the process got killed (by kernel? - model too big?):</li>
+        </ul>
+        <pre>.
+.
+2016-09-15 13:25:26: tlp nodes -&gt; geojson features
+2016-09-15 13:28:05: serializing layout
+2016-09-15 13:28:09: saving to /home/nicolas/models_to_test/aaccc933ca825cee2a9e80e08d47c3f2/CBMPY_Model_with_groups.xml
+Getötet</pre>
+        <ul>
+            <li>last lines should be:</li>
+        </ul>
+        <pre>.
+.
+2016-09-15 13:33:37: create html
+2016-09-15 13:33:37: Rendering the model...
+2016-09-15 13:33:37: Rendering the mini model...</pre>
+    </section>
+    <section id="hpylori-iit341-xml">
+        <h2>Hpylori_iIT341.xml</h2>
+        <blockquote>
+            <p>→ success, id: 4da52117a280175f83efe5be7e5b38c0</p>
+        </blockquote>
+    </section>
+    <section id="hpylori-iit341-v1-xml">
+        <h2>Hpylori_iIT341.v1.xml</h2>
+        <blockquote>
+            <p>→ success, id: b7f382545906454ed0033da2e2565380</p>
+        </blockquote>
+    </section>
+    <section id="hpylori-iit341-cobra-xml">
+        <h2>Hpylori_iIT341.cobra.xml</h2>
+        <blockquote>
+            <p>→ success, id: b86d3d89c093d2c02221bba44abc0f75</p>
+        </blockquote>
+    </section>
+    <section id="iaf1260-v1-xml">
+        <h2>iAF1260.v1.xml</h2>
+        <ul>
+            <li>error:</li>
+        </ul>
+        <pre>  2016-09-15 13:53:42: Generalizing the model...
+  2016-09-15 13:54:35: mapping species to ChEBI
+  Traceback (most recent call last):
+File "main.py", line 18, in &lt;module&gt;
+  process_sbml(params.model, params.verbose, ub_ch_ids=None, web_page_prefix=None, generalize=True, log_file=None)
+File "/home/nicolas/mimoza-master/sbml_vis/mimoza_pipeline.py", line 96, in process_sbml
+  generalize_model(groups_sbml, gen_sbml, sbml, chebi, ub_chebi_ids=ub_ch_ids)
+File "build/bdist.linux-x86_64/egg/sbml_generalization/generalization/sbml_generalizer.py", line 52, in generalize_model
+File "/usr/local/lib/python2.7/dist-packages/mod_sbml-0.1.1-py2.7.egg/mod_sbml/onto/__init__.py", line 121, in filter_ontology
+  terms_to_keep |= onto.get_sub_tree(term, relationships=relationships)
+File "/usr/local/lib/python2.7/dist-packages/mod_sbml-0.1.1-py2.7.egg/mod_sbml/onto/obo_ontology.py", line 323, in get_sub_tree
+  | self.get_equivalents(t, None, 0, relationships) | {t}
+File "/usr/local/lib/python2.7/dist-packages/mod_sbml-0.1.1-py2.7.egg/mod_sbml/onto/obo_ontology.py", line 338, in get_generalized_descendants
+  set())
+File "/usr/local/lib/python2.7/dist-packages/mod_sbml-0.1.1-py2.7.egg/mod_sbml/onto/obo_ontology.py", line 337, in &lt;genexpr&gt;
+  set()) for it in terms),
+  AttributeError: 'NoneType' object has no attribute 'get_id'</pre>
+    </section>
+    <section id="iaf1260-xml">
+        <h2>iAF1260.xml</h2>
+        <ul>
+            <li>error:</li>
+        </ul>
+        <pre>File "/usr/local/lib/python2.7/dist-packages/mod_sbml-0.1.1-py2.7.egg/mod_sbml/onto/obo_ontology.py", line 337, in &lt;genexpr&gt;
+  set()) for it in terms),
+  AttributeError: 'NoneType' object has no attribute 'get_id'</pre>
+    </section>
+    <section id="ecoli-ijr904-glc-l3-xml">
+        <h2>Ecoli_iJR904.glc.l3.xml</h2>
+        <blockquote>
+            <p>→ success, id: e8c68d01c5a70ab13aca816be10e974f</p>
+        </blockquote>
+    </section>
+    <section id="lactococcus-lactis-mg1363-xml">
+        <h2>Lactococcus_lactis_MG1363.xml</h2>
+        <blockquote>
+            <p>→ success, id: 3900dbddaadbae9718903d5f85c949d9</p>
+        </blockquote>
+    </section>
+    <section id="lbulg-lcts-l3-xml">
+        <h2>LBulg.lcts.l3.xml</h2>
+        <blockquote>
+            <p>→ success, id: e52444079b5e775e82a94cb69af03647</p>
+        </blockquote>
+    </section>
+    <section id="saureus-isb619-xml">
+        <h2>Saureus_iSB619.xml</h2>
+        <blockquote>
+            <p>→ success, id: c2a961fa1a229a5d01378e30c3130c67</p>
+        </blockquote>
+    </section>
+    <section id="scerevisiae-ind750-xml">
+        <h2>Scerevisiae_iND750.xml</h2>
+        <blockquote>
+            <p>→ success, id: 8c1296044fcc628a533453130719c700</p>
+        </blockquote>
+    </section>
+</body>
+</html>
