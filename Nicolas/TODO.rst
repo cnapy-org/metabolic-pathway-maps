@@ -26,21 +26,55 @@ Mimoza::
  - Investigate transformation of the Tulip root (graph) object by "void" functions
  - Start working on script to load test SBML model (supplied by Brett) and extract/generate Tuplip; graph
  
-
 Python 3 and CBMPy compatability, add to module::
  
  from __future__ import division, print_function
  from __future__ import absolute_import
  from __future__ import unicode_literals
 
-Learning Python::
-
- - Chpt 4, 5, ...
-
 New tools to possibly look into::
 
- - http://www.cs.bilkent.edu.tr/~ivis/ChiSE_daily/sample-app/
- - https://github.com/persistentsystems/D3-SCoMoS.JS/
+ - http://www.cs.bilkent.edu.tr/~ivis/ChiSE_daily/sample-app/ (can't handle large files)
+ - https://github.com/persistentsystems/D3-SCoMoS.JS/ (can't handle large files)
+
+
+2016-10-13
+----------
+
+Mimoza based layout, create SBML+Layout and SBGN 
+
+Read introduction and example of SBML layout package 
+
+ - http://co.mbine.org/specifications/sbml.level-3.version-1.layout.version-1.release-1
+ 
+Look at w3schools XML tutorial (namespaces, elements, attributes, ...)
+
+ - http://www.w3schools.com/xml/xml_whatis.asp
+
+Brett - adding layout to existing file
+
+Learning Python::
+
+ - Chpt 4, 5, ... 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
