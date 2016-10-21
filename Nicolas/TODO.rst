@@ -57,9 +57,17 @@ Learning Python::
 
  - Chpt 4, 5, ... 
 
+2016-10-21
+----------
 
+ - Python modules for XML parsing: xml...minidom ...elementtree, 
 
-
+ - Manipulate Tulip graph e.g. line colour, dashes
+ - reduce edge crossing
+ - networkx for graph structure analysis, find cycles, subgraphs 
+ - different layouts on subsystems
+ - 
+ - 
 
 
 
