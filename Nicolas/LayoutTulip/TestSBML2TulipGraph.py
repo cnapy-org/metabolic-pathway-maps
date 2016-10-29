@@ -38,13 +38,12 @@ g1.miriam.isDescribedBy[0] = "http://identifiers.org/ubiquitous" #change dummy t
 cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(model_id), add_groups=True)
 groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 
-# generalization does not seem to be mandatory
-
 # create Tulip Graph (with Mimoza)
 root, c_id2info, c_id2outs, chebi, ub_sps = sbml2tlp.import_sbml(model, groups_sbml)
 fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph =\
     tulip_graph2geojson.graph2geojson(c_id2info, c_id2outs, root)
 
+# change graph layout with tulip functions
 # add labels to nodes
 viewLabel = graph.getStringProperty("viewLabel")
 name = graph.getStringProperty("name")
@@ -52,13 +51,44 @@ name = graph.getStringProperty("name")
 for n in graph.getNodes():
     viewLabel[n] = name[n]
 
-# TEST GRAPH MANIPULATION
-# change graph layout with tulip functions
+# change line colour (dashes seem to be not possible)
+viewColor = graph.getColorProperty("viewColor")
+red = tlp.Color(255,0,0)
 
+for e in graph.getEdges():
+    viewColor[e] = red
 
+# different layouts on subsystems
+test = graph.addSubGraph("test")
 
+nodeType = graph.getIntegerProperty("type")
+name = graph.getStringProperty("name")
+selection = graph.getBooleanProperty("viewSelection")
 
+selection.setAllNodeValue(False)
+selection.setAllEdgeValue(False)
+
+selected_nodes = ["M1", "M2", "M9", "R02", "R10", "R11"]
+
+for n in graph.getNodes():
+    if name[n] in selected_nodes:
+        selection[n] = True
+        test.addNode(n)
+
+for e in graph.getEdges():
+    if selection[graph.source(e)] and selection[graph.target(e)]:
+        selection[e] = True
+        test.addEdge(graph.source(e), graph.target(e))
+
+# list of available layouts: tlp.getLayoutAlgorithmPluginsList()
+#test.applyLayoutAlgorithm("Circular (OGDF)")
+
+# reduce edge crossing
+# in progress...
+
+# save graph in its final state
 tlp.saveGraph(graph, "{}_graph.tlp".format(model_id))
+tlp.saveGraph(test, "{}_test.tlp".format(model_id))
 
 # add layout to SBML file
 groups_document = reader.readSBML(groups_sbml)

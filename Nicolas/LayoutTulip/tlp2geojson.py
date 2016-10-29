@@ -147,7 +147,8 @@ def n2feature(graph, n, n_id, c_id2info, r2rs_ps, transport, mask=DEFAULT_LAYER,
     color = triplet(root[VIEW_COLOR][n])
     if TYPE_REACTION == node_type:
         # ins, outs = get_formula(graph, n, r2rs_ps)
-        formula = get_formula(graph, n, r2rs_ps, root[REVERSIBLE][n])
+        #formula = get_formula(graph, n, r2rs_ps, root[REVERSIBLE][n])
+        formula = False
         genes = get_gene_association_list(root[TERM][n])
         if not next((m for m in root.getInOutNodes(n) if TYPE_SPECIES == root[TYPE][m] and not root[UBIQUITOUS][m]), False):
             props[LAYER] |= UBIQUITOUS_MASK

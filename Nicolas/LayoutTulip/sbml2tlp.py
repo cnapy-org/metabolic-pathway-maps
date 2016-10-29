@@ -2,7 +2,7 @@ import logging
 from tulip import tlp
 
 from mod_sbml.annotation.gene_ontology.go_annotator import annotate_compartments, get_go_id
-from sbml_generalization.sbml.sbml_helper import parse_group_sbml, GrPlError
+from sbml_helper import parse_group_sbml, GrPlError
 from sbml_manager import check_names, check_compartments
 from mod_sbml.sbml.compartment.compartment_positioner import comp2level
 from mod_sbml.onto import parse_simple
