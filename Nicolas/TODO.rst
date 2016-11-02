@@ -67,24 +67,25 @@ Learning Python::
  - networkx for graph structure analysis, find cycles, subgraphs
  - different layouts on subsystems
 
-Brett: install dependecies for running script (Wind64 Anaconda)
-
- - pip install geojson tarjan libsbgnpy tulip-python
-
-
 2016-11-21
 ----------
 
- - Brett: look into tarjan algorithm
+Brett: install dependecies for running script (Wind64 Anaconda).
+
+ - pip install geojson tarjan libsbgnpy tulip-python
+
+General things.
+
  - Find tool for viewing SBGN to check output
  - SBML+Layout can be checked here: http://sysbioapps.dyndns.org/Layout
+ - Brett: look into tarjan algorithm
 
-Set specific metabolite nodes positions relative to each other and fix their positions
-Layout groups of reaction nodes around a fixed position metabolite node (in principle reaction nodes)
+Inverstigate the posibility of a pseudo-fixed layout method. Set specific metabolite nodes positions relative to each other and fix their positions.
+Layout groups of reaction nodes around a fixed position metabolite node (in principle reaction nodes). Pseudo-code::
 
   - pathway1 = [S, R1, A, R2, B, R3, C]
   - pathway2 = [C, R4, D, R5, E, R6, F]
-  - Put A at position Xp and layout pathway1
-  - Put E at position Yp and layout pathway2
+  - Put A at position XYa and layout subgraph/pathway1
+  - Put D at position XYb and layout subgraph/pathway2
   - alias all non-connecting metabolites (in this case everything except C)
 
