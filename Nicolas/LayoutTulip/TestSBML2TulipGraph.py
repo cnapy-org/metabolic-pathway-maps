@@ -26,15 +26,18 @@ cmod = cbmpy.readSBML3FBC(sbml)
 cmod.createGroup('g_ubiquitous_sps')
 g1 = cmod.getGroup('g_ubiquitous_sps')
 g1.setName('ubiquitous species')
-# add ubiquitous species to group
+# add ubiquitous species to group.
+# bgoli: can be any metabolite?
 ub_sps = ['ATP', 'ADP']
 ub_sps = [cmod.getSpecies(i) for i in ub_sps]
 g1.addMember(ub_sps)
 # add RDF annotation to group:
 # MIRIAM annotation and SBO term (important for drawing ub species seperately)
+# bgoli: requires any ChEBI annotation to work, remember to remove in output!
 g1.setSBOterm('SBO:0000248')
-g1.addMIRIAMannotation('isDescribedBy', 'ChEBI', 'CHEBI:123456') #dummy annotation
+g1.addMIRIAMannotation('isDescribedBy', 'ChEBI', 'CHEBI:000000') #dummy annotation
 g1.miriam.isDescribedBy[0] = "http://identifiers.org/ubiquitous" #change dummy to fit mimoza
+
 cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(model_id), add_groups=True)
 groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 
@@ -52,13 +55,33 @@ for n in graph.getNodes():
     viewLabel[n] = name[n]
 
 # change line colour (dashes seem to be not possible)
-viewColor = graph.getColorProperty("viewColor")
-red = tlp.Color(255,0,0)
+# add example of different line "types"
 
-for e in graph.getEdges():
-    viewColor[e] = red
+# global line colour
+
+# define colours
+def setEdgeColours(g, edge_list, colour):
+    """
+    Apply colour to a list of edges
+
+     - *g* a tulip/mimoza graph
+     - *edge_list* a list of edges
+     - *colour* a predefined colout
+    """
+    # apply colour to graph
+    viewColor = g.getColorProperty("viewColor")
+    for e in edge_list:
+        viewColor[e] = colour
+
+COLOURS = {'red' : tlp.Color(255, 0, 0),
+           'green': tlp.Color(0, 255, 0),
+           'blue' : tlp.Color(0, 0, 255)
+           }
+
+setEdgeColours(graph, graph.getEdges(), COLOURS['red'])
 
 # different layouts on subsystems
+# Brett: what possibilities there are for manipulation subgraphs
 test = graph.addSubGraph("test")
 
 nodeType = graph.getIntegerProperty("type")
@@ -69,6 +92,8 @@ selection.setAllNodeValue(False)
 selection.setAllEdgeValue(False)
 
 selected_nodes = ["M1", "M2", "M9", "R02", "R10", "R11"]
+
+# Brett: look into cloning, nodes, edges, subgraphs, etc.
 
 for n in graph.getNodes():
     if name[n] in selected_nodes:
