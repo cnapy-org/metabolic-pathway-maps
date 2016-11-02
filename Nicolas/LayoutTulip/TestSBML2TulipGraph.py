@@ -39,7 +39,7 @@ cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(model_id), add_groups=True
 groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 
 # create Tulip Graph (with Mimoza)
-root, c_id2info, c_id2outs, chebi, ub_sps = sbml2tlp.import_sbml(model, groups_sbml)
+root, c_id2info, c_id2outs, ub_sps = sbml2tlp.import_sbml(model, groups_sbml)
 fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph =\
     tulip_graph2geojson.graph2geojson(c_id2info, c_id2outs, root)
 

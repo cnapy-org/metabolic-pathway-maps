@@ -145,15 +145,20 @@ def compute_c_id2info(c_id2level, input_model):
 
 def import_sbml(input_model, sbml_file):
 
-    chebi = parse_simple(get_chebi())
-    r_id2g_id, s_id2gr_id, ub_sps = get_quotient_maps(chebi, sbml_file)
+    #chebi = parse_simple(get_chebi())
+    #ub_sps = get_quotient_maps(chebi, sbml_file)
+
+    # chebi seems to be only important for extracting ubiquitous species ids (?) - provide them manually in the same form (a set?)
+    ub_sps = set(['ADP', 'ATP'])
 
     check_names(input_model)
     check_compartments(input_model)
 
-    go = parse_simple(get_go())
-    annotate_compartments(input_model, go)
-    c_id2level = comp2level(input_model, go)
+    #go = parse_simple(get_go())
+    #annotate_compartments(input_model, go)
+    #c_id2level = comp2level(input_model, go)
+    c_id2level = {'Cell': (0, ''), 'Boundary': (1, 'Cell')}
+
     c_id2info, c_id2outs = compute_c_id2info(c_id2level, input_model)
 
     def get_r_comp(all_comp_ids):
@@ -183,8 +188,8 @@ def import_sbml(input_model, sbml_file):
 
     duplicate_nodes(graph)
 
-    mark_ancestors(graph, r_id2g_id, s_id2gr_id, c_id2info)
-    return graph, c_id2info, c_id2outs, chebi, ub_sps
+    #mark_ancestors(graph, r_id2g_id, s_id2gr_id, c_id2info)
+    return graph, c_id2info, c_id2outs, ub_sps
 
 
 def create_props(graph):
