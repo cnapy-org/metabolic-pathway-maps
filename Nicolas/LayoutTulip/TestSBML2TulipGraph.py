@@ -1,4 +1,5 @@
 # Test transition from sbml file to structured tulip graph, sbml with layout and sbgn file
+# necessary  dependencies (Wind64 Anaconda): pip install geojson tarjan libsbgnpy tulip-python
 
 import os
 # get current directory
@@ -14,6 +15,11 @@ import sbml_manager
 import tulip_graph2geojson
 import sbgn_helper
 
+
+######################################
+# read SBML and run Mimoza for layout#
+######################################
+
 # read SBML file (with libsbml)
 sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml")
 reader = libsbml.SBMLReader()
@@ -26,27 +32,32 @@ cmod = cbmpy.readSBML3FBC(sbml)
 cmod.createGroup('g_ubiquitous_sps')
 g1 = cmod.getGroup('g_ubiquitous_sps')
 g1.setName('ubiquitous species')
-# add ubiquitous species to group.
-# bgoli: can be any metabolite?
-ub_sps = ['ATP', 'ADP']
-ub_sps = [cmod.getSpecies(i) for i in ub_sps]
+# add ubiquitous species to group (can be any metabolite)
+ub_list = ['ATP', 'ADP', 'M8', 'M10', 'M11', 'M12', 'M13', 'R09', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'biomass', 'S', 'fuel1', 'fuel2']
+ub_sps = [cmod.getSpecies(i) for i in ub_list]
 g1.addMember(ub_sps)
 # add RDF annotation to group:
 # MIRIAM annotation and SBO term (important for drawing ub species seperately)
-# bgoli: requires any ChEBI annotation to work, remember to remove in output!
 g1.setSBOterm('SBO:0000248')
 g1.addMIRIAMannotation('isDescribedBy', 'ChEBI', 'CHEBI:000000') #dummy annotation
 g1.miriam.isDescribedBy[0] = "http://identifiers.org/ubiquitous" #change dummy to fit mimoza
-
 cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(model_id), add_groups=True)
 groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 
 # create Tulip Graph (with Mimoza)
-root, c_id2info, c_id2outs, ub_sps = sbml2tlp.import_sbml(model, groups_sbml)
+root, c_id2info, c_id2outs, ub_sps = sbml2tlp.import_sbml(model, groups_sbml, ub_list)
 fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph =\
     tulip_graph2geojson.graph2geojson(c_id2info, c_id2outs, root)
 
-# change graph layout with tulip functions
+
+###########################################
+# change graph layout with tulip functions#
+###########################################
+
+# backup original graph
+backup_graph = graph.addCloneSubGraph("backup_graph")
+tlp.saveGraph(backup_graph, "{}_backup_graph.tlp".format(model_id))
+
 # add labels to nodes
 viewLabel = graph.getStringProperty("viewLabel")
 name = graph.getStringProperty("name")
@@ -54,12 +65,7 @@ name = graph.getStringProperty("name")
 for n in graph.getNodes():
     viewLabel[n] = name[n]
 
-# change line colour (dashes seem to be not possible)
-# add example of different line "types"
-
-# global line colour
-
-# define colours
+# change global line colour
 def setEdgeColours(g, edge_list, colour):
     """
     Apply colour to a list of edges
@@ -73,47 +79,95 @@ def setEdgeColours(g, edge_list, colour):
     for e in edge_list:
         viewColor[e] = colour
 
-COLOURS = {'red' : tlp.Color(255, 0, 0),
+# define colours
+COLOURS = {'red'  : tlp.Color(255, 0, 0),
            'green': tlp.Color(0, 255, 0),
            'blue' : tlp.Color(0, 0, 255)
            }
-
 setEdgeColours(graph, graph.getEdges(), COLOURS['red'])
 
-# different layouts on subsystems
-# Brett: what possibilities there are for manipulation subgraphs
-test = graph.addSubGraph("test")
+# change line types (Polyline, BezierCurve, CarmullRomCurve, CubicSplineCurve)
+viewShape = graph.getIntegerProperty("viewShape")
 
+for e in graph.getEdges():
+    viewShape[e] = tlp.EdgeShape.BezierCurve
+
+# different layouts on subsystems
+# create empty subgraphs
+small_circle_subgraph = graph.addSubGraph("SmallCircle")
+larger_circle_subgraph = graph.addSubGraph("LargerCircle")
+
+# define properties
 nodeType = graph.getIntegerProperty("type")
 name = graph.getStringProperty("name")
 selection = graph.getBooleanProperty("viewSelection")
 
+# reset selection
 selection.setAllNodeValue(False)
 selection.setAllEdgeValue(False)
 
-selected_nodes = ["M1", "M2", "M9", "R02", "R10", "R11"]
+# input pathways
+small_circle = ["M1", "M2", "M9", "R02", "R10", "R11"]
+larger_circle = ["M3", "M4", "M5", "M6", "M7", "R04", "R05", "R06", "R07", "R08"]
 
-# Brett: look into cloning, nodes, edges, subgraphs, etc.
-
+# populate subgraphs
+# small circle
 for n in graph.getNodes():
-    if name[n] in selected_nodes:
+    if name[n] in small_circle:
         selection[n] = True
-        test.addNode(n)
-
+        small_circle_subgraph.addNode(n)
 for e in graph.getEdges():
     if selection[graph.source(e)] and selection[graph.target(e)]:
         selection[e] = True
-        test.addEdge(graph.source(e), graph.target(e))
+        small_circle_subgraph.addEdge(graph.source(e), graph.target(e))
 
-# list of available layouts: tlp.getLayoutAlgorithmPluginsList()
-#test.applyLayoutAlgorithm("Circular (OGDF)")
+# reset selection
+selection.setAllNodeValue(False)
+selection.setAllEdgeValue(False)
+
+# larger circle
+for n in graph.getNodes():
+    if name[n] in larger_circle:
+        selection[n] = True
+        larger_circle_subgraph.addNode(n)
+for e in graph.getEdges():
+    if selection[graph.source(e)] and selection[graph.target(e)]:
+        selection[e] = True
+        larger_circle_subgraph.addEdge(graph.source(e), graph.target(e))
+
+# reset selection
+selection.setAllNodeValue(False)
+selection.setAllEdgeValue(False)
+
+# pseudo-fixed layout method
+# apply layout algorithms to subgraphs
+# list of available algorithms: tlp.getLayoutAlgorithmPluginsList()
+small_circle_subgraph.applyLayoutAlgorithm("Circular (OGDF)")
+larger_circle_subgraph.applyLayoutAlgorithm("Circular (OGDF)")
+
+# center layout: center(viewLayout, newCenter, subgraph)
+# newCenter can be given as coordinates (tlp.Coord(x,y,z)) or
+viewLayout = graph.getLayoutProperty("viewLayout")
+
+tlp.LayoutProperty.center(viewLayout, tlp.Coord(50,75,0), small_circle_subgraph)
+tlp.LayoutProperty.center(viewLayout, tlp.Coord(-50,25,0),larger_circle_subgraph)
+
+# fix position of a specific node (M1 (id 2) for small circle, M3 (id 8) for larger circle)
+#viewLayout[tlp.node(2)] = tlp.Coord(50,75,0)
+#viewLayout[tlp.node(8)] = tlp.Coord(-50,25,0)
 
 # reduce edge crossing
 # in progress...
 
-# save graph in its final state
+# save total graph and different subgraphs
 tlp.saveGraph(graph, "{}_graph.tlp".format(model_id))
-tlp.saveGraph(test, "{}_test.tlp".format(model_id))
+tlp.saveGraph(small_circle_subgraph, "{}_SmallCircle.tlp".format(model_id))
+tlp.saveGraph(larger_circle_subgraph, "{}_LargerCircle.tlp".format(model_id))
+
+
+######################################
+# generate SBGN and SBML+Layout Files#
+######################################
 
 # add layout to SBML file
 groups_document = reader.readSBML(groups_sbml)
