@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:groups="http://www.sbml.org/sbml/level3/version1/groups/version1" xmlns:layout="http://www.sbml.org/sbml/level3/version1/layout/version1" level="3" version="1">
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SBML created with CBMPy (0.7.8.525) on Thu, 10 Nov 2016 13:09:27 -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:groups="http://www.sbml.org/sbml/level3/version1/groups/version1" level="3" version="1" fbc:required="false" groups:required="false">
   <model metaid="meta_toy_model_biofuel" id="toy_model_biofuel" substanceUnits="mmol_per_gdw" timeUnits="hour" extentUnits="mmol_per_gdw">
     <notes>
       <html:p>
@@ -530,7 +531,7 @@
     <groups:listOfGroups>
       <groups:group metaid="meta_g_ubiquitous_sps" sboTerm="SBO:0000248" groups:id="g_ubiquitous_sps" groups:name="ubiquitous species" groups:kind="collection">
         <annotation>
-          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#meta_g_ubiquitous_sps">
               <bqbiol:isDescribedBy>
                 <rdf:Bag>
@@ -552,6 +553,7 @@
           <groups:member groups:idRef="S"/>
           <groups:member groups:idRef="fuel1"/>
           <groups:member groups:idRef="fuel2"/>
+<<<<<<< HEAD
         </groups:listOfMembers>
       </groups:group>
     </groups:listOfGroups>
@@ -1432,5 +1434,18 @@
         </layout:listOfTextGlyphs>
       </layout:layout>
     </layout:listOfLayouts>
+=======
+          <groups:member groups:idRef="R09"/>
+          <groups:member groups:idRef="R12"/>
+          <groups:member groups:idRef="R13"/>
+          <groups:member groups:idRef="R14"/>
+          <groups:member groups:idRef="R15"/>
+          <groups:member groups:idRef="R16"/>
+          <groups:member groups:idRef="R17"/>
+          <groups:member groups:idRef="R18"/>
+        </groups:listOfMembers>
+      </groups:group>
+    </groups:listOfGroups>
+>>>>>>> 9bf875b6a09ad1dcee22bac956d470311e34f925
   </model>
 </sbml>
