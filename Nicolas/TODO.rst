@@ -92,9 +92,15 @@ Layout groups of reaction nodes around a fixed position metabolite node (in prin
 2016-11-11
 ----------
 
-Brett: created the file `TestSBML2TulipGraph_brett.py` to test autoaliasing on highly connected networks
+Brett: I was playing around with the code and some larger models, here are some notes:
 
-
+ - created the file `TestSBML2TulipGraph_brett.py` to test autoaliasing on highly connected networks see the `autoSplitConnectedNodes()` function.
+ - Mimoza can't seem to handle multiple compartments that are not called "Cell" find out what is going on.
+ - have option to display reaction id's on final graph so, reaction and/or species ids/names
+ - consider how we will deal with species we don't want to display at all (H+, H20) this should be an optional input, my feeling is that they should be there for the layout but be made invisible on display
+ - (future) isolate and group all transport reactions to one side
+ - (future) profile the Mimoza/tulip code with a big model to find bottlenecks
+ - colour specific reactions different colours ... Nicolas will demonstrate this.
 
 
 

@@ -1042,12 +1042,10 @@
           </rdf:RDF>
         </annotation>
         <groups:listOfMembers metaid="meta_g_ubiquitous_sps_members">
-          <groups:member groups:idRef="ACETYL_CoA"/>
           <groups:member groups:idRef="ADP"/>
           <groups:member groups:idRef="ATP"/>
           <groups:member groups:idRef="CO2"/>
           <groups:member groups:idRef="CoASH"/>
-          <groups:member groups:idRef="GA_3P"/>
           <groups:member groups:idRef="NAD"/>
           <groups:member groups:idRef="NADH"/>
           <groups:member groups:idRef="PEP"/>
@@ -1057,862 +1055,831 @@
           <groups:member groups:idRef="GLU_6_P"/>
           <groups:member groups:idRef="RIBOSE_5_P"/>
           <groups:member groups:idRef="ERYTH_4_P"/>
+          <groups:member groups:idRef="ACETYL_CoA"/>
           <groups:member groups:idRef="BIOMASS"/>
           <groups:member groups:idRef="AKG"/>
-          <groups:member groups:idRef="R27r"/>
-          <groups:member groups:idRef="R70"/>
         </groups:listOfMembers>
       </groups:group>
     </groups:listOfGroups>
     <layout:listOfLayouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:layout="http://www.sbml.org/sbml/level3/version1/layout/version1">
       <layout:layout layout:id="l_">
-        <layout:dimensions layout:width="1785.66665649414" layout:height="1733.75210571289"/>
+        <layout:dimensions layout:width="2102.56365203857" layout:height="1832.24342346191"/>
         <layout:listOfCompartmentGlyphs>
           <layout:compartmentGlyph layout:id="cg_l__Cell" layout:compartment="Cell">
             <layout:boundingBox>
-              <layout:position layout:x="16.0000305175781" layout:y="16.0000305175781"/>
-              <layout:dimensions layout:width="1753.66662597656" layout:height="1701.75207519531"/>
+              <layout:position layout:x="16.0000534057617" layout:y="16.0000152587891"/>
+              <layout:dimensions layout:width="2070.5634765625" layout:height="1800.24340820313"/>
             </layout:boundingBox>
           </layout:compartmentGlyph>
         </layout:listOfCompartmentGlyphs>
         <layout:listOfSpeciesGlyphs>
           <layout:speciesGlyph layout:id="sg_l__ACETATE" layout:species="ACETATE">
             <layout:boundingBox>
-              <layout:position layout:x="1695.54055786133" layout:y="447.516571044922"/>
+              <layout:position layout:x="850.670036315918" layout:y="1455.62916564941"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ACETATE_ext" layout:species="ACETATE_ext">
             <layout:boundingBox>
-              <layout:position layout:x="1649.70095825195" layout:y="308.887100219727"/>
+              <layout:position layout:x="804.830497741699" layout:y="1316.99964904785"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ACETYL_CoA_R20" layout:species="ACETYL_CoA">
             <layout:boundingBox>
-              <layout:position layout:x="295.250076293945" layout:y="413.696990966797"/>
+              <layout:position layout:x="351.292762756348" layout:y="1491.2276763916"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ACETYL_CoA_R54r" layout:species="ACETYL_CoA">
             <layout:boundingBox>
-              <layout:position layout:x="627.534362792969" layout:y="409.559722900391"/>
+              <layout:position layout:x="547.510704040527" layout:y="1582.10133361816"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ACETYL_CoA_R22" layout:species="ACETYL_CoA">
             <layout:boundingBox>
-              <layout:position layout:x="695.792327880859" layout:y="483.243804931641"/>
+              <layout:position layout:x="592.751731872559" layout:y="1784.24342346191"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ACETYL_CoA_R21" layout:species="ACETYL_CoA">
             <layout:boundingBox>
-              <layout:position layout:x="860.194488525391" layout:y="118.734395980835"/>
+              <layout:position layout:x="72.1499633789063" layout:y="1412.76942443848"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ACETYL_CoA_R55" layout:species="ACETYL_CoA">
             <layout:boundingBox>
-              <layout:position layout:x="1737.66665649414" layout:y="580.953521728516"/>
+              <layout:position layout:x="892.79613494873" layout:y="1589.06605529785"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ACETYL_CoA_R70" layout:species="ACETYL_CoA">
             <layout:boundingBox>
-              <layout:position layout:x="1344.25894165039" layout:y="177.146827697754"/>
+              <layout:position layout:x="1288.06914520264" layout:y="177.146812438965"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ADP_R81" layout:species="ADP">
             <layout:boundingBox>
-              <layout:position layout:x="627.124664306641" layout:y="754.216033935547"/>
+              <layout:position layout:x="627.124565124512" layout:y="355.138458251953"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ADP_R82" layout:species="ADP">
             <layout:boundingBox>
-              <layout:position layout:x="1011.65823364258" layout:y="103.96572303772"/>
+              <layout:position layout:x="955.468315124512" layout:y="103.965707778931"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ADP_RR9" layout:species="ADP">
             <layout:boundingBox>
-              <layout:position layout:x="273.55973815918" layout:y="16.0000152587891"/>
+              <layout:position layout:x="138.873847007751" layout:y="16"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ADP_R42" layout:species="ADP">
             <layout:boundingBox>
-              <layout:position layout:x="519.307464599609" layout:y="85.3572578430176"/>
+              <layout:position layout:x="788.224540710449" layout:y="85.3572425842285"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ADP_R55" layout:species="ADP">
             <layout:boundingBox>
-              <layout:position layout:x="1661.41445922852" layout:y="580.953521728516"/>
+              <layout:position layout:x="816.543937683105" layout:y="1589.06605529785"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ADP_R70" layout:species="ADP">
             <layout:boundingBox>
-              <layout:position layout:x="1007.65811157227" layout:y="240.868614196777"/>
+              <layout:position layout:x="951.468315124512" layout:y="240.868598937988"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ADP_R3" layout:species="ADP">
             <layout:boundingBox>
-              <layout:position layout:x="1208.44412231445" layout:y="649.369842529297"/>
+              <layout:position layout:x="1061.15392303467" layout:y="372.957763671875"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ADP_R7r" layout:species="ADP">
             <layout:boundingBox>
-              <layout:position layout:x="221.42366027832" layout:y="315.243804931641"/>
+              <layout:position layout:x="1666.54265594482" layout:y="782.776138305664"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ADP_R9" layout:species="ADP">
             <layout:boundingBox>
-              <layout:position layout:x="364.433609008789" layout:y="200.504501342773"/>
+              <layout:position layout:x="352.621620178223" layout:y="92.2522315979004"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ADP_R26r" layout:species="ADP">
             <layout:boundingBox>
-              <layout:position layout:x="286.449645996094" layout:y="1125.31729125977"/>
+              <layout:position layout:x="286.449607849121" layout:y="726.239761352539"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ADP_R80" layout:species="ADP">
             <layout:boundingBox>
-              <layout:position layout:x="49.6096420288086" layout:y="1152.01553344727"/>
+              <layout:position layout:x="49.6096038818359" layout:y="752.938003540039"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__AKG_R25" layout:species="AKG">
             <layout:boundingBox>
-              <layout:position layout:x="519.470397949219" layout:y="1585.17031860352"/>
+              <layout:position layout:x="519.470359802246" layout:y="1186.09278869629"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__AKG_R70" layout:species="AKG">
             <layout:boundingBox>
-              <layout:position layout:x="1347.59085083008" layout:y="215.230255126953"/>
+              <layout:position layout:x="1291.40105438232" layout:y="215.230239868164"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__AKG_R24" layout:species="AKG">
             <layout:boundingBox>
-              <layout:position layout:x="682.551239013672" layout:y="72.1500015258789"/>
+              <layout:position layout:x="579.510673522949" layout:y="1373.14967346191"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ATP_R81" layout:species="ATP">
             <layout:boundingBox>
-              <layout:position layout:x="691.774810791016" layout:y="728.095733642578"/>
+              <layout:position layout:x="691.774772644043" layout:y="329.018112182617"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ATP_R82" layout:species="ATP">
             <layout:boundingBox>
-              <layout:position layout:x="1107.12838745117" layout:y="23.8567657470703"/>
+              <layout:position layout:x="1050.93846893311" layout:y="23.8567504882813"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ATP_RR9" layout:species="ATP">
             <layout:boundingBox>
-              <layout:position layout:x="364.433609008789" layout:y="92.2522468566895"/>
+              <layout:position layout:x="229.747718811035" layout:y="92.2522315979004"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ATP_R42" layout:species="ATP">
             <layout:boundingBox>
-              <layout:position layout:x="650.551239013672" layout:y="92.2522468566895"/>
+              <layout:position layout:x="919.468315124512" layout:y="92.2522315979004"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ATP_R55" layout:species="ATP">
             <layout:boundingBox>
-              <layout:position layout:x="1737.66665649414" layout:y="490.079620361328"/>
+              <layout:position layout:x="892.79613494873" layout:y="1498.19227600098"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ATP_R70" layout:species="ATP">
             <layout:boundingBox>
-              <layout:position layout:x="1274.22427368164" layout:y="268.350677490234"/>
+              <layout:position layout:x="1218.03447723389" layout:y="268.350662231445"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ATP_R3" layout:species="ATP">
             <layout:boundingBox>
-              <layout:position layout:x="1190.38272094727" layout:y="753.444244384766"/>
+              <layout:position layout:x="1071.96251678467" layout:y="487.629837036133"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ATP_R7r" layout:species="ATP">
             <layout:boundingBox>
-              <layout:position layout:x="152.066417694092" layout:y="184.000045776367"/>
+              <layout:position layout:x="1778.55071258545" layout:y="743.703384399414"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ATP_R9" layout:species="ATP">
             <layout:boundingBox>
-              <layout:position layout:x="273.55973815918" layout:y="124.252270460129"/>
+              <layout:position layout:x="261.747749328613" layout:y="16"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ATP_R26r" layout:species="ATP">
             <layout:boundingBox>
-              <layout:position layout:x="313.402603149414" layout:y="1009.79238891602"/>
+              <layout:position layout:x="313.402549743652" layout:y="610.714859008789"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ATP_R80" layout:species="ATP">
             <layout:boundingBox>
-              <layout:position layout:x="86.8453750610352" layout:y="1039.38357543945"/>
+              <layout:position layout:x="86.8453369140625" layout:y="640.306045532227"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ATP_main" layout:species="ATP_main">
             <layout:boundingBox>
-              <layout:position layout:x="1007.65823364258" layout:y="16.0000381469727"/>
+              <layout:position layout:x="951.468315124512" layout:y="16.0000228881836"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__BIOMASS_R70" layout:species="BIOMASS">
             <layout:boundingBox>
-              <layout:position layout:x="1098.62026977539" layout:y="266.597427368164"/>
+              <layout:position layout:x="1042.43047332764" layout:y="266.597412109375"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CITRATE" layout:species="CITRATE">
             <layout:boundingBox>
-              <layout:position layout:x="729.918426513672" layout:y="349.806854248047"/>
+              <layout:position layout:x="626.877861022949" layout:y="1650.80653381348"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CO2_R25" layout:species="CO2">
             <layout:boundingBox>
-              <layout:position layout:x="467.661041259766" layout:y="1529.22219848633"/>
+              <layout:position layout:x="467.661003112793" layout:y="1130.1446685791"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CO2_R40" layout:species="CO2">
             <layout:boundingBox>
-              <layout:position layout:x="487.307464599609" layout:y="92.2522468566895"/>
+              <layout:position layout:x="106.873880386353" layout:y="92.2522315979004"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CO2_R24" layout:species="CO2">
             <layout:boundingBox>
-              <layout:position layout:x="765.149566650391" layout:y="16.0000381469727"/>
+              <layout:position layout:x="662.109001159668" layout:y="1316.99977111816"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CO2_R42" layout:species="CO2">
             <layout:boundingBox>
-              <layout:position layout:x="519.307464599609" layout:y="22.8950042724609"/>
+              <layout:position layout:x="788.224540710449" layout:y="22.8949890136719"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CO2_R21" layout:species="CO2">
             <layout:boundingBox>
-              <layout:position layout:x="804.044525146484" layout:y="98.5983448028564"/>
+              <layout:position layout:x="16" layout:y="1392.63331604004"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CO2_R70" layout:species="CO2">
             <layout:boundingBox>
-              <layout:position layout:x="1054.40280151367" layout:y="161.557403564453"/>
+              <layout:position layout:x="998.213005065918" layout:y="161.557388305664"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CO2_R10" layout:species="CO2">
             <layout:boundingBox>
-              <layout:position layout:x="1211.12283325195" layout:y="1568.70010375977"/>
+              <layout:position layout:x="1373.33379364014" layout:y="1182.1300201416"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CO2_R97r" layout:species="CO2">
             <layout:boundingBox>
-              <layout:position layout:x="507.568695068359" layout:y="137.493298530579"/>
+              <layout:position layout:x="756.224540710449" layout:y="16"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CO2_R41" layout:species="CO2">
             <layout:boundingBox>
-              <layout:position layout:x="554.439758300781" layout:y="541.730407714844"/>
+              <layout:position layout:x="554.439720153809" layout:y="142.652875900269"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CO2_ext" layout:species="CO2_ext">
             <layout:boundingBox>
-              <layout:position layout:x="403.502288818359" layout:y="217.458984375"/>
+              <layout:position layout:x="652.158134460449" layout:y="95.9656829833984"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CoASH_R25" layout:species="CoASH">
             <layout:boundingBox>
-              <layout:position layout:x="480.458587646484" layout:y="1677.1125793457"/>
+              <layout:position layout:x="480.458549499512" layout:y="1278.03504943848"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CoASH_R54r" layout:species="CoASH">
             <layout:boundingBox>
-              <layout:position layout:x="627.534362792969" layout:y="318.685836791992"/>
+              <layout:position layout:x="547.510704040527" layout:y="1491.22755432129"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CoASH_R22" layout:species="CoASH">
             <layout:boundingBox>
-              <layout:position layout:x="695.792327880859" layout:y="392.369903564453"/>
+              <layout:position layout:x="592.751731872559" layout:y="1693.36964416504"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CoASH_R21" layout:species="CoASH">
             <layout:boundingBox>
-              <layout:position layout:x="975.658172607422" layout:y="98.5983448028564"/>
+              <layout:position layout:x="187.613636016846" layout:y="1392.63331604004"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CoASH_R55" layout:species="CoASH">
             <layout:boundingBox>
-              <layout:position layout:x="1661.41445922852" layout:y="490.079620361328"/>
+              <layout:position layout:x="816.543937683105" layout:y="1498.19227600098"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CoASH_R20" layout:species="CoASH">
             <layout:boundingBox>
-              <layout:position layout:x="295.250076293945" layout:y="504.570892333984"/>
+              <layout:position layout:x="351.292762756348" layout:y="1582.10145568848"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CoASH_R70" layout:species="CoASH">
             <layout:boundingBox>
-              <layout:position layout:x="1054.40280151367" layout:y="268.903106689453"/>
+              <layout:position layout:x="998.213005065918" layout:y="268.903091430664"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__CoASH_R26r" layout:species="CoASH">
             <layout:boundingBox>
-              <layout:position layout:x="359.151184082031" layout:y="1070.79623413086"/>
+              <layout:position layout:x="359.151145935059" layout:y="671.718704223633"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__DHAP" layout:species="DHAP">
             <layout:boundingBox>
-              <layout:position layout:x="1498.75637817383" layout:y="464.586273193359"/>
+              <layout:position layout:x="1546.62993621826" layout:y="427.625839233398"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ERYTH_4_P_R14r" layout:species="ERYTH_4_P">
             <layout:boundingBox>
-              <layout:position layout:x="1023.43179321289" layout:y="820.241119384766"/>
+              <layout:position layout:x="1444.29253387451" layout:y="842.772171020508"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ERYTH_4_P_R70" layout:species="ERYTH_4_P">
             <layout:boundingBox>
-              <layout:position layout:x="1222.74087524414" layout:y="135.965731143951"/>
+              <layout:position layout:x="1166.55107879639" layout:y="135.965715885162"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ERYTH_4_P_R15r" layout:species="ERYTH_4_P">
             <layout:boundingBox>
-              <layout:position layout:x="1066.79525756836" layout:y="1097.6960144043"/>
+              <layout:position layout:x="1075.70433807373" layout:y="726.63655090332"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ETOH" layout:species="ETOH">
             <layout:boundingBox>
-              <layout:position layout:x="585.408233642578" layout:y="276.122772216797"/>
+              <layout:position layout:x="505.384574890137" layout:y="1448.66444396973"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ETOH_ext" layout:species="ETOH_ext">
             <layout:boundingBox>
-              <layout:position layout:x="539.568664550781" layout:y="137.493302345276"/>
+              <layout:position layout:x="459.54500579834" layout:y="1310.03492736816"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__FAD" layout:species="FAD">
             <layout:boundingBox>
-              <layout:position layout:x="704.924407958984" layout:y="900.255767822266"/>
+              <layout:position layout:x="704.924430847168" layout:y="501.178207397461"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__FADH" layout:species="FADH">
             <layout:boundingBox>
-              <layout:position layout:x="528.336517333984" layout:y="771.957122802734"/>
+              <layout:position layout:x="528.336479187012" layout:y="372.879531860352"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__FORMATE" layout:species="FORMATE">
             <layout:boundingBox>
-              <layout:position layout:x="329.376190185547" layout:y="371.133941650391"/>
+              <layout:position layout:x="385.418876647949" layout:y="1448.66456604004"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__FORMATE_ext" layout:species="FORMATE_ext">
             <layout:boundingBox>
-              <layout:position layout:x="283.53662109375" layout:y="232.504470825195"/>
+              <layout:position layout:x="339.579307556152" layout:y="1310.03504943848"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__FRU_6_P" layout:species="FRU_6_P">
             <layout:boundingBox>
-              <layout:position layout:x="1083.0817565918" layout:y="897.013702392578"/>
+              <layout:position layout:x="997.053520202637" layout:y="563.084274291992"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__FRU_BIS_P" layout:species="FRU_BIS_P">
             <layout:boundingBox>
-              <layout:position layout:x="1283.15432739258" layout:y="666.220611572266"/>
+              <layout:position layout:x="1156.86504364014" layout:y="331.557388305664"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__FUMARATE" layout:species="FUMARATE">
             <layout:boundingBox>
-              <layout:position layout:x="547.147308349609" layout:y="1071.73233032227"/>
+              <layout:position layout:x="547.14720916748" layout:y="672.654800415039"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
-          <layout:speciesGlyph layout:id="sg_l__GA_3P_R14r" layout:species="GA_3P">
+          <layout:speciesGlyph layout:id="sg_l__GA_3P" layout:species="GA_3P">
             <layout:boundingBox>
-              <layout:position layout:x="944.732757568359" layout:y="886.277435302734"/>
-              <layout:dimensions layout:width="32" layout:height="32"/>
-            </layout:boundingBox>
-          </layout:speciesGlyph>
-          <layout:speciesGlyph layout:id="sg_l__GA_3P_R15r" layout:species="GA_3P">
-            <layout:boundingBox>
-              <layout:position layout:x="1048.95565795898" layout:y="996.522430419922"/>
-              <layout:dimensions layout:width="32" layout:height="32"/>
-            </layout:boundingBox>
-          </layout:speciesGlyph>
-          <layout:speciesGlyph layout:id="sg_l__GA_3P_R13r" layout:species="GA_3P">
-            <layout:boundingBox>
-              <layout:position layout:x="804.830535888672" layout:y="996.522430419922"/>
-              <layout:dimensions layout:width="32" layout:height="32"/>
-            </layout:boundingBox>
-          </layout:speciesGlyph>
-          <layout:speciesGlyph layout:id="sg_l__GA_3P_R6r" layout:species="GA_3P">
-            <layout:boundingBox>
-              <layout:position layout:x="1617.70095825195" layout:y="308.887115478516"/>
-              <layout:dimensions layout:width="32" layout:height="32"/>
-            </layout:boundingBox>
-          </layout:speciesGlyph>
-          <layout:speciesGlyph layout:id="sg_l__GA_3P_R7r" layout:species="GA_3P">
-            <layout:boundingBox>
-              <layout:position layout:x="241.559715270996" layout:y="259.093841552734"/>
-              <layout:dimensions layout:width="32" layout:height="32"/>
-            </layout:boundingBox>
-          </layout:speciesGlyph>
-          <layout:speciesGlyph layout:id="sg_l__GA_3P_R5r" layout:species="GA_3P">
-            <layout:boundingBox>
-              <layout:position layout:x="1402.0989074707" layout:y="510.521514892578"/>
-              <layout:dimensions layout:width="32" layout:height="32"/>
+              <layout:position layout:x="1580.54009246826" layout:y="706.900772094727"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__GLU_6_P_R1" layout:species="GLU_6_P">
             <layout:boundingBox>
-              <layout:position layout:x="152.066450119019" layout:y="431.352783203125"/>
+              <layout:position layout:x="520.687980651855" layout:y="100.108982086182"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__GLU_6_P_R2r" layout:species="GLU_6_P">
             <layout:boundingBox>
-              <layout:position layout:x="1304.7922668457" layout:y="913.148040771484"/>
+              <layout:position layout:x="804.830497741699" layout:y="581.664627075195"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__GLU_6_P_R70" layout:species="GLU_6_P">
             <layout:boundingBox>
-              <layout:position layout:x="1157.93399047852" layout:y="163.863075256348"/>
+              <layout:position layout:x="1101.74419403076" layout:y="163.863059997559"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__GLU_6_P_R10" layout:species="GLU_6_P">
             <layout:boundingBox>
-              <layout:position layout:x="1280.06680297852" layout:y="1627.90115356445"/>
+              <layout:position layout:x="1458.65605926514" layout:y="1213.40589904785"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__GLU_ext" layout:species="GLU_ext">
             <layout:boundingBox>
-              <layout:position layout:x="243.536590576172" layout:y="347.243804931641"/>
+              <layout:position layout:x="612.158134460449" layout:y="16.0000228881836"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__ISOCIT" layout:species="ISOCIT">
             <layout:boundingBox>
-              <layout:position layout:x="729.918426513672" layout:y="181.806854248047"/>
+              <layout:position layout:x="626.877861022949" layout:y="1482.80653381348"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__LACTATE" layout:species="LACTATE">
             <layout:boundingBox>
-              <layout:position layout:x="61.8395690917969" layout:y="274.595184326172"/>
+              <layout:position layout:x="265.453178405762" layout:y="1448.66456604004"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__LACTATE_ext" layout:species="LACTATE_ext">
             <layout:boundingBox>
-              <layout:position layout:x="16" layout:y="135.965714454651"/>
+              <layout:position layout:x="219.613609313965" layout:y="1310.03504943848"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__MALATE" layout:species="MALATE">
             <layout:boundingBox>
-              <layout:position layout:x="451.687469482422" layout:y="1351.06741333008"/>
+              <layout:position layout:x="451.687431335449" layout:y="951.989883422852"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NAD_R83" layout:species="NAD">
             <layout:boundingBox>
-              <layout:position layout:x="705.174224853516" layout:y="814.083221435547"/>
+              <layout:position layout:x="705.174247741699" layout:y="415.005661010742"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NAD_R24" layout:species="NAD">
             <layout:boundingBox>
-              <layout:position layout:x="772.044525146484" layout:y="147.2437915802"/>
+              <layout:position layout:x="669.003959655762" layout:y="1448.24342346191"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NAD_R54r" layout:species="NAD">
             <layout:boundingBox>
-              <layout:position layout:x="551.282104492188" layout:y="318.685836791992"/>
+              <layout:position layout:x="471.258445739746" layout:y="1491.22755432129"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NAD_R25" layout:species="NAD">
             <layout:boundingBox>
-              <layout:position layout:x="532.962005615234" layout:y="1643.27590942383"/>
+              <layout:position layout:x="532.961967468262" layout:y="1244.1983795166"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NAD_R21" layout:species="NAD">
             <layout:boundingBox>
-              <layout:position layout:x="975.658172607422" layout:y="36.1360931396484"/>
+              <layout:position layout:x="187.613636016846" layout:y="1330.17115783691"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NAD_R29r" layout:species="NAD">
             <layout:boundingBox>
-              <layout:position layout:x="386.573211669922" layout:y="1439.41018676758"/>
+              <layout:position layout:x="386.573173522949" layout:y="1040.3325958252"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NAD_R70" layout:species="NAD">
             <layout:boundingBox>
-              <layout:position layout:x="1007.65811157227" layout:y="189.591892242432"/>
+              <layout:position layout:x="951.468315124512" layout:y="189.591876983643"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NAD_R10" layout:species="NAD">
             <layout:boundingBox>
-              <layout:position layout:x="1230.39114379883" layout:y="1685.75210571289"/>
+              <layout:position layout:x="1432.41240692139" layout:y="1284.99964904785"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NAD_R7r" layout:species="NAD">
             <layout:boundingBox>
-              <layout:position layout:x="158.961408615112" layout:y="315.243804931641"/>
+              <layout:position layout:x="1693.58208465576" layout:y="711.479080200195"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NAD_R53r" layout:species="NAD">
             <layout:boundingBox>
-              <layout:position layout:x="27.7134552001953" layout:y="317.158248901367"/>
+              <layout:position layout:x="231.32706451416" layout:y="1491.2276763916"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NAD_R80" layout:species="NAD">
             <layout:boundingBox>
-              <layout:position layout:x="16.0000381469727" layout:y="1067.58535766602"/>
+              <layout:position layout:x="16" layout:y="668.507827758789"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NAD_R41" layout:species="NAD">
             <layout:boundingBox>
-              <layout:position layout:x="550.470123291016" layout:y="673.095184326172"/>
+              <layout:position layout:x="550.470085144043" layout:y="274.017654418945"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NADH_R83" layout:species="NADH">
             <layout:boundingBox>
-              <layout:position layout:x="772.830474853516" layout:y="830.951812744141"/>
+              <layout:position layout:x="772.830497741699" layout:y="431.874252319336"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NADH_R24" layout:species="NADH">
             <layout:boundingBox>
-              <layout:position layout:x="702.687286376953" layout:y="16.0000381469727"/>
+              <layout:position layout:x="599.64672088623" layout:y="1316.99977111816"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NADH_R54r" layout:species="NADH">
             <layout:boundingBox>
-              <layout:position layout:x="551.282104492188" layout:y="409.559722900391"/>
+              <layout:position layout:x="471.258445739746" layout:y="1582.10133361816"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NADH_R25" layout:species="NADH">
             <layout:boundingBox>
-              <layout:position layout:x="403.566284179688" layout:y="1570.52920532227"/>
+              <layout:position layout:x="403.566246032715" layout:y="1171.45167541504"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NADH_R21" layout:species="NADH">
             <layout:boundingBox>
-              <layout:position layout:x="804.044525146484" layout:y="36.1360931396484"/>
+              <layout:position layout:x="16" layout:y="1330.17115783691"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NADH_R29r" layout:species="NADH">
             <layout:boundingBox>
-              <layout:position layout:x="357.186569213867" layout:y="1525.40127563477"/>
+              <layout:position layout:x="357.186531066895" layout:y="1126.3238067627"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NADH_R70" layout:species="NADH">
             <layout:boundingBox>
-              <layout:position layout:x="1235.06997680664" layout:y="276.887115478516"/>
+              <layout:position layout:x="1178.88018035889" layout:y="276.887100219727"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NADH_R10" layout:species="NADH">
             <layout:boundingBox>
-              <layout:position layout:x="1161.44717407227" layout:y="1626.5510559082"/>
+              <layout:position layout:x="1347.09014129639" layout:y="1253.7237701416"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NADH_R7r" layout:species="NADH">
             <layout:boundingBox>
-              <layout:position layout:x="228.318649291992" layout:y="184.000045776367"/>
+              <layout:position layout:x="1751.5111618042" layout:y="815.000503540039"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NADH_R53r" layout:species="NADH">
             <layout:boundingBox>
-              <layout:position layout:x="27.7134552001953" layout:y="408.032135009766"/>
+              <layout:position layout:x="231.32706451416" layout:y="1582.10145568848"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NADH_R80" layout:species="NADH">
             <layout:boundingBox>
-              <layout:position layout:x="120.454976081848" layout:y="1123.8137512207"/>
+              <layout:position layout:x="120.454937934875" layout:y="724.736221313477"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NADH_R41" layout:species="NADH">
             <layout:boundingBox>
-              <layout:position layout:x="492.190979003906" layout:y="536.570861816406"/>
+              <layout:position layout:x="492.190940856934" layout:y="137.493335723877"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NH3_R93" layout:species="NH3">
             <layout:boundingBox>
-              <layout:position layout:x="16.0000457763672" layout:y="103.965686798096"/>
+              <layout:position layout:x="384.621574401855" layout:y="103.965732574463"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NH3_R70" layout:species="NH3">
             <layout:boundingBox>
-              <layout:position layout:x="1198.22744750977" layout:y="273.925582885742"/>
+              <layout:position layout:x="1142.03771209717" layout:y="273.925567626953"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__NH3_ext" layout:species="NH3_ext">
             <layout:boundingBox>
-              <layout:position layout:x="112.066451072693" layout:y="16"/>
+              <layout:position layout:x="480.687980651855" layout:y="16.0000457763672"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__OXALO_R42" layout:species="OXALO">
             <layout:boundingBox>
-              <layout:position layout:x="650.551239013672" layout:y="16.0000152587891"/>
+              <layout:position layout:x="919.468315124512" layout:y="16"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__OXALO_R40" layout:species="OXALO">
             <layout:boundingBox>
-              <layout:position layout:x="396.433563232422" layout:y="92.2522468566895"/>
+              <layout:position layout:x="16.0000076293945" layout:y="92.2522315979004"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__OXALO_R70" layout:species="OXALO">
             <layout:boundingBox>
-              <layout:position layout:x="1312.74514770508" layout:y="247.756942749023"/>
+              <layout:position layout:x="1256.55535125732" layout:y="247.756927490234"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__OXALO_R22" layout:species="OXALO">
             <layout:boundingBox>
-              <layout:position layout:x="772.044525146484" layout:y="483.243804931641"/>
+              <layout:position layout:x="669.003959655762" layout:y="1784.24342346191"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__OXALO_R29r" layout:species="OXALO">
             <layout:boundingBox>
-              <layout:position layout:x="429.341766357422" layout:y="1550.05960083008"/>
+              <layout:position layout:x="429.341728210449" layout:y="1150.98213195801"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__OXY_ext" layout:species="OXY_ext">
             <layout:boundingBox>
-              <layout:position layout:x="260.227508544922" layout:y="1584.06826782227"/>
+              <layout:position layout:x="260.227470397949" layout:y="1184.99073791504"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PEP_R40" layout:species="PEP">
             <layout:boundingBox>
-              <layout:position layout:x="487.307464599609" layout:y="16.0000152587891"/>
+              <layout:position layout:x="106.873880386353" layout:y="16"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PEP_R8r" layout:species="PEP">
             <layout:boundingBox>
-              <layout:position layout:x="152.066417694092" layout:y="16.0000457763672"/>
+              <layout:position layout:x="2054.56365203857" layout:y="848.381362915039"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PEP_RR9" layout:species="PEP">
             <layout:boundingBox>
-              <layout:position layout:x="273.55973815918" layout:y="92.2522468566895"/>
+              <layout:position layout:x="138.873847007751" layout:y="92.2522315979004"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PEP_R42" layout:species="PEP">
             <layout:boundingBox>
-              <layout:position layout:x="575.457427978516" layout:y="105.493307113647"/>
+              <layout:position layout:x="844.374504089355" layout:y="105.493291854858"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PEP_R1" layout:species="PEP">
             <layout:boundingBox>
-              <layout:position layout:x="247.536590576172" layout:y="435.209503173828"/>
+              <layout:position layout:x="616.158134460449" layout:y="103.965707778931"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PEP_R70" layout:species="PEP">
             <layout:boundingBox>
-              <layout:position layout:x="1262.78274536133" layout:y="137.573400497437"/>
+              <layout:position layout:x="1206.59294891357" layout:y="137.573385238647"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PEP_R9" layout:species="PEP">
             <layout:boundingBox>
-              <layout:position layout:x="364.433609008789" layout:y="124.252270460129"/>
+              <layout:position layout:x="352.621620178223" layout:y="16"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PG" layout:species="PG">
             <layout:boundingBox>
-              <layout:position layout:x="186.192535400391" layout:y="141.436981201172"/>
+              <layout:position layout:x="1856.55303192139" layout:y="811.578750610352"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PYR_RR9" layout:species="PYR">
             <layout:boundingBox>
-              <layout:position layout:x="364.433609008789" layout:y="16.0000152587891"/>
+              <layout:position layout:x="229.747718811035" layout:y="16"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PYR_R21" layout:species="PYR">
             <layout:boundingBox>
-              <layout:position layout:x="919.508209228516" layout:y="16.0000381469727"/>
+              <layout:position layout:x="131.463670253754" layout:y="1310.03504943848"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PYR_R20" layout:species="PYR">
             <layout:boundingBox>
-              <layout:position layout:x="371.502304077148" layout:y="504.570892333984"/>
+              <layout:position layout:x="427.54500579834" layout:y="1582.10145568848"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PYR_R1" layout:species="PYR">
             <layout:boundingBox>
-              <layout:position layout:x="152.066450119019" layout:y="355.100540161133"/>
+              <layout:position layout:x="520.687980651855" layout:y="23.8567504882813"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PYR_R70" layout:species="PYR">
             <layout:boundingBox>
-              <layout:position layout:x="1304.29446411133" layout:y="151.165193557739"/>
+              <layout:position layout:x="1248.10466766357" layout:y="151.16517829895"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PYR_R9" layout:species="PYR">
             <layout:boundingBox>
-              <layout:position layout:x="273.55973815918" layout:y="200.504501342773"/>
+              <layout:position layout:x="261.747749328613" layout:y="92.2522315979004"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PYR_R53r" layout:species="PYR">
             <layout:boundingBox>
-              <layout:position layout:x="103.965686798096" layout:y="408.032135009766"/>
+              <layout:position layout:x="307.579292297363" layout:y="1582.10145568848"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__PYR_R41" layout:species="PYR">
             <layout:boundingBox>
-              <layout:position layout:x="467.485595703125" layout:y="590.865661621094"/>
+              <layout:position layout:x="467.485557556152" layout:y="191.788124084473"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__RIBOSE_5_P_R70" layout:species="RIBOSE_5_P">
             <layout:boundingBox>
-              <layout:position layout:x="1186.97244262695" layout:y="145.279895782471"/>
+              <layout:position layout:x="1130.7826461792" layout:y="145.279880523682"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__RIBOSE_5_P_R12r" layout:species="RIBOSE_5_P">
             <layout:boundingBox>
-              <layout:position layout:x="1003.14529418945" layout:y="1600.66299438477"/>
+              <layout:position layout:x="805.594047546387" layout:y="1220.85719299316"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__RIBOSE_5_P_R13r" layout:species="RIBOSE_5_P">
             <layout:boundingBox>
-              <layout:position layout:x="901.369232177734" layout:y="1031.65963745117"/>
+              <layout:position layout:x="1171.14116668701" layout:y="910.097915649414"/>
               <layout:dimensions layout:width="32" layout:height="32"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__RIBULOSE_5_P" layout:species="RIBULOSE_5_P">
             <layout:boundingBox>
-              <layout:position layout:x="961.019195556641" layout:y="1403.6282043457"/>
+              <layout:position layout:x="901.062004089355" layout:y="1047.0860748291"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__SED_7_P" layout:species="SED_7_P">
             <layout:boundingBox>
-              <layout:position layout:x="838.956634521484" layout:y="897.013702392578"/>
+              <layout:position layout:x="1369.96440887451" layout:y="893.454483032227"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__SUCC" layout:species="SUCC">
             <layout:boundingBox>
-              <layout:position layout:x="414.008514404297" layout:y="975.001373291016"/>
+              <layout:position layout:x="414.008476257324" layout:y="575.923812866211"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__SUCC_CoA" layout:species="SUCC_CoA">
             <layout:boundingBox>
-              <layout:position layout:x="177.843780517578" layout:y="1152.10830688477"/>
+              <layout:position layout:x="177.843742370605" layout:y="753.030776977539"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__SUCC_ext" layout:species="SUCC_ext">
             <layout:boundingBox>
-              <layout:position layout:x="352.299499511719" layout:y="567.857482910156"/>
+              <layout:position layout:x="352.299461364746" layout:y="168.779945373535"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
           <layout:speciesGlyph layout:id="sg_l__XYL_5_P" layout:species="XYL_5_P">
             <layout:boundingBox>
-              <layout:position layout:x="961.019195556641" layout:y="1108.43215942383"/>
+              <layout:position layout:x="1096.81316375732" layout:y="826.128799438477"/>
               <layout:dimensions layout:width="40" layout:height="40"/>
             </layout:boundingBox>
           </layout:speciesGlyph>
@@ -1920,7 +1887,7 @@
         <layout:listOfReactionGlyphs>
           <layout:reactionGlyph layout:id="rg_l__R54r" layout:reaction="R54r">
             <layout:boundingBox>
-              <layout:position layout:x="597.408233642578" layout:y="372.122772216797"/>
+              <layout:position layout:x="517.384574890137" layout:y="1544.66444396973"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -1958,7 +1925,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R13r" layout:reaction="R13r">
             <layout:boundingBox>
-              <layout:position layout:x="850.956634521484" layout:y="1049.95938110352"/>
+              <layout:position layout:x="1237.09160614014" layout:y="905.454483032227"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -1974,7 +1941,7 @@
                   <layout:dimensions layout:width="0" layout:height="0"/>
                 </layout:boundingBox>
               </layout:speciesReferenceGlyph>
-              <layout:speciesReferenceGlyph layout:id="srg_l__R13r_GA_3P" layout:speciesGlyph="sg_l__GA_3P_R13r" layout:role="sideproduct">
+              <layout:speciesReferenceGlyph layout:id="srg_l__R13r_GA_3P" layout:speciesGlyph="sg_l__GA_3P" layout:role="product">
                 <layout:boundingBox>
                   <layout:position layout:x="0" layout:y="0"/>
                   <layout:dimensions layout:width="0" layout:height="0"/>
@@ -1990,7 +1957,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R96" layout:reaction="R96">
             <layout:boundingBox>
-              <layout:position layout:x="341.376190185547" layout:y="299.133941650391"/>
+              <layout:position layout:x="397.418876647949" layout:y="1376.66456604004"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2010,7 +1977,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R15r" layout:reaction="R15r">
             <layout:boundingBox>
-              <layout:position layout:x="1095.0817565918" layout:y="1049.95938110352"/>
+              <layout:position layout:x="1026.5160446167" layout:y="718.900772094727"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2032,7 +1999,7 @@
                   <layout:dimensions layout:width="0" layout:height="0"/>
                 </layout:boundingBox>
               </layout:speciesReferenceGlyph>
-              <layout:speciesReferenceGlyph layout:id="srg_l__R15r_GA_3P" layout:speciesGlyph="sg_l__GA_3P_R15r" layout:role="sideproduct">
+              <layout:speciesReferenceGlyph layout:id="srg_l__R15r_GA_3P" layout:speciesGlyph="sg_l__GA_3P" layout:role="product">
                 <layout:boundingBox>
                   <layout:position layout:x="0" layout:y="0"/>
                   <layout:dimensions layout:width="0" layout:height="0"/>
@@ -2042,7 +2009,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R26r" layout:reaction="R26r">
             <layout:boundingBox>
-              <layout:position layout:x="307.926116943359" layout:y="1075.55484008789"/>
+              <layout:position layout:x="307.926078796387" layout:y="676.477310180664"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2080,7 +2047,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R94" layout:reaction="R94">
             <layout:boundingBox>
-              <layout:position layout:x="73.8395690917969" layout:y="202.595184326172"/>
+              <layout:position layout:x="277.453178405762" layout:y="1376.66456604004"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2100,7 +2067,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R95" layout:reaction="R95">
             <layout:boundingBox>
-              <layout:position layout:x="412.227508544922" layout:y="632.664215087891"/>
+              <layout:position layout:x="412.227470397949" layout:y="233.586685180664"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2120,7 +2087,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R93" layout:reaction="R93">
             <layout:boundingBox>
-              <layout:position layout:x="69.4369812011719" layout:y="73.8395690917969"/>
+              <layout:position layout:x="438.058525085449" layout:y="73.8396148681641"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2140,7 +2107,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R90" layout:reaction="R90">
             <layout:boundingBox>
-              <layout:position layout:x="597.408233642578" layout:y="204.122772216797"/>
+              <layout:position layout:x="517.384574890137" layout:y="1376.66444396973"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2160,7 +2127,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R91" layout:reaction="R91">
             <layout:boundingBox>
-              <layout:position layout:x="1707.54055786133" layout:y="375.516571044922"/>
+              <layout:position layout:x="862.670036315918" layout:y="1383.62916564941"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2180,7 +2147,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R8r" layout:reaction="R8r">
             <layout:boundingBox>
-              <layout:position layout:x="198.192535400391" layout:y="69.4369812011719"/>
+              <layout:position layout:x="2006.55962371826" layout:y="875.917739868164"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2200,7 +2167,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R10" layout:reaction="R10">
             <layout:boundingBox>
-              <layout:position layout:x="1228.75698852539" layout:y="1635.22610473633"/>
+              <layout:position layout:x="1410.87310028076" layout:y="1241.56483459473"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2238,7 +2205,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R28r" layout:reaction="R28r">
             <layout:boundingBox>
-              <layout:position layout:x="511.417327880859" layout:y="1223.39981079102"/>
+              <layout:position layout:x="511.417289733887" layout:y="824.322280883789"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2258,7 +2225,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R3" layout:reaction="R3">
             <layout:boundingBox>
-              <layout:position layout:x="1180.8166809082" layout:y="704.791351318359"/>
+              <layout:position layout:x="1060.42613983154" layout:y="439.625839233398"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2290,7 +2257,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R70" layout:reaction="R70">
             <layout:boundingBox>
-              <layout:position layout:x="1136.27713012695" layout:y="223.230255126953"/>
+              <layout:position layout:x="1080.0873336792" layout:y="223.230239868164"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2394,11 +2361,11 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R6r" layout:reaction="R6r">
             <layout:boundingBox>
-              <layout:position layout:x="1618.55740356445" layout:y="375.769073486328"/>
+              <layout:position layout:x="1610.00249481201" layout:y="575.084274291992"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
-              <layout:speciesReferenceGlyph layout:id="srg_l__R6r_GA_3P" layout:speciesGlyph="sg_l__GA_3P_R6r" layout:role="sidesubstrate">
+              <layout:speciesReferenceGlyph layout:id="srg_l__R6r_GA_3P" layout:speciesGlyph="sg_l__GA_3P" layout:role="substrate">
                 <layout:boundingBox>
                   <layout:position layout:x="0" layout:y="0"/>
                   <layout:dimensions layout:width="0" layout:height="0"/>
@@ -2414,7 +2381,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R97r" layout:reaction="R97r">
             <layout:boundingBox>
-              <layout:position layout:x="470.131744384766" layout:y="183.619415283203"/>
+              <layout:position layout:x="718.787590026855" layout:y="62.1261138916016"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2434,7 +2401,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R41" layout:reaction="R41">
             <layout:boundingBox>
-              <layout:position layout:x="524.227508544922" layout:y="632.664215087891"/>
+              <layout:position layout:x="524.227470397949" layout:y="233.586685180664"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2472,7 +2439,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R2r" layout:reaction="R2r">
             <layout:boundingBox>
-              <layout:position layout:x="1259.82168579102" layout:y="947.835662841797"/>
+              <layout:position layout:x="862.531730651855" layout:y="557.293319702148"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2492,7 +2459,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R55" layout:reaction="R55">
             <layout:boundingBox>
-              <layout:position layout:x="1707.54055786133" layout:y="543.516571044922"/>
+              <layout:position layout:x="862.670036315918" layout:y="1551.62916564941"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2530,7 +2497,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R4" layout:reaction="R4">
             <layout:boundingBox>
-              <layout:position layout:x="1260.9963684082" layout:y="790.525299072266"/>
+              <layout:position layout:x="1309.52812957764" layout:y="308.887100219727"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2550,7 +2517,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R12r" layout:reaction="R12r">
             <layout:boundingBox>
-              <layout:position layout:x="973.019195556641" layout:y="1563.22610473633"/>
+              <layout:position layout:x="815.186454772949" layout:y="1169.56483459473"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2570,7 +2537,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R1" layout:reaction="R1">
             <layout:boundingBox>
-              <layout:position layout:x="205.503387451172" layout:y="401.226654052734"/>
+              <layout:position layout:x="574.124931335449" layout:y="69.9828643798828"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2602,7 +2569,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R27r" layout:reaction="R27r">
             <layout:boundingBox>
-              <layout:position layout:x="582.023284912109" layout:y="912.255767822266"/>
+              <layout:position layout:x="582.023246765137" layout:y="513.178207397461"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2634,7 +2601,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R23r" layout:reaction="R23r">
             <layout:boundingBox>
-              <layout:position layout:x="741.918426513672" layout:y="277.806854248047"/>
+              <layout:position layout:x="638.877861022949" layout:y="1578.80653381348"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2654,7 +2621,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R9" layout:reaction="R9">
             <layout:boundingBox>
-              <layout:position layout:x="326.996673583984" layout:y="170.378387451172"/>
+              <layout:position layout:x="315.184684753418" layout:y="62.1261138916016"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2686,11 +2653,11 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R14r" layout:reaction="R14r">
             <layout:boundingBox>
-              <layout:position layout:x="973.019195556641" layout:y="838.540802001953"/>
+              <layout:position layout:x="1510.24297332764" layout:y="838.128799438477"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
-              <layout:speciesReferenceGlyph layout:id="srg_l__R14r_GA_3P" layout:speciesGlyph="sg_l__GA_3P_R14r" layout:role="sidesubstrate">
+              <layout:speciesReferenceGlyph layout:id="srg_l__R14r_GA_3P" layout:speciesGlyph="sg_l__GA_3P" layout:role="substrate">
                 <layout:boundingBox>
                   <layout:position layout:x="0" layout:y="0"/>
                   <layout:dimensions layout:width="0" layout:height="0"/>
@@ -2718,7 +2685,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__RR9" layout:reaction="RR9">
             <layout:boundingBox>
-              <layout:position layout:x="326.996673583984" layout:y="62.1261291503906"/>
+              <layout:position layout:x="192.31078338623" layout:y="62.1261138916016"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2750,7 +2717,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R81" layout:reaction="R81">
             <layout:boundingBox>
-              <layout:position layout:x="649.473968505859" layout:y="704.664215087891"/>
+              <layout:position layout:x="649.47386932373" layout:y="305.586624145508"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2788,7 +2755,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R80" layout:reaction="R80">
             <layout:boundingBox>
-              <layout:position layout:x="76.2275085449219" layout:y="1103.69955444336"/>
+              <layout:position layout:x="76.2274703979492" layout:y="704.622024536133"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2826,7 +2793,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R83" layout:reaction="R83">
             <layout:boundingBox>
-              <layout:position layout:x="758.611175537109" layout:y="783.957122802734"/>
+              <layout:position layout:x="758.611198425293" layout:y="384.879531860352"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2858,7 +2825,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R82" layout:reaction="R82">
             <layout:boundingBox>
-              <layout:position layout:x="1069.69143676758" layout:y="69.9828796386719"/>
+              <layout:position layout:x="1013.50151824951" layout:y="69.9828643798828"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2884,7 +2851,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R29r" layout:reaction="R29r">
             <layout:boundingBox>
-              <layout:position layout:x="415.957489013672" layout:y="1502.73489379883"/>
+              <layout:position layout:x="415.957450866699" layout:y="1103.6573638916"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2916,7 +2883,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R7r" layout:reaction="R7r">
             <layout:boundingBox>
-              <layout:position layout:x="198.192535400391" layout:y="237.436981201172"/>
+              <layout:position layout:x="1730.54668426514" layout:y="771.239761352539"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2932,7 +2899,7 @@
                   <layout:dimensions layout:width="0" layout:height="0"/>
                 </layout:boundingBox>
               </layout:speciesReferenceGlyph>
-              <layout:speciesReferenceGlyph layout:id="srg_l__R7r_GA_3P" layout:speciesGlyph="sg_l__GA_3P_R7r" layout:role="sidesubstrate">
+              <layout:speciesReferenceGlyph layout:id="srg_l__R7r_GA_3P" layout:speciesGlyph="sg_l__GA_3P" layout:role="substrate">
                 <layout:boundingBox>
                   <layout:position layout:x="0" layout:y="0"/>
                   <layout:dimensions layout:width="0" layout:height="0"/>
@@ -2960,7 +2927,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R53r" layout:reaction="R53r">
             <layout:boundingBox>
-              <layout:position layout:x="73.8395690917969" layout:y="370.595184326172"/>
+              <layout:position layout:x="277.453178405762" layout:y="1544.66456604004"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -2992,7 +2959,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R40" layout:reaction="R40">
             <layout:boundingBox>
-              <layout:position layout:x="449.870513916016" layout:y="62.1261291503906"/>
+              <layout:position layout:x="69.4369430541992" layout:y="62.1261138916016"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -3018,7 +2985,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R11r" layout:reaction="R11r">
             <layout:boundingBox>
-              <layout:position layout:x="973.019195556641" layout:y="1268.03018188477"/>
+              <layout:position layout:x="1010.93755340576" layout:y="948.607437133789"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -3038,7 +3005,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R42" layout:reaction="R42">
             <layout:boundingBox>
-              <layout:position layout:x="613.114288330078" layout:y="62.1261291503906"/>
+              <layout:position layout:x="882.031364440918" layout:y="62.1261138916016"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -3076,7 +3043,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R5r" layout:reaction="R5r">
             <layout:boundingBox>
-              <layout:position layout:x="1402.9553527832" layout:y="577.403472900391"/>
+              <layout:position layout:x="1450.19121551514" layout:y="343.557388305664"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -3086,7 +3053,7 @@
                   <layout:dimensions layout:width="0" layout:height="0"/>
                 </layout:boundingBox>
               </layout:speciesReferenceGlyph>
-              <layout:speciesReferenceGlyph layout:id="srg_l__R5r_GA_3P" layout:speciesGlyph="sg_l__GA_3P_R5r" layout:role="sideproduct">
+              <layout:speciesReferenceGlyph layout:id="srg_l__R5r_GA_3P" layout:speciesGlyph="sg_l__GA_3P" layout:role="product">
                 <layout:boundingBox>
                   <layout:position layout:x="0" layout:y="0"/>
                   <layout:dimensions layout:width="0" layout:height="0"/>
@@ -3102,7 +3069,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R25" layout:reaction="R25">
             <layout:boundingBox>
-              <layout:position layout:x="468.227508544922" layout:y="1596.06826782227"/>
+              <layout:position layout:x="468.227470397949" layout:y="1196.99073791504"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -3146,7 +3113,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R24" layout:reaction="R24">
             <layout:boundingBox>
-              <layout:position layout:x="741.918426513672" layout:y="109.806854248047"/>
+              <layout:position layout:x="638.877861022949" layout:y="1410.80653381348"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -3184,7 +3151,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R22" layout:reaction="R22">
             <layout:boundingBox>
-              <layout:position layout:x="741.918426513672" layout:y="445.806854248047"/>
+              <layout:position layout:x="638.877861022949" layout:y="1746.80653381348"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -3216,7 +3183,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R21" layout:reaction="R21">
             <layout:boundingBox>
-              <layout:position layout:x="897.851348876953" layout:y="75.3672180175781"/>
+              <layout:position layout:x="109.806816101074" layout:y="1369.40223693848"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -3260,7 +3227,7 @@
           </layout:reactionGlyph>
           <layout:reactionGlyph layout:id="rg_l__R20" layout:reaction="R20">
             <layout:boundingBox>
-              <layout:position layout:x="341.376190185547" layout:y="467.133941650391"/>
+              <layout:position layout:x="397.418876647949" layout:y="1544.66456604004"/>
               <layout:dimensions layout:width="16" layout:height="16"/>
             </layout:boundingBox>
             <layout:listOfSpeciesReferenceGlyphs>
@@ -3294,1111 +3261,1081 @@
         <layout:listOfTextGlyphs>
           <layout:textGlyph layout:id="tg_l__Cell" layout:text="Cell" layout:graphicalObject="cg_l__Cell">
             <layout:boundingBox>
-              <layout:position layout:x="-685.466619873047" layout:y="-664.700799560547"/>
-              <layout:dimensions layout:width="3156.59992675781" layout:height="3063.15373535156"/>
+              <layout:position layout:x="-812.225337219238" layout:y="-704.097348022461"/>
+              <layout:dimensions layout:width="3727.0142578125" layout:height="3240.43813476562"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ACETATE" layout:text="acetate" layout:graphicalObject="sg_l__ACETATE">
             <layout:boundingBox>
-              <layout:position layout:x="1679.54055786133" layout:y="431.516571044922"/>
+              <layout:position layout:x="834.670036315918" layout:y="1439.62916564941"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ACETATE_ext" layout:text="extracellular acetate" layout:graphicalObject="sg_l__ACETATE_ext">
             <layout:boundingBox>
-              <layout:position layout:x="1633.70095825195" layout:y="292.887100219727"/>
+              <layout:position layout:x="788.830497741699" layout:y="1300.99964904785"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ACETYL_CoA" layout:text="acetyl-coenzyme A" layout:graphicalObject="sg_l__ACETYL_CoA_R20">
             <layout:boundingBox>
-              <layout:position layout:x="282.450076293945" layout:y="400.896990966797"/>
+              <layout:position layout:x="338.492762756348" layout:y="1478.4276763916"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ACETYL_CoA" layout:text="acetyl-coenzyme A" layout:graphicalObject="sg_l__ACETYL_CoA_R54r">
             <layout:boundingBox>
-              <layout:position layout:x="614.734362792969" layout:y="396.759722900391"/>
+              <layout:position layout:x="534.710704040527" layout:y="1569.30133361816"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ACETYL_CoA" layout:text="acetyl-coenzyme A" layout:graphicalObject="sg_l__ACETYL_CoA_R22">
             <layout:boundingBox>
-              <layout:position layout:x="682.992327880859" layout:y="470.443804931641"/>
+              <layout:position layout:x="579.951731872559" layout:y="1771.44342346191"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ACETYL_CoA" layout:text="acetyl-coenzyme A" layout:graphicalObject="sg_l__ACETYL_CoA_R21">
             <layout:boundingBox>
-              <layout:position layout:x="847.394488525391" layout:y="105.934395980835"/>
+              <layout:position layout:x="59.3499633789063" layout:y="1399.96942443848"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ACETYL_CoA" layout:text="acetyl-coenzyme A" layout:graphicalObject="sg_l__ACETYL_CoA_R55">
             <layout:boundingBox>
-              <layout:position layout:x="1724.86665649414" layout:y="568.153521728516"/>
+              <layout:position layout:x="879.996134948731" layout:y="1576.26605529785"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ACETYL_CoA" layout:text="acetyl-coenzyme A" layout:graphicalObject="sg_l__ACETYL_CoA_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1331.45894165039" layout:y="164.346827697754"/>
+              <layout:position layout:x="1275.26914520264" layout:y="164.346812438965"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ADP" layout:text="adenosine diphosphate" layout:graphicalObject="sg_l__ADP_R81">
             <layout:boundingBox>
-              <layout:position layout:x="614.324664306641" layout:y="741.416033935547"/>
+              <layout:position layout:x="614.324565124512" layout:y="342.338458251953"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ADP" layout:text="adenosine diphosphate" layout:graphicalObject="sg_l__ADP_R82">
             <layout:boundingBox>
-              <layout:position layout:x="998.858233642578" layout:y="91.1657230377197"/>
+              <layout:position layout:x="942.668315124512" layout:y="91.1657077789307"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ADP" layout:text="adenosine diphosphate" layout:graphicalObject="sg_l__ADP_RR9">
             <layout:boundingBox>
-              <layout:position layout:x="260.75973815918" layout:y="3.20001525878906"/>
+              <layout:position layout:x="126.073847007751" layout:y="3.2"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ADP" layout:text="adenosine diphosphate" layout:graphicalObject="sg_l__ADP_R42">
             <layout:boundingBox>
-              <layout:position layout:x="506.507464599609" layout:y="72.5572578430176"/>
+              <layout:position layout:x="775.424540710449" layout:y="72.5572425842285"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ADP" layout:text="adenosine diphosphate" layout:graphicalObject="sg_l__ADP_R55">
             <layout:boundingBox>
-              <layout:position layout:x="1648.61445922852" layout:y="568.153521728516"/>
+              <layout:position layout:x="803.743937683106" layout:y="1576.26605529785"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ADP" layout:text="adenosine diphosphate" layout:graphicalObject="sg_l__ADP_R70">
             <layout:boundingBox>
-              <layout:position layout:x="994.858111572266" layout:y="228.068614196777"/>
+              <layout:position layout:x="938.668315124512" layout:y="228.068598937988"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ADP" layout:text="adenosine diphosphate" layout:graphicalObject="sg_l__ADP_R3">
             <layout:boundingBox>
-              <layout:position layout:x="1195.64412231445" layout:y="636.569842529297"/>
+              <layout:position layout:x="1048.35392303467" layout:y="360.157763671875"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ADP" layout:text="adenosine diphosphate" layout:graphicalObject="sg_l__ADP_R7r">
             <layout:boundingBox>
-              <layout:position layout:x="208.62366027832" layout:y="302.443804931641"/>
+              <layout:position layout:x="1653.74265594482" layout:y="769.976138305664"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ADP" layout:text="adenosine diphosphate" layout:graphicalObject="sg_l__ADP_R9">
             <layout:boundingBox>
-              <layout:position layout:x="351.633609008789" layout:y="187.704501342773"/>
+              <layout:position layout:x="339.821620178223" layout:y="79.4522315979004"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ADP" layout:text="adenosine diphosphate" layout:graphicalObject="sg_l__ADP_R26r">
             <layout:boundingBox>
-              <layout:position layout:x="273.649645996094" layout:y="1112.51729125977"/>
+              <layout:position layout:x="273.649607849121" layout:y="713.439761352539"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ADP" layout:text="adenosine diphosphate" layout:graphicalObject="sg_l__ADP_R80">
             <layout:boundingBox>
-              <layout:position layout:x="36.8096420288086" layout:y="1139.21553344727"/>
+              <layout:position layout:x="36.8096038818359" layout:y="740.138003540039"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__AKG" layout:text="alpha-ketoglutarate" layout:graphicalObject="sg_l__AKG_R25">
             <layout:boundingBox>
-              <layout:position layout:x="506.670397949219" layout:y="1572.37031860352"/>
+              <layout:position layout:x="506.670359802246" layout:y="1173.29278869629"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__AKG" layout:text="alpha-ketoglutarate" layout:graphicalObject="sg_l__AKG_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1334.79085083008" layout:y="202.430255126953"/>
+              <layout:position layout:x="1278.60105438232" layout:y="202.430239868164"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__AKG" layout:text="alpha-ketoglutarate" layout:graphicalObject="sg_l__AKG_R24">
             <layout:boundingBox>
-              <layout:position layout:x="669.751239013672" layout:y="59.3500015258789"/>
+              <layout:position layout:x="566.710673522949" layout:y="1360.34967346191"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ATP" layout:text="adenosine triphosphate" layout:graphicalObject="sg_l__ATP_R81">
             <layout:boundingBox>
-              <layout:position layout:x="678.974810791016" layout:y="715.295733642578"/>
+              <layout:position layout:x="678.974772644043" layout:y="316.218112182617"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ATP" layout:text="adenosine triphosphate" layout:graphicalObject="sg_l__ATP_R82">
             <layout:boundingBox>
-              <layout:position layout:x="1094.32838745117" layout:y="11.0567657470703"/>
+              <layout:position layout:x="1038.13846893311" layout:y="11.0567504882812"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ATP" layout:text="adenosine triphosphate" layout:graphicalObject="sg_l__ATP_RR9">
             <layout:boundingBox>
-              <layout:position layout:x="351.633609008789" layout:y="79.4522468566895"/>
+              <layout:position layout:x="216.947718811035" layout:y="79.4522315979004"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ATP" layout:text="adenosine triphosphate" layout:graphicalObject="sg_l__ATP_R42">
             <layout:boundingBox>
-              <layout:position layout:x="637.751239013672" layout:y="79.4522468566895"/>
+              <layout:position layout:x="906.668315124512" layout:y="79.4522315979004"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ATP" layout:text="adenosine triphosphate" layout:graphicalObject="sg_l__ATP_R55">
             <layout:boundingBox>
-              <layout:position layout:x="1724.86665649414" layout:y="477.279620361328"/>
+              <layout:position layout:x="879.996134948731" layout:y="1485.39227600098"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ATP" layout:text="adenosine triphosphate" layout:graphicalObject="sg_l__ATP_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1261.42427368164" layout:y="255.550677490234"/>
+              <layout:position layout:x="1205.23447723389" layout:y="255.550662231445"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ATP" layout:text="adenosine triphosphate" layout:graphicalObject="sg_l__ATP_R3">
             <layout:boundingBox>
-              <layout:position layout:x="1177.58272094727" layout:y="740.644244384766"/>
+              <layout:position layout:x="1059.16251678467" layout:y="474.829837036133"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ATP" layout:text="adenosine triphosphate" layout:graphicalObject="sg_l__ATP_R7r">
             <layout:boundingBox>
-              <layout:position layout:x="139.266417694092" layout:y="171.200045776367"/>
+              <layout:position layout:x="1765.75071258545" layout:y="730.903384399414"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ATP" layout:text="adenosine triphosphate" layout:graphicalObject="sg_l__ATP_R9">
             <layout:boundingBox>
-              <layout:position layout:x="260.75973815918" layout:y="111.452270460129"/>
+              <layout:position layout:x="248.947749328613" layout:y="3.2"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ATP" layout:text="adenosine triphosphate" layout:graphicalObject="sg_l__ATP_R26r">
             <layout:boundingBox>
-              <layout:position layout:x="300.602603149414" layout:y="996.992388916016"/>
+              <layout:position layout:x="300.602549743652" layout:y="597.914859008789"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ATP" layout:text="adenosine triphosphate" layout:graphicalObject="sg_l__ATP_R80">
             <layout:boundingBox>
-              <layout:position layout:x="74.0453750610352" layout:y="1026.58357543945"/>
+              <layout:position layout:x="74.0453369140625" layout:y="627.506045532227"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ATP_main" layout:text="maintenance energy" layout:graphicalObject="sg_l__ATP_main">
             <layout:boundingBox>
-              <layout:position layout:x="991.658233642578" layout:y="3.814697265625e-05"/>
+              <layout:position layout:x="935.468315124512" layout:y="2.288818359375e-05"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__BIOMASS" layout:text="biomass" layout:graphicalObject="sg_l__BIOMASS_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1085.82026977539" layout:y="253.797427368164"/>
+              <layout:position layout:x="1029.63047332764" layout:y="253.797412109375"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CITRATE" layout:text="citrate" layout:graphicalObject="sg_l__CITRATE">
             <layout:boundingBox>
-              <layout:position layout:x="713.918426513672" layout:y="333.806854248047"/>
+              <layout:position layout:x="610.877861022949" layout:y="1634.80653381348"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CO2" layout:text="carbon dioxyde" layout:graphicalObject="sg_l__CO2_R25">
             <layout:boundingBox>
-              <layout:position layout:x="454.861041259766" layout:y="1516.42219848633"/>
+              <layout:position layout:x="454.861003112793" layout:y="1117.3446685791"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CO2" layout:text="carbon dioxyde" layout:graphicalObject="sg_l__CO2_R40">
             <layout:boundingBox>
-              <layout:position layout:x="474.507464599609" layout:y="79.4522468566895"/>
+              <layout:position layout:x="94.0738803863525" layout:y="79.4522315979004"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CO2" layout:text="carbon dioxyde" layout:graphicalObject="sg_l__CO2_R24">
             <layout:boundingBox>
-              <layout:position layout:x="752.349566650391" layout:y="3.20003814697266"/>
+              <layout:position layout:x="649.309001159668" layout:y="1304.19977111816"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CO2" layout:text="carbon dioxyde" layout:graphicalObject="sg_l__CO2_R42">
             <layout:boundingBox>
-              <layout:position layout:x="506.507464599609" layout:y="10.0950042724609"/>
+              <layout:position layout:x="775.424540710449" layout:y="10.0949890136719"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CO2" layout:text="carbon dioxyde" layout:graphicalObject="sg_l__CO2_R21">
             <layout:boundingBox>
-              <layout:position layout:x="791.244525146484" layout:y="85.7983448028564"/>
+              <layout:position layout:x="3.2" layout:y="1379.83331604004"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CO2" layout:text="carbon dioxyde" layout:graphicalObject="sg_l__CO2_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1041.60280151367" layout:y="148.757403564453"/>
+              <layout:position layout:x="985.413005065918" layout:y="148.757388305664"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CO2" layout:text="carbon dioxyde" layout:graphicalObject="sg_l__CO2_R10">
             <layout:boundingBox>
-              <layout:position layout:x="1198.32283325195" layout:y="1555.90010375977"/>
+              <layout:position layout:x="1360.53379364014" layout:y="1169.3300201416"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CO2" layout:text="carbon dioxyde" layout:graphicalObject="sg_l__CO2_R97r">
             <layout:boundingBox>
-              <layout:position layout:x="494.768695068359" layout:y="124.693298530579"/>
+              <layout:position layout:x="743.424540710449" layout:y="3.2"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CO2" layout:text="carbon dioxyde" layout:graphicalObject="sg_l__CO2_R41">
             <layout:boundingBox>
-              <layout:position layout:x="541.639758300781" layout:y="528.930407714844"/>
+              <layout:position layout:x="541.639720153809" layout:y="129.852875900269"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CO2_ext" layout:text="extracellular carbon dioxyde" layout:graphicalObject="sg_l__CO2_ext">
             <layout:boundingBox>
-              <layout:position layout:x="387.502288818359" layout:y="201.458984375"/>
+              <layout:position layout:x="636.158134460449" layout:y="79.9656829833984"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CoASH" layout:text="coenzyme A" layout:graphicalObject="sg_l__CoASH_R25">
             <layout:boundingBox>
-              <layout:position layout:x="467.658587646484" layout:y="1664.3125793457"/>
+              <layout:position layout:x="467.658549499512" layout:y="1265.23504943848"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CoASH" layout:text="coenzyme A" layout:graphicalObject="sg_l__CoASH_R54r">
             <layout:boundingBox>
-              <layout:position layout:x="614.734362792969" layout:y="305.885836791992"/>
+              <layout:position layout:x="534.710704040527" layout:y="1478.42755432129"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CoASH" layout:text="coenzyme A" layout:graphicalObject="sg_l__CoASH_R22">
             <layout:boundingBox>
-              <layout:position layout:x="682.992327880859" layout:y="379.569903564453"/>
+              <layout:position layout:x="579.951731872559" layout:y="1680.56964416504"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CoASH" layout:text="coenzyme A" layout:graphicalObject="sg_l__CoASH_R21">
             <layout:boundingBox>
-              <layout:position layout:x="962.858172607422" layout:y="85.7983448028564"/>
+              <layout:position layout:x="174.813636016846" layout:y="1379.83331604004"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CoASH" layout:text="coenzyme A" layout:graphicalObject="sg_l__CoASH_R55">
             <layout:boundingBox>
-              <layout:position layout:x="1648.61445922852" layout:y="477.279620361328"/>
+              <layout:position layout:x="803.743937683106" layout:y="1485.39227600098"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CoASH" layout:text="coenzyme A" layout:graphicalObject="sg_l__CoASH_R20">
             <layout:boundingBox>
-              <layout:position layout:x="282.450076293945" layout:y="491.770892333984"/>
+              <layout:position layout:x="338.492762756348" layout:y="1569.30145568848"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CoASH" layout:text="coenzyme A" layout:graphicalObject="sg_l__CoASH_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1041.60280151367" layout:y="256.103106689453"/>
+              <layout:position layout:x="985.413005065918" layout:y="256.103091430664"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__CoASH" layout:text="coenzyme A" layout:graphicalObject="sg_l__CoASH_R26r">
             <layout:boundingBox>
-              <layout:position layout:x="346.351184082031" layout:y="1057.99623413086"/>
+              <layout:position layout:x="346.351145935059" layout:y="658.918704223633"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__DHAP" layout:text="dihydroxyacetone phosphate" layout:graphicalObject="sg_l__DHAP">
             <layout:boundingBox>
-              <layout:position layout:x="1482.75637817383" layout:y="448.586273193359"/>
+              <layout:position layout:x="1530.62993621826" layout:y="411.625839233398"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ERYTH_4_P" layout:text="erythrose-4-phosphate" layout:graphicalObject="sg_l__ERYTH_4_P_R14r">
             <layout:boundingBox>
-              <layout:position layout:x="1010.63179321289" layout:y="807.441119384766"/>
+              <layout:position layout:x="1431.49253387451" layout:y="829.972171020508"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ERYTH_4_P" layout:text="erythrose-4-phosphate" layout:graphicalObject="sg_l__ERYTH_4_P_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1209.94087524414" layout:y="123.165731143951"/>
+              <layout:position layout:x="1153.75107879639" layout:y="123.165715885162"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ERYTH_4_P" layout:text="erythrose-4-phosphate" layout:graphicalObject="sg_l__ERYTH_4_P_R15r">
             <layout:boundingBox>
-              <layout:position layout:x="1053.99525756836" layout:y="1084.8960144043"/>
+              <layout:position layout:x="1062.90433807373" layout:y="713.83655090332"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ETOH" layout:text="ethanol" layout:graphicalObject="sg_l__ETOH">
             <layout:boundingBox>
-              <layout:position layout:x="569.408233642578" layout:y="260.122772216797"/>
+              <layout:position layout:x="489.384574890137" layout:y="1432.66444396973"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ETOH_ext" layout:text="extracellular ethanol" layout:graphicalObject="sg_l__ETOH_ext">
             <layout:boundingBox>
-              <layout:position layout:x="523.568664550781" layout:y="121.493302345276"/>
+              <layout:position layout:x="443.54500579834" layout:y="1294.03492736816"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__FAD" layout:text="flavin adenine dinucleotide" layout:graphicalObject="sg_l__FAD">
             <layout:boundingBox>
-              <layout:position layout:x="688.924407958984" layout:y="884.255767822266"/>
+              <layout:position layout:x="688.924430847168" layout:y="485.178207397461"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__FADH" layout:text="flavin adenine dinucleotide" layout:graphicalObject="sg_l__FADH">
             <layout:boundingBox>
-              <layout:position layout:x="512.336517333984" layout:y="755.957122802734"/>
+              <layout:position layout:x="512.336479187012" layout:y="356.879531860352"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__FORMATE" layout:text="formate" layout:graphicalObject="sg_l__FORMATE">
             <layout:boundingBox>
-              <layout:position layout:x="313.376190185547" layout:y="355.133941650391"/>
+              <layout:position layout:x="369.418876647949" layout:y="1432.66456604004"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__FORMATE_ext" layout:text="extracellular formate" layout:graphicalObject="sg_l__FORMATE_ext">
             <layout:boundingBox>
-              <layout:position layout:x="267.53662109375" layout:y="216.504470825195"/>
+              <layout:position layout:x="323.579307556152" layout:y="1294.03504943848"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__FRU_6_P" layout:text="fructose-6-phosphate" layout:graphicalObject="sg_l__FRU_6_P">
             <layout:boundingBox>
-              <layout:position layout:x="1067.0817565918" layout:y="881.013702392578"/>
+              <layout:position layout:x="981.053520202637" layout:y="547.084274291992"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__FRU_BIS_P" layout:text="fructose bi-phosphate" layout:graphicalObject="sg_l__FRU_BIS_P">
             <layout:boundingBox>
-              <layout:position layout:x="1267.15432739258" layout:y="650.220611572266"/>
+              <layout:position layout:x="1140.86504364014" layout:y="315.557388305664"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__FUMARATE" layout:text="fumarate" layout:graphicalObject="sg_l__FUMARATE">
             <layout:boundingBox>
-              <layout:position layout:x="531.147308349609" layout:y="1055.73233032227"/>
+              <layout:position layout:x="531.14720916748" layout:y="656.654800415039"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
-          <layout:textGlyph layout:id="tg_l__GA_3P" layout:text="glyceraldehyde-3-phosphate" layout:graphicalObject="sg_l__GA_3P_R14r">
+          <layout:textGlyph layout:id="tg_l__GA_3P" layout:text="glyceraldehyde-3-phosphate" layout:graphicalObject="sg_l__GA_3P">
             <layout:boundingBox>
-              <layout:position layout:x="931.932757568359" layout:y="873.477435302734"/>
-              <layout:dimensions layout:width="57.6" layout:height="57.6"/>
-            </layout:boundingBox>
-          </layout:textGlyph>
-          <layout:textGlyph layout:id="tg_l__GA_3P" layout:text="glyceraldehyde-3-phosphate" layout:graphicalObject="sg_l__GA_3P_R15r">
-            <layout:boundingBox>
-              <layout:position layout:x="1036.15565795898" layout:y="983.722430419922"/>
-              <layout:dimensions layout:width="57.6" layout:height="57.6"/>
-            </layout:boundingBox>
-          </layout:textGlyph>
-          <layout:textGlyph layout:id="tg_l__GA_3P" layout:text="glyceraldehyde-3-phosphate" layout:graphicalObject="sg_l__GA_3P_R13r">
-            <layout:boundingBox>
-              <layout:position layout:x="792.030535888672" layout:y="983.722430419922"/>
-              <layout:dimensions layout:width="57.6" layout:height="57.6"/>
-            </layout:boundingBox>
-          </layout:textGlyph>
-          <layout:textGlyph layout:id="tg_l__GA_3P" layout:text="glyceraldehyde-3-phosphate" layout:graphicalObject="sg_l__GA_3P_R6r">
-            <layout:boundingBox>
-              <layout:position layout:x="1604.90095825195" layout:y="296.087115478516"/>
-              <layout:dimensions layout:width="57.6" layout:height="57.6"/>
-            </layout:boundingBox>
-          </layout:textGlyph>
-          <layout:textGlyph layout:id="tg_l__GA_3P" layout:text="glyceraldehyde-3-phosphate" layout:graphicalObject="sg_l__GA_3P_R7r">
-            <layout:boundingBox>
-              <layout:position layout:x="228.759715270996" layout:y="246.293841552734"/>
-              <layout:dimensions layout:width="57.6" layout:height="57.6"/>
-            </layout:boundingBox>
-          </layout:textGlyph>
-          <layout:textGlyph layout:id="tg_l__GA_3P" layout:text="glyceraldehyde-3-phosphate" layout:graphicalObject="sg_l__GA_3P_R5r">
-            <layout:boundingBox>
-              <layout:position layout:x="1389.2989074707" layout:y="497.721514892578"/>
-              <layout:dimensions layout:width="57.6" layout:height="57.6"/>
+              <layout:position layout:x="1564.54009246826" layout:y="690.900772094727"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__GLU_6_P" layout:text="glucose-6-phosphate" layout:graphicalObject="sg_l__GLU_6_P_R1">
             <layout:boundingBox>
-              <layout:position layout:x="139.266450119019" layout:y="418.552783203125"/>
+              <layout:position layout:x="507.887980651855" layout:y="87.3089820861816"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__GLU_6_P" layout:text="glucose-6-phosphate" layout:graphicalObject="sg_l__GLU_6_P_R2r">
             <layout:boundingBox>
-              <layout:position layout:x="1291.9922668457" layout:y="900.348040771484"/>
+              <layout:position layout:x="792.030497741699" layout:y="568.864627075195"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__GLU_6_P" layout:text="glucose-6-phosphate" layout:graphicalObject="sg_l__GLU_6_P_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1145.13399047852" layout:y="151.063075256348"/>
+              <layout:position layout:x="1088.94419403076" layout:y="151.063059997559"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__GLU_6_P" layout:text="glucose-6-phosphate" layout:graphicalObject="sg_l__GLU_6_P_R10">
             <layout:boundingBox>
-              <layout:position layout:x="1267.26680297852" layout:y="1615.10115356445"/>
+              <layout:position layout:x="1445.85605926514" layout:y="1200.60589904785"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__GLU_ext" layout:text="extracellular glucose" layout:graphicalObject="sg_l__GLU_ext">
             <layout:boundingBox>
-              <layout:position layout:x="227.536590576172" layout:y="331.243804931641"/>
+              <layout:position layout:x="596.158134460449" layout:y="2.288818359375e-05"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__ISOCIT" layout:text="isocitrate" layout:graphicalObject="sg_l__ISOCIT">
             <layout:boundingBox>
-              <layout:position layout:x="713.918426513672" layout:y="165.806854248047"/>
+              <layout:position layout:x="610.877861022949" layout:y="1466.80653381348"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__LACTATE" layout:text="lactate" layout:graphicalObject="sg_l__LACTATE">
             <layout:boundingBox>
-              <layout:position layout:x="45.8395690917969" layout:y="258.595184326172"/>
+              <layout:position layout:x="249.453178405762" layout:y="1432.66456604004"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__LACTATE_ext" layout:text="extracellular lactate" layout:graphicalObject="sg_l__LACTATE_ext">
             <layout:boundingBox>
-              <layout:position layout:x="0" layout:y="119.965714454651"/>
+              <layout:position layout:x="203.613609313965" layout:y="1294.03504943848"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__MALATE" layout:text="malate" layout:graphicalObject="sg_l__MALATE">
             <layout:boundingBox>
-              <layout:position layout:x="435.687469482422" layout:y="1335.06741333008"/>
+              <layout:position layout:x="435.687431335449" layout:y="935.989883422852"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NAD" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NAD_R83">
             <layout:boundingBox>
-              <layout:position layout:x="692.374224853516" layout:y="801.283221435547"/>
+              <layout:position layout:x="692.374247741699" layout:y="402.205661010742"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NAD" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NAD_R24">
             <layout:boundingBox>
-              <layout:position layout:x="759.244525146484" layout:y="134.4437915802"/>
+              <layout:position layout:x="656.203959655762" layout:y="1435.44342346191"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NAD" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NAD_R54r">
             <layout:boundingBox>
-              <layout:position layout:x="538.482104492188" layout:y="305.885836791992"/>
+              <layout:position layout:x="458.458445739746" layout:y="1478.42755432129"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NAD" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NAD_R25">
             <layout:boundingBox>
-              <layout:position layout:x="520.162005615234" layout:y="1630.47590942383"/>
+              <layout:position layout:x="520.161967468262" layout:y="1231.3983795166"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NAD" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NAD_R21">
             <layout:boundingBox>
-              <layout:position layout:x="962.858172607422" layout:y="23.3360931396484"/>
+              <layout:position layout:x="174.813636016846" layout:y="1317.37115783691"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NAD" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NAD_R29r">
             <layout:boundingBox>
-              <layout:position layout:x="373.773211669922" layout:y="1426.61018676758"/>
+              <layout:position layout:x="373.773173522949" layout:y="1027.5325958252"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NAD" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NAD_R70">
             <layout:boundingBox>
-              <layout:position layout:x="994.858111572266" layout:y="176.791892242432"/>
+              <layout:position layout:x="938.668315124512" layout:y="176.791876983643"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NAD" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NAD_R10">
             <layout:boundingBox>
-              <layout:position layout:x="1217.59114379883" layout:y="1672.95210571289"/>
+              <layout:position layout:x="1419.61240692139" layout:y="1272.19964904785"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NAD" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NAD_R7r">
             <layout:boundingBox>
-              <layout:position layout:x="146.161408615112" layout:y="302.443804931641"/>
+              <layout:position layout:x="1680.78208465576" layout:y="698.679080200195"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NAD" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NAD_R53r">
             <layout:boundingBox>
-              <layout:position layout:x="14.9134552001953" layout:y="304.358248901367"/>
+              <layout:position layout:x="218.52706451416" layout:y="1478.4276763916"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NAD" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NAD_R80">
             <layout:boundingBox>
-              <layout:position layout:x="3.20003814697266" layout:y="1054.78535766602"/>
+              <layout:position layout:x="3.2" layout:y="655.707827758789"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NAD" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NAD_R41">
             <layout:boundingBox>
-              <layout:position layout:x="537.670123291016" layout:y="660.295184326172"/>
+              <layout:position layout:x="537.670085144043" layout:y="261.217654418945"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NADH" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NADH_R83">
             <layout:boundingBox>
-              <layout:position layout:x="760.030474853516" layout:y="818.151812744141"/>
+              <layout:position layout:x="760.030497741699" layout:y="419.074252319336"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NADH" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NADH_R24">
             <layout:boundingBox>
-              <layout:position layout:x="689.887286376953" layout:y="3.20003814697266"/>
+              <layout:position layout:x="586.846720886231" layout:y="1304.19977111816"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NADH" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NADH_R54r">
             <layout:boundingBox>
-              <layout:position layout:x="538.482104492188" layout:y="396.759722900391"/>
+              <layout:position layout:x="458.458445739746" layout:y="1569.30133361816"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NADH" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NADH_R25">
             <layout:boundingBox>
-              <layout:position layout:x="390.766284179687" layout:y="1557.72920532227"/>
+              <layout:position layout:x="390.766246032715" layout:y="1158.65167541504"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NADH" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NADH_R21">
             <layout:boundingBox>
-              <layout:position layout:x="791.244525146484" layout:y="23.3360931396484"/>
+              <layout:position layout:x="3.2" layout:y="1317.37115783691"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NADH" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NADH_R29r">
             <layout:boundingBox>
-              <layout:position layout:x="344.386569213867" layout:y="1512.60127563477"/>
+              <layout:position layout:x="344.386531066895" layout:y="1113.5238067627"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NADH" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NADH_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1222.26997680664" layout:y="264.087115478516"/>
+              <layout:position layout:x="1166.08018035889" layout:y="264.087100219727"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NADH" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NADH_R10">
             <layout:boundingBox>
-              <layout:position layout:x="1148.64717407227" layout:y="1613.7510559082"/>
+              <layout:position layout:x="1334.29014129639" layout:y="1240.9237701416"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NADH" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NADH_R7r">
             <layout:boundingBox>
-              <layout:position layout:x="215.518649291992" layout:y="171.200045776367"/>
+              <layout:position layout:x="1738.7111618042" layout:y="802.200503540039"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NADH" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NADH_R53r">
             <layout:boundingBox>
-              <layout:position layout:x="14.9134552001953" layout:y="395.232135009766"/>
+              <layout:position layout:x="218.52706451416" layout:y="1569.30145568848"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NADH" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NADH_R80">
             <layout:boundingBox>
-              <layout:position layout:x="107.654976081848" layout:y="1111.0137512207"/>
+              <layout:position layout:x="107.654937934875" layout:y="711.936221313477"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NADH" layout:text="nicotinamide adenine dinucleotide" layout:graphicalObject="sg_l__NADH_R41">
             <layout:boundingBox>
-              <layout:position layout:x="479.390979003906" layout:y="523.770861816406"/>
+              <layout:position layout:x="479.390940856934" layout:y="124.693335723877"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NH3" layout:text="ammonium" layout:graphicalObject="sg_l__NH3_R93">
             <layout:boundingBox>
-              <layout:position layout:x="3.20004577636719" layout:y="91.1656867980957"/>
+              <layout:position layout:x="371.821574401855" layout:y="91.1657325744629"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NH3" layout:text="ammonium" layout:graphicalObject="sg_l__NH3_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1185.42744750977" layout:y="261.125582885742"/>
+              <layout:position layout:x="1129.23771209717" layout:y="261.125567626953"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__NH3_ext" layout:text="extracellular ammonium" layout:graphicalObject="sg_l__NH3_ext">
             <layout:boundingBox>
-              <layout:position layout:x="96.0664510726929" layout:y="0"/>
+              <layout:position layout:x="464.687980651855" layout:y="4.57763671875e-05"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__OXALO" layout:text="oxaloacetate" layout:graphicalObject="sg_l__OXALO_R42">
             <layout:boundingBox>
-              <layout:position layout:x="637.751239013672" layout:y="3.20001525878906"/>
+              <layout:position layout:x="906.668315124512" layout:y="3.2"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__OXALO" layout:text="oxaloacetate" layout:graphicalObject="sg_l__OXALO_R40">
             <layout:boundingBox>
-              <layout:position layout:x="383.633563232422" layout:y="79.4522468566895"/>
+              <layout:position layout:x="3.20000762939453" layout:y="79.4522315979004"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__OXALO" layout:text="oxaloacetate" layout:graphicalObject="sg_l__OXALO_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1299.94514770508" layout:y="234.956942749023"/>
+              <layout:position layout:x="1243.75535125732" layout:y="234.956927490234"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__OXALO" layout:text="oxaloacetate" layout:graphicalObject="sg_l__OXALO_R22">
             <layout:boundingBox>
-              <layout:position layout:x="759.244525146484" layout:y="470.443804931641"/>
+              <layout:position layout:x="656.203959655762" layout:y="1771.44342346191"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__OXALO" layout:text="oxaloacetate" layout:graphicalObject="sg_l__OXALO_R29r">
             <layout:boundingBox>
-              <layout:position layout:x="416.541766357422" layout:y="1537.25960083008"/>
+              <layout:position layout:x="416.541728210449" layout:y="1138.18213195801"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__OXY_ext" layout:text="extracellular monooxygen" layout:graphicalObject="sg_l__OXY_ext">
             <layout:boundingBox>
-              <layout:position layout:x="244.227508544922" layout:y="1568.06826782227"/>
+              <layout:position layout:x="244.227470397949" layout:y="1168.99073791504"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PEP" layout:text="phosphoenolpyruvate" layout:graphicalObject="sg_l__PEP_R40">
             <layout:boundingBox>
-              <layout:position layout:x="474.507464599609" layout:y="3.20001525878906"/>
+              <layout:position layout:x="94.0738803863525" layout:y="3.2"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PEP" layout:text="phosphoenolpyruvate" layout:graphicalObject="sg_l__PEP_R8r">
             <layout:boundingBox>
-              <layout:position layout:x="139.266417694092" layout:y="3.20004577636719"/>
+              <layout:position layout:x="2041.76365203857" layout:y="835.581362915039"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PEP" layout:text="phosphoenolpyruvate" layout:graphicalObject="sg_l__PEP_RR9">
             <layout:boundingBox>
-              <layout:position layout:x="260.75973815918" layout:y="79.4522468566895"/>
+              <layout:position layout:x="126.073847007751" layout:y="79.4522315979004"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PEP" layout:text="phosphoenolpyruvate" layout:graphicalObject="sg_l__PEP_R42">
             <layout:boundingBox>
-              <layout:position layout:x="562.657427978516" layout:y="92.6933071136475"/>
+              <layout:position layout:x="831.574504089356" layout:y="92.6932918548584"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PEP" layout:text="phosphoenolpyruvate" layout:graphicalObject="sg_l__PEP_R1">
             <layout:boundingBox>
-              <layout:position layout:x="234.736590576172" layout:y="422.409503173828"/>
+              <layout:position layout:x="603.358134460449" layout:y="91.1657077789307"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PEP" layout:text="phosphoenolpyruvate" layout:graphicalObject="sg_l__PEP_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1249.98274536133" layout:y="124.773400497437"/>
+              <layout:position layout:x="1193.79294891357" layout:y="124.773385238647"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PEP" layout:text="phosphoenolpyruvate" layout:graphicalObject="sg_l__PEP_R9">
             <layout:boundingBox>
-              <layout:position layout:x="351.633609008789" layout:y="111.452270460129"/>
+              <layout:position layout:x="339.821620178223" layout:y="3.2"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PG" layout:text="phosphoglycerate" layout:graphicalObject="sg_l__PG">
             <layout:boundingBox>
-              <layout:position layout:x="170.192535400391" layout:y="125.436981201172"/>
+              <layout:position layout:x="1840.55303192139" layout:y="795.578750610352"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PYR" layout:text="pyruvate" layout:graphicalObject="sg_l__PYR_RR9">
             <layout:boundingBox>
-              <layout:position layout:x="351.633609008789" layout:y="3.20001525878906"/>
+              <layout:position layout:x="216.947718811035" layout:y="3.2"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PYR" layout:text="pyruvate" layout:graphicalObject="sg_l__PYR_R21">
             <layout:boundingBox>
-              <layout:position layout:x="906.708209228516" layout:y="3.20003814697266"/>
+              <layout:position layout:x="118.663670253754" layout:y="1297.23504943848"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PYR" layout:text="pyruvate" layout:graphicalObject="sg_l__PYR_R20">
             <layout:boundingBox>
-              <layout:position layout:x="358.702304077148" layout:y="491.770892333984"/>
+              <layout:position layout:x="414.74500579834" layout:y="1569.30145568848"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PYR" layout:text="pyruvate" layout:graphicalObject="sg_l__PYR_R1">
             <layout:boundingBox>
-              <layout:position layout:x="139.266450119019" layout:y="342.300540161133"/>
+              <layout:position layout:x="507.887980651855" layout:y="11.0567504882812"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PYR" layout:text="pyruvate" layout:graphicalObject="sg_l__PYR_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1291.49446411133" layout:y="138.365193557739"/>
+              <layout:position layout:x="1235.30466766357" layout:y="138.36517829895"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PYR" layout:text="pyruvate" layout:graphicalObject="sg_l__PYR_R9">
             <layout:boundingBox>
-              <layout:position layout:x="260.75973815918" layout:y="187.704501342773"/>
+              <layout:position layout:x="248.947749328613" layout:y="79.4522315979004"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PYR" layout:text="pyruvate" layout:graphicalObject="sg_l__PYR_R53r">
             <layout:boundingBox>
-              <layout:position layout:x="91.1656867980957" layout:y="395.232135009766"/>
+              <layout:position layout:x="294.779292297363" layout:y="1569.30145568848"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__PYR" layout:text="pyruvate" layout:graphicalObject="sg_l__PYR_R41">
             <layout:boundingBox>
-              <layout:position layout:x="454.685595703125" layout:y="578.065661621094"/>
+              <layout:position layout:x="454.685557556152" layout:y="178.988124084473"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__RIBOSE_5_P" layout:text="ribose-5-phosphate" layout:graphicalObject="sg_l__RIBOSE_5_P_R70">
             <layout:boundingBox>
-              <layout:position layout:x="1174.17244262695" layout:y="132.479895782471"/>
+              <layout:position layout:x="1117.9826461792" layout:y="132.479880523682"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__RIBOSE_5_P" layout:text="ribose-5-phosphate" layout:graphicalObject="sg_l__RIBOSE_5_P_R12r">
             <layout:boundingBox>
-              <layout:position layout:x="990.345294189453" layout:y="1587.86299438477"/>
+              <layout:position layout:x="792.794047546387" layout:y="1208.05719299316"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__RIBOSE_5_P" layout:text="ribose-5-phosphate" layout:graphicalObject="sg_l__RIBOSE_5_P_R13r">
             <layout:boundingBox>
-              <layout:position layout:x="888.569232177734" layout:y="1018.85963745117"/>
+              <layout:position layout:x="1158.34116668701" layout:y="897.297915649414"/>
               <layout:dimensions layout:width="57.6" layout:height="57.6"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__RIBULOSE_5_P" layout:text="ribulose-5-phosphate" layout:graphicalObject="sg_l__RIBULOSE_5_P">
             <layout:boundingBox>
-              <layout:position layout:x="945.019195556641" layout:y="1387.6282043457"/>
+              <layout:position layout:x="885.062004089355" layout:y="1031.0860748291"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__SED_7_P" layout:text="sedoheptulose-7-phosphate" layout:graphicalObject="sg_l__SED_7_P">
             <layout:boundingBox>
-              <layout:position layout:x="822.956634521484" layout:y="881.013702392578"/>
+              <layout:position layout:x="1353.96440887451" layout:y="877.454483032227"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__SUCC" layout:text="succinate" layout:graphicalObject="sg_l__SUCC">
             <layout:boundingBox>
-              <layout:position layout:x="398.008514404297" layout:y="959.001373291016"/>
+              <layout:position layout:x="398.008476257324" layout:y="559.923812866211"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__SUCC_CoA" layout:text="succinyl-coenzyme A" layout:graphicalObject="sg_l__SUCC_CoA">
             <layout:boundingBox>
-              <layout:position layout:x="161.843780517578" layout:y="1136.10830688477"/>
+              <layout:position layout:x="161.843742370605" layout:y="737.030776977539"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__SUCC_ext" layout:text="extracellular succinate" layout:graphicalObject="sg_l__SUCC_ext">
             <layout:boundingBox>
-              <layout:position layout:x="336.299499511719" layout:y="551.857482910156"/>
+              <layout:position layout:x="336.299461364746" layout:y="152.779945373535"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__XYL_5_P" layout:text="xylulose-5-phosphate" layout:graphicalObject="sg_l__XYL_5_P">
             <layout:boundingBox>
-              <layout:position layout:x="945.019195556641" layout:y="1092.43215942383"/>
+              <layout:position layout:x="1080.81316375732" layout:y="810.128799438477"/>
               <layout:dimensions layout:width="72" layout:height="72"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R54r" layout:text="R54r" layout:graphicalObject="rg_l__R54r">
             <layout:boundingBox>
-              <layout:position layout:x="591.008233642578" layout:y="365.722772216797"/>
+              <layout:position layout:x="510.984574890137" layout:y="1538.26444396973"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R13r" layout:text="R13r" layout:graphicalObject="rg_l__R13r">
             <layout:boundingBox>
-              <layout:position layout:x="844.556634521484" layout:y="1043.55938110352"/>
+              <layout:position layout:x="1230.69160614014" layout:y="899.054483032227"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R96" layout:text="R96" layout:graphicalObject="rg_l__R96">
             <layout:boundingBox>
-              <layout:position layout:x="334.976190185547" layout:y="292.733941650391"/>
+              <layout:position layout:x="391.018876647949" layout:y="1370.26456604004"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R15r" layout:text="R15r" layout:graphicalObject="rg_l__R15r">
             <layout:boundingBox>
-              <layout:position layout:x="1088.6817565918" layout:y="1043.55938110352"/>
+              <layout:position layout:x="1020.1160446167" layout:y="712.500772094727"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R26r" layout:text="R26r" layout:graphicalObject="rg_l__R26r">
             <layout:boundingBox>
-              <layout:position layout:x="301.526116943359" layout:y="1069.15484008789"/>
+              <layout:position layout:x="301.526078796387" layout:y="670.077310180664"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R94" layout:text="R94" layout:graphicalObject="rg_l__R94">
             <layout:boundingBox>
-              <layout:position layout:x="67.4395690917969" layout:y="196.195184326172"/>
+              <layout:position layout:x="271.053178405762" layout:y="1370.26456604004"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R95" layout:text="R95" layout:graphicalObject="rg_l__R95">
             <layout:boundingBox>
-              <layout:position layout:x="405.827508544922" layout:y="626.264215087891"/>
+              <layout:position layout:x="405.827470397949" layout:y="227.186685180664"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R93" layout:text="R93" layout:graphicalObject="rg_l__R93">
             <layout:boundingBox>
-              <layout:position layout:x="63.0369812011719" layout:y="67.4395690917969"/>
+              <layout:position layout:x="431.658525085449" layout:y="67.4396148681641"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R90" layout:text="R90" layout:graphicalObject="rg_l__R90">
             <layout:boundingBox>
-              <layout:position layout:x="591.008233642578" layout:y="197.722772216797"/>
+              <layout:position layout:x="510.984574890137" layout:y="1370.26444396973"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R91" layout:text="R91" layout:graphicalObject="rg_l__R91">
             <layout:boundingBox>
-              <layout:position layout:x="1701.14055786133" layout:y="369.116571044922"/>
+              <layout:position layout:x="856.270036315918" layout:y="1377.22916564941"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R8r" layout:text="R8r" layout:graphicalObject="rg_l__R8r">
             <layout:boundingBox>
-              <layout:position layout:x="191.792535400391" layout:y="63.0369812011719"/>
+              <layout:position layout:x="2000.15962371826" layout:y="869.517739868164"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R10" layout:text="R10" layout:graphicalObject="rg_l__R10">
             <layout:boundingBox>
-              <layout:position layout:x="1222.35698852539" layout:y="1628.82610473633"/>
+              <layout:position layout:x="1404.47310028076" layout:y="1235.16483459473"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R28r" layout:text="R28r" layout:graphicalObject="rg_l__R28r">
             <layout:boundingBox>
-              <layout:position layout:x="505.017327880859" layout:y="1216.99981079102"/>
+              <layout:position layout:x="505.017289733887" layout:y="817.922280883789"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R3" layout:text="R3" layout:graphicalObject="rg_l__R3">
             <layout:boundingBox>
-              <layout:position layout:x="1174.4166809082" layout:y="698.391351318359"/>
+              <layout:position layout:x="1054.02613983154" layout:y="433.225839233398"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R70" layout:text="R70" layout:graphicalObject="rg_l__R70">
             <layout:boundingBox>
-              <layout:position layout:x="1129.87713012695" layout:y="216.830255126953"/>
+              <layout:position layout:x="1073.6873336792" layout:y="216.830239868164"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R6r" layout:text="R6r" layout:graphicalObject="rg_l__R6r">
             <layout:boundingBox>
-              <layout:position layout:x="1612.15740356445" layout:y="369.369073486328"/>
+              <layout:position layout:x="1603.60249481201" layout:y="568.684274291992"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R97r" layout:text="R97r" layout:graphicalObject="rg_l__R97r">
             <layout:boundingBox>
-              <layout:position layout:x="463.731744384766" layout:y="177.219415283203"/>
+              <layout:position layout:x="712.387590026855" layout:y="55.7261138916016"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R41" layout:text="R41" layout:graphicalObject="rg_l__R41">
             <layout:boundingBox>
-              <layout:position layout:x="517.827508544922" layout:y="626.264215087891"/>
+              <layout:position layout:x="517.827470397949" layout:y="227.186685180664"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R2r" layout:text="R2r" layout:graphicalObject="rg_l__R2r">
             <layout:boundingBox>
-              <layout:position layout:x="1253.42168579102" layout:y="941.435662841797"/>
+              <layout:position layout:x="856.131730651855" layout:y="550.893319702148"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R55" layout:text="R55" layout:graphicalObject="rg_l__R55">
             <layout:boundingBox>
-              <layout:position layout:x="1701.14055786133" layout:y="537.116571044922"/>
+              <layout:position layout:x="856.270036315918" layout:y="1545.22916564941"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R4" layout:text="R4" layout:graphicalObject="rg_l__R4">
             <layout:boundingBox>
-              <layout:position layout:x="1254.5963684082" layout:y="784.125299072266"/>
+              <layout:position layout:x="1303.12812957764" layout:y="302.487100219727"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R12r" layout:text="R12r" layout:graphicalObject="rg_l__R12r">
             <layout:boundingBox>
-              <layout:position layout:x="966.619195556641" layout:y="1556.82610473633"/>
+              <layout:position layout:x="808.786454772949" layout:y="1163.16483459473"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R1" layout:text="R1" layout:graphicalObject="rg_l__R1">
             <layout:boundingBox>
-              <layout:position layout:x="199.103387451172" layout:y="394.826654052734"/>
+              <layout:position layout:x="567.724931335449" layout:y="63.5828643798828"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R27r" layout:text="R27r" layout:graphicalObject="rg_l__R27r">
             <layout:boundingBox>
-              <layout:position layout:x="575.623284912109" layout:y="905.855767822266"/>
+              <layout:position layout:x="575.623246765137" layout:y="506.778207397461"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R23r" layout:text="R23r" layout:graphicalObject="rg_l__R23r">
             <layout:boundingBox>
-              <layout:position layout:x="735.518426513672" layout:y="271.406854248047"/>
+              <layout:position layout:x="632.477861022949" layout:y="1572.40653381348"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R9" layout:text="R9" layout:graphicalObject="rg_l__R9">
             <layout:boundingBox>
-              <layout:position layout:x="320.596673583984" layout:y="163.978387451172"/>
+              <layout:position layout:x="308.784684753418" layout:y="55.7261138916016"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R14r" layout:text="R14r" layout:graphicalObject="rg_l__R14r">
             <layout:boundingBox>
-              <layout:position layout:x="966.619195556641" layout:y="832.140802001953"/>
+              <layout:position layout:x="1503.84297332764" layout:y="831.728799438477"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__RR9" layout:text="RR9" layout:graphicalObject="rg_l__RR9">
             <layout:boundingBox>
-              <layout:position layout:x="320.596673583984" layout:y="55.7261291503906"/>
+              <layout:position layout:x="185.91078338623" layout:y="55.7261138916016"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R81" layout:text="R81" layout:graphicalObject="rg_l__R81">
             <layout:boundingBox>
-              <layout:position layout:x="643.073968505859" layout:y="698.264215087891"/>
+              <layout:position layout:x="643.07386932373" layout:y="299.186624145508"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R80" layout:text="R80" layout:graphicalObject="rg_l__R80">
             <layout:boundingBox>
-              <layout:position layout:x="69.8275085449219" layout:y="1097.29955444336"/>
+              <layout:position layout:x="69.8274703979492" layout:y="698.222024536133"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R83" layout:text="R83" layout:graphicalObject="rg_l__R83">
             <layout:boundingBox>
-              <layout:position layout:x="752.211175537109" layout:y="777.557122802734"/>
+              <layout:position layout:x="752.211198425293" layout:y="378.479531860352"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R82" layout:text="R82" layout:graphicalObject="rg_l__R82">
             <layout:boundingBox>
-              <layout:position layout:x="1063.29143676758" layout:y="63.5828796386719"/>
+              <layout:position layout:x="1007.10151824951" layout:y="63.5828643798828"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R29r" layout:text="R29r" layout:graphicalObject="rg_l__R29r">
             <layout:boundingBox>
-              <layout:position layout:x="409.557489013672" layout:y="1496.33489379883"/>
+              <layout:position layout:x="409.557450866699" layout:y="1097.2573638916"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R7r" layout:text="R7r" layout:graphicalObject="rg_l__R7r">
             <layout:boundingBox>
-              <layout:position layout:x="191.792535400391" layout:y="231.036981201172"/>
+              <layout:position layout:x="1724.14668426514" layout:y="764.839761352539"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R53r" layout:text="R53r" layout:graphicalObject="rg_l__R53r">
             <layout:boundingBox>
-              <layout:position layout:x="67.4395690917969" layout:y="364.195184326172"/>
+              <layout:position layout:x="271.053178405762" layout:y="1538.26456604004"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R40" layout:text="R40" layout:graphicalObject="rg_l__R40">
             <layout:boundingBox>
-              <layout:position layout:x="443.470513916016" layout:y="55.7261291503906"/>
+              <layout:position layout:x="63.0369430541992" layout:y="55.7261138916016"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R11r" layout:text="R11r" layout:graphicalObject="rg_l__R11r">
             <layout:boundingBox>
-              <layout:position layout:x="966.619195556641" layout:y="1261.63018188477"/>
+              <layout:position layout:x="1004.53755340576" layout:y="942.207437133789"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R42" layout:text="R42" layout:graphicalObject="rg_l__R42">
             <layout:boundingBox>
-              <layout:position layout:x="606.714288330078" layout:y="55.7261291503906"/>
+              <layout:position layout:x="875.631364440918" layout:y="55.7261138916016"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R5r" layout:text="R5r" layout:graphicalObject="rg_l__R5r">
             <layout:boundingBox>
-              <layout:position layout:x="1396.5553527832" layout:y="571.003472900391"/>
+              <layout:position layout:x="1443.79121551514" layout:y="337.157388305664"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R25" layout:text="R25" layout:graphicalObject="rg_l__R25">
             <layout:boundingBox>
-              <layout:position layout:x="461.827508544922" layout:y="1589.66826782227"/>
+              <layout:position layout:x="461.827470397949" layout:y="1190.59073791504"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R24" layout:text="R24" layout:graphicalObject="rg_l__R24">
             <layout:boundingBox>
-              <layout:position layout:x="735.518426513672" layout:y="103.406854248047"/>
+              <layout:position layout:x="632.477861022949" layout:y="1404.40653381348"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R22" layout:text="R22" layout:graphicalObject="rg_l__R22">
             <layout:boundingBox>
-              <layout:position layout:x="735.518426513672" layout:y="439.406854248047"/>
+              <layout:position layout:x="632.477861022949" layout:y="1740.40653381348"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R21" layout:text="R21" layout:graphicalObject="rg_l__R21">
             <layout:boundingBox>
-              <layout:position layout:x="891.451348876953" layout:y="68.9672180175781"/>
+              <layout:position layout:x="103.406816101074" layout:y="1363.00223693848"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>
           <layout:textGlyph layout:id="tg_l__R20" layout:text="R20" layout:graphicalObject="rg_l__R20">
             <layout:boundingBox>
-              <layout:position layout:x="334.976190185547" layout:y="460.733941650391"/>
+              <layout:position layout:x="391.018876647949" layout:y="1538.26456604004"/>
               <layout:dimensions layout:width="28.8" layout:height="28.8"/>
             </layout:boundingBox>
           </layout:textGlyph>

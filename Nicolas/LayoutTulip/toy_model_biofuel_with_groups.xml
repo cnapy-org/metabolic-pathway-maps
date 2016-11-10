@@ -540,11 +540,6 @@
             </rdf:Description>
           </rdf:RDF>
         </annotation>
-        <groups:listOfMembers metaid="meta_g_ubiquitous_sps_members">
-          <groups:member groups:idRef="R01"/>
-          <groups:member groups:idRef="R03"/>
-          <groups:member groups:idRef="R13"/>
-        </groups:listOfMembers>
       </groups:group>
     </groups:listOfGroups>
     <layout:listOfLayouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:layout="http://www.sbml.org/sbml/level3/version1/layout/version1">

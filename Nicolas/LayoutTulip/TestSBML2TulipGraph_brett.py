@@ -21,26 +21,35 @@ import sbgn_helper
 ######################################
 
 # read SBML file (with libsbml)
-#sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml")
-sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml")
-sbml = os.path.join(cDir, "TestModels", "Hpylori_iIT341.xml")
-#sbml = os.path.join(cDir, "TestModels", "iJO1366.xml")
+sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml") # 4, 4, False
+#sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml") # 6, 4, True
+#sbml = os.path.join(cDir, "TestModels", "Hpylori_iIT341.xml") # 6, 4, True
+#sbml = os.path.join(cDir, "TestModels", "iJO1366.xml") # 6, 4, True
+
+# create CBMPy model
+cmod = cbmpy.readSBML3FBC(sbml)
+if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
+    # this is a manual hack for now, but there should be a way to do it on the display level
+    cmod.deleteSpecies('M_h_c', also_delete='reagents')
+    cmod.deleteSpecies('M_h2_c', also_delete='reagents')
+    cmod.deleteSpecies('M_h2o_c', also_delete='reagents')
+    cmod.deleteReactionAndBounds('R_BIOMASS_Ec_iJO1366_WT_53p95M')
+    cbmpy.writeSBML3FBCV2(cmod, '_temp.xml')
+    sbml = '_temp.xml'
+
 reader = libsbml.SBMLReader()
 doc = reader.readSBML(sbml)
 model = doc.getModel()
 model_id = model.getId()
 
-# create CBMPy model
-cmod = cbmpy.readSBML3FBC(sbml)
-
-def autoSplitConnectedNodes(model, spec_split=5, reac_split=5, split_biomass=False):
+def autoSplitConnectedNodes(model, spec_split, reac_split, split_biomass=True):
     """
     Automatically tries to alias highly connected metabolites and nodes::
 
      - *model* a CBMPy model object
-     - *spec_split* [default=5] species connected to this or more reactions are aliased
-     - *reac_split* [default=5] reactions connected to this or more non-split species are aliased
-     - *split_biomass* [default=False] alias the objective function reaction reagents
+     - *spec_split* species connected to this or more reactions are aliased
+     - *reac_split* reactions connected to this or more non-split species are aliased
+     - *split_biomass* [default=True] alias the objective function reaction reagents
 
     """
     sp_list = []
@@ -56,14 +65,15 @@ def autoSplitConnectedNodes(model, spec_split=5, reac_split=5, split_biomass=Fal
     if split_biomass:
         for r in model.getActiveObjectiveReactionIds():
             sp_list += [s for s in model.getReaction(r).getSpeciesIds() if s not in sp_list]
-
+            if r in re_list:
+                re_list.remove(r)
 
     return sp_list, re_list
 
 #ub_sp_list = ['ATP', 'ADP', 'M8', 'M10', 'M11', 'M12', 'M13', 'biomass', 'S', 'fuel1', 'fuel2']
 #ub_re_list = ['R09', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18']
 
-ub_sp_list, ub_re_list = autoSplitConnectedNodes(cmod, 5, 3, True)
+ub_sp_list, ub_re_list = autoSplitConnectedNodes(cmod, 4, 4, False)
 
 
 print(ub_sp_list)
