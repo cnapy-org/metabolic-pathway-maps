@@ -22,6 +22,7 @@ import sbgn_helper
 
 # read SBML file (with libsbml)
 sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml")
+sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml")
 reader = libsbml.SBMLReader()
 doc = reader.readSBML(sbml)
 model = doc.getModel()
@@ -33,9 +34,15 @@ cmod.createGroup('g_ubiquitous_sps')
 g1 = cmod.getGroup('g_ubiquitous_sps')
 g1.setName('ubiquitous species')
 # add ubiquitous species to group (can be any metabolite)
-ub_list = ['ATP', 'ADP', 'M8', 'M10', 'M11', 'M12', 'M13', 'R09', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18', 'biomass', 'S', 'fuel1', 'fuel2']
-ub_sps = [cmod.getSpecies(i) for i in ub_list]
-g1.addMember(ub_sps)
+ub_sp_list = ['ATP', 'ADP', 'M8', 'M10', 'M11', 'M12', 'M13', 'biomass', 'S', 'fuel1', 'fuel2']
+# add ubiquitous reactions to a group
+ub_re_list = ['R09', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18']
+ub_sps = [cmod.getSpecies(i) for i in ub_sp_list]
+ub_react = [cmod.getReaction(i) for i in ub_re_list]
+ub_list = ub_sp_list + ub_re_list
+# add reactions and species to group
+g1.addMember(ub_sps+ub_react)
+
 # add RDF annotation to group:
 # MIRIAM annotation and SBO term (important for drawing ub species seperately)
 g1.setSBOterm('SBO:0000248')
