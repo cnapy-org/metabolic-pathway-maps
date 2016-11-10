@@ -67,7 +67,7 @@ Learning Python::
  - networkx for graph structure analysis, find cycles, subgraphs
  - different layouts on subsystems
 
-2016-11-21
+2016-10-21
 ----------
 
 Brett: install dependecies for running script (Wind64 Anaconda).
@@ -88,4 +88,12 @@ Layout groups of reaction nodes around a fixed position metabolite node (in prin
   - Put A at position XYa and layout subgraph/pathway1
   - Put D at position XYb and layout subgraph/pathway2
   - alias all non-connecting metabolites (in this case everything except C)
+
+2016-11-10
+----------
+
+
+
+
+
 
