@@ -143,13 +143,13 @@ def compute_c_id2info(c_id2level, input_model):
     return c_id2info, c_id2outs
 
 
-def import_sbml(input_model, sbml_file):
+def import_sbml(input_model, sbml_file, ubs):
 
     #chebi = parse_simple(get_chebi())
     #ub_sps = get_quotient_maps(chebi, sbml_file)
 
-    # chebi seems to be only important for extracting ubiquitous species ids (?) - provide them manually in the same form (a set?)
-    ub_sps = set(['ADP', 'ATP'])
+    # chebi seems to be only important for extracting ubiquitous species ids (?) - provide them by passing a list ubs thats then converted to a set
+    ub_sps = set(ubs)
 
     check_names(input_model)
     check_compartments(input_model)
