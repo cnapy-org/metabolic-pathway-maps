@@ -89,9 +89,10 @@ Layout groups of reaction nodes around a fixed position metabolite node (in prin
   - Put D at position XYb and layout subgraph/pathway2
   - alias all non-connecting metabolites (in this case everything except C)
 
-2016-11-10
+2016-11-11
 ----------
 
+Brett: created the file `TestSBML2TulipGraph_brett.py` to test autoaliasing on highly connected networks
 
 
 

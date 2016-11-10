@@ -21,43 +21,59 @@ import sbgn_helper
 ######################################
 
 # read SBML file (with libsbml)
-sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml")
+#sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml")
 sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml")
+sbml = os.path.join(cDir, "TestModels", "Hpylori_iIT341.xml")
+#sbml = os.path.join(cDir, "TestModels", "iJO1366.xml")
 reader = libsbml.SBMLReader()
 doc = reader.readSBML(sbml)
 model = doc.getModel()
 model_id = model.getId()
 
-# create SBML file with groups (with cbmpy)
+# create CBMPy model
 cmod = cbmpy.readSBML3FBC(sbml)
+
+def autoSplitConnectedNodes(model, spec_split=5, reac_split=5, split_biomass=False):
+    """
+    Automatically tries to alias highly connected metabolites and nodes::
+
+     - *model* a CBMPy model object
+     - *spec_split* [default=5] species connected to this or more reactions are aliased
+     - *reac_split* [default=5] reactions connected to this or more non-split species are aliased
+     - *split_biomass* [default=False] alias the objective function reaction reagents
+
+    """
+    sp_list = []
+    for s in model.species:
+        if len(s.isReagentOf()) > spec_split:
+            sp_list.append(s.getId())
+
+    # add ubiquitous reactions to a group
+    re_list = []
+    for r in model.reactions:
+        if len((set(r.getSpeciesIds()).difference(set(sp_list)))) > reac_split:
+            re_list.append(r.getId())
+    if split_biomass:
+        for r in model.getActiveObjectiveReactionIds():
+            sp_list += [s for s in model.getReaction(r).getSpeciesIds() if s not in sp_list]
+
+
+    return sp_list, re_list
+
+#ub_sp_list = ['ATP', 'ADP', 'M8', 'M10', 'M11', 'M12', 'M13', 'biomass', 'S', 'fuel1', 'fuel2']
+#ub_re_list = ['R09', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18']
+
+ub_sp_list, ub_re_list = autoSplitConnectedNodes(cmod, 5, 3, True)
+
+
+print(ub_sp_list)
+print(ub_re_list)
+
+# create groups
 cmod.createGroup('g_ubiquitous_sps')
 g1 = cmod.getGroup('g_ubiquitous_sps')
 g1.setName('ubiquitous species')
-
-# add ubiquitous species to group (can be any metabolite)
-UB_SP_SPLIT = 5 # split connections > this
-UB_RE_SPLIT = 5 # split connections > this
-ALT_STRAT_1 = False
-
-ub_sp_list = []
-for s in cmod.species:
-    if len(s.isReagentOf()) > UB_SP_SPLIT:
-        ub_sp_list.append(s.getId())
-#ub_sp_list = ['ATP', 'ADP', 'M8', 'M10', 'M11', 'M12', 'M13', 'biomass', 'S', 'fuel1', 'fuel2']
-print(ub_sp_list)
-
-# add ubiquitous reactions to a group
-ub_re_list = []
-for r in cmod.reactions:
-    if ALT_STRAT_1 and len(r.getSpeciesIds()) > UB_RE_SPLIT:
-        ub_re_list.append(r.getId())
-    elif len((set(r.getSpeciesIds()).difference(set(ub_sp_list)))) > UB_RE_SPLIT:
-        ub_re_list.append(r.getId())
-#ub_re_list = ['R09', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18']
-print(ub_re_list)
 ub_list = ub_sp_list + ub_re_list
-
-print(ub_list)
 ub_sps = [cmod.getSpecies(i) for i in ub_sp_list]
 ub_react = [cmod.getReaction(i) for i in ub_re_list]
 # add reactions and species to group
