@@ -37,6 +37,12 @@ if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
     cbmpy.writeSBML3FBCV2(cmod, '_temp.xml')
     sbml = '_temp.xml'
 
+#analyze model
+cbmpy.doFBA(cmod)
+fba_results = {}
+for r in cmod.reactions:
+    fba_results[r.getId()] = round(r.getValue(),6)
+
 reader = libsbml.SBMLReader()
 doc = reader.readSBML(sbml)
 model = doc.getModel()
@@ -130,7 +136,8 @@ def setColours(g, item_list, colour):
 # define colours
 COLOURS = {'red'  : tlp.Color(255, 0, 0),
            'green': tlp.Color(0, 255, 0),
-           'blue' : tlp.Color(0, 0, 255)
+           'blue' : tlp.Color(0, 0, 255),
+           'grey' : tlp.Color(220, 220, 220)
            }
 setColours(graph, graph.getEdges(), COLOURS['red'])
 
@@ -218,7 +225,9 @@ if sbml == os.path.join(cDir, "TestModels", "toy_model_biofuel.xml"):
 
 # color nodes and edges depending on flux value (pos, neg, 0) -> do subgraphs for each (three colors)
 # input format: dict = {"M1": -3, ...}
-flux_dict = {"R70": 2, "R93": 1, "R55": 0, "R42": -0.00001, "R7r": -1, "R10": -2}
+#flux_dict = {"R70": 2, "R93": 1, "R55": 0, "R42": -0.00001, "R7r": -1, "R10": -2}
+
+flux_dict = fba_results
 
 pos_flux = []
 neg_flux = []
@@ -238,6 +247,10 @@ pos_sg = createSubgraph(graph, "pos_flux", pos_flux)
 neg_sg = createSubgraph(graph, "neg_flux", neg_flux)
 zero_sg = createSubgraph(graph, "zero_flux", zero_flux)
 
+# color total graph
+setColours(graph, graph.getNodes(), COLOURS['grey'])
+setColours(graph, graph.getEdges(), COLOURS['grey'])
+
 # color in and out edges of flux nodes
 viewColor = pos_sg.getColorProperty("viewColor")
 for n in pos_sg.getNodes():
@@ -248,14 +261,14 @@ for n in neg_sg.getNodes():
     for e in graph.getInOutEdges(n):
         viewColor[e] = COLOURS['red']
 
-for n in zero_sg.getNodes():
-    for e in graph.getInOutEdges(n):
-        viewColor[e] = COLOURS['blue']
+#for n in zero_sg.getNodes():
+#    for e in graph.getInOutEdges(n):
+#        viewColor[e] = COLOURS['blue']
 
 # color the flux subgraph nodes
 setColours(graph, pos_sg.getNodes(), COLOURS['green'])
 setColours(graph, neg_sg.getNodes(), COLOURS['red'])
-setColours(graph, zero_sg.getNodes(), COLOURS['blue'])
+#setColours(graph, zero_sg.getNodes(), COLOURS['blue'])
 
 # reduce edge crossing
 # in progress...
