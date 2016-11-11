@@ -21,10 +21,11 @@ import sbgn_helper
 ######################################
 
 # read SBML file (with libsbml)
-sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml") # 4, 4, False
-#sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml") # 6, 4, True
+#sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml") # 4, 4, False
+sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "Hpylori_iIT341.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "iJO1366.xml") # 6, 4, True
+#sbml = os.path.join(cDir, "TestModels", "M5_6.xml") # 4, 4, True
 
 # create CBMPy model
 cmod = cbmpy.readSBML3FBC(sbml)
@@ -73,7 +74,7 @@ def autoSplitConnectedNodes(model, spec_split, reac_split, split_biomass=True):
 #ub_sp_list = ['ATP', 'ADP', 'M8', 'M10', 'M11', 'M12', 'M13', 'biomass', 'S', 'fuel1', 'fuel2']
 #ub_re_list = ['R09', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18']
 
-ub_sp_list, ub_re_list = autoSplitConnectedNodes(cmod, 4, 4, False)
+ub_sp_list, ub_re_list = autoSplitConnectedNodes(cmod, 4, 4, True)
 
 
 print(ub_sp_list)
