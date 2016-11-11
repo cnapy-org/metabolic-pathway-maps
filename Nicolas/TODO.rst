@@ -100,7 +100,8 @@ Brett: I was playing around with the code and some larger models, here are some 
  - consider how we will deal with species we don't want to display at all (H+, H20) this should be an optional input, my feeling is that they should be there for the layout but be made invisible on display
  - (future) isolate and group all transport reactions to one side
  - (future) profile the Mimoza/tulip code with a big model to find bottlenecks
- - colour specific reactions different colours ... Nicolas will demonstrate this.
+ - colour specific reactions different colours ... .
+ - new CONDA installer for CBMPy: "conda install -c bgoli -c SBMLTeam cbmpy"
 
 
 
