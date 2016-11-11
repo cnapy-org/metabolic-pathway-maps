@@ -233,38 +233,29 @@ for key in flux_dict:
     else:
         zero_flux.append(key)
 
-# add species nodes (substrates and products)
-for r in cmod.reactions:
-    for sps_id in r.getSpeciesIds():
-        if r.getId() in pos_flux:
-            pos_flux.append(sps_id)
-        elif r.getId() in neg_flux:
-            neg_flux.append(sps_id)
-        elif r.getId() in zero_flux:
-            zero_flux.append(sps_id)
-
-print(pos_flux)
-print(neg_flux)
-print(zero_flux)
-
 # create subgraphs for pos, neg and zero flux
 pos_sg = createSubgraph(graph, "pos_flux", pos_flux)
 neg_sg = createSubgraph(graph, "neg_flux", neg_flux)
 zero_sg = createSubgraph(graph, "zero_flux", zero_flux)
 
-tlp.saveGraph(pos_sg, "{}_pos_sg.tlp".format(model_id))
-tlp.saveGraph(neg_sg, "{}_neg_sg.tlp".format(model_id))
-tlp.saveGraph(zero_sg, "{}_zero_sg.tlp".format(model_id))
+# color in and out edges of flux nodes
+viewColor = pos_sg.getColorProperty("viewColor")
+for n in pos_sg.getNodes():
+    for e in graph.getInOutEdges(n):
+        viewColor[e] = COLOURS['green']
+
+for n in neg_sg.getNodes():
+    for e in graph.getInOutEdges(n):
+        viewColor[e] = COLOURS['red']
+
+for n in zero_sg.getNodes():
+    for e in graph.getInOutEdges(n):
+        viewColor[e] = COLOURS['blue']
 
 # color the flux subgraph nodes
 setColours(graph, pos_sg.getNodes(), COLOURS['green'])
 setColours(graph, neg_sg.getNodes(), COLOURS['red'])
 setColours(graph, zero_sg.getNodes(), COLOURS['blue'])
-
-# color the flux subgraph edges
-setColours(graph, pos_sg.getEdges(), COLOURS['green'])
-setColours(graph, neg_sg.getEdges(), COLOURS['red'])
-setColours(graph, zero_sg.getEdges(), COLOURS['blue'])
 
 # reduce edge crossing
 # in progress...
