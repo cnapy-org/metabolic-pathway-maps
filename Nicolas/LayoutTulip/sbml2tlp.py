@@ -1,5 +1,6 @@
 import logging
 from tulip import tlp
+import cbmpy
 
 from mod_sbml.annotation.gene_ontology.go_annotator import annotate_compartments, get_go_id
 from sbml_helper import parse_group_sbml, GrPlError
@@ -143,21 +144,15 @@ def compute_c_id2info(c_id2level, input_model):
     return c_id2info, c_id2outs
 
 
-def import_sbml(input_model, sbml_file, ubs):
-
-    #chebi = parse_simple(get_chebi())
-    #ub_sps = get_quotient_maps(chebi, sbml_file)
-
-    # chebi seems to be only important for extracting ubiquitous species ids (?) - provide them by passing a list ubs thats then converted to a set
+def import_sbml(input_model, sbml_file, ubs, c_id2level, graph):
+   # chebi seems to be only important for extracting ubiquitous species ids, provide them by passing a list ubs thats then converted to a set
     ub_sps = set(ubs)
 
-    check_names(input_model)
-    check_compartments(input_model)
-
+    #check_names(input_model)
+    #check_compartments(input_model)
     #go = parse_simple(get_go())
     #annotate_compartments(input_model, go)
     #c_id2level = comp2level(input_model, go)
-    c_id2level = {'Cell': (0, ''), 'Boundary': (1, 'Cell')}
 
     c_id2info, c_id2outs = compute_c_id2info(c_id2level, input_model)
 
@@ -178,51 +173,12 @@ def import_sbml(input_model, sbml_file, ubs):
             return max(c_id2outs[inner_most], key=get_level)
         return outer_most
 
-    graph = tlp.newGraph()
-    graph.setName(input_model.getId())
-    create_props(graph)
-
     id2n = species2nodes(graph, input_model, ub_sps)
-
     reactions2nodes(get_r_comp, graph, id2n, input_model)
-
     duplicate_nodes(graph)
 
     #mark_ancestors(graph, r_id2g_id, s_id2gr_id, c_id2info)
     return graph, c_id2info, c_id2outs, ub_sps
-
-
-def create_props(graph):
-    graph.getStringProperty(ANCESTOR_TERM)
-    graph.getStringProperty(ANCESTOR_ID)
-    graph.getStringProperty(ANCESTOR_NAME)
-
-    graph.getStringProperty(TERM)
-
-    graph.getStringProperty(COMPARTMENT_ID)
-
-    graph.getStringProperty(ID)
-    graph.getStringProperty(NAME)
-
-    graph.getIntegerProperty(TYPE)
-
-    graph.getBooleanProperty(REVERSIBLE)
-    graph.getDoubleProperty(STOICHIOMETRY)
-    graph.getBooleanProperty(TRANSPORT)
-
-    graph.getBooleanProperty(UBIQUITOUS)
-
-    graph.getLayoutProperty(VIEW_LAYOUT)
-    graph.getIntegerProperty(VIEW_SHAPE)
-    graph.getSizeProperty(VIEW_SIZE)
-
-    graph.getBooleanProperty(FAKE)
-
-    graph.getStringProperty(CLONE_ID)
-
-    graph.getStringProperty(FORMULA)
-
-    graph.getStringVectorProperty(RELATED_COMPARTMENT_IDS)
 
 
 def duplicate_nodes(graph):
