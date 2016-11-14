@@ -22,9 +22,12 @@ import sbgn_helper
 
 # read SBML file (with libsbml)
 #sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml") # 4, 4, False
+#sbml = os.path.join(cDir, "TestModels", "e_coli_core.xml") # 6, 4, True
 sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "Hpylori_iIT341.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "iJO1366.xml") # 6, 4, True
+
+
 
 # create CBMPy model
 cmod = cbmpy.readSBML3FBC(sbml)
@@ -37,7 +40,7 @@ if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
     cbmpy.writeSBML3FBCV2(cmod, '_temp.xml')
     sbml = '_temp.xml'
 
-#analyze model
+# analyze model (FBA)
 cbmpy.doFBA(cmod)
 fba_results = {}
 for r in cmod.reactions:
@@ -99,8 +102,17 @@ g1.miriam.isDescribedBy[0] = "http://identifiers.org/ubiquitous" #change dummy t
 cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(model_id), add_groups=True)
 groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 
+# extract compartment hierarchy, save to dictionary
+# create c_id2level dictionary for function import_sbml
+# c_id2level needs to be automatically extracted from input SBML file
+# required form: c_id2level = {'Cell': (0, ''), 'Boundary': (1, 'Cell')}
+
+comp_list = [''] + cmod.getCompartmentIds()
+level_list = [(x, comp_list[x]) for x in range(len(comp_list))]
+c_id2level = dict(zip(comp_list[1:], level_list))
+
 # create Tulip Graph (with Mimoza)
-root, c_id2info, c_id2outs, ub_sps = sbml2tlp.import_sbml(model, groups_sbml, ub_list)
+root, c_id2info, c_id2outs, ub_sps = sbml2tlp.import_sbml(model, groups_sbml, ub_list, c_id2level)
 fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph =\
     tulip_graph2geojson.graph2geojson(c_id2info, c_id2outs, root)
 
@@ -113,11 +125,28 @@ tlp.saveGraph(graph, "{}_raw.tlp".format(model_id))
 ###########################################
 
 # add labels to nodes
-viewLabel = graph.getStringProperty("viewLabel")
-name = graph.getStringProperty("name")
+def addLabels(g, node_type, label_type):
+    """
+    Add labels to nodes and/or edges of graph
 
-for n in graph.getNodes():
-    viewLabel[n] = name[n]
+    - *g* a tulip/mimoza graph
+    - *node_type* a predefined node type
+    - *label_type* the label type, can be either "name" or "id"
+    """
+    viewLabel = g.getStringProperty("viewLabel")
+    type = g.getIntegerProperty("type")
+    view_label_type = g.getStringProperty(label_type)
+    for n in g.getNodes():
+        if type[n] == node_type:
+            viewLabel[n] = view_label_type[n]
+
+# define label targets
+NODE_TYPES = {'metabolites': 1,
+              'reactions'  : 2
+              }
+
+addLabels(graph, NODE_TYPES['metabolites'], "name")
+addLabels(graph, NODE_TYPES['reactions'], "id")
 
 # change node or edge colour
 def setColours(g, item_list, colour):
@@ -126,7 +155,7 @@ def setColours(g, item_list, colour):
 
      - *g* a tulip/mimoza graph
      - *item_list* a list of edges (graph.getEdges) or nodes (graph.getNodes)
-     - *colour* a predefined colout
+     - *colour* a predefined colour
     """
     # apply colour to graph
     viewColor = g.getColorProperty("viewColor")
