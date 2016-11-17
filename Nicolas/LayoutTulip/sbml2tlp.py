@@ -144,15 +144,9 @@ def compute_c_id2info(c_id2level, input_model):
     return c_id2info, c_id2outs
 
 
-def import_sbml(input_model, sbml_file, ubs, c_id2level, graph):
+def import_sbml(input_model, sbml_file, ubs, c_id2level, graph, id2n):
    # chebi seems to be only important for extracting ubiquitous species ids, provide them by passing a list ubs thats then converted to a set
     ub_sps = set(ubs)
-
-    #check_names(input_model)
-    #check_compartments(input_model)
-    #go = parse_simple(get_go())
-    #annotate_compartments(input_model, go)
-    #c_id2level = comp2level(input_model, go)
 
     c_id2info, c_id2outs = compute_c_id2info(c_id2level, input_model)
 
@@ -173,11 +167,9 @@ def import_sbml(input_model, sbml_file, ubs, c_id2level, graph):
             return max(c_id2outs[inner_most], key=get_level)
         return outer_most
 
-    id2n = species2nodes(graph, input_model, ub_sps)
     reactions2nodes(get_r_comp, graph, id2n, input_model)
     duplicate_nodes(graph)
 
-    #mark_ancestors(graph, r_id2g_id, s_id2gr_id, c_id2info)
     return graph, c_id2info, c_id2outs, ub_sps
 
 

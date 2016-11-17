@@ -15,6 +15,7 @@ import sbml_manager
 import tulip_graph2geojson
 import sbgn_helper
 import graph_properties
+import resize
 
 
 #############################################
@@ -204,7 +205,7 @@ groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 graph = tlp.newGraph()
 graph.setName(model.getId())
 
-# create all graph properties for new tulip graph
+# create graph properties for new tulip graph
 def create_props(graph):
     graph.getStringProperty(graph_properties.ANCESTOR_TERM)
     graph.getStringProperty(graph_properties.ANCESTOR_ID)
@@ -228,10 +229,10 @@ def create_props(graph):
 
 create_props(graph)
 
-# Aliasing function (flag ubiquitous nodes to be aliased)
-def aliasNodes(g, ub_list):
+# flag (true/false) ubiquitous nodes to be aliased later
+def markUbiquitousNodes(g, ub_list):
     """
-    Alias (clone) a list of nodes in a graph::
+    Flag a list of nodes in a graph to be marked as ubiquitous (for aliasing)::
 
     - *g* a tulip/mimoza graph
     - *ub_list* a list of nodes
@@ -246,11 +247,64 @@ def aliasNodes(g, ub_list):
             #type[n] = 1
             ub[n] = True
 
-aliasNodes(graph, ub_list)
+markUbiquitousNodes(graph, ub_list)
+
+# create nodes for all model species
+def speciesToNodes(graph, input_model, ub_sps):
+    """
+    Create graph nodes for each species of a given libsbml model. Different properties such as size, shape,
+    etc. are added to the nodes::
+
+    - *graph* a tulip/mimoza graph
+    - *input_model* a libsbml model
+    - *ub_sps* a list of species to be flagged as ubiquitous (for aliasing)
+    """
+    id2n = {}
+    for s in input_model.getListOfSpecies():
+        # get current species id
+        _id = s.getId()
+        # get current species name
+        name = s.getName()
+        # get compartment of current species
+        comp = input_model.getCompartment(s.getCompartment())
+        # check if species is in ub list: return either true or false
+        ub = (_id in ub_sps)
+
+        # add new node to graph and return it (saved in n)
+        n = graph.addNode()
+        # add compartment id to new node of graph
+        graph[graph_properties.COMPARTMENT_ID][n] = comp.getId()
+        # add current species id to new node of graph
+        graph[graph_properties.ID][n] = _id
+        # if current species name exists:
+        if name:
+            # remove compartment from the name,
+            # e.g. H2O [peroxisome] --> H2O
+            if comp.getName():
+                name = name.replace('[%s]' % comp.getName(), '').strip()
+                name = name.replace('[%s]' % comp.getId(), '').strip()
+            # add current species name to new node of graph
+            graph[graph_properties.NAME][n] = name
+        # add type of new node corresponding to the value that is defined for species nodes (1)
+        # (reaction nodes have type = 2)
+        graph[graph_properties.TYPE][n] = graph_properties.TYPE_SPECIES
+        # add ub status (true or false) to new node of graph
+        graph[graph_properties.UBIQUITOUS][n] = ub
+        # add shape to new node of graph (set to circle shape, can be changed in graph_properties.py)
+        graph[graph_properties.VIEW_SHAPE][n] = graph_properties.SPECIES_SHAPE
+        # add size to new node of graph (calculated by function get_n_size in file resize.py)
+        graph[graph_properties.VIEW_SIZE][n] = resize.get_n_size(graph, n)
+
+        # assign the current species id (key) to the new tulip node n (value) in dict id2n
+        id2n[_id] = n
+    return id2n
+
+id2n = speciesToNodes(graph, model, ub_list)
 
 # run Mimoza functions for further graph manipulaption
 # species to nodes, reactions to nodes, alias node cloning
-root, c_id2info, c_id2outs, ub_sps = sbml2tlp.import_sbml(model, groups_sbml, ub_list, c_id2level, graph)
+root, c_id2info, c_id2outs, ub_sps = sbml2tlp.import_sbml(model, groups_sbml, ub_list, c_id2level, graph, id2n)
+
 # actual layouting, creation of graph structure
 fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph =\
     tulip_graph2geojson.graph2geojson(c_id2info, c_id2outs, root)
