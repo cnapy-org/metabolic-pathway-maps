@@ -9,7 +9,7 @@ import libsbml
 import cbmpy
 from tulip import tlp
 
-# Core Mimoza modules
+# core Mimoza modules
 import sbml2tlp
 import sbml_manager
 import tulip_graph2geojson
@@ -17,9 +17,9 @@ import sbgn_helper
 import graph_properties
 
 
-#################################################################
-# read SBML, prepare Node Aliasing and extract Compartment Info #
-#################################################################
+#############################################
+# read SBML with libsbml and cbmpy, do FBA  #
+#############################################
 
 # read SBML file (with libsbml)
 #sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml") # 4, 4, False
@@ -27,6 +27,12 @@ import graph_properties
 sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "Hpylori_iIT341.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "iJO1366.xml") # 6, 4, True
+
+# create libsbml model
+reader = libsbml.SBMLReader()
+doc = reader.readSBML(sbml)
+model = doc.getModel()
+model_id = model.getId()
 
 # create CBMPy model
 cmod = cbmpy.readSBML3FBC(sbml)
@@ -43,17 +49,24 @@ if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
 cbmpy.doFBA(cmod)
 fba_results = {}
 for r in cmod.reactions:
-    fba_results[r.getId()] = round(r.getValue(),6)
+    fba_results[r.getId()] = round(r.getValue(), 6)
 
-# create libsbml model
-reader = libsbml.SBMLReader()
-doc = reader.readSBML(sbml)
-model = doc.getModel()
-model_id = model.getId()
 
-def autoSplitConnectedNodes(model, spec_split, reac_split, split_biomass=True):
+##################################################################
+# extract compartment hierarchy, different node aliasing methods #
+##################################################################
+
+# save compartment hierarchy to dictionary "c_id2level" for function import_sbml
+# c_id2level needs to be automatically extracted from input SBML file
+# required form: c_id2level = {'Cell': (0, ''), 'Boundary': (1, 'Cell')}
+comp_list = [''] + cmod.getCompartmentIds()
+level_list = [(x, comp_list[x]) for x in range(len(comp_list))]
+c_id2level = dict(zip(comp_list[1:], level_list))
+
+# 1.) create alias node list based on connectivity <-> user defined thresholds (strategy 1)
+def identifyConnectedNodes(model, spec_split, reac_split, split_biomass=True):
     """
-    Automatically tries to alias highly connected metabolites and nodes::
+    Identifies highly connected species and reactions::
 
      - *model* a CBMPy model object
      - *spec_split* species connected to this or more reactions are aliased
@@ -79,11 +92,78 @@ def autoSplitConnectedNodes(model, spec_split, reac_split, split_biomass=True):
 
     return sp_list, re_list
 
-ub_sp_list, ub_re_list = autoSplitConnectedNodes(cmod, 6, 4, True)
-# combine species and reactions to one list of ubiquitous nodes
-ub_list = ub_sp_list + ub_re_list
+#ub_sp_list, ub_re_list = identifyConnectedNodes(cmod, 4, 4, False)
 
-# additionally alias node list from a certain compartment
+# 2.) create alias node list based on biological pathways <-> group info in sbml - if available (strategy 2)
+# create lists of species ids and reaction ids for each pathway (not necessary if provided by sbml)
+glyc_sps = ["GLU_6_P", "FRU_6_P", "FRU_BIS_P", "DHAP", "GA_3P", "PG", "PEP"]
+glyc_re = ["R1", "R2r", "R3", "R4", "R5r", "R6r", "R7r", "R8r", "R9", "RR9"]
+tca_sps = ["CITRATE", "ISOCIT", "AKG", "SUCC_CoA", "SUCC", "FUMARATE", "MALATE", "OXALO"]
+tca_re = ["R21", "R23r", "R24", "R25", "R26r", "R27r", "R28r", "R29r", "R22"]
+not_spec_sps = [sps for sps in cmod.getSpeciesIds() if sps not in glyc_sps or sps not in tca_sps]
+not_spec_re = [re for re in cmod.getReactionIds() if re not in glyc_re or re not in tca_re]
+
+# ubiquitous small metabolites
+small_sps = ["ATP", "ADP", "NAD", "NADH", "CO2", "NH3"]
+
+# create groups (not necessary if provided by sbml)
+cmod.createGroup('not_specified')
+path0 = cmod.getGroup('not_specified')
+path0.setName('Not specified')
+path0.addMember([cmod.getSpecies(s) for s in not_spec_sps] + [cmod.getReaction(r) for r in not_spec_re])
+
+cmod.createGroup('glycolysis')
+path1 = cmod.getGroup('glycolysis')
+path1.setName('Glycolysis')
+path1.addMember([cmod.getSpecies(s) for s in glyc_sps] + [cmod.getReaction(r) for r in glyc_re])
+
+cmod.createGroup('tca_cycle')
+path2 = cmod.getGroup('tca_cycle')
+path2.setName('TCA Cycle')
+path2.addMember([cmod.getSpecies(s) for s in tca_sps] + [cmod.getReaction(r) for r in tca_re])
+
+# automatically create list of boundary species (those which connect the biol. pathway to rest of network)
+def identifyBoundarySpecies(sps_list, re_list, cmod):
+    """
+    Identifies boundary species of given pathway by:
+    1.) getting the nodes that have at least one reaction outside the pathway -> level0_nodes (still themselves inside
+    the pathway - we don't want to alias them!)
+    2.) getting from the level0_nodes to the next connections (level1_nodes)
+    => these are the first nodes outside the pathway => boundary nodes!
+    ::
+
+    - *sps_list* list containing all species of a pathway
+    - *re_list* list containing all reactions of a pathway
+    - *cmod* cbmpy model of the input sbml file
+
+    """
+    level0_sps = []
+    level1_sps = []
+    for sps in sps_list:
+        sps = cmod.getSpecies(sps)
+        for re in sps.isReagentOf():
+            if re not in re_list and sps.getId() not in level0_sps:
+                level0_sps.append(sps.getId())
+                re = cmod.getReaction(re)
+                level1_sps += [s for s in re.getSpeciesIds() if s not in level0_sps and s not in sps_list]
+
+    bound_sps = level1_sps
+    return list(set(bound_sps))
+
+#glyc_sps_bound = identifyBoundarySpecies(glyc_sps, glyc_re, cmod)
+tca_sps_bound = identifyBoundarySpecies(tca_sps, tca_re, cmod)
+
+# select biomass reaction
+#for r in cmod.getActiveObjectiveReactionIds():
+    # add biomass reaction with substrates and products to alias lists (ub_sp_list, ub_re_list)?
+    # -> commented because some species of tca cycle are also part of biomass (eg: AKG)
+    # => aliasing them would break up the tca circle layout
+    #ub_sp_list += [s for s in cmod.getReaction(r).getSpeciesIds() if s not in ub_sp_list]
+
+ub_sp_list = tca_sps_bound
+ub_re_list = []
+
+# 3.) create alias node list based on a certain compartment <-> compartment info in sbml (strategy 3)
 #comp_ids = cmod.getCompartmentIds() # get a list of all compartments
 #comp_2 = cmod.getCompartment(comp_ids[1]) # get  compartment 2 (first entry in list of all compartments)
 #comp_2_species = comp_2.containsSpecies() # list of species in compartment 2
@@ -91,11 +171,14 @@ ub_list = ub_sp_list + ub_re_list
 #ub_sp_list = comp_2_species
 #ub_re_list = comp_2_reac
 
-# manually provide alias node list
+# 4.) manually provide alias node list <-> hard coded by user (for testing purposes)
 #ub_sp_list = ['ATP', 'ADP', 'M8', 'M10', 'M11', 'M12', 'M13', 'biomass', 'S', 'fuel1', 'fuel2']
 #ub_re_list = ['R09', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18']
 
-# add ubiquitous species group to sbml file and save it as "..._with_groups.xml"
+# combine alias species and alias reaction lists (for aliasNodes function)
+ub_list = ub_sp_list + ub_re_list
+
+# add ubiquitous (alias) species group to sbml file and save it as "..._with_groups.xml"
 # create group for ubiquitous species
 cmod.createGroup('g_ubiquitous_sps')
 g1 = cmod.getGroup('g_ubiquitous_sps')
@@ -112,17 +195,9 @@ g1.miriam.isDescribedBy[0] = "http://identifiers.org/ubiquitous" #change dummy t
 cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(model_id), add_groups=True)
 groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 
-# extract compartment hierarchy, save to dictionary
-# create c_id2level dictionary for function import_sbml
-# c_id2level needs to be automatically extracted from input SBML file
-# required form: c_id2level = {'Cell': (0, ''), 'Boundary': (1, 'Cell')}
-comp_list = [''] + cmod.getCompartmentIds()
-level_list = [(x, comp_list[x]) for x in range(len(comp_list))]
-c_id2level = dict(zip(comp_list[1:], level_list))
-
 
 #######################################################
-# create Tulip Graph and run Mimoza layout functions  #
+# create Tulip graph and run Mimoza layout functions  #
 #######################################################
 
 # create new tulip graph
@@ -153,23 +228,30 @@ def create_props(graph):
 
 create_props(graph)
 
-# Aliasing function (clone ubiquitous nodes)
+# Aliasing function (flag ubiquitous nodes to be aliased)
 def aliasNodes(g, ub_list):
     """
-    Alias (clone) a list of nodes in a graph
+    Alias (clone) a list of nodes in a graph::
 
     - *g* a tulip/mimoza graph
     - *ub_list* a list of nodes
     """
+    # set graph property for ub nodes
+    #type = g.getIntegerProperty("type")
+    ub_list = list(set(ub_list))
     ub = g.getBooleanProperty("ub")
-    for n in g.getNodes():
-        if n in ub_list:
+    id_ = g.getStringProperty("id")
+    for n in g.getEdges():
+        if id_[n] in ub_list:
+            #type[n] = 1
             ub[n] = True
 
 aliasNodes(graph, ub_list)
 
 # run Mimoza functions for further graph manipulaption
+# species to nodes, reactions to nodes, alias node cloning
 root, c_id2info, c_id2outs, ub_sps = sbml2tlp.import_sbml(model, groups_sbml, ub_list, c_id2level, graph)
+# actual layouting, creation of graph structure
 fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph =\
     tulip_graph2geojson.graph2geojson(c_id2info, c_id2outs, root)
 
@@ -177,14 +259,27 @@ fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph =\
 tlp.saveGraph(graph, "{}_raw.tlp".format(model_id))
 
 
-####################################################
-# change basic graph layout and cosmetic properties#
-####################################################
+#################################
+# change basic graph properties #
+#################################
+
+# delete a set of nodes from the graph
+def delNodes(g, node_list):
+    """
+    Delete a set of nodes from a graph (by their id)::
+
+    - *g* a tulip/mimoza graph
+    - *node_list* a set of nodes
+    """
+    id_ = g.getStringProperty("id")
+    for n in g.getNodes():
+        if id_[n] in node_list:
+            g.delNode(n)
 
 # add labels to nodes
 def addLabels(g, node_type, label_type):
     """
-    Add labels to nodes and/or edges of graph
+    Add labels to nodes and/or edges of graph::
 
     - *g* a tulip/mimoza graph
     - *node_type* a predefined node type
@@ -197,7 +292,7 @@ def addLabels(g, node_type, label_type):
         if type[n] == node_type:
             viewLabel[n] = view_label_type[n]
 
-# define label targets
+# define node types for labeling
 NODE_TYPES = {'metabolites': 1,
               'reactions'  : 2
               }
@@ -208,10 +303,10 @@ addLabels(graph, NODE_TYPES['reactions'], "id")
 # change node or edge colour
 def setColours(g, item_list, colour):
     """
-    Apply colour to a list of edges
+    Apply colour to a list of nodes or edges::
 
      - *g* a tulip/mimoza graph
-     - *item_list* a list of edges (graph.getEdges) or nodes (graph.getNodes)
+     - *item_list* a tulip iterator (graph.getEdges or graph.getNodes)
      - *colour* a predefined colour
     """
     # apply colour to graph
@@ -223,30 +318,27 @@ def setColours(g, item_list, colour):
 COLOURS = {'red'  : tlp.Color(255, 0, 0),
            'green': tlp.Color(0, 255, 0),
            'blue' : tlp.Color(0, 0, 255),
-           'grey' : tlp.Color(220, 220, 220)
+           'grey' : tlp.Color(220, 220, 220),
+           'black': tlp.Color(0, 0, 0)
            }
-setColours(graph, graph.getEdges(), COLOURS['red'])
+
+# set colour of all edges (complete graph)
+setColours(graph, graph.getEdges(), COLOURS['grey'])
 
 # change line types (Polyline, BezierCurve, CarmullRomCurve, CubicSplineCurve)
 viewShape = graph.getIntegerProperty("viewShape")
-
 for e in graph.getEdges():
     viewShape[e] = tlp.EdgeShape.BezierCurve
 
-# different layouts on pathways (subsystems)
-# manually define input pathways
-small_circle = ["M1", "M2", "M9", "R02", "R10", "R11"]
-larger_circle = ["M3", "M4", "M5", "M6", "M7", "R04", "R05", "R06", "R07", "R08"]
 
-# get input pathway node list from a certain compartment
-#comp_ids = cmod.getCompartmentIds() # get a list of all compartments
-#comp_2 = cmod.getCompartment(comp_ids[1]) # get  compartment 1 (first entry in list of all compartments)
-#comp_2_species = comp_2.containsSpecies() # list of species in compartment 1
+##################################################################
+# different layouts on subsystems (compartments, pathways, etc.) #
+##################################################################
 
 # define function to create subgraph from graph and apply layout
 def createSubgraph(graph, sg_name, n_list):
     """
-    Creates a subgraph from a list of nodes
+    Creates a subgraph from a list of nodes::
 
     - *graph* tulip graph
     - *sg_name* subgraph name (string)
@@ -276,12 +368,12 @@ def createSubgraph(graph, sg_name, n_list):
     return sg
 
 # define function to apply layout to subgraph and center it
-def layoutSubgraph(sg, sg_layout, x_center = None, y_center = None, z_center = 0):
+def layoutSubgraph(sg, sg_layout = None, x_center = None, y_center = None, z_center = 0):
     """
-    Apply layout to subgraph and center it around a given point.
+    Apply layout to subgraph and center it around a given point::
 
     - *sg* a tulip/mimoza subgraph
-    - *sg_layout* subgraph layout (string), ex: "Circular (OGDF)"
+    - *sg_layout* subgraph layout (string), ex: "Circular (OGDF)" (optional)
     - *x_center* x coordinate of layout center which defines subgraph position (optional)
     - *y_center* y coordinate of layout center which defines subgraph position (optional)
     - *z_center* z coordinate of layout center which defines subgraph position, default 0
@@ -289,7 +381,8 @@ def layoutSubgraph(sg, sg_layout, x_center = None, y_center = None, z_center = 0
     # pseudo-fixed layout method
     # list of available algorithms: tlp.getLayoutAlgorithmPluginsList()
     # apply algorithm to subgraph
-    sg.applyLayoutAlgorithm(sg_layout)
+    if sg_layout is not None:
+        sg.applyLayoutAlgorithm(sg_layout)
     # center layout: center(viewLayout, newCenter, subgraph)
     # newCenter can be given as coordinates (tlp.Coord(x,y,z)) or
     viewLayout = graph.getLayoutProperty("viewLayout")
@@ -298,32 +391,53 @@ def layoutSubgraph(sg, sg_layout, x_center = None, y_center = None, z_center = 0
 
     return sg
 
-# call functions only if toymodel is loaded
+# 1.) manually define subsystem node lists
+small_circle = ["M1", "M2", "M9", "R02", "R10", "R11"]
+larger_circle = ["M3", "M4", "M5", "M6", "M7", "R04", "R05", "R06", "R07", "R08"]
+
+# subsystems "small circle" and "larger circle" are specific to the toymodel
 if sbml == os.path.join(cDir, "TestModels", "toy_model_biofuel.xml"):
     # create toymodel subgraphs and apply centered layout
     small_circle_subgraph = createSubgraph(graph, "small_circle", small_circle)
-    layoutSubgraph(small_circle_subgraph, "Circular (OGDF)", 50, 75, 0)
-
     larger_circle_subgraph = createSubgraph(graph, "larger_circle", larger_circle)
+    layoutSubgraph(small_circle_subgraph, "Circular (OGDF)", 100, 100, 0)
     layoutSubgraph(larger_circle_subgraph, "Circular (OGDF)", -50, 25, 0)
-
     # save created toymodel subgraphs
     tlp.saveGraph(small_circle_subgraph, "{}_SmallCircle.tlp".format(model_id))
     tlp.saveGraph(larger_circle_subgraph, "{}_LargerCircle.tlp".format(model_id))
 
-# fix position of a specific node (M1 (id 2) for small circle, M3 (id 8) for larger circle)
-#viewLayout[tlp.node(2)] = tlp.Coord(50,75,0)
-#viewLayout[tlp.node(8)] = tlp.Coord(-50,25,0)
+# 2.) get subsystem node list from all species of a certain compartment
+#comp_ids = cmod.getCompartmentIds() # get a list of all compartments
+#comp_2 = cmod.getCompartment(comp_ids[1]) # get  compartment 1 (first entry in list of all compartments)
+#comp_2_species = comp_2.containsSpecies() # list of species in compartment 1
 
 # layout all species from compartment 2 (extracellular) seperately along the edges of the graph
 #comp_2_sg = createSubgraph(graph, "comp_2", comp_2_species)
 #layoutSubgraph(comp_2_sg, "Hierarchical Graph", 0, 0, 0)
 
+# 3.) get subsystem node list from different biological pathways (e.g.: glycolysis, tca and 'not specified')
+glyc_sg = createSubgraph(graph, "glycolysis", glyc_sps)
+tca_sg = createSubgraph(graph, "tca_cycle", tca_sps)
+not_spec_sg = createSubgraph(graph, "not specified", not_spec_sps)
 
-#######################
-# visualize FBA result#
-#######################
+setColours(graph, glyc_sg.getNodes(), COLOURS['red'])
+setColours(graph, tca_sg.getNodes(), COLOURS['blue'])
 
+#layoutSubgraph(glyc_sg, "Mixed Model", -45, 90, 0)
+#layoutSubgraph(tca_sg, "Circular", -45, -30, 0)
+#layoutSubgraph(not_spec_sg, "Planarization Layout (OGDF)", None, None, 0)
+
+# fix position of a specific node (M1 (id 2) for small circle, M3 (id 8) for larger circle)
+#viewLayout[tlp.node(2)] = tlp.Coord(50,75,0)
+#viewLayout[tlp.node(8)] = tlp.Coord(-50,25,0)
+#viewLayout = graph.getLayoutProperty("viewLayout")
+#viewLayout[tlp.node(16)] = tlp.Coord(100, 100, 0)
+
+
+########################
+# visualize FBA result #
+########################
+"""
 # color nodes and edges depending on flux value (pos, neg, 0) -> do subgraphs for each (three colors)
 # input format: dict = {"M1": -3, ...}
 #flux_dict = {"R70": 2, "R93": 1, "R55": 0, "R42": -0.00001, "R7r": -1, "R10": -2}
@@ -372,14 +486,15 @@ setColours(graph, neg_sg.getNodes(), COLOURS['red'])
 
 # reduce edge crossing
 # in progress...
+"""
+
+
+############################################################################
+# save final graph, generate SBGN and SBML+Layout Files (Mimoza functions) #
+############################################################################
 
 # save total graph with all changes
 tlp.saveGraph(graph, "{}_graph.tlp".format(model_id))
-
-
-#########################################################
-# generate SBGN and SBML+Layout Files (Mimoza functions)#
-#########################################################
 
 # add layout to SBML file
 groups_document = reader.readSBML(groups_sbml)

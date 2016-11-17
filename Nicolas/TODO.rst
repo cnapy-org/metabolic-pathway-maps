@@ -1,7 +1,16 @@
 2016-09-22
 ----------
 
-Visualisation::
+General:
+========
+
+* tulip meta node functionality to collapse pathways/organelles
+* click to highlight all edges connected to a reaction node
+
+
+Daily:
+======
+ Visualisation::
 
  - Mimoza: what creates the layout information in the two e2lo n2lo dictionaries in the first place or
    in other words,  what generates the layout.
