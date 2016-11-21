@@ -5,8 +5,16 @@ General:
 ========
 
 * tulip meta node functionality to collapse pathways/organelles
-* click to highlight all edges connected to a reaction node
 
+::
+ 
+	tlp.Graph.createMetaNode(nodeSet[, multiEdges=True, delAllEdge=True])
+	
+	Closes a set of existing nodes into a metanode and returns it. Edges from nodes in the set to other nodes are replaced with edges from the metanode to the other nodes.
+
+* click to highlight all edges connected to a reaction node
+* alias a single connection
+* have the option to export tulip graph as svg
 
 Daily:
 ======

@@ -146,13 +146,16 @@ def identifyBoundarySpecies(sps_list, re_list, cmod):
             if re not in re_list and sps.getId() not in level0_sps:
                 level0_sps.append(sps.getId())
                 re = cmod.getReaction(re)
-                level1_sps += [s for s in re.getSpeciesIds() if s not in level0_sps and s not in sps_list]
+                # create a list of tuples (species, reaction): pair of pathway bound sps with connecting reaction
+                level1_sps += [(s, re.getId()) for s in re.getSpeciesIds() if s not in level0_sps and s not in sps_list]
 
     bound_sps = level1_sps
     return list(set(bound_sps))
 
 #glyc_sps_bound = identifyBoundarySpecies(glyc_sps, glyc_re, cmod)
-tca_sps_bound = identifyBoundarySpecies(tca_sps, tca_re, cmod)
+tca_sps_bound_tup = identifyBoundarySpecies(tca_sps, tca_re, cmod)
+# put only the first item of the tuples (species) in a new list
+tca_sps_bound = list(set([tup[0] for tup in tca_sps_bound_tup]))
 
 # select biomass reaction
 #for r in cmod.getActiveObjectiveReactionIds():
@@ -207,6 +210,7 @@ graph.setName(model.getId())
 
 # create graph properties for new tulip graph
 def create_props(graph):
+    # create properties
     graph.getStringProperty(graph_properties.ANCESTOR_TERM)
     graph.getStringProperty(graph_properties.ANCESTOR_ID)
     graph.getStringProperty(graph_properties.ANCESTOR_NAME)
@@ -227,6 +231,10 @@ def create_props(graph):
     graph.getStringProperty(graph_properties.FORMULA)
     graph.getStringVectorProperty(graph_properties.RELATED_COMPARTMENT_IDS)
 
+    # return list with variables pointing to the properties
+    #prop_list = [anc_term, anc_id, anc_name, term, c_id, id_, name, type_, rev, stoich, tr, ub, viewLayout,
+    #             viewShape, viewSize, fake, clone_id, formula, rel_c_id]
+    #return prop_list
 create_props(graph)
 
 # flag (true/false) ubiquitous nodes to be aliased later
@@ -258,6 +266,7 @@ def speciesToNodes(graph, input_model, ub_sps):
     - *graph* a tulip/mimoza graph
     - *input_model* a libsbml model
     - *ub_sps* a list of species to be flagged as ubiquitous (for aliasing)
+
     """
     id2n = {}
     for s in input_model.getListOfSpecies():
@@ -316,6 +325,65 @@ tlp.saveGraph(graph, "{}_raw.tlp".format(model_id))
 #################################
 # change basic graph properties #
 #################################
+
+#function to alias any chosen node
+def aliasNode(g, n_alias, target_string):
+    """
+    Alias a specific node (reaction nodes and/or metabolite nodes)::
+
+    - *g* a tulip/mimoza graph
+    - *n_alias* a tulip node to alias (format: tlp.node(index))
+    - *target_string* a name string of the target connected to n_alias
+
+    """
+    viewName = g.getStringProperty("name")
+    # iterate over all incoming and outgoing edges of chosen node
+    for e in g.getInOutEdges(n_alias):
+        if viewName[g.target(e)] == target_string:
+            g.delEdge(e) # delete the edge
+    # add new node with same properties as AKG
+    n_new = g.addNode()
+    for prop_string in g.getProperties():
+        # convert property name (string) to property object
+        prop_obj = g.getProperty(prop_string)
+        # initially set all properties of new node to prop of old node
+        prop_obj[n_new] = prop_obj[n_alias]
+        # give new node some different coords to old node
+        if prop_string == "viewLayout":
+            prop_obj = g.getProperty(prop_string)
+            prop_obj[n_new] = tlp.Coord(29, 27, 0)
+        # set clone id (node to which new node is connected)
+        clone_id = graph.getStringProperty("clone_id")
+        clone_id[n_new] = target_string
+
+    # add new edge for new node
+    # select new node via tlp.node(#) internal id
+    # graph.addEdge(source = new node, target = node that belongs to the name in target_string)
+    for n in g.getNodes():
+        if viewName[n] == target_string:
+            n_edge = g.addEdge(n_new, n)
+            # add edge name (same as name of old node)
+            viewName[n_edge] = viewName[g.source(n_edge)]
+
+    # adjust props to those of nodes connected to target
+
+
+# example: remove edge (edge 49) connecting biomass to TCA cycle at AKG (node 4)
+#          get the edge that connects AKG (node 4) to biomass (R70, node 59)
+aliasNode(graph, tlp.node(4), "R70")
+
+
+
+    #for n in graph.getInOutNodes(tlp.node(59)):
+    #    print(viewName[n])
+    #prop_obj[n_new] = prop_obj[tlp.node()]
+    #
+    # give node different size to old one
+    #if prop_string == "viewSize":
+    #    prop_obj = graph.getProperty(prop_string)
+    #    prop_obj[n_new] = tlp.Size(2, 2, 0)
+    #
+
 
 # delete a set of nodes from the graph
 def delNodes(g, node_list):
@@ -431,6 +499,7 @@ def layoutSubgraph(sg, sg_layout = None, x_center = None, y_center = None, z_cen
     - *x_center* x coordinate of layout center which defines subgraph position (optional)
     - *y_center* y coordinate of layout center which defines subgraph position (optional)
     - *z_center* z coordinate of layout center which defines subgraph position, default 0
+
     """
     # pseudo-fixed layout method
     # list of available algorithms: tlp.getLayoutAlgorithmPluginsList()
@@ -480,6 +549,16 @@ setColours(graph, tca_sg.getNodes(), COLOURS['blue'])
 #layoutSubgraph(glyc_sg, "Mixed Model", -45, 90, 0)
 #layoutSubgraph(tca_sg, "Circular", -45, -30, 0)
 #layoutSubgraph(not_spec_sg, "Planarization Layout (OGDF)", None, None, 0)
+
+# 4.) get biomass reaction as subgraph
+biomass_list = []
+
+for r in cmod.getActiveObjectiveReactionIds():
+    # add biomass reaction with substrates and products to a list
+    biomass_list += [s for s in cmod.getReaction(r).getSpeciesIds() if s not in biomass_list]
+
+biomass_sg = createSubgraph(graph, "biomass_reaction", biomass_list)
+layoutSubgraph(biomass_sg, None, None, None, 0)
 
 # fix position of a specific node (M1 (id 2) for small circle, M3 (id 8) for larger circle)
 #viewLayout[tlp.node(2)] = tlp.Coord(50,75,0)
