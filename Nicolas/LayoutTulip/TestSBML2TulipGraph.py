@@ -164,7 +164,8 @@ tca_sps_bound = list(set([tup[0] for tup in tca_sps_bound_tup]))
     # => aliasing them would break up the tca circle layout
     #ub_sp_list += [s for s in cmod.getReaction(r).getSpeciesIds() if s not in ub_sp_list]
 
-ub_sp_list = tca_sps_bound
+#ub_sp_list = tca_sps_bound
+ub_sp_list = []
 ub_re_list = []
 
 # 3.) create alias node list based on a certain compartment <-> compartment info in sbml (strategy 3)
@@ -327,19 +328,23 @@ tlp.saveGraph(graph, "{}_raw.tlp".format(model_id))
 #################################
 
 #function to alias any chosen node
-def aliasNode(g, n_alias, target_string):
+def aliasNode(g, n_alias, target_string, x ,y, n_new=None):
     """
     Alias a specific node (reaction nodes and/or metabolite nodes)::
 
     - *g* a tulip/mimoza graph
     - *n_alias* a tulip node to alias (format: tlp.node(index))
     - *target_string* a name string of the target connected to n_alias
+    - *x* x coordinate (int) of new node position
+    - *y* y coordinate (int) of new node position
+    - *n_new* newly created tulip node (cloned from n_alias)
 
     """
     viewName = g.getStringProperty("name")
     # iterate over all incoming and outgoing edges of chosen node
     for e in g.getInOutEdges(n_alias):
-        if viewName[g.target(e)] == target_string:
+        # for each node take the edge that either begins at or ends et the chosen target
+        if viewName[g.target(e)] == target_string or viewName[g.source(e)] == target_string:
             g.delEdge(e) # delete the edge
     # add new node with same properties as AKG
     n_new = g.addNode()
@@ -351,7 +356,7 @@ def aliasNode(g, n_alias, target_string):
         # give new node some different coords to old node
         if prop_string == "viewLayout":
             prop_obj = g.getProperty(prop_string)
-            prop_obj[n_new] = tlp.Coord(29, 27, 0)
+            prop_obj[n_new] = tlp.Coord(x, y, 0)
         # set clone id (node to which new node is connected)
         clone_id = graph.getStringProperty("clone_id")
         clone_id[n_new] = target_string
@@ -366,24 +371,17 @@ def aliasNode(g, n_alias, target_string):
             viewName[n_edge] = viewName[g.source(n_edge)]
 
     # adjust props to those of nodes connected to target
+        # for n in graph.getInOutNodes(tlp.node(59)):
+        #    print(viewName[n])
+        # prop_obj[n_new] = prop_obj[tlp.node()]
+        #
+        # give node different size to old one
+        # if prop_string == "viewSize":
+        #    prop_obj = graph.getProperty(prop_string)
+        #    prop_obj[n_new] = tlp.Size(2, 2, 0)
+        #
 
-
-# example: remove edge (edge 49) connecting biomass to TCA cycle at AKG (node 4)
-#          get the edge that connects AKG (node 4) to biomass (R70, node 59)
-aliasNode(graph, tlp.node(4), "R70")
-
-
-
-    #for n in graph.getInOutNodes(tlp.node(59)):
-    #    print(viewName[n])
-    #prop_obj[n_new] = prop_obj[tlp.node()]
-    #
-    # give node different size to old one
-    #if prop_string == "viewSize":
-    #    prop_obj = graph.getProperty(prop_string)
-    #    prop_obj[n_new] = tlp.Size(2, 2, 0)
-    #
-
+    return n_new
 
 # delete a set of nodes from the graph
 def delNodes(g, node_list):
@@ -447,7 +445,7 @@ COLOURS = {'red'  : tlp.Color(255, 0, 0),
 # set colour of all edges (complete graph)
 setColours(graph, graph.getEdges(), COLOURS['grey'])
 
-# change line types (Polyline, BezierCurve, CarmullRomCurve, CubicSplineCurve)
+# change line types (Polyline, BezierCurve, CatmullRomCurve, CubicSplineCurve)
 viewShape = graph.getIntegerProperty("viewShape")
 for e in graph.getEdges():
     viewShape[e] = tlp.EdgeShape.BezierCurve
@@ -476,7 +474,7 @@ def createSubgraph(graph, sg_name, n_list):
     selection.setAllEdgeValue(False)
     # populate subgraph
     for n in graph.getNodes():
-        if id_[n] in n_list:
+        if id_[n] in n_list or n in n_list:
             selection[n] = True
             sg.addNode(n)
     for e in graph.getEdges():
@@ -550,21 +548,74 @@ setColours(graph, tca_sg.getNodes(), COLOURS['blue'])
 #layoutSubgraph(tca_sg, "Circular", -45, -30, 0)
 #layoutSubgraph(not_spec_sg, "Planarization Layout (OGDF)", None, None, 0)
 
-# 4.) get biomass reaction as subgraph
-biomass_list = []
-
-for r in cmod.getActiveObjectiveReactionIds():
-    # add biomass reaction with substrates and products to a list
-    biomass_list += [s for s in cmod.getReaction(r).getSpeciesIds() if s not in biomass_list]
-
-biomass_sg = createSubgraph(graph, "biomass_reaction", biomass_list)
-layoutSubgraph(biomass_sg, None, None, None, 0)
-
 # fix position of a specific node (M1 (id 2) for small circle, M3 (id 8) for larger circle)
 #viewLayout[tlp.node(2)] = tlp.Coord(50,75,0)
 #viewLayout[tlp.node(8)] = tlp.Coord(-50,25,0)
 #viewLayout = graph.getLayoutProperty("viewLayout")
 #viewLayout[tlp.node(16)] = tlp.Coord(100, 100, 0)
+
+
+####################################################
+# aliasing examples (using the function aliasNode) #
+####################################################
+
+# example 1: remove edge (edge 49) connecting biomass to TCA cycle at AKG (node 4)
+#            get the edge that connects AKG (node 4) to biomass (R70, node 60)
+#aliasNode(graph, tlp.node(4), "R70", 22, 27)
+
+# example 2: cut out the biomass function (individually alias all of its connected species)
+#            and move it together with all of its now aliased species somewhere else
+#            biomass function = R70 (node 60)
+
+import random
+
+# alias the biomass reaction
+viewName = graph.getStringProperty("name")
+viewLayout = graph.getLayoutProperty("viewLayout")
+biomass_node_list = []
+
+for n in graph.getNodes():
+    # select biomass reaction node
+    if viewName[n] == "R70":
+        # add biomass reaction node to list
+        biomass_node_list.append(n)
+        # access biomass reaction node coords (to layout connected nodes around it)
+        x, y, z = viewLayout[n]
+        # iterate over all nodes which are connected to biomass reaction node
+        for node in graph.getInOutNodes(n):
+            # alias node and move it to a random position close to biomass reaction node (quick test hack)
+            node_aliased = aliasNode(graph, node, "R70", x+random.random()*50, y+random.random()*50, None)
+            # save newly created node in a list after aliasing
+            biomass_node_list.append(node_aliased)
+
+# move it and all connected. aliased nodes 200 units to the right (x+200) and 200 units up (y+200)
+re_node_coords = []
+
+for node in biomass_node_list:
+    x, y, z = viewLayout[node]
+    viewLayout[node] = tlp.Coord(x+200, y+200, z)
+    if viewName[node] == "R70":
+        # save coords of biomass reaction node
+        x, y, z = viewLayout[node]
+        re_node_coords.append(x)
+        re_node_coords.append(y)
+        re_node_coords.append(z)
+
+# turn biomass node group into subgraph (but without reaction node, map it seperately!)
+biomass_node_list = [n for n in biomass_node_list if viewName[n] != "R70"]
+biomass_sg = createSubgraph(graph, "biomass reaction", biomass_node_list)
+
+print(re_node_coords)
+
+# increase circle radius by increasing size of nodes?
+viewSize = graph.getSizeProperty("viewSize")
+
+for n in biomass_sg.getNodes():
+    viewSize[n] = tlp.Size(30, 30, 0)
+
+# apply layout to biomass subgraph
+layoutSubgraph(biomass_sg, "Circular", re_node_coords[0], re_node_coords[1], 0)
+
 
 
 ########################
