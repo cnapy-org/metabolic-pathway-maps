@@ -53,9 +53,9 @@ for r in cmod.reactions:
     fba_results[r.getId()] = round(r.getValue(), 6)
 
 
-##################################################################
-# extract compartment hierarchy, different node aliasing methods #
-##################################################################
+################################################################################
+# extract compartment hierarchy, select nodes for aliasing (different methods) #
+################################################################################
 
 # save compartment hierarchy to dictionary "c_id2level" for function import_sbml
 # c_id2level needs to be automatically extracted from input SBML file
@@ -154,8 +154,9 @@ def identifyBoundarySpecies(sps_list, re_list, cmod):
 
 #glyc_sps_bound = identifyBoundarySpecies(glyc_sps, glyc_re, cmod)
 tca_sps_bound_tup = identifyBoundarySpecies(tca_sps, tca_re, cmod)
-# put only the first item of the tuples (species) in a new list
-tca_sps_bound = list(set([tup[0] for tup in tca_sps_bound_tup]))
+# put only the first item of the tuples (species) in a new list and only if it is not part of the glycolysis list
+# we don't want to alias to much later on
+tca_sps_bound = list(set([tup[0] for tup in tca_sps_bound_tup if tup[0] not in glyc_sps]))
 
 # select biomass reaction
 #for r in cmod.getActiveObjectiveReactionIds():
@@ -164,8 +165,8 @@ tca_sps_bound = list(set([tup[0] for tup in tca_sps_bound_tup]))
     # => aliasing them would break up the tca circle layout
     #ub_sp_list += [s for s in cmod.getReaction(r).getSpeciesIds() if s not in ub_sp_list]
 
-#ub_sp_list = tca_sps_bound
-ub_sp_list = []
+ub_sp_list = tca_sps_bound
+#ub_sp_list = []
 ub_re_list = []
 
 # 3.) create alias node list based on a certain compartment <-> compartment info in sbml (strategy 3)
@@ -238,7 +239,7 @@ def create_props(graph):
     #return prop_list
 create_props(graph)
 
-# flag (true/false) ubiquitous nodes to be aliased later
+# flag (true/false) a list of nodes (already saved as ub_list) so that they can be aliased later
 def markUbiquitousNodes(g, ub_list):
     """
     Flag a list of nodes in a graph to be marked as ubiquitous (for aliasing)::
@@ -316,8 +317,7 @@ id2n = speciesToNodes(graph, model, ub_list)
 root, c_id2info, c_id2outs, ub_sps = sbml2tlp.import_sbml(model, groups_sbml, ub_list, c_id2level, graph, id2n)
 
 # actual layouting, creation of graph structure
-fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph =\
-    tulip_graph2geojson.graph2geojson(c_id2info, c_id2outs, root)
+fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph = tulip_graph2geojson.graph2geojson(c_id2info, c_id2outs, root)
 
 # save raw Mimoza graph output as backup
 tlp.saveGraph(graph, "{}_raw.tlp".format(model_id))
@@ -346,6 +346,10 @@ def aliasNode(g, n_alias, target_string, x ,y, n_new=None):
         # for each node take the edge that either begins at or ends et the chosen target
         if viewName[g.target(e)] == target_string or viewName[g.source(e)] == target_string:
             g.delEdge(e) # delete the edge
+    # delete alias node if its not connected to any edge anymore
+    if len(list(g.getInOutEdges(n_alias))) == 0:
+        g.delNode(n_alias)
+
     # add new node with same properties as AKG
     n_new = g.addNode()
     for prop_string in g.getProperties():
@@ -593,7 +597,7 @@ re_node_coords = []
 
 for node in biomass_node_list:
     x, y, z = viewLayout[node]
-    viewLayout[node] = tlp.Coord(x+200, y+200, z)
+    viewLayout[node] = tlp.Coord(x+50, y+15, z) # shift coords here to move the biomass reaction independently
     if viewName[node] == "R70":
         # save coords of biomass reaction node
         x, y, z = viewLayout[node]
@@ -611,11 +615,10 @@ print(re_node_coords)
 viewSize = graph.getSizeProperty("viewSize")
 
 for n in biomass_sg.getNodes():
-    viewSize[n] = tlp.Size(30, 30, 0)
+    viewSize[n] = tlp.Size(3, 3, 0)
 
 # apply layout to biomass subgraph
 layoutSubgraph(biomass_sg, "Circular", re_node_coords[0], re_node_coords[1], 0)
-
 
 
 ########################
