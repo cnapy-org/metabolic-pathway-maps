@@ -120,5 +120,7 @@ Brett: I was playing around with the code and some larger models, here are some 
  - colour specific reactions different colours ... .
  - new CONDA installer for CBMPy: "conda install -c bgoli -c SBMLTeam cbmpy"
 
+2016-23-11
+----------
 
-
+- ask (email) about SVG export function in tulip python api (not listed in getExportPluginsList() but in documetation on source forge (copy and paste url above))
