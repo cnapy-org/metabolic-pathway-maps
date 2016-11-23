@@ -120,7 +120,60 @@ Brett: I was playing around with the code and some larger models, here are some 
  - colour specific reactions different colours ... .
  - new CONDA installer for CBMPy: "conda install -c bgoli -c SBMLTeam cbmpy"
 
-2016-23-11
+2016-11-22
 ----------
 
-- ask (email) about SVG export function in tulip python api (not listed in getExportPluginsList() but in documetation on source forge (copy and paste url above))
+ - Check function definitions for global variables
+ - create import library: MVLayout.py with header
+ - clearly mark/group model specific code
+ - https://sourceforge.net/p/auber/code/HEAD/tree/tulip/doc/python/tulippluginsdocumentation.rst
+ - look at subgraph edge direction
+ - look at subgraph properties
+ - Brett: create test Tulip graphs, test Lactis model
+ - ask (email) about SVG export function in tulip python api (not listed in getExportPluginsList() but in documetation on source forge (copy and paste url above))
+
+
+
+"""
+MVLayout: layout module
+=======================
+
+MetaToolkit genome scale visualisation module (http://cbmpy.sourceforge.net)
+Copyright (C) 2016 Nicolas Huber and Brett G. Olivier, VU University Amsterdam, Amsterdam, The Netherlands
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>
+
+Author: Nicolas Huber
+Contact email: n.a.f.huber@vu.nl
+
+"""
+
+def applyCircularOGDF(g, params={}):
+	"""
+	# params['minDistCircle'] = ...
+	# params['minDistLevel'] = ...
+	# params['minDistSibling'] = ...
+	# params['minDistCC'] = ...
+	# params['pageRatio'] = ...
+
+	"""
+
+	sg_params = tlp.getDefaultPluginParameters('Circular (OGDF)', g)
+	print(sg_params)
+	for k in params:
+		if k in sg_params:
+			sg_params[k] = params[k]
+	success = g.applyLayoutAlgorithm('Circular (OGDF)', sg_params)
+	print('applyCircularOGDF: {}'.format(success))
+

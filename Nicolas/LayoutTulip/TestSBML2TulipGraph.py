@@ -17,7 +17,6 @@ import sbgn_helper
 import graph_properties
 import resize
 
-
 #############################################
 # read SBML with libsbml and cbmpy, do FBA  #
 #############################################
@@ -26,6 +25,7 @@ import resize
 #sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml") # 4, 4, False
 #sbml = os.path.join(cDir, "TestModels", "e_coli_core.xml") # 6, 4, True
 sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml") # 6, 4, True
+#sbml = os.path.join(cDir, "TestModels", "Lactococcus_lactis_MG1363.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "Hpylori_iIT341.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "iJO1366.xml") # 6, 4, True
 
@@ -97,15 +97,19 @@ def identifyConnectedNodes(model, spec_split, reac_split, split_biomass=True):
 
 # 2.) create alias node list based on biological pathways <-> group info in sbml - if available (strategy 2)
 # create lists of species ids and reaction ids for each pathway (not necessary if provided by sbml)
+
+# specific to carlsson
 glyc_sps = ["GLU_6_P", "FRU_6_P", "FRU_BIS_P", "DHAP", "GA_3P", "PG", "PEP"]
 glyc_re = ["R1", "R2r", "R3", "R4", "R5r", "R6r", "R7r", "R8r", "R9", "RR9"]
 tca_sps = ["CITRATE", "ISOCIT", "AKG", "SUCC_CoA", "SUCC", "FUMARATE", "MALATE", "OXALO"]
 tca_re = ["R21", "R23r", "R24", "R25", "R26r", "R27r", "R28r", "R29r", "R22"]
+# ubiquitous small metabolites
+small_sps = ["ATP", "ADP", "NAD", "NADH", "CO2", "NH3"]
+
+
 not_spec_sps = [sps for sps in cmod.getSpeciesIds() if sps not in glyc_sps or sps not in tca_sps]
 not_spec_re = [re for re in cmod.getReactionIds() if re not in glyc_re or re not in tca_re]
 
-# ubiquitous small metabolites
-small_sps = ["ATP", "ADP", "NAD", "NADH", "CO2", "NH3"]
 
 # create groups (not necessary if provided by sbml)
 cmod.createGroup('not_specified')
