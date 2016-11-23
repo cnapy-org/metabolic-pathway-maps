@@ -234,3 +234,23 @@ sbml_manager.save_as_layout_sbml(groups_model, gen_model, groups_sbml, n2lo, ub_
 # create SBGN file
 groups_sbgn = os.path.join(cDir, '{}.sbgn'.format(model_id))
 sbgn_helper.save_as_sbgn(n2lo, e2lo, groups_model, groups_sbgn)
+
+
+
+def applyCircularOGDF(g, params={}):
+    """
+    # params['minDistCircle'] = ...
+    # params['minDistLevel'] = ...
+    # params['minDistSibling'] = ...
+    # params['minDistCC'] = ...
+    # params['pageRatio'] = ...
+
+    """
+
+    sg_params = tlp.getDefaultPluginParameters('Circular (OGDF)', g)
+    print(sg_params)
+    for k in params:
+        if k in sg_params:
+            sg_params[k] = params[k]
+    success = g.applyLayoutAlgorithm('Circular (OGDF)', sg_params)
+    print('applyCircularOGDF: {}'.format(success))
