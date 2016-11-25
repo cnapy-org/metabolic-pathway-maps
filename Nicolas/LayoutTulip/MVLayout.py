@@ -113,6 +113,7 @@ def create_props(graph):
     graph.getStringProperty(graph_properties.CLONE_ID)
     graph.getStringProperty(graph_properties.FORMULA)
     graph.getStringVectorProperty(graph_properties.RELATED_COMPARTMENT_IDS)
+    graph.getStringProperty(graph_properties.EDGE_DIRECTIONALITY)
 
 
 def markUbiquitousNodes(g, ub_list):
@@ -191,24 +192,42 @@ def aliasNode(g, n_alias, target_string, x , y, n_new=None):
 
     - *g* a tulip/mimoza graph
     - *n_alias* a tulip node to alias (format: tlp.node(index))
-    - *target_string* a name string of the target connected to n_alias
+    - *target_string* a name string of the target node connected to n_alias
     - *x* x coordinate (int) of new node position
     - *y* y coordinate (int) of new node position
     - *n_new* newly created tulip node (cloned from n_alias)
 
     """
     viewName = g.getStringProperty("name")
-    # iterate over all incoming and outgoing edges of chosen node
-    for e in g.getInOutEdges(n_alias):
-        # for each node take the edge that either begins at or ends et the chosen target
-        if viewName[g.target(e)] == target_string or viewName[g.source(e)] == target_string:
-            g.delEdge(e) # delete the edge
-    # delete alias node if its not connected to any edge anymore
-    if len(list(g.getInOutEdges(n_alias))) == 0:
-        g.delNode(n_alias)
+    edge_direct = g.getStringProperty("edge_directionality")
 
-    # add new node with same properties as AKG
+    # select target node from target_string
+    target_node = []
+    for n in g.getNodes():
+        if viewName[n] == target_string:
+            target_node.append(n)
+
+    """
+    print("\n \n alias node: {0} {1}".format(n_alias, viewName[n_alias]))
+    print("target node: {0} {1} \n".format(target_node[0], viewName[target_node[0]]))
+    """
+
+    # iterate over all incoming and outgoing edges of alias node
+    for e in g.getInOutEdges(n_alias):
+        # take the edge that begins at the target node
+        if viewName[g.source(e)] == target_string:
+            # if a node with the target name is the source of the edge, it's a product edge (outgoing, away from target)
+            edge_direct[e] = "out" # set edge direct property to "out" = away from reaction node
+            #print("{0} edge: {1} {2}".format(edge_direct[e], e, viewName[e]))
+        if viewName[g.target(e)] == target_string:
+            # if a node with the target name is the target of the edge, it's a educt edge (incoming, towards the target)
+            edge_direct[e] = "in" # set edge direct property to "in" = towards reaction node
+            #print("{0} edge: {1} {2}".format(edge_direct[e], e, viewName[e]))
+
+    # add new node
     n_new = g.addNode()
+
+    # copy properties from old node to new node
     for prop_string in g.getProperties():
         # convert property name (string) to property object
         prop_obj = g.getProperty(prop_string)
@@ -222,25 +241,20 @@ def aliasNode(g, n_alias, target_string, x , y, n_new=None):
         clone_id = g.getStringProperty("clone_id")
         clone_id[n_new] = target_string
 
-    # add new edge for new node
-    # select new node via tlp.node(#) internal id
-    # graph.addEdge(source = new node, target = node that belongs to the name in target_string)
-    for n in g.getNodes():
-        if viewName[n] == target_string:
-            n_edge = g.addEdge(n_new, n)
-            # add edge name (same as name of old node)
-            viewName[n_edge] = viewName[g.source(n_edge)]
-
-    # adjust props to those of nodes connected to target
-        # for n in graph.getInOutNodes(tlp.node(59)):
-        #    print(viewName[n])
-        # prop_obj[n_new] = prop_obj[tlp.node()]
-        #
-        # give node different size to old one
-        # if prop_string == "viewSize":
-        #    prop_obj = graph.getProperty(prop_string)
-        #    prop_obj[n_new] = tlp.Size(2, 2, 0)
-        #
+    # add new edges and delete old ones
+    for e in g.getInOutEdges(n_alias):
+        # incoming edge (towards target)
+        if edge_direct[e] == "in":
+            e_new = g.addEdge(n_new, target_node[0])  # create new edge (from alias node to target)
+            edge_direct[e_new] = edge_direct[e]
+            viewName[e_new] = viewName[e]  # copy edge name to new edge
+            g.delEdge(e)  # delete the old edge
+        # outgoing edge (away from target)
+        if edge_direct[e] == "out":
+            e_new = g.addEdge(target_node[0], n_new)  # create new edge (from target to alias node)
+            edge_direct[e_new] = edge_direct[e]
+            viewName[e_new] = viewName[e]  # copy edge name to new edge
+            g.delEdge(e)  # delete the edge
 
     return n_new
 
@@ -313,11 +327,13 @@ def createSubgraph(graph, sg_name, n_list):
         if id_[n] in n_list or n in n_list:
             selection[n] = True
             sg.addNode(n)
-    # differentiate between In and Out Edges! (so that not all edges in sg are either In or Out) (TODO)
     for e in graph.getEdges():
         if selection[graph.source(e)] and selection[graph.target(e)]:
             selection[e] = True
-            sg.addEdge(graph.source(e), graph.target(e))
+            if e in graph.getInEdges(graph.source(e)):
+                sg.addEdge(graph.target(e), graph.source(e))
+            if e in graph.getOutEdges(graph.source(e)):
+                sg.addEdge(graph.source(e), graph.target(e))
     # reset selection
     selection.setAllNodeValue(False)
     selection.setAllEdgeValue(False)

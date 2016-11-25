@@ -5,6 +5,7 @@ import os
 # get current directory
 cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
 
+import random
 import libsbml
 import cbmpy
 from tulip import tlp
@@ -30,6 +31,7 @@ import MVLayout as mvl
 sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "Hpylori_iIT341.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "iJO1366.xml") # 6, 4, True
+#sbml = os.path.join(cDir, "TestModels", "Lactococcus_lactis_MG1363") # ?, ?, set it to 'True' probably
 
 # create libsbml model
 reader = libsbml.SBMLReader()
@@ -66,6 +68,7 @@ for r in cmod.reactions:
 comp_list = [''] + cmod.getCompartmentIds()
 level_list = [(x, comp_list[x]) for x in range(len(comp_list))]
 c_id2level = dict(zip(comp_list[1:], level_list))
+
 
 # 1.) create alias node list based on connectivity <-> user defined thresholds (strategy 1)
 
@@ -118,7 +121,6 @@ tca_sps_bound = list(set([tup[0] for tup in tca_sps_bound_tup if tup[0] not in g
     #ub_sp_list += [s for s in cmod.getReaction(r).getSpeciesIds() if s not in ub_sp_list]
 
 ub_sp_list = tca_sps_bound
-#ub_sp_list = []
 ub_re_list = []
 
 
@@ -141,11 +143,11 @@ ub_re_list = []
 
 # 5.) create alias node list of all boundary (exchange) reactions (for aliasNode() function, NOT Mimoza!)
 
-# ex_re_list = cmod.getExchangeReactionIds()
+ex_re_list = cmod.getExchangeReactionIds()
 # ub_sp_list = []
 # ub_re_list = []
 
-# combine alias species and alias reaction lists (for aliasNodes function)
+# combine alias species and alias reaction lists (either for import_sbml or aliasNodes function)
 ub_list = ub_sp_list + ub_re_list
 
 # add ubiquitous (alias) species group to sbml file and save it as "..._with_groups.xml"
@@ -232,6 +234,7 @@ for e in graph.getEdges():
 # different layouts on subsystems (compartments, pathways, etc.) #
 ##################################################################
 
+
 # 1.) manually define subsystem node lists
 
 # specific to toy_model_biofuel
@@ -251,12 +254,12 @@ if sbml == os.path.join(cDir, "TestModels", "toy_model_biofuel.xml"):
 
 # 2.) get subsystem node list from all species of a certain compartment
 #comp_ids = cmod.getCompartmentIds() # get a list of all compartments
-#comp_2 = cmod.getCompartment(comp_ids[1]) # get  compartment 1 (first entry in list of all compartments)
-#comp_2_species = comp_2.containsSpecies() # list of species in compartment 1
+#comp_2 = cmod.getCompartment(comp_ids[1]) # get  compartment 2 (second entry in list of all compartments)
+#comp_2_species = comp_2.containsSpecies() # list of species in compartment 2
 
 # layout all species from compartment 2 (e.g.: extracellular) seperately (i.e.: along the edges of the graph)
-#comp_2_sg = createSubgraph(graph, "comp_2", comp_2_species)
-#layoutSubgraph(comp_2_sg, "Hierarchical Graph", 0, 0, 0)
+#comp_2_sg = mvl.createSubgraph(graph, "comp_2", comp_2_species)
+#mvl.layoutSubgraph(comp_2_sg, "Hierarchical Graph", 0, 0, 0)
 
 
 # 3.) get subsystem node list from different biological pathways (e.g.: glycolysis, tca and 'not specified')
@@ -267,11 +270,12 @@ not_spec_sg = mvl.createSubgraph(graph, "not specified", not_spec_sps)
 mvl.setColours(graph, glyc_sg.getNodes(), COLOURS['red'])
 mvl.setColours(graph, tca_sg.getNodes(), COLOURS['blue'])
 
-#layoutSubgraph(glyc_sg, "Mixed Model", -45, 90, 0)
-#layoutSubgraph(tca_sg, "Circular", -45, -30, 0)
-#layoutSubgraph(not_spec_sg, "Planarization Layout (OGDF)", None, None, 0)
+#mvl.layoutSubgraph(glyc_sg, "Mixed Model", -45, 90, 0)
+#mvl.layoutSubgraph(tca_sg, "Circular", -45, -30, 0)
+#mvl.layoutSubgraph(not_spec_sg, "Planarization Layout (OGDF)", None, None, 0)
 
 # fix position of a specific node (M1 (id 2) for small circle, M3 (id 8) for larger circle)
+# specific to toy_model_biofuel
 #viewLayout[tlp.node(2)] = tlp.Coord(50,75,0)
 #viewLayout[tlp.node(8)] = tlp.Coord(-50,25,0)
 #viewLayout = graph.getLayoutProperty("viewLayout")
@@ -281,6 +285,7 @@ mvl.setColours(graph, tca_sg.getNodes(), COLOURS['blue'])
 ####################################################
 # aliasing examples (using the function aliasNode) #
 ####################################################
+
 
 # example 1: remove edge (edge 49) connecting biomass to TCA cycle at AKG (node 4)
 #            get the edge that connects AKG (node 4) to biomass (R70, node 60)
@@ -293,17 +298,17 @@ mvl.setColours(graph, tca_sg.getNodes(), COLOURS['blue'])
 #            and move it together with all of its now aliased species somewhere else
 #            biomass function = R70 (node 60)
 
-import random
-
 # alias the biomass reaction
 # specific to carlsson_model (R70 is biomass reaction node)
 viewName = graph.getStringProperty("name")
 viewLayout = graph.getLayoutProperty("viewLayout")
 
+# specific to carlsson model
+biomass_re_id = "R70"
 biomass_node_list = []
 for n in graph.getNodes():
     # select biomass reaction node
-    if viewName[n] == "R70":
+    if viewName[n] == biomass_re_id:
         # add biomass reaction node to list
         biomass_node_list.append(n)
         # access biomass reaction node coords (to layout connected nodes around it)
@@ -311,9 +316,10 @@ for n in graph.getNodes():
         # iterate over all nodes which are connected to biomass reaction node
         for node in graph.getInOutNodes(n):
             # alias node and move it to a random position close to biomass reaction node (quick test hack)
-            node_aliased = mvl.aliasNode(graph, node, "R70", x+random.random()*50, y+random.random()*50, None)
+            node_aliased = mvl.aliasNode(graph, node, biomass_re_id, x+random.random()*50, y+random.random()*50, None)
             # save newly created node in a list after aliasing
             biomass_node_list.append(node_aliased)
+
 
 # move it and all connected. aliased nodes 200 units to the right (x+200) and 200 units up (y+200)
 re_node_coords = []
@@ -340,12 +346,120 @@ for n in biomass_sg.getNodes():
 mvl.layoutSubgraph(biomass_sg, "Circular", re_node_coords[0], re_node_coords[1], 0)
 
 
+# example 3: alias all exchange reactions (from ex_re_list, extracted from model with cbmpy if info available)
+#            add them to a subgraph (new sg or the same as biomass) and layout them
+
+# exchange reaction node aliasing attempts
+"""
+########################################################################################################################
+# like example 2 but instead for only one reaction -> for a list of reactions => add one more loop
+id_ = graph.getStringProperty("id")
+viewName = graph.getStringProperty("name")
+viewLayout = graph.getLayoutProperty("viewLayout")
+
+# convert reaction node ids to reaction node objects
+ex_node_list = []
+for r in graph.getNodes():
+    # only consider reaction node whose id is in the exchage reaction list
+    if id_[r] in ex_re_list:
+        ex_node_list.append(r)
+
+ex_result_list = []
+for re_node in ex_node_list:
+    # iterate over all nodes which are connected to reaction node
+    for node in graph.getInOutNodes(re_node):
+        x, y, z = viewLayout[node]
+        # alias node and move it to a random position close to reaction node
+        node_aliased = mvl.aliasNode(graph, node, id_[re_node], x+random.random()*50, y+random.random()*50, None)
+        # save newly created node in a list after aliasing
+        ex_result_list.append(id_[node_aliased])
+
+print(ex_result_list)
+########################################################################################################################
+id_ = graph.getStringProperty("id")
+
+# convert reaction node ids to reaction node objects
+ex_node_list = []
+for r in graph.getNodes():
+    # only consider reaction node whose id is in the exchage reaction list
+    if id_[r] in ex_re_list:
+        ex_node_list.append(r)
+
+ex_result_list = []
+for r in ex_node_list:
+    for n in graph.getInOutNodes(r):
+        # nodes of exchange reactions that have either only in or only out nodes already sit on the edges
+        # -> no aliasing required, only add them to result list for subgraph creation
+        if len(list(graph.getOutEdges(n))) == 0 or len(list(graph.getInEdges(n))) == 0:
+            ex_node_list.append(n)
+            # nodes of exchange reactions that have in and out nodes connect the exchange reactions to the rest of the
+            # pathway => alias them
+        elif len(list(graph.getOutEdges(n))) != 0 and len(list(graph.getInEdges(n))) != 0:
+            # n = node to be aliased
+            # the target strings come from a list of all nodes connected to the alias node (con_node)
+            # except those nodes which are in ex_re_list (to not cut the exchange reactions themselves)
+            for con_node in list(graph.getNodes()):
+                if id_[con_node] not in ex_re_list:
+                    n_new = mvl.aliasNode(graph, n, id_[con_node], 0, 0)
+                    ex_node_list.append(n_new)
+            else:
+                pass
+########################################################################################################################
+"""
+
+
+# example 4: basically the combination of examples 2 and 3
+# just create a subgraph with all the ex reaction nodes and the all biomass reaction nodes
+# => test different layouts on that subgraph
+
+
+# I.) exchange reaction nodes
+# convert reaction node ids to reaction node objects
+id_ = graph.getStringProperty("id")
+ex_node_list = []
+for r in graph.getNodes():
+    # only consider reaction node whose id is in the exchage reaction list
+    if id_[r] in ex_re_list:
+        ex_node_list.append(r)
+    # get species connected to ex reaction nodes
+    for n in graph.getInOutNodes(r):
+        if id_[r] in ex_re_list:
+            ex_node_list.append(n)
+
+# II.) all biomass reaction nodes
+viewName = graph.getStringProperty("name")
+biomass_node_list = []
+for n in graph.getNodes():
+    # select biomass reaction node
+    if viewName[n] == "R70":
+        # add biomass reaction node to list
+        biomass_node_list.append(n)
+        # iterate over all nodes which are connected to biomass reaction node
+        for node in graph.getInOutNodes(n):
+            biomass_node_list.append(n)
+
+# create subgraph
+biomass_and_ex_re_list = biomass_node_list + ex_node_list
+biomass_and_ex_re_sg = mvl.createSubgraph(graph, "biomass and ex reactions", biomass_and_ex_re_list)
+
+# save subgraph seperately
+tlp.saveGraph(biomass_and_ex_re_sg, "{}_biomass_ex_re.tlp".format(model_id))
+
+# use this new subgraph to get to the exchange reactions instead of trying to extract them from the entire graph (TODO)
+
+# example 5 (new version of example 3): alias all exchange reactions
+#                                       add them to a subgraph (new sg or the same as biomass) and layout them
+
+
+
 ########################
 # visualize FBA result #
 ########################
 """
 # color nodes and edges depending on flux value (pos, neg, 0) -> do subgraphs for each (three colors)
 # input format: dict = {"M1": -3, ...}
+
+# specific for carlsson model
 #flux_dict = {"R70": 2, "R93": 1, "R55": 0, "R42": -0.00001, "R7r": -1, "R10": -2}
 flux_dict = fba_results
 
@@ -401,6 +515,12 @@ setColours(graph, neg_sg.getNodes(), COLOURS['red'])
 
 # save total graph with all changes
 tlp.saveGraph(graph, "{}_graph.tlp".format(model_id))
+
+# export tulip graph as SVG file
+#params = tlp.getDefaultPluginParameters('SVG Export', graph)
+#tlp.exportGraph('SVG Export', graph, '{}.svg'.format(model_id), params
+# NOT WORKING! -> so far: Exception: No plugin named  SVG Export.
+# emailed tulip staff about it
 
 # add layout to SBML file
 groups_document = reader.readSBML(groups_sbml)
