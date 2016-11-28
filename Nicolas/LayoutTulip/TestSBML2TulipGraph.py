@@ -211,6 +211,12 @@ NODE_TYPES = {'metabolites': 1,
 mvl.addLabels(graph, NODE_TYPES['metabolites'], "id")
 mvl.addLabels(graph, NODE_TYPES['reactions'], "id")
 
+# add labels to edges
+#viewLabel = graph.getStringProperty("viewLabel")
+#for e in graph.getEdges():
+#    viewLabel[e] = "test"
+# TODO: edge labels are set but not visible
+
 # change node or edge colour
 # define colours
 COLOURS = {'red'  : tlp.Color(255, 0, 0),
@@ -343,13 +349,15 @@ for n in biomass_sg.getNodes():
     viewSize[n] = tlp.Size(3, 3, 0)
 
 # apply layout to biomass subgraph
-mvl.layoutSubgraph(biomass_sg, "Circular", re_node_coords[0], re_node_coords[1], 0)
+mvl.layoutSubgraph(biomass_sg, "Circular", None, re_node_coords[0], re_node_coords[1], 0)
 
 
 # example 3: alias all exchange reactions (from ex_re_list, extracted from model with cbmpy if info available)
 #            add them to a subgraph (new sg or the same as biomass) and layout them
 
 # exchange reaction node aliasing attempts
+
+# TODO: flatten loops so we can call aliasNode function for many different nodes and different reaction targets
 """
 ########################################################################################################################
 # like example 2 but instead for only one reaction -> for a list of reactions => add one more loop
@@ -408,10 +416,9 @@ for r in ex_node_list:
 """
 
 
-# example 4: basically the combination of examples 2 and 3
-# just create a subgraph with all the ex reaction nodes and the all biomass reaction nodes
-# => test different layouts on that subgraph
-
+# example 4.1: basically the combination of examples 2 and 3
+#              just create a subgraph with all the ex reaction nodes and the all biomass reaction nodes together
+#              => test different layouts on that subgraph
 
 # I.) exchange reaction nodes
 # convert reaction node ids to reaction node objects
@@ -429,26 +436,58 @@ for r in graph.getNodes():
 # II.) all biomass reaction nodes
 viewName = graph.getStringProperty("name")
 biomass_node_list = []
+
+# specific for carlsson model
+biomass_name = "R70"
+
 for n in graph.getNodes():
     # select biomass reaction node
-    if viewName[n] == "R70":
+    if viewName[n] == biomass_name:
         # add biomass reaction node to list
         biomass_node_list.append(n)
         # iterate over all nodes which are connected to biomass reaction node
         for node in graph.getInOutNodes(n):
             biomass_node_list.append(n)
 
-# create subgraph
+# III.) create subgraph
 biomass_and_ex_re_list = biomass_node_list + ex_node_list
 biomass_and_ex_re_sg = mvl.createSubgraph(graph, "biomass and ex reactions", biomass_and_ex_re_list)
+# => use this new subgraph to get to the exchange reactions instead of trying to extract them from the entire graph
 
-# save subgraph seperately
+
+# example 4.2 : alias all exchange reactions
+#               add them as new subgraph to the subgraph biomass_and_ex_re_sg
+
+id_ = biomass_and_ex_re_sg.getStringProperty("id")
+clone_id = biomass_and_ex_re_sg.getStringProperty("clone_id")
+
+# specific for carlsson model
+biomass_id = "R70"
+
+# I.)
+# put all exchange reaction nodes in one list and all biomass related nodes in another
+ex_re_nodes = []
+biomass_nodes = []
+for n in biomass_and_ex_re_sg.getNodes():
+    if clone_id[n] != biomass_id and id_[n] != biomass_id:
+        ex_re_nodes.append(n)
+    else:
+        biomass_nodes.append(n)
+
+# II.) create seperate exchange reaction and biomass subgraphs
+ex_re_only_sg = mvl.createSubgraph(biomass_and_ex_re_sg, "only exchange reactions", ex_re_nodes)
+biomass_only_sg = mvl.createSubgraph(biomass_and_ex_re_sg, "only biomass reaction", biomass_nodes)
+
+# III.) apply layout only on exchange reaction subgraph
+mvl.layoutSubgraph(ex_re_only_sg, "Tree Radial", {"layer spacing": 10}, 0, 0, 0)
+# Sugiyama: change node distance (default: 3) and layer distance (default: 3) to scale up the biomass reaction
+mvl.layoutSubgraph(biomass_only_sg, "Sugiyama (OGDF)", {"node distance": 5, "layer distance": 5}, 0, 0, 0)
+
+# TODO: fine tuning of the layout
+# TODO: for tree raidal: straighten exchange reactions (in edge slope = out edge slope)
+
+# VI.) save subgraph
 tlp.saveGraph(biomass_and_ex_re_sg, "{}_biomass_ex_re.tlp".format(model_id))
-
-# use this new subgraph to get to the exchange reactions instead of trying to extract them from the entire graph (TODO)
-
-# example 5 (new version of example 3): alias all exchange reactions
-#                                       add them to a subgraph (new sg or the same as biomass) and layout them
 
 
 

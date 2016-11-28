@@ -341,12 +341,13 @@ def createSubgraph(graph, sg_name, n_list):
     return sg
 
 
-def layoutSubgraph(sg, sg_layout = None, x_center = None, y_center = None, z_center = 0):
+def layoutSubgraph(sg, sg_layout = None, user_params = None, x_center = None, y_center = None, z_center = 0):
     """
     Apply layout to subgraph and center it around a given point::
 
     - *sg* a tulip/mimoza subgraph
     - *sg_layout* subgraph layout (string), ex: "Circular (OGDF)" (optional)
+    - *user_params* parameter dictionary to overwrite default parameters of layout algorithm (optional)
     - *x_center* x coordinate of layout center which defines subgraph position (optional)
     - *y_center* y coordinate of layout center which defines subgraph position (optional)
     - *z_center* z coordinate of layout center which defines subgraph position, default 0
@@ -354,10 +355,21 @@ def layoutSubgraph(sg, sg_layout = None, x_center = None, y_center = None, z_cen
     """
     # pseudo-fixed layout method
     # list of available algorithms: tlp.getLayoutAlgorithmPluginsList()
+
+    # get default parameters of layout algorithm
+    params = tlp.getDefaultPluginParameters(sg_layout, sg)
+
     # apply algorithm to subgraph
-    # add default parameters and params as argument (TODO)
-    if sg_layout is not None:
-        sg.applyLayoutAlgorithm(sg_layout)
+    # with default parameters
+    if sg_layout is not None and user_params is None:
+        sg.applyLayoutAlgorithm(sg_layout, params)
+    # with user parameters (overwrite default parameters)
+    if sg_layout is not None and user_params is not None:
+        for key in user_params.keys():
+            if key in params:
+                params[key] = user_params[key]
+                sg.applyLayoutAlgorithm(sg_layout, params)
+
     # center layout: center(viewLayout, newCenter, subgraph)
     # newCenter can be given as coordinates (tlp.Coord(x,y,z)) or
     viewLayout = sg.getLayoutProperty("viewLayout")
