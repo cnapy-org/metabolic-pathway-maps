@@ -27,6 +27,8 @@ Contact email: n.a.f.huber@vu.nl
 from tulip import tlp
 import graph_properties
 import resize
+import layout_utils
+import tarjan
 
 
 def identifyConnectedNodes(model, spec_split, reac_split, split_biomass=True):
@@ -403,4 +405,55 @@ def layoutSubgraph(sg, sg_layout=None, user_params=None, x_center=None, y_center
 
     return sg
 
+
+# Copied Mimoza Functions
+def layout_components(graph, cycle_number_threshold=40, node_number_threshold=300, margin=5):
+    root = graph.getRoot()
+    comp_list = tlp.ConnectedTest.computeConnectedComponents(graph)
+    followers_rev_or_gen = lambda n, gr: (gr.opposite(e, n) for e in gr.getInOutEdges(n) if n == gr.source(e)
+                                          or gr[graph_properties.REVERSIBLE][e] or gr.isMetaNode(n) and gr.isMetaNode(gr.opposite(e,
+                                                                                                                  n)))
+    followers_rev = lambda n, gr: (gr.opposite(e, n) for e in gr.getInOutEdges(n) if n == gr.source(e)
+                                   or gr[graph_properties.REVERSIBLE][e])
+    followers_irrev = lambda n, gr: gr.getOutNodes(n)
+    followers_irrev_gen_only = lambda n, gr: (m for m in gr.getOutNodes(n) if gr.isMetaNode(m))
+
+    def process_cc(gr, ns, meta_ns, follower_method_iterator):
+        try:
+            follower_method = next(follower_method_iterator)
+        except StopIteration:
+            if len(ns) < node_number_threshold:
+                mn = gr.createMetaNode(ns, False)
+                cc_graph = root[graph_properties.VIEW_META_GRAPH][mn]
+                layout_utils.layout_hierarchically(cc_graph)
+                meta_ns.append(mn)
+            return
+        # iterate over strongly connected components
+        for cc in tarjan.tarjan_iter({n: list(follower_method(n, gr)) for n in ns}):
+            if len(cc) > 3:
+                if layout_utils.dfs(cc[0], gr, set(), None, cycle_number_threshold, follower_method) \
+                        <= cycle_number_threshold:
+                    mn = gr.createMetaNode(cc, False)
+                    cc_graph = root[graph_properties.VIEW_META_GRAPH][mn]
+                    layout_utils.layout_circle(cc_graph, margin)
+                    meta_ns.append(mn)
+                else:
+                    process_cc(gr, cc, meta_ns, follower_method_iterator)
+
+    for ns in comp_list:
+        gr = graph.inducedSubGraph(ns)
+        meta_ns = []
+        process_cc(gr, (n for n in gr.getNodes() if gr[graph_properties.TYPE][n] != graph_properties.TYPE_COMPARTMENT), meta_ns,
+                   iter((followers_rev_or_gen, followers_rev, followers_irrev, followers_irrev_gen_only)))
+        for mn in meta_ns:
+            root[graph_properties.VIEW_SHAPE][mn] = graph_properties.COMPARTMENT_SHAPE
+            w, h = resize.get_mn_size(mn, root)
+            root[graph_properties.VIEW_SIZE][mn] = tlp.Size(w, h)
+        if gr.numberOfNodes() < node_number_threshold and \
+                not next((n for n in gr.getNodes() if root[graph_properties.TYPE][n] == graph_properties.TYPE_COMPARTMENT), False):
+            layout_utils.layout_hierarchically(gr)
+        else:
+            layout_utils.layout_force(gr, margin)
+        for mn in meta_ns:
+            gr.openMetaNode(mn)
 

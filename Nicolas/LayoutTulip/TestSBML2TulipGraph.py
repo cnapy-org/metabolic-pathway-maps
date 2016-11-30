@@ -213,11 +213,11 @@ NODE_TYPES = {'metabolites': 1,
 mvl.addLabels(graph, NODE_TYPES['metabolites'], "id")
 mvl.addLabels(graph, NODE_TYPES['reactions'], "id")
 
-# add labels to edges
+# TODO: add labels to edges
 #viewLabel = graph.getStringProperty("viewLabel")
 #for e in graph.getEdges():
 #    viewLabel[e] = "test"
-# todo: edge labels are set in "viewLabel" but not visible
+# -> edge labels are set in "viewLabel" but not visible!
 
 # change node or edge colour
 # define colours
@@ -268,7 +268,7 @@ if sbml == os.path.join(cDir, "TestModels", "toy_model_biofuel.xml"):
 #comp_2_sg = mvl.createSubgraph(graph, "comp_2", comp_2_species, None)
 #mvl.layoutSubgraph(comp_2_sg, "Hierarchical Graph", 0, 0, 0)
 
-
+"""
 # 3.) get subsystem node list from different biological pathways (e.g.: glycolysis, tca) and apply layout
 
 # I.) initial subgraph generation
@@ -288,8 +288,10 @@ mvl.layoutSubgraph(tca_sg, "Circular (OGDF)", None, -45, -30, 0)
 
 # II.) manipulate pathway positions relative to each other
 # -> choose coordinates so that the two pathways don't overlap:
-# -> known assumption: tca cycle is always below glycolysis -> move tca cycle!
+# -> known assumption: tca cycle is always below glycolysis
+# -> move tca cycle!
 viewLayout = graph.getLayoutProperty("viewLayout")
+selection = graph.getBooleanProperty("viewSelection")
 
 # get y-coord of lowest glycolysis node
 bottom_gly_node = None
@@ -312,13 +314,32 @@ x_trans = viewLayout[bottom_gly_node][0]
 y_diff = y_top_tca - y_bottom_gly
 
 # center tca at new position: x = x-value of lowest glyc node, y = old y - y_diff - buffer, z = 0
-viewLayout = graph.getLayoutProperty("viewLayout")
+#buff = 60 # buffer space between glycolysis and tca
+#tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_trans, -30-y_diff-buff, 0), tca_sg)
+
+# -> try moving the glycolysis instead => edges are still bent (are not moved!)
+#buff = 60 # buffer space between glycolysis and tca
+#tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_trans, 150+y_diff+buff, 0), glyc_sg)
+
+# ***********************************bounding box idea***********************************
+# create a glycolysis bounding box from selection of all glycolysis nodes and edges
+# reset selection
+selection.setAllNodeValue(False)
+selection.setAllEdgeValue(False)
+for n in glyc_sg.getNodes():
+    selection[n] = True
+for e in glyc_sg.getEdges():
+    selection[e] = True
+# create BB
+glyc_bb = tlp.computeBoundingBox(glyc_sg, selection)
+# move BB
 buff = 60 # buffer space between glycolysis and tca
-tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_trans, -30-y_diff-buff, 0), tca_sg)
+tlp.BoundingBox.translate(glyc_bb, tlp.Coord(x_trans, 150+y_diff+buff, 0))
+# -> Bounding Box does not move with graph and layout can't be confined to a bounding box!
 
 # III.) generate combined graph of both pathways
 # show both tca and glycolysis in same graph
-selection = graph.getBooleanProperty("viewSelection")
+
 # reset selection
 selection.setAllNodeValue(False)
 selection.setAllEdgeValue(False)
@@ -338,6 +359,19 @@ tca_glyc_sg = graph.addSubGraph(selection, "tca and glyc")
 selection.setAllNodeValue(False)
 selection.setAllEdgeValue(False)
 
+# TEST: call layout_components (from Mimoza)
+#mvl.layout_components(tca_glyc_sg)
+#-> also struggles with edge movement when called after own graph manipulation!
+
+# ***********************************overlap removal idea***************************************
+# call overlap removal on combined tca+glyc subgraph
+tca_glyc_sg.applyLayoutAlgorithm('Fast Overlap Removal')
+# -> only resolves overlapping nodes, edges still overlap
+
+# ***********************************remove edge crossing idea***********************************
+# remove edge crossings between the pathways:
+#  tlp.computeLinesIntersection(line1, line2)
+# ...
 
 # fix position of a specific node (M1 (id 2) for small circle, M3 (id 8) for larger circle)
 # specific to toy_model_biofuel
@@ -345,7 +379,7 @@ selection.setAllEdgeValue(False)
 #viewLayout[tlp.node(8)] = tlp.Coord(-50,25,0)
 #viewLayout = graph.getLayoutProperty("viewLayout")
 #viewLayout[tlp.node(16)] = tlp.Coord(100, 100, 0)
-
+"""
 
 ####################################################
 # aliasing examples (using the function aliasNode) #
@@ -541,18 +575,13 @@ tlp.saveGraph(biomass_and_ex_re_sg, "{}_biomass_ex_re.tlp".format(model_id))
 ########################
 # visualize FBA result #
 ########################
-"""
-# color nodes and edges depending on flux value (pos, neg, 0) -> do subgraphs for each (three colors)
-# TODO: instead of three colors, add  three categories for positive (max < in between > min)gradient
-# TODO: three greens for pos and three reds for neg and call setColor dependent on flux value (numpy.linspace(start,
-# TODO: end, amount of segments))
+#"""
+# color nodes and edges depending on flux value
 # input format: dict = {"M1": -3, ...}
 
 # specific for carlsson model
 #flux_dict = {"R70": 2, "R93": 1, "R55": 0, "R42": -0.00001, "R7r": -1, "R10": -2}
 flux_dict = fba_results
-
-print(flux_dict)
 
 # save flux results as graph integer property "flux"
 flux = graph.getDoubleProperty("flux")
@@ -569,9 +598,9 @@ for r_id, f in flux_dict.items():
     if r_id in network_nodes.keys():
         flux[network_nodes[r_id]] = f
 
-# add flux labels to reaction nodes
+# TODO: add flux labels to reaction nodes
 #mvl.addLabels(graph, 2, "flux")
-# TODO: addLabel only accepts string label properties so far
+# -> addLabel only accepts string label properties so far!
 
 # extract reaction nodes from dict
 pos_flux = []
@@ -585,38 +614,69 @@ for key in flux_dict:
     else:
         zero_flux.append(key)
 
-# create subgraphs for pos, neg and zero flux
-# TODO: instead of creating subgraphs just color the reaction nodes and the in + out edges (setColor())
-pos_sg = mvl.createSubgraph(graph, "pos_flux", pos_flux, {"distance": 1L})
-neg_sg = mvl.createSubgraph(graph, "neg_flux", neg_flux, {"distance": 1L})
-zero_sg = mvl.createSubgraph(graph, "zero_flux", zero_flux, {"distance": 1L})
-
 # color total graph
 mvl.setColours(graph, graph.getNodes(), COLOURS['grey'])
 mvl.setColours(graph, graph.getEdges(), COLOURS['grey'])
 
-# color in and out edges of flux nodes
-viewColor = pos_sg.getColorProperty("viewColor")
-for n in pos_sg.getNodes():
-    for e in graph.getInOutEdges(n):
-        viewColor[e] = COLOURS['green']
+# tulip provides a colour scale function!
+# 1. initialize empty color scales
+colorScale_pos = tlp.ColorScale([])
+colorScale_neg = tlp.ColorScale([])
 
-for n in neg_sg.getNodes():
-    for e in graph.getInOutEdges(n):
-        viewColor[e] = COLOURS['red']
+# 2. fill colorScales
+colorScale_pos.setColorAtPos(0.0, tlp.Color(255, 255, 255))
+colorScale_pos.setColorAtPos(1.0, COLOURS['green'])
+colorScale_neg.setColorAtPos(0.0, tlp.Color(255, 255, 255))
+colorScale_neg.setColorAtPos(1.0, COLOURS['red'])
 
-#for n in zero_sg.getNodes():
-#    for e in graph.getInOutEdges(n):
-#        viewColor[e] = COLOURS['blue']
+# 3. get colors for flux values
+# color in and out edges of flux nodes and reaction nodes
+# TODO: use numpy to generate ranges for flux ranges numpy.linspace(start, end, number of intervalls)
+viewColor = graph.getColorProperty("viewColor")
+for n in network_nodes.values():
+    if id_[n] in pos_flux:
+        if flux[n] > 0 and flux[n] <= 0.5:
+            viewColor[n] = colorScale_pos.getColorAtPos(0.25)
+            for e in graph.getInOutEdges(n):
+                viewColor[e] = colorScale_pos.getColorAtPos(0.25)
 
-# color the flux subgraph nodes
-mvl.setColours(graph, pos_sg.getNodes(), COLOURS['green'])
-mvl.setColours(graph, neg_sg.getNodes(), COLOURS['red'])
-#setColours(graph, zero_sg.getNodes(), COLOURS['blue'])
+        if flux[n] > 0.5 and flux[n] <= 1:
+            viewColor[n] = colorScale_pos.getColorAtPos(0.5)
+            for e in graph.getInOutEdges(n):
+                viewColor[e] = colorScale_pos.getColorAtPos(0.5)
 
-# reduce edge crossing
-# in progress...
-"""
+        if flux[n] > 1 and flux[n] <= 3:
+            viewColor[n] = colorScale_pos.getColorAtPos(0.75)
+            for e in graph.getInOutEdges(n):
+                viewColor[e] = colorScale_pos.getColorAtPos(0.75)
+
+        if flux[n] > 3 :
+            viewColor[n] = colorScale_pos.getColorAtPos(1)
+            for e in graph.getInOutEdges(n):
+                viewColor[e] = colorScale_pos.getColorAtPos(1)
+
+    if id_[n] in neg_flux:
+        if flux[n] < 0 and flux[n] <= -0.5:
+            viewColor[n] = colorScale_neg.getColorAtPos(0.25)
+            for e in graph.getInOutEdges(n):
+                viewColor[e] = colorScale_neg.getColorAtPos(0.25)
+
+        if flux[n] < -0.5 and flux[n] <= -1:
+            viewColor[n] = colorScale_neg.getColorAtPos(0.5)
+            for e in graph.getInOutEdges(n):
+                viewColor[e] = colorScale_neg.getColorAtPos(0.5)
+
+        if flux[n] < -1 and flux[n] <= -3:
+            viewColor[n] = colorScale_neg.getColorAtPos(0.75)
+            for e in graph.getInOutEdges(n):
+                viewColor[e] = colorScale_neg.getColorAtPos(0.75)
+
+        if flux[n] < -3 :
+            viewColor[n] = colorScale_neg.getColorAtPos(1)
+            for e in graph.getInOutEdges(n):
+                viewColor[e] = colorScale_neg.getColorAtPos(1)
+
+#"""
 
 
 ############################################################################
