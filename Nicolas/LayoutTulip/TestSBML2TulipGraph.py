@@ -268,7 +268,7 @@ if sbml == os.path.join(cDir, "TestModels", "toy_model_biofuel.xml"):
 #comp_2_sg = mvl.createSubgraph(graph, "comp_2", comp_2_species, None)
 #mvl.layoutSubgraph(comp_2_sg, "Hierarchical Graph", 0, 0, 0)
 
-"""
+#"""
 # 3.) get subsystem node list from different biological pathways (e.g.: glycolysis, tca) and apply layout
 
 # I.) initial subgraph generation
@@ -292,6 +292,13 @@ mvl.layoutSubgraph(tca_sg, "Circular (OGDF)", None, -45, -30, 0)
 # -> move tca cycle!
 viewLayout = graph.getLayoutProperty("viewLayout")
 selection = graph.getBooleanProperty("viewSelection")
+# for edge properties
+name = graph.getStringProperty("name")
+ub = graph.getBooleanProperty("ub")
+color = graph.getColorProperty("viewColor")
+size = graph.getSizeProperty("viewSize")
+shape = graph.getIntegerProperty("viewShape")
+
 
 # get y-coord of lowest glycolysis node
 bottom_gly_node = None
@@ -317,24 +324,45 @@ y_diff = y_top_tca - y_bottom_gly
 #buff = 60 # buffer space between glycolysis and tca
 #tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_trans, -30-y_diff-buff, 0), tca_sg)
 
-# -> try moving the glycolysis instead => edges are still bent (are not moved!)
-#buff = 60 # buffer space between glycolysis and tca
-#tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_trans, 150+y_diff+buff, 0), glyc_sg)
+# since only nodes (reaction and metabolite) are moved:
+# #delete edges from subgraph and redraw them (add) after nodes have been moved!
+
+# record edge information in dict before nodes are moved (multiple edges have the same name!)
+gly_edge_dict = {}
+for e in glyc_sg.getEdges():
+    gly_edge_dict[str(e)] = [name[e], glyc_sg.source(e), glyc_sg.target(e), ub[e], color[e], size[e], shape[e]]
+
+# move glycolysis => edges will stay behind but we delete them after moving and redraw them
+buff = 60 # buffer space between glycolysis and tca
+tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_trans, 150+y_diff+buff, 0), glyc_sg)
+
+# delete edges from glyc subgraph (edges will still exist in the main graph)
+for e in glyc_sg.getEdges():
+    glyc_sg.delEdge(e)
+
+# redraw the edges (add them to glyc subgraph with info stored in gly_edge_dict)
+for e_name, e_infos in gly_edge_dict.items():
+    e_new = glyc_sg.addEdge(e_infos[1], e_infos[2])
+    name[e_new] = e_infos[0]
+    ub[e_new] = e_infos[3]
+    color[e_new] = e_infos[4]
+    size[e_new] = e_infos[5]
+    shape[e_new] = e_infos[6]
 
 # ***********************************bounding box idea***********************************
 # create a glycolysis bounding box from selection of all glycolysis nodes and edges
 # reset selection
-selection.setAllNodeValue(False)
-selection.setAllEdgeValue(False)
-for n in glyc_sg.getNodes():
-    selection[n] = True
-for e in glyc_sg.getEdges():
-    selection[e] = True
+#selection.setAllNodeValue(False)
+#selection.setAllEdgeValue(False)
+#for n in glyc_sg.getNodes():
+#    selection[n] = True
+#for e in glyc_sg.getEdges():
+#    selection[e] = True
 # create BB
-glyc_bb = tlp.computeBoundingBox(glyc_sg, selection)
+#glyc_bb = tlp.computeBoundingBox(glyc_sg, selection)
 # move BB
-buff = 60 # buffer space between glycolysis and tca
-tlp.BoundingBox.translate(glyc_bb, tlp.Coord(x_trans, 150+y_diff+buff, 0))
+#buff = 60 # buffer space between glycolysis and tca
+#tlp.BoundingBox.translate(glyc_bb, tlp.Coord(x_trans, 150+y_diff+buff, 0))
 # -> Bounding Box does not move with graph and layout can't be confined to a bounding box!
 
 # III.) generate combined graph of both pathways
@@ -379,7 +407,7 @@ tca_glyc_sg.applyLayoutAlgorithm('Fast Overlap Removal')
 #viewLayout[tlp.node(8)] = tlp.Coord(-50,25,0)
 #viewLayout = graph.getLayoutProperty("viewLayout")
 #viewLayout[tlp.node(16)] = tlp.Coord(100, 100, 0)
-"""
+#"""
 
 ####################################################
 # aliasing examples (using the function aliasNode) #
@@ -575,7 +603,7 @@ tlp.saveGraph(biomass_and_ex_re_sg, "{}_biomass_ex_re.tlp".format(model_id))
 ########################
 # visualize FBA result #
 ########################
-#"""
+"""
 # color nodes and edges depending on flux value
 # input format: dict = {"M1": -3, ...}
 
@@ -676,7 +704,7 @@ for n in network_nodes.values():
             for e in graph.getInOutEdges(n):
                 viewColor[e] = colorScale_neg.getColorAtPos(1)
 
-#"""
+"""
 
 
 ############################################################################
