@@ -114,6 +114,7 @@ def create_props(graph):
     graph.getStringProperty(graph_properties.FORMULA)
     graph.getStringVectorProperty(graph_properties.RELATED_COMPARTMENT_IDS)
     graph.getStringProperty(graph_properties.EDGE_DIRECTIONALITY)
+    graph.getDoubleProperty(graph_properties.FLUX)
 
 
 def markUbiquitousNodes(g, ub_list):
@@ -186,7 +187,7 @@ def speciesToNodes(graph, input_model, ub_sps):
     return id2n
 
 
-def aliasNode(g, n_alias, target_string, x , y, n_new=None):
+def aliasNode(g, n_alias, target_string, x=None , y=None, n_new=None):
     """
     Alias a specific node (reaction nodes and/or metabolite nodes)::
 
@@ -234,7 +235,7 @@ def aliasNode(g, n_alias, target_string, x , y, n_new=None):
         # initially set all properties of new node to prop of old node
         prop_obj[n_new] = prop_obj[n_alias]
         # give new node some different coords to old node
-        if prop_string == "viewLayout":
+        if prop_string == "viewLayout" and x is not None and y is not None:
             prop_obj = g.getProperty(prop_string)
             prop_obj[n_new] = tlp.Coord(x, y, 0)
         # set clone id (node to which new node is connected)
@@ -255,6 +256,10 @@ def aliasNode(g, n_alias, target_string, x , y, n_new=None):
             edge_direct[e_new] = edge_direct[e]
             viewName[e_new] = viewName[e]  # copy edge name to new edge
             g.delEdge(e)  # delete the edge
+
+    # delete old node
+    # todo: add option (true/false) to either delete old node or keep it
+    #g.delNode(n_alias)
 
     return n_new
 
@@ -305,35 +310,54 @@ def setColours(g, item_list, colour):
         viewColor[e] = colour
 
 
-def createSubgraph(graph, sg_name, n_list):
+def createSubgraph(graph, sg_name, n_list, user_params=None):
+    # todo: make it so that createSubgraph can take in a list of reaction nodes (so that if the algorithm jumps 1
+    # todo: node in every direction it gets the metabolite reactions and nothing more)
     """
     Creates a subgraph from a list of nodes::
 
     - *graph* tulip graph
     - *sg_name* subgraph name (string)
-    - *n_list* a list of nodes
+    - *n_list* a list of nodes (ids or objects)
+    - *user_params* parameter dictionary to overwrite default parameters of layout algorithm (optional)
 
     """
     # define tulip graph properties
     id_ = graph.getStringProperty("id")
     selection = graph.getBooleanProperty("viewSelection")
-    # create empty subgraph
-    sg = graph.addSubGraph(sg_name)
+
     # reset selection
     selection.setAllNodeValue(False)
     selection.setAllEdgeValue(False)
-    # populate subgraph
+
+    # select nodes
     for n in graph.getNodes():
         if id_[n] in n_list or n in n_list:
             selection[n] = True
-            sg.addNode(n)
-    for e in graph.getEdges():
-        if selection[graph.source(e)] and selection[graph.target(e)]:
-            selection[e] = True
-            if e in graph.getInEdges(graph.source(e)):
-                sg.addEdge(graph.target(e), graph.source(e))
-            if e in graph.getOutEdges(graph.source(e)):
-                sg.addEdge(graph.source(e), graph.target(e))
+
+    # select reachable edges from node selection
+    # get default parameters of Reachable Sub-Graph algorithm
+    params = tlp.getDefaultPluginParameters('Reachable Sub-Graph', graph)
+
+    # tlp.getDefaultPluginParameters("Reachable Sub-Graph")
+    #    {'distance': 5L,
+    #    'edges direction': 'output edges',
+    #    'result': None,
+    #    'starting nodes': None}
+
+    # with default parameters
+    if user_params is None:
+        graph.applyBooleanAlgorithm('Reachable Sub-Graph', params)
+    # with user parameters (overwrite default parameters)
+    if user_params is not None:
+        for key in user_params.keys():
+            if key in params:
+                params[key] = user_params[key]
+                graph.applyBooleanAlgorithm('Reachable Sub-Graph', params)
+
+    # create subgraph from selection
+    sg = graph.addSubGraph(selection, sg_name)
+
     # reset selection
     selection.setAllNodeValue(False)
     selection.setAllEdgeValue(False)
@@ -341,7 +365,7 @@ def createSubgraph(graph, sg_name, n_list):
     return sg
 
 
-def layoutSubgraph(sg, sg_layout = None, user_params = None, x_center = None, y_center = None, z_center = 0):
+def layoutSubgraph(sg, sg_layout=None, user_params=None, x_center=None, y_center=None, z_center=0):
     """
     Apply layout to subgraph and center it around a given point::
 
@@ -373,7 +397,7 @@ def layoutSubgraph(sg, sg_layout = None, user_params = None, x_center = None, y_
     # center layout: center(viewLayout, newCenter, subgraph)
     # newCenter can be given as coordinates (tlp.Coord(x,y,z)) or
     viewLayout = sg.getLayoutProperty("viewLayout")
-    # pass a tuple and not three variables individually (TODO)
+    # todo: pass a tuple and not three variables individually
     if x_center is not None and y_center is not None:
         tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_center, y_center, z_center), sg)
 
