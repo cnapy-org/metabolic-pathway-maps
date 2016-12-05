@@ -23,12 +23,10 @@ Contact email: n.a.f.huber@vu.nl
 
 """
 
-
+import random
 from tulip import tlp
 import graph_properties
 import resize
-import layout_utils
-import tarjan
 
 
 def identifyConnectedNodes(model, spec_split, reac_split, split_biomass=True):
@@ -45,7 +43,6 @@ def identifyConnectedNodes(model, spec_split, reac_split, split_biomass=True):
     for s in model.species:
         if len(s.isReagentOf()) > spec_split:
             sp_list.append(s.getId())
-
     # add ubiquitous reactions to a group
     re_list = []
     for r in model.reactions:
@@ -84,8 +81,8 @@ def identifyBoundarySpecies(sps_list, re_list, cmod):
                 re = cmod.getReaction(re)
                 # create a list of tuples (species, reaction): pair of pathway bound sps with connecting reaction
                 level1_sps += [(s, re.getId()) for s in re.getSpeciesIds() if s not in level0_sps and s not in sps_list]
-
     bound_sps = level1_sps
+
     return list(set(bound_sps))
 
 
@@ -96,27 +93,34 @@ def create_props(graph):
     - *graph* a tulip graph
 
     """
-    graph.getStringProperty(graph_properties.ANCESTOR_TERM)
-    graph.getStringProperty(graph_properties.ANCESTOR_ID)
-    graph.getStringProperty(graph_properties.ANCESTOR_NAME)
-    graph.getStringProperty(graph_properties.TERM)
-    graph.getStringProperty(graph_properties.COMPARTMENT_ID)
-    graph.getStringProperty(graph_properties.ID)
-    graph.getStringProperty(graph_properties.NAME)
-    graph.getIntegerProperty(graph_properties.TYPE)
-    graph.getBooleanProperty(graph_properties.REVERSIBLE)
-    graph.getDoubleProperty(graph_properties.STOICHIOMETRY)
-    graph.getBooleanProperty(graph_properties.TRANSPORT)
-    graph.getBooleanProperty(graph_properties.UBIQUITOUS)
-    graph.getLayoutProperty(graph_properties.VIEW_LAYOUT)
-    graph.getIntegerProperty(graph_properties.VIEW_SHAPE)
-    graph.getSizeProperty(graph_properties.VIEW_SIZE)
-    graph.getBooleanProperty(graph_properties.FAKE)
-    graph.getStringProperty(graph_properties.CLONE_ID)
-    graph.getStringProperty(graph_properties.FORMULA)
-    graph.getStringVectorProperty(graph_properties.RELATED_COMPARTMENT_IDS)
-    graph.getStringProperty(graph_properties.EDGE_DIRECTIONALITY)
-    graph.getDoubleProperty(graph_properties.FLUX)
+    # assign all new graph properties to variables
+    anc_term = graph.getStringProperty('anc_term')
+    anc_id = graph.getStringProperty('anc_id')
+    anc_name = graph.getStringProperty("anc_name")
+    term = graph.getStringProperty('term')
+    c_id = graph.getStringProperty("c_id")
+    id_ = graph.getStringProperty('id')
+    name = graph.getStringProperty('name')
+    type = graph.getIntegerProperty('type')
+    rev = graph.getBooleanProperty("rev")
+    stoich = graph.getDoubleProperty('stoich')
+    transport = graph.getBooleanProperty("tr")
+    ub = graph.getBooleanProperty('ub')
+    viewLabel = graph.getStringProperty("viewLabel")
+    viewLayout = graph.getLayoutProperty("viewLayout")
+    viewShape = graph.getIntegerProperty("viewShape")
+    viewSize = graph.getSizeProperty("viewSize")
+    viewColor = graph.getColorProperty("viewColor")
+    fake = graph.getBooleanProperty("fake")
+    clone_id = graph.getStringProperty("clone_id")
+    formula = graph.getStringProperty("f")
+    rel_c_ids = graph.getStringVectorProperty("rel_c_ids")
+    edge_direct = graph.getStringProperty("edge_directionality")
+    flux = graph.getDoubleProperty("flux")
+    selection = graph.getBooleanProperty("viewSelection")
+
+    return anc_term, anc_id, anc_name, term, c_id, id_, name, type, rev, stoich, transport, ub, viewLabel, \
+           viewLayout, viewShape, viewSize, viewColor, fake, clone_id, formula, rel_c_ids, edge_direct, flux, selection
 
 
 def markUbiquitousNodes(g, ub_list):
@@ -158,7 +162,6 @@ def speciesToNodes(graph, input_model, ub_sps):
         comp = input_model.getCompartment(s.getCompartment())
         # check if species is in ub list: return either true or false
         ub = (_id in ub_sps)
-
         # add new node to graph and return it (saved in n)
         n = graph.addNode()
         # add compartment id to new node of graph
@@ -183,9 +186,9 @@ def speciesToNodes(graph, input_model, ub_sps):
         graph[graph_properties.VIEW_SHAPE][n] = graph_properties.SPECIES_SHAPE
         # add size to new node of graph (calculated by function get_n_size in file resize.py)
         graph[graph_properties.VIEW_SIZE][n] = resize.get_n_size(graph, n)
-
         # assign the current species id (key) to the new tulip node n (value) in dict id2n
         id2n[_id] = n
+
     return id2n
 
 
@@ -203,18 +206,11 @@ def aliasNode(g, n_alias, target_string, x=None , y=None, n_new=None):
     """
     viewName = g.getStringProperty("name")
     edge_direct = g.getStringProperty("edge_directionality")
-
     # select target node from target_string
     target_node = []
     for n in g.getNodes():
         if viewName[n] == target_string:
             target_node.append(n)
-
-    """
-    print("\n \n alias node: {0} {1}".format(n_alias, viewName[n_alias]))
-    print("target node: {0} {1} \n".format(target_node[0], viewName[target_node[0]]))
-    """
-
     # iterate over all incoming and outgoing edges of alias node
     for e in g.getInOutEdges(n_alias):
         # take the edge that begins at the target node
@@ -226,10 +222,8 @@ def aliasNode(g, n_alias, target_string, x=None , y=None, n_new=None):
             # if a node with the target name is the target of the edge, it's a educt edge (incoming, towards the target)
             edge_direct[e] = "in" # set edge direct property to "in" = towards reaction node
             #print("{0} edge: {1} {2}".format(edge_direct[e], e, viewName[e]))
-
     # add new node
     n_new = g.addNode()
-
     # copy properties from old node to new node
     for prop_string in g.getProperties():
         # convert property name (string) to property object
@@ -243,7 +237,6 @@ def aliasNode(g, n_alias, target_string, x=None , y=None, n_new=None):
         # set clone id (node to which new node is connected)
         clone_id = g.getStringProperty("clone_id")
         clone_id[n_new] = target_string
-
     # add new edges and delete old ones
     for e in g.getInOutEdges(n_alias):
         # incoming edge (towards target)
@@ -258,12 +251,64 @@ def aliasNode(g, n_alias, target_string, x=None , y=None, n_new=None):
             edge_direct[e_new] = edge_direct[e]
             viewName[e_new] = viewName[e]  # copy edge name to new edge
             g.delEdge(e)  # delete the edge
-
     # delete old node
     # todo: add option (true/false) to either delete old node or keep it
     #g.delNode(n_alias)
 
     return n_new
+
+
+def aliasObjFunc(g, obj_re_id, sg_layout, prop_list):
+    """
+    Alias the objective reaction (with all reagents)::
+
+    - *g* a tulip/mimoza graph
+    - *obj_re_id* id (string) of objective reaction
+    - *sg_layout* name of layout algorithm (string) for obj reaction subgraph
+    - *prop_list* list with graph properties: name, viewLayout and viewSize
+
+    """
+    # unwrap passed graph props
+    name = prop_list[0]
+    viewLayout = prop_list[1]
+    viewSize = prop_list[2]
+    # select obj function nodes
+    obj_node_list = []
+    for n in g.getNodes():
+        # select obj reaction node
+        if name[n] == obj_re_id:
+            # add obj reaction node to list
+            obj_node_list.append(n)
+            # access obj reaction node coords (to layout connected nodes around it)
+            x, y, z = viewLayout[n]
+            # iterate over all nodes which are connected to obj reaction node
+            for node in g.getInOutNodes(n):
+                # alias node and move it to a random position close to obj reaction node (quick test hack)
+                node_aliased = aliasNode(g, node, obj_re_id, x + random.random() * 50, y + random.random() * 50,
+                                             None)
+                # save newly created node in a list after aliasing
+                obj_node_list.append(node_aliased)
+    # move reaction node and all connected, aliased nodes 200 units to the right (x+200) and 200 units up (y+200)
+    re_node_coords = []
+    for node in obj_node_list:
+        x, y, z = viewLayout[node]
+        viewLayout[node] = tlp.Coord(x + 50, y + 15, z)  # shift coords here to move the biomass reaction independently
+        if name[node] == obj_re_id:
+            # save coords of obj reaction node
+            x, y, z = viewLayout[node]
+            re_node_coords.append(x)
+            re_node_coords.append(y)
+            re_node_coords.append(z)
+    # turn obj node group into subgraph (but without reaction node, map it seperately!)
+    obj_node_list = [n for n in obj_node_list if name[n] != obj_re_id]
+    obj_sg = createSubgraph(g, "obj reaction", obj_node_list, None)
+    # increasing circle radius of layout "Circular" only possible by increasing size of nodes
+    for n in obj_sg.getNodes():
+        viewSize[n] = tlp.Size(3, 3, 0)
+    # apply layout to obj subgraph
+    layoutSubgraph(obj_sg, sg_layout, None, re_node_coords[0], re_node_coords[1], 0)
+    # set colour of new egdes to grey
+    setColours(obj_sg, obj_sg.getEdges(), tlp.Color(220, 220, 220))
 
 
 def delNodes(g, node_list):
@@ -313,8 +358,6 @@ def setColours(g, item_list, colour):
 
 
 def createSubgraph(graph, sg_name, n_list, user_params=None):
-    # todo: make it so that createSubgraph can take in a list of reaction nodes (so that if the algorithm jumps 1
-    # todo: node in every direction it gets the metabolite reactions and nothing more)
     """
     Creates a subgraph from a list of nodes::
 
@@ -327,26 +370,21 @@ def createSubgraph(graph, sg_name, n_list, user_params=None):
     # define tulip graph properties
     id_ = graph.getStringProperty("id")
     selection = graph.getBooleanProperty("viewSelection")
-
     # reset selection
     selection.setAllNodeValue(False)
     selection.setAllEdgeValue(False)
-
     # select nodes
     for n in graph.getNodes():
         if id_[n] in n_list or n in n_list:
             selection[n] = True
-
     # select reachable edges from node selection
     # get default parameters of Reachable Sub-Graph algorithm
     params = tlp.getDefaultPluginParameters('Reachable Sub-Graph', graph)
-
     # tlp.getDefaultPluginParameters("Reachable Sub-Graph")
     #    {'distance': 5L,
     #    'edges direction': 'output edges',
     #    'result': None,
     #    'starting nodes': None}
-
     # with default parameters
     if user_params is None:
         graph.applyBooleanAlgorithm('Reachable Sub-Graph', params)
@@ -356,10 +394,8 @@ def createSubgraph(graph, sg_name, n_list, user_params=None):
             if key in params:
                 params[key] = user_params[key]
                 graph.applyBooleanAlgorithm('Reachable Sub-Graph', params)
-
     # create subgraph from selection
     sg = graph.addSubGraph(selection, sg_name)
-
     # reset selection
     selection.setAllNodeValue(False)
     selection.setAllEdgeValue(False)
@@ -381,10 +417,8 @@ def layoutSubgraph(sg, sg_layout=None, user_params=None, x_center=None, y_center
     """
     # pseudo-fixed layout method
     # list of available algorithms: tlp.getLayoutAlgorithmPluginsList()
-
     # get default parameters of layout algorithm
     params = tlp.getDefaultPluginParameters(sg_layout, sg)
-
     # apply algorithm to subgraph
     # with default parameters
     if sg_layout is not None and user_params is None:
@@ -395,7 +429,6 @@ def layoutSubgraph(sg, sg_layout=None, user_params=None, x_center=None, y_center
             if key in params:
                 params[key] = user_params[key]
                 sg.applyLayoutAlgorithm(sg_layout, params)
-
     # center layout: center(viewLayout, newCenter, subgraph)
     # newCenter can be given as coordinates (tlp.Coord(x,y,z)) or
     viewLayout = sg.getLayoutProperty("viewLayout")
@@ -406,54 +439,90 @@ def layoutSubgraph(sg, sg_layout=None, user_params=None, x_center=None, y_center
     return sg
 
 
-# Copied Mimoza Functions
-def layout_components(graph, cycle_number_threshold=40, node_number_threshold=300, margin=5):
-    root = graph.getRoot()
-    comp_list = tlp.ConnectedTest.computeConnectedComponents(graph)
-    followers_rev_or_gen = lambda n, gr: (gr.opposite(e, n) for e in gr.getInOutEdges(n) if n == gr.source(e)
-                                          or gr[graph_properties.REVERSIBLE][e] or gr.isMetaNode(n) and gr.isMetaNode(gr.opposite(e,
-                                                                                                                  n)))
-    followers_rev = lambda n, gr: (gr.opposite(e, n) for e in gr.getInOutEdges(n) if n == gr.source(e)
-                                   or gr[graph_properties.REVERSIBLE][e])
-    followers_irrev = lambda n, gr: gr.getOutNodes(n)
-    followers_irrev_gen_only = lambda n, gr: (m for m in gr.getOutNodes(n) if gr.isMetaNode(m))
+def colourFBA(g, flux_dict, color_pos, color_neg, color_zero):
+    """
+    Colour reaction nodes and adjacent edges dependent on flux value::
 
-    def process_cc(gr, ns, meta_ns, follower_method_iterator):
-        try:
-            follower_method = next(follower_method_iterator)
-        except StopIteration:
-            if len(ns) < node_number_threshold:
-                mn = gr.createMetaNode(ns, False)
-                cc_graph = root[graph_properties.VIEW_META_GRAPH][mn]
-                layout_utils.layout_hierarchically(cc_graph)
-                meta_ns.append(mn)
-            return
-        # iterate over strongly connected components
-        for cc in tarjan.tarjan_iter({n: list(follower_method(n, gr)) for n in ns}):
-            if len(cc) > 3:
-                if layout_utils.dfs(cc[0], gr, set(), None, cycle_number_threshold, follower_method) \
-                        <= cycle_number_threshold:
-                    mn = gr.createMetaNode(cc, False)
-                    cc_graph = root[graph_properties.VIEW_META_GRAPH][mn]
-                    layout_utils.layout_circle(cc_graph, margin)
-                    meta_ns.append(mn)
-                else:
-                    process_cc(gr, cc, meta_ns, follower_method_iterator)
+    - *g* a tulip/mimoza graph
+    - *flux_dict* a dictionary with reaction id keys and flux values
+    - *color_pos* a color value (RGB) for maximum flux
+    - *color_neg* a color value (RGB) for minimum flux
+    - *color_zero* a color value (RGB) for zero flux
 
-    for ns in comp_list:
-        gr = graph.inducedSubGraph(ns)
-        meta_ns = []
-        process_cc(gr, (n for n in gr.getNodes() if gr[graph_properties.TYPE][n] != graph_properties.TYPE_COMPARTMENT), meta_ns,
-                   iter((followers_rev_or_gen, followers_rev, followers_irrev, followers_irrev_gen_only)))
-        for mn in meta_ns:
-            root[graph_properties.VIEW_SHAPE][mn] = graph_properties.COMPARTMENT_SHAPE
-            w, h = resize.get_mn_size(mn, root)
-            root[graph_properties.VIEW_SIZE][mn] = tlp.Size(w, h)
-        if gr.numberOfNodes() < node_number_threshold and \
-                not next((n for n in gr.getNodes() if root[graph_properties.TYPE][n] == graph_properties.TYPE_COMPARTMENT), False):
-            layout_utils.layout_hierarchically(gr)
+    """
+    # save flux results as graph integer property "flux"
+    flux = g.getDoubleProperty("flux")
+    id_ = g.getStringProperty("id")
+    node_ids = [id_[r] for r in g.getNodes()] # create a list of reaction node ids for entire network (keys)
+    node_objs = [r for r in g.getNodes()] # create a list of reaction node objects for entire network (values)
+    network_nodes = {}
+    for i in range(len(node_ids)):
+        network_nodes[node_ids[i]] = node_objs[i]
+    for r_id, f in flux_dict.items():
+        if r_id in network_nodes.keys():
+            flux[network_nodes[r_id]] = f
+    # TODO: add flux labels to reaction nodes
+    #mvl.addLabels(graph, 2, "flux")
+    # -> addLabel only accepts string label properties so far!
+    # extract reaction nodes from dict
+    pos_flux = []
+    neg_flux = []
+    zero_flux = []
+    for key in flux_dict:
+        if flux_dict[key] > 0:
+            pos_flux.append(key)
+        elif flux_dict[key] < 0:
+            neg_flux.append(key)
         else:
-            layout_utils.layout_force(gr, margin)
-        for mn in meta_ns:
-            gr.openMetaNode(mn)
-
+            zero_flux.append(key)
+    # color total graph (zero fluxes will remain grey)
+    setColours(g, g.getNodes(), color_zero)
+    setColours(g, g.getEdges(), color_zero)
+    # tulip provides a colour scale function!
+    # 1. initialize empty color scales
+    colorScale_pos = tlp.ColorScale([])
+    colorScale_neg = tlp.ColorScale([])
+    # 2. fill colorScales (gradiant from white to chosen pos/neg color)
+    colorScale_pos.setColorAtPos(0.0, tlp.Color(255, 255, 255))
+    colorScale_pos.setColorAtPos(1.0, color_pos)
+    colorScale_neg.setColorAtPos(0.0, tlp.Color(255, 255, 255))
+    colorScale_neg.setColorAtPos(1.0, color_neg)
+    # 3. get colors for flux values
+    # color in and out edges of flux nodes and reaction nodes
+    # TODO: use numpy to generate ranges for flux ranges numpy.linspace(start, end, number of intervalls)
+    viewColor = g.getColorProperty("viewColor")
+    for n in network_nodes.values():
+        if id_[n] in pos_flux:
+            if flux[n] > 0 and flux[n] <= 0.5:
+                viewColor[n] = colorScale_pos.getColorAtPos(0.25)
+                for e in g.getInOutEdges(n):
+                    viewColor[e] = colorScale_pos.getColorAtPos(0.25)
+            if flux[n] > 0.5 and flux[n] <= 1:
+                viewColor[n] = colorScale_pos.getColorAtPos(0.5)
+                for e in g.getInOutEdges(n):
+                    viewColor[e] = colorScale_pos.getColorAtPos(0.5)
+            if flux[n] > 1 and flux[n] <= 3:
+                viewColor[n] = colorScale_pos.getColorAtPos(0.75)
+                for e in g.getInOutEdges(n):
+                    viewColor[e] = colorScale_pos.getColorAtPos(0.75)
+            if flux[n] > 3 :
+                viewColor[n] = colorScale_pos.getColorAtPos(1)
+                for e in g.getInOutEdges(n):
+                    viewColor[e] = colorScale_pos.getColorAtPos(1)
+        if id_[n] in neg_flux:
+            if flux[n] < 0 and flux[n] <= -0.5:
+                viewColor[n] = colorScale_neg.getColorAtPos(0.25)
+                for e in g.getInOutEdges(n):
+                    viewColor[e] = colorScale_neg.getColorAtPos(0.25)
+            if flux[n] < -0.5 and flux[n] <= -1:
+                viewColor[n] = colorScale_neg.getColorAtPos(0.5)
+                for e in g.getInOutEdges(n):
+                    viewColor[e] = colorScale_neg.getColorAtPos(0.5)
+            if flux[n] < -1 and flux[n] <= -3:
+                viewColor[n] = colorScale_neg.getColorAtPos(0.75)
+                for e in g.getInOutEdges(n):
+                    viewColor[e] = colorScale_neg.getColorAtPos(0.75)
+            if flux[n] < -3 :
+                viewColor[n] = colorScale_neg.getColorAtPos(1)
+                for e in g.getInOutEdges(n):
+                    viewColor[e] = colorScale_neg.getColorAtPos(1)
