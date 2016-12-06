@@ -168,6 +168,7 @@ if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "iIT341.xml"):
             gids['Glycolysis'] = g.getId()
         elif g.getName() == 'TCA cycle':
             gids['TCA cycle'] = g.getId()
+        print(g.getId(), g.getName())
     # get all member species per group for lists of reaction nodes
     glyc_re = cmod.getGroup(gids['Glycolysis']).getMemberIDs()
     tca_re = cmod.getGroup(gids['TCA cycle']).getMemberIDs()
@@ -182,12 +183,15 @@ if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "iIT341.xml"):
     tca_sps = list(set(tca_sps))
     # get ubiquitous small metabolites by filtering for high connectivity (> 30)
     small_sps = [s.getId() for s in cmod.species if len(s.isReagentOf()) > 30]
+    print(small_sps)
     # remove the small metabolites from the pathways
     for ubs in small_sps:
         if ubs in glyc_sps:
             glyc_sps.remove(ubs)
         if ubs in tca_sps:
             tca_sps.remove(ubs)
+    print(glyc_sps)
+    print(tca_sps)
 
 # 3.) create alias node list based on connectivity <-> user defined thresholds (strategy 1)
 if AUTO_ALIAS:
