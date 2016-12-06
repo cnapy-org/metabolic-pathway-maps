@@ -26,13 +26,13 @@ import MVLayout as mvl
 
 # select a certain set of nodes and use mimoza aliasing + layouting
 AUTO_ALIAS = False
-PATHWAY_ALIAS = False
+PATHWAY_ALIAS = True
 
 # custom aliasing and layouting of only a certain part of the graph (only exchange reactions, only obj reaction)
 EX_RE_ALIAS = False
-ALIAS_OBJ = False
+ALIAS_OBJ = True
 
-LAYOUT_GLYC_TCA = False # needs PATHWAY_ALIAS true, so that necessary node lists are generated (for pathways)
+LAYOUT_GLYC_TCA = True # needs PATHWAY_ALIAS true, so that necessary node lists are generated (for pathways)
 LAYOUT_EX_RE_AND_BIOMASS = False # needs EX_RE_ALIAS true, so that necessary exchange reaction node list is generated
 
 COLOUR_FBA = False
@@ -43,13 +43,14 @@ COLOUR_FBA = False
 # read SBML with libsbml and cbmpy, do FBA  #
 #############################################
 
-# read SBML file (with libsbml)
+# read SBML file (with libsbml) # Auto alias settings
 #sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml") # 4, 4, False
 #sbml = os.path.join(cDir, "TestModels", "e_coli_core.xml") # 6, 4, True
-sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml") # 6, 4, True
+#sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "Hpylori_iIT341.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "iJO1366.xml") # 6, 4, True
-#sbml = os.path.join(cDir, "TestModels", "Lactococcus_lactis_MG1363.xml")
+#sbml = os.path.join(cDir, "TestModels", "Lactococcus_lactis_MG1363") # ?, ?, set it to 'True' probably
+sbml = os.path.join(cDir, "TestModels", "iIT341.xml") # BiGG2 Helicobacter pylori 26695
 
 # create libsbml model
 reader = libsbml.SBMLReader()
@@ -106,6 +107,9 @@ glyc_sps = []
 tca_sps = []
 glyc_re = []
 tca_re = []
+
+# TODO: generalize pathway selection for aliasing (model independent)
+
 if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml"):
     # create lists of species ids and reaction ids for each pathway (not necessary if provided by sbml)
     # lists of metabolite nodes
@@ -146,6 +150,36 @@ if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "Ecoli_Carlson2003
         #ub_sp_list += [s for s in cmod.getReaction(r).getSpeciesIds() if s not in ub_sp_list]
     ub_sp_list.extend(tca_sps_bound)
     ub_re_list.extend([])
+
+# adding hand coded Pylori from BiGG2
+if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "iIT341.xml"):
+    # create a dictionary to store model groups (key: group name - value: group id)
+    gids = {}
+    for g in cmod.groups:
+        if g.getName() == 'Glycolysis':
+            gids['Glycolysis'] = g.getId()
+        elif g.getName() == 'TCA cycle':
+            gids['TCA cycle'] = g.getId()
+    # get all member species per group for lists of reaction nodes
+    glyc_re = cmod.getGroup(gids['Glycolysis']).getMemberIDs()
+    tca_re = cmod.getGroup(gids['TCA cycle']).getMemberIDs()
+    # for each reaction get the associated species for lists of metabolite nodes
+    glyc_sps = []
+    tca_sps = []
+    for r in glyc_re:
+        glyc_sps.extend(cmod.getReaction(r).getSpeciesIds())
+    for r in tca_re:
+        tca_sps.extend(cmod.getReaction(r).getSpeciesIds())
+    glyc_sps = list(set(glyc_sps))
+    tca_sps = list(set(tca_sps))
+    # get ubiquitous small metabolites by filtering for high connectivity (> 30)
+    small_sps = [s.getId() for s in cmod.species if len(s.isReagentOf()) > 30]
+    # remove the small metabolites from the pathways
+    for ubs in small_sps:
+        if ubs in glyc_sps:
+            glyc_sps.remove(ubs)
+        if ubs in tca_sps:
+            tca_sps.remove(ubs)
 
 # 3.) create alias node list based on connectivity <-> user defined thresholds (strategy 1)
 if AUTO_ALIAS:
@@ -195,9 +229,12 @@ groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 graph = tlp.newGraph()
 graph.setName(model.getId())
 
-# create and map graph properties for new tulip graph
-anc_term, anc_id, anc_name, term, c_id, id_, name, type, rev, stoich, transport, ub, viewLabel, \
-viewLayout, viewShape, viewSize, viewColor, fake, clone_id, formula, rel_c_ids, edge_direct, flux, selection = mvl.create_props(graph)
+# create and store graph properties for new tulip graph
+props_tup = mvl.create_props(graph)
+# save graph props in dictionary
+graph_props = {}
+for prop in props_tup:
+    graph_props[prop.getName()] = prop
 
 # flag (true/false) a list of nodes (already saved as ub_list) so that they can be aliased later
 mvl.markUbiquitousNodes(graph, ub_list)
@@ -250,7 +287,7 @@ mvl.setColours(graph, graph.getEdges(), COLOURS['grey'])
 
 # change line types (Polyline, BezierCurve, CatmullRomCurve, CubicSplineCurve)
 for e in graph.getEdges():
-    viewShape[e] = tlp.EdgeShape.BezierCurve
+    graph_props["viewShape"][e] = tlp.EdgeShape.BezierCurve
 
 
 
@@ -306,18 +343,18 @@ if LAYOUT_GLYC_TCA and len(glyc_re) > 1 and len(tca_re) > 1:
     bottom_gly_node = None
     y_bottom_gly = 10000
     for n in glyc_sg.getNodes():
-        y = viewLayout[n][1]
+        y = graph_props["viewLayout"][n][1]
         if y < y_bottom_gly:
             y_bottom_gly = y
             bottom_gly_node = n
     # get y-coord of highest tca node
     y_top_tca = -10000
     for n in tca_sg.getNodes():
-        y= viewLayout[n][1]
+        y= graph_props["viewLayout"][n][1]
         if y > y_top_tca:
             y_top_tca = y
     # get x value of node with lowest y-value (to center tca directly under glycolysis)
-    x_trans = viewLayout[bottom_gly_node][0]
+    x_trans = graph_props["viewLayout"][bottom_gly_node][0]
     # get difference for y translation (to avoind overlap between tca and glycolysis)
     y_diff = y_top_tca - y_bottom_gly
     # center tca at new position: x = x-value of lowest glyc node, y = old y - y_diff - buffer, z = 0
@@ -328,42 +365,41 @@ if LAYOUT_GLYC_TCA and len(glyc_re) > 1 and len(tca_re) > 1:
     # record edge information in dict before nodes are moved (multiple edges have the same name!)
     gly_edge_dict = {}
     for e in glyc_sg.getEdges():
-        gly_edge_dict[str(e)] = [name[e], glyc_sg.source(e), glyc_sg.target(e), ub[e], viewColor[e], viewSize[e],
-                             viewShape[e]]
+        gly_edge_dict[str(e)] = [graph_props["name"][e], glyc_sg.source(e), glyc_sg.target(e), graph_props["ub"][e], graph_props["viewColor"][e], graph_props["viewSize"][e], graph_props["viewShape"][e]]
     # move glycolysis => edges will stay behind but we delete them after moving and redraw them
     buff = 60 # buffer space between glycolysis and tca
-    tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_trans, 150+y_diff+buff, 0), glyc_sg)
+    tlp.LayoutProperty.center(graph_props["viewLayout"], tlp.Coord(x_trans, 150+y_diff+buff, 0), glyc_sg)
     # delete edges from glyc subgraph (edges will still exist in the main graph)
     for e in glyc_sg.getEdges():
         glyc_sg.delEdge(e)
     # redraw the edges (add them to glyc subgraph with info stored in gly_edge_dict)
     for e_name, e_infos in gly_edge_dict.items():
         e_new = glyc_sg.addEdge(e_infos[1], e_infos[2])
-        name[e_new] = e_infos[0]
-        ub[e_new] = e_infos[3]
-        viewColor[e_new] = e_infos[4]
-        viewSize[e_new] = e_infos[5]
-        viewShape[e_new] = e_infos[6]
+        graph_props["name"][e_new] = e_infos[0]
+        graph_props["ub"][e_new] = e_infos[3]
+        graph_props["viewColor"][e_new] = e_infos[4]
+        graph_props["viewSize"][e_new] = e_infos[5]
+        graph_props["viewShape"][e_new] = e_infos[6]
     # III.) generate combined graph of both pathways
     # show both tca and glycolysis in same graph
     # reset selection
-    selection.setAllNodeValue(False)
-    selection.setAllEdgeValue(False)
+    graph_props["viewSelection"].setAllNodeValue(False)
+    graph_props["viewSelection"].setAllEdgeValue(False)
     # select tca and glyc nodes
     for n in glyc_sg.getNodes():
-        selection[n] = True
+        graph_props["viewSelection"][n] = True
     for n in tca_sg.getNodes():
-        selection[n] = True
+        graph_props["viewSelection"][n] = True
     # select tca and glyc edges
     for e in glyc_sg.getEdges():
-        selection[e] = True
+        graph_props["viewSelection"][e] = True
     for e in tca_sg.getEdges():
-        selection[e] = True
+        graph_props["viewSelection"][e] = True
     # create subgraph with only tca and glycolysis from selection
-    tca_glyc_sg = graph.addSubGraph(selection, "tca and glyc")
+    tca_glyc_sg = graph.addSubGraph(graph_props["viewSelection"], "tca and glyc")
     # reset selection
-    selection.setAllNodeValue(False)
-    selection.setAllEdgeValue(False)
+    graph_props["viewSelection"].setAllNodeValue(False)
+    graph_props["viewSelection"].setAllEdgeValue(False)
     # remove edge crossings between the pathways:
     #  tlp.computeLinesIntersection(line1, line2)
     # ...
@@ -391,7 +427,7 @@ if LAYOUT_GLYC_TCA and len(glyc_re) > 1 and len(tca_re) > 1:
 #            biomass function = R70 (node 60)
 if ALIAS_OBJ:
     # alias the biomass reaction
-    mvl.aliasObjFunc(graph, biomass_re_id, "Sugiyama (OGDF)", [name, viewLayout, viewSize])
+    mvl.aliasObjFunc(graph, biomass_re_id, "Sugiyama (OGDF)", graph_props)
 
 # example 3: alias all exchange reactions (from ex_re_list, extracted from model with cbmpy if info available)
 #            add them to a subgraph (new sg or the same as biomass) and layout them
@@ -399,7 +435,7 @@ if ALIAS_OBJ:
 if EX_RE_ALIAS:
     # I.) construct first dictionary with key = ex reaction id and value = ex reaction object
     # create a list of exchange reaction node objects (value list)
-    ex_re_node_obj = [r for r in graph.getNodes() if id_[r] in ex_re_list]
+    ex_re_node_obj = [r for r in graph.getNodes() if graph_props["id"][r] in ex_re_list]
     # ex_re_list already contains the ids (key list)
     # merge the key and value lists to a dictionary
     ex_re_id_dict = {}
@@ -408,7 +444,8 @@ if EX_RE_ALIAS:
     # II.) construct second dictionary with key = ex reaction id and value = list of connected out nodes
     # ex_re_list already contains the ids (key list)
     # create a dict with ex reaction ids as keys and a list of connected in and out nodes as value
-    ex_re_con_dict = dict((id_[r], [n for n in graph.getInOutNodes(r) if id_[r] in ex_re_list]) for r in ex_re_node_obj)
+    ex_re_con_dict = dict((graph_props["id"][r], [n for n in graph.getInOutNodes(r) if graph_props["id"][r] in ex_re_list]) for r in
+                          ex_re_node_obj)
     print("\n dict of exchange reaction ids and lists of connected nodes:")
     print(ex_re_con_dict)
     # carlsson model hack: biomass reaction is classified as exchange reaction -> remove it from dict
@@ -440,17 +477,17 @@ if LAYOUT_EX_RE_AND_BIOMASS:
     ex_node_list = []
     for r in graph.getNodes():
         # only consider reaction node whose id is in the exchage reaction list
-        if id_[r] in ex_re_list:
+        if graph_props["id"][r] in ex_re_list:
             ex_node_list.append(r)
         # get species connected to ex reaction nodes
         for n in graph.getInOutNodes(r):
-            if id_[r] in ex_re_list:
+            if graph_props["id"][r] in ex_re_list:
                 ex_node_list.append(n)
     # II.) all biomass reaction nodes
     biomass_node_list = []
     for n in graph.getNodes():
         # select biomass reaction node
-        if name[n] == biomass_re_id:
+        if graph_props["name"][n] == biomass_re_id:
             # add biomass reaction node to list
             biomass_node_list.append(n)
             # iterate over all nodes which are connected to biomass reaction node

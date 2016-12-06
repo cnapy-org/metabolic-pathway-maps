@@ -204,21 +204,21 @@ def aliasNode(g, n_alias, target_string, x=None , y=None, n_new=None):
     - *n_new* newly created tulip node (cloned from n_alias)
 
     """
-    viewName = g.getStringProperty("name")
+    id_ = g.getStringProperty("id")
     edge_direct = g.getStringProperty("edge_directionality")
     # select target node from target_string
     target_node = []
     for n in g.getNodes():
-        if viewName[n] == target_string:
+        if id_[n] == target_string:
             target_node.append(n)
     # iterate over all incoming and outgoing edges of alias node
     for e in g.getInOutEdges(n_alias):
         # take the edge that begins at the target node
-        if viewName[g.source(e)] == target_string:
+        if id_[g.source(e)] == target_string:
             # if a node with the target name is the source of the edge, it's a product edge (outgoing, away from target)
             edge_direct[e] = "out" # set edge direct property to "out" = away from reaction node
             #print("{0} edge: {1} {2}".format(edge_direct[e], e, viewName[e]))
-        if viewName[g.target(e)] == target_string:
+        if id_[g.target(e)] == target_string:
             # if a node with the target name is the target of the edge, it's a educt edge (incoming, towards the target)
             edge_direct[e] = "in" # set edge direct property to "in" = towards reaction node
             #print("{0} edge: {1} {2}".format(edge_direct[e], e, viewName[e]))
@@ -243,13 +243,13 @@ def aliasNode(g, n_alias, target_string, x=None , y=None, n_new=None):
         if edge_direct[e] == "in":
             e_new = g.addEdge(n_new, target_node[0])  # create new edge (from alias node to target)
             edge_direct[e_new] = edge_direct[e]
-            viewName[e_new] = viewName[e]  # copy edge name to new edge
+            id_[e_new] = id_[e]  # copy edge name to new edge
             g.delEdge(e)  # delete the old edge
         # outgoing edge (away from target)
         if edge_direct[e] == "out":
             e_new = g.addEdge(target_node[0], n_new)  # create new edge (from target to alias node)
             edge_direct[e_new] = edge_direct[e]
-            viewName[e_new] = viewName[e]  # copy edge name to new edge
+            id_[e_new] = id_[e]  # copy edge name to new edge
             g.delEdge(e)  # delete the edge
     # delete old node
     # todo: add option (true/false) to either delete old node or keep it
@@ -258,25 +258,25 @@ def aliasNode(g, n_alias, target_string, x=None , y=None, n_new=None):
     return n_new
 
 
-def aliasObjFunc(g, obj_re_id, sg_layout, prop_list):
+def aliasObjFunc(g, obj_re_id, sg_layout, prop_dict):
     """
     Alias the objective reaction (with all reagents)::
 
     - *g* a tulip/mimoza graph
     - *obj_re_id* id (string) of objective reaction
     - *sg_layout* name of layout algorithm (string) for obj reaction subgraph
-    - *prop_list* list with graph properties: name, viewLayout and viewSize
+    - *prop_dict* dict with graph properties
 
     """
     # unwrap passed graph props
-    name = prop_list[0]
-    viewLayout = prop_list[1]
-    viewSize = prop_list[2]
+    id_ = prop_dict["id"]
+    viewLayout = prop_dict["viewLayout"]
+    viewSize = prop_dict["viewSize"]
     # select obj function nodes
     obj_node_list = []
     for n in g.getNodes():
         # select obj reaction node
-        if name[n] == obj_re_id:
+        if id_[n] == obj_re_id:
             # add obj reaction node to list
             obj_node_list.append(n)
             # access obj reaction node coords (to layout connected nodes around it)
@@ -293,14 +293,14 @@ def aliasObjFunc(g, obj_re_id, sg_layout, prop_list):
     for node in obj_node_list:
         x, y, z = viewLayout[node]
         viewLayout[node] = tlp.Coord(x + 50, y + 15, z)  # shift coords here to move the biomass reaction independently
-        if name[node] == obj_re_id:
+        if id_[node] == obj_re_id:
             # save coords of obj reaction node
             x, y, z = viewLayout[node]
             re_node_coords.append(x)
             re_node_coords.append(y)
             re_node_coords.append(z)
     # turn obj node group into subgraph (but without reaction node, map it seperately!)
-    obj_node_list = [n for n in obj_node_list if name[n] != obj_re_id]
+    obj_node_list = [n for n in obj_node_list if id_[n] != obj_re_id]
     obj_sg = createSubgraph(g, "obj reaction", obj_node_list, None)
     # increasing circle radius of layout "Circular" only possible by increasing size of nodes
     for n in obj_sg.getNodes():
