@@ -168,7 +168,6 @@ if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "iIT341.xml"):
             gids['Glycolysis'] = g.getId()
         elif g.getName() == 'TCA cycle':
             gids['TCA cycle'] = g.getId()
-        print(g.getId(), g.getName())
     # get all member species per group for lists of reaction nodes
     glyc_re = cmod.getGroup(gids['Glycolysis']).getMemberIDs()
     tca_re = cmod.getGroup(gids['TCA cycle']).getMemberIDs()
@@ -183,15 +182,12 @@ if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "iIT341.xml"):
     tca_sps = list(set(tca_sps))
     # get ubiquitous small metabolites by filtering for high connectivity (> 30)
     small_sps = [s.getId() for s in cmod.species if len(s.isReagentOf()) > 30]
-    print(small_sps)
     # remove the small metabolites from the pathways
     for ubs in small_sps:
         if ubs in glyc_sps:
             glyc_sps.remove(ubs)
         if ubs in tca_sps:
             tca_sps.remove(ubs)
-    print(glyc_sps)
-    print(tca_sps)
 
 # 3.) create alias node list based on connectivity <-> user defined thresholds (strategy 1)
 if AUTO_ALIAS:
@@ -340,12 +336,11 @@ if sbml == os.path.join(cDir, "TestModels", "toy_model_biofuel.xml"):
 # 3.) get subsystem node list from different biological pathways (e.g.: glycolysis, tca) and apply layout
 if LAYOUT_GLYC_TCA and len(glyc_re) > 1 and len(tca_re) > 1:
     # I.) initial subgraph generation
-    # either: pass list of metabolite nodes to function create subgraph
-    #glyc_sg = mvl.createSubgraph(graph, "glycolysis", glyc_sps, {"distance": 1L})
-    #tca_sg = mvl.createSubgraph(graph, "tca_cycle", tca_sps, {"distance": 1L})
-    # or: pass list of reaction nodes to function create subgraph
-    glyc_sg = mvl.createSubgraph(graph, "glycolysis", glyc_re, {"distance": 1L})
-    tca_sg = mvl.createSubgraph(graph, "tca_cycle", tca_re, {"distance": 1L})
+    # create subgraph with inducedSubgraph function (automatically add all existing edges between seletced nodes aswell)
+    glyc_sg = graph.inducedSubGraph([n for n in graph.getNodes() if graph_props["id"][n] in glyc_re + glyc_sps])
+    glyc_sg.setName("glycolysis")
+    tca_sg = graph.inducedSubGraph([n for n in graph.getNodes() if graph_props["id"][n] in tca_re + tca_sps])
+    tca_sg.setName("TCA Cycle")
     # set colours of tca and glycolysis
     mvl.setColours(graph, glyc_sg.getNodes(), COLOURS['red'])
     mvl.setColours(graph, tca_sg.getNodes(), COLOURS['blue'])
@@ -444,7 +439,7 @@ if LAYOUT_GLYC_TCA and len(glyc_re) > 1 and len(tca_re) > 1:
 #            and move it together with all of its now aliased species somewhere else
 #            in carlsson model: biomass function = R70 (node 60)
 if ALIAS_OBJ:
-    mvl.aliasObjFunc(graph, biomass_re_id, "Sugiyama (OGDF)", graph_props)
+    biomass_sg = mvl.aliasObjFunc(graph, biomass_re_id, "Sugiyama (OGDF)", graph_props)
 
 # example 3: alias all exchange reactions (from ex_re_list, extracted from model with cbmpy if info available)
 #            add them to a subgraph (new sg or the same as biomass) and layout them
@@ -503,7 +498,7 @@ if LAYOUT_EX_RE_AND_BIOMASS:
     biomass_node_list = []
     for n in graph.getNodes():
         # select biomass reaction node
-        if graph_props["name"][n] == biomass_re_id:
+        if graph_props["id"][n] == biomass_re_id:
             # add biomass reaction node to list
             biomass_node_list.append(n)
             # iterate over all nodes which are connected to biomass reaction node
@@ -527,7 +522,7 @@ if LAYOUT_EX_RE_AND_BIOMASS:
     # III.) apply layout only on exchange reaction subgraph
     mvl.layoutSubgraph(ex_re_sg, "Tree Radial", {"layer spacing": 10}, 0, 0, 0)
     # Sugiyama: change node distance (default: 3) and layer distance (default: 3) to scale up the biomass reaction
-    mvl.layoutSubgraph(biomass_only_sg, "Sugiyama (OGDF)", {"node distance": 5, "layer distance": 5}, 0, 0, 0)
+    mvl.layoutSubgraph(biomass_only_sg, "Sugiyama (OGDF)", {"node distance": 8, "layer distance": 8}, 0, 0, 0)
     # TODO: fine tuning of the layout
     # TODO: for tree raidal: straighten exchange reactions (in edge slope = out edge slope)
     # VI.) save subgraph
