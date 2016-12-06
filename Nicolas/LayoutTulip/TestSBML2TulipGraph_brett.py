@@ -9,13 +9,34 @@ import libsbml
 import cbmpy
 from tulip import tlp
 
-# core Mimoza modules
+# necessary Mimoza modules
 import sbml2tlp
 import sbml_manager
 import tulip_graph2geojson
 import sbgn_helper
-import graph_properties
-import resize
+
+# module with own functions
+import MVLayout as mvl
+
+
+
+############################
+# global control variables #
+############################
+
+# select a certain set of nodes and use mimoza aliasing + layouting
+AUTO_ALIAS = False
+PATHWAY_ALIAS = True
+
+# custom aliasing and layouting of only a certain part of the graph (only exchange reactions, only obj reaction)
+EX_RE_ALIAS = True
+ALIAS_OBJ = True
+
+LAYOUT_GLYC_TCA = True # needs PATHWAY_ALIAS true, so that necessary node lists are generated (for pathways)
+LAYOUT_EX_RE_AND_BIOMASS = True # needs EX_RE_ALIAS true, so that necessary exchange reaction node list is generated
+
+COLOUR_FBA = False
+
 
 
 #############################################
@@ -28,6 +49,7 @@ import resize
 sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "Hpylori_iIT341.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "iJO1366.xml") # 6, 4, True
+sbml = os.path.join(cDir, "TestModels", "iIT341.xml") # BiGG2 Helicobacter pylori 26695
 
 # create libsbml model
 reader = libsbml.SBMLReader()
@@ -46,11 +68,15 @@ if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
     cbmpy.writeSBML3FBCV2(cmod, '_temp.xml')
     sbml = '_temp.xml'
 
+# get biomass reaction id
+biomass_re_id = str(cmod.getActiveObjectiveReactionIds()[0])
+
 # analyze model (FBA)
 cbmpy.doFBA(cmod)
 fba_results = {}
 for r in cmod.reactions:
     fba_results[r.getId()] = round(r.getValue(), 6)
+
 
 
 ################################################################################
@@ -64,126 +90,149 @@ comp_list = [''] + cmod.getCompartmentIds()
 level_list = [(x, comp_list[x]) for x in range(len(comp_list))]
 c_id2level = dict(zip(comp_list[1:], level_list))
 
-# 1.) create alias node list based on connectivity <-> user defined thresholds (strategy 1)
-def identifyConnectedNodes(model, spec_split, reac_split, split_biomass=True):
-    """
-    Identifies highly connected species and reactions::
-
-     - *model* a CBMPy model object
-     - *spec_split* species connected to this or more reactions are aliased
-     - *reac_split* reactions connected to this or more non-split species are aliased
-     - *split_biomass* [default=True] alias the objective function reaction reagents
-
-    """
-    sp_list = []
-    for s in model.species:
-        if len(s.isReagentOf()) > spec_split:
-            sp_list.append(s.getId())
-
-    # add ubiquitous reactions to a group
-    re_list = []
-    for r in model.reactions:
-        if len((set(r.getSpeciesIds()).difference(set(sp_list)))) > reac_split:
-            re_list.append(r.getId())
-    if split_biomass:
-        for r in model.getActiveObjectiveReactionIds():
-            sp_list += [s for s in model.getReaction(r).getSpeciesIds() if s not in sp_list]
-            if r in re_list:
-                re_list.remove(r)
-
-    return sp_list, re_list
-
-#ub_sp_list, ub_re_list = identifyConnectedNodes(cmod, 4, 4, False)
-
-# 2.) create alias node list based on biological pathways <-> group info in sbml - if available (strategy 2)
-# create lists of species ids and reaction ids for each pathway (not necessary if provided by sbml)
-glyc_sps = ["GLU_6_P", "FRU_6_P", "FRU_BIS_P", "DHAP", "GA_3P", "PG", "PEP"]
-glyc_re = ["R1", "R2r", "R3", "R4", "R5r", "R6r", "R7r", "R8r", "R9", "RR9"]
-tca_sps = ["CITRATE", "ISOCIT", "AKG", "SUCC_CoA", "SUCC", "FUMARATE", "MALATE", "OXALO"]
-tca_re = ["R21", "R23r", "R24", "R25", "R26r", "R27r", "R28r", "R29r", "R22"]
-not_spec_sps = [sps for sps in cmod.getSpeciesIds() if sps not in glyc_sps or sps not in tca_sps]
-not_spec_re = [re for re in cmod.getReactionIds() if re not in glyc_re or re not in tca_re]
-
-# ubiquitous small metabolites
-small_sps = ["ATP", "ADP", "NAD", "NADH", "CO2", "NH3"]
-
-# create groups (not necessary if provided by sbml)
-cmod.createGroup('not_specified')
-path0 = cmod.getGroup('not_specified')
-path0.setName('Not specified')
-path0.addMember([cmod.getSpecies(s) for s in not_spec_sps] + [cmod.getReaction(r) for r in not_spec_re])
-
-cmod.createGroup('glycolysis')
-path1 = cmod.getGroup('glycolysis')
-path1.setName('Glycolysis')
-path1.addMember([cmod.getSpecies(s) for s in glyc_sps] + [cmod.getReaction(r) for r in glyc_re])
-
-cmod.createGroup('tca_cycle')
-path2 = cmod.getGroup('tca_cycle')
-path2.setName('TCA Cycle')
-path2.addMember([cmod.getSpecies(s) for s in tca_sps] + [cmod.getReaction(r) for r in tca_re])
-
-# automatically create list of boundary species (those which connect the biol. pathway to rest of network)
-def identifyBoundarySpecies(sps_list, re_list, cmod):
-    """
-    Identifies boundary species of given pathway by:
-    1.) getting the nodes that have at least one reaction outside the pathway -> level0_nodes (still themselves inside
-    the pathway - we don't want to alias them!)
-    2.) getting from the level0_nodes to the next connections (level1_nodes)
-    => these are the first nodes outside the pathway => boundary nodes!
-    ::
-
-    - *sps_list* list containing all species of a pathway
-    - *re_list* list containing all reactions of a pathway
-    - *cmod* cbmpy model of the input sbml file
-
-    """
-    level0_sps = []
-    level1_sps = []
-    for sps in sps_list:
-        sps = cmod.getSpecies(sps)
-        for re in sps.isReagentOf():
-            if re not in re_list and sps.getId() not in level0_sps:
-                level0_sps.append(sps.getId())
-                re = cmod.getReaction(re)
-                # create a list of tuples (species, reaction): pair of pathway bound sps with connecting reaction
-                level1_sps += [(s, re.getId()) for s in re.getSpeciesIds() if s not in level0_sps and s not in sps_list]
-
-    bound_sps = level1_sps
-    return list(set(bound_sps))
-
-#glyc_sps_bound = identifyBoundarySpecies(glyc_sps, glyc_re, cmod)
-tca_sps_bound_tup = identifyBoundarySpecies(tca_sps, tca_re, cmod)
-# put only the first item of the tuples (species) in a new list and only if it is not part of the glycolysis list
-# we don't want to alias to much later on
-tca_sps_bound = list(set([tup[0] for tup in tca_sps_bound_tup if tup[0] not in glyc_sps]))
-
-# select biomass reaction
-#for r in cmod.getActiveObjectiveReactionIds():
-    # add biomass reaction with substrates and products to alias lists (ub_sp_list, ub_re_list)?
-    # -> commented because some species of tca cycle are also part of biomass (eg: AKG)
-    # => aliasing them would break up the tca circle layout
-    #ub_sp_list += [s for s in cmod.getReaction(r).getSpeciesIds() if s not in ub_sp_list]
-
-ub_sp_list = tca_sps_bound
-#ub_sp_list = []
+# list of species nodes and reaction nodes to be aliased (filled by one or more of the subsequent statements)
+ub_sp_list = []
 ub_re_list = []
 
-# 3.) create alias node list based on a certain compartment <-> compartment info in sbml (strategy 3)
-#comp_ids = cmod.getCompartmentIds() # get a list of all compartments
-#comp_2 = cmod.getCompartment(comp_ids[1]) # get  compartment 2 (first entry in list of all compartments)
-#comp_2_species = comp_2.containsSpecies() # list of species in compartment 2
-#comp_2_reac = comp_2.containsReactions() # list of reactions in compartment 2
-#ub_sp_list = comp_2_species
-#ub_re_list = comp_2_reac
+# 1.) manually provide alias node list <-> hard coded by user (for testing purposes)
+# specific to toy_model_biofuel
+if sbml == os.path.join(cDir, "TestModels", "toy_model_biofuel.xml"):
+    ub_sp_list.extend(['ATP', 'ADP', 'M8', 'M10', 'M11', 'M12', 'M13', 'biomass', 'S', 'fuel1', 'fuel2'])
+    ub_re_list.extend(['R09', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18'])
 
-# 4.) manually provide alias node list <-> hard coded by user (for testing purposes)
-#ub_sp_list = ['ATP', 'ADP', 'M8', 'M10', 'M11', 'M12', 'M13', 'biomass', 'S', 'fuel1', 'fuel2']
-#ub_re_list = ['R09', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18']
+# 2.) create alias node list based on biological pathways <-> group info in sbml - if available (strategy 2)
+# specific to carlsson model
+glyc_sps = []
+tca_sps = []
+glyc_re = []
+tca_re = []
+if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml"):
+    # create lists of species ids and reaction ids for each pathway (not necessary if provided by sbml)
+    # lists of metabolite nodes
+    glyc_sps.extend(["GLU_6_P", "FRU_6_P", "FRU_BIS_P", "DHAP", "GA_3P", "PG", "PEP"])
+    tca_sps.extend(["CITRATE", "ISOCIT", "AKG", "SUCC_CoA", "SUCC", "FUMARATE", "MALATE", "OXALO"])
+    # lists of reaction nodes
+    glyc_re.extend(["R1", "R2r", "R3", "R4", "R5r", "R6r", "R7r", "R8r", "R9", "RR9"])
+    tca_re.extend(["R23r", "R24", "R25", "R26r", "R27r", "R28r", "R29r", "R22"])
+    # ubiquitous small metabolites
+    small_sps = ["ATP", "ADP", "NAD", "NADH", "CO2", "NH3"]
+    # create list of all reaction and species nodes that are not part of tca or glyc
+    not_spec_sps = [sps for sps in cmod.getSpeciesIds() if sps not in glyc_sps or sps not in tca_sps]
+    not_spec_re = [re for re in cmod.getReactionIds() if re not in glyc_re or re not in tca_re]
+    # create groups (not necessary if provided by sbml)
+    cmod.createGroup('not_specified')
+    path0 = cmod.getGroup('not_specified')
+    path0.setName('Not specified')
+    path0.addMember([cmod.getSpecies(s) for s in not_spec_sps] + [cmod.getReaction(r) for r in not_spec_re])
+    cmod.createGroup('glycolysis')
+    path1 = cmod.getGroup('glycolysis')
+    path1.setName('Glycolysis')
+    path1.addMember([cmod.getSpecies(s) for s in glyc_sps] + [cmod.getReaction(r) for r in glyc_re])
+    cmod.createGroup('tca_cycle')
+    path2 = cmod.getGroup('tca_cycle')
+    path2.setName('TCA Cycle')
+    path2.addMember([cmod.getSpecies(s) for s in tca_sps] + [cmod.getReaction(r) for r in tca_re])
+    # automatically create list of boundary species (those which connect the biol. pathway to rest of network)
+    #glyc_sps_bound = identifyBoundarySpecies(glyc_sps, glyc_re, cmod)
+    tca_sps_bound_tup = mvl.identifyBoundarySpecies(tca_sps, tca_re, cmod)
+    # put only the first item of the tuples (species) in a new list and only if it is not part of the glycolysis list
+    # we don't want to alias to much later on
+    tca_sps_bound = list(set([tup[0] for tup in tca_sps_bound_tup if tup[0] not in glyc_sps]))
+    # select biomass reaction for aliasing
+    #for r in cmod.getActiveObjectiveReactionIds():
+        # add biomass reaction with substrates and products to alias lists (ub_sp_list, ub_re_list)?
+        # -> commented because some species of tca cycle are also part of biomass (eg: AKG)
+        # => aliasing them would break up the tca circle layout
+        #ub_sp_list += [s for s in cmod.getReaction(r).getSpeciesIds() if s not in ub_sp_list]
+    ub_sp_list.extend(tca_sps_bound)
+    ub_re_list.extend([])
 
-# combine alias species and alias reaction lists (for aliasNodes function)
+# adding hand coded Pylori from BiGG2
+if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "iIT341.xml"):
+    # create lists of species ids and reaction ids for each pathway (not necessary if provided by sbml)
+    gids = {}
+    for g in cmod.groups:
+        if g.getName() == 'Glycolysis':
+            gids['Glycolysis'] = g.getId()
+        elif g.getName() == 'TCA cycle':
+            gids['TCA cycle'] = g.getId()
+
+    # lists of reaction nodes
+    glyc_re = cmod.getGroup(gids['Glycolysis']).getMemberIDs()
+    tca_re = cmod.getGroup(gids['TCA cycle']).getMemberIDs()
+
+    # lists of metabolite nodes
+    glyc_sps = []
+    tca_sps = []
+    for r in glyc_re:
+        glyc_sps.extend(cmod.getReaction(r).getSpeciesIds())
+    for r in tca_re:
+        tca_sps.extend(cmod.getReaction(r).getSpeciesIds())
+    glyc_sps = list(set(glyc_sps))
+    tca_sps = list(set(tca_sps))
+    # ubiquitous small metabolites
+    small_sps = [s.getId() for s in cmod.species if len(s.isReagentOf()) > 30]
+
+    for ubs in small_sps:
+        if ubs in glyc_sps:
+            glyc_sps.remove(ubs)
+        if ubs in tca_sps:
+            tca_sps.remove(ubs)
+
+    # create list of all reaction and species nodes that are not part of tca or glyc
+    not_spec_sps = [sps for sps in cmod.getSpeciesIds() if sps not in glyc_sps or sps not in tca_sps]
+    not_spec_re = [re for re in cmod.getReactionIds() if re not in glyc_re or re not in tca_re]
+    # create groups (not necessary if provided by sbml)
+    cmod.createGroup('not_specified')
+    path0 = cmod.getGroup('not_specified')
+    path0.setName('Not specified')
+    path0.addMember([cmod.getSpecies(s) for s in not_spec_sps] + [cmod.getReaction(r) for r in not_spec_re])
+    cmod.createGroup('glycolysis')
+    path1 = cmod.getGroup('glycolysis')
+    path1.setName('Glycolysis')
+    path1.addMember([cmod.getSpecies(s) for s in glyc_sps] + [cmod.getReaction(r) for r in glyc_re])
+    cmod.createGroup('tca_cycle')
+    path2 = cmod.getGroup('tca_cycle')
+    path2.setName('TCA Cycle')
+    path2.addMember([cmod.getSpecies(s) for s in tca_sps] + [cmod.getReaction(r) for r in tca_re])
+    # automatically create list of boundary species (those which connect the biol. pathway to rest of network)
+    #glyc_sps_bound = identifyBoundarySpecies(glyc_sps, glyc_re, cmod)
+    tca_sps_bound_tup = mvl.identifyBoundarySpecies(tca_sps, tca_re, cmod)
+    # put only the first item of the tuples (species) in a new list and only if it is not part of the glycolysis list
+    # we don't want to alias to much later on
+    tca_sps_bound = list(set([tup[0] for tup in tca_sps_bound_tup if tup[0] not in glyc_sps]))
+    # select biomass reaction for aliasing
+    #for r in cmod.getActiveObjectiveReactionIds():
+        # add biomass reaction with substrates and products to alias lists (ub_sp_list, ub_re_list)?
+        # -> commented because some species of tca cycle are also part of biomass (eg: AKG)
+        # => aliasing them would break up the tca circle layout
+        #ub_sp_list += [s for s in cmod.getReaction(r).getSpeciesIds() if s not in ub_sp_list]
+    ub_sp_list.extend(tca_sps_bound)
+    ub_re_list.extend([])
+
+
+
+# 3.) create alias node list based on connectivity <-> user defined thresholds (strategy 1)
+if AUTO_ALIAS:
+    sp_list, re_list = mvl.identifyConnectedNodes(cmod, 6, 4, True)
+    ub_sp_list.extend(sp_list)
+    ub_re_list.extend(re_list)
+
+# 4.) create alias node list based on a certain compartment <-> compartment info in sbml (strategy 3)
+    #comp_ids = cmod.getCompartmentIds() # get a list of all compartments
+    #comp_2 = cmod.getCompartment(comp_ids[1]) # get  compartment 2 (first entry in list of all compartments)
+    #comp_2_species = comp_2.containsSpecies() # list of species in compartment 2
+    #comp_2_reac = comp_2.containsReactions() # list of reactions in compartment 2
+    #ub_sp_list.extend(comp_2_species)
+    #ub_re_list.extend(comp_2_reac)
+
+# 5.) create alias node list of all boundary (exchange) reactions (for aliasNode() function, NOT Mimoza!)
+ex_re_list = []
+if EX_RE_ALIAS:
+    ex_re_list.extend(cmod.getExchangeReactionIds())
+
+# combine alias species and alias reaction lists (either for import_sbml or aliasNodes function)
 ub_list = ub_sp_list + ub_re_list
-
 # add ubiquitous (alias) species group to sbml file and save it as "..._with_groups.xml"
 # create group for ubiquitous species
 cmod.createGroup('g_ubiquitous_sps')
@@ -202,6 +251,7 @@ cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(model_id), add_groups=True
 groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 
 
+
 #######################################################
 # create Tulip graph and run Mimoza layout functions  #
 #######################################################
@@ -210,107 +260,15 @@ groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 graph = tlp.newGraph()
 graph.setName(model.getId())
 
-# create graph properties for new tulip graph
-def create_props(graph):
-    # create properties
-    graph.getStringProperty(graph_properties.ANCESTOR_TERM)
-    graph.getStringProperty(graph_properties.ANCESTOR_ID)
-    graph.getStringProperty(graph_properties.ANCESTOR_NAME)
-    graph.getStringProperty(graph_properties.TERM)
-    graph.getStringProperty(graph_properties.COMPARTMENT_ID)
-    graph.getStringProperty(graph_properties.ID)
-    graph.getStringProperty(graph_properties.NAME)
-    graph.getIntegerProperty(graph_properties.TYPE)
-    graph.getBooleanProperty(graph_properties.REVERSIBLE)
-    graph.getDoubleProperty(graph_properties.STOICHIOMETRY)
-    graph.getBooleanProperty(graph_properties.TRANSPORT)
-    graph.getBooleanProperty(graph_properties.UBIQUITOUS)
-    graph.getLayoutProperty(graph_properties.VIEW_LAYOUT)
-    graph.getIntegerProperty(graph_properties.VIEW_SHAPE)
-    graph.getSizeProperty(graph_properties.VIEW_SIZE)
-    graph.getBooleanProperty(graph_properties.FAKE)
-    graph.getStringProperty(graph_properties.CLONE_ID)
-    graph.getStringProperty(graph_properties.FORMULA)
-    graph.getStringVectorProperty(graph_properties.RELATED_COMPARTMENT_IDS)
-
-    # return list with variables pointing to the properties
-    #prop_list = [anc_term, anc_id, anc_name, term, c_id, id_, name, type_, rev, stoich, tr, ub, viewLayout,
-    #             viewShape, viewSize, fake, clone_id, formula, rel_c_id]
-    #return prop_list
-create_props(graph)
+# create and map graph properties for new tulip graph
+anc_term, anc_id, anc_name, term, c_id, id_, name, type, rev, stoich, transport, ub, viewLabel, \
+viewLayout, viewShape, viewSize, viewColor, fake, clone_id, formula, rel_c_ids, edge_direct, flux, selection = mvl.create_props(graph)
 
 # flag (true/false) a list of nodes (already saved as ub_list) so that they can be aliased later
-def markUbiquitousNodes(g, ub_list):
-    """
-    Flag a list of nodes in a graph to be marked as ubiquitous (for aliasing)::
-
-    - *g* a tulip/mimoza graph
-    - *ub_list* a list of nodes
-    """
-    # set graph property for ub nodes
-    #type = g.getIntegerProperty("type")
-    ub_list = list(set(ub_list))
-    ub = g.getBooleanProperty("ub")
-    id_ = g.getStringProperty("id")
-    for n in g.getEdges():
-        if id_[n] in ub_list:
-            #type[n] = 1
-            ub[n] = True
-
-markUbiquitousNodes(graph, ub_list)
+mvl.markUbiquitousNodes(graph, ub_list)
 
 # create nodes for all model species
-def speciesToNodes(graph, input_model, ub_sps):
-    """
-    Create graph nodes for each species of a given libsbml model. Different properties such as size, shape,
-    etc. are added to the nodes::
-
-    - *graph* a tulip/mimoza graph
-    - *input_model* a libsbml model
-    - *ub_sps* a list of species to be flagged as ubiquitous (for aliasing)
-
-    """
-    id2n = {}
-    for s in input_model.getListOfSpecies():
-        # get current species id
-        _id = s.getId()
-        # get current species name
-        name = s.getName()
-        # get compartment of current species
-        comp = input_model.getCompartment(s.getCompartment())
-        # check if species is in ub list: return either true or false
-        ub = (_id in ub_sps)
-
-        # add new node to graph and return it (saved in n)
-        n = graph.addNode()
-        # add compartment id to new node of graph
-        graph[graph_properties.COMPARTMENT_ID][n] = comp.getId()
-        # add current species id to new node of graph
-        graph[graph_properties.ID][n] = _id
-        # if current species name exists:
-        if name:
-            # remove compartment from the name,
-            # e.g. H2O [peroxisome] --> H2O
-            if comp.getName():
-                name = name.replace('[%s]' % comp.getName(), '').strip()
-                name = name.replace('[%s]' % comp.getId(), '').strip()
-            # add current species name to new node of graph
-            graph[graph_properties.NAME][n] = name
-        # add type of new node corresponding to the value that is defined for species nodes (1)
-        # (reaction nodes have type = 2)
-        graph[graph_properties.TYPE][n] = graph_properties.TYPE_SPECIES
-        # add ub status (true or false) to new node of graph
-        graph[graph_properties.UBIQUITOUS][n] = ub
-        # add shape to new node of graph (set to circle shape, can be changed in graph_properties.py)
-        graph[graph_properties.VIEW_SHAPE][n] = graph_properties.SPECIES_SHAPE
-        # add size to new node of graph (calculated by function get_n_size in file resize.py)
-        graph[graph_properties.VIEW_SIZE][n] = resize.get_n_size(graph, n)
-
-        # assign the current species id (key) to the new tulip node n (value) in dict id2n
-        id2n[_id] = n
-    return id2n
-
-id2n = speciesToNodes(graph, model, ub_list)
+id2n = mvl.speciesToNodes(graph, model, ub_list)
 
 # run Mimoza functions for further graph manipulaption
 # species to nodes, reactions to nodes, alias node cloning
@@ -323,247 +281,164 @@ fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph = tulip_graph2geojson.gra
 tlp.saveGraph(graph, "{}_raw.tlp".format(model_id))
 
 
+
 #################################
 # change basic graph properties #
 #################################
 
-#function to alias any chosen node
-# brett: I don't understand why n_new is an argument if it is replace by a new node later in this function!!!
-def aliasNode(g, n_alias, target_string, x ,y, n_new=None):
-    """
-    Alias a specific node (reaction nodes and/or metabolite nodes)::
-
-    - *g* a tulip/mimoza graph
-    - *n_alias* a tulip node to alias (format: tlp.node(index))
-    - *target_string* a name string of the target connected to n_alias
-    - *x* x coordinate (int) of new node position
-    - *y* y coordinate (int) of new node position
-    - *n_new* newly created tulip node (cloned from n_alias)
-
-    """
-    viewName = g.getStringProperty("name")
-    # iterate over all incoming and outgoing edges of chosen node
-    for e in g.getInOutEdges(n_alias):
-        # for each node take the edge that either begins at or ends et the chosen target
-        if viewName[g.target(e)] == target_string or viewName[g.source(e)] == target_string:
-            g.delEdge(e) # delete the edge
-    # delete alias node if its not connected to any edge anymore
-    if len(list(g.getInOutEdges(n_alias))) == 0:
-        g.delNode(n_alias)
-
-    # add new node with same properties as AKG
-    n_new = g.addNode()
-    for prop_string in g.getProperties():
-        # convert property name (string) to property object
-        prop_obj = g.getProperty(prop_string)
-        # initially set all properties of new node to prop of old node
-        prop_obj[n_new] = prop_obj[n_alias]
-        # give new node some different coords to old node
-        if prop_string == "viewLayout":
-            prop_obj = g.getProperty(prop_string)
-            prop_obj[n_new] = tlp.Coord(x, y, 0)
-        # set clone id (node to which new node is connected)
-        clone_id = graph.getStringProperty("clone_id")
-        clone_id[n_new] = target_string
-
-    # add new edge for new node
-    # select new node via tlp.node(#) internal id
-    # graph.addEdge(source = new node, target = node that belongs to the name in target_string)
-    for n in g.getNodes():
-        if viewName[n] == target_string:
-            n_edge = g.addEdge(n_new, n)
-            # add edge name (same as name of old node)
-            viewName[n_edge] = viewName[g.source(n_edge)]
-
-    # adjust props to those of nodes connected to target
-        # for n in graph.getInOutNodes(tlp.node(59)):
-        #    print(viewName[n])
-        # prop_obj[n_new] = prop_obj[tlp.node()]
-        #
-        # give node different size to old one
-        # if prop_string == "viewSize":
-        #    prop_obj = graph.getProperty(prop_string)
-        #    prop_obj[n_new] = tlp.Size(2, 2, 0)
-        #
-
-    return n_new
-
-# delete a set of nodes from the graph
-def delNodes(g, node_list):
-    """
-    Delete a set of nodes from a graph (by their id)::
-
-    - *g* a tulip/mimoza graph
-    - *node_list* a set of nodes
-    """
-    id_ = g.getStringProperty("id")
-    for n in g.getNodes():
-        if id_[n] in node_list:
-            g.delNode(n)
-
 # add labels to nodes
-def addLabels(g, node_type, label_type):
-    """
-    Add labels to nodes and/or edges of graph::
-
-    - *g* a tulip/mimoza graph
-    - *node_type* a predefined node type
-    - *label_type* the label type, can be either "name" or "id"
-    """
-    viewLabel = g.getStringProperty("viewLabel")
-    type = g.getIntegerProperty("type")
-    view_label_type = g.getStringProperty(label_type)
-    for n in g.getNodes():
-        if type[n] == node_type:
-            viewLabel[n] = view_label_type[n]
-
 # define node types for labeling
 NODE_TYPES = {'metabolites': 1,
               'reactions'  : 2
               }
 
-addLabels(graph, NODE_TYPES['metabolites'], "id")
-addLabels(graph, NODE_TYPES['reactions'], "id")
+mvl.addLabels(graph, NODE_TYPES['metabolites'], "id")
+mvl.addLabels(graph, NODE_TYPES['reactions'], "id")
+
+# TODO: add labels to edges
+#for e in graph.getEdges():
+#    viewLabel[e] = "test"
+# -> edge labels are set in "viewLabel" but not visible!
 
 # change node or edge colour
-def setColours(g, item_list, colour):
-    """
-    Apply colour to a list of nodes or edges::
-
-     - *g* a tulip/mimoza graph
-     - *item_list* a tulip iterator (graph.getEdges or graph.getNodes)
-     - *colour* a predefined colour
-    """
-    # apply colour to graph
-    viewColor = g.getColorProperty("viewColor")
-    for e in item_list:
-        viewColor[e] = colour
-
 # define colours
 COLOURS = {'red'  : tlp.Color(255, 0, 0),
            'green': tlp.Color(0, 255, 0),
            'blue' : tlp.Color(0, 0, 255),
+           'white': tlp.Color(255, 255, 255),
            'grey' : tlp.Color(220, 220, 220),
            'black': tlp.Color(0, 0, 0)
            }
 
 # set colour of all edges (complete graph)
-setColours(graph, graph.getEdges(), COLOURS['grey'])
+mvl.setColours(graph, graph.getEdges(), COLOURS['grey'])
 
 # change line types (Polyline, BezierCurve, CatmullRomCurve, CubicSplineCurve)
-viewShape = graph.getIntegerProperty("viewShape")
 for e in graph.getEdges():
     viewShape[e] = tlp.EdgeShape.BezierCurve
 
 
-##################################################################
-# different layouts on subsystems (compartments, pathways, etc.) #
-##################################################################
 
-# define function to create subgraph from graph and apply layout
-def createSubgraph(graph, sg_name, n_list):
-    """
-    Creates a subgraph from a list of nodes::
+########################################################################
+# apply different layouts on subsystems (compartments, pathways, etc.) #
+########################################################################
 
-    - *graph* tulip graph
-    - *sg_name* subgraph name (string)
-    - *n_list* a list of nodes
-    """
-    # define tulip graph properties
-    id_ = graph.getStringProperty("id")
-    selection = graph.getBooleanProperty("viewSelection")
-    # create empty subgraph
-    sg = graph.addSubGraph(sg_name)
-
-    # Brett: create a default layout
-    params_sg = tlp.getDefaultPluginParameters('Random layout', graph)
-    sg.applyLayoutAlgorithm('Random layout', params_sg)
-
-
-    # reset selection
-    selection.setAllNodeValue(False)
-    selection.setAllEdgeValue(False)
-    # populate subgraph
-    for n in graph.getNodes():
-        if id_[n] in n_list or n in n_list:
-            selection[n] = True
-            sg.addNode(n)
-    for e in graph.getEdges():
-        if selection[graph.source(e)] and selection[graph.target(e)]:
-            selection[e] = True
-            sg.addEdge(graph.source(e), graph.target(e))
-    # reset selection
-    selection.setAllNodeValue(False)
-    selection.setAllEdgeValue(False)
-
-    return sg
-
-# define function to apply layout to subgraph and center it
-def layoutSubgraph(sg, sg_layout = None, x_center = None, y_center = None, z_center = 0):
-    """
-    Apply layout to subgraph and center it around a given point::
-
-    - *sg* a tulip/mimoza subgraph
-    - *sg_layout* subgraph layout (string), ex: "Circular (OGDF)" (optional)
-    - *x_center* x coordinate of layout center which defines subgraph position (optional)
-    - *y_center* y coordinate of layout center which defines subgraph position (optional)
-    - *z_center* z coordinate of layout center which defines subgraph position, default 0
-
-    """
-    # pseudo-fixed layout method
-    # list of available algorithms: tlp.getLayoutAlgorithmPluginsList()
-    # apply algorithm to subgraph
-    if sg_layout is not None:
-        sg.applyLayoutAlgorithm(sg_layout)
-    # center layout: center(viewLayout, newCenter, subgraph)
-    # newCenter can be given as coordinates (tlp.Coord(x,y,z)) or
-    viewLayout = graph.getLayoutProperty("viewLayout")
-    if x_center is not None and y_center is not None:
-        tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_center, y_center, z_center), sg)
-
-    return sg
-
-# 1.) manually define subsystem node lists
-small_circle = ["M1", "M2", "M9", "R02", "R10", "R11"]
-larger_circle = ["M3", "M4", "M5", "M6", "M7", "R04", "R05", "R06", "R07", "R08"]
-
-# subsystems "small circle" and "larger circle" are specific to the toymodel
+# 1.) manually define subsystem node lists and apply layout
+# specific to toy_model_biofuel
 if sbml == os.path.join(cDir, "TestModels", "toy_model_biofuel.xml"):
+    # create lists with pathways ids
+    small_circle = ["M1", "M2", "M9", "R02", "R10", "R11"]
+    larger_circle = ["M3", "M4", "M5", "M6", "M7", "R04", "R05", "R06", "R07", "R08"]
     # create toymodel subgraphs and apply centered layout
-    small_circle_subgraph = createSubgraph(graph, "small_circle", small_circle)
-    larger_circle_subgraph = createSubgraph(graph, "larger_circle", larger_circle)
-    layoutSubgraph(small_circle_subgraph, "Circular (OGDF)", 100, 100, 0)
-    layoutSubgraph(larger_circle_subgraph, "Circular (OGDF)", -50, 25, 0)
+    small_circle_subgraph = mvl.createSubgraph(graph, "small_circle", small_circle, None)
+    larger_circle_subgraph = mvl.createSubgraph(graph, "larger_circle", larger_circle, None)
+    mvl.layoutSubgraph(small_circle_subgraph, "Circular (OGDF)", 100, 100, 0)
+    mvl.layoutSubgraph(larger_circle_subgraph, "Circular (OGDF)", -50, 25, 0)
     # save created toymodel subgraphs
     tlp.saveGraph(small_circle_subgraph, "{}_SmallCircle.tlp".format(model_id))
     tlp.saveGraph(larger_circle_subgraph, "{}_LargerCircle.tlp".format(model_id))
 
-# 2.) get subsystem node list from all species of a certain compartment
+# 2.) get subsystem node list from all species of a certain compartment and apply layout
 #comp_ids = cmod.getCompartmentIds() # get a list of all compartments
-#comp_2 = cmod.getCompartment(comp_ids[1]) # get  compartment 1 (first entry in list of all compartments)
-#comp_2_species = comp_2.containsSpecies() # list of species in compartment 1
+#comp_2 = cmod.getCompartment(comp_ids[1]) # get  compartment 2 (second entry in list of all compartments)
+#comp_2_species = comp_2.containsSpecies() # list of species in compartment 2
+# layout all species from compartment 2 (e.g.: extracellular) seperately (i.e.: along the edges of the graph)
+#comp_2_sg = mvl.createSubgraph(graph, "comp_2", comp_2_species, None)
+#mvl.layoutSubgraph(comp_2_sg, "Hierarchical Graph", 0, 0, 0)
 
-# layout all species from compartment 2 (extracellular) seperately along the edges of the graph
-#comp_2_sg = createSubgraph(graph, "comp_2", comp_2_species)
-#layoutSubgraph(comp_2_sg, "Hierarchical Graph", 0, 0, 0)
-
-# 3.) get subsystem node list from different biological pathways (e.g.: glycolysis, tca and 'not specified')
-glyc_sg = createSubgraph(graph, "glycolysis", glyc_sps)
-tca_sg = createSubgraph(graph, "tca_cycle", tca_sps)
-not_spec_sg = createSubgraph(graph, "not specified", not_spec_sps)
-
-setColours(graph, glyc_sg.getNodes(), COLOURS['red'])
-setColours(graph, tca_sg.getNodes(), COLOURS['blue'])
-
-#layoutSubgraph(glyc_sg, "Mixed Model", -45, 90, 0)
-#layoutSubgraph(tca_sg, "Circular", -45, -30, 0)
-#layoutSubgraph(not_spec_sg, "Planarization Layout (OGDF)", None, None, 0)
+# 3.) get subsystem node list from different biological pathways (e.g.: glycolysis, tca) and apply layout
+if LAYOUT_GLYC_TCA and len(glyc_re) > 1 and len(tca_re) > 1:
+    # I.) initial subgraph generation
+    # either: pass list of metabolite nodes to function create subgraph
+    #glyc_sg = mvl.createSubgraph(graph, "glycolysis", glyc_sps, {"distance": 1L})
+    #tca_sg = mvl.createSubgraph(graph, "tca_cycle", tca_sps, {"distance": 1L})
+    # or: pass list of reaction nodes to function create subgraph
+    glyc_sg = mvl.createSubgraph(graph, "glycolysis", glyc_re, {"distance": 1L})
+    tca_sg = mvl.createSubgraph(graph, "tca_cycle", tca_re, {"distance": 1L})
+    # set colours of tca and glycolysis
+    mvl.setColours(graph, glyc_sg.getNodes(), COLOURS['red'])
+    mvl.setColours(graph, tca_sg.getNodes(), COLOURS['blue'])
+    # layout tca and glycolysis differently and set initial coordinates for tca and glycolysis
+    #mvl.layoutSubgraph(glyc_sg, "Sugiyama (OGDF)", {"node distance": 1, "layer distance": 10}, -45, 150, 0)
+    mvl.layoutSubgraph(glyc_sg, "Hierarchical Graph", {"orientation": "vertical", }, -45, 150, 0)
+    mvl.layoutSubgraph(tca_sg, "Circular (OGDF)", None, -45, -30, 0)
+    # II.) manipulate pathway positions relative to each other
+    # -> choose coordinates so that the two pathways don't overlap:
+    # -> known assumption: tca cycle is always below glycolysis
+    # -> move tca cycle!
+    # for edge properties
+    # get y-coord of lowest glycolysis node
+    bottom_gly_node = None
+    y_bottom_gly = 10000
+    for n in glyc_sg.getNodes():
+        y = viewLayout[n][1]
+        if y < y_bottom_gly:
+            y_bottom_gly = y
+            bottom_gly_node = n
+    # get y-coord of highest tca node
+    y_top_tca = -10000
+    for n in tca_sg.getNodes():
+        y= viewLayout[n][1]
+        if y > y_top_tca:
+            y_top_tca = y
+    # get x value of node with lowest y-value (to center tca directly under glycolysis)
+    x_trans = viewLayout[bottom_gly_node][0]
+    # get difference for y translation (to avoind overlap between tca and glycolysis)
+    y_diff = y_top_tca - y_bottom_gly
+    # center tca at new position: x = x-value of lowest glyc node, y = old y - y_diff - buffer, z = 0
+    #buff = 60 # buffer space between glycolysis and tca
+    #tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_trans, -30-y_diff-buff, 0), tca_sg)
+    # since only nodes (reaction and metabolite) are moved:
+    # #delete edges from subgraph and redraw them (add) after nodes have been moved!
+    # record edge information in dict before nodes are moved (multiple edges have the same name!)
+    gly_edge_dict = {}
+    for e in glyc_sg.getEdges():
+        gly_edge_dict[str(e)] = [name[e], glyc_sg.source(e), glyc_sg.target(e), ub[e], viewColor[e], viewSize[e],
+                             viewShape[e]]
+    # move glycolysis => edges will stay behind but we delete them after moving and redraw them
+    buff = 60 # buffer space between glycolysis and tca
+    tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_trans, 150+y_diff+buff, 0), glyc_sg)
+    # delete edges from glyc subgraph (edges will still exist in the main graph)
+    for e in glyc_sg.getEdges():
+        glyc_sg.delEdge(e)
+    # redraw the edges (add them to glyc subgraph with info stored in gly_edge_dict)
+    for e_name, e_infos in gly_edge_dict.items():
+        e_new = glyc_sg.addEdge(e_infos[1], e_infos[2])
+        name[e_new] = e_infos[0]
+        ub[e_new] = e_infos[3]
+        viewColor[e_new] = e_infos[4]
+        viewSize[e_new] = e_infos[5]
+        viewShape[e_new] = e_infos[6]
+    # III.) generate combined graph of both pathways
+    # show both tca and glycolysis in same graph
+    # reset selection
+    selection.setAllNodeValue(False)
+    selection.setAllEdgeValue(False)
+    # select tca and glyc nodes
+    for n in glyc_sg.getNodes():
+        selection[n] = True
+    for n in tca_sg.getNodes():
+        selection[n] = True
+    # select tca and glyc edges
+    for e in glyc_sg.getEdges():
+        selection[e] = True
+    for e in tca_sg.getEdges():
+        selection[e] = True
+    # create subgraph with only tca and glycolysis from selection
+    tca_glyc_sg = graph.addSubGraph(selection, "tca and glyc")
+    # reset selection
+    selection.setAllNodeValue(False)
+    selection.setAllEdgeValue(False)
+    # remove edge crossings between the pathways:
+    #  tlp.computeLinesIntersection(line1, line2)
+    # ...
 
 # fix position of a specific node (M1 (id 2) for small circle, M3 (id 8) for larger circle)
+# specific to toy_model_biofuel
 #viewLayout[tlp.node(2)] = tlp.Coord(50,75,0)
 #viewLayout[tlp.node(8)] = tlp.Coord(-50,25,0)
-#viewLayout = graph.getLayoutProperty("viewLayout")
 #viewLayout[tlp.node(16)] = tlp.Coord(100, 100, 0)
+
 
 
 ####################################################
@@ -572,196 +447,115 @@ setColours(graph, tca_sg.getNodes(), COLOURS['blue'])
 
 # example 1: remove edge (edge 49) connecting biomass to TCA cycle at AKG (node 4)
 #            get the edge that connects AKG (node 4) to biomass (R70, node 60)
+
+# specific to carlsson_model
 #aliasNode(graph, tlp.node(4), "R70", 22, 27)
 
 # example 2: cut out the biomass function (individually alias all of its connected species)
 #            and move it together with all of its now aliased species somewhere else
 #            biomass function = R70 (node 60)
+if ALIAS_OBJ:
+    # alias the biomass reaction
+    mvl.aliasObjFunc(graph, biomass_re_id, "Sugiyama (OGDF)", [name, viewLayout, viewSize])
 
-import random
+# example 3: alias all exchange reactions (from ex_re_list, extracted from model with cbmpy if info available)
+#            add them to a subgraph (new sg or the same as biomass) and layout them
 
-# alias the biomass reaction
-viewName = graph.getStringProperty("name")
-viewLayout = graph.getLayoutProperty("viewLayout")
-biomass_node_list = []
+if EX_RE_ALIAS:
+    # I.) construct first dictionary with key = ex reaction id and value = ex reaction object
+    # create a list of exchange reaction node objects (value list)
+    ex_re_node_obj = [r for r in graph.getNodes() if id_[r] in ex_re_list]
+    # ex_re_list already contains the ids (key list)
+    # merge the key and value lists to a dictionary
+    ex_re_id_dict = {}
+    for i in range(len(ex_re_list)):
+        ex_re_id_dict[ex_re_list[i]] = ex_re_node_obj[i]
+    # II.) construct second dictionary with key = ex reaction id and value = list of connected out nodes
+    # ex_re_list already contains the ids (key list)
+    # create a dict with ex reaction ids as keys and a list of connected in and out nodes as value
+    ex_re_con_dict = dict((id_[r], [n for n in graph.getInOutNodes(r) if id_[r] in ex_re_list]) for r in ex_re_node_obj)
+    print("\n dict of exchange reaction ids and lists of connected nodes:")
+    print(ex_re_con_dict)
+    # carlsson model hack: biomass reaction is classified as exchange reaction -> remove it from dict
+    if sbml == os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml"):
+        del ex_re_con_dict['R70']
+    # III.) call aliasNode function for every node connected to an exchange reaction node
+    ex_re_alias_result_nodes = []
+    for r_id in ex_re_con_dict:
+        for node in ex_re_con_dict[r_id]:
+            n_new = mvl.aliasNode(graph, node, r_id, None, None)
+            ex_re_alias_result_nodes.append(n_new)
+    print("\n list of nodes that were aliased (all exchange reaction nodes):")
+    print(ex_re_alias_result_nodes)
+    # IV.) add newly created, aliased nodes to a subgraph and layout it
+    ex_re_sg = mvl.createSubgraph(graph, "exchange reactions", ex_re_alias_result_nodes, None)
+    mvl.setColours(ex_re_sg, ex_re_sg.getEdges(), COLOURS["grey"])
+    mvl.layoutSubgraph(ex_re_sg, "Tree Radial", None, 0, 0, 0)
 
-for n in graph.getNodes():
-    # select biomass reaction node
-    if viewName[n] == "R70":
-        # add biomass reaction node to list
-        biomass_node_list.append(n)
-        # access biomass reaction node coords (to layout connected nodes around it)
-        x, y, z = viewLayout[n]
-        # iterate over all nodes which are connected to biomass reaction node
-        for node in graph.getInOutNodes(n):
-            # alias node and move it to a random position close to biomass reaction node (quick test hack)
-            node_aliased = aliasNode(graph, node, "R70", x+random.random()*50, y+random.random()*50, None)
-            # save newly created node in a list after aliasing
-            biomass_node_list.append(node_aliased)
+# take exchange reactions and biomass reaction from a graph and:
+# 1.) get a subgraph with both and 2.) get individual subgraphs
+if LAYOUT_EX_RE_AND_BIOMASS:
+    #
+    # example 4.1: basically the combination of examples 2 and 3
+    #              just create a subgraph with all the ex reaction nodes and the all biomass reaction nodes together
+    #              => test different layouts on that subgraph
+    #
+    # I.) exchange reaction nodes
+    # convert reaction node ids to reaction node objects
+    ex_node_list = []
+    for r in graph.getNodes():
+        # only consider reaction node whose id is in the exchage reaction list
+        if id_[r] in ex_re_list:
+            ex_node_list.append(r)
+        # get species connected to ex reaction nodes
+        for n in graph.getInOutNodes(r):
+            if id_[r] in ex_re_list:
+                ex_node_list.append(n)
+    # II.) all biomass reaction nodes
+    biomass_node_list = []
+    for n in graph.getNodes():
+        # select biomass reaction node
+        if name[n] == biomass_re_id:
+            # add biomass reaction node to list
+            biomass_node_list.append(n)
+            # iterate over all nodes which are connected to biomass reaction node
+            for node in graph.getInOutNodes(n):
+                biomass_node_list.append(node)
+    # III.) create subgraph
+    biomass_and_ex_re_list = biomass_node_list + ex_node_list
+    biomass_and_ex_re_sg = graph.inducedSubGraph(biomass_and_ex_re_list)
+    biomass_and_ex_re_sg.setName("biomass and ex reactions")
+    #biomass_and_ex_re_sg = mvl.createSubgraph(graph, "biomass and ex reactions", biomass_and_ex_re_list, None)
+    # => use this new subgraph to get to the exchange reactions instead of trying to extract them from the entire graph
+    #
+    # example 4.2 : alias all exchange reactions
+    #               add them as new subgraph to the subgraph biomass_and_ex_re_sg
+    # I.)
+    # create subgraphs for biomass and ex reactions
+    # ex_re_sg already exists as subgraph for only exchange reactions
+    biomass_only_sg = graph.inducedSubGraph(biomass_node_list)
+    biomass_only_sg.setName("only biomass reaction")
+    #biomass_only_sg = mvl.createSubgraph(biomass_and_ex_re_sg, "only biomass reaction", biomass_nodes, None)
+    # III.) apply layout only on exchange reaction subgraph
+    mvl.layoutSubgraph(ex_re_sg, "Tree Radial", {"layer spacing": 10}, 0, 0, 0)
+    # Sugiyama: change node distance (default: 3) and layer distance (default: 3) to scale up the biomass reaction
+    mvl.layoutSubgraph(biomass_only_sg, "Sugiyama (OGDF)", {"node distance": 5, "layer distance": 5}, 0, 0, 0)
+    # TODO: fine tuning of the layout
+    # TODO: for tree raidal: straighten exchange reactions (in edge slope = out edge slope)
+    # VI.) save subgraph
+    tlp.saveGraph(biomass_and_ex_re_sg, "{}_biomass_ex_re.tlp".format(model_id))
 
-# move it and all connected. aliased nodes 200 units to the right (x+200) and 200 units up (y+200)
-re_node_coords = []
-
-for node in biomass_node_list:
-    x, y, z = viewLayout[node]
-    viewLayout[node] = tlp.Coord(x+50, y+15, z) # shift coords here to move the biomass reaction independently
-    if viewName[node] == "R70":
-        # save coords of biomass reaction node
-        x, y, z = viewLayout[node]
-        re_node_coords.append(x)
-        re_node_coords.append(y)
-        re_node_coords.append(z)
-
-# turn biomass node group into subgraph (but without reaction node, map it seperately!)
-biomass_node_list = [n for n in biomass_node_list if viewName[n] != "R70"]
-biomass_sg = createSubgraph(graph, "biomass reaction", biomass_node_list)
-
-print(re_node_coords)
-
-# Brett: functions should be encapsulated, where does graph come from (fix layoutSubgraph() function as well)!!!
-def layoutSubgraphCircularOGDF(sg, x_center=None, y_center=None, z_center=0, params={}):
-    """
-    Apply "Circular (OGDF)" layout to subgraph and center it around a given point::
-
-     - *sg* a tulip/mimoza subgraph
-     - *x_center* x coordinate of layout center which defines subgraph position (optional)
-     - *y_center* y coordinate of layout center which defines subgraph position (optional)
-     - *z_center* z coordinate of layout center which defines subgraph position, default 0
-
-    Set any input parameter value if needed::
-
-     - params['minDistCircle'] = ...
-     - params['minDistLevel'] = ...
-     - params['minDistSibling'] = ...
-     - params['minDistCC'] = ...
-     - params['pageRatio'] = ...
-
-    """
-
-    params_sg = tlp.getDefaultPluginParameters('Circular (OGDF)', sg)
-    print(params_sg)
-
-    # copy appropriate parameters or use defualt
-    for p_ in params:
-        if p_ in params_sg:
-            params_sg[p_] = params[p_]
-    print(params_sg)
-    #resultLayout = sg.getLayoutProperty('resultLayout')
-    #success = sg.applyLayoutAlgorithm('Circular (OGDF)', resultLayout, params_sg)
-    success = sg.applyLayoutAlgorithm('Circular (OGDF)', params_sg)
-    #viewLayout = sg.getLayoutProperty("viewLayout")
-    #for n in sg.getNodes():
-
-        #tmp = resultLayout[n]
-        ##tmp[0] = tmp[0]/10. + 123
-        ##tmp[1] = tmp[1]/10. + 14
-        #print(viewLayout[n], resultLayout[n], tmp)
-        #viewLayout[n] = tmp
-
-
-    print('Circular (OGDF): {}'.format(success))
-
-
-    #if x_center is not None and y_center is not None and graph is not None:
-        #tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_center, y_center, z_center), sg)
-
-    # center layout: center(viewLayout, newCenter, subgraph)
-    # newCenter can be given as coordinates (tlp.Coord(x,y,z)) or
-
-    return sg
-
-# draw biomass subgraph
-
-# old way, using Circular radius
-"""
-# increase circle radius by increasing size of nodes?
-viewSize = graph.getSizeProperty("viewSize")
-for n in biomass_sg.getNodes():
-    viewSize[n] = tlp.Size(3, 3, 0)
-# apply layout to biomass subgraph
-layoutSubgraph(biomass_sg, "Circular", re_node_coords[0], re_node_coords[1], 0)
-"""
-
-params = {'pageRatio': 1.0, 'minDistCircle': 20.0, 'minDistSibling': 10.0, 'minDistCC': 20.0, 'minDistLevel': 20.0} # default
-# params = {'pageRatio': 1.0, 'minDistCircle': 1.0, 'minDistSibling': 1.0, 'minDistCC': 1.0, 'minDistLevel': 1.0} # default
-
-# Brett: new hack, we need to look into this OGDF layout
-layoutSubgraphCircularOGDF(biomass_sg, re_node_coords[0], re_node_coords[1], 0, params=params)
-
-
-def exportSVG(g, filename, params={}):
-    params = tlp.getDefaultPluginParameters('SVG Export', g)
-
-    # set any input parameter value if needed
-    # params['Edge color interpolation'] = ...
-    # params['Edge size interpolation'] = ...
-    # params['Edge extremities'] = ...
-    # params['Background color'] = ...
-    # params['Makes SVG output human readable'] = ...
-    # params['Export node labels'] = ...
-    # params['Export edge labels'] = ...
-    # params['Export metanode labels'] = ...
-    # params['Use Web Open Font Format v2'] = ...
-
-    success = tlp.exportGraph('SVG Export', g, filename, params)
-    print('exportSVG: {}'.format(success))
-
-#exportSVG(graph, 'test.svg')
 
 
 ########################
 # visualize FBA result #
 ########################
-"""
-# color nodes and edges depending on flux value (pos, neg, 0) -> do subgraphs for each (three colors)
+
+# color nodes and edges depending on flux value
 # input format: dict = {"M1": -3, ...}
-#flux_dict = {"R70": 2, "R93": 1, "R55": 0, "R42": -0.00001, "R7r": -1, "R10": -2}
-flux_dict = fba_results
+if COLOUR_FBA:
+    mvl.colourFBA(graph, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["grey"])
 
-pos_flux = []
-neg_flux = []
-zero_flux = []
-
-# extract reaction nodes from dict
-for key in flux_dict:
-    if flux_dict[key] > 0:
-        pos_flux.append(key)
-    elif flux_dict[key] < 0:
-        neg_flux.append(key)
-    else:
-        zero_flux.append(key)
-
-# create subgraphs for pos, neg and zero flux
-pos_sg = createSubgraph(graph, "pos_flux", pos_flux)
-neg_sg = createSubgraph(graph, "neg_flux", neg_flux)
-zero_sg = createSubgraph(graph, "zero_flux", zero_flux)
-
-# color total graph
-setColours(graph, graph.getNodes(), COLOURS['grey'])
-setColours(graph, graph.getEdges(), COLOURS['grey'])
-
-# color in and out edges of flux nodes
-viewColor = pos_sg.getColorProperty("viewColor")
-for n in pos_sg.getNodes():
-    for e in graph.getInOutEdges(n):
-        viewColor[e] = COLOURS['green']
-
-for n in neg_sg.getNodes():
-    for e in graph.getInOutEdges(n):
-        viewColor[e] = COLOURS['red']
-
-#for n in zero_sg.getNodes():
-#    for e in graph.getInOutEdges(n):
-#        viewColor[e] = COLOURS['blue']
-
-# color the flux subgraph nodes
-setColours(graph, pos_sg.getNodes(), COLOURS['green'])
-setColours(graph, neg_sg.getNodes(), COLOURS['red'])
-#setColours(graph, zero_sg.getNodes(), COLOURS['blue'])
-
-# reduce edge crossing
-# in progress...
-"""
 
 
 ############################################################################
@@ -770,6 +564,12 @@ setColours(graph, neg_sg.getNodes(), COLOURS['red'])
 
 # save total graph with all changes
 tlp.saveGraph(graph, "{}_graph.tlp".format(model_id))
+
+# export tulip graph as SVG file
+#params = tlp.getDefaultPluginParameters('SVG Export', graph)
+#tlp.exportGraph('SVG Export', graph, '{}.svg'.format(model_id), params
+# NOT WORKING! -> so far: Exception: No plugin named  SVG Export.
+# emailed tulip staff about it
 
 # add layout to SBML file
 groups_document = reader.readSBML(groups_sbml)
@@ -780,23 +580,3 @@ sbml_manager.save_as_layout_sbml(groups_model, gen_model, groups_sbml, n2lo, ub_
 # create SBGN file
 groups_sbgn = os.path.join(cDir, '{}.sbgn'.format(model_id))
 sbgn_helper.save_as_sbgn(n2lo, e2lo, groups_model, groups_sbgn)
-
-
-
-def applyCircularOGDF(g, params={}):
-    """
-    # params['minDistCircle'] = ...
-    # params['minDistLevel'] = ...
-    # params['minDistSibling'] = ...
-    # params['minDistCC'] = ...
-    # params['pageRatio'] = ...
-
-    """
-
-    sg_params = tlp.getDefaultPluginParameters('Circular (OGDF)', g)
-    print(sg_params)
-    for k in params:
-        if k in sg_params:
-            sg_params[k] = params[k]
-    success = g.applyLayoutAlgorithm('Circular (OGDF)', sg_params)
-    print('applyCircularOGDF: {}'.format(success))

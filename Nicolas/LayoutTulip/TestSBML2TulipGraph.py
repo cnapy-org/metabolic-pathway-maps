@@ -49,7 +49,7 @@ COLOUR_FBA = False
 sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "Hpylori_iIT341.xml") # 6, 4, True
 #sbml = os.path.join(cDir, "TestModels", "iJO1366.xml") # 6, 4, True
-#sbml = os.path.join(cDir, "TestModels", "Lactococcus_lactis_MG1363") # ?, ?, set it to 'True' probably
+#sbml = os.path.join(cDir, "TestModels", "Lactococcus_lactis_MG1363.xml")
 
 # create libsbml model
 reader = libsbml.SBMLReader()
