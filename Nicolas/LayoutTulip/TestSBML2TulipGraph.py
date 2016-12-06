@@ -29,11 +29,11 @@ AUTO_ALIAS = False
 PATHWAY_ALIAS = True
 
 # custom aliasing and layouting of only a certain part of the graph (only exchange reactions, only obj reaction)
-EX_RE_ALIAS = False
+EX_RE_ALIAS = True
 ALIAS_OBJ = True
 
 LAYOUT_GLYC_TCA = True # needs PATHWAY_ALIAS true, so that necessary node lists are generated (for pathways)
-LAYOUT_EX_RE_AND_BIOMASS = False # needs EX_RE_ALIAS true, so that necessary exchange reaction node list is generated
+LAYOUT_EX_RE_AND_BIOMASS = True # needs EX_RE_ALIAS true, so that necessary exchange reaction node list is generated
 
 COLOUR_FBA = False
 
@@ -91,7 +91,7 @@ comp_list = [''] + cmod.getCompartmentIds()
 level_list = [(x, comp_list[x]) for x in range(len(comp_list))]
 c_id2level = dict(zip(comp_list[1:], level_list))
 
-# list of species nodes and reaction nodes to be aliased (filled by one or more of the subsequent statements)
+# list of species nodes and reaction nodes to be aliased by Mimoza (filled by one or more of the subsequent statements)
 ub_sp_list = []
 ub_re_list = []
 
@@ -102,40 +102,48 @@ if sbml == os.path.join(cDir, "TestModels", "toy_model_biofuel.xml"):
     ub_re_list.extend(['R09', 'R12', 'R13', 'R14', 'R15', 'R16', 'R17', 'R18'])
 
 # 2.) create alias node list based on biological pathways <-> group info in sbml - if available (strategy 2)
-# specific to carlsson model
 glyc_sps = []
 tca_sps = []
 glyc_re = []
 tca_re = []
 
-# TODO: generalize pathway selection for aliasing (model independent)
-
+# 2.1) define pathways if no group information in sbml (names specific to carlsson model)
 if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml"):
-    # create lists of species ids and reaction ids for each pathway (not necessary if provided by sbml)
-    # lists of metabolite nodes
-    glyc_sps.extend(["GLU_6_P", "FRU_6_P", "FRU_BIS_P", "DHAP", "GA_3P", "PG", "PEP"])
-    tca_sps.extend(["CITRATE", "ISOCIT", "AKG", "SUCC_CoA", "SUCC", "FUMARATE", "MALATE", "OXALO"])
-    # lists of reaction nodes
-    glyc_re.extend(["R1", "R2r", "R3", "R4", "R5r", "R6r", "R7r", "R8r", "R9", "RR9"])
-    tca_re.extend(["R23r", "R24", "R25", "R26r", "R27r", "R28r", "R29r", "R22"])
+    # create pathway dictionary (key: pathway name - value: tupel of two lists)
+    # path_dict = {"glycolysis": ([list of metabolite nodes],[list of reaction nodes]), "TCA Cycle": ([metabolite
+    # nodes],[reaction nodes]), ...}
+    path_dict = {"Glycolysis":
+                             (["GLU_6_P", "FRU_6_P", "FRU_BIS_P", "DHAP", "GA_3P", "PG", "PEP"],
+                              ["R1", "R2r", "R3", "R4", "R5r", "R6r", "R7r", "R8r", "R9", "RR9"]),
+                 "TCA Cycle":
+                             (["CITRATE", "ISOCIT", "AKG", "SUCC_CoA", "SUCC", "FUMARATE", "MALATE", "OXALO"],
+                              ["R23r", "R24", "R25", "R26r", "R27r", "R28r", "R29r", "R22"])
+                 }
     # ubiquitous small metabolites
     small_sps = ["ATP", "ADP", "NAD", "NADH", "CO2", "NH3"]
-    # create list of all reaction and species nodes that are not part of tca or glyc
+    # extract pathway lists (for LAYOUT_GLYC_TCA)
+    # lists of metabolite nodes
+    glyc_sps.extend(path_dict["Glycolysis"][0])
+    tca_sps.extend(path_dict["TCA Cycle"][0])
+    # lists of reaction nodes
+    glyc_re.extend(path_dict["Glycolysis"][1])
+    tca_re.extend(path_dict["TCA Cycle"][1])
+    # create list of all reaction and species nodes that are not part of any pathway
     not_spec_sps = [sps for sps in cmod.getSpeciesIds() if sps not in glyc_sps or sps not in tca_sps]
     not_spec_re = [re for re in cmod.getReactionIds() if re not in glyc_re or re not in tca_re]
-    # create groups (not necessary if provided by sbml)
+    # create groups for evey pathway dict entry (not necessary if provided by sbml)
+    for key in path_dict:
+        cmod.createGroup(key)
+        group = cmod.getGroup(key)
+        group.setName(key)
+        group.addMember([cmod.getSpecies(s) for s in path_dict[key][0]] + [cmod.getReaction(r) for r in path_dict[key][
+            1]])
+    # create group for all other species and reactions
     cmod.createGroup('not_specified')
     path0 = cmod.getGroup('not_specified')
     path0.setName('Not specified')
     path0.addMember([cmod.getSpecies(s) for s in not_spec_sps] + [cmod.getReaction(r) for r in not_spec_re])
     cmod.createGroup('glycolysis')
-    path1 = cmod.getGroup('glycolysis')
-    path1.setName('Glycolysis')
-    path1.addMember([cmod.getSpecies(s) for s in glyc_sps] + [cmod.getReaction(r) for r in glyc_re])
-    cmod.createGroup('tca_cycle')
-    path2 = cmod.getGroup('tca_cycle')
-    path2.setName('TCA Cycle')
-    path2.addMember([cmod.getSpecies(s) for s in tca_sps] + [cmod.getReaction(r) for r in tca_re])
     # automatically create list of boundary species (those which connect the biol. pathway to rest of network)
     #glyc_sps_bound = identifyBoundarySpecies(glyc_sps, glyc_re, cmod)
     tca_sps_bound_tup = mvl.identifyBoundarySpecies(tca_sps, tca_re, cmod)
@@ -151,7 +159,7 @@ if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "Ecoli_Carlson2003
     ub_sp_list.extend(tca_sps_bound)
     ub_re_list.extend([])
 
-# adding hand coded Pylori from BiGG2
+# 2.2) extract pathways from predefined groups (specific to iIT341)
 if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "iIT341.xml"):
     # create a dictionary to store model groups (key: group name - value: group id)
     gids = {}
@@ -199,6 +207,13 @@ if AUTO_ALIAS:
 ex_re_list = []
 if EX_RE_ALIAS:
     ex_re_list.extend(cmod.getExchangeReactionIds())
+# if exchange reactions are not annotated in sbml -> look for a exchange reaction group
+if EX_RE_ALIAS and len(ex_re_list) == 0:
+    for g_id in cmod.getGroupIds():
+        group = cmod.getGroup(g_id)
+        if group.name in ("Transport", "Exchange", "Exchange Reactions"):
+            ex_re_list.extend(group.getMemberIDs())
+
 
 # combine alias species and alias reaction lists (either for import_sbml or aliasNodes function)
 ub_list = ub_sp_list + ub_re_list
@@ -418,20 +433,17 @@ if LAYOUT_GLYC_TCA and len(glyc_re) > 1 and len(tca_re) > 1:
 
 # example 1: remove edge (edge 49) connecting biomass to TCA cycle at AKG (node 4)
 #            get the edge that connects AKG (node 4) to biomass (R70, node 60)
-
 # specific to carlsson_model
 #aliasNode(graph, tlp.node(4), "R70", 22, 27)
 
 # example 2: cut out the biomass function (individually alias all of its connected species)
 #            and move it together with all of its now aliased species somewhere else
-#            biomass function = R70 (node 60)
+#            in carlsson model: biomass function = R70 (node 60)
 if ALIAS_OBJ:
-    # alias the biomass reaction
     mvl.aliasObjFunc(graph, biomass_re_id, "Sugiyama (OGDF)", graph_props)
 
 # example 3: alias all exchange reactions (from ex_re_list, extracted from model with cbmpy if info available)
 #            add them to a subgraph (new sg or the same as biomass) and layout them
-
 if EX_RE_ALIAS:
     # I.) construct first dictionary with key = ex reaction id and value = ex reaction object
     # create a list of exchange reaction node objects (value list)
@@ -446,8 +458,8 @@ if EX_RE_ALIAS:
     # create a dict with ex reaction ids as keys and a list of connected in and out nodes as value
     ex_re_con_dict = dict((graph_props["id"][r], [n for n in graph.getInOutNodes(r) if graph_props["id"][r] in ex_re_list]) for r in
                           ex_re_node_obj)
-    print("\n dict of exchange reaction ids and lists of connected nodes:")
-    print(ex_re_con_dict)
+    #print("\n dict of exchange reaction ids and lists of connected nodes:")
+    #print(ex_re_con_dict)
     # carlsson model hack: biomass reaction is classified as exchange reaction -> remove it from dict
     if sbml == os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml"):
         del ex_re_con_dict['R70']
@@ -457,8 +469,8 @@ if EX_RE_ALIAS:
         for node in ex_re_con_dict[r_id]:
             n_new = mvl.aliasNode(graph, node, r_id, None, None)
             ex_re_alias_result_nodes.append(n_new)
-    print("\n list of nodes that were aliased (all exchange reaction nodes):")
-    print(ex_re_alias_result_nodes)
+    #print("\n list of nodes that were aliased (all exchange reaction nodes):")
+    #print(ex_re_alias_result_nodes)
     # IV.) add newly created, aliased nodes to a subgraph and layout it
     ex_re_sg = mvl.createSubgraph(graph, "exchange reactions", ex_re_alias_result_nodes, None)
     mvl.setColours(ex_re_sg, ex_re_sg.getEdges(), COLOURS["grey"])
