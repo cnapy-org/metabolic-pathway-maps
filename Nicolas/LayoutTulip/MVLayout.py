@@ -142,7 +142,7 @@ def markUbiquitousNodes(g, ub_list):
             ub[n] = True
 
 
-def speciesToNodes(graph, input_model, ub_sps):
+def speciesToNodes(graph, input_model, ub_sps, graph_props):
     """
     Create graph nodes for each species of a given libsbml model. Different properties such as size, shape,
     etc. are added to the nodes::
@@ -150,55 +150,119 @@ def speciesToNodes(graph, input_model, ub_sps):
     - *graph* a tulip/mimoza graph
     - *input_model* a libsbml model
     - *ub_sps* a list of species to be flagged as ubiquitous (for aliasing)
+    - *graph_props* a dict of graph properties
 
     """
     id2n = {}
-    for s in input_model.getListOfSpecies():
+    for s in input_model.species:
         # get current species id
         _id = s.getId()
         # get current species name
         name = s.getName()
-        # get compartment of current species
-        comp = input_model.getCompartment(s.getCompartment())
+        # get compartment id of current species
+        comp_id = s.getCompartmentId()
         # check if species is in ub list: return either true or false
         ub = (_id in ub_sps)
         # add new node to graph and return it (saved in n)
         n = graph.addNode()
         # add compartment id to new node of graph
-        graph[graph_properties.COMPARTMENT_ID][n] = comp.getId()
+        if comp_id:
+            graph_props["c_id"][n] = comp_id
         # add current species id to new node of graph
-        graph[graph_properties.ID][n] = _id
-        # if current species name exists:
-        if name:
-            # remove compartment from the name,
-            # e.g. H2O [peroxisome] --> H2O
-            if comp.getName():
-                name = name.replace('[%s]' % comp.getName(), '').strip()
-                name = name.replace('[%s]' % comp.getId(), '').strip()
-            # add current species name to new node of graph
-            graph[graph_properties.NAME][n] = name
-        # add type of new node corresponding to the value that is defined for species nodes (1)
-        # (reaction nodes have type = 2)
-        graph[graph_properties.TYPE][n] = graph_properties.TYPE_SPECIES
+        graph_props["id"][n] = _id
+        # add current species name to new node
+        graph_props["name"][n] = name
+        # add type of new node
+        #  (species nodes = 1, reaction nodes = 2)
+        graph_props["type"][n] = graph_properties.TYPE_SPECIES
         # add ub status (true or false) to new node of graph
-        graph[graph_properties.UBIQUITOUS][n] = ub
-        # add shape to new node of graph (set to circle shape, can be changed in graph_properties.py)
-        graph[graph_properties.VIEW_SHAPE][n] = graph_properties.SPECIES_SHAPE
+        graph_props["ub"][n] = ub
+        # add shape to new node of graph
+        # (species nodes = circle, reaction nodes = square)
+        graph_props["viewShape"][n] = graph_properties.SPECIES_SHAPE
         # add size to new node of graph (calculated by function get_n_size in file resize.py)
-        graph[graph_properties.VIEW_SIZE][n] = resize.get_n_size(graph, n)
+        graph_props["viewSize"][n] = resize.get_n_size(graph, n)
         # assign the current species id (key) to the new tulip node n (value) in dict id2n
         id2n[_id] = n
 
     return id2n
 
 
-def aliasNode(g, n_alias, target_string, x=None , y=None, n_new=None):
+def reactionsToNodes(get_r_comp, graph, id2n, input_model):
+    get_sp_comp = lambda _id: input_model.getSpecies(_id).getCompartmentId()
+
+    def link_reaction_to_species(reaction_node, sp_ref, all_comps, is_substrate=None, reversible=None):
+        s_id = sp_ref.getId()
+        all_comps.add(get_sp_comp(s_id))
+        species_node = id2n[s_id]
+        # create edge
+        e = graph.addEdge(species_node, reaction_node) if is_substrate else graph.addEdge(reaction_node, species_node)
+        graph[graph_properties.NAME][e] = input_model.getSpecies(s_id).getName()
+        ub = graph[graph_properties.UBIQUITOUS][species_node]
+        graph[graph_properties.UBIQUITOUS][e] = ub
+        graph[graph_properties.REVERSIBLE][e] = reversible and not ub
+
+    for r in input_model.reactions:
+        name = r.getName()
+        # create reaction node and add basic graph properties
+        n = graph.addNode()
+        graph[graph_properties.ID][n] = r.getId()
+        graph[graph_properties.NAME][n] = name
+        graph[graph_properties.TYPE][n] = graph_properties.TYPE_REACTION
+        # get reversible and irreversible reactions
+        rev_re = [re for re in input_model.getReversibleReactionIds()]
+        irrev_re = [reac for reac in input_model.getIrreversibleReactionIds()]
+        # add reversibility graph property
+        if r.getId() in irrev_re:
+            graph[graph_properties.REVERSIBLE][n] = False
+        elif r.getId() in rev_re:
+            graph[graph_properties.REVERSIBLE][n] = True
+        # add shape and size graph properties
+        graph[graph_properties.VIEW_SHAPE][n] = graph_properties.REACTION_SHAPE
+        graph[graph_properties.VIEW_SIZE][n] = resize.get_n_size(graph, n)
+        # add edges with function link_reaction_to_species
+        # -> preserve type of species and directionality
+        all_comps = set()
+        for sp_ref in r.getSpeciesObj():
+            # species is substrate of irreversible reaction
+            if sp_ref.getId() in r.getSubstrateIds() and r.getId() in irrev_re:
+                link_reaction_to_species(n, sp_ref, all_comps, is_substrate=True, reversible=False)
+            # species is substrate of reversible reaction
+            if sp_ref.getId() in r.getSubstrateIds() and r.getId() in rev_re:
+                link_reaction_to_species(n, sp_ref, all_comps, is_substrate=True, reversible=True)
+            # species is product of irreversible reaction
+            if sp_ref.getId() in r.getProductIds() and r.getId() in irrev_re:
+                link_reaction_to_species(n, sp_ref, all_comps, is_substrate=False, reversible=False)
+            # species is product of reversible reaction
+            if sp_ref.getId() in r.getProductIds() and r.getId() in rev_re:
+                link_reaction_to_species(n, sp_ref, all_comps, is_substrate=False, reversible=True)
+        # add graph property transport to reaction node (boolean value)
+        graph[graph_properties.TRANSPORT][n] = len(all_comps) > 1
+        # add compartment id to reaction node
+        graph[graph_properties.COMPARTMENT_ID][n] = get_r_comp(all_comps)
+
+
+# aliasNode() function description:
+# ---------------------------------
+# the function aliasNode does only a very specific thing!
+# -> it cuts exactly one edge between a node and a target and then adds a new egde with a new node to the target
+# this new node therefore has only 1 edge attached to it, namely the new egde to the target
+# => this is only helpfull for the obj re because only there does the new node not need any other edges
+#
+# -> you can't use the node created by aliasNode for a proper pathway like Glycolysis because all the other edges to
+# other reaction and metabolite nodes are not created for the new node, only 1 to the specified target
+# TODO: write a second aliasNodeAll function, that does everything the aliasNode function does + after creating the
+# TODO: new node, all the other in and out edges that are not connected to the target get reinstated as well
+# TODO: -> only difference between old and new node afte ruuning this function must be the that the one edge between
+# TODO: node and target was removed for the new node
+
+def aliasNode(g, n_alias, n_target, x=None, y=None, n_new=None):
     """
     Alias a specific node (reaction nodes and/or metabolite nodes)::
 
     - *g* a tulip/mimoza graph
     - *n_alias* a tulip node to alias (format: tlp.node(index))
-    - *target_string* a name string of the target node connected to n_alias
+    - *n_target* a tulip node connected to n_alias (the target)
     - *x* x coordinate (int) of new node position
     - *y* y coordinate (int) of new node position
     - *n_new* newly created tulip node (cloned from n_alias)
@@ -209,16 +273,19 @@ def aliasNode(g, n_alias, target_string, x=None , y=None, n_new=None):
     # select target node from target_string
     target_node = []
     for n in g.getNodes():
-        if id_[n] == target_string:
+
+        # TODO: use node object instead of id for target selection (because id is not unique sometimes!)
+
+        if n == n_target:
             target_node.append(n)
     # iterate over all incoming and outgoing edges of alias node
     for e in g.getInOutEdges(n_alias):
         # take the edge that begins at the target node
-        if id_[g.source(e)] == target_string:
+        if g.source(e) == n_target:
             # if a node with the target name is the source of the edge, it's a product edge (outgoing, away from target)
             edge_direct[e] = "out" # set edge direct property to "out" = away from reaction node
             #print("{0} edge: {1} {2}".format(edge_direct[e], e, viewName[e]))
-        if id_[g.target(e)] == target_string:
+        if g.target(e) == n_target:
             # if a node with the target name is the target of the edge, it's a educt edge (incoming, towards the target)
             edge_direct[e] = "in" # set edge direct property to "in" = towards reaction node
             #print("{0} edge: {1} {2}".format(edge_direct[e], e, viewName[e]))
@@ -236,7 +303,8 @@ def aliasNode(g, n_alias, target_string, x=None , y=None, n_new=None):
             prop_obj[n_new] = tlp.Coord(x, y, 0)
         # set clone id (node to which new node is connected)
         clone_id = g.getStringProperty("clone_id")
-        clone_id[n_new] = target_string
+        id_ = g.getStringProperty("id")
+        clone_id[n_new] = id_[n_target]
     # add new edges and delete old ones
     for e in g.getInOutEdges(n_alias):
         # incoming edge (towards target)
@@ -310,6 +378,54 @@ def aliasObjFunc(g, obj_re_id, sg_layout, prop_dict):
     # set colour of new egdes to grey
     setColours(obj_sg, obj_sg.getEdges(), tlp.Color(220, 220, 220))
 
+    return obj_sg
+
+
+def aliasSeparateReactions(g, re_list, re_node_obj, sg_name, layout_alg, graph_props):
+    """
+    Separate reactions, then create a subgraph with the isolated reactions next to each other and apply a
+    layout algorithm on the group of non-connected reactions::
+
+    - *g* a tulip/mimoza graph
+    - *re_list* a list of reaction ids (strings)
+    - *re_node_obj* a list of tulip node objects
+    - *sg_name* the name of the new subgraph
+    - *layout_alg* a tulip layout algorithm for the new subgraph
+    - *graph_props* a dict of graph properties
+
+    """
+    # alias a group of reactions
+    # I.) construct first dictionary with key: reaction id and value = reaction node object
+    # re_node_obj contains list of ex re tulip nodes (value list)
+    # (without the ones excluded for having been already layouted)
+    # re_list contains the ids (key list)
+    # merge the key and value lists to a dictionary
+    re_id_dict = {}
+    for i in range(len(re_list)):
+        re_id_dict[re_list[i]] = re_node_obj[i]
+
+    # II.) construct second dictionary with key = ex reaction id and value = list of connected out nodes
+    # re_list already contains the ids (key list)
+    # create a dict with reaction ids as keys and a list of connected in and out nodes as value
+    re_con_dict = dict((graph_props["id"][r], [n for n in g.getInOutNodes(r) if graph_props["id"][r] in
+                                               re_list]) for r in re_node_obj)
+
+    # III.) call aliasNode function for every node connected to an reaction node
+    re_alias_result_nodes = []
+    for r_id in re_con_dict:
+        for node in re_con_dict[r_id]:
+            n_new = aliasNode(g, node, re_id_dict[r_id], None, None)
+            re_alias_result_nodes.append(n_new)
+    # IV.) add newly created, aliased nodes to a subgraph and layout it
+    re_sg = createSubgraph(g, sg_name, re_alias_result_nodes, None)
+    # createSubgraph with only list of connected metabolite nodes (re_alias_result_nodes) does the same as:
+    # re_sg = g.inducedSubGraph(re_alias_result_nodes+re_node_obj)
+    #  => inducedSubGraph with reaction AND metabolite nodes
+    setColours(re_sg, re_sg.getEdges(), tlp.Color(220, 220, 220))
+    layoutSubgraph(re_sg, layout_alg, None, 0, 0, 0)
+
+    return re_sg
+
 
 def delNodes(g, node_list):
     """
@@ -359,7 +475,8 @@ def setColours(g, item_list, colour):
 
 def createSubgraph(graph, sg_name, n_list, user_params=None):
     """
-    Creates a subgraph from a list of nodes::
+    Creates a reachable subgraph from a list of nodes (may include more elements than are stored in n_list!).
+    For creation of a subgraph strictly from a set of nodes, use graph.inducedSubGraph(node_list)::
 
     - *graph* tulip graph
     - *sg_name* subgraph name (string)
