@@ -16,6 +16,8 @@ from node_cloner import clone_node
 from graph_properties import *
 from resize import get_n_size
 
+import MVLayout as mvl
+
 __author__ = 'anna'
 
 SKIP_UBS = False
@@ -60,59 +62,6 @@ def species2nodes(graph, input_model, ub_sps):
     return id2n
 
 
-def reactions2nodes(get_r_comp, graph, id2n, input_model):
-    # get_sp_comp = lambda _id: graph[COMPARTMENT][id2n[_id]]
-    get_sp_comp = lambda _id: input_model.getSpecies(_id).getCompartment()
-
-    def link_reaction_to_species(reaction_node, sp_ref, all_comps, is_reactant=True, reversible=False):
-        s_id = sp_ref.getSpecies()
-
-        all_comps.add(get_sp_comp(s_id))
-
-        # todo:
-        if SKIP_UBS and s_id not in id2n:
-            return
-        species_node = id2n[s_id]
-        e = graph.addEdge(species_node, reaction_node) if is_reactant else graph.addEdge(reaction_node, species_node)
-        stoich = sp_ref.getStoichiometry()
-        if not stoich:
-            stoich = sp_ref.getStoichiometryMath()
-        if not stoich:
-            stoich = 1
-        graph[STOICHIOMETRY][e] = stoich
-        graph[NAME][e] = input_model.getSpecies(s_id).getName()
-        ub = graph[UBIQUITOUS][species_node]
-        graph[UBIQUITOUS][e] = ub
-        graph[REVERSIBLE][e] = reversible and not ub
-
-    for r in input_model.getListOfReactions():
-        name = r.getName()
-        # do not add fake isa reactions
-        # if name.find("isa ") != -1 and 1 == r.getNumReactants() == r.getNumProducts() and get_sp_comp(
-        # r.getListOfReactants().get(0).getSpecies()) == get_sp_comp(
-        # 		r.getListOfProducts().get(0).getSpecies()):
-        # 	continue
-
-        n = graph.addNode()
-        graph[TERM][n] = get_gene_association(r)
-        graph[ID][n] = r.getId()
-        graph[NAME][n] = name
-        graph[TYPE][n] = TYPE_REACTION
-        graph[REVERSIBLE][n] = r.getReversible()
-
-        graph[VIEW_SHAPE][n] = REACTION_SHAPE
-        graph[VIEW_SIZE][n] = get_n_size(graph, n)
-
-        all_comps = set()
-        for sp_ref in r.getListOfReactants():
-            link_reaction_to_species(n, sp_ref, all_comps, is_reactant=True, reversible=r.getReversible())
-        for sp_ref in r.getListOfProducts():
-            link_reaction_to_species(n, sp_ref, all_comps, is_reactant=False, reversible=r.getReversible())
-
-        graph[TRANSPORT][n] = len(all_comps) > 1
-        graph[COMPARTMENT_ID][n] = get_r_comp(all_comps)
-
-
 def get_quotient_maps(chebi, sbml_file):
     try:
         r_id2g_id, s_id2gr_id, ub_sps = parse_group_sbml(sbml_file, chebi)
@@ -143,34 +92,12 @@ def compute_c_id2info(c_id2level, input_model):
 
     return c_id2info, c_id2outs
 
-
-def import_sbml(input_model, sbml_file, ubs, c_id2level, graph, id2n):
-   # chebi seems to be only important for extracting ubiquitous species ids, provide them by passing a list ubs thats then converted to a set
-    ub_sps = set(ubs)
-
-    c_id2info, c_id2outs = compute_c_id2info(c_id2level, input_model)
-
-    def get_r_comp(all_comp_ids):
-        if len(all_comp_ids) == 1:
-            return all_comp_ids.pop()
-        get_level = lambda c_id: c_id2level[c_id][0]
-        outer_most = min(all_comp_ids, key=get_level)
-        inner_most = max(all_comp_ids, key=get_level)
-        outer_level, inner_level = get_level(outer_most), get_level(inner_most)
-        if outer_level == inner_level or (outer_most not in c_id2outs[inner_most]):
-            candidates = set(c_id2outs[inner_most]) & set(c_id2outs[outer_most])
-            if candidates:
-                return max(candidates, key=get_level)
-            else:
-                return outer_most
-        if inner_level - outer_level > 1:
-            return max(c_id2outs[inner_most], key=get_level)
-        return outer_most
-
-    reactions2nodes(get_r_comp, graph, id2n, input_model)
-    duplicate_nodes(graph)
-
-    return graph, c_id2info, c_id2outs, ub_sps
+# COMPLETELY CHANGED FUNCTION
+# former function name: import_sbml
+# -> all other functionality has been moved to TestSBML2TulipGraph.py
+def cloneNodes(ubs, graph):
+   duplicate_nodes(graph)
+   return graph
 
 
 def duplicate_nodes(graph):
