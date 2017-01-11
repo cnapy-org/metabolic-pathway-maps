@@ -116,6 +116,8 @@ def createPathwayLists(cmod, path_name, small_threshold=30):
     # add species lists to dict
     gids[path_name]['metabolites'] = path_sps
     # get ubiquitous small metabolites by filtering for high connectivity (default: > 30)
+    # TODO: go through stM and for each line sum the abs() of all values to get amount of connected reactions
+    # TODO: stoichM_stuff.py
     small_sps = [s.getId() for s in cmod.species if len(s.isReagentOf()) > small_threshold]
     # remove the small metabolites from the pathways
     for ubs in small_sps:

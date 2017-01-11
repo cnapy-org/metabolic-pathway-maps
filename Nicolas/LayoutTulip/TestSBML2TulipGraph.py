@@ -33,12 +33,15 @@ import MVLayout as mvl
 # functions are active aswell
 AUTO_ALIAS = False
 
-# TODO: let this refer to the generalized version of the layouting function (instead of glyc + tca specific)
+# layout annotated groups of sbml file as seperate pathways
 PATHWAY_LISTS = True
 LAYOUT_PATHWAYS = True # needs PATHWAY_LISTS true, so that necessary node lists are generated (for pathways)
 
 # layout the exchange reactions and biomass seperately (results in subgraphs: only ex re, only biomass and both)
 LAYOUT_EX_RE_AND_BIOMASS = True
+
+# export generated graph as .gml file
+EXPORT_GML = False
 
 # colour the reaction nodes + in and outcoming edges based on flux values obtained from FBA
 COLOUR_FBA = False
@@ -75,8 +78,9 @@ if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
     cbmpy.writeSBML3FBCV2(cmod, '_temp.xml')
     sbml = '_temp.xml'
 
-# build stoichiometric matrix
-stM = cmod.buildStoichMatrix(matrix_type = 'numpy', only_return=True)
+# call stoichiometric matrix
+stM = cmod.N
+# stM = cmod.buildStoichMatrix(matrix_type = 'numpy', only_return=True)
 
 # get objective reaction id
 objective_re_id = str(cmod.getActiveObjectiveReactionIds()[0])
@@ -176,7 +180,7 @@ if PATHWAY_LISTS and sbml == os.path.join(cDir, "TestModels", "Ecoli_Carlson2003
     cmod.createGroup('glycolysis')
 
 
-# -> IF GROUPS EXIST: fetch groups from sbml (this doesn't use neither ub_sps_list nor ub_re_list!, specific to iIT341)
+# -> IF GROUPS EXIST: fetch groups from sbml (this doesn't use ub_sps_list or ub_re_list!, specific to iIT341)
 # create dictionary of groups where each group name is a key and the values are again dicts with three keys: 'id',
 # 'reactions' and 'metabolites'
 path_dict = {}
@@ -194,6 +198,9 @@ if PATHWAY_LISTS and sbml == os.path.join(cDir, "TestModels", "iIT341.xml"):
     for group in cmod.groups:
         path_sps, path_re = mvl.createPathwayLists(cmod, group.name)
         path_dict.update({group.name: {"metabolites": path_sps, "reactions": path_re}})
+
+
+print("Pathway lists created.")
 
 
 
@@ -284,6 +291,9 @@ fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph = tulip_graph2geojson.gra
 
 # save raw Mimoza graph output as backup
 tlp.saveGraph(graph, "{}_raw.tlp".format(model_id))
+
+
+print("Initial Tulip graph created.")
 
 
 
@@ -487,11 +497,11 @@ if LAYOUT_PATHWAYS:
     # layout Glycolysis
     glyc_list = path_dict["Glycolysis"]["metabolites"] + path_dict["Glycolysis"]["reactions"]
     glyc_sg = layoutPathway(graph, graph_elements, graph_props, glyc_list,
-                                                        "glycolysis", "Sugiyama (OGDF)", -500, -500, None)
+                                                        "Glycolysis", "Sugiyama (OGDF)", -500, -500, None)
     # layout TCA cycle
     tca_list = path_dict["TCA cycle"]["metabolites"] + path_dict["TCA cycle"]["reactions"]
     tca_sg = layoutPathway(graph, graph_elements, graph_props, tca_list,
-                                                        "TCA Cycle", "Circular (OGDF)", -50, -500, None)
+                                                        "TCA cycle", "Circular (OGDF)", -50, -500, None)
     # layout Fatty Acid Synthesis
     fas_list = path_dict["Fatty Acid Synthesis"]["metabolites"] + path_dict["Fatty Acid Synthesis"]["reactions"]
     fas_sg = layoutPathway(graph, graph_elements, graph_props, fas_list,
@@ -505,10 +515,19 @@ if LAYOUT_PATHWAYS:
     am_sg = layoutPathway(graph, graph_elements, graph_props, am_list,
                                                          "Aminosugar Metabolism", "Sugiyama (OGDF)", 0, -500, None)
 
+    # TODO: add a pathway info to the nodes of the subgraphs before dumping them to G
+    # TODO: or after adding them to G add node property to nodes of last sg
+
     # combine pathways
     # create output graph
+    # if a completely new graph object is created, the properties need to be generated again because they are tied to a
+    # graph object (properties of a graph can be used for its subgraphs but thats just because subgraphs are only partial
+    # views of a whole graph, not new objects)
     G = tlp.newGraph()
+    # TODO: create_props() for graph 'G'
+    G.setName("output_combined")
     # copy subgraphs to output graph
+    # TODO: generalize this!
     tlp.copyToGraph(G, glyc_sg)
     tlp.copyToGraph(G, tca_sg)
     tlp.copyToGraph(G, fas_sg)
@@ -516,8 +535,16 @@ if LAYOUT_PATHWAYS:
     tlp.copyToGraph(G, am_sg)
     # separate overlapping individual pathways
     G.applyLayoutAlgorithm("Connected Component Packing")
+
+    # TODO: seperate all the pathways/groups in new graph G and add pathways labels (invisible nodes with visible label)
+
     # save output graph
     tlp.saveGraph(G, "{0}_output_combined.tlp".format(model_id))
+
+    # TODO: create new subgraphs in G and control pathway positions
+
+
+    print("Pathway layouting finished, results saved in {0}_output_combined.tlp".format(model_id))
 
 
     # reset selection
@@ -647,6 +674,10 @@ if LAYOUT_EX_RE_AND_BIOMASS:
 
     # save combined subgraph
     tlp.saveGraph(obj_re_and_ex_re_sg, "{}_biomass_ex_re.tlp".format(model_id))
+    # TODO: put biomass and ex re in new output graph
+    # TODO: generalize the copyToGraph function calls so that it can get changed quickly (at the very end)
+
+    print("Biomass and exchange reaction layouting finished, results saved in {}_biomass_ex_re.tlp".format(model_id))
 
 
 
@@ -656,6 +687,7 @@ if LAYOUT_EX_RE_AND_BIOMASS:
 
 # color nodes and edges depending on flux value
 # input format: dict = {"M1": -3, ...}
+# TODO: test if flux overlay also works on the new output graph G, and others
 if COLOUR_FBA:
     mvl.colourFBA(graph, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["grey"])
 
@@ -667,6 +699,10 @@ if COLOUR_FBA:
 
 # save total graph with all changes
 tlp.saveGraph(graph, "{}_graph.tlp".format(model_id))
+
+# tulip graph export plugins
+#In [19]: tlp.getExportPluginsList()
+#Out[19]: ['GML Export', 'JSON Export', 'TLP Export', 'TLPB Export']
 
 # TODO: export tulip graph as SVG file
 #params = tlp.getDefaultPluginParameters('SVG Export', graph)
@@ -683,7 +719,40 @@ gen_model = False
 # create SBGN file
 # TODO: check SBGN: is it valid?, what information is stored?
 groups_sbgn = os.path.join(cDir, '{}.sbgn'.format(model_id))
+# TODO: can we link Mimoza sbgn export function to our graphs?
 #sbgn_helper.save_as_sbgn(n2lo, e2lo, groups_model, groups_sbgn)
+
+
+
+################################
+# export the graph as GML file #
+################################
+
+if EXPORT_GML:
+    # create new output graph 'GML'
+    GML = tlp.newGraph()
+    GML.setName("GML output graph")
+    # if a completely new graph object is created, the properties need to be generated again because they are tied to a
+    # graph object (properties of a graph can be used for its subgraphs but thats just because subgraphs are only partial
+    # views of a whole graph, not new objects)
+    GML_props_tup = mvl.create_props(GML)
+    GML_props = {}
+    for prop in GML_props_tup:
+        GML_props[prop.getName()] = prop
+    # copy elements from the graph 'graph' to the graph 'GML'
+    tlp.copyToGraph(GML, graph)
+    # change nodes to be unique (add integers)
+    # btw: str(i) corresponds directly to the node id which means that tulip is just counting through the nodes aswell!
+    i = 0
+    for n in GML.getNodes():
+        GML_props["id"][n] = GML_props["id"][n] + str(i)
+        GML_props["viewLabel"][n] = GML_props["viewLabel"][n] + str(i)
+        i+=1
+    # save new output graph 'GML'
+    tlp.saveGraph(GML, '{}_GML_test.tlp'.format(model_id))
+    # export new output graph 'GML' as .gml file (graphic markup language)
+    params = tlp.getDefaultPluginParameters('GML Export', graph)
+    tlp.exportGraph('GML Export', GML, '{}_test.gml'.format(model_id), params)
 
 
 
@@ -729,6 +798,9 @@ c = db.cursor()
 
 # pass SQL statements into cursor
 # create empty graph node table (skips if table already exists)
+# TODO: instead of BLOB convert property types to TEXT
+# TODO: color property to TEXT via tlp.Color etc.
+# TODO: if property is endcoded in some way, write decoder for it aswell
 c.execute('''CREATE TABLE IF NOT EXISTS graph_nodes(node_id INTEGER PRIMARY KEY,
 anc_id TEXT,
 anc_name TEXT,
@@ -753,7 +825,7 @@ viewBorderWidth REAL,
 viewColor BLOB,
 viewFont TEXT,
 viewFontAwesomeIcon TEXT,
-viewFontColor INTEGER,
+viewFontSize INTEGER,
 viewLabel TEXT,
 viewLabelBorderColor BLOB,
 viewLabelBorderWidth REAL,
@@ -797,7 +869,7 @@ viewBorderWidth REAL,
 viewColor BLOB,
 viewFont TEXT,
 viewFontAwesomeIcon TEXT,
-viewFontColor INTEGER,
+viewFontSize INTEGER,
 viewLabel TEXT,
 viewLabelBorderColor BLOB,
 viewLabelBorderWidth REAL,
@@ -817,7 +889,15 @@ viewTgtAnchorShape INTEGER,
 viewTgtAnchorSize BLOB)
 ''')
 
-# TODO: fill tables with values in graph_props_node_data and graph_props_edge_data
+# TODO: encode the data first before putting it in to the table
+# TODO: fill tables with encoded values in graph_props_node_data and graph_props_edge_data
+
+# TODO: insert data per row (?)
+
+# TODO: CBNetDB.py for database functions
+
+# TODO: after putting in graph info try to retireve it again and save it as new tlp (see if layout stay constant)
+# TODO: use biomass layout for testing purposes
 
 # commit changes to database
 db.commit()
