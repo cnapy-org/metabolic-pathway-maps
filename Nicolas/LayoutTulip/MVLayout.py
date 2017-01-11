@@ -86,6 +86,45 @@ def identifyBoundarySpecies(sps_list, re_list, cmod):
     return list(set(bound_sps))
 
 
+def createPathwayLists(cmod, path_name, small_threshold=30):
+    """
+    Creates a dictionary containing group id, metabolite ids and reaction ids of a given pathway (if it exists as
+    a group in the SBML file) and returns dict content as lists path_sps (metabolite ids) and path_re (reaction ids)::
+
+    - *cmod* a cbmpy model object
+    - *path_name* a string of the pathway/group name
+    - *small_threshold* an (optional) integer threshold level for filtering highly connected metabolites (default
+    level: 30)
+
+    """
+    # create a dictionary to store model groups (key: group name - value: group id)
+    gids = {}
+    for g in cmod.groups:
+        if g.getName() == path_name:
+            gids[path_name] = {}
+            gids[path_name]['id'] = g.getId()
+            gids[path_name]['reactions'] = g.getMemberIDs()
+            # leave it blank for now - usually groups only contain reaction ids (not metabolites)
+            gids[path_name]['metabolites'] = []
+    # get all member species per group for lists of reaction nodes
+    path_re = gids[path_name]['reactions']
+    # for each reaction get the associated species for lists of metabolite nodes
+    path_sps = []
+    for r in path_re:
+        path_sps.extend(cmod.getReaction(r).getSpeciesIds())
+    path_sps = list(set(path_sps))
+    # add species lists to dict
+    gids[path_name]['metabolites'] = path_sps
+    # get ubiquitous small metabolites by filtering for high connectivity (default: > 30)
+    small_sps = [s.getId() for s in cmod.species if len(s.isReagentOf()) > small_threshold]
+    # remove the small metabolites from the pathways
+    for ubs in small_sps:
+        if ubs in path_sps:
+            path_sps.remove(ubs)
+
+    return path_sps, path_re
+
+
 def create_props(graph):
     """
     Create tulip graph properties::

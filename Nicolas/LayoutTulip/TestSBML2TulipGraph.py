@@ -34,8 +34,8 @@ import MVLayout as mvl
 AUTO_ALIAS = False
 
 # TODO: let this refer to the generalized version of the layouting function (instead of glyc + tca specific)
-PATHWAY_ALIAS = True
-LAYOUT_GLYC_TCA = True # needs PATHWAY_ALIAS true, so that necessary node lists are generated (for pathways)
+PATHWAY_LISTS = True
+LAYOUT_PATHWAYS = True # needs PATHWAY_LISTS true, so that necessary node lists are generated (for pathways)
 
 # layout the exchange reactions and biomass seperately (results in subgraphs: only ex re, only biomass and both)
 LAYOUT_EX_RE_AND_BIOMASS = True
@@ -74,6 +74,9 @@ if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
     cmod.deleteReactionAndBounds('R_BIOMASS_Ec_iJO1366_WT_53p95M')
     cbmpy.writeSBML3FBCV2(cmod, '_temp.xml')
     sbml = '_temp.xml'
+
+# build stoichiometric matrix
+stM = cmod.buildStoichMatrix(matrix_type = 'numpy', only_return=True)
 
 # get objective reaction id
 objective_re_id = str(cmod.getActiveObjectiveReactionIds()[0])
@@ -122,17 +125,18 @@ groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 
 # 2.) create alias node list based on biological pathways <-> group info in sbml - if available (aliasing by own
 # functions)
-glyc_sps = []
-tca_sps = []
-glyc_re = []
-tca_re = []
-small_sps = []
 
 # -> IF GROUPS DON'T EXIST: provide pathway lists manually (example: e coli carlson model):
-if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml"):
+if PATHWAY_LISTS and sbml == os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml"):
     # create pathway dictionary (key: pathway name - value: tupel of two lists)
     # path_dict = {"glycolysis": ([list of metabolite nodes],[list of reaction nodes]), "TCA Cycle": ([metabolite
     # nodes],[reaction nodes]), ...}
+    glyc_sps = []
+    tca_sps = []
+    glyc_re = []
+    tca_re = []
+    small_sps = []
+
     path_dict = {
         "Glycolysis":
             {
@@ -171,48 +175,25 @@ if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "Ecoli_Carlson2003
     path0.addMember([cmod.getSpecies(s) for s in not_spec_sps] + [cmod.getReaction(r) for r in not_spec_re])
     cmod.createGroup('glycolysis')
 
+
 # -> IF GROUPS EXIST: fetch groups from sbml (this doesn't use neither ub_sps_list nor ub_re_list!, specific to iIT341)
 # create dictionary of groups where each group name is a key and the values are again dicts with three keys: 'id',
 # 'reactions' and 'metabolites'
-if PATHWAY_ALIAS and sbml == os.path.join(cDir, "TestModels", "iIT341.xml"):
-    # create a dictionary to store model groups (key: group name - value: group id)
-    gids = {}
-    for g in cmod.groups:
-        if g.getName() == 'Glycolysis':
-            gids['Glycolysis'] = {}
-            gids['Glycolysis']['id'] = g.getId()
-            gids['Glycolysis']['metabolites'] = []
-            # in iIT341 (and many other models): groups only contain reaction ids (not metabolites)
-            gids['Glycolysis']['reactions'] = g.getMemberIDs()
-        elif g.getName() == 'TCA cycle':
-            gids['TCA cycle'] = {}
-            gids['TCA cycle']['id'] = g.getId()
-            gids['TCA cycle']['metabolites'] = []
-            gids['TCA cycle']['reactions'] = g.getMemberIDs()
-    # get all member species per group for lists of reaction nodes
-    glyc_re = gids['Glycolysis']['reactions']
-    tca_re = gids['TCA cycle']['reactions']
-    # for each reaction get the associated species for lists of metabolite nodes
-    glyc_sps = []
-    tca_sps = []
-    for r in glyc_re:
-        glyc_sps.extend(cmod.getReaction(r).getSpeciesIds())
-    for r in tca_re:
-        tca_sps.extend(cmod.getReaction(r).getSpeciesIds())
-    glyc_sps = list(set(glyc_sps))
-    tca_sps = list(set(tca_sps))
-    # add species lists to dict
-    # TODO: do that with update function instead?
-    gids['Glycolysis']['metabolites'] = glyc_sps
-    gids['TCA cycle']['metabolites'] = tca_sps
-    # get ubiquitous small metabolites by filtering for high connectivity (> 30)
-    small_sps = [s.getId() for s in cmod.species if len(s.isReagentOf()) > 30]
-    # remove the small metabolites from the pathways
-    for ubs in small_sps:
-        if ubs in glyc_sps:
-            glyc_sps.remove(ubs)
-        if ubs in tca_sps:
-            tca_sps.remove(ubs)
+path_dict = {}
+if PATHWAY_LISTS and sbml == os.path.join(cDir, "TestModels", "iIT341.xml"):
+
+    # create id lists for a few selected pathways of model iIT341
+    #glyc_sps, glyc_re = mvl.createPathwayLists(cmod, 'Glycolysis')
+    #tca_sps, tca_re = mvl.createPathwayLists(cmod, 'TCA cycle')
+    #fas_sps, fas_re = mvl.createPathwayLists(cmod, 'Fatty Acid Synthesis')
+    #uc_sps, uc_re = mvl.createPathwayLists(cmod, 'Urea Cycle')
+    #am_sps, am_re = mvl.createPathwayLists(cmod, 'Aminosugar Metabolism')
+
+    # loop over all groups in iIT341 and automatically create id lists for all of them
+    # save all these lists in a new dictionary
+    for group in cmod.groups:
+        path_sps, path_re = mvl.createPathwayLists(cmod, group.name)
+        path_dict.update({group.name: {"metabolites": path_sps, "reactions": path_re}})
 
 
 
@@ -344,6 +325,7 @@ if AUTO_ALIAS == False:
         graph_elements[m_e.getId()]["layout"] = False
 
 
+
 ########################################################################################################################
 # Problem: if a node is shared between pathways, the last valid layouting call will determine its position meaning that
 # previous positions of that node in other layouted subgraphs that also contain it are overwritten!!
@@ -417,75 +399,157 @@ for e in graph.getEdges():
 
 
 ##############################################################
-# special manipulation of Glycolysis and TCA Cycle subgraphs #
+# layout pathways in subgraphs (Glycolysis, TCA Cycle, etc.) #
 ##############################################################
 
 # TODO: generalize this!
 
-# get subsystem node list from different biological pathways (e.g.: glycolysis, tca) and apply layout
-if LAYOUT_GLYC_TCA and len(glyc_re) > 1 and len(tca_re) > 1:
+# define function to get subsystem node list from different biological pathways (e.g.: glycolysis, tca) and apply layout
+def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout, x_center, y_center, z_center):
+    """
+    Create and layout a subgraph based initially on a list of model ids::
 
-    # I.) initial subgraph generation
+    - *g* the initial tulip graph generated by Mimoza
+    - *graph_elements* a dict of all initial graph elements (nodes and their layout status)
+    - *graph_props* a dict of all graph properties
+    - *id_list* a list of model ids (strings)
+    - *sg_name* a name for the subgraph (string)
+    - *sg_layout* a tulip layout algorithm to be applied on the subgraph (string)
+    - *x_center* x coordinate of layout center which defines subgraph position (optional)
+    - *y_center* y coordinate of layout center which defines subgraph position (optional)
+    - *z_center* z coordinate of layout center which defines subgraph position, default 0
+
+    """
     # generate (initial) list of nodes for pathway elements by going through lists containing selected ids
     # this list will also include nodes that already have been used for layouting
-    glyc_nodes = [n for n in graph.getNodes() if graph_props["id"][n] in glyc_sps + glyc_re]
-
+    # only take nodes that were initially generated by Mimoza (not new ones that are created by calling this function!)
+    nodes = [n for n in g.getNodes() if graph_props["id"][n] in id_list and n == graph_elements[graph_props["id"][n]][
+        "initial_node"]]
     # check for nodes which have already been used for layouting (with the flag in dict graph_elements[node][
     # 'layout'] - boolean value)
     # save the nodes which are excluded because they have already been used for layouting in a list for later use
-    glyc_ex_nodes = [n for n in glyc_nodes if graph_elements[graph_props["id"][n]]['layout'] is True]
-
-    # exclude the already layouted nodes from the main node list: glyc_nodes
-    for n in glyc_nodes:
-        if n in glyc_ex_nodes:
-            glyc_nodes.remove(n)
-
+    ex_nodes = [n for n in nodes if graph_elements[graph_props["id"][n]]['layout'] is True]
+    # save the connectivity of the excluded edges
+    edge_dict = {}
+    for n in ex_nodes:
+        edge_dict[graph_props["id"][n]] = {}
+        for e in g.getInOutEdges(n):
+            if g.source(e) in ex_nodes and g.target(e) in nodes:
+                edge_dict[graph_props["id"][n]].update({"out": g.target(e)})
+            if g.target(e) in ex_nodes and g.source(e) in nodes:
+                edge_dict[graph_props["id"][n]].update({"in": g.source(e)})
+    # exclude the already layouted nodes from the main node list
+    for n in list(nodes):
+        if n in ex_nodes:
+            nodes.remove(n)
     # create subgraph with inducedSubgraph function (automatically add all existing edges between seletced nodes aswell)
     # this graph will not have any nodes that have been used for layouting before
-    glyc_sg = graph.inducedSubGraph(glyc_nodes)
+    sg = g.inducedSubGraph(nodes)
     # name subgraph
-    glyc_sg.setName("glycolysis")
-
+    sg.setName(sg_name)
     # if any nodes have been excluded due to the fact that they already have been used for layouting
-    # -> we need to fetch copies of these nodes (create new nodes and equip them with all of the properties of the
-    # excluded ones)
+    # -> recreate these nodes
     # => they also need to have all the edges connected to them! (as it was the case before)
-    # use tulip function coptyToGraph, that takes in a selection of graph elements to add to another graph
-    # first, reset selection
-    graph_props["viewSelection"].setAllNodeValue(False)
-    graph_props["viewSelection"].setAllEdgeValue(False)
-
-    # select nodes that have been excluded
-    for n in glyc_ex_nodes:
-        graph_props["viewSelection"][n] = True
-
-    # select all edges of the excluded nodes that are connected to a glyc node
-    # TODO: adding the copied nodes, edges... from the initial graph to the subgraph just makes them float in
-    # TODO: empty space next to the network! -> connect the copied parts to the rest
-    # TODO: maybe write a function that detects equal reaction nodes (copied nodes) and merges them so that in the end
-    # TODO: there is only one reaction node with the combined sum of all In and Out edges
-    for e in graph.getEdges():
-        if graph.source(e) in glyc_ex_nodes and graph.target(e) in glyc_nodes or graph.source(e) in glyc_nodes and \
-                graph.target(e) in glyc_ex_nodes:
-            graph_props["viewSelection"][e] = True
-
-    # copy nodes that have been excluded from graph to glyc subgraph + their edges aswell
-    # tlp.copyToGraph(outGraph, inGraph[, inSelection = None, outSelection = None])
-    tlp.copyToGraph(glyc_sg, graph, graph_props["viewSelection"])
-
-    # now, reset selection again
-    graph_props["viewSelection"].setAllNodeValue(False)
-    graph_props["viewSelection"].setAllEdgeValue(False)
-
+    # 1.) add new nodes (as many as were excluded)
+    new_nodes = sg.addNodes(len(ex_nodes))
+    # give new nodes the same properties as old ones
+    for i in range(len(new_nodes)):
+        for prop_string in g.getProperties():
+        # convert property name (string) to property object
+            prop_obj = g.getProperty(prop_string)
+            # set all properties of new node to prop of old node
+            prop_obj[new_nodes[i]] = prop_obj[ex_nodes[i]]
+    # 2.) re-establish connectivity between the nodes (is stored in model file) and create the necessary edges
+    for n in new_nodes:
+        for e_type, node in edge_dict[graph_props["id"][n]].items():
+            if e_type == "out":
+                sg.addEdge(n, node)
+            if e_type == "in":
+                sg.addEdge(node, n)
     # layout subgraph
-    mvl.layoutSubgraph(glyc_sg, "Sugiyama (OGDF)", None, 0, 0, 0)
-
-    # save graph object with new subgraphs
-    tlp.saveGraph(graph, "{}_graph_test.tlp".format(model_id))
-
+    sg = mvl.layoutSubgraph(sg, sg_layout, None, 0, 0, 0)
     # flag all the nodes of the glycolysis subgraph as "already used"
-    for n in glyc_sg.getNodes():
+    for n in sg.getNodes():
         graph_elements[graph_props["id"][n]]['layout'] = True
+
+    return sg
+
+if LAYOUT_PATHWAYS:
+
+    # simulate layouting of a bunch of nodes
+    #graph_elements["R_ENO"]["layout"] = True
+    #graph_elements["R_FBA"]["layout"] = True
+    #graph_elements["M_nadh_c"]["layout"] = True
+    #graph_elements["M_amp_c"]["layout"] = True
+    #graph_elements["M_coa_c"]["layout"] = True
+    #graph_elements["R_HEX1"]["layout"] = True
+
+    # layout Glycolysis
+    glyc_list = path_dict["Glycolysis"]["metabolites"] + path_dict["Glycolysis"]["reactions"]
+    glyc_sg = layoutPathway(graph, graph_elements, graph_props, glyc_list,
+                                                        "glycolysis", "Sugiyama (OGDF)", -500, -500, None)
+    # layout TCA cycle
+    tca_list = path_dict["TCA cycle"]["metabolites"] + path_dict["TCA cycle"]["reactions"]
+    tca_sg = layoutPathway(graph, graph_elements, graph_props, tca_list,
+                                                        "TCA Cycle", "Circular (OGDF)", -50, -500, None)
+    # layout Fatty Acid Synthesis
+    fas_list = path_dict["Fatty Acid Synthesis"]["metabolites"] + path_dict["Fatty Acid Synthesis"]["reactions"]
+    fas_sg = layoutPathway(graph, graph_elements, graph_props, fas_list,
+                                                         "Fatty Acid Synthesis", "Sugiyama (OGDF)", 50, 500, None)
+    # layout Urea Cycle
+    uc_list = path_dict["Urea Cycle"]["metabolites"] + path_dict["Urea Cycle"]["reactions"]
+    uc_sg = layoutPathway(graph, graph_elements, graph_props, uc_list,
+                                                         "Urea Cycle", "Circular (OGDF)", 500, 500, None)
+    # layout Aminosugar Metabolism
+    am_list = path_dict["Aminosugar Metabolism"]["metabolites"] + path_dict["Aminosugar Metabolism"]["reactions"]
+    am_sg = layoutPathway(graph, graph_elements, graph_props, am_list,
+                                                         "Aminosugar Metabolism", "Sugiyama (OGDF)", 0, -500, None)
+
+    # combine pathways
+    # create output graph
+    G = tlp.newGraph()
+    # copy subgraphs to output graph
+    tlp.copyToGraph(G, glyc_sg)
+    tlp.copyToGraph(G, tca_sg)
+    tlp.copyToGraph(G, fas_sg)
+    tlp.copyToGraph(G, uc_sg)
+    tlp.copyToGraph(G, am_sg)
+    # separate overlapping individual pathways
+    G.applyLayoutAlgorithm("Connected Component Packing")
+    # save output graph
+    tlp.saveGraph(G, "{0}_output_combined.tlp".format(model_id))
+
+
+    # reset selection
+    #graph_props["viewSelection"].setAllNodeValue(False)
+    #graph_props["viewSelection"].setAllEdgeValue(False)
+    # select pathway nodes
+    #for n in glyc_sg.getNodes():
+    #    graph_props["viewSelection"][n] = True
+    #for n in tca_sg.getNodes():
+    #    graph_props["viewSelection"][n] = True
+    #for n in fas_sg.getNodes():
+    #    graph_props["viewSelection"][n] = True
+    #for n in uc_sg.getNodes():
+    #    graph_props["viewSelection"][n] = True
+    #for n in am_sg.getNodes():
+    #    graph_props["viewSelection"][n] = True
+    # select pathway edges
+    #for e in glyc_sg.getEdges():
+    #    graph_props["viewSelection"][e] = True
+    #for e in tca_sg.getEdges():
+    #    graph_props["viewSelection"][e] = True
+    #for e in fas_sg.getEdges():
+    #    graph_props["viewSelection"][e] = True
+    #for e in uc_sg.getEdges():
+    #    graph_props["viewSelection"][e] = True
+    #for e in am_sg.getEdges():
+    #    graph_props["viewSelection"][e] = True
+    # create subgraph with only tca and glycolysis from selection
+    #comb_sg = graph.addSubGraph(graph_props["viewSelection"], "combined pathways")
+    # reset selection
+    #graph_props["viewSelection"].setAllNodeValue(False)
+    #graph_props["viewSelection"].setAllEdgeValue(False)
 
 
 
@@ -497,62 +561,43 @@ if LAYOUT_EX_RE_AND_BIOMASS:
 
     # I.) Exchange Reactions Layouting
     # get all exchange reactions (from ex_re_list, extracted from model with cbmpy if info available)
+
     #create id list of all boundary (exchange) reactions
     ex_re_list = []
     ex_re_list.extend(cmod.getExchangeReactionIds())
+
     # if exchange reactions are not annotated in sbml -> look for a exchange reaction group
     if len(ex_re_list) == 0:
         for g_id in cmod.getGroupIds():
             group = cmod.getGroup(g_id)
             if group.name in ["Transport", "Transport, Extracellular", "Exchange", "Exchange Reactions"]:
                 ex_re_list.extend(group.getMemberIDs())
+
     # if objective reaction (e.g. biomass reaction) is in the list of exchange reactions, remove it
     for re in ex_re_list:
         if re == objective_re_id:
             ex_re_list.remove(re)
 
-    # X.) LAYOUTING STATUS CHECK 1: ex re nodes -> identify and exclude already used nodes
     # create an initial list of reaction node objects from ids
     ex_re_node_obj = [r for r in graph.getNodes() if graph_props["id"][r] in ex_re_list]
+
     # check for nodes which have already been used for layouting
     # (with the flag in dict graph_elements[node]['layout'] - boolean value)
     # save the nodes which are excluded because they have already been used for layouting in a list for later use
     ex_re_exclude_nodes = [n for n in ex_re_node_obj if graph_elements[graph_props["id"][n]]['layout'] is True]
+
     # exclude the already layouted nodes from the initial ex re node list
-    for n in ex_re_node_obj:
+    for n in list(ex_re_node_obj):
         if n in ex_re_exclude_nodes:
             ex_re_node_obj.remove(n)
 
-    # if any nodes have been excluded due to the fact that they already have been used for layouting
-    # -> we need to fetch copies of these nodes (create new nodes and equip them with all of the properties of the
-    # excluded ones)
-    # => they also need to have all the edges connected to them! (as it was the case before)
-    # use tulip function coptyToGraph, that takes in a selection of graph elements to add to another graph
-    # first, reset selection
-    graph_props["viewSelection"].setAllNodeValue(False)
-    graph_props["viewSelection"].setAllEdgeValue(False)
-    # select nodes that have been excluded
-    for n in ex_re_exclude_nodes:
-        graph_props["viewSelection"][n] = True
-    # select all edges of the excluded nodes that are connected to a ex_re node
-    for e in graph.getEdges():
-        if graph.source(e) in ex_re_exclude_nodes and graph.target(e) in ex_re_node_obj \
-        or graph.source(e) in ex_re_node_obj and graph.target(e) in ex_re_exclude_nodes:
-            graph_props["viewSelection"][e] = True
-
-    # create a subgraph with all the ex reaction nodes and the all biomass reaction nodes together
     # create subgraph with all exchange reactions
     ex_re_sg = mvl.aliasSeparateReactions(graph, ex_re_list, ex_re_node_obj, "exchange reactions", "Tree Radial",
                                           graph_props)
 
-    # X.) LAYOUTING STATUS CHECK 2: ex re nodes -> fetch copies of excluded nodes from initial graph and add them
-    # copy nodes that have been excluded from graph to ex re subgraph + their edges aswell
-    # tlp.copyToGraph(outGraph, inGraph[, inSelection = None, outSelection = None])
-    tlp.copyToGraph(ex_re_sg, graph, graph_props["viewSelection"])
-    # now, reset selection again
-    graph_props["viewSelection"].setAllNodeValue(False)
-    graph_props["viewSelection"].setAllEdgeValue(False)
-        # flag all nodes in exchange reaction subgraph as having been layouted
+    # TODO: add new nodes with properties of the excluded ones to the subgraph
+
+    # flag all nodes in exchange reaction subgraph as having been layouted
     for n in ex_re_sg.getNodes():
         graph_elements[graph_props["id"][n]]["layout"] = True
 
@@ -564,42 +609,22 @@ if LAYOUT_EX_RE_AND_BIOMASS:
     #------------------------------------------------------------------------------------------------------------------#
 
     # II.) Objective Reaction Layouting
-    # X.) LAYOUTING STATUS CHECK 1: obj re nodes -> identify and exclude already used nodes
     # check obj_re_nodes list for nodes that have already been used for layouting
+
     # save the nodes which are excluded because they have already been used for layouting in a list for later use
     obj_re_exclude_nodes = [n for n in obj_re_nodes if graph_elements[graph_props["id"][n]]['layout'] is True]
+
     # exclude the already layouted nodes from the initial ex re node list
     for n in list(obj_re_nodes):
         if n in obj_re_exclude_nodes:
             obj_re_nodes.remove(n)
-    # if any nodes have been excluded due to the fact that they already have been used for layouting
-    # -> we need to fetch copies of these nodes (create new nodes and equip them with all of the properties of the
-    # excluded ones)
-    # => they also need to have all the edges connected to them! (as it was the case before)
-    # use tulip function coptyToGraph, that takes in a selection of graph elements to add to another graph
-    # first, reset selection
-    graph_props["viewSelection"].setAllNodeValue(False)
-    graph_props["viewSelection"].setAllEdgeValue(False)
-    # select nodes that have been excluded
-    for n in obj_re_exclude_nodes:
-        graph_props["viewSelection"][n] = True
-    # select all edges of the excluded nodes that are connected to a ex_re node
-    for e in graph.getEdges():
-        if graph.source(e) in obj_re_exclude_nodes and graph.target(e) in obj_re_nodes \
-        or graph.source(e) in obj_re_nodes and graph.target(e) in obj_re_exclude_nodes:
-            graph_props["viewSelection"][e] = True
 
     # create subgraph for objective reaction
     obj_re_sg = graph.inducedSubGraph(obj_re_nodes)
     obj_re_sg.setName("only objective reaction")
 
-    # X.) LAYOUTING STATUS CHECK 2: obj re nodes -> fetch copies of excluded nodes from initial graph and add them
-    # copy nodes that have been excluded from graph to ex re subgraph + their edges aswell
-    # tlp.copyToGraph(outGraph, inGraph[, inSelection = None, outSelection = None])
-    tlp.copyToGraph(obj_re_sg, graph, graph_props["viewSelection"])
-    # now, reset selection again
-    graph_props["viewSelection"].setAllNodeValue(False)
-    graph_props["viewSelection"].setAllEdgeValue(False)
+    # TODO: add new nodes with properties of the excluded ones to the subgraph
+
     # flag all nodes in exchange reaction subgraph as having been layouted
     for n in obj_re_sg.getNodes():
         graph_elements[graph_props["id"][n]]["layout"] = True
@@ -608,6 +633,8 @@ if LAYOUT_EX_RE_AND_BIOMASS:
     obj_re_and_ex_re_list = obj_re_nodes + ex_node_list
     obj_re_and_ex_re_sg = graph.inducedSubGraph(obj_re_and_ex_re_list)
     obj_re_and_ex_re_sg.setName("objective and ex reactions")
+
+    #------------------------------------------------------------------------------------------------------------------#
 
     # III.) Combine Exchange and Objective Reaction Layouts
     # apply layout to obj reaction and ex reations individually and save combined result
@@ -654,6 +681,7 @@ gen_model = False
 #sbml_manager.save_as_layout_sbml(groups_model, gen_model, groups_sbml, n2lo, ub_sps)
 
 # create SBGN file
+# TODO: check SBGN: is it valid?, what information is stored?
 groups_sbgn = os.path.join(cDir, '{}.sbgn'.format(model_id))
 #sbgn_helper.save_as_sbgn(n2lo, e2lo, groups_model, groups_sbgn)
 
