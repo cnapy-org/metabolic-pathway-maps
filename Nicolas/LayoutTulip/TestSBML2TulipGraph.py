@@ -770,7 +770,14 @@ if EXPORT_SVG:
 graph_props_node_dict = {}
 graph_props_edge_dict = {}
 
+graph_props_ordered_n_list = []
+graph_props_ordered_e_list = []
+
+graph_prop_ordered_types = []
+
 for prop in graph.getObjectProperties():
+    # add types of props to a list
+    graph_prop_ordered_types.append(prop.getTypename())
     # add property values of nodes to list
     prop_node_sublist = []
     for n in graph.getNodes():
@@ -778,10 +785,13 @@ for prop in graph.getObjectProperties():
             prop_node_sublist.append(prop[n] * 1) # convert True/False to 1/0
         else:
             prop_node_sublist.append(prop[n])
+    # add graph node prop info to ordered list
+    graph_props_ordered_n_list.append(prop_node_sublist)
     # fill dict with graph node prop info
     graph_props_node_dict[prop.getName()] = {}
     graph_props_node_dict[prop.getName()]["type"] = prop.getTypename()
     graph_props_node_dict[prop.getName()]["data"] = prop_node_sublist
+
     # add property values of edges to list
     prop_edge_sublist = []
     for e in graph.getEdges():
@@ -789,7 +799,9 @@ for prop in graph.getObjectProperties():
             prop_edge_sublist.append(prop[e] * 1) # convert True/False to 1/0
         else:
             prop_edge_sublist.append(prop[e])
-    # fill dict with graph node prop info
+    # add graph edge prop info to ordered list
+    graph_props_ordered_e_list.append(prop_edge_sublist)
+    # fill dict with graph edge prop info
     graph_props_edge_dict[prop.getName()] = {}
     graph_props_edge_dict[prop.getName()]["type"] = prop.getTypename()
     graph_props_edge_dict[prop.getName()]["data"] = prop_edge_sublist
@@ -802,83 +814,79 @@ for prop in graph.getObjectProperties():
 # exemplary for the whole list
 graph_props_node_tuplelist = [] # after encoding is finished: save encoded prop lists in tuples to prepare for INSERT
 # add node ids to beginning of tuple list to serve as primary key in table
-graph_props_node_tuplelist.append([str(n) for n in graph.getNodes()])
+graph_props_node_tuplelist.append([i for i in range(len(list(graph.getNodes())))])
 
-for prop_name_n, prop_data in graph_props_node_dict.items():
+for prop_type, prop_data_list in zip(graph_prop_ordered_types, graph_props_ordered_n_list):
     # allowed data types, no encoding needed
-    if prop_data["type"] == 'string':
+    if prop_type == 'string':
         pass
-    if prop_data["type"] == 'int':
+    if prop_type == 'int':
         pass
-    if prop_data["type"] == 'double': # = float (in SQL -> REAL)
+    if prop_type == 'double': # = float (in SQL -> REAL)
         pass
-    if prop_data["type"] == 'bool': # was converted to INTEGER
+    if prop_type == 'bool': # was converted to INTEGER
         pass
     # data types that require encoding
     # every item of properties with these types is a list itself!
     enc_types = ['size', 'color', 'layout', 'vector<string>']
     # convert data of a type that requires encoding to string
-    if prop_data["type"] in enc_types:
-        for list_item in list(prop_data["data"]):
+    if prop_type in enc_types:
+        for list_item in list(prop_data_list):
             # convert list item to string
             str_item = ','.join(str(item) for item in list_item)
             # remove old list_item
-            prop_data["data"].remove(list_item)
+            prop_data_list.remove(list_item)
             # add new string item
-            prop_data["data"].append(str_item)
+            prop_data_list.append(str_item)
     # exlucde props with type 'graph' from tuplelist (viewMetaGraph)
     included = True
-    if prop_data["type"] == 'graph':
+    if prop_type == 'graph':
         included = False
     # final step: save included, encoded sublist as tuple
     if included is True:
-        graph_props_node_tuplelist.append(tuple(prop_data["data"]))
+        graph_props_node_tuplelist.append(tuple(prop_data_list))
 
 graph_props_edge_tuplelist = []
 # add edge ids to beginning of tuple list to serve as primary key in table
-graph_props_edge_tuplelist.append([str(n) for n in graph.getEdges()])
-for prop_name_e, prop_data in graph_props_edge_dict.items():
+graph_props_edge_tuplelist.append([i for i in range(len(list(graph.getEdges())))])
+for prop_type, prop_data_list in zip(graph_prop_ordered_types, graph_props_ordered_e_list):
     # allowed data types, no encoding needed
-    if prop_data["type"] == 'string':
+    if prop_type == 'string':
         pass
-    if prop_data["type"] == 'int':
+    if prop_type == 'int':
         pass
-    if prop_data["type"] == 'double': # = float (in SQL -> REAL)
+    if prop_type == 'double': # = float (in SQL -> REAL)
         pass
-    if prop_data["type"] == 'bool': # was converted to INTEGER
+    if prop_type == 'bool': # was converted to INTEGER
         pass
     # data types that require encoding
     # every item of properties with these types is a list itself!
     enc_types = ['size', 'color', 'layout', 'vector<string>']
     # convert data of a type that requires encoding to string
-    if prop_data["type"] in enc_types:
-        for list_item in list(prop_data["data"]):
+    if prop_type in enc_types:
+        for list_item in list(prop_data_list):
             # convert list item to string
             str_item = ','.join(str(item) for item in list_item)
             # remove old list_item
-            prop_data["data"].remove(list_item)
+            prop_data_list.remove(list_item)
             # add new string item
-            prop_data["data"].append(str_item)
+            prop_data_list.append(str_item)
     # exlucde props with type 'graph' from tuplelist (viewMetaGraph)
     included = True
-    if prop_data["type"] == 'graph':
+    if prop_type == 'graph':
         included = False
     # final step: save included, encoded sublist as tuple
     if included is True:
-        graph_props_edge_tuplelist.append(tuple(prop_data["data"]))
+        graph_props_edge_tuplelist.append(tuple(prop_data_list))
 
 
-# create an SQL database with sqlite3
+# 3. create an SQL database with sqlite3
 # connect to database
 db = sqlite3.connect('{0}_graph.db'.format(model_id))
 # get a cursor object
 c = db.cursor()
-
 # pass SQL statements into cursor
 # create empty graph node table (skips if table already exists)
-# TODO: instead of BLOB convert property types to TEXT
-# TODO: color property to TEXT via tlp.Color etc.
-# TODO: if property is endcoded in some way, write decoder for it aswell
 c.execute('''CREATE TABLE IF NOT EXISTS graph_nodes(node_id INTEGER PRIMARY KEY,
 anc_id TEXT,
 anc_name TEXT,
@@ -891,7 +899,7 @@ fake INTEGER,
 flux REAL,
 id TEXT,
 name TEXT,
-pathway TEXT
+pathway TEXT,
 rel_c_ids TEXT,
 rev INTEGER,
 stoich REAL,
@@ -935,7 +943,7 @@ fake INTEGER,
 flux REAL,
 id TEXT,
 name TEXT,
-pathway TEXT
+pathway TEXT,
 rel_c_ids TEXT,
 rev INTEGER,
 stoich REAL,
@@ -966,21 +974,37 @@ viewTexture TEXT,
 viewTgtAnchorShape INTEGER,
 viewTgtAnchorSize TEXT)
 ''')
-
-# TODO: encode the data first before putting it in to the table
-# TODO: fill tables with encoded values in graph_props_node_data and graph_props_edge_data
-
-# TODO: insert data per row (?)
-
-# TODO: CBNetDB.py for database functions
-
-# TODO: after putting in graph info try to retireve it again and save it as new tlp (see if layout stay constant)
-# TODO: use biomass layout for testing purposes
-
+# reorder tuple list for INSERT INTO statement:
+# instead of [(all prop1), (all prop2), ...] I want [(prop1[1], prop2[1], ...), (prop1[2], prop2[2], ...), ...]
+graph_props_node_insertlist = []
+graph_props_edge_insertlist = []
+for i in range(len(list(graph.getNodes()))):
+    graph_props_node_insertlist.append([tuple[i] for tuple in graph_props_node_tuplelist])
+for i in range(len(list(graph.getEdges()))):
+    graph_props_edge_insertlist.append([tuple[i] for tuple in graph_props_edge_tuplelist])
+# fill tables with encoded values
+for tup in graph_props_node_insertlist:
+    c.execute('''INSERT INTO graph_nodes VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
+    ?,?,?,?,?,?)''', tup)
+for tup in graph_props_edge_insertlist:
+    c.execute('''INSERT INTO graph_edges VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
+    ?,?,?,?,?,?)''', tup)
 # commit changes to database
 db.commit()
 # close connection to database
 db.close()
+
+
+print("Graph data has been stored in SQL database.")
+
+
+
+#####################################
+# retrieve graphs from SQL database #
+#####################################
+# TODO: after putting in graph info try to retireve it again and save it as new tlp (see if layout stay constant)
+# TODO: use biomass layout for testing purposes
+
 
 # fetch graph properties of nodes and columns from database
 db_return_node_props = []
