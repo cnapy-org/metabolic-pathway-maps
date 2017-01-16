@@ -23,6 +23,7 @@ Contact email: n.a.f.huber@vu.nl
 
 """
 
+import os
 import random
 from tulip import tlp
 import graph_properties
@@ -116,9 +117,18 @@ def createPathwayLists(cmod, path_name, small_threshold=30):
     # add species lists to dict
     gids[path_name]['metabolites'] = path_sps
     # get ubiquitous small metabolites by filtering for high connectivity (default: > 30)
-    # TODO: go through stM and for each line sum the abs() of all values to get amount of connected reactions
-    # TODO: stoichM_stuff.py
-    small_sps = [s.getId() for s in cmod.species if len(s.isReagentOf()) > small_threshold]
+    # get stoich matrix (rows = species, columns = reactions)
+    n = cmod.N.array
+    # convert all matrix entries to abs values
+    n_abs = abs(n)
+    # save number of connections (= involvment in a reaction) per species (= row in stoich matrix) in a dict
+    # dict: key = species id of a row; value = integer value of reactions that species is involved in (connections )
+    n_r_conn = {}
+    for row in range(n_abs.shape[0]):
+        n_r_conn[cmod.N.row[row]] = round(n_abs[row, :].sum(), 0)
+    # if the number of connections for a species is bigger than the given threshold
+    # -> put the repsective species id in the list small_sps
+    small_sps = [sps_id for sps_id, num_re in n_r_conn.items() if num_re > small_threshold]
     # remove the small metabolites from the pathways
     for ubs in small_sps:
         if ubs in path_sps:
@@ -159,9 +169,12 @@ def create_props(graph):
     edge_direct = graph.getStringProperty("edge_directionality")
     flux = graph.getDoubleProperty("flux")
     selection = graph.getBooleanProperty("viewSelection")
+    path = graph.getStringProperty("pathway")
+    font_size = graph.getIntegerProperty("viewFontSize")
 
     return anc_term, anc_id, anc_name, term, c_id, id_, name, type, rev, stoich, transport, ub, viewLabel, \
-           viewLayout, viewShape, viewSize, viewColor, fake, clone_id, formula, rel_c_ids, edge_direct, flux, selection
+           viewLayout, viewShape, viewSize, viewColor, fake, clone_id, formula, rel_c_ids, edge_direct, flux, \
+           selection, path, font_size
 
 
 def markUbiquitousNodes(g, ub_list):
@@ -684,3 +697,38 @@ def colourFBA(g, flux_dict, color_pos, color_neg, color_zero):
                 viewColor[n] = colorScale_neg.getColorAtPos(1)
                 for e in g.getInOutEdges(n):
                     viewColor[e] = colorScale_neg.getColorAtPos(1)
+
+
+def exportGML(graph, model_id, output_graph_name, file_name):
+    """
+    Exports a tulip graph as a GML file::
+
+    - *graph* a tulip graph (input graph to get elements and properties from)
+    - *model_id* id of the libSBML model
+    - *output_graph_name* a name for the output graph G (has unique node ids), file type: .tlp
+    - *file_name* a name for the output GML file (string), file type: .gml
+
+    """
+    # create new output graph 'GML'
+    GML = tlp.newGraph()
+    GML.setName("GML output graph")
+    # if a completely new graph object is created, the properties need to be generated again because they are tied to a
+    # graph object (properties of a graph can be used for its subgraphs but thats just because subgraphs are only partial
+    # views of a whole graph, not new objects)
+    GML_props_tup = create_props(GML)
+    GML_props = {}
+    for prop in GML_props_tup:
+        GML_props[prop.getName()] = prop
+    # copy elements from the graph 'graph' to the graph 'GML'
+    tlp.copyToGraph(GML, graph)
+    # change nodes to be unique (add integers to node ids and labels)
+    i = 0
+    for n in GML.getNodes():
+        GML_props["id"][n] = GML_props["id"][n] + str(i)
+        GML_props["viewLabel"][n] = GML_props["viewLabel"][n] + str(i)
+        i += 1
+    # save new output graph 'GML'
+    tlp.saveGraph(GML, '{}'.format(model_id) + '_' + output_graph_name)
+    # export new output graph 'GML' as .gml file (graphic markup language)
+    params = tlp.getDefaultPluginParameters('GML Export', graph)
+    tlp.exportGraph('GML Export', GML, '{}'.format(model_id) + '_' + file_name, params)

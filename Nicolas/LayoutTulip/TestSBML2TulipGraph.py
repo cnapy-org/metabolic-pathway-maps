@@ -6,13 +6,20 @@ import os
 # get current directory
 cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
 
+# tulip imports
+import sys
+sys.path.append('C:\\Program Files\\Tulip-4.10.0\\bin')
+from tulipgui import * # for SVG export
+from tulip import tlp
+
+# modules for SBML model interaction
 import libsbml
 import cbmpy
-from tulip import tlp
+
+# SQL database API
 import sqlite3
 
-# necessary Mimoza modules
-# graph visualization
+# necessary Mimoza modules for graph visualization
 import sbml2tlp
 import tulip_graph2geojson
 # sbml and sbgn export
@@ -41,7 +48,9 @@ LAYOUT_PATHWAYS = True # needs PATHWAY_LISTS true, so that necessary node lists 
 LAYOUT_EX_RE_AND_BIOMASS = True
 
 # export generated graph as .gml file
-EXPORT_GML = False
+EXPORT_GML = True
+# export generated graph as .svg file
+EXPORT_SVG = True
 
 # colour the reaction nodes + in and outcoming edges based on flux values obtained from FBA
 COLOUR_FBA = False
@@ -225,6 +234,7 @@ mvl.markUbiquitousNodes(graph, ub_list)
 # create nodes for all species
 id2n = mvl.speciesToNodes(graph, cmod, ub_list, graph_props)
 
+# TODO: initial tulip graph creation is slow because of Mimoza Black Box Code!
 # TODO: reaction node creation still relies on copied code (problem: reaction node compartments need helper
 # TODO: functions for proper assignment -> understand what the copied code does and rewrite!)
 ########################################################################################################################
@@ -412,10 +422,8 @@ for e in graph.getEdges():
 # layout pathways in subgraphs (Glycolysis, TCA Cycle, etc.) #
 ##############################################################
 
-# TODO: generalize this!
-
 # define function to get subsystem node list from different biological pathways (e.g.: glycolysis, tca) and apply layout
-def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout, x_center, y_center, z_center):
+def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout):
     """
     Create and layout a subgraph based initially on a list of model ids::
 
@@ -425,9 +433,6 @@ def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout, x
     - *id_list* a list of model ids (strings)
     - *sg_name* a name for the subgraph (string)
     - *sg_layout* a tulip layout algorithm to be applied on the subgraph (string)
-    - *x_center* x coordinate of layout center which defines subgraph position (optional)
-    - *y_center* y coordinate of layout center which defines subgraph position (optional)
-    - *z_center* z coordinate of layout center which defines subgraph position, default 0
 
     """
     # generate (initial) list of nodes for pathway elements by going through lists containing selected ids
@@ -477,106 +482,123 @@ def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout, x
             if e_type == "in":
                 sg.addEdge(node, n)
     # layout subgraph
-    sg = mvl.layoutSubgraph(sg, sg_layout, None, 0, 0, 0)
-    # flag all the nodes of the glycolysis subgraph as "already used"
+    sg = mvl.layoutSubgraph(sg, sg_layout)
+    # flag all the nodes of the glycolysis subgraph as "already used" and add pathway info ( = subgraph name) to their
+    # graph properties
     for n in sg.getNodes():
         graph_elements[graph_props["id"][n]]['layout'] = True
+        graph_props["pathway"][n] = sg_name
+    # add pathway info to egdes aswell
+    for e in sg.getEdges():
+        graph_props["pathway"][e] = sg_name
 
     return sg
 
 if LAYOUT_PATHWAYS:
 
-    # simulate layouting of a bunch of nodes
-    #graph_elements["R_ENO"]["layout"] = True
-    #graph_elements["R_FBA"]["layout"] = True
-    #graph_elements["M_nadh_c"]["layout"] = True
-    #graph_elements["M_amp_c"]["layout"] = True
-    #graph_elements["M_coa_c"]["layout"] = True
-    #graph_elements["R_HEX1"]["layout"] = True
+    # TODO: generalize this!
+
+    """
+    for path_name, path_ids in path_dict.items():
+        path_list = path_ids["metabolites"] + path_ids["reactions"]
+        if "ycle" in path_name:
+            path_layout = "Circular (OGDF)"
+        else:
+            path_layout = "Sugiyama (OGDF)"
+        path_sg = layoutPathway(graph, graph_elements, graph_props, path_list, path_name, path_layout)
+    """
 
     # layout Glycolysis
     glyc_list = path_dict["Glycolysis"]["metabolites"] + path_dict["Glycolysis"]["reactions"]
     glyc_sg = layoutPathway(graph, graph_elements, graph_props, glyc_list,
-                                                        "Glycolysis", "Sugiyama (OGDF)", -500, -500, None)
+                                                        "Glycolysis", "Sugiyama (OGDF)")
     # layout TCA cycle
     tca_list = path_dict["TCA cycle"]["metabolites"] + path_dict["TCA cycle"]["reactions"]
     tca_sg = layoutPathway(graph, graph_elements, graph_props, tca_list,
-                                                        "TCA cycle", "Circular (OGDF)", -50, -500, None)
+                                                        "TCA cycle", "Circular (OGDF)")
     # layout Fatty Acid Synthesis
     fas_list = path_dict["Fatty Acid Synthesis"]["metabolites"] + path_dict["Fatty Acid Synthesis"]["reactions"]
     fas_sg = layoutPathway(graph, graph_elements, graph_props, fas_list,
-                                                         "Fatty Acid Synthesis", "Sugiyama (OGDF)", 50, 500, None)
+                                                         "Fatty Acid Synthesis", "Sugiyama (OGDF)")
     # layout Urea Cycle
     uc_list = path_dict["Urea Cycle"]["metabolites"] + path_dict["Urea Cycle"]["reactions"]
     uc_sg = layoutPathway(graph, graph_elements, graph_props, uc_list,
-                                                         "Urea Cycle", "Circular (OGDF)", 500, 500, None)
+                                                         "Urea Cycle", "Circular (OGDF)")
     # layout Aminosugar Metabolism
     am_list = path_dict["Aminosugar Metabolism"]["metabolites"] + path_dict["Aminosugar Metabolism"]["reactions"]
     am_sg = layoutPathway(graph, graph_elements, graph_props, am_list,
-                                                         "Aminosugar Metabolism", "Sugiyama (OGDF)", 0, -500, None)
+                                                         "Aminosugar Metabolism", "Sugiyama (OGDF)")
 
-    # TODO: add a pathway info to the nodes of the subgraphs before dumping them to G
-    # TODO: or after adding them to G add node property to nodes of last sg
+    # combine pathways in output graph
+    # ! if a completely new graph object is created, the properties need to be generated again because they are tied
+    # to a graph object (properties of a graph can be used for its subgraphs but thats just because subgraphs are only partial
+    # views of a whole graph, not new objects) !
 
-    # combine pathways
-    # create output graph
-    # if a completely new graph object is created, the properties need to be generated again because they are tied to a
-    # graph object (properties of a graph can be used for its subgraphs but thats just because subgraphs are only partial
-    # views of a whole graph, not new objects)
+    # create output graph 'G'
     G = tlp.newGraph()
-    # TODO: create_props() for graph 'G'
+    # create props for new combined output graph 'G'
+    G_tup = mvl.create_props(G)
+    # save graph props in dictionary
+    G_props = {}
+    for prop in G_tup:
+        G_props[prop.getName()] = prop
+    # add name to graph 'G'
     G.setName("output_combined")
-    # copy subgraphs to output graph
-    # TODO: generalize this!
-    tlp.copyToGraph(G, glyc_sg)
-    tlp.copyToGraph(G, tca_sg)
-    tlp.copyToGraph(G, fas_sg)
-    tlp.copyToGraph(G, uc_sg)
-    tlp.copyToGraph(G, am_sg)
+
+    # copy subgraphs to output graph 'G' and recreate subgraphs from selection in graph 'G'
+    # TODO: why do i need to use the properties of graph here if i want to change selection status of G nodes?
+    graph_props["viewSelection"].setAllNodeValue(False)
+    graph_props["viewSelection"].setAllEdgeValue(False)
+    #layout Glycolysis
+    tlp.copyToGraph(G, glyc_sg, None, graph_props["viewSelection"])
+    G_glyc = G.addSubGraph(graph_props["viewSelection"], "Glycolysis")
+    G_glyc.setName("Glycolysis")
+    graph_props["viewSelection"].setAllNodeValue(False)
+    graph_props["viewSelection"].setAllEdgeValue(False)
+    # layout TCA cycle
+    tlp.copyToGraph(G, tca_sg, None, graph_props["viewSelection"])
+    G_tca = G.addSubGraph(graph_props["viewSelection"], "TCA cycle")
+    G_tca.setName("TCA cycle")
+    graph_props["viewSelection"].setAllNodeValue(False)
+    graph_props["viewSelection"].setAllEdgeValue(False)
+    #
+    tlp.copyToGraph(G, fas_sg, None, graph_props["viewSelection"])
+    G_fas = G.addSubGraph(graph_props["viewSelection"], "Fatty Acid Synthesis")
+    G_fas.setName("Fatty Acid Synthesis")
+    graph_props["viewSelection"].setAllNodeValue(False)
+    graph_props["viewSelection"].setAllEdgeValue(False)
+
+    tlp.copyToGraph(G, uc_sg, None, graph_props["viewSelection"])
+    G_uc = G.addSubGraph(graph_props["viewSelection"], "Urea Cycle")
+    G_uc.setName("Urea Cycle")
+    graph_props["viewSelection"].setAllNodeValue(False)
+    graph_props["viewSelection"].setAllEdgeValue(False)
+
+    tlp.copyToGraph(G, am_sg, None, graph_props["viewSelection"])
+    G_am = G.addSubGraph(graph_props["viewSelection"], "Aminosugar Metabolism")
+    G_am.setName("Aminosugar Metabolism")
+    graph_props["viewSelection"].setAllNodeValue(False)
+    graph_props["viewSelection"].setAllEdgeValue(False)
+
+    #reset selection of G elements
+    G_props["viewSelection"].setAllNodeValue(False)
+    G_props["viewSelection"].setAllEdgeValue(False)
     # separate overlapping individual pathways
     G.applyLayoutAlgorithm("Connected Component Packing")
-
-    # TODO: seperate all the pathways/groups in new graph G and add pathways labels (invisible nodes with visible label)
+    # add pathway labels (invisible nodes with visible label)
+    for sg in G.getSubGraphs():
+        n = sg.addNode()
+        G_props["viewLabel"][n] = sg.getName()
+        G_props["viewColor"][n] = tlp.Color(255, 255, 255) # set node color to white (invis on white bg)
+        G_props["viewSize"][n] = tlp.Size(5, 5, 1) # normal node = (2.5, 2.5, 1); bigger -> (5, 5, 1)
+        G_props["viewFontSize"][n] = 24 # default is 18
+    # TODO: control subgraph ( = pathway) positions
 
     # save output graph
     tlp.saveGraph(G, "{0}_output_combined.tlp".format(model_id))
 
-    # TODO: create new subgraphs in G and control pathway positions
-
 
     print("Pathway layouting finished, results saved in {0}_output_combined.tlp".format(model_id))
-
-
-    # reset selection
-    #graph_props["viewSelection"].setAllNodeValue(False)
-    #graph_props["viewSelection"].setAllEdgeValue(False)
-    # select pathway nodes
-    #for n in glyc_sg.getNodes():
-    #    graph_props["viewSelection"][n] = True
-    #for n in tca_sg.getNodes():
-    #    graph_props["viewSelection"][n] = True
-    #for n in fas_sg.getNodes():
-    #    graph_props["viewSelection"][n] = True
-    #for n in uc_sg.getNodes():
-    #    graph_props["viewSelection"][n] = True
-    #for n in am_sg.getNodes():
-    #    graph_props["viewSelection"][n] = True
-    # select pathway edges
-    #for e in glyc_sg.getEdges():
-    #    graph_props["viewSelection"][e] = True
-    #for e in tca_sg.getEdges():
-    #    graph_props["viewSelection"][e] = True
-    #for e in fas_sg.getEdges():
-    #    graph_props["viewSelection"][e] = True
-    #for e in uc_sg.getEdges():
-    #    graph_props["viewSelection"][e] = True
-    #for e in am_sg.getEdges():
-    #    graph_props["viewSelection"][e] = True
-    # create subgraph with only tca and glycolysis from selection
-    #comb_sg = graph.addSubGraph(graph_props["viewSelection"], "combined pathways")
-    # reset selection
-    #graph_props["viewSelection"].setAllNodeValue(False)
-    #graph_props["viewSelection"].setAllEdgeValue(False)
 
 
 
@@ -700,16 +722,6 @@ if COLOUR_FBA:
 # save total graph with all changes
 tlp.saveGraph(graph, "{}_graph.tlp".format(model_id))
 
-# tulip graph export plugins
-#In [19]: tlp.getExportPluginsList()
-#Out[19]: ['GML Export', 'JSON Export', 'TLP Export', 'TLPB Export']
-
-# TODO: export tulip graph as SVG file
-#params = tlp.getDefaultPluginParameters('SVG Export', graph)
-#tlp.exportGraph('SVG Export', graph, '{}.svg'.format(model_id), params
-# NOT WORKING! -> so far: Exception: No plugin named  SVG Export.
-# emailed tulip staff about it
-
 # add layout to SBML file
 groups_document = reader.readSBML(groups_sbml)
 groups_model = groups_document.getModel()
@@ -724,35 +736,21 @@ groups_sbgn = os.path.join(cDir, '{}.sbgn'.format(model_id))
 
 
 
-################################
-# export the graph as GML file #
-################################
+######################################
+# export the graph as GML and/or SVG #
+######################################
 
 if EXPORT_GML:
-    # create new output graph 'GML'
-    GML = tlp.newGraph()
-    GML.setName("GML output graph")
-    # if a completely new graph object is created, the properties need to be generated again because they are tied to a
-    # graph object (properties of a graph can be used for its subgraphs but thats just because subgraphs are only partial
-    # views of a whole graph, not new objects)
-    GML_props_tup = mvl.create_props(GML)
-    GML_props = {}
-    for prop in GML_props_tup:
-        GML_props[prop.getName()] = prop
-    # copy elements from the graph 'graph' to the graph 'GML'
-    tlp.copyToGraph(GML, graph)
-    # change nodes to be unique (add integers)
-    # btw: str(i) corresponds directly to the node id which means that tulip is just counting through the nodes aswell!
-    i = 0
-    for n in GML.getNodes():
-        GML_props["id"][n] = GML_props["id"][n] + str(i)
-        GML_props["viewLabel"][n] = GML_props["viewLabel"][n] + str(i)
-        i+=1
-    # save new output graph 'GML'
-    tlp.saveGraph(GML, '{}_GML_test.tlp'.format(model_id))
-    # export new output graph 'GML' as .gml file (graphic markup language)
-    params = tlp.getDefaultPluginParameters('GML Export', graph)
-    tlp.exportGraph('GML Export', GML, '{}_test.gml'.format(model_id), params)
+    mvl.exportGML(graph, model_id, "GML_test.tlp", "test.gml")
+    print("Graph exported as GML file.")
+
+if EXPORT_SVG:
+    # TODO: creates an .svg file but it opening it with Inkscape doesn't show its content
+    # get default parameters of SVG export plugin
+    params = tlp.getDefaultPluginParameters('SVG Export', graph)
+    # export graph as .svg file
+    tlp.exportGraph('SVG Export', graph, '{}.svg'.format(model_id), params)
+    print("Graph exported as SVG file.")
 
 
 
@@ -760,35 +758,115 @@ if EXPORT_GML:
 # create SQL table from graph object #
 ######################################
 
-# create a list with lists of graph property data which carry the same data as one column in tulip graph object
-# order of list = order of nodes in tulip graph object table
+
+# 1. create necessary data structures
+
+# create a dictionary of dicts for the graph properties to link types of properties to their data:
+# dict setup: keys = property names with values = dict with 1. key 'type' => type of property
+#                                                       and 2. key 'data' => list of data
+#                                                                              (same order as columns in graph object)
+#
 # for SQLite: convert boolean values to integers (True = 1, False = 0) since sqlite has no boolean data type!
-
-graph_props_node_data = []
-graph_props_edge_data = []
-
-# add node and edge tulip ids to lists
-graph_props_node_data.append([str(n) for n in graph.getNodes()])
-graph_props_edge_data.append([str(e) for e in graph.getEdges()])
+graph_props_node_dict = {}
+graph_props_edge_dict = {}
 
 for prop in graph.getObjectProperties():
-    # add property values to node list
+    # add property values of nodes to list
     prop_node_sublist = []
     for n in graph.getNodes():
         if prop.getTypename() == "bool":
-            prop_node_sublist.append(prop[n] * 1)
+            prop_node_sublist.append(prop[n] * 1) # convert True/False to 1/0
         else:
             prop_node_sublist.append(prop[n])
-    graph_props_node_data.append(prop_node_sublist)
-
-    # add property values to edge list
+    # fill dict with graph node prop info
+    graph_props_node_dict[prop.getName()] = {}
+    graph_props_node_dict[prop.getName()]["type"] = prop.getTypename()
+    graph_props_node_dict[prop.getName()]["data"] = prop_node_sublist
+    # add property values of edges to list
     prop_edge_sublist = []
     for e in graph.getEdges():
         if prop.getTypename() == "bool":
-            prop_edge_sublist.append(prop[e] * 1)
+            prop_edge_sublist.append(prop[e] * 1) # convert True/False to 1/0
         else:
             prop_edge_sublist.append(prop[e])
-    graph_props_edge_data.append(prop_edge_sublist)
+    # fill dict with graph node prop info
+    graph_props_edge_dict[prop.getName()] = {}
+    graph_props_edge_dict[prop.getName()]["type"] = prop.getTypename()
+    graph_props_edge_dict[prop.getName()]["data"] = prop_edge_sublist
+
+
+# 2. encode graph property data to SQLite compatible types
+
+# go through the list of graph property lists:
+# since a sublist contains only one graph property for all nodes/edges -> the first element of the sublist is
+# exemplary for the whole list
+graph_props_node_tuplelist = [] # after encoding is finished: save encoded prop lists in tuples to prepare for INSERT
+# add node ids to beginning of tuple list to serve as primary key in table
+graph_props_node_tuplelist.append([str(n) for n in graph.getNodes()])
+
+for prop_name_n, prop_data in graph_props_node_dict.items():
+    # allowed data types, no encoding needed
+    if prop_data["type"] == 'string':
+        pass
+    if prop_data["type"] == 'int':
+        pass
+    if prop_data["type"] == 'double': # = float (in SQL -> REAL)
+        pass
+    if prop_data["type"] == 'bool': # was converted to INTEGER
+        pass
+    # data types that require encoding
+    # every item of properties with these types is a list itself!
+    enc_types = ['size', 'color', 'layout', 'vector<string>']
+    # convert data of a type that requires encoding to string
+    if prop_data["type"] in enc_types:
+        for list_item in list(prop_data["data"]):
+            # convert list item to string
+            str_item = ','.join(str(item) for item in list_item)
+            # remove old list_item
+            prop_data["data"].remove(list_item)
+            # add new string item
+            prop_data["data"].append(str_item)
+    # exlucde props with type 'graph' from tuplelist (viewMetaGraph)
+    included = True
+    if prop_data["type"] == 'graph':
+        included = False
+    # final step: save included, encoded sublist as tuple
+    if included is True:
+        graph_props_node_tuplelist.append(tuple(prop_data["data"]))
+
+graph_props_edge_tuplelist = []
+# add edge ids to beginning of tuple list to serve as primary key in table
+graph_props_edge_tuplelist.append([str(n) for n in graph.getEdges()])
+for prop_name_e, prop_data in graph_props_edge_dict.items():
+    # allowed data types, no encoding needed
+    if prop_data["type"] == 'string':
+        pass
+    if prop_data["type"] == 'int':
+        pass
+    if prop_data["type"] == 'double': # = float (in SQL -> REAL)
+        pass
+    if prop_data["type"] == 'bool': # was converted to INTEGER
+        pass
+    # data types that require encoding
+    # every item of properties with these types is a list itself!
+    enc_types = ['size', 'color', 'layout', 'vector<string>']
+    # convert data of a type that requires encoding to string
+    if prop_data["type"] in enc_types:
+        for list_item in list(prop_data["data"]):
+            # convert list item to string
+            str_item = ','.join(str(item) for item in list_item)
+            # remove old list_item
+            prop_data["data"].remove(list_item)
+            # add new string item
+            prop_data["data"].append(str_item)
+    # exlucde props with type 'graph' from tuplelist (viewMetaGraph)
+    included = True
+    if prop_data["type"] == 'graph':
+        included = False
+    # final step: save included, encoded sublist as tuple
+    if included is True:
+        graph_props_edge_tuplelist.append(tuple(prop_data["data"]))
+
 
 # create an SQL database with sqlite3
 # connect to database
@@ -813,6 +891,7 @@ fake INTEGER,
 flux REAL,
 id TEXT,
 name TEXT,
+pathway TEXT
 rel_c_ids TEXT,
 rev INTEGER,
 stoich REAL,
@@ -820,29 +899,28 @@ term TEXT,
 tr INTEGER,
 type INTEGER,
 ub INTEGER,
-viewBorderColor BLOB,
+viewBorderColor TEXT,
 viewBorderWidth REAL,
-viewColor BLOB,
+viewColor TEXT,
 viewFont TEXT,
 viewFontAwesomeIcon TEXT,
 viewFontSize INTEGER,
 viewLabel TEXT,
-viewLabelBorderColor BLOB,
+viewLabelBorderColor TEXT,
 viewLabelBorderWidth REAL,
-viewLabelColor BLOB,
+viewLabelColor TEXT,
 viewLabelPosition INTEGER,
-viewLayout BLOB,
-viewMetaGraph BLOB,
+viewLayout TEXT,
 viewMetric REAL,
 viewRotation REAL,
 viewSelection INTEGER,
 viewShape INTEGER,
-viewSize BLOB,
+viewSize INTEGER,
 viewSrcAnchorShape INTEGER,
-viewSrcAnchorSize BLOB,
+viewSrcAnchorSize TEXT,
 viewTexture TEXT,
 viewTgtAnchorShape INTEGER,
-viewTgtAnchorSize BLOB)
+viewTgtAnchorSize TEXT)
 ''')
 # create empty graph edge table (skips if table already exists)
 c.execute('''CREATE TABLE IF NOT EXISTS graph_edges(edge_id INTEGER PRIMARY KEY,
@@ -857,6 +935,7 @@ fake INTEGER,
 flux REAL,
 id TEXT,
 name TEXT,
+pathway TEXT
 rel_c_ids TEXT,
 rev INTEGER,
 stoich REAL,
@@ -864,29 +943,28 @@ term TEXT,
 tr INTEGER,
 type INTEGER,
 ub INTEGER,
-viewBorderColor BLOB,
+viewBorderColor TEXT,
 viewBorderWidth REAL,
-viewColor BLOB,
+viewColor TEXT,
 viewFont TEXT,
 viewFontAwesomeIcon TEXT,
 viewFontSize INTEGER,
 viewLabel TEXT,
-viewLabelBorderColor BLOB,
+viewLabelBorderColor TEXT,
 viewLabelBorderWidth REAL,
-viewLabelColor BLOB,
+viewLabelColor TEXT,
 viewLabelPosition INTEGER,
-viewLayout BLOB,
-viewMetaGraph BLOB,
+viewLayout TEXT,
 viewMetric REAL,
 viewRotation REAL,
 viewSelection INTEGER,
 viewShape INTEGER,
-viewSize BLOB,
+viewSize INTEGER,
 viewSrcAnchorShape INTEGER,
-viewSrcAnchorSize BLOB,
+viewSrcAnchorSize TEXT,
 viewTexture TEXT,
 viewTgtAnchorShape INTEGER,
-viewTgtAnchorSize BLOB)
+viewTgtAnchorSize TEXT)
 ''')
 
 # TODO: encode the data first before putting it in to the table
@@ -903,3 +981,20 @@ viewTgtAnchorSize BLOB)
 db.commit()
 # close connection to database
 db.close()
+
+# fetch graph properties of nodes and columns from database
+db_return_node_props = []
+
+# TODO: decode graph props again after getting them from the database
+
+
+
+
+
+
+
+
+
+
+
+
