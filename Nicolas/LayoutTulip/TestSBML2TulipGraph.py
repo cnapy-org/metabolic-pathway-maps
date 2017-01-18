@@ -29,8 +29,6 @@ import sbgn_helper
 # module with own functions
 import MVLayout as mvl
 
-
-
 ############################
 # global control variables #
 ############################
@@ -55,21 +53,23 @@ EXPORT_SVG = True
 # colour the reaction nodes + in and outgoing edges based on flux values obtained from FBA
 COLOUR_FBA = True
 
-
-
 #############################################
 # read SBML with libsbml and cbmpy, do FBA  #
 #############################################
 
-# read SBML file (with libsbml) # Auto alias settings
-#sbml = os.path.join(cDir, "TestModels", "toy_model_biofuel.xml") # 4, 4, False
-#sbml = os.path.join(cDir, "TestModels", "e_coli_core.xml") # 6, 4, True
-#sbml = os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml") # 6, 4, True
-#sbml = os.path.join(cDir, "TestModels", "Hpylori_iIT341.xml") # 6, 4, True
-#sbml = os.path.join(cDir, "TestModels", "iJO1366.xml") # 6, 4, True
-#sbml = os.path.join(cDir, "TestModels", "Lactococcus_lactis_MG1363.xml") # ?, ?, set it to 'True' probably
-sbml = os.path.join(cDir, "TestModels", "iIT341.xml") # BiGG2 Helicobacter pylori 26695
+## bgoli 180117: organising our tests
+## bgoli 180117: other tests
+#sbml = os.path.join(cDir, "TestModels", "others", "toy_model_biofuel.xml")
+#sbml = os.path.join(cDir, "TestModels", "others", "e_coli_core.xml")
+#sbml = os.path.join(cDir, "TestModels", "others", "Ecoli_Carlson2003.xml")
+#sbml = os.path.join(cDir, "TestModels", "others", "Hpylori_iIT341.xml")
+#sbml = os.path.join(cDir, "TestModels", "others", "Lactococcus_lactis_MG1363.xml")
 
+## BiGG2 models (with pathway annotation)
+sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml")
+
+# read SBML file (with libsbml) # Auto alias settings
 # create libsbml model
 reader = libsbml.SBMLReader()
 doc = reader.readSBML(sbml)
@@ -78,14 +78,17 @@ model_id = model.getId()
 
 # create CBMPy model
 cmod = cbmpy.readSBML3FBC(sbml)
-if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
-    # this is a manual hack for now, but there should be a way to do it on the display level
-    cmod.deleteSpecies('M_h_c', also_delete='reagents')
-    cmod.deleteSpecies('M_h2_c', also_delete='reagents')
-    cmod.deleteSpecies('M_h2o_c', also_delete='reagents')
-    cmod.deleteReactionAndBounds('R_BIOMASS_Ec_iJO1366_WT_53p95M')
-    cbmpy.writeSBML3FBCV2(cmod, '_temp.xml')
-    sbml = '_temp.xml'
+
+##bgoli 180117: this shouldn't be needed anymore
+#if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
+    ## this is a manual hack for now, but there should be a way to do it on the display level
+    #cmod.deleteSpecies('M_h_c', also_delete='reagents')
+    #cmod.deleteSpecies('M_h2_c', also_delete='reagents')
+    #cmod.deleteSpecies('M_h2o_c', also_delete='reagents')
+    #cmod.deleteReactionAndBounds('R_BIOMASS_Ec_iJO1366_WT_53p95M')
+    #cbmpy.writeSBML3FBCV2(cmod, '_temp.xml')
+    #sbml = '_temp.xml'
+
 # call stoichiometric matrix
 stM = cmod.N
 # get objective reaction id
@@ -96,8 +99,6 @@ cbmpy.doFBA(cmod)
 fba_results = {}
 for r in cmod.reactions:
     fba_results[r.getId()] = round(r.getValue(), 6)
-
-
 
 #################################################
 # select nodes for aliasing (different methods) #
@@ -132,12 +133,11 @@ g1.miriam.isDescribedBy[0] = "http://identifiers.org/ubiquitous" #change dummy t
 cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(model_id), add_groups=True)
 groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 
-
 # 2.) create alias node list based on biological pathways <-> group info in sbml - if available (aliasing by own
 # functions)
 
 # -> IF GROUPS DON'T EXIST: provide pathway lists manually (example: e coli carlson model):
-if PATHWAY_LISTS and sbml == os.path.join(cDir, "TestModels", "Ecoli_Carlson2003.xml"):
+if PATHWAY_LISTS and sbml == os.path.join(cDir, "TestModels", "others", "Ecoli_Carlson2003.xml"):
     # create pathway dictionary (key: pathway name - value: tupel of two lists)
     # path_dict = {"glycolysis": ([list of metabolite nodes],[list of reaction nodes]), "TCA Cycle": ([metabolite
     # nodes],[reaction nodes]), ...}
