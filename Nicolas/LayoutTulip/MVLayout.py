@@ -691,9 +691,11 @@ def colourFBA(g, flux_dict, color_pos, color_neg, color_zero):
     - *color_zero* a color value (RGB) for zero flux
 
     """
+    # get necessary graph properties
     # save flux results as graph integer property "flux"
     flux = g.getDoubleProperty("flux")
     id_ = g.getStringProperty("id")
+    viewColor = g.getColorProperty("viewColor")
     node_ids = [id_[r] for r in g.getNodes()] # create a list of reaction node ids for entire network (keys)
     node_objs = [r for r in g.getNodes()] # create a list of reaction node objects for entire network (values)
     network_nodes = {}
@@ -720,61 +722,20 @@ def colourFBA(g, flux_dict, color_pos, color_neg, color_zero):
     setColours(g, g.getNodes(), color_zero)
     setColours(g, g.getEdges(), color_zero)
     # tulip provides a colour scale function!
-    # TODO: color scale goes through different colors instead of just varying the intensity -> need proper gradient!
-    # TODO: example from white (0) to red (1):
-    # {0.0: [255,255,255,255],
-    #  0.25: [156,161,255,200],
-    #  0.5: [255,255,127,200],
-    #  0.75: [255,170,0,200],
-    #  1.0: [255,0,0,255]}
-    # 1. initialize empty color scales
-    colorScale_pos = tlp.ColorScale([])
-    colorScale_neg = tlp.ColorScale([])
-    # 2. fill colorScales (gradiant from white to chosen pos/neg color)
-    colorScale_pos.setColorAtPos(0.0, tlp.Color(255, 255, 255))
-    colorScale_pos.setColorAtPos(1.0, color_pos)
-    colorScale_neg.setColorAtPos(0.0, tlp.Color(255, 255, 255))
-    colorScale_neg.setColorAtPos(1.0, color_neg)
-    # 3. get colors for flux values
-    # color in and out edges of flux nodes and reaction nodes
-    # TODO: use numpy to generate ranges for flux ranges numpy.linspace(start, end, number of intervalls)
-    viewColor = g.getColorProperty("viewColor")
-    for n in network_nodes.values():
-        if id_[n] in pos_flux:
-            if flux[n] > 0 and flux[n] <= 0.5:
-                viewColor[n] = colorScale_pos.getColorAtPos(0.25)
-                for e in g.getInOutEdges(n):
-                    viewColor[e] = colorScale_pos.getColorAtPos(0.25)
-            if flux[n] > 0.5 and flux[n] <= 1:
-                viewColor[n] = colorScale_pos.getColorAtPos(0.5)
-                for e in g.getInOutEdges(n):
-                    viewColor[e] = colorScale_pos.getColorAtPos(0.5)
-            if flux[n] > 1 and flux[n] <= 3:
-                viewColor[n] = colorScale_pos.getColorAtPos(0.75)
-                for e in g.getInOutEdges(n):
-                    viewColor[e] = colorScale_pos.getColorAtPos(0.75)
-            if flux[n] > 3 :
-                viewColor[n] = colorScale_pos.getColorAtPos(1)
-                for e in g.getInOutEdges(n):
-                    viewColor[e] = colorScale_pos.getColorAtPos(1)
-        if id_[n] in neg_flux:
-            if flux[n] < 0 and flux[n] <= -0.5:
-                viewColor[n] = colorScale_neg.getColorAtPos(0.25)
-                for e in g.getInOutEdges(n):
-                    viewColor[e] = colorScale_neg.getColorAtPos(0.25)
-            if flux[n] < -0.5 and flux[n] <= -1:
-                viewColor[n] = colorScale_neg.getColorAtPos(0.5)
-                for e in g.getInOutEdges(n):
-                    viewColor[e] = colorScale_neg.getColorAtPos(0.5)
-            if flux[n] < -1 and flux[n] <= -3:
-                viewColor[n] = colorScale_neg.getColorAtPos(0.75)
-                for e in g.getInOutEdges(n):
-                    viewColor[e] = colorScale_neg.getColorAtPos(0.75)
-            if flux[n] < -3 :
-                viewColor[n] = colorScale_neg.getColorAtPos(1)
-                for e in g.getInOutEdges(n):
-                    viewColor[e] = colorScale_neg.getColorAtPos(1)
-
+    # new tulip 4.10 way of creating a colorScale in Python
+    # creates a regular color scale going from neg color to zero color to pos color
+    colorScale = [color_neg, color_zero, color_pos]
+    # set the parameters for the 'Color Mapping' color algorithm
+    colorMappingParams = tlp.getDefaultPluginParameters('Color Mapping', g)
+    colorMappingParams['input property'] = flux
+    colorMappingParams['color scale'] = colorScale
+    # compute the color mapping
+    g.applyColorAlgorithm('Color Mapping', colorMappingParams)
+    # apply reaction node color to in and out egdes if the reaction node has a flux value != 0
+    for n in g.getNodes():
+        if flux[n] != 0:
+            for e in g.getInOutEdges(n):
+                viewColor[e] = viewColor[n]
 
 def exportGML(graph, model_id, output_graph_name, file_name):
     """

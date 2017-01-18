@@ -52,7 +52,7 @@ EXPORT_GML = True
 # export generated graph as .svg file
 EXPORT_SVG = True
 
-# colour the reaction nodes + in and outcoming edges based on flux values obtained from FBA
+# colour the reaction nodes + in and outgoing edges based on flux values obtained from FBA
 COLOUR_FBA = True
 
 
@@ -86,11 +86,8 @@ if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
     cmod.deleteReactionAndBounds('R_BIOMASS_Ec_iJO1366_WT_53p95M')
     cbmpy.writeSBML3FBCV2(cmod, '_temp.xml')
     sbml = '_temp.xml'
-
 # call stoichiometric matrix
 stM = cmod.N
-# stM = cmod.buildStoichMatrix(matrix_type = 'numpy', only_return=True)
-
 # get objective reaction id
 objective_re_id = str(cmod.getActiveObjectiveReactionIds()[0])
 
@@ -208,7 +205,6 @@ if PATHWAY_LISTS:
         path_sps, path_re = mvl.createPathwayLists(cmod, group.name)
         path_dict.update({group.name: {"metabolites": path_sps, "reactions": path_re}})
 
-
 print("Pathway dictionary generated.")
 
 
@@ -301,8 +297,6 @@ fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph = tulip_graph2geojson.gra
 
 # save raw Mimoza graph output as backup
 tlp.saveGraph(graph, "{}_raw.tlp".format(model_id))
-
-
 print("Initial Tulip graph created.")
 
 
@@ -435,6 +429,8 @@ if LAYOUT_PATHWAYS:
     # TODO: generalize selection of layouted pathways (either whole, or only a few, etc) so that I can call one
     # TODO: function to generate output graph with whatever selection of pathways I want
 
+########################################################################################################################
+
     # 2.1) combine all pathways to create a new output graph of the whole network
     # combine pathways in output graph
     # ! if a completely new graph object is created, the properties need to be generated again because they are tied
@@ -464,13 +460,6 @@ if LAYOUT_PATHWAYS:
         graph_props["viewSelection"].setAllEdgeValue(False)
     # separate overlapping individual pathways of G
     G.applyLayoutAlgorithm("Connected Component Packing")
-    # add and layout Transport subgraph
-    graph_sg_transport = [sg for sg in graph.getSubGraphs() if sg.getName() == "Transport"]
-    tlp.copyToGraph(G, graph_sg_transport[0])
-    for sg in G.getSubGraphs():
-        if sg.getName() == "Transport":
-            user_params = {"layer spacing": 60, "node spacing": 80}
-            mvl.layoutSubgraph(sg, "Tree Radial", user_params, 75, 100, 0)
     # add pathway labels (invisible nodes with visible label)
     for sg in G.getSubGraphs():
         n = sg.addNode()
@@ -482,11 +471,10 @@ if LAYOUT_PATHWAYS:
     G_props["viewSelection"].setAllNodeValue(False)
     G_props["viewSelection"].setAllEdgeValue(False)
     # visualize FBA results
-    if COLOUR_FBA:
-        mvl.colourFBA(G, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["grey"])
     # save output graph
-    tlp.saveGraph(G, "{0}_output_whole.tlp".format(model_id))
-    print("Whole network visualization saved in: {0}_output_whole.tlp".format(model_id))
+
+
+########################################################################################################################
 
     # 2.2) create a new output graph with a few selected pathways combined
     F = tlp.newGraph()
@@ -499,8 +487,9 @@ if LAYOUT_PATHWAYS:
     # add name to graph 'F'
     F.setName("output_selected")
     # copy subgraphs to output graph 'F' and recreate subgraphs from selection in graph 'F'
+    selected_sg_list = ["objective reaction", "Transport"]
     graph_sg_list_reduced_F = [sg for sg in graph.getSubGraphs()
-                               if sg.getName() == "Glycolysis" or sg.getName() == "TCA cycle"] # only select a few!
+                               if sg.getName() in selected_sg_list]
     for sg in graph_sg_list_reduced_F:
         # reset selection
         graph_props["viewSelection"].setAllNodeValue(False)
@@ -513,6 +502,13 @@ if LAYOUT_PATHWAYS:
         graph_props["viewSelection"].setAllEdgeValue(False)
     # separate overlapping individual pathways of F
     F.applyLayoutAlgorithm("Connected Component Packing")
+    # layout Transport subgraph
+    transport_radial = True
+    if transport_radial:
+        for sg in F.getSubGraphs():
+            if sg.getName() == "Transport":
+                user_params = {"layer spacing": 60, "node spacing": 80}
+                mvl.layoutSubgraph(sg, "Tree Radial", user_params, 75, 100, 0)
     # add pathway labels (invisible nodes with visible label)
     for sg in F.getSubGraphs():
         n = sg.addNode()
@@ -524,11 +520,7 @@ if LAYOUT_PATHWAYS:
     F_props["viewSelection"].setAllNodeValue(False)
     F_props["viewSelection"].setAllEdgeValue(False)
     # visualize FBA results
-    if COLOUR_FBA:
-        mvl.colourFBA(F, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["grey"])
     # save output graph
-    tlp.saveGraph(F, "{0}_output_selected.tlp".format(model_id))
-    print("Selected visualization saved in: {0}_output_combined.tlp".format(model_id))
 
 
 
@@ -540,15 +532,27 @@ if LAYOUT_PATHWAYS:
 # input format: dict = {"M1": -3, ...}
 if COLOUR_FBA:
     mvl.colourFBA(graph, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["grey"])
-    print("Graph edges ")
+    mvl.colourFBA(F, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["grey"])
+    mvl.colourFBA(G, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["grey"])
+
 
 
 ############################################################################
 # save final graph, generate SBGN and SBML+Layout Files (Mimoza functions) #
 ############################################################################
 
-# save total graph with all changes
+# save total graph with all changes ('messy' layout)
 tlp.saveGraph(graph, "{}_graph.tlp".format(model_id))
+print("Base graph file: {}_graph.tlp".format(model_id))
+
+# save graph 'G' with whole network layout
+tlp.saveGraph(G, "{0}_output_whole.tlp".format(model_id))
+print("Whole network visualization: {0}_output_whole.tlp".format(model_id))
+
+# save graph 'F' with selected pathway layouts
+tlp.saveGraph(F, "{0}_output_selected.tlp".format(model_id))
+print("Visualization of selected pathways: {0}_output_combined.tlp".format(model_id))
+
 
 # add layout to SBML file
 groups_document = reader.readSBML(groups_sbml)
@@ -563,8 +567,6 @@ groups_sbgn = os.path.join(cDir, '{}.sbgn'.format(model_id))
 #sbgn_helper.save_as_sbgn(n2lo, e2lo, groups_model, groups_sbgn)
 
 
-os.sys.exit(-1)
-
 
 ######################################
 # export the graph as GML and/or SVG #
@@ -572,7 +574,7 @@ os.sys.exit(-1)
 
 if EXPORT_GML:
     mvl.exportGML(graph, model_id, "GML_test.tlp", "test.gml")
-    print("Graph exported as: GML_test.tlp")
+    print("Graph exported as: GML_test.gml")
 
 if EXPORT_SVG:
     # TODO: creates an .svg file but it opening it with Inkscape doesn't show its content
@@ -825,8 +827,6 @@ for l in graph_props_edge_insertlist:
 db.commit()
 # close connection to database
 db.close()
-
-
 print("Graph data has been stored in SQL database.")
 
 
