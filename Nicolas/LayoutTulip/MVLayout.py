@@ -125,6 +125,7 @@ def createPathwayLists(cmod, path_name, small_threshold=30):
     # dict: key = species id of a row; value = integer value of reactions that species is involved in (connections )
     n_r_conn = {}
     for row in range(n_abs.shape[0]):
+        # TODO: 0.5 with round gos to 0 -> change round with ceiling function (if not in standart look in math module)
         n_r_conn[cmod.N.row[row]] = round(n_abs[row, :].sum(), 0)
     # if the number of connections for a species is bigger than the given threshold
     # -> put the repsective species id in the list small_sps
@@ -662,10 +663,18 @@ def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout):
     # 2.) re-establish connectivity between the nodes (is stored in model file) and create the necessary edges
     for n in new_nodes:
         for e_type, node in edge_dict[graph_props["id"][n]].items():
-            if e_type == "out":
-                sg.addEdge(n, node)
-            if e_type == "in":
-                sg.addEdge(node, n)
+            try:
+                if e_type == "out":
+                    sg.addEdge(n, node)
+                if e_type == "in":
+                    sg.addEdge(node, n)
+            except Exception as ex:
+                print(ex)
+                print("layoutPathway", sg_name)
+                print(n)
+                print(e_type)
+                print(node)
+
     # layout subgraph
     sg = layoutSubgraph(sg, sg_layout)
     # flag all the nodes of the glycolysis subgraph as "already used" and add pathway info ( = subgraph name) to their

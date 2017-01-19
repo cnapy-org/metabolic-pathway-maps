@@ -42,9 +42,6 @@ AUTO_ALIAS = False
 PATHWAY_LISTS = True
 LAYOUT_PATHWAYS = True # needs PATHWAY_LISTS true, so that necessary node lists are generated (for pathways)
 
-# layout the exchange reactions and biomass seperately (results in subgraphs: only ex re, only biomass and both)
-LAYOUT_EX_RE_AND_BIOMASS = True
-
 # export generated graph as .gml file
 EXPORT_GML = True
 # export generated graph as .svg file
@@ -66,8 +63,8 @@ COLOUR_FBA = True
 #sbml = os.path.join(cDir, "TestModels", "others", "Lactococcus_lactis_MG1363.xml")
 
 ## BiGG2 models (with pathway annotation)
-sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml")
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
+sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml")
 
 # read SBML file (with libsbml) # Auto alias settings
 # create libsbml model
@@ -407,6 +404,7 @@ for e in graph.getEdges():
 
 if LAYOUT_PATHWAYS:
 
+    # TODO: see if that also works with duplicated pathways
     # 1.) layout all pathways
     # layout entire pathway dict
     for path_name, path_ids in path_dict.items():
@@ -573,16 +571,17 @@ groups_sbgn = os.path.join(cDir, '{}.sbgn'.format(model_id))
 ######################################
 
 if EXPORT_GML:
-    mvl.exportGML(graph, model_id, "GML_test.tlp", "test.gml")
-    print("Graph exported as: GML_test.gml")
+    mvl.exportGML(graph, model_id, "gml_output_graph.tlp", "output.gml")
+    print("Graph exported as: {}.gml".format(model_id))
 
 if EXPORT_SVG:
-    # TODO: creates an .svg file but it opening it with Inkscape doesn't show its content
     # get default parameters of SVG export plugin
     params = tlp.getDefaultPluginParameters('SVG Export', graph)
-    # export graph as .svg file
-    tlp.exportGraph('SVG Export', graph, '{}.svg'.format(model_id), params)
-    print("Graph exported as: {}.svg".format(model_id))
+    # export output graphs G (whole network) and F (selected pathways) as .svg files
+    tlp.exportGraph('SVG Export', G, '{}_output_whole.svg'.format(model_id), params)
+    print("Whole network map exported as: {}.svg".format(model_id))
+    tlp.exportGraph('SVG Export', F, '{}_output_selected.svg'.format(model_id), params)
+    print("Selected pathways exported as: {}.svg".format(model_id))
 
 
 
@@ -806,6 +805,12 @@ viewTexture TEXT,
 viewTgtAnchorShape INTEGER,
 viewTgtAnchorSize TEXT)
 ''')
+# create empty connectivity table (each row is an edge with id, source node id and target node id as columns)
+c.execute('''CREATE TABLE IF NOT EXISTS connectivity(edge_id INTEGER PRIMARY KEY,
+source_node_id TEXT,
+target_node_id TEXT)
+''')
+# TODO: create node connectivity table aswell: for each node a list (= string) of all connected In and Out edges
 # reorder tuple list for INSERT INTO statement:
 # instead of [(all prop1), (all prop2), ...] I want [(prop1[1], prop2[1], ...), (prop1[2], prop2[2], ...), ...]
 graph_props_node_insertlist = []
@@ -815,14 +820,22 @@ for i in range(len(list(graph.getNodes()))):
 for i in range(len(list(graph.getEdges()))):
     graph_props_edge_insertlist.append([tuple[i] for tuple in graph_props_edge_tuplelist])
 # fill tables with encoded values
+# table graph_node
 for l in graph_props_node_insertlist:
     c.execute('''INSERT OR IGNORE INTO graph_nodes VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
-    ?,?,?,?,?,?,?,
-    ?,?,?,?,?,?)''', l)
+    ?,?,?,?,?,?,?,?,?,?,?,?,?)''', l)
+# table graph_edges
 for l in graph_props_edge_insertlist:
     c.execute('''INSERT OR IGNORE INTO graph_edges VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
-    ?,?,?,?,?,?,?,
-    ?,?,?,?,?,?)''', l)
+    ?,?,?,?,?,?,?,?,?,?,?,?,?)''', l)
+# table connectivity
+# create dict with key = str(node) and value = integer id of the node
+node_str_int_dict = {}
+for node, i in zip(graph.getNodes(), range(len(list(graph.getNodes())))):
+    node_str_int_dict[str(node)] = i
+for edge, i in zip(graph.getEdges(), range(len(list(graph.getEdges())))):
+    insert_row = [i, node_str_int_dict[str(graph.source(edge))], node_str_int_dict[str(graph.target(edge))]]
+    c.execute('''INSERT OR IGNORE INTO connectivity VALUES (?,?,?)''', insert_row)
 # commit changes to database
 db.commit()
 # close connection to database
@@ -842,6 +855,9 @@ print("Graph data has been stored in SQL database.")
 db_return_node_props = []
 
 # TODO: decode graph props again after getting them from the database
+# TODO: then use retrieved information to rebuild the whole graph in new
+# TODO: also try to select just a pathway from the database, extract nodes and edges and generate the graph
+# TODO:
 
 
 
