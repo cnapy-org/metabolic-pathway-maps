@@ -16,6 +16,8 @@ from tulip import tlp
 import libsbml
 import cbmpy
 
+import numpy as np
+
 # SQL database API
 import sqlite3
 
@@ -63,8 +65,8 @@ COLOUR_FBA = True
 #sbml = os.path.join(cDir, "TestModels", "others", "Lactococcus_lactis_MG1363.xml")
 
 ## BiGG2 models (with pathway annotation)
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
-sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml")
+sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
+#bml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml")
 
 # read SBML file (with libsbml) # Auto alias settings
 # create libsbml model
@@ -75,6 +77,16 @@ model_id = model.getId()
 
 # create CBMPy model
 cmod = cbmpy.readSBML3FBC(sbml)
+
+# change flux bounds values to not mess with the coloring later on
+cmod.changeAllFluxBoundsWithValue(999999, cbmpy.INF)
+cmod.changeAllFluxBoundsWithValue(-999999, cbmpy.NINF)
+cmod.changeAllFluxBoundsWithValue(1000, cbmpy.INF)
+cmod.changeAllFluxBoundsWithValue(-1000, cbmpy.NINF)
+# TODO: for the very big values that skew the coloring
+# TODO: cmod.changeAllFluxBoundsWithValue(99999, cbmpy.INF)
+# TODO: cmod.changeAllFluxBoundsWithValue(-99999, cbmpy.NINF)
+# TODO: same for 1000 and -1000 etc.
 
 ##bgoli 180117: this shouldn't be needed anymore
 #if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
@@ -195,6 +207,9 @@ if PATHWAY_LISTS:
     #fas_sps, fas_re = mvl.createPathwayLists(cmod, 'Fatty Acid Synthesis')
     #uc_sps, uc_re = mvl.createPathwayLists(cmod, 'Urea Cycle')
     #am_sps, am_re = mvl.createPathwayLists(cmod, 'Aminosugar Metabolism')
+
+    # TODO: group all the ungrouped reactions and their metabolites in a new group "others" or "ungrouped" to have
+    # TODO: them later (otherwise they won't show up in the output graphs since they are not in path_dict)
 
     # loop over all groups in iIT341 and automatically create id lists for all groups
     # save all these lists in a new dictionary
@@ -386,6 +401,7 @@ COLOURS = {'red'  : tlp.Color(255, 0, 0),
            'blue' : tlp.Color(0, 0, 255),
            'white': tlp.Color(255, 255, 255),
            'grey' : tlp.Color(220, 220, 220),
+           'light grey': tlp.Color(235, 235, 235),
            'black': tlp.Color(0, 0, 0)
            }
 
@@ -405,6 +421,11 @@ for e in graph.getEdges():
 if LAYOUT_PATHWAYS:
 
     # TODO: see if that also works with duplicated pathways
+    # TODO: debuging function because weird stuff happens:
+    # TODO: check if groups only contain reactions
+    # TODO: change the filtering because both 1.) nodes that should be there aren't (reactions without metabolites) and
+    # TODO: 2.) nodes are not selected properly (exception saying that a node is not part of the subgraph even though
+    # TODO: it was selected)
     # 1.) layout all pathways
     # layout entire pathway dict
     for path_name, path_ids in path_dict.items():
@@ -423,6 +444,14 @@ if LAYOUT_PATHWAYS:
     # initially create and layout the objective reaction block (sg gets added to 'graph')
     obj_re_sg = mvl.layoutObjFunc(graph, objective_re_id, "Sugiyama (OGDF)", graph_props)
     obj_re_sg.setName("objective reaction")
+
+    # TODO: control positions of pathway subgraphs
+    # TODO: get highest and lowest x and y coordinate values for each subgraph (max(list(x values)) and max(list(y
+    # TODO: values)))
+    # TODO: then. build a numpy.array() (a matrix) that serves as a template for canvas positions - with subgraph ids
+    # TODO: as matrix entries:
+    # TODO: example: if matrix entry at (1,1) is 1 -> put "Glycolysis" subgraph (id: 1) in top left corner etc.
+    # TODO: moving subgraphs is possible with center Layout
 
     # TODO: generalize selection of layouted pathways (either whole, or only a few, etc) so that I can call one
     # TODO: function to generate output graph with whatever selection of pathways I want
@@ -528,10 +557,11 @@ if LAYOUT_PATHWAYS:
 
 # color nodes and edges depending on flux value
 # input format: dict = {"M1": -3, ...}
+
 if COLOUR_FBA:
-    mvl.colourFBA(graph, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["grey"])
-    mvl.colourFBA(F, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["grey"])
-    mvl.colourFBA(G, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["grey"])
+    mvl.colourFBA(graph, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["light grey"])
+    mvl.colourFBA(F, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["light grey"])
+    mvl.colourFBA(G, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["light grey"])
 
 
 
@@ -806,11 +836,14 @@ viewTgtAnchorShape INTEGER,
 viewTgtAnchorSize TEXT)
 ''')
 # create empty connectivity table (each row is an edge with id, source node id and target node id as columns)
-c.execute('''CREATE TABLE IF NOT EXISTS connectivity(edge_id INTEGER PRIMARY KEY,
+c.execute('''CREATE TABLE IF NOT EXISTS edge_connectivity(edge_id INTEGER PRIMARY KEY,
 source_node_id TEXT,
 target_node_id TEXT)
 ''')
 # TODO: create node connectivity table aswell: for each node a list (= string) of all connected In and Out edges
+c.execute('''CREATE TABLE IF NOT EXISTS node_connectivity(node_id INTEGER PRIMARY KEY,
+in_out_edge_list TEXT)
+''')
 # reorder tuple list for INSERT INTO statement:
 # instead of [(all prop1), (all prop2), ...] I want [(prop1[1], prop2[1], ...), (prop1[2], prop2[2], ...), ...]
 graph_props_node_insertlist = []
@@ -835,7 +868,10 @@ for node, i in zip(graph.getNodes(), range(len(list(graph.getNodes())))):
     node_str_int_dict[str(node)] = i
 for edge, i in zip(graph.getEdges(), range(len(list(graph.getEdges())))):
     insert_row = [i, node_str_int_dict[str(graph.source(edge))], node_str_int_dict[str(graph.target(edge))]]
-    c.execute('''INSERT OR IGNORE INTO connectivity VALUES (?,?,?)''', insert_row)
+    c.execute('''INSERT OR IGNORE INTO edge_connectivity VALUES (?,?,?)''', insert_row)
+for node, i in zip(graph.getNodes(), range(len(list(graph.getNodes())))):
+    row = [i, str(list(graph.getInOutEdges(node)))]
+    c.execute('''INSERT OR IGNORE INTO node_connectivity VALUES (?,?)''', row)
 # commit changes to database
 db.commit()
 # close connection to database
