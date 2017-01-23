@@ -125,7 +125,7 @@ def createPathwayLists(cmod, path_name, small_threshold=30):
     # dict: key = species id of a row; value = integer value of reactions that species is involved in (connections )
     n_r_conn = {}
     for row in range(n_abs.shape[0]):
-        # TODO: 0.5 with round gos to 0 -> change round with ceiling function (if not in standart look in math module)
+    #    # TODO: 0.5 with round gos to 0 -> change round with ceiling function (if not in standart look in math module)
         n_r_conn[cmod.N.row[row]] = round(n_abs[row, :].sum(), 0)
     # if the number of connections for a species is bigger than the given threshold
     # -> put the repsective species id in the list small_sps
@@ -629,20 +629,29 @@ def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout):
     # TODO: maybe filtering of nodes is too agressive?
     nodes = [n for n in g.getNodes() if graph_props["id"][n] in id_list and n == graph_elements[graph_props["id"][n]][
         "initial_node"]]
+    print("nodes",nodes)
     # check for nodes which have already been used for layouting (with the flag in dict graph_elements[node][
     # 'layout'] - boolean value)
     # save the nodes which are excluded because they have already been used for layouting in a list for later use
     ex_nodes = [n for n in nodes if graph_elements[graph_props["id"][n]]['layout'] is True]
+    print("ex_nodes",ex_nodes)
     # save the connectivity of the excluded edges
     edge_dict = {}
     for n in ex_nodes:
         edge_dict[graph_props["id"][n]] = {}
+        edge_dict[graph_props["id"][n]]["in"] = []
+        edge_dict[graph_props["id"][n]]["out"] = []
         for e in g.getInOutEdges(n):
-            if g.source(e) in ex_nodes and g.target(e) in nodes:
-                edge_dict[graph_props["id"][n]].update({"out": g.target(e)})
-            if g.target(e) in ex_nodes and g.source(e) in nodes:
-                edge_dict[graph_props["id"][n]].update({"in": g.source(e)})
-    # exclude the already layouted nodes from the main node list
+            if e in list(g.getInEdges(n)) and g.source(e) in nodes and g.target(e) in nodes:
+            #if g.source(e) in ex_nodes and g.target(e) in nodes:
+                edge_dict[graph_props["id"][n]]["in"].append([g.source(e),g.target(e)])
+                #edge_dict[graph_props["id"][n]].update({"in": [g.source(e),g.target(e)]})
+            if e in list(g.getOutEdges(n)) and g.source(e) in nodes and g.target(e) in nodes:
+            #if g.target(e) in ex_nodes and g.source(e) in nodes:
+                edge_dict[graph_props["id"][n]]["out"].append([g.source(e), g.target(e)])
+                #edge_dict[graph_props["id"][n]].update({"out": [g.source(e),g.target(e)]})
+    print("edge_dict",edge_dict)
+    # exclude the already layouted nodes (ex_nodes) from the main node list (nodes)
     for n in list(nodes):
         if n in ex_nodes:
             nodes.remove(n)
@@ -664,19 +673,35 @@ def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout):
             # set all properties of new node to prop of old node
             prop_obj[new_nodes[i]] = prop_obj[ex_nodes[i]]
     # 2.) re-establish connectivity between the nodes (is stored in model file) and create the necessary edges
+    print("new_nodes", new_nodes)
+
     for n in new_nodes:
-        for e_type, node in edge_dict[graph_props["id"][n]].items():
+        for e_type, conn_list in edge_dict[graph_props["id"][n]].items():
+            # replace old nodes in edge dict (which were excluded) with newly created nodes that take their place
+            # conn_list = a list of anchor node lists (anchor_pair_list)
+            # anchor_pair_list = a list of 2 elements: source and target node of edge
+            for anchor_pair_list in list(conn_list):
+                if len(anchor_pair_list) != 0:
+                    for node in list(anchor_pair_list):
+                        if node in ex_nodes:
+                            node_index = anchor_pair_list.index(node)
+                            anchor_pair_list.insert(node_index, n)
+                            anchor_pair_list.remove(node)
             try:
                 if e_type == "out":
-                    sg.addEdge(n, node)
+                    for anchor_pair_list in conn_list:
+                        sg.addEdge(anchor_pair_list[0], anchor_pair_list[1])
                 if e_type == "in":
-                    sg.addEdge(node, n)
+                    for anchor_pair_list in conn_list:
+                        sg.addEdge(anchor_pair_list[0], anchor_pair_list[1])
             except Exception as ex:
                 print(ex)
                 print("layoutPathway", sg_name)
                 print(n)
                 print(e_type)
-                print(node)
+                print(conn_list)
+
+    print("edge_dict updated", edge_dict)
 
     # layout subgraph
     sg = layoutSubgraph(sg, sg_layout)

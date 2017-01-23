@@ -44,13 +44,15 @@ AUTO_ALIAS = False
 PATHWAY_LISTS = True
 LAYOUT_PATHWAYS = True # needs PATHWAY_LISTS true, so that necessary node lists are generated (for pathways)
 
-# export generated graph as .gml file
+# export generated graphs as .gml file
 EXPORT_GML = True
-# export generated graph as .svg file
+# export generated graphs as .svg file
 EXPORT_SVG = True
+# export generated graphs as .json file
+EXPORT_JSON = True
 
 # colour the reaction nodes + in and outgoing edges based on flux values obtained from FBA
-COLOUR_FBA = True
+COLOUR_FBA = False
 
 #############################################
 # read SBML with libsbml and cbmpy, do FBA  #
@@ -65,10 +67,15 @@ COLOUR_FBA = True
 #sbml = os.path.join(cDir, "TestModels", "others", "Lactococcus_lactis_MG1363.xml")
 
 ## BiGG2 models (with pathway annotation)
-sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
 #bml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml")
 
-# read SBML file (with libsbml) # Auto alias settings
+# willis models
+#sbml = os.path.join(cDir, "TestModels", "willi", "M5_6.xml")
+#sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_bigggroups.xml")
+sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_compgroups.xml")
+
+# read SBML file (with libsbml)
 # create libsbml model
 reader = libsbml.SBMLReader()
 doc = reader.readSBML(sbml)
@@ -83,10 +90,6 @@ cmod.changeAllFluxBoundsWithValue(999999, cbmpy.INF)
 cmod.changeAllFluxBoundsWithValue(-999999, cbmpy.NINF)
 cmod.changeAllFluxBoundsWithValue(1000, cbmpy.INF)
 cmod.changeAllFluxBoundsWithValue(-1000, cbmpy.NINF)
-# TODO: for the very big values that skew the coloring
-# TODO: cmod.changeAllFluxBoundsWithValue(99999, cbmpy.INF)
-# TODO: cmod.changeAllFluxBoundsWithValue(-99999, cbmpy.NINF)
-# TODO: same for 1000 and -1000 etc.
 
 ##bgoli 180117: this shouldn't be needed anymore
 #if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
@@ -146,7 +149,8 @@ groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(model_id))
 # functions)
 
 # -> IF GROUPS DON'T EXIST: provide pathway lists manually (example: e coli carlson model):
-if PATHWAY_LISTS and sbml == os.path.join(cDir, "TestModels", "others", "Ecoli_Carlson2003.xml"):
+if PATHWAY_LISTS and sbml == os.path.join(cDir, "TestModels", "others", "Ecoli_Carlson2003.xml") and AUTO_ALIAS is \
+        False:
     # create pathway dictionary (key: pathway name - value: tupel of two lists)
     # path_dict = {"glycolysis": ([list of metabolite nodes],[list of reaction nodes]), "TCA Cycle": ([metabolite
     # nodes],[reaction nodes]), ...}
@@ -199,7 +203,7 @@ if PATHWAY_LISTS and sbml == os.path.join(cDir, "TestModels", "others", "Ecoli_C
 # create dictionary of groups where each group name is a key and the values are again dicts with three keys: 'id',
 # 'reactions' and 'metabolites'
 path_dict = {}
-if PATHWAY_LISTS:
+if PATHWAY_LISTS and AUTO_ALIAS is False:
 
     # create id lists for a few selected pathways of model iIT341
     #glyc_sps, glyc_re = mvl.createPathwayLists(cmod, 'Glycolysis')
@@ -208,8 +212,20 @@ if PATHWAY_LISTS:
     #uc_sps, uc_re = mvl.createPathwayLists(cmod, 'Urea Cycle')
     #am_sps, am_re = mvl.createPathwayLists(cmod, 'Aminosugar Metabolism')
 
-    # TODO: group all the ungrouped reactions and their metabolites in a new group "others" or "ungrouped" to have
-    # TODO: them later (otherwise they won't show up in the output graphs since they are not in path_dict)
+    # list of all reaction objects that are associated with a group
+    all_groups_member_list = []
+    for group in cmod.groups:
+        for member in group.members:
+            all_groups_member_list.append(member)
+
+    # group all the ungrouped reactions and their metabolites in a new group "undefined" to have
+    # them later (otherwise they won't show up in the output graphs since they are not in path_dict)
+    cmod.createGroup('undefined')
+    undef = cmod.getGroup('undefined')
+    undef.setName('Undefined')
+    for reaction in cmod.reactions:
+        if reaction not in all_groups_member_list:
+            undef.addMember(reaction)
 
     # loop over all groups in iIT341 and automatically create id lists for all groups
     # save all these lists in a new dictionary
@@ -418,27 +434,25 @@ for e in graph.getEdges():
 # layout pathways in subgraphs (Glycolysis, TCA Cycle, etc.) #
 ##############################################################
 
-if LAYOUT_PATHWAYS:
+if LAYOUT_PATHWAYS is True and AUTO_ALIAS is False:
 
-    # TODO: see if that also works with duplicated pathways
-    # TODO: debuging function because weird stuff happens:
-    # TODO: check if groups only contain reactions
-    # TODO: change the filtering because both 1.) nodes that should be there aren't (reactions without metabolites) and
-    # TODO: 2.) nodes are not selected properly (exception saying that a node is not part of the subgraph even though
-    # TODO: it was selected)
-    # 1.) layout all pathways
+     # 1.) layout all pathways
     # layout entire pathway dict
     for path_name, path_ids in path_dict.items():
         # fetch pathway ids
         path_list = list(path_ids["metabolites"]) + list(path_ids["reactions"])
+        print("path_list",path_list)
         # choose appropriate layout algorithm
         path_layout = []
-        if path_name == "TCA cycle" or path_name == "Urea Cycle":
+        if path_name == "TCA cycle" or path_name == "Urea Cycle" or path_name == "Citric Acid Cycle" or path_name == \
+                "Krebs Cycle":
             path_layout.append("Circular (OGDF)")
         else:
             path_layout.append("Sugiyama (OGDF)")
+        print(path_layout)
         # apply layout to pathway and track already layouted graph elements
         path_sg = mvl.layoutPathway(graph, graph_elements, graph_props, path_list, path_name, path_layout[0])
+        print("path_sg",path_name, [(graph_props["id"][n],n) for n in path_sg.getNodes()])
         # set name of subgraph
         path_sg.setName(path_name)
     # initially create and layout the objective reaction block (sg gets added to 'graph')
@@ -573,14 +587,15 @@ if COLOUR_FBA:
 tlp.saveGraph(graph, "{}_graph.tlp".format(model_id))
 print("Base graph file: {}_graph.tlp".format(model_id))
 
-# save graph 'G' with whole network layout
-tlp.saveGraph(G, "{0}_output_whole.tlp".format(model_id))
-print("Whole network visualization: {0}_output_whole.tlp".format(model_id))
+if AUTO_ALIAS is False:
 
-# save graph 'F' with selected pathway layouts
-tlp.saveGraph(F, "{0}_output_selected.tlp".format(model_id))
-print("Visualization of selected pathways: {0}_output_combined.tlp".format(model_id))
+    # save graph 'G' with whole network layout
+    tlp.saveGraph(G, "{0}_output_whole.tlp".format(model_id))
+    print("Whole network visualization: {0}_output_whole.tlp".format(model_id))
 
+    # save graph 'F' with selected pathway layouts
+    tlp.saveGraph(F, "{0}_output_selected.tlp".format(model_id))
+    print("Visualization of selected pathways: {0}_output_combined.tlp".format(model_id))
 
 # add layout to SBML file
 groups_document = reader.readSBML(groups_sbml)
@@ -607,13 +622,27 @@ if EXPORT_GML:
 if EXPORT_SVG:
     # get default parameters of SVG export plugin
     params = tlp.getDefaultPluginParameters('SVG Export', graph)
-    # export output graphs G (whole network) and F (selected pathways) as .svg files
-    tlp.exportGraph('SVG Export', G, '{}_output_whole.svg'.format(model_id), params)
-    print("Whole network map exported as: {}.svg".format(model_id))
-    tlp.exportGraph('SVG Export', F, '{}_output_selected.svg'.format(model_id), params)
-    print("Selected pathways exported as: {}.svg".format(model_id))
+    tlp.exportGraph('SVG Export', graph, '{}_output_unstructured.svg'.format(model_id), params)
+    print("Unstructured graph exported as: {}.svg".format(model_id))
+    if AUTO_ALIAS is False:
+        # export output graphs G (whole network) and F (selected pathways) as .svg files
+        tlp.exportGraph('SVG Export', G, '{}_output_whole.svg'.format(model_id), params)
+        print("Whole network map exported as: {}.svg".format(model_id))
+        tlp.exportGraph('SVG Export', F, '{}_output_selected.svg'.format(model_id), params)
+        print("Selected pathways exported as: {}.svg".format(model_id))
 
-
+# TODO: add JSON export (for Willi)
+if EXPORT_JSON:
+    # get default parameters of JSON export plugin
+    params = tlp.getDefaultPluginParameters('JSON Export', graph)
+    tlp.exportGraph('JSON Export', graph, '{}_output_unstructured.json'.format(model_id), params)
+    print("Unstructured graph exported as: {}.json".format(model_id))
+    if AUTO_ALIAS is False:
+        # export output graphs G (whole network) and F (selected pathways) as JSON files
+        tlp.exportGraph('JSON Export', G, '{}_output_whole.json'.format(model_id), params)
+        print("Whole network map exported as: {}.json".format(model_id))
+        tlp.exportGraph('JSON Export', F, '{}_output_selected.json'.format(model_id), params)
+        print("Selected pathways exported as: {}.json".format(model_id))
 
 ######################################
 # create SQL table from graph object #
@@ -840,7 +869,7 @@ c.execute('''CREATE TABLE IF NOT EXISTS edge_connectivity(edge_id INTEGER PRIMAR
 source_node_id TEXT,
 target_node_id TEXT)
 ''')
-# TODO: create node connectivity table aswell: for each node a list (= string) of all connected In and Out edges
+# create node connectivity table aswell: for each node a list (= string) of all connected In and Out edges
 c.execute('''CREATE TABLE IF NOT EXISTS node_connectivity(node_id INTEGER PRIMARY KEY,
 in_out_edge_list TEXT)
 ''')
