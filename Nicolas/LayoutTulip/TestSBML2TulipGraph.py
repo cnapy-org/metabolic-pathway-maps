@@ -52,7 +52,7 @@ EXPORT_SVG = True
 EXPORT_JSON = True
 
 # colour the reaction nodes + in and outgoing edges based on flux values obtained from FBA
-COLOUR_FBA = False
+COLOUR_FBA = True
 
 #############################################
 # read SBML with libsbml and cbmpy, do FBA  #
@@ -68,12 +68,12 @@ COLOUR_FBA = False
 
 ## BiGG2 models (with pathway annotation)
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
-#bml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml")
+sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml")
 
 # willis models
 #sbml = os.path.join(cDir, "TestModels", "willi", "M5_6.xml")
 #sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_bigggroups.xml")
-sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_compgroups.xml")
+#sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_compgroups.xml")
 
 # read SBML file (with libsbml)
 # create libsbml model
@@ -90,6 +90,10 @@ cmod.changeAllFluxBoundsWithValue(999999, cbmpy.INF)
 cmod.changeAllFluxBoundsWithValue(-999999, cbmpy.NINF)
 cmod.changeAllFluxBoundsWithValue(1000, cbmpy.INF)
 cmod.changeAllFluxBoundsWithValue(-1000, cbmpy.NINF)
+
+# remove non-reacting metabolites
+if len(cmod.deleteNonReactingSpecies()) != 0:
+    cmod.deleteNonReactingSpecies(simulate=False)
 
 ##bgoli 180117: this shouldn't be needed anymore
 #if sbml == os.path.join(cDir, "TestModels", "iJO1366.xml"):
@@ -230,7 +234,7 @@ if PATHWAY_LISTS and AUTO_ALIAS is False:
     # loop over all groups in iIT341 and automatically create id lists for all groups
     # save all these lists in a new dictionary
     for group in cmod.groups:
-        path_sps, path_re = mvl.createPathwayLists(cmod, group.name)
+        path_sps, path_re = mvl.createPathwayLists(cmod, group.name, small_threshold=10)
         path_dict.update({group.name: {"metabolites": path_sps, "reactions": path_re}})
 
 print("Pathway dictionary generated.")
@@ -425,8 +429,8 @@ COLOURS = {'red'  : tlp.Color(255, 0, 0),
 mvl.setColours(graph, graph.getEdges(), COLOURS['grey'])
 
 # change line types (Polyline, BezierCurve, CatmullRomCurve, CubicSplineCurve)
-for e in graph.getEdges():
-    graph_props["viewShape"][e] = tlp.EdgeShape.BezierCurve
+#for e in graph.getEdges():
+#    graph_props["viewShape"][e] = tlp.EdgeShape.BezierCurve
 
 
 
@@ -436,25 +440,33 @@ for e in graph.getEdges():
 
 if LAYOUT_PATHWAYS is True and AUTO_ALIAS is False:
 
-     # 1.) layout all pathways
+    # 1.) layout all pathways
     # layout entire pathway dict
     for path_name, path_ids in path_dict.items():
         # fetch pathway ids
         path_list = list(path_ids["metabolites"]) + list(path_ids["reactions"])
-        print("path_list",path_list)
         # choose appropriate layout algorithm
         path_layout = []
-        if path_name == "TCA cycle" or path_name == "Urea Cycle" or path_name == "Citric Acid Cycle" or path_name == \
-                "Krebs Cycle":
+        if "ycle" in path_name:
             path_layout.append("Circular (OGDF)")
         else:
             path_layout.append("Sugiyama (OGDF)")
-        print(path_layout)
         # apply layout to pathway and track already layouted graph elements
         path_sg = mvl.layoutPathway(graph, graph_elements, graph_props, path_list, path_name, path_layout[0])
-        print("path_sg",path_name, [(graph_props["id"][n],n) for n in path_sg.getNodes()])
         # set name of subgraph
         path_sg.setName(path_name)
+
+        # test if all reaction and metabolite ids of the group definition are part of the generated subgraph
+        # unique set of ids of generated graph nodes
+        generated_nodes = set([graph_props["id"][n] for n in path_sg.getNodes()])
+        # unique set of input ids
+        input_ids = set(path_list)
+        # both need to have the same length since at least one node needs to exist for every unique input id
+        # TODO. after having tested identity
+        # TODO: -> do an intersection with the two sets (to catch duplications, etc.)
+        if len(generated_nodes) == len(input_ids):
+            print("{} subgraph complete.".format(path_name))
+
     # initially create and layout the objective reaction block (sg gets added to 'graph')
     obj_re_sg = mvl.layoutObjFunc(graph, objective_re_id, "Sugiyama (OGDF)", graph_props)
     obj_re_sg.setName("objective reaction")
@@ -472,6 +484,7 @@ if LAYOUT_PATHWAYS is True and AUTO_ALIAS is False:
 
 ########################################################################################################################
 
+    # default dump (all pathways in one SVG)
     # 2.1) combine all pathways to create a new output graph of the whole network
     # combine pathways in output graph
     # ! if a completely new graph object is created, the properties need to be generated again because they are tied
@@ -517,6 +530,7 @@ if LAYOUT_PATHWAYS is True and AUTO_ALIAS is False:
 
 ########################################################################################################################
 
+    # TODO: generalize the selected pathway output (default: all pathways as individual svg files)
     # 2.2) create a new output graph with a few selected pathways combined
     F = tlp.newGraph()
     # create props for new selective output graph 'F'
@@ -572,10 +586,15 @@ if LAYOUT_PATHWAYS is True and AUTO_ALIAS is False:
 # color nodes and edges depending on flux value
 # input format: dict = {"M1": -3, ...}
 
+# TODO: color blindness! (not red green)
 if COLOUR_FBA:
     mvl.colourFBA(graph, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["light grey"])
     mvl.colourFBA(F, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["light grey"])
     mvl.colourFBA(G, fba_results, COLOURS["green"], COLOURS["red"], COLOURS["light grey"])
+
+
+
+# TODO: visualize existence of reactions of a smaller model on a big map (e coli vs mutated e coli eg.)
 
 
 
@@ -631,7 +650,6 @@ if EXPORT_SVG:
         tlp.exportGraph('SVG Export', F, '{}_output_selected.svg'.format(model_id), params)
         print("Selected pathways exported as: {}.svg".format(model_id))
 
-# TODO: add JSON export (for Willi)
 if EXPORT_JSON:
     # get default parameters of JSON export plugin
     params = tlp.getDefaultPluginParameters('JSON Export', graph)
