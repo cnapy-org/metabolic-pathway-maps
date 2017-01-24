@@ -313,16 +313,11 @@ def reactionsToNodes(get_r_comp, graph, id2n, input_model):
 # ---------------------------------
 # the function aliasNode does only a very specific thing!
 # -> it cuts exactly one edge between a node and a target and then adds a new egde with a new node to the target
-# this new node therefore has only 1 edge attached to it, namely the new egde to the target
-# => this is only helpfull for the obj re because only there does the new node not need any other edges
+# this new node therefore has only 1 edge attached to it, namely the new edge to the target
+# => this is only helpful for the obj reaction because only there does the new node not need any other edges
 #
 # -> you can't use the node created by aliasNode for a proper pathway like Glycolysis because all the other edges to
 # other reaction and metabolite nodes are not created for the new node, only 1 to the specified target
-# TODO: write a second aliasNodeAll function, that does everything the aliasNode function does + after creating the
-# TODO: new node, all the other in and out edges that are not connected to the target get reinstated as well
-# TODO: -> only difference between old and new node afte ruuning this function must be the that the one edge between
-# TODO: node and target was removed for the new node
-
 def aliasNode(g, n_alias, n_target, x=None, y=None, n_new=None):
     """
     Alias a specific node (reaction nodes and/or metabolite nodes)::
@@ -714,6 +709,70 @@ def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout):
     return sg
 
 
+def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg_labels=True, transport_radial=True):
+    """
+    Take subgraphs from one graph object and copy them to another graph object::
+
+    - *input_graph* a tulip graph object to take subgraphs from
+    - *input_graph_props* a dict of input graph properties
+    - *new_graph_name* a name of the newly created tulip graph that recieves the subgraphs (string)
+    - *sg_selection* a list of ids of subgraphs which are attached to the input_graph and are to be copied
+    - *sg_labels* [default=True] a boolean parameter controlling the addition of label nodes to the subgraphs after
+    they have been copied
+    - *transport_radial* [default=True] a boolean parameter controlling whether or not the Transport subgraph is
+    layouted using the 'Tree Radial' Algorithm
+
+    """
+    # create new output graph
+    new_graph = tlp.newGraph()
+    # create props for new combined output graph
+    # if a completely new graph object is created, the properties need to be generated again because they are tied
+    # to a graph object (properties of a graph can be used for its subgraphs but thats just because subgraphs are only partial
+    # views of a whole graph, not new objects)!
+    new_graph_tup = create_props(new_graph)
+    # save graph props in dictionary
+    new_graph_props = {}
+    for prop in new_graph_tup:
+        new_graph_props[prop.getName()] = prop
+    # add name to new graph
+    new_graph.setName(new_graph_name)
+    # copy subgraphs to output graph 'new_graph' and recreate subgraphs from selection
+    graph_sg_list_new_graph = [sg for sg in input_graph.getSubGraphs()
+                               if sg.getName() in sg_selection]
+    for sg in graph_sg_list_new_graph:
+        # reset selection
+        input_graph_props["viewSelection"].setAllNodeValue(False)
+        input_graph_props["viewSelection"].setAllEdgeValue(False)
+        # add pathway to output graph
+        tlp.copyToGraph(new_graph, sg, None, input_graph_props["viewSelection"])
+        new_graph_sg = new_graph.addSubGraph(input_graph_props["viewSelection"], sg.getName())
+        # reset selection
+        input_graph_props["viewSelection"].setAllNodeValue(False)
+        input_graph_props["viewSelection"].setAllEdgeValue(False)
+    # separate overlapping individual pathways
+    new_graph.applyLayoutAlgorithm("Connected Component Packing")
+    # layout Transport subgraph
+    transport_radial = True
+    if transport_radial:
+        for sg in new_graph.getSubGraphs():
+            if sg.getName() == "Transport":
+                user_params = {"layer spacing": 60, "node spacing": 80}
+                layoutSubgraph(sg, "Tree Radial", user_params, 75, 100, 0)
+    # add pathway labels (invisible nodes with visible label)
+    if sg_labels:
+        for sg in new_graph.getSubGraphs():
+            n = sg.addNode()
+            new_graph_props["viewLabel"][n] = sg.getName()
+            new_graph_props["viewColor"][n] = tlp.Color(255, 255, 255) # set node color to white (invis on white bg)
+            new_graph_props["viewSize"][n] = tlp.Size(5, 5, 1) # normal node = (2.5, 2.5, 1); bigger -> (5, 5, 1)
+            new_graph_props["viewFontSize"][n] = 24 # default is 18
+    # reset all selection
+    new_graph_props["viewSelection"].setAllNodeValue(False)
+    new_graph_props["viewSelection"].setAllEdgeValue(False)
+
+    return new_graph
+
+
 def colourFBA(g, flux_dict, color_pos, color_neg, color_zero):
     """
     Colour reaction nodes and adjacent edges dependent on flux value::
@@ -761,14 +820,14 @@ def colourFBA(g, flux_dict, color_pos, color_neg, color_zero):
             for e in g.getInOutEdges(n):
                 viewColor[e] = viewColor[n]
 
-def exportGML(graph, model_id, output_graph_name, file_name):
+def exportGML(graph, model_id, output_graph_name, gml_path):
     """
     Exports a tulip graph as a GML file::
 
     - *graph* a tulip graph (input graph to get elements and properties from)
     - *model_id* id of the libSBML model
     - *output_graph_name* a name for the output graph G (has unique node ids), file type: .tlp
-    - *file_name* a name for the output GML file (string), file type: .gml
+    - *gml_path* a path for the output GML file (string), file type: .gml
 
     """
     # create new output graph 'GML'
@@ -793,4 +852,4 @@ def exportGML(graph, model_id, output_graph_name, file_name):
     tlp.saveGraph(GML, '{}'.format(model_id) + '_' + output_graph_name)
     # export new output graph 'GML' as .gml file (graphic markup language)
     params = tlp.getDefaultPluginParameters('GML Export', graph)
-    tlp.exportGraph('GML Export', GML, '{}'.format(model_id) + '_' + file_name, params)
+    tlp.exportGraph('GML Export', GML, gml_path, params)
