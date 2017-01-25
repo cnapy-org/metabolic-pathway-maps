@@ -73,8 +73,11 @@ COLOR_FBA_COLORBLIND = True
 #sbml = os.path.join(cDir, "TestModels", "others", "Lactococcus_lactis_MG1363.xml")
 
 ## BiGG2 models (with pathway annotation)
-sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml")
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml") # newest E. coli
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
+sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli about 1000 reactions
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iND750.xml") # Yeast about 1000 reactions
 
 ## Willis models
 #sbml = os.path.join(cDir, "TestModels", "willi", "M5_6.xml")
