@@ -462,11 +462,12 @@ if LAYOUT_PATHWAYS is True and AUTO_ALIAS is False:
         # TODO: -> do an intersection with the two sets (to catch duplications, etc.)
         if len(generated_nodes) == len(input_ids):
             print("{} subgraph complete.".format(path_name))
+
     # create and layout the objective reaction block (sg gets added to 'graph')
     obj_re_sg = mvl.layoutObjFunc(graph, objective_re_id, "Sugiyama (OGDF)", graph_props)
     obj_re_sg.setName("objective reaction")
     # after layouting add graph to graph registry
-    graph_registry.update({graph.getName(): graph})
+    graph_registry.update({"total graph": graph})
 
 
     # 1.) default dump (all pathways in one SVG file)
@@ -519,7 +520,7 @@ if COLOR_FBA_COLORBLIND:
 ############################################################################
 
 # save total graph with all changes ('messy' layout)
-tlp.saveGraph(graph, "{}_graph.tlp".format(model_id))
+tlp.saveGraph(graph_registry["total graph"], "{}_graph.tlp".format(model_id))
 print("Base graph file: {}_graph.tlp".format(model_id))
 
 if AUTO_ALIAS is False:
@@ -568,8 +569,6 @@ if EXPORT_GML:
         mvl.exportGML(graph, model_id, "gml_output_graph.tlp", gml_path)
         print("Graph exported as: {0}_{1}.gml".format(model_id, graph.getName()))
 
-# TODO: the color and font size of pathway labels is not preserved in svg -> they block pathway elements and don't
-# TODO: blend with background
 if EXPORT_SVG:
     # get default parameters of SVG export plugin
     params = tlp.getDefaultPluginParameters('SVG Export', graph)
@@ -605,6 +604,10 @@ if EXPORT_JSON:
 #                                                                              (same order as columns in graph object)
 #
 # for SQLite: convert boolean values to integers (True = 1, False = 0) since sqlite has no boolean data type!
+
+# select the graph object (e.g. total graph)
+graph = graph_registry["total graph"]
+
 graph_props_node_dict = {}
 graph_props_edge_dict = {}
 
@@ -660,7 +663,7 @@ for prop_type, prop_data_list in zip(graph_prop_ordered_types, graph_props_order
         pass
     if prop_type == 'int':
         pass
-    if prop_type == 'double': # = float (in SQL -> REAL)
+    if prop_type == 'double': # in python: float (in SQL -> REAL)
         pass
     if prop_type == 'bool': # was converted to INTEGER
         pass
@@ -693,7 +696,7 @@ for prop_type, prop_data_list in zip(graph_prop_ordered_types, graph_props_order
         pass
     if prop_type == 'int':
         pass
-    if prop_type == 'double': # = float (in SQL -> REAL)
+    if prop_type == 'double': # in python: float (in SQL -> REAL)
         pass
     if prop_type == 'bool': # was converted to INTEGER
         pass
@@ -849,10 +852,6 @@ for edge, i in zip(graph.getEdges(), range(len(list(graph.getEdges())))):
 for node, i in zip(graph.getNodes(), range(len(list(graph.getNodes())))):
     row = [i, str(list(graph.getInOutEdges(node)))]
     c.execute('''INSERT OR IGNORE INTO node_connectivity VALUES (?,?)''', row)
-# commit changes to database
-db.commit()
-# close connection to database
-db.close()
 print("Graph data has been stored in SQL database.")
 
 
@@ -860,18 +859,54 @@ print("Graph data has been stored in SQL database.")
 #####################################
 # retrieve graphs from SQL database #
 #####################################
-# TODO: after putting in graph info try to retireve it again and save it as new tlp (see if layout stay constant)
+
+
+# 4 tables in database:
+# - graph_nodes: every row is a node, each column is a node property
+# - graph_edges every row is an edge, each column is an edge property
+# - node_connectivity: every row is a node, first column contains node ids and second column contains lists of
+#                      connected edges
+# - edge connectivity: every row is an edge, first column contains edge ids, second column contains source node ids
+#                      and third column contains target node ids
+
+# retrieve entire table 'graph_nodes'
+c.execute('''SELECT * FROM graph_nodes''')
+graph_nodes_rows = c.fetchall() # list of row tuples
+# change list of row tuples to list of row lists
+graph_nodes_rows = [list(tup) for tup in graph_nodes_rows]
+
+# sqlite stores strings in unicode!
+# -> 'test' is automatically converted to u'test'
+# convert unicode strings to ascii strings
+for ind, row_list in enumerate(graph_nodes_rows):
+    graph_nodes_rows[ind] = [str(item) if isinstance(item, unicode) else item for item in row_list]
+# decode queried data (string -> list)
+for row_list in list(graph_nodes_rows):
+    for ind, item in enumerate(row_list):
+        # go over every item in a row list. for every string item:
+        # if the string was generated from a tup of multiple numbers (x,x,x,x)
+        # -> convert ascii string back to list
+        # -> identify the strings that originate from tuples by only taking strings without letters
+        if isinstance(item, str):
+            item_list = []
+            if ',' in item and any(e.isalpha() for e in item) == False:
+                # convert item string to a list
+                item_list.append([int(string_part) if isinstance(string_part, int) else float(string_part)
+                     for string_part in item.split(',')])
+            # replace encoded item with decoded item (if it was converted, otherwise keep old entry)
+            if item_list:
+                row_list[ind] = item_list
+            else:
+                row_list[ind] = item
+
+# TODO: use retrieved information to rebuild the whole graph and save it as new tlp (see if layout stay constant)
+# TODO: select just a pathway from the database, extract nodes and edges and generate the graph
 # TODO: use biomass layout for testing purposes
 
-
-# fetch graph properties of nodes and columns from database
-db_return_node_props = []
-
-# TODO: decode graph props again after getting them from the database
-# TODO: then use retrieved information to rebuild the whole graph in new
-# TODO: also try to select just a pathway from the database, extract nodes and edges and generate the graph
-# TODO:
-
+# commit changes to database
+db.commit()
+# close connection to database
+db.close()
 
 
 

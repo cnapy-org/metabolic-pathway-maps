@@ -762,6 +762,8 @@ def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg
     if sg_labels:
         for sg in new_graph.getSubGraphs():
             n = sg.addNode()
+            # TODO: add graph property to be able to flag labels so that we can exclude them from FBA coloring later
+            # TODO: (so that the white color for background blending is not overwritten by FBA Coloring)
             new_graph_props["viewLabel"][n] = sg.getName()
             new_graph_props["viewColor"][n] = tlp.Color(255, 255, 255) # set node color to white (invis on white bg)
             new_graph_props["viewSize"][n] = tlp.Size(5, 5, 1) # normal node = (2.5, 2.5, 1); bigger -> (5, 5, 1)
