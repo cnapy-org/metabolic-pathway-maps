@@ -1,0 +1,44 @@
+2017-01-26
+----------
+
+Overall progress is going ok but we need to urgently convert this from a script to a tool and work on the user output. 
+
+codebase
+========
+
+The following are a very high priority::
+
+ - rename the file to something without underscores: MetaViz.py
+ - refactor code so there are only global data structures and functions, see CBTools.py for an example
+ - reorganise code into a module, keep in mind the working directory is not necessarily the one your script is in so there should be user defineable input and output paths (we can start looking into this at 14:00)
+ 
+ graph layout
+ ============
+ 
+ You have made excellent progress but the final layout is still not complete. Here are the priorities::
+ 
+  - change the colouring scheme, this one doesn't work as the light colours look like grey. Use the scheme we use in FAME
+  
+   - http://f-a-m-e.fame-vu.surf-hosted.nl/synechocystis
+   - http://f-a-m-e.fame-vu.surf-hosted.nl/ajax/run.php?modelname=FAMESynFBAModel_7264bf849b662f3a8b61423e9a46fa13
+
+ - Node colours: colour boundary/fixed species, colour species nodes independent of flux (not grey!!)
+ - give user control over font size
+ - labels should be optionally reaction/species names instead of ids, perhaps names should be stored with nodes.
+  
+Questions::
+  
+ - Can we add pathway labels to the whole graph?
+ - In general why are pathway graph labels so badly placed?
+ - I want to create 3 additional types of composite output by default (tulip and svg)::
+ 
+  - biomass and exchange reactions (what do you need to do this)
+  - all small pathways (and labels), less than 10 reactions, layed out on a grid
+  - selected larger pathways on a single graph
+  
+ - can we layout a whole graph better or do wehave to post process these as SVG
+ 
+Add your own to this 
+ 
+ 
+
