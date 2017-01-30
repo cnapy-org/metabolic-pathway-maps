@@ -388,7 +388,7 @@ def aliasNode(g, n_alias, n_target, x=None, y=None, n_new=None):
     return n_new
 
 
-def layoutObjFunc(g, obj_re_id, sg_layout, prop_dict):
+def layoutObjFunc(g, obj_re_id, sg_layout, prop_dict, obj_name="objective reaction"):
     """
     Layout the objective reaction (with all reagents)::
 
@@ -396,6 +396,7 @@ def layoutObjFunc(g, obj_re_id, sg_layout, prop_dict):
     - *obj_re_id* id (string) of objective reaction
     - *sg_layout* name of layout algorithm (string) for obj reaction subgraph
     - *prop_dict* dict with graph properties
+    - *obj_name*
 
     """
     # unwrap passed graph props
@@ -437,6 +438,8 @@ def layoutObjFunc(g, obj_re_id, sg_layout, prop_dict):
     layoutSubgraph(obj_sg, sg_layout, None, re_node_coords[0], re_node_coords[1], 0)
     # set colour of new egdes to grey
     setColours(obj_sg, obj_sg.getEdges(), tlp.Color(220, 220, 220))
+    # set subgraph name
+    obj_sg.setName(obj_name)
 
     return obj_sg
 
@@ -517,6 +520,9 @@ def addLabels(g, node_type, label_type):
         if type[n] == node_type:
             viewLabel[n] = view_label_type[n]
 
+
+# TODO: write a function that takes in model ids and returns a list of the associated nodes and/or egdes
+# TODO: use graph_elements dict
 
 def setColours(g, item_list, colour):
     """
@@ -758,16 +764,22 @@ def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg
             if sg.getName() == "Transport":
                 user_params = {"layer spacing": 60, "node spacing": 80}
                 layoutSubgraph(sg, "Tree Radial", user_params, 75, 100, 0)
+    # TODO: change type of labels between id or name for all nodes of the entire graph (control with use_names=Fales)
     # add pathway labels (invisible nodes with visible label)
+    # TODO: link the pathway label to a nodeon the border of the pathway (so that it doesn't overlap and is visible
+    # TODO: in the whole output graph)
+    # TODO: to identify border label -> has only In or only Out edges?
     if sg_labels:
         for sg in new_graph.getSubGraphs():
             n = sg.addNode()
+            # TODO: labels have type 0 for identfication!
             # TODO: add graph property to be able to flag labels so that we can exclude them from FBA coloring later
             # TODO: (so that the white color for background blending is not overwritten by FBA Coloring)
             new_graph_props["viewLabel"][n] = sg.getName()
             new_graph_props["viewColor"][n] = tlp.Color(255, 255, 255) # set node color to white (invis on white bg)
             new_graph_props["viewSize"][n] = tlp.Size(5, 5, 1) # normal node = (2.5, 2.5, 1); bigger -> (5, 5, 1)
-            new_graph_props["viewFontSize"][n] = 24 # default is 18
+            new_graph_props["viewFontSize"][n] = 16 # default is 18
+
     # reset all selection
     new_graph_props["viewSelection"].setAllNodeValue(False)
     new_graph_props["viewSelection"].setAllEdgeValue(False)
@@ -800,10 +812,19 @@ def colourFBA(g, flux_dict, color_pos, color_neg, color_zero):
         if r_id in network_nodes.keys():
             flux[network_nodes[r_id]] = f
     # color total graph (zero fluxes will remain grey)
+    # TODO: only pass reaction nodes and edges associated with reaction node
     setColours(g, g.getNodes(), color_zero)
     setColours(g, g.getEdges(), color_zero)
     # creates a regular color scale going from neg color to zero color to pos color
+    # TODO: control it with a parameters
+    # TODO: new FAME rainbow coloring: don't put zero color into colorScale -> only apply color to nodes with flux
+    # TODO: don't fade into zero grey! -> have a clear difference between zero flux and flux != 0
     colorScale = [color_neg, color_zero, color_pos]
+    # colorScale = tlpgui.ColorScalesManager.getColorScale('rainbow')
+    # a dictionary can also be used (allow to define non regular scales)
+    # get min and max flux values
+    # TODO: make scale values dependent in min and max
+    # colorMap = {0: tlp.Color.Blue, 0.5: tlp.Color.Yellow, 1.0: tlp.Color.Red}
     # set the parameters for the 'Color Mapping' color algorithm
     colorMappingParams = tlp.getDefaultPluginParameters('Color Mapping', g)
     colorMappingParams['input property'] = flux
@@ -855,3 +876,18 @@ def exportGML(graph, model_id, output_graph_name, gml_path):
     # export new output graph 'GML' as .gml file (graphic markup language)
     params = tlp.getDefaultPluginParameters('GML Export', graph)
     tlp.exportGraph('GML Export', GML, gml_path, params)
+
+
+def containsSublist(l):
+    """
+    Check if a list contains sublists. Return 'True' if list contains sublists::
+
+    - *l* a list
+
+    """
+    # only add string 'list' to l_item_types if any of the items of l is a list, otherwise the l_item_types os empty
+    l_item_types = ['list' for item in l if isinstance(item, list)]
+    if len(l_item_types) == 0: #if l_item_types is epmty, no list has been found inside l
+        return False
+    else: #at least one list has been found inside l
+        return True
