@@ -34,55 +34,6 @@ import sbgn_helper
 import MVLayout as mvl
 
 
-
-############################
-# global control variables #
-############################
-
-# TODO: write script that handles this
-# activate/deactivate parts of the pipeline when starting the script from a console (including the one in PyCharm)
-global_ops = {"AUTO_ALIAS": False, #apply aliasing to every node of the graph with a certain connectivity
-                                   #and option to alias biomass (result in maingraph)
-                                   #if auto alias is active the automatically generated layout will still be
-                                   #overwritten if any other layouting functions are active aswell
-
-              "PATHWAY_LISTS": True, #layout annotated groups of sbml file as seperate pathways
-              "LAYOUT_PATHWAYS": True, #needs PATHWAY_LISTS true, so that necessary node lists are generated (for pathways)
-
-              "EXPORT_GML": True, #export generated graphs as .gml file
-              "EXPORT_SVG": True, #export generated graphs as .svg file
-              "EXPORT_JSON": True, #export generated graphs as .json file
-
-              "COLOR_FBA": False, #colour the reaction nodes and in and outgoing edges
-              "COLOR_FBA_COLORBLIND": True #based on flux values obtained from FBA
-              }
-
-
-
-#################################################################
-# read and initialize SBML file with libsbml and cbmpy, do FBA  #
-#################################################################
-
-## bgoli 180117: organising our tests
-## bgoli 180117: other tests
-#sbml = os.path.join(cDir, "TestModels", "others", "toy_model_biofuel.xml")
-#sbml = os.path.join(cDir, "TestModels", "others", "e_coli_core.xml")
-#sbml = os.path.join(cDir, "TestModels", "others", "Ecoli_Carlson2003.xml")
-#sbml = os.path.join(cDir, "TestModels", "others", "Hpylori_iIT341.xml")
-#sbml = os.path.join(cDir, "TestModels", "others", "Lactococcus_lactis_MG1363.xml")
-
-## BiGG2 models (with pathway annotation)
-sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml") # newest E. coli
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli about 1000 reactions
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iND750.xml") # Yeast about 1000 reactions
-
-## Willis models
-#sbml = os.path.join(cDir, "TestModels", "willi", "M5_6.xml")
-#sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_bigggroups.xml")
-#sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_compgroups.xml")
-
 def createSBMLModel(sbml_path):
     """
     Use libSBML to read an SBML file and construct an SBML model::
@@ -98,7 +49,6 @@ def createSBMLModel(sbml_path):
 
     return model, reader, model_id
 
-SBML_model, SBML_reader, SBML_model_id = createSBMLModel(sbml)
 
 def createCBMPYModel(sbml_path, change_flux_bounds=True, ):
     """
@@ -129,7 +79,6 @@ def createCBMPYModel(sbml_path, change_flux_bounds=True, ):
 
     return cmod, stM, objective_re_id
 
-cmod, stM, objective_re_id = createCBMPYModel(sbml)
 
 def runFBA(cmod):
     """
@@ -146,13 +95,6 @@ def runFBA(cmod):
 
     return fba_results
 
-fba_results = runFBA(cmod)
-
-
-
-#################################################
-# select nodes for aliasing (different methods) #
-#################################################
 
 def autoAlias(cmod, global_ops, cDir, spec_split, reac_split):
     """
@@ -167,7 +109,7 @@ def autoAlias(cmod, global_ops, cDir, spec_split, reac_split):
     - *split_biomass* [default=True] if true, splits biomass reaction
 
     """
-    # 1.) create alias node list based on connectivity <-> user defined thresholds (aliasing by Mimoza)
+    # create alias node list based on connectivity <-> user defined thresholds (aliasing by Mimoza)
     ub_sp_list = []
     ub_re_list = []
     if global_ops["AUTO_ALIAS"]:
@@ -195,12 +137,7 @@ def autoAlias(cmod, global_ops, cDir, spec_split, reac_split):
 
     return ub_list, ub_sps, groups_sbml
 
-ub_list, ub_sps, groups_sbml = autoAlias(cmod, global_ops, cDir, 6, 4)
 
-
-# 2.) create alias node list based on biological pathways <-> group info in sbml - if available (aliasing done by own
-# functions)
-# IF GROUPS DON'T EXIST -> provide pathway lists manually:
 def manualPathDict(path_name, sps_id_list, re_id_list):
     """
     Create a dictionary and add one entry containing id lists of reactions and metabolites associated to a manually
@@ -227,9 +164,6 @@ def manualPathDict(path_name, sps_id_list, re_id_list):
     return path_dict
 
 
-# IF GROUPS EXIST -> fetch groups from sbml (this doesn't use ub_sps_list or ub_re_list)
-# create dictionary of groups where each group name is a key and the values are again dicts with three keys: 'id',
-# 'reactions' and 'metabolites'
 def automPathDict(cmod, global_ops, small_threshold=30):
     """
     Automatically create a pathway dictionary for all annotated groups in an CBMPY model. Add all reactions which
@@ -276,13 +210,6 @@ def automPathDict(cmod, global_ops, small_threshold=30):
 
         return path_dict
 
-path_dict = automPathDict(cmod, global_ops)
-
-
-
-##################################################
-# create Tulip graph and generate graph objects  #
-##################################################
 
 def createInitialGraph(graph_name):
     """
@@ -303,21 +230,7 @@ def createInitialGraph(graph_name):
 
     return graph, graph_props
 
-graph, graph_props = createInitialGraph(SBML_model_id)
 
-# flag (true/false) a list of nodes (already saved as ub_list) so that they can be aliased later
-mvl.markUbiquitousNodes(graph, ub_list)
-
-# create initial nodes for all species
-id2n = mvl.speciesToNodes(graph, cmod, ub_list, graph_props)
-
-
-# TODO: initial tulip graph creation is slow because of Mimoza Black Box Code!
-# TODO: reaction node creation still relies on copied code (problem: reaction node compartment assignment needs helper
-# TODO: functions -> understand what the copied code does and rewrite!)
-
-# save compartment hierarchy to dictionary "c_id2level" for function import_sbml
-# required syntax: c_id2level = {'Cell': (0, ''), 'Boundary': (1, 'Cell')}
 def compDictForMimoza(cmod):
     """
     Helper function which creates a specific dictionary required to run Mimoza function 'compute_c_id2info'::
@@ -331,8 +244,10 @@ def compDictForMimoza(cmod):
 
     return c_id2level
 
-c_id2level = compDictForMimoza(cmod)
 
+# TODO: initial tulip graph creation is slow because of Mimoza Black Box Code!
+# TODO: reaction node creation still relies on copied code (problem: reaction node compartment assignment needs helper
+# TODO: functions -> understand what the copied code does and rewrite!)
 #START COPIED CODE######################################################################################################
 # function copied from Mimoza
 def compute_c_id2info(c_id2level, input_model):
@@ -353,7 +268,6 @@ def compute_c_id2info(c_id2level, input_model):
         c_id2outs[c_id] = outs
     return c_id2info, c_id2outs
 
-c_id2info, c_id2outs = compute_c_id2info(c_id2level, cmod)
 
 # helper function for reaction compartment assignment (copied from Mimoza)
 def get_r_comp(all_comp_ids):
@@ -372,49 +286,8 @@ def get_r_comp(all_comp_ids):
     if inner_level - outer_level > 1:
         return max(c_id2outs[inner_most], key=get_level)
     return outer_most
-
-# create nodes for all reactions
-# TODO: needs libSBML model, put the libSBML creation inside
-mvl.reactionsToNodes(get_r_comp, graph, id2n, cmod)
 #END COPIED CODE########################################################################################################
 
-# clone/alias nodes selected above (in ub_list)
-# -> chebi info was apparently only important for automatically extracting ubiquitous species ids! (we now provide them)
-# => provide them by passing a list (ubs), converted to a set (cloneNodes needs unique ids)
-root = sbml2tlp.cloneNodes(set(ub_list), graph)
-
-
-
-##############################
-#run Mimoza layout functions #
-##############################
-
-# actual layouting, creation of graph structure
-# n2lo and e2lo are dictionaries containing node and edge layout info (id, color, coords, etc.) respectively
-fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph = tulip_graph2geojson.graph2geojson(c_id2info, c_id2outs, root)
-
-# save raw Mimoza graph output as backup
-tlp.saveGraph(graph, "{}_raw.tlp".format(SBML_model_id))
-print("Initial Tulip graph created.")
-
-
-
-###############################################################
-# map sbml element ids to initial graph nodes in a dictionary #
-###############################################################
-
-# Section Description:
-# --------------------
-# in the initial graph every model id is represented by exactly one node (if AUTO_ALIAS is off!)
-# example: iIT341 initial graph (returned by Mimoza): 1039 nodes created
-#          check: len(cmod.getSpeciesIds()+cmod.getReactionIds()) returns 1039 as well
-#
-# => create mapping between ids and their nodes in a dict that reflects the state of the raw graph
-#    dict structure: id (key): value is another dict with layout (key): True/False and initial_node (key): node object
-#    layout key serves as a flag to see whether an initial node has already been used for layouting later (True = has
-#    been used)
-#    -> if the downstream layouting function sees layout True => creates new node and copies properties
-#                                                                (new node will not be added to this dict)
 
 def mapModelToGraph(cmod, graph, graph_props):
     """
@@ -444,14 +317,6 @@ def mapModelToGraph(cmod, graph, graph_props):
 
     return graph_elements
 
-# use only if one model id = one graph node is true! (only if auto aliasing is off and  the current graph oject is
-# in its raw, initial state)
-
-# subsequent functions either get an empty version or the actual graph_elements dict
-graph_elements = {}
-if global_ops["AUTO_ALIAS"] == False:
-    graph_elements = mapModelToGraph(cmod, graph, graph_props)
-
 
 def objReNodeList(graph):
     """
@@ -475,30 +340,6 @@ def objReNodeList(graph):
 
     return obj_re_nodes
 
-obj_re_nodes = objReNodeList(graph)
-
-# Why is a mapping between ids and graph elements (nodes, edges) necessary?
-# -------------------------------------------------------------------------
-#
-# There is a difference between a model species id and a graph node id!
-# => It is not sufficient to select nodes based on model ids (at some point multiple nodes with the same id can exist)
-# => handle node objects!
-#
-# Problem: if a node is shared between pathways, the last valid layouting call will determine its position meaning that
-# previous positions of that node in other layouted subgraphs that also contain it are overwritten!
-#
-# example in Carlsson model: since the initial nodes with the ids "PEP" and "R1" are part of glycolysis AND exchange
-# reactions, the assigned positions of the "PEP" and "R1" initial nodes after layouting glyc are overwritten by
-# layouting exch re!
-#
-# -> give subgraphs their own versions of a shared node by tracking what graph elements have already been used for
-#    layouting to determine what nodes and edges need to be recreated
-
-
-
-#################################
-# change basic graph properties #
-#################################
 
 def labelGraphNodes(label_type):
     """
@@ -519,14 +360,8 @@ def labelGraphNodes(label_type):
         mvl.addLabels(graph, NODE_TYPES['metabolites'], "name")
         mvl.addLabels(graph, NODE_TYPES['reactions'], "name")
 
-labelGraphNodes("id")
 
-# TODO: add labels to edges (possible? alternative?)
-#for e in graph.getEdges():
-#    viewLabel[e] = "test"
-# -> edge labels are set in "viewLabel" but not visible!
-
-def colorGraphElements(graph, graph_element, color):
+def colorAllGraphElements(graph, graph_element, color):
     """
     Color graph elements (nodes and/or edges). Returns a dict with all possible colors so that other functions can
     also use them::
@@ -554,28 +389,6 @@ def colorGraphElements(graph, graph_element, color):
         mvl.setColours(graph, graph.getEdges(), COLORS[color])
 
     return COLORS
-
-COLORS = colorGraphElements(graph, "egdes", "grey")
-
-# change line types (Polyline, BezierCurve, CatmullRomCurve, CubicSplineCurve)
-#for e in graph.getEdges():
-#    graph_props["viewShape"][e] = tlp.EdgeShape.BezierCurve
-
-# TODO: change font globally from 18 -> 8 and 24 -> 12 or something
-#for n in graph.getNodes():
-#    graph_props["font_size"] = 8
-# TODO: also write a function that applies "fit lable to node size" thing from tulipgui
-# TODO: see if calling that before layouting changes the layout
-
-
-
-##############################################################
-# layout pathways in subgraphs (Glycolysis, TCA Cycle, etc.) #
-##############################################################
-
-# initialize a dict of all existing graphs (key: name, value: graph object)
-#  -> everytime a new, important graph is created it gets added to the graph registry
-graph_registry = {}
 
 
 def layoutAllPathwaysFromGroups(path_dict, graph, graph_elements, graph_props):
@@ -605,89 +418,53 @@ def layoutAllPathwaysFromGroups(path_dict, graph, graph_elements, graph_props):
         if len(generated_nodes) == len(input_ids):
             print("{} subgraph complete.".format(path_name))
 
+
 def pathwayDump(graph, graph_registry, graph_props):
     # 1.) default dump (all pathways in one SVG file)
     # -> combine all pathways to create a new output graph of the whole network
-    whole_output_graph = mvl.dumpToGraph(graph, graph_props, "output_whole",
+    whole_output_graph, whole_output_props = mvl.dumpToGraph(graph, graph_props, "output_whole",
                                          [sg.getName() for sg in graph.getSubGraphs()])
-    graph_registry.update({whole_output_graph.getName(): whole_output_graph})
+    graph_registry.update({whole_output_graph.getName(): [whole_output_graph,whole_output_props]})
 
     # 2.) selected dump (selected pathways in one SVG file)
     # create a new output graph with a few selected pathways combined
-    selected_output_graph = mvl.dumpToGraph(graph, graph_props, "output_selected", ["objective reaction", "Transport"])
-    graph_registry.update({selected_output_graph.getName(): selected_output_graph})
+    selected_output_graph, selected_output_props = mvl.dumpToGraph(graph, graph_props, "output_selected", ["objective "
+                                                                                                   "reaction", "Transport"])
+    graph_registry.update({selected_output_graph.getName(): [selected_output_graph,selected_output_props]})
 
     # 3.) sequential dump (all pathways in individual SVG files)
     individual_output_graphs = []
     for sg in graph.getSubGraphs():
         # append the returned output graph for each input subgraph to list
-        sg_output_graph = mvl.dumpToGraph(graph, graph_props, sg.getName(), [sg.getName()])
+        sg_output_graph, sg_output_props = mvl.dumpToGraph(graph, graph_props, sg.getName(), [sg.getName()])
         # TODO: add pathway label to sg_out_graph
         individual_output_graphs.append(sg_output_graph)
-        graph_registry.update({sg_output_graph.getName(): sg_output_graph})
+        graph_registry.update({sg_output_graph.getName(): [sg_output_graph, sg_output_props]})
 
     # TODO: do - biomass and exchange reactions (what do you need to do this)
     # TODO:    - place 4 subgraphs in a new graph and control their location!
     # TODO:    - all small pathways (and labels), less than 10 reactions, layed out on a grid
     # TODO:    - selected larger pathways on a single graph
 
-# needs dict graph elements which is only created it global_ops["AUTO_ALIAS"] is false since it needs 1:1 model id to graph elements
-if global_ops["LAYOUT_PATHWAYS"] is True and global_ops["AUTO_ALIAS"] is False:
-    layoutAllPathwaysFromGroups(path_dict, graph, graph_elements, graph_props)
-    # create and layout the objective reaction block (sg gets added to 'graph')
-    mvl.layoutObjFunc(graph, objective_re_id, "Sugiyama (OGDF)", graph_props)
 
-    pathwayDump(graph, graph_registry, graph_props)
+def colorMetaboliteReactionNodes(graph, graph_props, met_color, reac_color):
+    """
+    Give metabolite and reaction node distinct colors (call after all other coloring functions to not interfere
+    with them!)
 
+    - *graph* a Tulip graph
+    - *graph_props* a dict of graph properties
+    - *met_color* a Tulip color object (wraped around RGB value) for metabolite nodes
+    - *reac_color* a Tulip color object (wraped around RGB value) for reaction nodes
 
-    # TODO: control positions of pathway subgraphs
-    # TODO: get highest and lowest x and y coordinate values for each subgraph (max(list(x values)) and max(list(y
-    # TODO: values)))
-    # TODO: then. build a numpy.array() (a matrix) that serves as a template for canvas positions - with subgraph ids
-    # TODO: as matrix entries:
-    # TODO: example: if matrix entry at (1,1) is 1 -> put "Glycolysis" subgraph (id: 1) in top left corner etc.
-    # TODO: moving subgraphs is possible with center Layout
+    """
+    # change node color of metabolite and reaction nodes
+    for n in graph.getNodes():
+        if graph_props["type"][n] == 1:  # metabolite node
+            graph_props["viewColor"][n] = met_color
+        if graph_props["type"][n] == 2:  # reaction node
+            graph_props["viewColor"][n] = reac_color
 
-# after layouting add graph to graph registry
-graph_registry.update({"total graph": graph})
-
-
-
-########################
-# visualize FBA result #
-########################
-
-# color nodes and edges depending on flux value
-# input format: dict = {"M1": -3, ...}
-if global_ops["COLOR_FBA"]:
-    for graph in graph_registry.values():
-        mvl.colourFBA(graph, fba_results, COLORS["green"], COLORS["red"], COLORS["light grey"])
-if global_ops["COLOR_FBA_COLORBLIND"]:
-    for graph in graph_registry.values():
-        mvl.colourFBA(graph, fba_results, tlp.Color.Cyan, tlp.Color.Magenta, COLORS["light grey"])
-
-# TODO: visualize existence of reactions of a smaller model on a big map (e coli vs mutated e coli eg.)
-
-
-
-############################################################################
-# save final graph, generate SBGN and SBML+Layout Files (Mimoza functions) #
-############################################################################
-
-# save total graph with all changes ('messy' layout)
-tlp.saveGraph(graph_registry["total graph"], "{}_graph.tlp".format(SBML_model_id))
-print("Base graph file: {}_graph.tlp".format(SBML_model_id))
-
-if global_ops["AUTO_ALIAS"] is False:
-    for graph_name, graph_object in graph_registry.items():
-        if graph_name == "output_whole":
-            # save graph with whole network layout
-            tlp.saveGraph(graph_object, "{0}_output_whole.tlp".format(SBML_model_id))
-            print("Whole network visualization: {0}_output_whole.tlp".format(SBML_model_id))
-        if graph_name == "output_selected":
-            # save graph with selected pathway layouts
-            tlp.saveGraph(graph_object, "{0}_output_selected.tlp".format(SBML_model_id))
-            print("Visualization of selected pathways: {0}_output_combined.tlp".format(SBML_model_id))
 
 def saveLayoutSBML(groups_sbml, ub_sps, n2lo):
     """
@@ -704,7 +481,6 @@ def saveLayoutSBML(groups_sbml, ub_sps, n2lo):
     gen_model = False
     sbml_manager.save_as_layout_sbml(groups_model, gen_model, groups_sbml, n2lo, ub_sps)
 
-saveLayoutSBML(groups_sbml, ub_sps, n2lo)
 
 def saveLayoutSBGN(groups_sbml, file_name, cDir, n2lo, e2lo):
     """
@@ -725,13 +501,6 @@ def saveLayoutSBGN(groups_sbml, file_name, cDir, n2lo, e2lo):
     groups_model = groups_document.getModel()
     sbgn_helper.save_as_sbgn(n2lo, e2lo, groups_model, groups_sbgn)
 
-
-saveLayoutSBGN(groups_sbml, SBML_model_id, cDir, n2lo, e2lo)
-
-
-#######################################
-# export the graph (JSON, GML or SVG) #
-#######################################
 
 def exportGraph(graph_registry, global_ops, cDir, file_name):
     """
@@ -754,14 +523,16 @@ def exportGraph(graph_registry, global_ops, cDir, file_name):
             raise
     # export every graph in graph registry
     if global_ops["EXPORT_GML"]:
-        for graph in graph_registry.values():
+        for graph_data in graph_registry.values():
+            graph = graph_data[0]
             gml_path = os.path.join(output_path, "{0}_{1}.gml".format(file_name, graph.getName()))
             # replace forward dashes in graph name to not cause problems with path
             gml_path = gml_path.replace('/', '-')
             mvl.exportGML(graph, file_name, "gml_output_graph.tlp", gml_path)
             print("Graph exported as: {0}_{1}.gml".format(file_name, graph.getName()))
     if global_ops["EXPORT_SVG"]:
-        for graph in graph_registry.values():
+        for graph_data in graph_registry.values():
+            graph = graph_data[0]
             # get default parameters of SVG export plugin
             params = tlp.getDefaultPluginParameters('SVG Export', graph)
             # define output path
@@ -771,7 +542,8 @@ def exportGraph(graph_registry, global_ops, cDir, file_name):
             tlp.exportGraph('SVG Export', graph, svg_path, params)
             print("Graph exported as: {0}_{1}.svg".format(file_name, graph.getName()))
     if global_ops["EXPORT_JSON"]:
-        for graph in graph_registry.values():
+        for graph_data in graph_registry.values():
+            graph = graph_data[0]
             # get default parameters of JSON export plugin
             params = tlp.getDefaultPluginParameters('JSON Export', graph)
             # define output path
@@ -781,13 +553,6 @@ def exportGraph(graph_registry, global_ops, cDir, file_name):
             tlp.exportGraph('JSON Export', graph, json_path, params)
             print("Graph exported as: {0}_{1}.json".format(file_name, graph.getName()))
 
-
-exportGraph(graph_registry, global_ops, cDir, SBML_model_id)
-
-
-######################################
-# create SQL table from graph object #
-######################################
 
 def extractGraphPropertyData(graph):
     """
@@ -839,9 +604,6 @@ def extractGraphPropertyData(graph):
 
     return graph_props_ordered_n_list, graph_props_ordered_e_list, graph_prop_ordered_types
 
-# select the graph object (e.g. total graph) to extract data from
-graph = graph_registry['total graph']
-graph_props_ordered_n_list, graph_props_ordered_e_list, graph_prop_ordered_types = extractGraphPropertyData(graph)
 
 def encodeNodeData(graph, graph_props_ordered_n_list, graph_prop_ordered_types):
     """
@@ -891,9 +653,6 @@ def encodeNodeData(graph, graph_props_ordered_n_list, graph_prop_ordered_types):
             graph_props_node_tuplelist.append(tuple(prop_data_list))
 
     return graph_props_node_tuplelist
-
-graph_props_node_tuplelist = encodeNodeData(graph, graph_props_ordered_n_list, graph_prop_ordered_types)
-
 
 
 def encodeEdgeData(graph, graph_props_ordered_e_list, graph_prop_ordered_types):
@@ -947,7 +706,6 @@ def encodeEdgeData(graph, graph_props_ordered_e_list, graph_prop_ordered_types):
 
     return graph_props_edge_tuplelist
 
-graph_props_edge_tuplelist = encodeEdgeData(graph, graph_props_ordered_e_list, graph_prop_ordered_types)
 
 def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_tuplelist):
     """
@@ -1067,9 +825,9 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_
     graph_props_node_insertlist = []
     graph_props_edge_insertlist = []
     for i in range(len(list(graph.getNodes()))):
-        graph_props_node_insertlist.append([tuple[i] for tuple in graph_props_node_tuplelist])
+        graph_props_node_insertlist.append([tup[i] for tup in graph_props_node_tuplelist])
     for i in range(len(list(graph.getEdges()))):
-        graph_props_edge_insertlist.append([tuple[i] for tuple in graph_props_edge_tuplelist])
+        graph_props_edge_insertlist.append([tup[i] for tup in graph_props_edge_tuplelist])
     # fill tables with encoded values
     # table graph_node
     for l in graph_props_node_insertlist:
@@ -1096,21 +854,6 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_
     # close connection to database
     db.close()
 
-
-createSQLiteDB(graph, SBML_model_id, graph_props_node_tuplelist, graph_props_edge_tuplelist)
-
-#####################################
-# retrieve graphs from SQL database #
-#####################################
-
-
-# 4 tables in database:
-# - graph_nodes: every row is a node, each column is a node property
-# - graph_edges every row is an edge, each column is an edge property
-# - node_connectivity: every row is a node, first column contains node ids and second column contains lists of
-#                      connected edges
-# - edge connectivity: every row is an edge, first column contains edge ids, second column contains source node ids
-#                      and third column contains target node ids
 
 def retrieveGraphElementData(db_name, table_name):
     """
@@ -1159,30 +902,308 @@ def retrieveGraphElementData(db_name, table_name):
 
     return graph_rows_list
 
-db_graph_node_list = retrieveGraphElementData(SBML_model_id, 'graph_nodes')
-# TODO: some layout coordinates in graph_edge table are lists of lists -> these need to be flattened before input
-#db_graph_edge_list = retrieveGraphElementData(c, 'graph_edges')
-#print(db_graph_edge_list)
-
-# TODO: SQL --> back to Tulip (to see if everything is preserved)
-# TODO: use retrieved information to rebuild the whole graph and save it as new tlp (see if layout stay constant)
-# TODO: select just a pathway from the database, extract nodes and edges and generate the graph
-# TODO: use biomass layout for testing purposes
-# TODO: database to have tool independent way of getting network map info
-
-# TODO: SQL --> d3py/networkx/someother gaph program
-# TODO: extract only nodes with coords, and ids from graph_nodes table and connectivity between the nodes
-# TODO: use networkx, and/or D3 (d3py in python) to rebuild a part of the graph only from SQL database output
 
 if __name__ == '__main__': # test if we are in a console (instead of importing the script as a module)
-    # TODO: all function calls go here
-    print('hello')
+
+    ############################
+    # global control variables #
+    ############################
+
+    # TODO: write script that handles this
+    # activate/deactivate parts of the pipeline when starting the script from a console (including the one in PyCharm)
+    global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph with a certain connectivity
+                  # and option to alias biomass (result in maingraph)
+                  # if auto alias is active the automatically generated layout will still be
+                  # overwritten if any other layouting functions are active aswell
+
+                  "PATHWAY_LISTS": True,  # layout annotated groups of sbml file as seperate pathways
+                  "LAYOUT_PATHWAYS": True,
+                  # needs PATHWAY_LISTS true, so that necessary node lists are generated (for pathways)
+
+                  "EXPORT_GML": True,  # export generated graphs as .gml file
+                  "EXPORT_SVG": True,  # export generated graphs as .svg file
+                  "EXPORT_JSON": True,  # export generated graphs as .json file
+
+                  "COLOR_FBA": True,  # colour the reaction nodes and in and outgoing edges
+                  "COLOR_FBA_COLORBLIND": False  # based on flux values obtained from FBA
+                  }
 
 
+    #################################################################
+    # read and initialize SBML file with libsbml and cbmpy, do FBA  #
+    #################################################################
+
+    ## bgoli 180117: organising our tests
+    ## bgoli 180117: other tests
+    # sbml = os.path.join(cDir, "TestModels", "others", "toy_model_biofuel.xml")
+    # sbml = os.path.join(cDir, "TestModels", "others", "e_coli_core.xml")
+    # sbml = os.path.join(cDir, "TestModels", "others", "Ecoli_Carlson2003.xml")
+    # sbml = os.path.join(cDir, "TestModels", "others", "Hpylori_iIT341.xml")
+    # sbml = os.path.join(cDir, "TestModels", "others", "Lactococcus_lactis_MG1363.xml")
+
+    ## BiGG2 models (with pathway annotation)
+    sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
+    # sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml") # newest E. coli
+    # sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
+    # sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli about 1000 reactions
+    # sbml = os.path.join(cDir, "TestModels", "bigg2", "iND750.xml") # Yeast about 1000 reactions
+
+    ## Willis models
+    # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6.xml")
+    # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_bigggroups.xml")
+    # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_compgroups.xml")
+
+    # create SBML model with libSBML (just parses SBML file)
+    SBML_model, SBML_reader, SBML_model_id = createSBMLModel(sbml)
+    # create CBMPY model (separate datastructure to SBML file)
+    cmod, stM, objective_re_id = createCBMPYModel(sbml)
+    # do FBA and save results
+    fba_results = runFBA(cmod)
 
 
+    #################################################
+    # select nodes for aliasing (different methods) #
+    #################################################
+
+    # 1.) create alias node list based on connectivity <-> user defined thresholds (aliasing by Mimoza)
+    ub_list, ub_sps, groups_sbml = autoAlias(cmod, global_ops, cDir, 6, 4)
+
+    # 2.) create alias node list based on biological pathways <-> group info in sbml - if available (aliasing done by own
+    # functions)
+    # IF GROUPS DON'T EXIST -> provide pathway lists manually:
+    # use function manualPathDict
+    # IF GROUPS EXIST -> fetch groups from sbml (this doesn't use ub_sps_list or ub_re_list)
+    # create dictionary of groups where each group name is a key and the values are again dicts with three keys: 'id',
+    # 'reactions' and 'metabolites'
+    path_dict = automPathDict(cmod, global_ops)
 
 
+    ##################################################
+    # create Tulip graph and generate graph objects  #
+    ##################################################
+
+    graph, graph_props = createInitialGraph(SBML_model_id)
+    # flag (true/false) a list of nodes (already saved as ub_list) so that they can be aliased later
+    mvl.markUbiquitousNodes(graph, ub_list)
+    # create initial nodes for all species
+    id2n = mvl.speciesToNodes(graph, cmod, ub_list, graph_props)
+
+    # save compartment hierarchy to dictionary "c_id2level" for function import_sbml
+    # required syntax: c_id2level = {'Cell': (0, ''), 'Boundary': (1, 'Cell')}
+    c_id2level = compDictForMimoza(cmod)
+    c_id2info, c_id2outs = compute_c_id2info(c_id2level, cmod)
+
+    # create nodes for all reactions
+    # TODO: needs libSBML model, put the libSBML creation inside
+    mvl.reactionsToNodes(get_r_comp, graph, id2n, cmod)
+
+    # clone/alias nodes selected above (in ub_list)
+    # -> chebi info was apparently only important for automatically extracting ubiquitous species ids! (we now provide them)
+    # => provide them by passing a list (ubs), converted to a set (cloneNodes needs unique ids)
+    root = sbml2tlp.cloneNodes(set(ub_list), graph)
 
 
+    ##############################
+    # run Mimoza layout functions #
+    ##############################
 
+    # actual layouting, creation of graph structure
+    # n2lo and e2lo are dictionaries containing node and edge layout info (id, color, coords, etc.) respectively
+    fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph = tulip_graph2geojson.graph2geojson(c_id2info, c_id2outs,
+                                                                                               root)
+    # save raw Mimoza graph output as backup
+    tlp.saveGraph(graph, "{}_raw.tlp".format(SBML_model_id))
+    print("Initial Tulip graph created.")
+
+
+    ###############################################################
+    # map sbml element ids to initial graph nodes in a dictionary #
+    ###############################################################
+
+    # Section Description:
+    # --------------------
+    # in the initial graph every model id is represented by exactly one node (if AUTO_ALIAS is off!)
+    # example: iIT341 initial graph (returned by Mimoza): 1039 nodes created
+    #          check: len(cmod.getSpeciesIds()+cmod.getReactionIds()) returns 1039 as well
+    #
+    # => create mapping between ids and their nodes in a dict that reflects the state of the raw graph
+    #    dict structure: id (key): value is another dict with layout (key): True/False and initial_node (key): node object
+    #    layout key serves as a flag to see whether an initial node has already been used for layouting later (True = has
+    #    been used)
+    #    -> if the downstream layouting function sees layout True => creates new node and copies properties
+    #                                                                (new node will not be added to this dict)
+
+    # use only if one model id = one graph node is true! (only if auto aliasing is off and  the current graph oject is
+    # in its raw, initial state)
+
+    # subsequent functions either get an empty version or the actual graph_elements dict
+    graph_elements = {}
+    if global_ops["AUTO_ALIAS"] is False:
+        graph_elements = mapModelToGraph(cmod, graph, graph_props)
+
+    obj_re_nodes = objReNodeList(graph)
+
+    # Why is a mapping between ids and graph elements (nodes, edges) necessary?
+    # -------------------------------------------------------------------------
+    #
+    # There is a difference between a model species id and a graph node id!
+    # => It is not sufficient to select nodes based on model ids (at some point multiple nodes with the same id can exist)
+    # => handle node objects!
+    #
+    # Problem: if a node is shared between pathways, the last valid layouting call will determine its position meaning that
+    # previous positions of that node in other layouted subgraphs that also contain it are overwritten!
+    #
+    # example in Carlsson model: since the initial nodes with the ids "PEP" and "R1" are part of glycolysis AND exchange
+    # reactions, the assigned positions of the "PEP" and "R1" initial nodes after layouting glyc are overwritten by
+    # layouting exch re!
+    #
+    # -> give subgraphs their own versions of a shared node by tracking what graph elements have already been used for
+    #    layouting to determine what nodes and edges need to be recreated
+
+
+    #################################
+    # change basic graph properties #
+    #################################
+
+    labelGraphNodes("id")
+    # TODO: add labels to edges (possible? alternative?)
+    # for e in graph.getEdges():
+    #    viewLabel[e] = "test"
+    # -> edge labels are set in "viewLabel" but not visible!
+    COLORS = colorAllGraphElements(graph, "egdes", "grey")
+    # change line types (Polyline, BezierCurve, CatmullRomCurve, CubicSplineCurve)
+    # for e in graph.getEdges():
+    #    graph_props["viewShape"][e] = tlp.EdgeShape.BezierCurve
+    # TODO: change font globally from 18 -> 8 and 24 -> 12 or something
+    # for n in graph.getNodes():
+    #    graph_props["font_size"] = 8
+    # TODO: also write a function that applies "fit lable to node size" thing from tulipgui
+    # TODO: see if calling that before layouting changes the layout
+
+
+    ##############################################################
+    # layout pathways in subgraphs (Glycolysis, TCA Cycle, etc.) #
+    ##############################################################
+
+    # initialize a dict of all existing graphs (key: name, value: a list [graph object, graph props])
+    #  -> everytime a new, important graph is created it gets added to the graph registry
+    graph_registry = {}
+    # needs dict graph elements which is only created it global_ops["AUTO_ALIAS"] is false since it needs 1:1 model id
+    # to graph elements
+    if global_ops["LAYOUT_PATHWAYS"] is True and global_ops["AUTO_ALIAS"] is False:
+        layoutAllPathwaysFromGroups(path_dict, graph, graph_elements, graph_props)
+        # create and layout the objective reaction block (sg gets added to 'graph')
+        mvl.layoutObjFunc(graph, objective_re_id, "Sugiyama (OGDF)", graph_props)
+        pathwayDump(graph, graph_registry, graph_props)
+        # TODO: control positions of pathway subgraphs
+        # TODO: get highest and lowest x and y coordinate values for each subgraph (max(list(x values)) and max(list(y
+        # TODO: values)))
+        # TODO: then. build a numpy.array() (a matrix) that serves as a template for canvas positions - with subgraph ids
+        # TODO: as matrix entries:
+        # TODO: example: if matrix entry at (1,1) is 1 -> put "Glycolysis" subgraph (id: 1) in top left corner etc.
+        # TODO: moving subgraphs is possible with center Layout
+    # after layouting add graph to graph registry
+    graph_registry.update({"total graph": [graph, graph_props]})
+
+
+    ##################################
+    # coloring, visualize FBA result #
+    ##################################
+
+    # color nodes and edges depending on flux value
+    # input format: dict = {"M1": -3, ...}
+    if global_ops["COLOR_FBA"]:
+        for graph_data in graph_registry.values():
+            graph = graph_data[0]
+            mvl.colourFBA(graph, fba_results, COLORS["green"], COLORS["red"], COLORS["light grey"])
+    if global_ops["COLOR_FBA_COLORBLIND"]:
+        for graph_data in graph_registry.values():
+            graph = graph_data[0]
+            mvl.colourFBA(graph, fba_results, tlp.Color.Cyan, tlp.Color.Magenta, COLORS["light grey"])
+
+    # after having coloured the reaction nodes with flux != 0 to colour their adjacent edges
+
+    # color metabolites light blue and reaction nodes light red (AFTER all other coloring functions!)
+    for g_name, g_data in graph_registry.items():
+        g_obj = g_data[0]
+        g_props = g_data[1]
+        if g_name == 'output_whole':
+            colorMetaboliteReactionNodes(g_obj, g_props, tlp.Color(103,169,207), tlp.Color(252,146,114))
+
+    # TODO: visualize existence of reactions of a smaller model on a big map (e coli vs mutated e coli eg.)
+
+
+    ############################################################################
+    # save final graph, generate SBGN and SBML+Layout Files (Mimoza functions) #
+    ############################################################################
+
+    # save total graph with all changes ('messy' layout)
+    tlp.saveGraph(graph_registry["total graph"][0], "{}_graph.tlp".format(SBML_model_id))
+    print("Base graph file: {}_graph.tlp".format(SBML_model_id))
+    if global_ops["AUTO_ALIAS"] is False:
+        for graph_name, graph_data in graph_registry.items():
+            graph_object = graph_data[0]
+            if graph_name == "output_whole":
+                # save graph with whole network layout
+                tlp.saveGraph(graph_object, "{0}_output_whole.tlp".format(SBML_model_id))
+                print("Whole network visualization: {0}_output_whole.tlp".format(SBML_model_id))
+            if graph_name == "output_selected":
+                # save graph with selected pathway layouts
+                tlp.saveGraph(graph_object, "{0}_output_selected.tlp".format(SBML_model_id))
+                print("Visualization of selected pathways: {0}_output_combined.tlp".format(SBML_model_id))
+
+    # save graph layout in layout plugin of an SBML file
+    saveLayoutSBML(groups_sbml, ub_sps, n2lo)
+    # save graph layout as SBGN file
+    saveLayoutSBGN(groups_sbml, SBML_model_id, cDir, n2lo, e2lo)
+
+
+    #######################################
+    # export the graph (JSON, GML or SVG) #
+    #######################################
+
+    # export graph SVG, GML and/or JSON file (controlled by global_ops)
+    exportGraph(graph_registry, global_ops, cDir, SBML_model_id)
+
+
+    ######################################
+    # create SQL table from graph object #
+    ######################################
+
+    # select the graph object (e.g. total graph) to extract data from
+    graph = graph_registry['total graph'][0]
+    graph_props_ordered_n_list, graph_props_ordered_e_list, graph_prop_ordered_types = extractGraphPropertyData(graph)
+    # encode extracted data
+    graph_props_node_tuplelist = encodeNodeData(graph, graph_props_ordered_n_list, graph_prop_ordered_types)
+    graph_props_edge_tuplelist = encodeEdgeData(graph, graph_props_ordered_e_list, graph_prop_ordered_types)
+    # build SQLite database from extracted and encoded data
+    createSQLiteDB(graph, SBML_model_id, graph_props_node_tuplelist, graph_props_edge_tuplelist)
+
+
+    #####################################
+    # retrieve graphs from SQL database #
+    #####################################
+
+
+    # 4 tables in database:
+    # - graph_nodes: every row is a node, each column is a node property
+    # - graph_edges every row is an edge, each column is an edge property
+    # - node_connectivity: every row is a node, first column contains node ids and second column contains lists of
+    #                      connected edges
+    # - edge connectivity: every row is an edge, first column contains edge ids, second column contains source node ids
+    #                      and third column contains target node ids
+    db_graph_node_list = retrieveGraphElementData(SBML_model_id, 'graph_nodes')
+
+    # TODO: some layout coordinates in graph_edge table are lists of lists -> these need to be flattened before input
+    # db_graph_edge_list = retrieveGraphElementData(c, 'graph_edges')
+    # print(db_graph_edge_list)
+
+    # TODO: SQL --> back to Tulip (to see if everything is preserved)
+    # TODO: use retrieved information to rebuild the whole graph and save it as new tlp (see if layout stay constant)
+    # TODO: select just a pathway from the database, extract nodes and edges and generate the graph
+    # TODO: use biomass layout for testing purposes
+    # TODO: database to have tool independent way of getting network map info
+
+    # TODO: SQL --> d3py/networkx/someother gaph program
+    # TODO: extract only nodes with coords, and ids from graph_nodes table and connectivity between the nodes
+    # TODO: use networkx, and/or D3 (d3py in python) to rebuild a part of the graph only from SQL database output

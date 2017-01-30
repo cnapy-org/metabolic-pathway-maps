@@ -26,6 +26,7 @@ Contact email: n.a.f.huber@vu.nl
 import os
 import random
 from tulip import tlp
+from tulipgui import *
 import graph_properties
 import resize
 
@@ -165,7 +166,7 @@ def create_props(graph):
     c_id = graph.getStringProperty("c_id")
     id_ = graph.getStringProperty('id')
     name = graph.getStringProperty('name')
-    type = graph.getIntegerProperty('type')
+    t = graph.getIntegerProperty('type')
     rev = graph.getBooleanProperty("rev")
     stoich = graph.getDoubleProperty('stoich')
     transport = graph.getBooleanProperty("tr")
@@ -185,7 +186,7 @@ def create_props(graph):
     path = graph.getStringProperty("pathway")
     font_size = graph.getIntegerProperty("viewFontSize")
 
-    return anc_term, anc_id, anc_name, term, c_id, id_, name, type, rev, stoich, transport, ub, viewLabel, \
+    return anc_term, anc_id, anc_name, term, c_id, id_, name, t, rev, stoich, transport, ub, viewLabel, \
            viewLayout, viewShape, viewSize, viewColor, fake, clone_id, formula, rel_c_ids, edge_direct, flux, \
            selection, path, font_size
 
@@ -784,7 +785,7 @@ def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg
     new_graph_props["viewSelection"].setAllNodeValue(False)
     new_graph_props["viewSelection"].setAllEdgeValue(False)
 
-    return new_graph
+    return new_graph, new_graph_props
 
 
 def colourFBA(g, flux_dict, color_pos, color_neg, color_zero):
@@ -811,19 +812,13 @@ def colourFBA(g, flux_dict, color_pos, color_neg, color_zero):
     for r_id, f in flux_dict.items():
         if r_id in network_nodes.keys():
             flux[network_nodes[r_id]] = f
-    # color total graph (zero fluxes will remain grey)
-    # TODO: only pass reaction nodes and edges associated with reaction node
-    setColours(g, g.getNodes(), color_zero)
-    setColours(g, g.getEdges(), color_zero)
     # creates a regular color scale going from neg color to zero color to pos color
-    # TODO: control it with a parameters
-    # TODO: new FAME rainbow coloring: don't put zero color into colorScale -> only apply color to nodes with flux
-    # TODO: don't fade into zero grey! -> have a clear difference between zero flux and flux != 0
-    colorScale = [color_neg, color_zero, color_pos]
-    # colorScale = tlpgui.ColorScalesManager.getColorScale('rainbow')
+    #colorScale = [color_neg, color_zero, color_pos]
+    # new FAME rainbow coloring: only apply color to nodes with flux
+    # don't fade into zero grey! -> have a clear difference between zero flux and flux != 0
+    colorScale = tlpgui.ColorScalesManager.getColorScale('rainbow')
     # a dictionary can also be used (allow to define non regular scales)
     # get min and max flux values
-    # TODO: make scale values dependent in min and max
     # colorMap = {0: tlp.Color.Blue, 0.5: tlp.Color.Yellow, 1.0: tlp.Color.Red}
     # set the parameters for the 'Color Mapping' color algorithm
     colorMappingParams = tlp.getDefaultPluginParameters('Color Mapping', g)
@@ -837,11 +832,16 @@ def colourFBA(g, flux_dict, color_pos, color_neg, color_zero):
     colorMappingParams['maximum value'] = 1
     # compute the color mapping
     g.applyColorAlgorithm('Color Mapping', colorMappingParams)
+    # color all nodes with flux == 0 grey
+    setColours(g, [n for n in g.getNodes() if flux[n] == 0], color_zero)
+    # color all edges grey (color of edges connected to reactions with flux will be overwritten by node color)
+    setColours(g, g.getEdges(), color_zero)
     # apply reaction node color to in and out egdes if the reaction node has a flux value != 0
     for n in g.getNodes():
         if flux[n] != 0:
             for e in g.getInOutEdges(n):
                 viewColor[e] = viewColor[n]
+
 
 def exportGML(graph, model_id, output_graph_name, gml_path):
     """
