@@ -9,7 +9,7 @@ codebase
 The following are a very high priority::
 
  - rename the file to something without underscores: MetaViz.py
- - refactor code so there are only global data structures and functions, see CBTools.py for an example
+ - refactor code so there are jgonly global data structures and functions, see CBTools.py for an example
  - reorganise code into a module, keep in mind the working directory is not necessarily the one your script is in so there should be user defineable input and output paths (we can start looking into this at 14:00)
  
  graph layout
@@ -25,7 +25,14 @@ The following are a very high priority::
  - Node colours: colour boundary/fixed species, colour species nodes independent of flux (not grey!!)
  - give user control over font size
  - labels should be optionally reaction/species names instead of ids, perhaps names should be stored with nodes.
-  
+ 
+SQL
+===
+
+ - finish SQL to Tulip
+ - add SQL --> d3 or networkx or some other format to highlight the advantage of SQL based layout storage.
+
+
 Questions::
   
  - Can we add pathway labels to the whole graph?
