@@ -144,6 +144,8 @@ def createPathwayLists(cmod, path_name, del_ub_sps=True, small_threshold=30, ub_
                 small_threshold = len(n_r_conn.values()) * 0.2
                 small_sps = [sps_id for sps_id, num_re in n_r_conn.items() if num_re > small_threshold]
         # remove the small metabolites from the pathways
+        # TODO: do we need to delet the small sps if we don't autoAlias?
+        # TODO: also: record the small sps in a dict: key -> reac id, value -> list of small sps associated with that re
         for ubs in small_sps:
             if ubs in path_sps:
                 path_sps.remove(ubs)
@@ -256,7 +258,7 @@ def speciesToNodes(graph, input_model, ub_sps, graph_props):
     return id2n
 
 
-def reactionsToNodes(get_r_comp, graph, id2n, input_model):
+def reactionsToNodes(get_r_comp, graph, id2n, input_model, c_id2level, c_id2outs):
     get_sp_comp = lambda _id: input_model.getSpecies(_id).getCompartmentId()
 
     def link_reaction_to_species(reaction_node, sp_ref, all_comps, is_substrate=None, reversible=None):
@@ -307,7 +309,7 @@ def reactionsToNodes(get_r_comp, graph, id2n, input_model):
         # add graph property transport to reaction node (boolean value)
         graph[graph_properties.TRANSPORT][n] = len(all_comps) > 1
         # add compartment id to reaction node
-        graph[graph_properties.COMPARTMENT_ID][n] = get_r_comp(all_comps)
+        graph[graph_properties.COMPARTMENT_ID][n] = get_r_comp(all_comps, c_id2level, c_id2outs)
 
 
 # aliasNode() function description:
@@ -702,6 +704,9 @@ def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout):
                 print(n)
                 print(e_type)
                 print(conn_list)
+
+    # TODO: add cofactors: take small_sps dict from beginning and add them as node with one edge to reaction nodes
+    # TODO: give new cofactor node a different color (light yellow or something)
     # layout subgraph
     sg = layoutSubgraph(sg, sg_layout)
     # flag all the nodes of the glycolysis subgraph as "already used" and add pathway info ( = subgraph name) to their
@@ -788,15 +793,16 @@ def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg
     return new_graph, new_graph_props
 
 
-def colourFBA(g, flux_dict, color_pos, color_neg, color_zero):
+def colourFBA(g, flux_dict, color_zero, color_pos=None, color_neg=None, discrete=False):
     """
     Colour reaction nodes and adjacent edges dependent on flux value::
 
     - *g* a tulip/mimoza graph
     - *flux_dict* a dictionary with reaction id keys and flux values
-    - *color_pos* a color value (RGB) for maximum flux
-    - *color_neg* a color value (RGB) for minimum flux
     - *color_zero* a color value (RGB) for zero flux
+    - *color_pos* [default=None] a color value (RGB) for maximum flux
+    - *color_neg* [default=None] a color value (RGB) for minimum flux
+    - *discrete* [default=False] use a discrete, 10 color scale (e.g. for pathway layouting, etc)
 
     """
     # get necessary graph properties
@@ -812,28 +818,33 @@ def colourFBA(g, flux_dict, color_pos, color_neg, color_zero):
     for r_id, f in flux_dict.items():
         if r_id in network_nodes.keys():
             flux[network_nodes[r_id]] = f
-    # creates a regular color scale going from neg color to zero color to pos color
-    #colorScale = [color_neg, color_zero, color_pos]
-    # new FAME rainbow coloring: only apply color to nodes with flux
-    # don't fade into zero grey! -> have a clear difference between zero flux and flux != 0
-    colorScale = tlpgui.ColorScalesManager.getColorScale('rainbow')
-    # a dictionary can also be used (allow to define non regular scales)
-    # get min and max flux values
-    # colorMap = {0: tlp.Color.Blue, 0.5: tlp.Color.Yellow, 1.0: tlp.Color.Red}
+    # choose color scale
+    if color_pos and color_neg:
+        # creates a regular color scale going from neg color to zero color to pos color
+        colorScale = [color_neg, color_zero, color_pos]
+    elif discrete:
+        # e.g. for pathway coloring
+        colorScale = tlpgui.ColorScalesManager.getColorScale('Set1_9')
+    else:
+        # new FAME rainbow coloring: only apply color to nodes with flux
+        # don't fade into zero grey! -> have a clear difference between zero flux and flux != 0
+        colorScale = tlpgui.ColorScalesManager.getColorScale('rainbow')
     # set the parameters for the 'Color Mapping' color algorithm
     colorMappingParams = tlp.getDefaultPluginParameters('Color Mapping', g)
     colorMappingParams['input property'] = flux
     colorMappingParams['color scale'] = colorScale
     # overwrite min and max values to make color scale symmetric -> color zero needs to be applied to zero and not a
     # non zero middle value between real min and max -> mid value between -1 and 1 is 0
-    colorMappingParams['override minimum value'] = True
-    colorMappingParams['minimum value'] = -1
-    colorMappingParams['override maximum value'] = True
-    colorMappingParams['maximum value'] = 1
+    if discrete is False: # only call when using flux values and rainbow color scale
+        colorMappingParams['override minimum value'] = True
+        colorMappingParams['minimum value'] = -1
+        colorMappingParams['override maximum value'] = True
+        colorMappingParams['maximum value'] = 1
     # compute the color mapping
     g.applyColorAlgorithm('Color Mapping', colorMappingParams)
     # color all nodes with flux == 0 grey
-    setColours(g, [n for n in g.getNodes() if flux[n] == 0], color_zero)
+    zero_flux_nodes = [n for n in g.getNodes() if flux[n] == 0]
+    setColours(g, zero_flux_nodes, color_zero)
     # color all edges grey (color of edges connected to reactions with flux will be overwritten by node color)
     setColours(g, g.getEdges(), color_zero)
     # apply reaction node color to in and out egdes if the reaction node has a flux value != 0

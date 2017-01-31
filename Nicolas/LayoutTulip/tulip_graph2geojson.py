@@ -319,8 +319,6 @@ def meta_graph2features(c_id2info, c_id2outs, meta_graph, r2rs_ps, n2xy=None, id
                  id2mask=id2mask)
         open_meta_ns(meta_graph, metas)
 
-    #pdb.set_trace()
-
     return c_id2level2features, (n2layout, e2layout), meta_graph
 
 
