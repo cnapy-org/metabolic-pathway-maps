@@ -11,6 +11,7 @@
 
 
 import os
+import pdb
 # get current directory
 cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
 # tulip imports
@@ -23,6 +24,8 @@ import libsbml
 import cbmpy
 # SQL database API
 import sqlite3
+# type conversion for db storage
+import pickle
 # necessary Mimoza modules for graph visualization
 # TODO: put all the Mimoza in a mimoza_functions folder with __ini__.py
 import sbml2tlp
@@ -104,7 +107,7 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     # graph_registry.update({"initial graph": [graph, graph_props]})
     # save raw Mimoza graph output as backup
     tlp.saveGraph(graph, "{}_initial.tlp".format(cmod.getId()))
-    print("Initial Tulip graph saved as: {}_initial.tlp.".format(cmod.getId()))
+    print("Initial Tulip graph saved as: {}_initial.tlp. \n".format(cmod.getId()))
     ###############################################################
     # map sbml element ids to initial graph nodes in a dictionary #
     ###############################################################
@@ -204,12 +207,12 @@ def colorGraphs(global_ops, fba_results, path_dict, graph_registry):
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]
             mvl.colourFBA(graph_obj, fba_results,COLORS["light grey"])
-        print("Applied flux coloring to all graphs.")
+        print("Applied flux coloring to all graphs. \n")
     if global_ops["COLOR_FBA_COLORBLIND"]:
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]
             mvl.colourFBA(graph_obj, fba_results, tlp.Color.Cyan, tlp.Color.Magenta, COLORS["light grey"])
-        print("Applied colorblind flux coloring to all graphs.")
+        print("Applied colorblind flux coloring to all graphs. \n")
     if global_ops["COLOR_PATHWAYS"]:
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]
@@ -222,7 +225,7 @@ def colorGraphs(global_ops, fba_results, path_dict, graph_registry):
                     path_coloring_dict[re_id] = i
                 i += 1
             mvl.colourFBA(graph_obj, path_coloring_dict, COLORS["light grey"], discrete=True) # have specific colors!
-        print("Applied pathway coloring to all graphs.")
+        print("Applied pathway coloring to all graphs. \n")
     # TODO: have whole map, all pathways that belong to groups are colored (differently), rest grey
     # TODO: return dict: key -> pathway name, value -> assigned color of the patwhay
     # after ALL the other coloring:
@@ -231,11 +234,11 @@ def colorGraphs(global_ops, fba_results, path_dict, graph_registry):
         g_obj = g_data[0]
         g_props = g_data[1]
         colorMetaboliteReactionNodes(g_obj, g_props, tlp.Color(103, 169, 207), tlp.Color(252, 146, 114))
-    print("Applied reaction and metabolite node specific coloring to all graphs.")
+    print("Applied reaction and metabolite node specific coloring to all graphs. \n")
     # TODO: visualize existence of reactions of a smaller model on a big map (e coli vs mutated e coli eg.)
     # save initial graph with all changes ('messy' layout)
     tlp.saveGraph(graph_registry['initial graph'][0], "{}_graph.tlp".format(cmod.getId()))
-    print("Initial graph after coloring saved as: {}_graph.tlp".format(cmod.getId()))
+    print("Initial graph after coloring saved as: {}_graph.tlp \n".format(cmod.getId()))
 
 ########################################################################################################################
 
@@ -394,7 +397,7 @@ def automPathDict(cmod, global_ops, small_threshold=30):
             path_sps, path_re = mvl.createPathwayLists(cmod, group.name, small_threshold)
             path_dict.update({group.name: {"metabolites": path_sps, "reactions": path_re}})
 
-        print("Pathway dictionary generated.")
+        print("Pathway dictionary generated. \n")
 
         return path_dict
 
@@ -598,7 +601,7 @@ def layoutAllPathwaysFromGroups(path_dict, graph, graph_elements, graph_props):
         # TODO. after having tested identity
         # TODO: -> do an intersection with the two sets (to catch duplications, etc.)
         if len(generated_nodes) != len(input_ids):
-            print("{} subgraph incomplete!".format(path_name))
+            print("{} subgraph incomplete! \n".format(path_name))
 
 # TODO: control what is output! (have control variables in global_ops, ...)
 def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathways):
@@ -719,15 +722,16 @@ def exportGraph(graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, 
             if graph_name == "output_whole":
                 # save graph with whole network layout
                 tlp.saveGraph(graph_object, "{0}_output_whole.tlp".format(cmod.getId()))
-                print("Whole network visualization saved as: {0}_output_whole.tlp".format(cmod.getId()))
+                print("Whole network visualization saved as: {0}_output_whole.tlp \n".format(cmod.getId()))
             if graph_name == "output_selected":
                 # save graph with selected pathway layouts
                 tlp.saveGraph(graph_object, "{0}_output_selected.tlp".format(cmod.getId()))
-                print("Visualization of selected pathways saved as: {0}_output_selected.tlp".format(cmod.getId()))
+                print("Visualization of selected pathways saved as: {0}_output_selected.tlp \n".format(cmod.getId()))
             if graph_name == "transport_radial_obj_re":
                 # save graph with radial transport reactions and obj reaction in the middle
                 tlp.saveGraph(graph_object, "{0}_output_radial_trans_obj_re.tlp".format(cmod.getId()))
-                print("Visualization of selected pathways saved as: {0}_output_radial_trans_obj_re.tlp".format(cmod.getId()))
+                print("Visualization of selected pathways saved as: {0}_output_radial_trans_obj_re.tlp \n".format(
+                    cmod.getId()))
     # export every graph in graph registry
     if global_ops["EXPORT_GML"]:
         for graph_data in graph_registry.values():
@@ -788,11 +792,15 @@ def extractGraphPropertyData(graph):
     for prop in graph.getObjectProperties():
         # add types of props to a list
         graph_prop_ordered_types.append(prop.getTypename())
-        # add property values of nodes to list
+        # add property data of nodes to list
         prop_node_sublist = []
         for n in graph.getNodes():
+            # convert True/False to 1/0
             if prop.getTypename() == "bool":
-                prop_node_sublist.append(prop[n] * 1) # convert True/False to 1/0
+                prop_node_sublist.append(prop[n] * 1)
+            # convert all instances of _tulip.Vec3f, _tulip.Size and _tulip.Color objects to tuples
+            elif prop.getTypename() == "layout" or prop.getTypename() == "color" or prop.getTypename() == "size":
+                prop_node_sublist.append(tuple(prop[n]))
             else:
                 prop_node_sublist.append(prop[n])
         # add graph node prop info to ordered list
@@ -801,11 +809,14 @@ def extractGraphPropertyData(graph):
         graph_props_node_dict[prop.getName()] = {}
         graph_props_node_dict[prop.getName()]["type"] = prop.getTypename()
         graph_props_node_dict[prop.getName()]["data"] = prop_node_sublist
-        # add property values of edges to list
+        # add property data of edges to list
         prop_edge_sublist = []
         for e in graph.getEdges():
             if prop.getTypename() == "bool":
                 prop_edge_sublist.append(prop[e] * 1) # convert True/False to 1/0
+            # convert all instances of _tulip.Vec3f, _tulip.Size and _tulip.Color objects to tuples
+            elif prop.getTypename() == "layout" or prop.getTypename() == "color" or prop.getTypename() == "size":
+                prop_node_sublist.append(tuple(prop[e]))
             else:
                 prop_edge_sublist.append(prop[e])
         # add graph edge prop info to ordered list
@@ -817,24 +828,39 @@ def extractGraphPropertyData(graph):
 
     return graph_props_ordered_n_list, graph_props_ordered_e_list, graph_prop_ordered_types
 
-def encodeNodeData(graph, graph_props_ordered_n_list, graph_prop_ordered_types):
+def encodeGraphPropertyData(graph, graph_props_ordered_data, graph_prop_ordered_types, nodes=None, edges=None):
     """
-    Encode node data of all graph properties to SQLite compatible data types (INTEGER, REAL or TEXT)::
+    Encode node/edge data of all graph properties to SQLite compatible data types (INTEGER, REAL or TEXT). Specify
+    type of graph elements with 'nodes'/'edges' keywords since lists of nodes and egdes can have different sizes::
 
     - *graph* a Tulip graph
-    - *graph_props_ordered_n_list* a list of node data associated with all graph props
+    - *graph_props_ordered_data* a list of node/edge data associated with all graph props
     - *graph_prop_ordered_types* a list of graph property types
+    - *nodes* [default=None] include parameter to encode node properties
+    - *edges* [default=None] include parameter to encode edge properties
 
     """
     # encode graph property data to SQLite compatible types
     # go through the list of graph property lists:
     # since a sublist contains only one graph property for all nodes/edges -> the first element of the sublist is
     # exemplary for the whole list
-    graph_props_node_tuplelist = list() # after encoding is finished: save encoded prop lists in tuples to prepare for
+    graph_props_tuplelist = list() # after encoding is finished: save encoded prop lists in tuples to prepare for
     # INSERT
     # add node ids to beginning of tuple list to serve as primary key in table
-    graph_props_node_tuplelist.append([i for i in range(len(list(graph.getNodes())))])
-    for prop_type, prop_data_list in zip(graph_prop_ordered_types, graph_props_ordered_n_list):
+    if nodes:
+        graph_props_tuplelist.append([i for i in range(len(list(graph.getNodes())))])
+    elif edges:
+        graph_props_tuplelist.append([i for i in range(len(list(graph.getEdges())))])
+    else:
+        print("No graph element type specified! \n")
+    #  data types that require encoding
+    # every item of properties with these types is a list-like thing itself!
+    # 'size' contains elements of type: _tulip.Size
+    # 'color' contains elements of type: _tulip.Color
+    # 'layout' and 'vector<string>' contain elements of type: _tulip.Vec3f
+    tulip_prop_types = ('size', 'color', 'layout', 'vector<string>')
+    # replace items of sublists that need to be encoded
+    for prop_type, prop_data_list in zip(graph_prop_ordered_types, graph_props_ordered_data):
         # allowed data types, no encoding needed
         if prop_type == 'string':
             pass
@@ -844,87 +870,100 @@ def encodeNodeData(graph, graph_props_ordered_n_list, graph_prop_ordered_types):
             pass
         if prop_type == 'bool': # was converted to INTEGER
             pass
-        # data types that require encoding
-        # every item of properties with these types is a list itself!
-        enc_types = ['size', 'color', 'layout', 'vector<string>']
+        # layout contains: tuples of _tulip.Vec3f objects!
+        # ex: ([50.0,60.0],)
+        if prop_type == 'layout':
+            for i, item in enumerate(prop_data_list):
+                # convert _tulip.Vec3f object inside tuple to a list inside tuple
+                # ex: from ([50.0,60.0],) -> to [[50.0, 60.0]]
+                list_item = list()
+                for e in item:
+                    if isinstance(e, float):
+                        list_item.append(e)
+                    else:
+                        # if e is not a float is a fucking tulip vector thing -> use .get() to return tuple
+                        # since e now contains an entire tuple => its the entire list item
+                        # already, no need for appending -> just cast it as a list and save it as the whole list item
+                        list_item = list((e.get()))
+                # serialize list with pickle (returns string)
+                str_item = pickle.dumps(list_item)
+                prop_data_list[i] = str_item
         # convert data of a type that requires encoding to string
-        if prop_type in enc_types:
-            for list_item in list(prop_data_list):
-                # convert list item to string
-                str_item = ','.join(str(item) for item in list_item)
-                # remove old list_item
-                prop_data_list.remove(list_item)
-                # add new string item
-                prop_data_list.append(str_item)
+        if prop_type in tulip_prop_types and prop_type != 'layout':
+            for i, item in enumerate(prop_data_list):
+                try:
+                    prop_data_list[i] = pickle.dumps(item, protocol=0)
+                except Exception as ex:
+                    print(ex)
+                    print(prop_type, item, type(item))
         # exlucde props with type 'graph' from tuplelist (viewMetaGraph)
         included = True
         if prop_type == 'graph':
             included = False
         # final step: save included, encoded sublist as tuple
         if included is True:
-            graph_props_node_tuplelist.append(tuple(prop_data_list))
+            graph_props_tuplelist.append(tuple(prop_data_list))
 
-    return graph_props_node_tuplelist
+    return graph_props_tuplelist
 
-def encodeEdgeData(graph, graph_props_ordered_e_list, graph_prop_ordered_types):
+# def encodeEdgeData(graph, graph_props_ordered_e_list, graph_prop_ordered_types):
+#     """
+#     Encode edge data of all graph properties to SQLite compatible data types (INTEGER, REAL or TEXT)::
+#
+#     - *graph* a Tulip graph
+#     - *graph_props_ordered_e_list* a list of edge data associated with all graph props
+#     - *graph_prop_ordered_types* a list of graph property types
+#
+#     """
+#     graph_props_edge_tuplelist = list()
+#     # add edge ids to beginning of tuple list to serve as primary key in table
+#     graph_props_edge_tuplelist.append([i for i in range(len(list(graph.getEdges())))])
+#     for prop_type, prop_data_list in zip(graph_prop_ordered_types, graph_props_ordered_e_list):
+#         # allowed data types, no encoding needed
+#         if prop_type == 'string':
+#             pass
+#         if prop_type == 'int':
+#             pass
+#         if prop_type == 'double': # in python: float (in SQL -> REAL)
+#             pass
+#         if prop_type == 'bool': # was converted to INTEGER
+#             pass
+#         # data types that require encoding
+#         # every item of properties with these types is a list itself!
+#         enc_types = ['size', 'color', 'layout', 'vector<string>']
+#         # convert data of a type that requires encoding to string
+#         if prop_type in enc_types:
+#             for list_item in list(prop_data_list):
+#                 # edge specific sublist checking
+#                 # in case input list is a list of lists -> flatten!
+#                 if mvl.containsSublist(list_item):
+#                     # flatten list of sublists
+#                     list_item = sum(list_item, [])
+#                 # convert list item to string
+#                 str_item = ','.join(str(item) for item in list_item)
+#                 #print(str_item)
+#                 # remove old list_item
+#                 prop_data_list.remove(list_item)
+#                 # add new string item
+#                 prop_data_list.append(str_item)
+#             #print(prop_type,prop_data_list)
+#         # exlucde props with type 'graph' from tuplelist (viewMetaGraph)
+#         included = True
+#         if prop_type == 'graph':
+#             included = False
+#         # final step: save included, encoded sublist as tuple
+#         if included is True:
+#             graph_props_edge_tuplelist.append(tuple(prop_data_list))
+#
+#     return graph_props_edge_tuplelist
+
+def createSQLiteDB(graph, db_name, graph_props_node_tuplelist):
     """
-    Encode edge data of all graph properties to SQLite compatible data types (INTEGER, REAL or TEXT)::
-
-    - *graph* a Tulip graph
-    - *graph_props_ordered_e_list* a list of edge data associated with all graph props
-    - *graph_prop_ordered_types* a list of graph property types
-
-    """
-    graph_props_edge_tuplelist = list()
-    # add edge ids to beginning of tuple list to serve as primary key in table
-    graph_props_edge_tuplelist.append([i for i in range(len(list(graph.getEdges())))])
-    for prop_type, prop_data_list in zip(graph_prop_ordered_types, graph_props_ordered_e_list):
-        # allowed data types, no encoding needed
-        if prop_type == 'string':
-            pass
-        if prop_type == 'int':
-            pass
-        if prop_type == 'double': # in python: float (in SQL -> REAL)
-            pass
-        if prop_type == 'bool': # was converted to INTEGER
-            pass
-        # data types that require encoding
-        # every item of properties with these types is a list itself!
-        enc_types = ['size', 'color', 'layout', 'vector<string>']
-        # convert data of a type that requires encoding to string
-        if prop_type in enc_types:
-            for list_item in list(prop_data_list):
-                # edge specific sublist checking
-                # in case input list is a list of lists -> flatten!
-                if mvl.containsSublist(list_item):
-                    # flatten list of sublists
-                    list_item = sum(list_item, [])
-                # convert list item to string
-                str_item = ','.join(str(item) for item in list_item)
-                #print(str_item)
-                # remove old list_item
-                prop_data_list.remove(list_item)
-                # add new string item
-                prop_data_list.append(str_item)
-            #print(prop_type,prop_data_list)
-        # exlucde props with type 'graph' from tuplelist (viewMetaGraph)
-        included = True
-        if prop_type == 'graph':
-            included = False
-        # final step: save included, encoded sublist as tuple
-        if included is True:
-            graph_props_edge_tuplelist.append(tuple(prop_data_list))
-
-    return graph_props_edge_tuplelist
-
-def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_tuplelist):
-    """
-    Create an SQLite database storing the encoded graph props data of nodes and edges as well as their connectivity::
+    Create an SQLite database storing the encoded graph props data of nodes as well as their connectivity::
 
     - *graph* a Tulip graph
     - *db_name* the name of the database
     - *graph_props_node_tuplelist* a list of tuples containing all graph prop data of one node each
-    - *graph_props_edge_tuplelist* a list of tuples containing all graph prop data of one edge each
 
     """
     # create an SQL database with sqlite3
@@ -935,50 +974,6 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_
     # pass SQL statements into cursor
     # create empty graph node table (skips if table already exists)
     c.execute('''CREATE TABLE IF NOT EXISTS graph_nodes(node_id INTEGER PRIMARY KEY,
-    anc_id TEXT,
-    anc_name TEXT,
-    anc_term TEXT,
-    c_id TEXT,
-    clone_id TEXT,
-    edge_directionality TEXT,
-    f TEXT,
-    fake INTEGER,
-    flux REAL,
-    id TEXT,
-    name TEXT,
-    pathway TEXT,
-    rel_c_ids TEXT,
-    rev INTEGER,
-    stoich REAL,
-    term TEXT,
-    tr INTEGER,
-    type INTEGER,
-    ub INTEGER,
-    viewBorderColor TEXT,
-    viewBorderWidth REAL,
-    viewColor TEXT,
-    viewFont TEXT,
-    viewFontAwesomeIcon TEXT,
-    viewFontSize INTEGER,
-    viewLabel TEXT,
-    viewLabelBorderColor TEXT,
-    viewLabelBorderWidth REAL,
-    viewLabelColor TEXT,
-    viewLabelPosition INTEGER,
-    viewLayout TEXT,
-    viewMetric REAL,
-    viewRotation REAL,
-    viewSelection INTEGER,
-    viewShape INTEGER,
-    viewSize INTEGER,
-    viewSrcAnchorShape INTEGER,
-    viewSrcAnchorSize TEXT,
-    viewTexture TEXT,
-    viewTgtAnchorShape INTEGER,
-    viewTgtAnchorSize TEXT)
-    ''')
-    # create empty graph edge table (skips if table already exists)
-    c.execute('''CREATE TABLE IF NOT EXISTS graph_edges(edge_id INTEGER PRIMARY KEY,
     anc_id TEXT,
     anc_name TEXT,
     anc_term TEXT,
@@ -1036,17 +1031,18 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_
     graph_props_edge_insertlist = []
     for i in range(len(list(graph.getNodes()))):
         graph_props_node_insertlist.append([tup[i] for tup in graph_props_node_tuplelist])
-    for i in range(len(list(graph.getEdges()))):
-        graph_props_edge_insertlist.append([tup[i] for tup in graph_props_edge_tuplelist])
+    #for i in range(len(list(graph.getEdges()))):
+    #    graph_props_edge_insertlist.append([tup[i] for tup in graph_props_edge_tuplelist])
     # fill tables with encoded values
     # table graph_node
     for l in graph_props_node_insertlist:
         c.execute('''INSERT OR IGNORE INTO graph_nodes VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
         ?,?,?,?,?,?,?,?,?,?,?,?,?)''', l)
     # table graph_edges
-    for l in graph_props_edge_insertlist:
-        c.execute('''INSERT OR IGNORE INTO graph_edges VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
-        ?,?,?,?,?,?,?,?,?,?,?,?,?)''', l)
+    #for l in graph_props_edge_insertlist:
+    #    c.execute('''INSERT OR IGNORE INTO graph_edges VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
+        # ?,?,?,
+    #    ?,?,?,?,?,?,?,?,?,?,?,?,?)''', l)
     # table connectivity
     # create dict with key = str(node) and value = integer id of the node
     node_str_int_dict = {}
@@ -1058,7 +1054,7 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_
     for node, i in zip(graph.getNodes(), range(len(list(graph.getNodes())))):
         row = [i, str(list(graph.getInOutEdges(node)))]
         c.execute('''INSERT OR IGNORE INTO node_connectivity VALUES (?,?)''', row)
-    print("Graph data has been stored in SQL database.")
+    print("Graph data has been stored in SQL database. \n")
     # commit changes to database
     db.commit()
     # close connection to database
@@ -1168,15 +1164,15 @@ if __name__ == '__main__':
     # ----------------
     # 1. create Tulip graph and generate graph objects
     graph, graph_props = createInitialGraph("initialGraph")
-    print("Initial (empty) Tulip graph created.")
+    print("Initial (empty) Tulip graph created. \n")
     # 2. take sbml model file and initial graph and run all layouting function calls to return necessary data structures
     cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry = \
                                                                                     layoutModel(global_ops, sbml,
                                                                                                 graph, graph_props)
-    print("Layout generated. Subgraph(s) added to initial graph. Output graph(s) created from subgraph(s).")
+    print("Layout generated. Subgraph(s) added to initial graph. Output graph(s) created from subgraph(s). \n")
     # 3. apply coloring algorithms to graphs
     colorGraphs(global_ops, fba_results, path_dict, graph_registry)
-    print("Graph(s) colored.")
+    print("Graph(s) colored. \n")
     # 4. export graph SVG, GML, JSON, SBML+layout Plugin and/or SBGN file (controlled by global_ops)
     exportGraph(graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
 
@@ -1189,11 +1185,11 @@ if __name__ == '__main__':
     graph_props_ordered_n_list, graph_props_ordered_e_list, graph_prop_ordered_types = extractGraphPropertyData(
         selected_graph)
     # encode extracted data
-    # TODO: import pickle -> string_obj = pickle.dumps(list_obj, protocol=0) to convert a list to a string
-    graph_props_node_tuplelist = encodeNodeData(selected_graph, graph_props_ordered_n_list, graph_prop_ordered_types)
-    graph_props_edge_tuplelist = encodeEdgeData(selected_graph, graph_props_ordered_e_list, graph_prop_ordered_types)
+    graph_props_node_tuplelist = encodeGraphPropertyData(selected_graph, graph_props_ordered_n_list,
+                                                         graph_prop_ordered_types, nodes=True)
     # build SQLite database from extracted and encoded data
-    createSQLiteDB(selected_graph, cmod.getId(), graph_props_node_tuplelist, graph_props_edge_tuplelist)
+    createSQLiteDB(selected_graph, cmod.getId(), graph_props_node_tuplelist)
+
 
     #####################################
     # retrieve graphs from SQL database #
@@ -1207,6 +1203,19 @@ if __name__ == '__main__':
     #                      and third column contains target node ids
     # TODO: retrieve lists: for all the pickle strings: list_obj = pickle.loads(string_obj)
     db_graph_node_list = retrieveGraphElementData(cmod.getId(), 'graph_nodes')
+
+    # unpickle the content of a list returned from the db
+    # returned lists contain row lists -> ordered list of all properties for one node
+    for row_list in db_graph_node_list:
+        for i,prop_value in enumerate(row_list):
+            try:
+                list_obj = pickle.loads(prop_value)
+                row_list[i] = list_obj
+            except:
+                pass
+
+    print(db_graph_node_list)
+
     # TODO: some layout coordinates in graph_edge table are lists of lists -> these need to be flattened before input
     # db_graph_edge_list = retrieveGraphElementData(c, 'graph_edges')
     # print(db_graph_edge_list)
