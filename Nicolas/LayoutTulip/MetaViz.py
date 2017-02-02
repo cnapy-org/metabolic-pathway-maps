@@ -39,7 +39,7 @@ import MVLayout as mvl
 
 ########################################################################################################################
 # wrapping functions to execute entire blocks of logically connected function calls
-# Part 1: Layout -> Part 3: Exporting -> Part 4: Database
+# Part 1: Layout
 def layoutModel(global_ops, sbml, graph, graph_props):
     """
     MetaViz Part 1: Layout
@@ -239,9 +239,99 @@ def colorGraphs(global_ops, fba_results, path_dict, graph_registry):
     # save initial graph with all changes ('messy' layout)
     tlp.saveGraph(graph_registry['initial graph'][0], "{}_graph.tlp".format(cmod.getId()))
     print("Initial graph after coloring saved as: {}_graph.tlp \n".format(cmod.getId()))
+# Part 3: Exporting
+def exportGraph(graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, e2lo, ub_sps):
+    """
+    Save graphs as .tlp, .sbml and/or .sbgn files and use Tulip export plugins to export graphs as .gml,
+    .svg and/or .json files::
 
+    - *graph_registry* a dict of all generated Tulip graph objects
+    - *global_ops* a dict of the current boolean status of all control variables (turn different export plugins on/off)
+    - *cDir* current working directory
+    - *file_name* the name of all output files (different file types specified by adding graph names to file names
+    and the file extensions)
+
+    """
+    # create output folder
+    output_path = os.path.join(cDir, '{}_Output'.format(file_name))
+    try:
+        os.makedirs(output_path)
+    except OSError:
+        if not os.path.isdir(output_path):
+            raise
+    # save graphs as .tlp files
+    if global_ops['EXPORT_TLP'] and global_ops["AUTO_ALIAS"] is False:
+        for graph_name, graph_data in graph_registry.items():
+            graph_object = graph_data[0]
+            if graph_name == "output_whole":
+                # save graph with whole network layout
+                tlp.saveGraph(graph_object, "{0}_output_whole.tlp".format(cmod.getId()))
+                print("Whole network visualization saved as: {0}_output_whole.tlp \n".format(cmod.getId()))
+            if graph_name == "output_selected":
+                # save graph with selected pathway layouts
+                tlp.saveGraph(graph_object, "{0}_output_selected.tlp".format(cmod.getId()))
+                print("Visualization of selected pathways saved as: {0}_output_selected.tlp \n".format(cmod.getId()))
+            if graph_name == "transport_radial_obj_re":
+                # save graph with radial transport reactions and obj reaction in the middle
+                tlp.saveGraph(graph_object, "{0}_output_radial_trans_obj_re.tlp".format(cmod.getId()))
+                print("Visualization of selected pathways saved as: {0}_output_radial_trans_obj_re.tlp \n".format(
+                    cmod.getId()))
+    # export every graph in graph registry
+    if global_ops["EXPORT_GML"]:
+        for graph_data in graph_registry.values():
+            graph = graph_data[0]
+            gml_path = os.path.join(output_path, "{0}_{1}.gml".format(file_name, graph.getName()))
+            # replace forward dashes in graph name to not cause problems with path
+            gml_path = gml_path.replace('/', '-')
+            mvl.exportGML(graph, file_name, "gml_output_graph.tlp", gml_path)
+            print("Graph exported as: {0}_{1}.gml".format(file_name, graph.getName()))
+    if global_ops["EXPORT_SVG"]:
+        for graph_data in graph_registry.values():
+            graph = graph_data[0]
+            # get default parameters of SVG export plugin
+            params = tlp.getDefaultPluginParameters('SVG Export', graph)
+            # define output path
+            svg_path = os.path.join(output_path, "{0}_{1}.svg".format(file_name, graph.getName()))
+            # replace forward dashes in graph name to not cause problems with path
+            svg_path = svg_path.replace('/', '-')
+            tlp.exportGraph('SVG Export', graph, svg_path, params)
+            print("Graph exported as: {0}_{1}.svg".format(file_name, graph.getName()))
+    if global_ops["EXPORT_JSON"]:
+        for graph_data in graph_registry.values():
+            graph = graph_data[0]
+            # get default parameters of JSON export plugin
+            params = tlp.getDefaultPluginParameters('JSON Export', graph)
+            # define output path
+            json_path = os.path.join(output_path, "{0}_{1}.json".format(file_name, graph.getName()))
+            # replace forward dashes in graph name to not cause problems with path
+            json_path = json_path.replace('/', '-')
+            tlp.exportGraph('JSON Export', graph, json_path, params)
+            print("Graph exported as: {0}_{1}.json".format(file_name, graph.getName()))
+    # generate SBGN and SBML+Layout Files (Mimoza functions)
+    # save graph layout in layout plugin of an SBML file
+    if global_ops['EXPORT_SBML']:
+        saveLayoutSBML(groups_sbml, ub_sps, n2lo)
+    # save graph layout as SBGN file
+    if global_ops['EXPORT_SBGN']:
+        saveLayoutSBGN(groups_sbml, cmod.getId(), cDir, n2lo, e2lo)
+# Part 4: Database
+def buildSQLiteDatabase(selected_graph, ):
+    """
+    Create an SQLite database to store a graph object (properties of nodes, node connectivity and edge
+    connectivity)::
+
+    - *selected_graph* a Tulip graph object
+
+    """
+    # extract data from selected graph
+    graph_props_ordered_n_list, graph_props_ordered_e_list, graph_prop_ordered_types = extractGraphPropertyData(
+        selected_graph)
+    # encode extracted data
+    graph_props_node_tuplelist = encodeGraphPropertyData(selected_graph, graph_props_ordered_n_list,
+                                                         graph_prop_ordered_types, nodes=True)
+    # build SQLite database from extracted and encoded data (to SQLite compatible types)
+    createSQLiteDB(selected_graph, cmod.getId(), graph_props_node_tuplelist)
 ########################################################################################################################
-
 
 
 # individual higher level functions that are called in wrapping functions
@@ -696,81 +786,6 @@ def saveLayoutSBGN(groups_sbml, file_name, cDir, n2lo, e2lo):
     groups_model = groups_document.getModel()
     sbgn_helper.save_as_sbgn(n2lo, e2lo, groups_model, groups_sbgn)
 
-def exportGraph(graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, e2lo, ub_sps):
-    """
-    Save graphs as .tlp, .sbml and/or .sbgn files and use Tulip export plugins to export graphs as .gml,
-    .svg and/or .json files::
-
-    - *graph_registry* a dict of all generated Tulip graph objects
-    - *global_ops* a dict of the current boolean status of all control variables (turn different export plugins on/off)
-    - *cDir* current working directory
-    - *file_name* the name of all output files (different file types specified by adding graph names to file names
-    and the file extensions)
-
-    """
-    # create output folder
-    output_path = os.path.join(cDir, '{}_Output'.format(file_name))
-    try:
-        os.makedirs(output_path)
-    except OSError:
-        if not os.path.isdir(output_path):
-            raise
-    # save graphs as .tlp files
-    if global_ops['EXPORT_TLP'] and global_ops["AUTO_ALIAS"] is False:
-        for graph_name, graph_data in graph_registry.items():
-            graph_object = graph_data[0]
-            if graph_name == "output_whole":
-                # save graph with whole network layout
-                tlp.saveGraph(graph_object, "{0}_output_whole.tlp".format(cmod.getId()))
-                print("Whole network visualization saved as: {0}_output_whole.tlp \n".format(cmod.getId()))
-            if graph_name == "output_selected":
-                # save graph with selected pathway layouts
-                tlp.saveGraph(graph_object, "{0}_output_selected.tlp".format(cmod.getId()))
-                print("Visualization of selected pathways saved as: {0}_output_selected.tlp \n".format(cmod.getId()))
-            if graph_name == "transport_radial_obj_re":
-                # save graph with radial transport reactions and obj reaction in the middle
-                tlp.saveGraph(graph_object, "{0}_output_radial_trans_obj_re.tlp".format(cmod.getId()))
-                print("Visualization of selected pathways saved as: {0}_output_radial_trans_obj_re.tlp \n".format(
-                    cmod.getId()))
-    # export every graph in graph registry
-    if global_ops["EXPORT_GML"]:
-        for graph_data in graph_registry.values():
-            graph = graph_data[0]
-            gml_path = os.path.join(output_path, "{0}_{1}.gml".format(file_name, graph.getName()))
-            # replace forward dashes in graph name to not cause problems with path
-            gml_path = gml_path.replace('/', '-')
-            mvl.exportGML(graph, file_name, "gml_output_graph.tlp", gml_path)
-            print("Graph exported as: {0}_{1}.gml".format(file_name, graph.getName()))
-    if global_ops["EXPORT_SVG"]:
-        for graph_data in graph_registry.values():
-            graph = graph_data[0]
-            # get default parameters of SVG export plugin
-            params = tlp.getDefaultPluginParameters('SVG Export', graph)
-            # define output path
-            svg_path = os.path.join(output_path, "{0}_{1}.svg".format(file_name, graph.getName()))
-            # replace forward dashes in graph name to not cause problems with path
-            svg_path = svg_path.replace('/', '-')
-            tlp.exportGraph('SVG Export', graph, svg_path, params)
-            print("Graph exported as: {0}_{1}.svg".format(file_name, graph.getName()))
-    if global_ops["EXPORT_JSON"]:
-        for graph_data in graph_registry.values():
-            graph = graph_data[0]
-            # get default parameters of JSON export plugin
-            params = tlp.getDefaultPluginParameters('JSON Export', graph)
-            # define output path
-            json_path = os.path.join(output_path, "{0}_{1}.json".format(file_name, graph.getName()))
-            # replace forward dashes in graph name to not cause problems with path
-            json_path = json_path.replace('/', '-')
-            tlp.exportGraph('JSON Export', graph, json_path, params)
-            print("Graph exported as: {0}_{1}.json".format(file_name, graph.getName()))
-    # generate SBGN and SBML+Layout Files (Mimoza functions)
-    # save graph layout in layout plugin of an SBML file
-    if global_ops['EXPORT_SBML']:
-        saveLayoutSBML(groups_sbml, ub_sps, n2lo)
-    # save graph layout as SBGN file
-    if global_ops['EXPORT_SBGN']:
-        saveLayoutSBGN(groups_sbml, cmod.getId(), cDir, n2lo, e2lo)
-
 def extractGraphPropertyData(graph):
     """
     Extract all node and edge data associated with all properties of a Tulip graph and save it in lists::
@@ -1107,12 +1122,103 @@ def retrieveGraphElementData(db_name, table_name):
 
     return graph_rows_list
 
+def retrieveDataFromDatabaseTable(db_name, table_name):
+    """
+    Retrieve and decode data from a Tulip graph stored in an SQLite database. Each row of an SQLite db table is saved in a        list and all row lists are appended and returned as items of a nested list::
+
+    - *db_name* name of the database (string)
+    - *table_name* name of a table inside the db (string)
+
+    """
+    # retrieve encoded data
+    db_graph_data_list = retrieveGraphElementData(db_name, table_name)
+    # decode data:
+    # unpickle the content of a list returned from the db
+    # returned lists contain row lists -> ordered list of all properties for one node
+    for row_list in db_graph_data_list:
+        for i, prop_value in enumerate(row_list):
+            try:
+                list_obj = pickle.loads(prop_value)
+                row_list[i] = list_obj
+            except:
+                pass
+
+    return db_graph_data_list
+
+def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edgeconn_list, graph_name):
+    """
+    Generate a new Tulip graph based on data retrieved from an SQLite database. Save and return generated graph::
+
+    - *db_graph_node_list* a list of row sublists containing all node property data
+    - *db_graph_edgeconn_list* a list of row sublists containing all edges and their source and target node ids
+    - *graph_name* a name for the new Tulip graph (string)
+
+    """
+    # create new graph to reconstruct network from data retrieved from db
+    db_graph = tlp.newGraph()
+    db_graph_props = mvl.create_props(db_graph)
+    db_graph.setName(graph_name)
+    # add new, empty nodes to graph
+    db_graph.addNodes(len(db_graph_node_list))
+    # convert data in db_graph_node_list back to tulip types
+    for row_sublist in db_graph_node_list:
+        # remove ids (first entry) from sublists of db_graph_node list to have equal amount of props again
+        row_sublist.pop(0)
+        # go through each sublist of db retreived list and change 4tuples to tulip.Color, 3tuples to tulip.Size,
+        # 3lists to tulip.Layout types and 1list to tulip.VectorString
+        for i, prop_item in enumerate(row_sublist):
+            if isinstance(prop_item, tuple) and len(prop_item) == 4:
+                # it needs to be converted to tulip.Color
+                row_sublist[i] = tlp.Color(prop_item[0], prop_item[1], prop_item[2], prop_item[3])
+            elif isinstance(prop_item, tuple) and len(prop_item) == 3:
+                # it needs to be converted to tulip.Size
+                row_sublist[i] = tlp.Size(prop_item[0], prop_item[1], prop_item[2])
+            elif isinstance(prop_item, list) and len(prop_item) == 3:
+                # it needs to be converted to tulip.Layout
+                row_sublist[i] = tlp.Vec3f(prop_item[0], prop_item[1], prop_item[2])
+            elif isinstance(prop_item, list) and len(prop_item) == 1:
+                # it needs to be converted to tulip.VectorString
+                # sublist[i] = tlp.Vec3f(item[0])
+                pass
+    # overwrite the empty/default prop values of new nodes with the prop values retrieved from db
+    for n, n_db_prop_sublist in zip(db_graph.getNodes(), db_graph_node_list):
+        for empty_prop, n_db_prop in zip(db_graph_props, n_db_prop_sublist):
+            empty_prop[n] = n_db_prop
+    # prepare edge connectivity data to add edges:
+    for i, sublist in enumerate(db_graph_edgeconn_list):
+        # convert node id strings to [source id, target id] lists from extracted edge connectivity list:
+        # [[edge_id, "source node id string", "target node id string"], ..] -> [[edge 1, [int(src id), int(tgt id)]], ..]
+        db_graph_edgeconn_list[i] = [sublist[0], [int(sublist[1]), int(sublist[2])]]
+    # create dict with keys = node ids and values = node objects
+    node_id_to_obj_dict = dict()
+    for n_id, n in enumerate(list(db_graph.getNodes())):
+        node_id_to_obj_dict[n_id] = n
+    # go through edge connectivity list and replace node ids in tuples with node objects
+    for i, sublist in enumerate(db_graph_edgeconn_list):
+        for item in sublist:
+            if isinstance(item, list):
+                # get node objects that correspond to the node id
+                node_objs = [node_id_to_obj_dict[e] for e in item]
+                # convert source, target lists to tuples for addEdges function
+                node_objs_tup = tuple(node_objs)
+                db_graph_edgeconn_list[i] = node_objs_tup
+                # delete first item (edge id) - which is an int
+                # if isinstance(item, int):
+                #    sublist.remove(item)
+    # add edges to db_graph - function tlp.addEdges takes scr and tgt node tuples as parameter
+    db_graph.addEdges(db_graph_edgeconn_list)
+    # save reconstructed db graph
+    tlp.saveGraph(db_graph, 'reconstructed_graph_from_db.tlp')
+
+    return db_graph
+
 
 # execute if in a console (don't execute if the script is imported as a module)
 if __name__ == '__main__':
 
-    # user input
-    # ----------
+
+    # 0.) User Input
+    # --------------
     # 1. global control variables
     # TODO: write script that handles this
     # TODO: expand global_ops
@@ -1128,6 +1234,7 @@ if __name__ == '__main__':
 
                   "TRANSPORT_RADIAL": True,  # apply Tree Radial algorithm to transport reactions in output_whole
                   "SELECTED_PATHWAYS": ["objective reaction", "Transport"],  # pathways to be saved in output_selected
+                  #"SELECTED_PATHWAYS": False,
 
                   "EXPORT_TLP": True,  # save generated graphs as .tlp files
                   "EXPORT_GML": True,  # export generated graphs as .gml files
@@ -1136,9 +1243,9 @@ if __name__ == '__main__':
                   "EXPORT_SBML": True,  # export generated graphs as .sbml files (in layout plugin)
                   "EXPORT_SBGN": True,  # export generated graphs as .sbgn files
 
-                  "COLOR_FBA": False,  # color the reaction nodes and in and outgoing edges
+                  "COLOR_FBA": True,  # color the reaction nodes and in and outgoing edges
                   "COLOR_FBA_COLORBLIND": False,  # based on flux values obtained from FBA
-                  "COLOR_PATHWAYS": True  # pathways specific coloring
+                  "COLOR_PATHWAYS": False  # pathways specific coloring
                   }
 
     # 2. read and initialize SBML file with libsbml and cbmpy, do FBA
@@ -1159,9 +1266,41 @@ if __name__ == '__main__':
     # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6.xml")
     # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_bigggroups.xml")
     # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_compgroups.xml")
+    ## Stijns models
+    #sbml = os.path.join(cDir, "TestModels", "stijn", "Y7.xml") #M.getNumReactions: 3498, M.getNumSpecies: 2220
+    # Error message when trying to run Metaviz with Y7xml:
+    """
+    Traceback (most recent call last):
 
-    # MetaViz Pipeline
-    # ----------------
+    File "C:/Users/Nicolas/surfdrive/LabR1_Teusink_Amsterdam/Project/FindStructuredLayout/MetaViz.py", line 1174, in <module>
+    graph, graph_props)
+    File "C:/Users/Nicolas/surfdrive/LabR1_Teusink_Amsterdam/Project/FindStructuredLayout/MetaViz.py", line 100, in layoutModel
+    root)
+    File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\tulip_graph2geojson.py", line 352,      in graph2geojson
+    process_compartments(c_id2info, meta_graph, n2xy)
+    File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\tulip_graph2geojson.py", line 457,      in process_compartments
+    layout(meta_graph)
+    File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\ubiquitous_layout.py", line 382, in     layout
+    layout_components(gr)
+    File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\layout_utils.py", line 115, in          layout_components
+    iter((followers_rev_or_gen, followers_rev, followers_irrev, followers_irrev_gen_only)))
+    File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\layout_utils.py", line 102, in          process_cc
+    if dfs(cc[0], gr, set(), None, cycle_number_threshold, follower_method) \
+
+    File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\layout_utils.py", line 82, in <lambda>
+    followers_rev_or_gen = lambda n, gr: (gr.opposite(e, n) for e in gr.getInOutEdges(n) if n == gr.source(e)
+    RuntimeError: maximum recursion depth exceeded while calling a Python object
+
+    Process finished with exit code 1
+    """
+    # TODO: maximum recursion depth (999?) reached -> change recursive function dfs in layout_utils.py to iterative
+    # TODO: function?
+    # Y5 with fewer reactions works so its most likely an issue with big models!
+    #sbml = os.path.join(cDir, "TestModels", "stijn", "Y5.xml") # M.getNumReactions: 2110, M.getNumSpecies: 1655
+
+
+    # I.) MetaViz Pipeline
+    # --------------------
     # 1. create Tulip graph and generate graph objects
     graph, graph_props = createInitialGraph("initialGraph")
     print("Initial (empty) Tulip graph created. \n")
@@ -1177,53 +1316,28 @@ if __name__ == '__main__':
     exportGraph(graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
 
 
-    ######################################
-    # create SQL table from graph object #
-    ######################################
-    # select the graph object (e.g. total graph) to extract data from
-    selected_graph = graph_registry['initial graph'][0]
-    graph_props_ordered_n_list, graph_props_ordered_e_list, graph_prop_ordered_types = extractGraphPropertyData(
-        selected_graph)
-    # encode extracted data
-    graph_props_node_tuplelist = encodeGraphPropertyData(selected_graph, graph_props_ordered_n_list,
-                                                         graph_prop_ordered_types, nodes=True)
-    # build SQLite database from extracted and encoded data
-    createSQLiteDB(selected_graph, cmod.getId(), graph_props_node_tuplelist)
+    # II.) SQLite Database Operations:
+    # --------------------------------
+    # reason for database: to have a tool-independent way of getting network map info -> feed into d3, networkx,
+    # cytoscape, etc...!
 
-
-    #####################################
-    # retrieve graphs from SQL database #
-    #####################################
-    # 4 tables in database:
+    # 1. create SQLite db to store a graph object
+    buildSQLiteDatabase(graph_registry['output_whole'][0])
+    # DB INFO ##########################################################################################################
+    # 3 tables in database:
     # - graph_nodes: every row is a node, each column is a node property
-    # - graph_edges every row is an edge, each column is an edge property
     # - node_connectivity: every row is a node, first column contains node ids and second column contains lists of
     #                      connected edges
     # - edge connectivity: every row is an edge, first column contains edge ids, second column contains source node ids
     #                      and third column contains target node ids
-    # TODO: retrieve lists: for all the pickle strings: list_obj = pickle.loads(string_obj)
-    db_graph_node_list = retrieveGraphElementData(cmod.getId(), 'graph_nodes')
+    ####################################################################################################################
+    # 2. retrieve graph data from SQL database
+    db_graph_node_list = retrieveDataFromDatabaseTable(cmod.getId(), 'graph_nodes')
+    db_graph_edgeconn_list = retrieveDataFromDatabaseTable(cmod.getId(), 'edge_connectivity')
+    # 3. SQL --> back to Tulip (to see if everything is preserved)
+    db_graph = buildTulipGraphFromSQL(db_graph_node_list, db_graph_edgeconn_list, "graph_fromDB")
 
-    # unpickle the content of a list returned from the db
-    # returned lists contain row lists -> ordered list of all properties for one node
-    for row_list in db_graph_node_list:
-        for i,prop_value in enumerate(row_list):
-            try:
-                list_obj = pickle.loads(prop_value)
-                row_list[i] = list_obj
-            except:
-                pass
 
-    print(db_graph_node_list)
-
-    # TODO: some layout coordinates in graph_edge table are lists of lists -> these need to be flattened before input
-    # db_graph_edge_list = retrieveGraphElementData(c, 'graph_edges')
-    # print(db_graph_edge_list)
-    # TODO: SQL --> back to Tulip (to see if everything is preserved)
-    # TODO: use retrieved information to rebuild the whole graph and save it as new tlp (see if layout stay constant)
-    # TODO: select just a pathway from the database, extract nodes and edges and generate the graph
-    # TODO: use biomass layout for testing purposes
-    # TODO: database to have tool independent way of getting network map info
     # TODO: SQL --> d3py/networkx/someother gaph program
     # TODO: extract only nodes with coords, and ids from graph_nodes table and connectivity between the nodes
     # TODO: use networkx, and/or D3 (d3py in python) to rebuild a part of the graph only from SQL database output
