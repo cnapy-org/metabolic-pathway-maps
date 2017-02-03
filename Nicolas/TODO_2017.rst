@@ -1,5 +1,5 @@
-2017-01-26
-----------
+2017-01-26 / 2017-02-03
+-----------------------
 
 Overall progress is going ok but we need to urgently convert this from a script to a tool and work on the user output. 
 
@@ -25,6 +25,11 @@ The following are a very high priority::
  - Node colours: colour boundary/fixed species, colour species nodes independent of flux (not grey!!)
  - give user control over font size
  - labels should be optionally reaction/species names instead of ids, perhaps names should be stored with nodes.
+ 
+ optimize code
+ =============
+  
+ - cycle detection (and more?): recursive functions process_cc and dfs in layout_utils.py -> see what they are doing, do we need them, can we do our own cycle detection with adjacency matrix and networkx, ...
  
 SQL
 ===
