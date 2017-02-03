@@ -76,6 +76,8 @@ def remove_overlaps(graph, margin=1):
     graph.applyLayoutAlgorithm(OVERLAP_REMOVAL, root[VIEW_LAYOUT], ds)
 
 
+# TODO: find out what this is doing (print statements, etc.)
+# TODO: with Y7 -> test with smaller threshold
 def layout_components(graph, cycle_number_threshold=40, node_number_threshold=300, margin=5):
     root = graph.getRoot()
     comp_list = tlp.ConnectedTest.computeConnectedComponents(graph)
@@ -97,6 +99,8 @@ def layout_components(graph, cycle_number_threshold=40, node_number_threshold=30
                 meta_ns.append(mn)
             return
         # iterate over strongly connected components
+        # TODO: cycle detection
+        # TODO: can we turn that off without breaking everything? (comment this)
         for cc in tarjan_iter({n: list(follower_method(n, gr)) for n in ns}):
             if len(cc) > 3:
                 if dfs(cc[0], gr, set(), None, cycle_number_threshold, follower_method) \

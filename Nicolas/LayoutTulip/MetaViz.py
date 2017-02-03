@@ -149,6 +149,9 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     #################################
     # change basic graph properties #
     #################################
+    # TODO: what happens to the output if labels are names (which are longer than ids)
+    # TODO: in global_ops: control type of label
+    # TODO: also differentiate between metabolite labels and reaction labels
     labelGraphNodes(graph, "id")
     # TODO: add labels to edges (possible? alternative?)
     # for e in graph.getEdges():
@@ -1164,6 +1167,9 @@ def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edgeconn_list, graph_nam
     for row_sublist in db_graph_node_list:
         # remove ids (first entry) from sublists of db_graph_node list to have equal amount of props again
         row_sublist.pop(0)
+        # TODO: instead of looking for types and lengths of elements
+        # TODO: 1.) get a list of column headers (which will have same length and order as row list!)
+        # TODO: 2.) if I want an entry of row_sublist: row_sublist[col_header_list.index("viewColor")] = viewColor data
         # go through each sublist of db retreived list and change 4tuples to tulip.Color, 3tuples to tulip.Size,
         # 3lists to tulip.Layout types and 1list to tulip.VectorString
         for i, prop_item in enumerate(row_sublist):
@@ -1207,6 +1213,7 @@ def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edgeconn_list, graph_nam
                 #    sublist.remove(item)
     # add edges to db_graph - function tlp.addEdges takes scr and tgt node tuples as parameter
     db_graph.addEdges(db_graph_edgeconn_list)
+    # TODO: also add props to edges (also save them in SQL db)
     # save reconstructed db graph
     tlp.saveGraph(db_graph, 'reconstructed_graph_from_db.tlp')
 
@@ -1323,6 +1330,8 @@ if __name__ == '__main__':
 
     # 1. create SQLite db to store a graph object
     buildSQLiteDatabase(graph_registry['output_whole'][0])
+    # TODO: create graph_edges table AND separate edge_color table: edge id, color_set1 (tuples of (flux,
+    # TODO: edge color)), color_set2, color_set3, ...
     # DB INFO ##########################################################################################################
     # 3 tables in database:
     # - graph_nodes: every row is a node, each column is a node property
@@ -1341,3 +1350,4 @@ if __name__ == '__main__':
     # TODO: SQL --> d3py/networkx/someother gaph program
     # TODO: extract only nodes with coords, and ids from graph_nodes table and connectivity between the nodes
     # TODO: use networkx, and/or D3 (d3py in python) to rebuild a part of the graph only from SQL database output
+    # TODO: do the networkx/d3 thing on a subset of SQL output (only nodes of aspartate pathway, etc.)

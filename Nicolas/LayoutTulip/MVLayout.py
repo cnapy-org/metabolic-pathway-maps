@@ -896,7 +896,8 @@ def colourFBA(g, flux_dict, color_zero, color_pos=None, color_neg=None, discrete
         if flux[n] != 0:
             for e in g.getInOutEdges(n):
                 viewColor[e] = viewColor[n]
-
+                # TODO: add flux value to edge properties
+                #flux[e] = flux[n]
 
 def exportGML(graph, model_id, output_graph_name, gml_path):
     """
