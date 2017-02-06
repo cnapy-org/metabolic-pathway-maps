@@ -320,8 +320,8 @@ def exportGraph(graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, 
 # Part 4: Database
 def buildSQLiteDatabase(selected_graph, ):
     """
-    Create an SQLite database to store a graph object (properties of nodes, node connectivity and edge
-    connectivity)::
+    Create an SQLite database to store a graph object (properties of nodes, properties if edges, node connectivity and
+    edge connectivity)::
 
     - *selected_graph* a Tulip graph object
 
@@ -329,11 +329,13 @@ def buildSQLiteDatabase(selected_graph, ):
     # extract data from selected graph
     graph_props_ordered_n_list, graph_props_ordered_e_list, graph_prop_ordered_types = extractGraphPropertyData(
         selected_graph)
-    # encode extracted data
+    # encode extracted node data
     graph_props_node_tuplelist = encodeGraphPropertyData(selected_graph, graph_props_ordered_n_list,
                                                          graph_prop_ordered_types, nodes=True)
+    graph_props_edge_tuplelist = encodeGraphPropertyData(selected_graph, graph_props_ordered_e_list,
+                                                         graph_prop_ordered_types, edges=True)
     # build SQLite database from extracted and encoded data (to SQLite compatible types)
-    createSQLiteDB(selected_graph, cmod.getId(), graph_props_node_tuplelist)
+    createSQLiteDB(selected_graph, cmod.getId(), graph_props_node_tuplelist, graph_props_edge_tuplelist)
 ########################################################################################################################
 
 
@@ -834,7 +836,7 @@ def extractGraphPropertyData(graph):
                 prop_edge_sublist.append(prop[e] * 1) # convert True/False to 1/0
             # convert all instances of _tulip.Vec3f, _tulip.Size and _tulip.Color objects to tuples
             elif prop.getTypename() == "layout" or prop.getTypename() == "color" or prop.getTypename() == "size":
-                prop_node_sublist.append(tuple(prop[e]))
+                prop_edge_sublist.append(tuple(prop[e]))
             else:
                 prop_edge_sublist.append(prop[e])
         # add graph edge prop info to ordered list
@@ -975,13 +977,14 @@ def encodeGraphPropertyData(graph, graph_props_ordered_data, graph_prop_ordered_
 #
 #     return graph_props_edge_tuplelist
 
-def createSQLiteDB(graph, db_name, graph_props_node_tuplelist):
+def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_tuplelist):
     """
-    Create an SQLite database storing the encoded graph props data of nodes as well as their connectivity::
+    Create an SQLite database storing the encoded graph props data of nodes, edges as well as their connectivity::
 
     - *graph* a Tulip graph
     - *db_name* the name of the database
     - *graph_props_node_tuplelist* a list of tuples containing all graph prop data of one node each
+    - *graph_props_edge_tuplelist* a list of tuples containing all graph prop data of one edge each
 
     """
     # create an SQL database with sqlite3
@@ -1034,14 +1037,64 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist):
     viewTgtAnchorShape INTEGER,
     viewTgtAnchorSize TEXT)
     ''')
+    # create empty graph edge table (skips if table already exists)
+    c.execute('''CREATE TABLE IF NOT EXISTS graph_edges(edge_id INTEGER PRIMARY KEY,
+    anc_id TEXT,
+    anc_name TEXT,
+    anc_term TEXT,
+    c_id TEXT,
+    clone_id TEXT,
+    edge_directionality TEXT,
+    f TEXT,
+    fake INTEGER,
+    flux REAL,
+    id TEXT,
+    name TEXT,
+    pathway TEXT,
+    rel_c_ids TEXT,
+    rev INTEGER,
+    stoich REAL,
+    term TEXT,
+    tr INTEGER,
+    type INTEGER,
+    ub INTEGER,
+    viewBorderColor TEXT,
+    viewBorderWidth REAL,
+    viewColor TEXT,
+    viewFont TEXT,
+    viewFontAwesomeIcon TEXT,
+    viewFontSize INTEGER,
+    viewLabel TEXT,
+    viewLabelBorderColor TEXT,
+    viewLabelBorderWidth REAL,
+    viewLabelColor TEXT,
+    viewLabelPosition INTEGER,
+    viewLayout TEXT,
+    viewMetric REAL,
+    viewRotation REAL,
+    viewSelection INTEGER,
+    viewShape INTEGER,
+    viewSize INTEGER,
+    viewSrcAnchorShape INTEGER,
+    viewSrcAnchorSize TEXT,
+    viewTexture TEXT,
+    viewTgtAnchorShape INTEGER,
+    viewTgtAnchorSize TEXT)
+    ''')
     # create empty connectivity table (each row is an edge with id, source node id and target node id as columns)
     c.execute('''CREATE TABLE IF NOT EXISTS edge_connectivity(edge_id INTEGER PRIMARY KEY,
     source_node_id TEXT,
     target_node_id TEXT)
     ''')
-    # create node connectivity table aswell: for each node a list (= string) of all connected In and Out edges
+    # create node connectivity table: for each node a list (= string) of all connected In and Out edges
     c.execute('''CREATE TABLE IF NOT EXISTS node_connectivity(node_id INTEGER PRIMARY KEY,
     in_out_edge_list TEXT)
+    ''')
+    # create edge color table: for each edge multiple columns with color set tuples->(flux, edge color)
+    c.execute('''CREATE TABLE IF NOT EXISTS edge_color(edge_id INTEGER PRIMARY KEY,
+    color_set1 TEXT,
+    color_set2 TEXT,
+    color_set3 TEXT)
     ''')
     # reorder tuple list for INSERT INTO statement:
     # instead of [(all prop1), (all prop2), ...] I want [(prop1[1], prop2[1], ...), (prop1[2], prop2[2], ...), ...]
@@ -1049,19 +1102,18 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist):
     graph_props_edge_insertlist = []
     for i in range(len(list(graph.getNodes()))):
         graph_props_node_insertlist.append([tup[i] for tup in graph_props_node_tuplelist])
-    #for i in range(len(list(graph.getEdges()))):
-    #    graph_props_edge_insertlist.append([tup[i] for tup in graph_props_edge_tuplelist])
+    for i in range(len(list(graph.getEdges()))):
+        graph_props_edge_insertlist.append([tup[i] for tup in graph_props_edge_tuplelist])
     # fill tables with encoded values
     # table graph_node
     for l in graph_props_node_insertlist:
         c.execute('''INSERT OR IGNORE INTO graph_nodes VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
         ?,?,?,?,?,?,?,?,?,?,?,?,?)''', l)
     # table graph_edges
-    #for l in graph_props_edge_insertlist:
-    #    c.execute('''INSERT OR IGNORE INTO graph_edges VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
-        # ?,?,?,
-    #    ?,?,?,?,?,?,?,?,?,?,?,?,?)''', l)
-    # table connectivity
+    for l in graph_props_edge_insertlist:
+        c.execute('''INSERT OR IGNORE INTO graph_edges VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
+        ?,?,?,?,?,?,?,?,?,?,?,?,?)''', l)
+    # table edge_connectivity
     # create dict with key = str(node) and value = integer id of the node
     node_str_int_dict = {}
     for node, i in zip(graph.getNodes(), range(len(list(graph.getNodes())))):
@@ -1069,9 +1121,33 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist):
     for edge, i in zip(graph.getEdges(), range(len(list(graph.getEdges())))):
         insert_row = [i, node_str_int_dict[str(graph.source(edge))], node_str_int_dict[str(graph.target(edge))]]
         c.execute('''INSERT OR IGNORE INTO edge_connectivity VALUES (?,?,?)''', insert_row)
+    # table node_connectivity
     for node, i in zip(graph.getNodes(), range(len(list(graph.getNodes())))):
         row = [i, str(list(graph.getInOutEdges(node)))]
         c.execute('''INSERT OR IGNORE INTO node_connectivity VALUES (?,?)''', row)
+    # table edge_color
+    # create an ordered list of prop names of the graph
+    graph_prop_ordered_names = []
+    for prop in graph.getObjectProperties():
+        graph_prop_ordered_names.append(prop.getName())
+    # create dict with key = prop name and value = tuple of prop data for all edges
+    prop_name_data_dict = {}
+    for prop_name, prop_tup in zip(graph_prop_ordered_names, graph_props_edge_tuplelist[1:]):
+        prop_name_data_dict[prop_name] = prop_tup
+    # create color set tuples (flux value, edge color)
+    # TODO: figure out a way of adding additional color sets if the whole pipeline only applies one coloring at a time
+    # TODO: for now: just add tuples with empty strings as placeholder as color sets 2 and 3
+    for i in range(len(list(graph.getEdges()))):
+        db_row = [i, (prop_name_data_dict["flux"][i], prop_name_data_dict["viewColor"][i]),
+                     (prop_name_data_dict["flux"][i], ""),
+                     (prop_name_data_dict["flux"][i], "")]
+        # pickle the color set tuples
+        for i,item in enumerate(db_row):
+            if isinstance(item, tuple):
+                str_item = pickle.dumps(item)
+                db_row[i] = str_item
+        # add the contents of the row list [integer, pickled tuples] to sqlite db
+        c.execute('''INSERT OR IGNORE INTO edge_color VALUES (?,?,?,?)''', db_row)
     print("Graph data has been stored in SQL database. \n")
     # commit changes to database
     db.commit()
@@ -1330,15 +1406,16 @@ if __name__ == '__main__':
 
     # 1. create SQLite db to store a graph object
     buildSQLiteDatabase(graph_registry['output_whole'][0])
-    # TODO: create graph_edges table AND separate edge_color table: edge id, color_set1 (tuples of (flux,
-    # TODO: edge color)), color_set2, color_set3, ...
     # DB INFO ##########################################################################################################
-    # 3 tables in database:
+    # 5 tables in database:
     # - graph_nodes: every row is a node, each column is a node property
+    # - graph_edges: every row is an edge, each column is an edge property
     # - node_connectivity: every row is a node, first column contains node ids and second column contains lists of
     #                      connected edges
     # - edge connectivity: every row is an edge, first column contains edge ids, second column contains source node ids
     #                      and third column contains target node ids
+    # - edge color: every row is an edge, first column contains edge id, subsequent columns contain color sets (
+    #                      tuples of (flux value, pickled tulip color prop))
     ####################################################################################################################
     # 2. retrieve graph data from SQL database
     db_graph_node_list = retrieveDataFromDatabaseTable(cmod.getId(), 'graph_nodes')
