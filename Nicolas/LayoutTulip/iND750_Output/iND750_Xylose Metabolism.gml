@@ -3,97 +3,97 @@ directed 1
 version 2
 node [
 id 0
-label "M_xylt_c0"
+label "M_nad_c0"
 graphics [
-x -3.75
-y 12.25
+x -1.25
+y 13.25
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 1
-label "M_xu5p__D_c1"
+label "M_h_c1"
 graphics [
-x -0.75
-y -6.75
+x -7.25
+y 2.75
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 2
-label "M_nadh_c2"
+label "M_nadp_c2"
 graphics [
-x -6.75
-y 2.75
+x 4.75
+y 13.25
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 3
-label "M_xylu__D_c3"
+label "M_nadph_c3"
 graphics [
-x -0.75
-y 2.75
+x 1.75
+y 22.75
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 4
-label "M_xyl__D_c4"
+label "R_XYLTD_D4"
 graphics [
-x -3.75
-y 21.75
-z 0
-h 2.5
-w 2.5
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 5
-label "R_XYLK5"
-graphics [
-x -0.75
-y -2
+x 4.75
+y 8.5
 z 0
 h 1
 w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 5
+label "M_h_c5"
+graphics [
+x -4.25
+y -6.75
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
 outline "#000000"
      ]
 ]
@@ -101,37 +101,165 @@ node [
 id 6
 label "R_XYLR6"
 graphics [
-x -3.75
-y 17
+x 7.75
+y 18
 z 0
 h 1
 w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 7
-label "R_XYLTD_D7"
+label "R_XYLK7"
 graphics [
-x -3.75
-y 7.5
+x 1.75
+y -2
 z 0
 h 1
 w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 8
-label "Xylose Metabolism8"
+label "M_atp_c8"
+graphics [
+x -1.25
+y 2.75
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 9
+label "M_h_c9"
+graphics [
+x 7.75
+y 22.75
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 10
+label "M_xylu__D_c10"
+graphics [
+x 4.75
+y 2.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 11
+label "M_nadh_c11"
+graphics [
+x 10.75
+y 2.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 12
+label "M_xu5p__D_c12"
+graphics [
+x 1.75
+y -6.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 13
+label "M_xylt_c13"
+graphics [
+x 10.75
+y 13.25
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 14
+label "M_xyl__D_c14"
+graphics [
+x 13.75
+y 22.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 15
+label "M_adp_c15"
+graphics [
+x 7.75
+y -6.75
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 16
+label "Xylose Metabolism16"
 graphics [
 x 0
 y 0
@@ -146,8 +274,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 4
-target 6
+source 0
+target 4
 id 0
 label ""
 graphics [
@@ -159,8 +287,8 @@ Line [
 ]
 ]
 edge [
-source 6
-target 0
+source 4
+target 1
 id 1
 label ""
 graphics [
@@ -172,8 +300,8 @@ Line [
 ]
 ]
 edge [
-source 0
-target 7
+source 6
+target 2
 id 2
 label ""
 graphics [
@@ -185,8 +313,8 @@ Line [
 ]
 ]
 edge [
-source 3
-target 5
+source 9
+target 6
 id 3
 label ""
 graphics [
@@ -198,8 +326,8 @@ Line [
 ]
 ]
 edge [
-source 7
-target 2
+source 3
+target 6
 id 4
 label ""
 graphics [
@@ -212,7 +340,7 @@ Line [
 ]
 edge [
 source 7
-target 3
+target 12
 id 5
 label ""
 graphics [
@@ -224,9 +352,113 @@ Line [
 ]
 ]
 edge [
-source 5
-target 1
+source 4
+target 11
 id 6
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 10
+target 7
+id 7
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 6
+target 13
+id 8
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 13
+target 4
+id 9
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 14
+target 6
+id 10
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 7
+target 15
+id 11
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 8
+target 7
+id 12
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 4
+target 10
+id 13
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 7
+target 5
+id 14
 label ""
 graphics [
 type "line"

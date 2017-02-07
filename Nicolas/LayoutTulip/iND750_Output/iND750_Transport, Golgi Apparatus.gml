@@ -13,7 +13,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -29,7 +29,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -45,7 +45,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -61,7 +61,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -77,7 +77,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -93,7 +93,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -109,13 +109,29 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 7
-label "M_pe_SC_g7"
+label "M_co2_c7"
+graphics [
+x -6.75
+y 2.25
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 8
+label "M_pe_SC_g8"
 graphics [
 x 4.25
 y -6.75
@@ -125,13 +141,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 8
-label "M_ps_SC_g8"
+id 9
+label "M_ps_SC_g9"
 graphics [
 x 6.75
 y -6.75
@@ -141,15 +157,31 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 9
-label "M_gdp_g9"
+id 10
+label "M_h_c10"
 graphics [
-x -1.25
+x -4.25
+y 2.75
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 11
+label "M_gdp_g11"
+graphics [
+x 1.75
 y 2.75
 z 0
 h 2.5
@@ -157,13 +189,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 10
-label "R_CO2tg10"
+id 12
+label "R_CO2tg12"
 graphics [
 x -6.75
 y -2
@@ -173,13 +205,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 11
-label "R_GDPt3g11"
+id 13
+label "R_GDPt3g13"
 graphics [
 x -1.25
 y -2
@@ -189,13 +221,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 12
-label "Transport, Golgi Apparatus12"
+id 14
+label "Transport, Golgi Apparatus14"
 graphics [
 x 0
 y 0
@@ -210,7 +242,7 @@ outline "#000000"
      ]
 ]
 edge [
-source 11
+source 13
 target 6
 id 0
 label ""
@@ -223,7 +255,7 @@ Line [
 ]
 ]
 edge [
-source 11
+source 13
 target 3
 id 1
 label ""
@@ -236,7 +268,7 @@ Line [
 ]
 ]
 edge [
-source 10
+source 12
 target 5
 id 2
 label ""
@@ -249,8 +281,8 @@ Line [
 ]
 ]
 edge [
-source 9
-target 11
+source 7
+target 12
 id 3
 label ""
 graphics [
@@ -262,9 +294,22 @@ Line [
 ]
 ]
 edge [
-source 0
-target 8
+source 11
+target 13
 id 4
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 0
+target 9
+id 5
 label ""
 graphics [
 type "line"
@@ -277,7 +322,20 @@ Line [
 edge [
 source 1
 target 2
-id 5
+id 6
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 10
+target 13
+id 7
 label ""
 graphics [
 type "line"
@@ -290,7 +348,7 @@ Line [
 edge [
 source 4
 target 0
-id 6
+id 8
 label ""
 graphics [
 type "line"
@@ -302,8 +360,8 @@ Line [
 ]
 edge [
 source 2
-target 7
-id 7
+target 8
+id 9
 label ""
 graphics [
 type "line"

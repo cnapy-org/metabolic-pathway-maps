@@ -3,681 +3,633 @@ directed 1
 version 2
 node [
 id 0
-label "M_phom_c0"
+label "M_glu__L_c0"
 graphics [
-x 135.75
-y 16.5
+x 118
+y 50.625
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 1
-label "M_dhlam_m1"
+label "M_amp_c1"
 graphics [
-x 76
-y 76.25
+x 100
+y 7.8125
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 2
-label "M_hcys__L_c2"
+label "M_atp_c2"
 graphics [
-x 101.25
-y 2.75
+x 97.75
+y 27.625
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 3
-label "R_AGTi3"
+label "M_ppi_c3"
 graphics [
-x 120
-y 7.5
+x 106
+y 7.8125
 z 0
-h 1
-w 1
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 4
-label "M_trnaser_c4"
+label "M_nad_c4"
 graphics [
-x 89.25
-y 2.75
+x 156.484
+y 68.9531
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 5
-label "M_pser__L_c5"
+label "M_atp_c5"
 graphics [
-x 111.188
-y 26
+x 135.25
+y 40.125
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 6
-label "M_3php_c6"
+label "M_adp_c6"
 graphics [
-x 118.939
-y 35.5
+x 135.25
+y 27.625
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 7
-label "M_trnagly_c7"
+label "M_h2o_m7"
 graphics [
-x 120.75
-y 2.75
+x 85
+y 71.625
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 8
-label "M_nad_m8"
+label "M_h2o_c8"
 graphics [
-x 62.5
-y 76.25
+x 148.188
+y 7.8125
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 9
-label "R_GCCam9"
+label "M_nh4_c9"
 graphics [
-x 25
-y 36
+x 130
+y 7.8125
 z 0
-h 1
-w 1
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 10
-label "M_glytrna_c10"
+label "M_h_m10"
 graphics [
-x 122.25
+x 49
 y -6.75
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 11
-label "R_PSP_L11"
+label "M_h_c11"
 graphics [
-x 109.594
-y 21.25
+x 135.484
+y 50.625
 z 0
-h 1
-w 1
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#2cfbfb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 12
-label "M_sertrna_c12"
+label "M_nadph_c12"
 graphics [
-x 92.25
-y -6.75
+x 141.484
+y 50.625
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 13
-label "M_thf_c13"
+label "M_nadp_c13"
 graphics [
-x 129.75
-y 16.5
+x 141.25
+y 40.125
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 14
-label "R_GCC2cm_copy114"
+label "M_h2o_c14"
 graphics [
-x 67
-y 62
+x 118
+y 7.8125
 z 0
-h 1
-w 1
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#43f9f9"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 15
-label "M_nadh_m15"
+label "M_nad_c15"
 graphics [
-x 67
-y 50.75
+x 154.188
+y 40.125
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 16
-label "M_mlthf_m16"
+label "M_h_c16"
 graphics [
-x 20.5
-y -6.75
+x 153.484
+y 50.625
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 17
-label "R_GLYTRS17"
+label "M_ppi_c17"
 graphics [
-x 122.25
-y -2
+x 154.188
+y -6.75
 z 0
-h 1
-w 1
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 18
-label "R_HSDxi18"
+label "M_h_m18"
 graphics [
-x 132.75
-y 30.75
+x 34
+y 71.625
 z 0
-h 1
-w 1
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#e9ebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 19
-label "M_akg_c19"
+label "M_h_m19"
 graphics [
-x 120.75
-y 26
+x 1
+y -6.75
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 20
-label "M_alpam_m20"
+label "M_pi_c20"
 graphics [
-x 40
-y 31.25
+x 105.25
+y 27.625
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 21
-label "R_GCC2bim21"
+label "M_h2o_c21"
 graphics [
-x 82
-y 15.5
+x 118.75
+y 40.125
 z 0
-h 1
-w 1
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#43f9f9"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 22
-label "M_cyst__L_c22"
+label "M_h_m22"
 graphics [
-x 104.25
-y -6.75
+x 91
+y 71.625
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 23
-label "R_CYSTS23"
+label "M_phom_c23"
 graphics [
-x 104.25
-y -2
+x 141.25
+y 27.625
 z 0
-h 1
-w 1
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 24
-label "M_thf_m24"
+label "M_ser__L_c24"
 graphics [
-x 23.5
-y 104.25
+x 126.25
+y 27.625
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 25
-label "M_nadh_c25"
+label "M_gly_m25"
 graphics [
-x 128.186
-y 35.5
+x 79
+y 71.625
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 26
-label "M_glx_c26"
+label "M_dhlam_m26"
 graphics [
-x 117
-y 16.5
+x 10
+y 16.75
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 27
-label "M_lpro_m27"
+label "M_lpam_m27"
 graphics [
-x 52
-y 50.75
+x 16
+y -6.75
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 28
-label "R_HSDyi28"
+label "M_hcys__L_c28"
 graphics [
-x 138.75
-y 30.75
+x 117.25
+y 27.625
 z 0
-h 1
-w 1
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 29
-label "M_3pg_c29"
+label "M_gly_c29"
 graphics [
-x 123.562
-y 45.0625
+x 166.188
+y 7.8125
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 30
-label "M_hom__L_c30"
+label "R_AGTi30"
 graphics [
-x 135.75
-y 26
+x 149.5
+y 15.125
 z 0
-h 2.5
-w 2.5
+h 1
+w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 31
-label "M_ala__L_c31"
+label "M_h_m31"
 graphics [
-x 123
-y 16.5
+x 7
+y -6.75
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 32
-label "R_GCCcm32"
+label "M_trnaser_c32"
 graphics [
-x 58
-y 62
+x 111.25
+y 27.625
 z 0
-h 1
-w 1
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 33
-label "M_dhlpro_m33"
+label "M_nh4_m33"
 graphics [
-x 37
-y -6.75
+x 49
+y 16.75
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 34
-label "M_lpam_m34"
+label "M_pser__L_c34"
 graphics [
-x 76
-y 50.75
+x 112.75
+y 40.125
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 35
-label "R_SERD_L35"
+label "M_3php_c35"
 graphics [
-x 113.25
-y 7.5
+x 124
+y 50.625
 z 0
-h 1
-w 1
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 36
-label "M_gly_c36"
+label "M_trnagly_c36"
 graphics [
-x 126.75
-y 2.75
+x 136
+y 7.8125
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 37
-label "M_alpro_m37"
+label "R_GCCam37"
 graphics [
-x 22
-y 31.25
+x 85
+y 54.875
 z 0
-h 2.5
-w 2.5
+h 1
+w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 38
-label "R_GCCbim38"
+label "M_akg_c38"
 graphics [
-x 25
-y 15.5
+x 129.25
+y 40.125
 z 0
-h 1
-w 1
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 39
-label "M_ser__L_c39"
+label "M_glytrna_c39"
 graphics [
-x 108
-y 16.5
-z 0
-h 2.5
-w 2.5
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 40
-label "M_mlthf_c40"
-graphics [
-x 132.75
-y 2.75
-z 0
-h 2.5
-w 2.5
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 41
-label "R_GHMT2r41"
-graphics [
-x 129.75
-y 7.5
-z 0
-h 1
-w 1
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 42
-label "M_nh4_m42"
-graphics [
-x 46
+x 160.188
 y -6.75
 z 0
 h 2.5
@@ -685,143 +637,159 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 40
+label "R_PSP_L40"
+graphics [
+x 115.75
+y 35.375
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 41
+label "M_aspsa_c41"
+graphics [
+x 147.484
+y 50.625
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 42
+label "M_h_c42"
+graphics [
+x 159.484
+y 50.625
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 43
-label "M_ser__L_m43"
+label "M_sertrna_c43"
 graphics [
-x -3.5
-y 104.25
+x 112
+y 7.8125
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 44
-label "R_GHMT2rm44"
+label "M_thf_c44"
 graphics [
-x -3.5
-y 81
+x 165.25
+y 27.625
 z 0
-h 1
-w 1
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#31fafa"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 45
-label "R_GLYCLm45"
+label "R_GCC2cm_copy145"
 graphics [
-x 38.5
-y 62
+x 1
+y 4
 z 0
 h 1
 w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 46
-label "R_HSK46"
+label "M_mlthf_m46"
 graphics [
-x 135.75
-y 21.25
+x 63.625
+y 16.75
 z 0
-h 1
-w 1
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 47
-label "M_co2_m47"
+label "R_GCC2am47"
 graphics [
-x 31
-y 31.25
+x 34
+y 54.875
 z 0
-h 2.5
-w 2.5
+h 1
+w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 48
-label "R_GCC2cm_copy248"
+label "M_glx_c48"
 graphics [
-x 76
-y 62
-z 0
-h 1
-w 1
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 49
-label "R_PGCD49"
-graphics [
-x 123.562
-y 40.3125
-z 0
-h 1
-w 1
-d 1
-type "rectangle"
-width 0.12
-fill "#2cfbfb"
-outline "#000000"
-     ]
-]
-node [
-id 50
-label "M_gly_m50"
-graphics [
-x 1
-y 76.25
+x 147.25
+y 27.625
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 51
-label "R_SERTRS51"
+id 49
+label "R_GLYTRS49"
 graphics [
-x 92.25
+x 160.188
 y -2
 z 0
 h 1
@@ -829,77 +797,557 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 50
+label "M_pyr_c50"
+graphics [
+x 142
+y 7.8125
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 51
+label "R_HSDxi51"
+graphics [
+x 153.484
+y 44.875
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 52
-label "M_pyr_c52"
+label "M_alpam_m52"
 graphics [
-x 113.25
-y 2.75
+x 25
+y 44.125
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 53
-label "R_PSERT53"
+label "R_GCC2bim53"
 graphics [
-x 114.375
-y 30.75
+x 25
+y 31.375
 z 0
 h 1
 w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#2cfbfb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 54
-label "R_GCC2am54"
+label "M_cyst__L_c54"
 graphics [
-x 37
-y 36
-z 0
-h 1
-w 1
-d 1
-type "rectangle"
-width 0.12
-fill "#43f9f9"
-outline "#000000"
-     ]
-]
-node [
-id 55
-label "M_aspsa_c55"
-graphics [
-x 138.75
-y 35.5
+x 124
+y 7.8125
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 55
+label "M_atp_c55"
+graphics [
+x 160.188
+y 7.8125
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 56
-label "Glycine and Serine Metabolism56"
+label "R_CYSTS56"
+graphics [
+x 121
+y 15.125
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 57
+label "M_thf_m57"
+graphics [
+x 55
+y 100.125
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 58
+label "M_lpro_m58"
+graphics [
+x 67.75
+y -6.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 59
+label "R_HSDyi59"
+graphics [
+x 141.484
+y 44.875
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 60
+label "M_3pg_c60"
+graphics [
+x 162.484
+y 68.9531
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 61
+label "M_h_c61"
+graphics [
+x 159.25
+y 27.625
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 62
+label "M_hom__L_c62"
+graphics [
+x 147.25
+y 40.125
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 63
+label "R_GCCcm63"
+graphics [
+x 49
+y 4
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 64
+label "M_dhlpro_m64"
+graphics [
+x 75.25
+y 16.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 65
+label "R_SERD_L65"
+graphics [
+x 130
+y 15.125
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 66
+label "M_alpro_m66"
+graphics [
+x 80.5
+y 44.125
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 67
+label "R_GCCbim67"
+graphics [
+x 75.25
+y 31.375
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 68
+label "M_nadh_m68"
+graphics [
+x 28
+y -6.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 69
+label "M_mlthf_c69"
+graphics [
+x 154.188
+y 7.8125
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 70
+label "R_GHMT2r70"
+graphics [
+x 158.5
+y 15.125
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 71
+label "M_ser__L_m71"
+graphics [
+x 85
+y 100.125
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 72
+label "R_GHMT2rm72"
+graphics [
+x 85
+y 77.375
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 73
+label "M_nadh_c73"
+graphics [
+x 165.484
+y 50.625
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 74
+label "R_GLYCLm74"
+graphics [
+x 49
+y 54.875
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 75
+label "R_HSK75"
+graphics [
+x 141.25
+y 35.375
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 76
+label "M_ala__L_c76"
+graphics [
+x 153.25
+y 27.625
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 77
+label "R_GCC2cm_copy277"
+graphics [
+x 10
+y 4
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 78
+label "M_amp_c78"
+graphics [
+x 166.188
+y -6.75
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 79
+label "R_PGCD79"
+graphics [
+x 159.484
+y 64.2031
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 80
+label "R_SERTRS80"
+graphics [
+x 106
+y 15.125
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 81
+label "R_PSERT81"
+graphics [
+x 121
+y 44.875
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 82
+label "M_co2_m82"
+graphics [
+x 61
+y 44.125
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 83
+label "M_nad_m83"
+graphics [
+x 10
+y 71.625
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 84
+label "Glycine and Serine Metabolism84"
 graphics [
 x 0
 y 0
@@ -914,8 +1362,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 46
-target 0
+source 80
+target 1
 id 0
 label ""
 graphics [
@@ -927,8 +1375,8 @@ Line [
 ]
 ]
 edge [
-source 38
-target 42
+source 2
+target 80
 id 1
 label ""
 graphics [
@@ -940,8 +1388,8 @@ Line [
 ]
 ]
 edge [
-source 21
-target 42
+source 80
+target 3
 id 2
 label ""
 graphics [
@@ -953,8 +1401,8 @@ Line [
 ]
 ]
 edge [
-source 39
-target 51
+source 4
+target 79
 id 3
 label ""
 graphics [
@@ -962,32 +1410,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x 108
-y 16.5
-z 0
-]
-point [
-x 95.25
-y 7.5
-z 0
-]
-point [
-x 95.25
-y 2.75
-z 0
-]
-point [
-x 92.25
-y -2
-z 0
-]
 ]
 ]
 ]
 edge [
-source 39
-target 35
+source 79
+target 42
 id 4
 label ""
 graphics [
@@ -999,8 +1427,8 @@ Line [
 ]
 ]
 edge [
-source 39
-target 41
+source 77
+target 31
 id 5
 label ""
 graphics [
@@ -1012,8 +1440,8 @@ Line [
 ]
 ]
 edge [
-source 39
-target 23
+source 77
+target 68
 id 6
 label ""
 graphics [
@@ -1021,32 +1449,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x 108
-y 16.5
-z 0
-]
-point [
-x 107.25
-y 7.5
-z 0
-]
-point [
-x 107.25
-y 2.75
-z 0
-]
-point [
-x 104.25
-y -2
-z 0
-]
 ]
 ]
 ]
 edge [
-source 44
-target 50
+source 52
+target 53
 id 7
 label ""
 graphics [
@@ -1058,8 +1466,8 @@ Line [
 ]
 ]
 edge [
-source 50
-target 45
+source 74
+target 68
 id 8
 label ""
 graphics [
@@ -1067,12 +1475,32 @@ type "line"
 arrow "last"
 width 0.1
 Line [
+point [
+x 49
+y 54.875
+z 0
+]
+point [
+x 40
+y 44.125
+z 0
+]
+point [
+x 40
+y 4
+z 0
+]
+point [
+x 28
+y -6.75
+z 0
+]
 ]
 ]
 ]
 edge [
-source 50
-target 9
+source 57
+target 53
 id 9
 label ""
 graphics [
@@ -1081,31 +1509,31 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 1
-y 76.25
+x 55
+y 100.125
 z 0
 ]
 point [
-x -2
-y 62
+x -8
+y 77.375
 z 0
 ]
 point [
-x -2
-y 50.75
+x -8
+y 44.125
 z 0
 ]
 point [
 x 25
-y 36
+y 31.375
 z 0
 ]
 ]
 ]
 ]
 edge [
-source 50
-target 54
+source 63
+target 68
 id 10
 label ""
 graphics [
@@ -1113,32 +1541,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x 1
-y 76.25
-z 0
-]
-point [
-x 4
-y 62
-z 0
-]
-point [
-x 4
-y 50.75
-z 0
-]
-point [
-x 37
-y 36
-z 0
-]
 ]
 ]
 ]
 edge [
-source 21
-target 1
+source 45
+target 68
 id 11
 label ""
 graphics [
@@ -1146,27 +1554,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x 82
-y 15.5
-z 0
-]
-point [
-x 82
-y 62
-z 0
-]
-point [
-x 76
-y 76.25
-z 0
-]
 ]
 ]
 ]
 edge [
-source 1
-target 48
+source 81
+target 38
 id 12
 label ""
 graphics [
@@ -1178,8 +1571,8 @@ Line [
 ]
 ]
 edge [
-source 1
-target 14
+source 30
+target 50
 id 13
 label ""
 graphics [
@@ -1191,8 +1584,8 @@ Line [
 ]
 ]
 edge [
-source 48
-target 34
+source 37
+target 82
 id 14
 label ""
 graphics [
@@ -1204,8 +1597,8 @@ Line [
 ]
 ]
 edge [
-source 14
-target 34
+source 47
+target 82
 id 15
 label ""
 graphics [
@@ -1217,8 +1610,8 @@ Line [
 ]
 ]
 edge [
-source 34
-target 54
+source 41
+target 59
 id 16
 label ""
 graphics [
@@ -1230,8 +1623,8 @@ Line [
 ]
 ]
 edge [
-source 2
-target 23
+source 47
+target 52
 id 17
 label ""
 graphics [
@@ -1243,8 +1636,8 @@ Line [
 ]
 ]
 edge [
-source 31
-target 3
+source 32
+target 80
 id 18
 label ""
 graphics [
@@ -1256,8 +1649,8 @@ Line [
 ]
 ]
 edge [
-source 26
-target 3
+source 48
+target 30
 id 19
 label ""
 graphics [
@@ -1269,8 +1662,8 @@ Line [
 ]
 ]
 edge [
-source 41
-target 36
+source 56
+target 54
 id 20
 label ""
 graphics [
@@ -1282,8 +1675,8 @@ Line [
 ]
 ]
 edge [
-source 3
-target 36
+source 24
+target 65
 id 21
 label ""
 graphics [
@@ -1295,8 +1688,8 @@ Line [
 ]
 ]
 edge [
-source 36
-target 17
+source 79
+target 73
 id 22
 label ""
 graphics [
@@ -1308,8 +1701,8 @@ Line [
 ]
 ]
 edge [
-source 8
-target 48
+source 63
+target 58
 id 23
 label ""
 graphics [
@@ -1321,8 +1714,8 @@ Line [
 ]
 ]
 edge [
-source 8
-target 14
+source 40
+target 24
 id 24
 label ""
 graphics [
@@ -1334,8 +1727,8 @@ Line [
 ]
 ]
 edge [
-source 17
-target 10
+source 74
+target 82
 id 25
 label ""
 graphics [
@@ -1347,8 +1740,8 @@ Line [
 ]
 ]
 edge [
-source 11
-target 39
+source 74
+target 46
 id 26
 label ""
 graphics [
@@ -1356,12 +1749,32 @@ type "line"
 arrow "last"
 width 0.1
 Line [
+point [
+x 49
+y 54.875
+z 0
+]
+point [
+x 52
+y 44.125
+z 0
+]
+point [
+x 52
+y 31.375
+z 0
+]
+point [
+x 63.625
+y 16.75
+z 0
+]
 ]
 ]
 ]
 edge [
-source 49
-target 6
+source 36
+target 49
 id 27
 label ""
 graphics [
@@ -1373,8 +1786,8 @@ Line [
 ]
 ]
 edge [
-source 37
-target 38
+source 67
+target 64
 id 28
 label ""
 graphics [
@@ -1386,8 +1799,8 @@ Line [
 ]
 ]
 edge [
-source 18
-target 30
+source 26
+target 77
 id 29
 label ""
 graphics [
@@ -1399,8 +1812,8 @@ Line [
 ]
 ]
 edge [
-source 54
-target 47
+source 37
+target 66
 id 30
 label ""
 graphics [
@@ -1412,8 +1825,8 @@ Line [
 ]
 ]
 edge [
-source 24
-target 45
+source 27
+target 47
 id 31
 label ""
 graphics [
@@ -1422,26 +1835,26 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 23.5
-y 104.25
+x 16
+y -6.75
 z 0
 ]
 point [
-x 23.5
-y 76.25
+x 34
+y 4
 z 0
 ]
 point [
-x 38.5
-y 62
+x 34
+y 54.875
 z 0
 ]
 ]
 ]
 ]
 edge [
-source 9
-target 47
+source 71
+target 72
 id 32
 label ""
 graphics [
@@ -1453,8 +1866,8 @@ Line [
 ]
 ]
 edge [
-source 54
-target 20
+source 5
+target 75
 id 33
 label ""
 graphics [
@@ -1466,8 +1879,8 @@ Line [
 ]
 ]
 edge [
-source 45
-target 16
+source 73
+target 51
 id 34
 label ""
 graphics [
@@ -1475,32 +1888,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x 38.5
-y 62
-z 0
-]
-point [
-x 16
-y 50.75
-z 0
-]
-point [
-x 16
-y 15.5
-z 0
-]
-point [
-x 20.5
-y -6.75
-z 0
-]
 ]
 ]
 ]
 edge [
-source 6
-target 53
+source 64
+target 63
 id 35
 label ""
 graphics [
@@ -1512,8 +1905,8 @@ Line [
 ]
 ]
 edge [
-source 49
-target 25
+source 24
+target 80
 id 36
 label ""
 graphics [
@@ -1525,8 +1918,8 @@ Line [
 ]
 ]
 edge [
-source 24
-target 38
+source 57
+target 72
 id 37
 label ""
 graphics [
@@ -1534,32 +1927,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x 23.5
-y 104.25
-z 0
-]
-point [
-x 10
-y 81
-z 0
-]
-point [
-x 10
-y 31.25
-z 0
-]
-point [
-x 25
-y 15.5
-z 0
-]
 ]
 ]
 ]
 edge [
-source 27
-target 9
+source 72
+target 7
 id 38
 label ""
 graphics [
@@ -1571,8 +1944,8 @@ Line [
 ]
 ]
 edge [
-source 28
-target 30
+source 55
+target 49
 id 39
 label ""
 graphics [
@@ -1584,8 +1957,8 @@ Line [
 ]
 ]
 edge [
-source 55
-target 28
+source 67
+target 46
 id 40
 label ""
 graphics [
@@ -1597,8 +1970,8 @@ Line [
 ]
 ]
 edge [
-source 45
-target 42
+source 53
+target 26
 id 41
 label ""
 graphics [
@@ -1606,27 +1979,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x 38.5
-y 62
-z 0
-]
-point [
-x 46
-y 50.75
-z 0
-]
-point [
-x 46
-y -6.75
-z 0
-]
 ]
 ]
 ]
 edge [
-source 29
-target 49
+source 81
+target 34
 id 42
 label ""
 graphics [
@@ -1638,8 +1996,8 @@ Line [
 ]
 ]
 edge [
-source 51
-target 12
+source 34
+target 40
 id 43
 label ""
 graphics [
@@ -1651,8 +2009,8 @@ Line [
 ]
 ]
 edge [
-source 24
-target 21
+source 72
+target 46
 id 44
 label ""
 graphics [
@@ -1661,31 +2019,31 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 23.5
-y 104.25
+x 85
+y 77.375
 z 0
 ]
 point [
-x 88
-y 81
+x 97
+y 71.625
 z 0
 ]
 point [
-x 88
-y 31.25
+x 97
+y 31.375
 z 0
 ]
 point [
-x 82
-y 15.5
+x 63.625
+y 16.75
 z 0
 ]
 ]
 ]
 ]
 edge [
-source 41
-target 40
+source 75
+target 61
 id 45
 label ""
 graphics [
@@ -1697,8 +2055,8 @@ Line [
 ]
 ]
 edge [
-source 14
-target 15
+source 53
+target 46
 id 46
 label ""
 graphics [
@@ -1710,8 +2068,8 @@ Line [
 ]
 ]
 edge [
-source 21
-target 16
+source 83
+target 63
 id 47
 label ""
 graphics [
@@ -1719,12 +2077,32 @@ type "line"
 arrow "last"
 width 0.1
 Line [
+point [
+x 10
+y 71.625
+z 0
+]
+point [
+x 16
+y 54.875
+z 0
+]
+point [
+x 16
+y 16.75
+z 0
+]
+point [
+x 49
+y 4
+z 0
+]
 ]
 ]
 ]
 edge [
-source 8
-target 32
+source 44
+target 70
 id 48
 label ""
 graphics [
@@ -1736,8 +2114,8 @@ Line [
 ]
 ]
 edge [
-source 44
-target 16
+source 70
+target 8
 id 49
 label ""
 graphics [
@@ -1745,32 +2123,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x -3.5
-y 81
-z 0
-]
-point [
-x -8
-y 76.25
-z 0
-]
-point [
-x -8
-y 15.5
-z 0
-]
-point [
-x 20.5
-y -6.75
-z 0
-]
 ]
 ]
 ]
 edge [
-source 53
-target 5
+source 41
+target 51
 id 50
 label ""
 graphics [
@@ -1782,8 +2140,8 @@ Line [
 ]
 ]
 edge [
-source 35
-target 52
+source 0
+target 81
 id 51
 label ""
 graphics [
@@ -1795,8 +2153,8 @@ Line [
 ]
 ]
 edge [
-source 38
-target 16
+source 80
+target 43
 id 52
 label ""
 graphics [
@@ -1808,8 +2166,8 @@ Line [
 ]
 ]
 edge [
-source 48
-target 15
+source 70
+target 29
 id 53
 label ""
 graphics [
@@ -1821,8 +2179,8 @@ Line [
 ]
 ]
 edge [
-source 24
-target 44
+source 70
+target 69
 id 54
 label ""
 graphics [
@@ -1834,8 +2192,8 @@ Line [
 ]
 ]
 edge [
-source 20
-target 21
+source 63
+target 10
 id 55
 label ""
 graphics [
@@ -1847,8 +2205,8 @@ Line [
 ]
 ]
 edge [
-source 32
-target 15
+source 62
+target 75
 id 56
 label ""
 graphics [
@@ -1860,8 +2218,8 @@ Line [
 ]
 ]
 edge [
-source 33
-target 32
+source 75
+target 23
 id 57
 label ""
 graphics [
@@ -1869,27 +2227,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x 37
-y -6.75
-z 0
-]
-point [
-x 58
-y 15.5
-z 0
-]
-point [
-x 58
-y 62
-z 0
-]
 ]
 ]
 ]
 edge [
-source 8
-target 45
+source 58
+target 37
 id 58
 label ""
 graphics [
@@ -1897,12 +2240,32 @@ type "line"
 arrow "last"
 width 0.1
 Line [
+point [
+x 67.75
+y -6.75
+z 0
+]
+point [
+x 86.5
+y 4
+z 0
+]
+point [
+x 86.5
+y 44.125
+z 0
+]
+point [
+x 85
+y 54.875
+z 0
+]
 ]
 ]
 ]
 edge [
-source 43
-target 44
+source 77
+target 27
 id 59
 label ""
 graphics [
@@ -1914,8 +2277,8 @@ Line [
 ]
 ]
 edge [
-source 9
-target 37
+source 57
+target 67
 id 60
 label ""
 graphics [
@@ -1923,12 +2286,32 @@ type "line"
 arrow "last"
 width 0.1
 Line [
+point [
+x 55
+y 100.125
+z 0
+]
+point [
+x 70
+y 77.375
+z 0
+]
+point [
+x 70
+y 44.125
+z 0
+]
+point [
+x 75.25
+y 31.375
+z 0
+]
 ]
 ]
 ]
 edge [
-source 38
-target 33
+source 25
+target 37
 id 61
 label ""
 graphics [
@@ -1940,8 +2323,8 @@ Line [
 ]
 ]
 edge [
-source 7
-target 17
+source 35
+target 81
 id 62
 label ""
 graphics [
@@ -1953,8 +2336,8 @@ Line [
 ]
 ]
 edge [
-source 5
-target 11
+source 57
+target 74
 id 63
 label ""
 graphics [
@@ -1962,12 +2345,27 @@ type "line"
 arrow "last"
 width 0.1
 Line [
+point [
+x 55
+y 100.125
+z 0
+]
+point [
+x 55
+y 71.625
+z 0
+]
+point [
+x 49
+y 54.875
+z 0
+]
 ]
 ]
 ]
 edge [
-source 32
-target 27
+source 24
+target 56
 id 64
 label ""
 graphics [
@@ -1979,8 +2377,8 @@ Line [
 ]
 ]
 edge [
-source 23
-target 22
+source 66
+target 67
 id 65
 label ""
 graphics [
@@ -1992,8 +2390,8 @@ Line [
 ]
 ]
 edge [
-source 4
-target 51
+source 51
+target 62
 id 66
 label ""
 graphics [
@@ -2005,8 +2403,8 @@ Line [
 ]
 ]
 edge [
-source 30
-target 46
+source 26
+target 45
 id 67
 label ""
 graphics [
@@ -2018,8 +2416,8 @@ Line [
 ]
 ]
 edge [
-source 45
-target 47
+source 65
+target 50
 id 68
 label ""
 graphics [
@@ -2027,27 +2425,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x 38.5
-y 62
-z 0
-]
-point [
-x 31
-y 50.75
-z 0
-]
-point [
-x 31
-y 31.25
-z 0
-]
 ]
 ]
 ]
 edge [
-source 3
-target 52
+source 49
+target 39
 id 69
 label ""
 graphics [
@@ -2060,7 +2443,7 @@ Line [
 ]
 edge [
 source 25
-target 18
+target 47
 id 70
 label ""
 graphics [
@@ -2072,8 +2455,8 @@ Line [
 ]
 ]
 edge [
-source 55
-target 18
+source 83
+target 45
 id 71
 label ""
 graphics [
@@ -2081,12 +2464,32 @@ type "line"
 arrow "last"
 width 0.1
 Line [
+point [
+x 10
+y 71.625
+z 0
+]
+point [
+x -2
+y 54.875
+z 0
+]
+point [
+x -2
+y 16.75
+z 0
+]
+point [
+x 1
+y 4
+z 0
+]
 ]
 ]
 ]
 edge [
-source 53
-target 19
+source 83
+target 74
 id 72
 label ""
 graphics [
@@ -2098,9 +2501,81 @@ Line [
 ]
 ]
 edge [
-source 13
-target 41
+source 83
+target 77
 id 73
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+point [
+x 10
+y 71.625
+z 0
+]
+point [
+x 4
+y 54.875
+z 0
+]
+point [
+x 4
+y 16.75
+z 0
+]
+point [
+x 10
+y 4
+z 0
+]
+]
+]
+]
+edge [
+source 29
+target 49
+id 74
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 30
+target 29
+id 75
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 76
+target 30
+id 76
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 28
+target 56
+id 77
 label ""
 graphics [
 type "line"
@@ -2112,8 +2587,340 @@ Line [
 ]
 edge [
 source 45
+target 27
+id 78
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 25
+target 74
+id 79
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 72
+target 25
+id 80
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 59
+target 62
+id 81
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 24
+target 70
+id 82
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 53
+target 33
+id 83
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 67
+target 33
+id 84
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 74
+target 33
+id 85
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+point [
+x 49
+y 54.875
+z 0
+]
+point [
+x 46
+y 44.125
+z 0
+]
+point [
+x 46
+y 31.375
+z 0
+]
+point [
+x 49
+y 16.75
+z 0
+]
+]
+]
+]
+edge [
+source 22
+target 37
+id 86
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 21
+target 40
+id 87
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 40
+target 20
+id 88
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 45
+target 19
+id 89
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 18
+target 47
+id 90
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 49
+target 17
+id 91
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 49
+target 78
+id 92
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 16
+target 51
+id 93
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 51
 target 15
-id 74
+id 94
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 79
+target 35
+id 95
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 56
+target 14
+id 96
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 59
+target 13
+id 97
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 12
+target 59
+id 98
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 60
+target 79
+id 99
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 11
+target 59
+id 100
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 65
+target 9
+id 101
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 75
+target 6
+id 102
 label ""
 graphics [
 type "line"

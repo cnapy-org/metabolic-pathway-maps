@@ -1,1631 +1,1187 @@
 <?xml version="1.0" encoding="UTF-8"?><sbgn xmlns="http://sbgn.org/libsbgn/0.2">
     <sbgn:map xmlns:sbgn="http://sbgn.org/libsbgn/0.2" language="process description">
-        <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="0" y="0" w="2765" h="2389"/>
+        <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="0" y="0" w="6724" h="14597"/>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="Cell" class="compartment" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="Cell">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="16" y="16" w="2733" h="2357"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="16" y="16" w="6692" h="14565"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="16" y="16" w="2733" h="2357"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="16" y="16" w="6692" h="14565"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ACETATE" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="acetate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2595" y="1565" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6460" y="4349" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2591" y="1561" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6456" y="4345" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ACETATE_ext" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="extracellular acetate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2549" y="1426" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6414" y="3706" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2545" y="1422" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6410" y="3702" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ACETYL_CoA_R20" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ACETYL_CoA" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="acetyl-coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2560" y="759" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2960" y="14545" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2557" y="755" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2956" y="14541" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ACETYL_CoA_R54r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="acetyl-coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2636" y="1274" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2633" y="1270" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ACETYL_CoA_R22" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="acetyl-coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1716" y="1217" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1713" y="1214" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ACETYL_CoA_R21" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="acetyl-coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2605" y="121" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2601" y="118" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ACETYL_CoA_R55" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="acetyl-coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2636" y="1698" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2633" y="1694" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ACETYL_CoA_R70" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="acetyl-coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1206" y="235" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1202" y="232" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ADP_R81" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ADP" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine diphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2480" y="1985" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5116" y="5394" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2477" y="1982" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ADP_R82" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine diphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2552" y="1394" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2549" y="1390" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ADP_RR9" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine diphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1325" y="2252" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1322" y="2248" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ADP_R42" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine diphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1418" y="1326" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1415" y="1323" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ADP_R55" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine diphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2560" y="1698" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2557" y="1694" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ADP_R70" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine diphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1381" y="19" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1377" y="16" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ADP_R3" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine diphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1172" y="1507" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1168" y="1504" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ADP_R7r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine diphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1094" y="965" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1091" y="962" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ADP_R9" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine diphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1562" y="167" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1559" y="164" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ADP_R26r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine diphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2377" y="1327" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2373" y="1324" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ADP_R80" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine diphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="62" y="1180" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="59" y="1177" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5112" y="5390" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="AKG" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="alpha-ketoglutarate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2316" y="974" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="20" y="830" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2312" y="970" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="16" y="826" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP_R81" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine triphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2485" y="2068" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4668" y="9477" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2482" y="2065" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP_R82" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine triphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2648" y="1313" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2645" y="1310" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP_RR9" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine triphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1323" y="2342" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1320" y="2339" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP_R42" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine triphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1482" y="1272" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1479" y="1269" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP_R55" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine triphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2636" y="1607" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2633" y="1604" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP_R70" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine triphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1175" y="201" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1172" y="198" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP_R3" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine triphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1114" y="1455" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1111" y="1452" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP_R7r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine triphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1151" y="923" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1148" y="920" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP_R9" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine triphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1574" y="77" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1570" y="74" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP_R26r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine triphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2409" y="1439" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2405" y="1435" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP_R80" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="adenosine triphosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="86" y="1064" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="82" y="1061" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4664" y="9473" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ATP_main" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="maintenance energy">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2549" y="1306" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5290" y="8838" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2545" y="1302" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5286" y="8834" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="BIOMASS_R70" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="BIOMASS" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="biomass">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1295" y="59" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3093" y="8941" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1292" y="55" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3089" y="8937" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CITRATE" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="citrate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1799" y="1028" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1028" y="1670" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1795" y="1024" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1024" y="1666" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CO2_R25" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CO2" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="carbon dioxyde">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2377" y="1147" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5284" y="830" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2373" y="1144" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CO2_R40" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="carbon dioxyde">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1472" y="1202" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1468" y="1199" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CO2_R24" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="carbon dioxyde">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2213" y="960" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2210" y="957" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CO2_R42" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="carbon dioxyde">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1472" y="1272" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1468" y="1269" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CO2_R21" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="carbon dioxyde">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2548" y="101" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2545" y="98" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CO2_R70" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="carbon dioxyde">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1397" y="109" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1394" y="106" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CO2_R10" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="carbon dioxyde">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="752" y="775" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="749" y="772" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CO2_R97r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="carbon dioxyde">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2653" y="882" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2649" y="878" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CO2_R41" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="carbon dioxyde">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1424" y="26" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1421" y="23" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5280" y="826" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CO2_ext" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="extracellular carbon dioxyde">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2549" y="962" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5238" y="188" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2545" y="958" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5234" y="184" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CoASH_R25" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CoASH" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2409" y="1036" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3324" y="13369" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2405" y="1033" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CoASH_R54r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2636" y="1183" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2633" y="1179" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CoASH_R22" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1727" y="1108" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1723" y="1104" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CoASH_R21" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2720" y="101" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2717" y="98" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CoASH_R55" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2560" y="1607" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2557" y="1604" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CoASH_R20" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2560" y="850" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2557" y="846" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CoASH_R70" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1327" y="28" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1324" y="25" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="CoASH_R26r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2347" y="1394" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2344" y="1391" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3320" y="13365" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="DHAP" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="dihydroxyacetone phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="709" y="1740" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3380" y="4349" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="705" y="1736" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3376" y="4345" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ERYTH_4_P_R14r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ERYTH_4_P" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="erythrose-4-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="292" y="1523" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3324" y="6285" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="289" y="1520" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ERYTH_4_P_R70" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="erythrose-4-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1296" y="208" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1293" y="204" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ERYTH_4_P_R15r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="erythrose-4-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="276" y="1081" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="273" y="1078" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3320" y="6281" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ETOH" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="ethanol">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2595" y="1141" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6460" y="13369" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2591" y="1137" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6456" y="13365" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ETOH_ext" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="extracellular ethanol">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2549" y="1002" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6414" y="12727" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2545" y="998" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6410" y="12723" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="FAD" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="flavin adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2390" y="2040" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="300" y="9477" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2386" y="2036" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="296" y="9473" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="FADH" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="flavin adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2503" y="1890" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1252" y="10653" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2499" y="1886" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1248" y="10649" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="FORMATE" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="formate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2595" y="717" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="860" y="3490" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2591" y="713" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="856" y="3486" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="FORMATE_ext" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="extracellular formate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2549" y="578" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="814" y="2876" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2545" y="574" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="810" y="2872" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="FRU_6_P" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="fructose-6-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="327" y="903" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3324" y="6117" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="323" y="899" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3320" y="6113" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="FRU_BIS_P" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="fructose bi-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="983" y="1660" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3562" y="5394" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="979" y="1656" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3558" y="5390" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="FUMARATE" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="fumarate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2045" y="1582" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1654" y="10653" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2041" y="1578" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1650" y="10649" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="GA_3P" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="glyceraldehyde-3-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="436" y="1660" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3436" y="6715" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="432" y="1656" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3432" y="6711" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="GLU_6_P" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="glucose-6-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="567" y="749" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2652" y="2342" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="563" y="745" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2648" y="2338" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="GLU_ext" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="extracellular glucose">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1242" y="1242" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2718" y="2905" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1238" y="1238" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2714" y="2901" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="ISOCIT" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="isocitrate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2045" y="886" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1070" y="1502" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2041" y="882" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1066" y="1498" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="LACTATE" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="lactate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2595" y="413" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1308" y="158" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2591" y="409" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1304" y="154" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="LACTATE_ext" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="extracellular lactate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2549" y="274" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1262" y="20" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2545" y="270" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1258" y="16" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="MALATE" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="malate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1799" y="1440" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2288" y="9477" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1795" y="1436" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2284" y="9473" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD_R83" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2414" y="1867" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="8301" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2411" y="1864" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3600" y="8297" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD_R24" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2144" y="938" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1756" y="830" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2141" y="935" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1752" y="826" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD_R54r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2560" y="1183" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2557" y="1179" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD_R25" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2347" y="1081" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2344" y="1077" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD_R21" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2720" y="39" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2717" y="36" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD_R29r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1796" y="1336" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1793" y="1333" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD_R70" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1414" y="58" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1411" y="54" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD_R10" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="673" y="775" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="670" y="772" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD_R7r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1036" y="915" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1033" y="912" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD_R53r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2560" y="455" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2557" y="451" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD_R80" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="19" y="1100" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="16" y="1097" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NAD_R41" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1467" y="150" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1464" y="147" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH_R83" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2418" y="1951" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2415" y="1948" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH_R24" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2252" y="894" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2248" y="891" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH_R54r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2560" y="1274" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2557" y="1270" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH_R25" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2451" y="1132" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2448" y="1128" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH_R21" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2548" y="39" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2545" y="36" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH_R29r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1686" y="1327" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1683" y="1324" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH_R70" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1187" y="150" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1184" y="147" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH_R10" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="763" y="700" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="760" y="697" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH_R7r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1087" y="965" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1084" y="961" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH_R53r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2560" y="545" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2557" y="542" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH_R80" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="129" y="1143" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="126" y="1140" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NADH_R41" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="nicotinamide adenine dinucleotide">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1364" y="43" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1361" y="40" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NH3_R93" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NH3" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="ammonium">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2548" y="241" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3044" y="9477" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2545" y="238" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NH3_R70" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="ammonium">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1215" y="115" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1211" y="112" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3040" y="9473" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="NH3_ext" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="extracellular ammonium">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2645" y="154" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3089" y="10120" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2641" y="150" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3085" y="10116" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="OXALO" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="oxaloacetate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1568" y="1234" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2092" y="2342" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1564" y="1230" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2088" y="2338" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="OXY_ext" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="extracellular monooxygen">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="715" y="2295" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5452" y="10653" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="711" y="2291" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5448" y="10649" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="PEP" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="phosphoenolpyruvate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1380" y="1234" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4248" y="3490" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1376" y="1230" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4244" y="3486" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="PG" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="phosphoglycerate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1169" y="1024" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4332" y="4349" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1165" y="1020" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4328" y="4345" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="PYR_RR9" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="PYR" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="pyruvate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1399" y="2344" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2260" y="4349" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1396" y="2341" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2256" y="4345" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="PYR_R21" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="pyruvate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2664" y="19" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2661" y="16" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="PYR_R20" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="pyruvate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2636" y="850" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2633" y="846" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="PYR_R1" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="pyruvate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1154" y="1308" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1151" y="1305" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="PYR_R70" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="pyruvate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1257" y="230" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1254" y="227" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="PYR_R9" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="pyruvate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1498" y="67" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1495" y="64" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="PYR_R53r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="pyruvate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2636" y="545" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2633" y="542" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="PYR_R41" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="pyruvate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1360" y="103" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1357" y="99" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="RIBOSE_5_P_R70" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="RIBOSE_5_P" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="ribose-5-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1317" y="175" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3436" y="6957" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1314" y="172" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="RIBOSE_5_P_R12r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="ribose-5-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="466" y="169" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="463" y="166" w="32" h="32"/>
-        </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="RIBOSE_5_P_R13r" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
-            <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="ribose-5-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="173" y="1264" w="25" h="25"/>
-            </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="170" y="1261" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3432" y="6953" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="RIBULOSE_5_P" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="ribulose-5-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="852" y="749" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="7125" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="848" y="745" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3600" y="7121" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="SED_7_P" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="sedoheptulose-7-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="249" y="1444" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3100" y="6715" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="245" y="1440" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3096" y="6711" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="SUCC" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="succinate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2316" y="1494" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2652" y="11521" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2312" y="1490" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2648" y="11517" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="SUCC_CoA" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="succinyl-coenzyme A">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2432" y="1234" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3436" y="12193" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2428" y="1230" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3432" y="12189" w="40" h="40"/>
         </sbgn:glyph>
-        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="SUCC_ext_R95" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
+        <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="SUCC_ext" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="extracellular succinate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1136" y="106" w="25" h="25"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3222" y="10956" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1133" y="103" w="32" h="32"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3218" y="10952" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="XYL_5_P" compartmentRef="Cell" class="unspecified entity" orientation="horizontal">
             <sbgn:label xmlns:sbgn="http://sbgn.org/libsbgn/0.2" text="xylulose-5-phosphate">
-                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="208" y="1162" w="32" h="32"/>
+                <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3660" y="6957" w="32" h="32"/>
             </sbgn:label>
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="204" y="1158" w="40" h="40"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3656" y="6953" w="40" h="40"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R54r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2603" y="1233" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3514" x="7539" id="R54r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3351" x="7539" id="R54r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3500" y="13965" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="7933" x="2025" id="R54r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="7907" x="2031" id="R54r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R13r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="216" y="1314" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3594" x="386" id="R13r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3754" x="409" id="R13r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3500" y="6881" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3950" x="2027" id="R13r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3923" x="2030" id="R13r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R96" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2603" y="641" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1682" x="7539" id="R96__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1634" x="7539" id="R96__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="868" y="2938" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1724" x="555" id="R96__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1715" x="555" id="R96__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R15r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="257" y="1032" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2908" x="484" id="R15r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2908" x="530" id="R15r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3444" y="6209" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3574" x="2008" id="R15r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3550" x="1992" id="R15r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R26r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2409" y="1384" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3806" x="6975" id="R26r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3952" x="6910" id="R26r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3500" y="12117" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="6895" x="2027" id="R26r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="6873" x="2023" id="R26r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R94" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2603" y="337" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="771" x="7539" id="R94__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="723" x="7539" id="R94__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1316" y="82" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="118" x="807" id="R94__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="109" x="807" id="R94__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R95" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1199" y="122" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="126" x="3330" id="R95__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="102" x="3306" id="R95__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3220" y="11035" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="6273" x="1873" id="R95__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="6269" x="1878" id="R95__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R93" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2599" y="208" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="361" x="7550" id="R93__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="361" x="7502" id="R93__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3052" y="10073" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5737" x="1783" id="R93__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5728" x="1783" id="R93__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R90" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2603" y="1065" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2953" x="7539" id="R90__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2905" x="7539" id="R90__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6468" y="12789" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="7265" x="3705" id="R90__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="7256" x="3705" id="R90__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R91" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2603" y="1489" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4224" x="7539" id="R91__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4176" x="7539" id="R91__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6468" y="3769" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2191" x="3705" id="R91__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2182" x="3705" id="R91__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R8r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1218" y="1170" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3220" x="3388" id="R8r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3244" x="3412" id="R8r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4340" y="3769" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2191" x="2508" id="R8r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2182" x="2508" id="R8r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R10" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="717" y="736" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1955" x="1806" id="R10__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1955" x="1968" id="R10__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3612" y="7721" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4395" x="2096" id="R10__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4395" x="2094" id="R10__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R28r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1915" y="1545" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4367" x="5501" id="R28r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4367" x="5453" id="R28r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1979" y="10073" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5737" x="1180" id="R28r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5728" x="1180" id="R28r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R3" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1177" y="1452" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4045" x="3197" id="R3__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4152" x="3213" id="R3__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4452" y="5724" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3292" x="2556" id="R3__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3281" x="2556" id="R3__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R70" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1311" y="122" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="156" x="3604" id="R70__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="42" x="3721" id="R70__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3052" y="8897" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5056" x="1781" id="R70__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5087" x="1784" id="R70__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R6r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="575" y="1728" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4915" x="1435" id="R6r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4915" x="1483" id="R6r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2996" y="6396" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3665" x="1756" id="R6r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3660" x="1752" id="R6r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R97r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2612" y="924" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2508" x="7589" id="R97r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2508" x="7541" id="R97r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5292" y="250" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="212" x="3043" id="R97r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="203" x="3043" id="R97r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R41" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1423" y="122" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="181" x="4024" id="R41__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="29" x="3966" id="R41__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2716" y="7721" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4425" x="1591" id="R41__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4395" x="1592" id="R41__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R2r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="444" y="816" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2184" x="1091" id="R2r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2184" x="1043" id="R2r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2548" y="1762" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1063" x="1500" id="R2r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1063" x="1500" id="R2r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R55" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2603" y="1657" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4785" x="7539" id="R55__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4622" x="7539" id="R55__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6468" y="4926" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2852" x="3699" id="R55__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2852" x="3699" id="R55__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R4" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="860" y="1728" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4915" x="2338" id="R4__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4891" x="2314" id="R4__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3472" y="4926" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2842" x="2020" id="R4__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2842" x="2020" id="R4__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R12r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="527" y="194" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="342" x="1316" id="R12r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="318" x="1292" id="R12r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3528" y="7049" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4032" x="2056" id="R12r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4032" x="2047" id="R12r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R1" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1218" y="1314" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3644" x="3463" id="R1__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3622" x="3326" id="R1__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2660" y="2938" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1725" x="1578" id="R1__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1735" x="1559" id="R1__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R27r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2198" y="1575" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4416" x="6396" id="R27r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4465" x="6243" id="R27r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1260" y="11035" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="6278" x="790" id="R27r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="6258" x="776" id="R27r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R23r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1915" y="939" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2552" x="5453" id="R23r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2552" x="5501" id="R23r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1036" y="1594" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="968" x="650" id="R23r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="959" x="650" id="R23r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R9" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1535" y="122" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="183" x="4327" id="R9__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="21" x="4348" id="R9__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3892" y="4926" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2823" x="2260" id="R9__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2833" x="2241" id="R9__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R14r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="335" y="1573" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4506" x="802" id="R14r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4371" x="741" id="R14r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3108" y="6396" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3675" x="1826" id="R14r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3653" x="1825" id="R14r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="RR9" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1367" y="2303" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="6720" x="3832" id="RR9__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="6556" x="3835" id="RR9__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4172" y="3769" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2191" x="2399" id="RR9__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2172" x="2418" id="RR9__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R81" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2529" y="2029" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5738" x="7306" id="R81__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5830" x="7237" id="R81__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4676" y="10073" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5742" x="2709" id="R81__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5717" x="2697" id="R81__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R80" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="79" y="1127" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3186" x="13" id="R80__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3043" x="-65" id="R80__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6692" y="250" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="223" x="3829" id="R80__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="222" x="3825" id="R80__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R83" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2379" y="1916" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5562" x="6879" id="R83__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5469" x="6948" id="R83__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="364" y="250" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="214" x="286" id="R83__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="223" x="273" id="R83__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R82" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2607" y="1356" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3802" x="7576" id="R82__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3802" x="7470" id="R82__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5348" y="8897" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5071" x="3070" id="R82__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="5056" x="3074" id="R82__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R29r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1748" y="1315" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3752" x="5009" id="R29r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3646" x="4900" id="R29r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1876" y="7721" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4425" x="1126" id="R29r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4395" x="1123" id="R29r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R7r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1100" y="911" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2529" x="2979" id="R7r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2536" x="3077" id="R7r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4620" y="4926" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2848" x="2677" id="R7r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2853" x="2666" id="R7r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R53r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2603" y="505" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1332" x="7539" id="R53r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1169" x="7539" id="R53r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1316" y="250" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="223" x="811" id="R53r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="223" x="811" id="R53r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R40" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1482" y="1148" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3236" x="4120" id="R40__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3178" x="4202" id="R40__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4256" y="2938" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1706" x="2467" id="R40__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1720" x="2456" id="R40__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R11r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="991" y="816" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2184" x="2683" id="R11r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2184" x="2683" id="R11r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3640" y="7049" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4036" x="2114" id="R11r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4027" x="2114" id="R11r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R42" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1482" y="1336" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3684" x="4236" id="R42__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3684" x="4120" id="R42__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5348" y="1762" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1061" x="3060" id="R42__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1043" x="3074" id="R42__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R5r" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1100" y="1573" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4453" x="3009" id="R5r__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="4487" x="2958" id="R5r__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3668" y="4926" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2842" x="2130" id="R5r__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2853" x="2128" id="R5r__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R25" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2409" y="1100" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2967" x="6910" id="R25__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3114" x="6975" id="R25__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3332" y="12789" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="7276" x="1941" id="R25__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="7245" x="1944" id="R25__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R24" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2198" y="909" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2455" x="6243" id="R24__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2504" x="6396" id="R24__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1120" y="1426" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="883" x="690" id="R24__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="859" x="708" id="R24__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R22" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1748" y="1169" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3274" x="4900" id="R22__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="3167" x="5009" id="R22__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1036" y="1762" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1066" x="663" id="R22__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="1073" x="653" id="R22__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R21" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2639" y="75" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="-51" x="7727" id="R21__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="-23" x="7566" id="R21__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5404" y="3769" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2202" x="3103" id="R21__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2202" x="3103" id="R21__out"/>
         </sbgn:glyph>
         <sbgn:glyph xmlns:sbgn="http://sbgn.org/libsbgn/0.2" id="R20" class="process" orientation="horizontal">
-            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2603" y="809" w="16" h="16"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2244" x="7539" id="R20__in"/>
-            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2080" x="7539" id="R20__out"/>
+            <sbgn:bbox xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="588" y="3769" w="16" h="16"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2192" x="412" id="R20__in"/>
+            <sbgn:port xmlns:sbgn="http://sbgn.org/libsbgn/0.2" y="2202" x="401" id="R20__out"/>
         </sbgn:glyph>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R54r__in" target="ACETYL_CoA_R54r" class="production" id="a_ACETYL_CoA_R54r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="3514"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7610" y="3548"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R54r__in" target="ACETYL_CoA" class="production" id="a_ACETYL_CoA_R54r">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2025" y="7933"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1744" y="8244"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R54r__in" target="NADH_R54r" class="production" id="a_NADH_R54r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="3514"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7468" y="3548"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R54r__in" target="NADH" class="production" id="a_NADH_R54r">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2025" y="7933"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1061" y="550"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R54r__out" target="CoASH_R54r" class="production" id="a_R54r_CoASH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="3351"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7610" y="3317"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R54r__out" target="CoASH" class="production" id="a_R54r_CoASH">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2031" y="7907"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1944" y="7602"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R54r__out" target="ETOH" class="production" id="a_R54r_ETOH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="3351"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="3241"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2031" y="7907"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3694" y="7593"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R54r__out" target="NAD_R54r" class="production" id="a_R54r_NAD">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="3351"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7468" y="3317"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R54r__out" target="NAD" class="production" id="a_R54r_NAD">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2031" y="7907"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2098" y="4752"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R13r__in" target="RIBOSE_5_P_R13r" class="production" id="a_RIBOSE_5_P_R13r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="386" y="3594"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="315" y="3560"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R13r__in" target="RIBOSE_5_P" class="production" id="a_RIBOSE_5_P_R13r">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2027" y="3950"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2010" y="3975"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R13r__in" target="XYL_5_P" class="production" id="a_XYL_5_P_R13r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="386" y="3594"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="386" y="3304"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2027" y="3950"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2119" y="3981"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R13r__out" target="GA_3P" class="production" id="a_R13r_GA_3P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="409" y="3754"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1033" y="4686"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2030" y="3923"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2008" y="3859"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R13r__out" target="SED_7_P" class="production" id="a_R13r_SED_7_P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="409" y="3754"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="490" y="4032"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2030" y="3923"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1826" y="3852"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="FORMATE" target="R96__in" class="consumption" id="a_FORMATE_R96">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="1850"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="1682"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="555" y="2023"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="555" y="1724"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R96__out" target="FORMATE_ext" class="production" id="a_R96_FORMATE_ext">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="1634"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7440" y="1540"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="555" y="1715"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="537" y="1698"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R15r__in" target="XYL_5_P" class="production" id="a_XYL_5_P_R15r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="484" y="2908"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="403" y="3186"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2008" y="3574"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2127" y="3974"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R15r__in" target="ERYTH_4_P_R15r" class="production" id="a_ERYTH_4_P_R15r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="484" y="2908"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="543" y="2961"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R15r__in" target="ERYTH_4_P" class="production" id="a_ERYTH_4_P_R15r">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2008" y="3574"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1951" y="3602"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R15r__out" target="FRU_6_P" class="production" id="a_R15r_FRU_6_P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="530" y="2908"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="715" y="2521"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1992" y="3550"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1950" y="3519"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R15r__out" target="GA_3P" class="production" id="a_R15r_GA_3P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="530" y="2908"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1050" y="4678"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1992" y="3550"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2003" y="3837"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R26r__in" target="SUCC_CoA" class="production" id="a_SUCC_CoA_R26r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6975" y="3806"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7036" y="3518"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2027" y="6895"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2010" y="6920"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R26r__in" target="ADP_R26r" class="production" id="a_ADP_R26r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6975" y="3806"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6913" y="3758"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R26r__in" target="ADP" class="production" id="a_ADP_R26r">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2027" y="6895"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2946" y="3116"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R26r__out" target="SUCC" class="production" id="a_R26r_SUCC">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6910" y="3952"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6737" y="4190"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2023" y="6873"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1572" y="6558"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R26r__out" target="CoASH_R26r" class="production" id="a_R26r_CoASH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6910" y="3952"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6833" y="3938"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R26r__out" target="CoASH" class="production" id="a_R26r_CoASH">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2023" y="6873"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1942" y="7580"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R26r__out" target="ATP_R26r" class="production" id="a_R26r_ATP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6910" y="3952"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6948" y="4021"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R26r__out" target="ATP" class="production" id="a_R26r_ATP">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2023" y="6873"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2692" y="5412"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="LACTATE" target="R94__in" class="consumption" id="a_LACTATE_R94">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="939"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="771"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="807" y="149"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="807" y="118"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R94__out" target="LACTATE_ext" class="production" id="a_R94_LACTATE_ext">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="723"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7440" y="629"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="807" y="109"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="789" y="91"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="SUCC" target="R95__in" class="consumption" id="a_SUCC_R95">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6664" y="4192"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3330" y="126"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1571" y="6544"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1873" y="6273"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R95__out" target="SUCC_ext_R95" class="production" id="a_R95_SUCC_ext">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3306" y="102"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3203" y="78"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R95__out" target="SUCC_ext" class="production" id="a_R95_SUCC_ext">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1878" y="6269"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1882" y="6245"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NH3_ext" target="R93__in" class="consumption" id="a_NH3_ext_R93">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7644" y="262"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7550" y="361"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1802" y="5755"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1783" y="5737"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R93__out" target="NH3_R93" class="production" id="a_R93_NH3">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7502" y="361"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7426" y="444"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R93__out" target="NH3" class="production" id="a_R93_NH3">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1783" y="5728"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1783" y="5413"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ETOH" target="R90__in" class="consumption" id="a_ETOH_R90">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="3121"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="2953"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3705" y="7580"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3705" y="7265"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R90__out" target="ETOH_ext" class="production" id="a_R90_ETOH_ext">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="2905"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7440" y="2811"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3705" y="7256"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3686" y="7238"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ACETATE" target="R91__in" class="consumption" id="a_ACETATE_R91">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="4392"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="4224"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3705" y="2506"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3705" y="2191"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R91__out" target="ACETATE_ext" class="production" id="a_R91_ACETATE_ext">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="4176"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7440" y="4082"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3705" y="2182"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3686" y="2165"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R8r__in" target="PG" class="production" id="a_PG_R8r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3388" y="3220"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3283" y="2887"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2508" y="2191"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2508" y="2506"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R8r__out" target="PEP" class="production" id="a_R8r_PEP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3412" y="3244"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3841" y="3436"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2508" y="2182"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2464" y="2045"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="GLU_6_P" target="R10__in" class="consumption" id="a_GLU_6_P_R10">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1519" y="1996"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1806" y="1955"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1565" y="1400"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2096" y="4395"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NAD_R10" target="R10__in" class="consumption" id="a_NAD_R10">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1782" y="2030"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1806" y="1955"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NAD" target="R10__in" class="consumption" id="a_NAD_R10">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2098" y="4729"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2096" y="4395"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R10__out" target="NADH_R10" class="production" id="a_R10_NADH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1968" y="1955"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2011" y="1889"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R10__out" target="NADH" class="production" id="a_R10_NADH">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2094" y="4395"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1062" y="550"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R10__out" target="RIBULOSE_5_P" class="production" id="a_R10_RIBULOSE_5_P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1968" y="1955"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2255" y="1996"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2094" y="4395"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2098" y="4090"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R10__out" target="CO2_R10" class="production" id="a_R10_CO2">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1968" y="1955"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1991" y="2030"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R10__out" target="CO2" class="production" id="a_R10_CO2">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2094" y="4395"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3041" y="550"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R28r__in" target="FUMARATE" class="production" id="a_FUMARATE_R28r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5501" y="4367"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5834" y="4483"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1180" y="5737"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1007" y="6053"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R28r__out" target="MALATE" class="production" id="a_R28r_MALATE">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5453" y="4367"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5198" y="4116"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1180" y="5728"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1353" y="5412"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="FRU_6_P" target="R3__in" class="consumption" id="a_FRU_6_P_R3">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="791" y="2499"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3197" y="4045"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1952" y="3509"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2556" y="3292"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ATP_R3" target="R3__in" class="consumption" id="a_ATP_R3">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3131" y="4087"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3197" y="4045"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ATP" target="R3__in" class="consumption" id="a_ATP_R3">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2696" y="5391"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2556" y="3292"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R3__out" target="FRU_BIS_P" class="production" id="a_R3_FRU_BIS_P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3213" y="4152"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2746" y="4690"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2556" y="3281"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2085" y="3109"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R3__out" target="ADP_R3" class="production" id="a_R3_ADP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3213" y="4152"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3244" y="4224"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R3__out" target="ADP" class="production" id="a_R3_ADP">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2556" y="3281"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2939" y="3110"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NADH_R70" target="R70__in" class="consumption" id="a_NADH_R70">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3358" y="195"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="156"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NADH" target="R70__in" class="consumption" id="a_NADH_R70">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1061" y="550"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1781" y="5056"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NH3_R70" target="R70__in" class="consumption" id="a_NH3_R70">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3438" y="109"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="156"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NH3" target="R70__in" class="consumption" id="a_NH3_R70">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1783" y="5391"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1781" y="5056"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="OXALO" target="R70__in" class="consumption" id="a_OXALO_R70">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4445" y="3402"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="156"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1250" y="1400"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1781" y="5056"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="PYR_R70" target="R70__in" class="consumption" id="a_PYR_R70">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3534" y="396"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="156"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="PYR" target="R70__in" class="consumption" id="a_PYR_R70">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1344" y="2529"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1781" y="5056"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="GLU_6_P" target="R70__in" class="consumption" id="a_GLU_6_P_R70">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1505" y="1966"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="156"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1564" y="1400"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1781" y="5056"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="PEP" target="R70__in" class="consumption" id="a_PEP_R70">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3891" y="3400"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="156"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2458" y="2046"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1781" y="5056"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="RIBOSE_5_P_R70" target="R70__in" class="consumption" id="a_RIBOSE_5_P_R70">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3669" y="239"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="156"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="RIBOSE_5_P" target="R70__in" class="consumption" id="a_RIBOSE_5_P_R70">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2002" y="3996"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1781" y="5056"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ERYTH_4_P_R70" target="R70__in" class="consumption" id="a_ERYTH_4_P_R70">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3629" y="327"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="156"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ERYTH_4_P" target="R70__in" class="consumption" id="a_ERYTH_4_P_R70">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1940" y="3618"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1781" y="5056"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ATP_R70" target="R70__in" class="consumption" id="a_ATP_R70">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3316" y="329"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="156"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ATP" target="R70__in" class="consumption" id="a_ATP_R70">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2686" y="5398"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1781" y="5056"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ACETYL_CoA_R70" target="R70__in" class="consumption" id="a_ACETYL_CoA_R70">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3395" y="420"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="156"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ACETYL_CoA" target="R70__in" class="consumption" id="a_ACETYL_CoA_R70">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1736" y="8241"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1781" y="5056"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="AKG" target="R70__in" class="consumption" id="a_AKG_R70">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6656" y="2643"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3604" y="156"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="87" y="549"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1781" y="5056"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R70__out" target="CoASH_R70" class="production" id="a_R70_CoASH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3721" y="42"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3727" y="-115"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R70__out" target="CoASH" class="production" id="a_R70_CoASH">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1784" y="5087"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1940" y="7580"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R70__out" target="NAD_R70" class="production" id="a_R70_NAD">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3721" y="42"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3946" y="-56"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R70__out" target="NAD" class="production" id="a_R70_NAD">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1784" y="5087"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2091" y="4749"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R70__out" target="CO2_R70" class="production" id="a_R70_CO2">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3721" y="42"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3891" y="71"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R70__out" target="CO2" class="production" id="a_R70_CO2">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1784" y="5087"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3040" y="550"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R70__out" target="ADP_R70" class="production" id="a_R70_ADP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3721" y="42"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3861" y="-152"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R70__out" target="ADP" class="production" id="a_R70_ADP">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1784" y="5087"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2943" y="3115"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R70__out" target="BIOMASS_R70" class="production" id="a_R70_BIOMASS">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3721" y="42"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3662" y="-34"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R70__out" target="BIOMASS" class="production" id="a_R70_BIOMASS">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1784" y="5087"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1801" y="5095"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R6r__in" target="GA_3P" class="production" id="a_GA_3P_R6r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1435" y="4915"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1121" y="4760"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1756" y="3665"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1995" y="3842"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R6r__out" target="DHAP" class="production" id="a_R6r_DHAP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1483" y="4915"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1827" y="4968"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1752" y="3660"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1970" y="2529"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R97r__in" target="CO2_R97r" class="production" id="a_CO2_R97r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7589" y="2508"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7665" y="2425"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R97r__in" target="CO2" class="production" id="a_CO2_R97r">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3043" y="212"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3043" y="527"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R97r__out" target="CO2_ext" class="production" id="a_R97r_CO2_ext">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7541" y="2508"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7447" y="2607"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3043" y="203"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3025" y="186"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="MALATE" target="R41__in" class="consumption" id="a_MALATE_R41">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5136" y="4018"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4024" y="181"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1361" y="5391"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1591" y="4425"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NAD_R41" target="R41__in" class="consumption" id="a_NAD_R41">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4102" y="193"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4024" y="181"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NAD" target="R41__in" class="consumption" id="a_NAD_R41">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2089" y="4735"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1591" y="4425"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R41__out" target="PYR_R41" class="production" id="a_R41_PYR">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3966" y="29"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3876" y="49"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R41__out" target="PYR" class="production" id="a_R41_PYR">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1592" y="4395"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1344" y="2529"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R41__out" target="NADH_R41" class="production" id="a_R41_NADH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3966" y="29"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3871" y="-81"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R41__out" target="NADH" class="production" id="a_R41_NADH">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1592" y="4395"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1061" y="550"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R41__out" target="CO2_R41" class="production" id="a_R41_CO2">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3966" y="29"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4007" y="-124"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R41__out" target="CO2" class="production" id="a_R41_CO2">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1592" y="4395"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3039" y="549"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R2r__in" target="GLU_6_P" class="production" id="a_GLU_6_P_R2r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1091" y="2184"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1405" y="2030"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1500" y="1063"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1561" y="1378"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R2r__out" target="FRU_6_P" class="production" id="a_R2r_FRU_6_P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1043" y="2184"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="786" y="2427"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1500" y="1063"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1939" y="3501"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ACETYL_CoA_R55" target="R55__in" class="consumption" id="a_ACETYL_CoA_R55">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7610" y="4819"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="4785"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ACETYL_CoA" target="R55__in" class="consumption" id="a_ACETYL_CoA_R55">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1740" y="8242"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3699" y="2852"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ADP_R55" target="R55__in" class="consumption" id="a_ADP_R55">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7468" y="4819"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="4785"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ADP" target="R55__in" class="consumption" id="a_ADP_R55">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2959" y="3102"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3699" y="2852"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R55__out" target="CoASH_R55" class="production" id="a_R55_CoASH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="4622"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7468" y="4588"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R55__out" target="CoASH" class="production" id="a_R55_CoASH">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3699" y="2852"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1945" y="7580"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R55__out" target="ATP_R55" class="production" id="a_R55_ATP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="4622"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7610" y="4588"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R55__out" target="ATP" class="production" id="a_R55_ATP">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3699" y="2852"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2701" y="5392"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R55__out" target="ACETATE" class="production" id="a_R55_ACETATE">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="4622"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="4512"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3699" y="2852"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3704" y="2529"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="FRU_BIS_P" target="R4__in" class="consumption" id="a_FRU_BIS_P_R4">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2652" y="4760"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2338" y="4915"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2073" y="3094"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2020" y="2842"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R4__out" target="FRU_6_P" class="production" id="a_R4_FRU_6_P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2314" y="4891"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="773" y="2517"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2020" y="2842"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1942" y="3501"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R12r__in" target="RIBULOSE_5_P" class="production" id="a_RIBULOSE_5_P_R12r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1316" y="342"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2283" y="1953"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2056" y="4032"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2090" y="4071"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R12r__out" target="RIBOSE_5_P_R12r" class="production" id="a_R12r_RIBOSE_5_P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1292" y="318"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1193" y="275"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R12r__out" target="RIBOSE_5_P" class="production" id="a_R12r_RIBOSE_5_P">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2047" y="4032"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2012" y="3993"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="GLU_ext" target="R1__in" class="consumption" id="a_GLU_ext_R1">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3477" y="3545"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3463" y="3644"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1592" y="1713"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1578" y="1725"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="PEP" target="R1__in" class="consumption" id="a_PEP_R1">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3841" y="3483"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3463" y="3644"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2450" y="2031"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1578" y="1725"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R1__out" target="PYR_R1" class="production" id="a_R1_PYR">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3326" y="3622"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3254" y="3654"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R1__out" target="PYR" class="production" id="a_R1_PYR">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1559" y="1735"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1346" y="2507"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R1__out" target="GLU_6_P" class="production" id="a_R1_GLU_6_P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3326" y="3622"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1505" y="2044"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1559" y="1735"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1563" y="1400"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R27r__in" target="SUCC" class="production" id="a_SUCC_R27r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6396" y="4416"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6650" y="4269"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="790" y="6278"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1552" y="6548"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R27r__in" target="FAD" class="production" id="a_FAD_R27r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6396" y="4416"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6903" y="5818"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="790" y="6278"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="246" y="5412"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R27r__out" target="FADH" class="production" id="a_R27r_FADH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6243" y="4465"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7218" y="5383"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="776" y="6258"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="776" y="6075"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R27r__out" target="FUMARATE" class="production" id="a_R27r_FUMARATE">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6243" y="4465"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5951" y="4496"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="776" y="6258"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="993" y="6071"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R23r__in" target="CITRATE" class="production" id="a_CITRATE_R23r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5453" y="2552"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5198" y="2804"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="650" y="968"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="650" y="1000"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R23r__out" target="ISOCIT" class="production" id="a_R23r_ISOCIT">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5501" y="2552"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5834" y="2436"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="650" y="959"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="668" y="927"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="PEP" target="R9__in" class="consumption" id="a_PEP_R9">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3904" y="3400"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4327" y="183"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2458" y="2046"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2260" y="2823"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ADP_R9" target="R9__in" class="consumption" id="a_ADP_R9">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4392" y="226"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4327" y="183"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ADP" target="R9__in" class="consumption" id="a_ADP_R9">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2938" y="3101"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2260" y="2823"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R9__out" target="PYR_R9" class="production" id="a_R9_PYR">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4348" y="21"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4282" y="-21"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R9__out" target="PYR" class="production" id="a_R9_PYR">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2241" y="2833"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1353" y="2521"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R9__out" target="ATP_R9" class="production" id="a_R9_ATP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4348" y="21"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4423" y="-2"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R9__out" target="ATP" class="production" id="a_R9_ATP">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2241" y="2833"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2695" y="5391"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R14r__in" target="GA_3P" class="production" id="a_GA_3P_R14r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="802" y="4506"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1022" y="4696"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1826" y="3675"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1996" y="3840"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R14r__in" target="SED_7_P" class="production" id="a_SED_7_P_R14r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="802" y="4506"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="542" y="4139"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1826" y="3675"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1816" y="3837"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R14r__out" target="FRU_6_P" class="production" id="a_R14r_FRU_6_P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="741" y="4371"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="741" y="2527"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1825" y="3653"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1934" y="3521"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R14r__out" target="ERYTH_4_P_R14r" class="production" id="a_R14r_ERYTH_4_P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="741" y="4371"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="670" y="4337"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R14r__out" target="ERYTH_4_P" class="production" id="a_R14r_ERYTH_4_P">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1825" y="3653"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1930" y="3611"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="PYR_RR9" target="RR9__in" class="consumption" id="a_PYR_RR9">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3902" y="6755"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3832" y="6720"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="PYR" target="RR9__in" class="consumption" id="a_PYR_RR9">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1353" y="2514"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2399" y="2191"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ATP_RR9" target="RR9__in" class="consumption" id="a_ATP_RR9">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3760" y="6752"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3832" y="6720"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ATP" target="RR9__in" class="consumption" id="a_ATP_RR9">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2696" y="5391"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2399" y="2191"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="RR9__out" target="PEP" class="production" id="a_RR9_PEP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3835" y="6556"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3895" y="3520"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2418" y="2172"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2457" y="2045"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="RR9__out" target="ADP_RR9" class="production" id="a_RR9_ADP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3835" y="6556"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3765" y="6521"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="RR9__out" target="ADP" class="production" id="a_RR9_ADP">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2418" y="2172"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2943" y="3096"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="OXY_ext" target="R81__in" class="consumption" id="a_OXY_ext_R81">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1963" y="6628"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7306" y="5738"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3129" y="6057"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2709" y="5742"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="FADH" target="R81__in" class="consumption" id="a_FADH_R81">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7270" y="5484"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7306" y="5738"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="787" y="6062"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2709" y="5742"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ADP_R81" target="R81__in" class="consumption" id="a_ADP_R81">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7231" y="5714"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7306" y="5738"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ADP" target="R81__in" class="consumption" id="a_ADP_R81">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2948" y="3117"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2709" y="5742"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R81__out" target="ATP_R81" class="production" id="a_R81_ATP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7237" y="5830"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7213" y="5905"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R81__out" target="ATP" class="production" id="a_R81_ATP">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2697" y="5717"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2697" y="5413"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R81__out" target="FAD" class="production" id="a_R81_FAD">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7237" y="5830"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6983" y="5866"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2697" y="5717"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="251" y="5403"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="OXY_ext" target="R80__in" class="consumption" id="a_OXY_ext_R80">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1875" y="6586"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="13" y="3186"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3139" y="6052"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3829" y="223"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NADH_R80" target="R80__in" class="consumption" id="a_NADH_R80">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="91" y="3182"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="13" y="3186"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NADH" target="R80__in" class="consumption" id="a_NADH_R80">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1070" y="537"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3829" y="223"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ADP_R80" target="R80__in" class="consumption" id="a_ADP_R80">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="-32" y="3250"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="13" y="3186"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ADP" target="R80__in" class="consumption" id="a_ADP_R80">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2952" y="3095"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3829" y="223"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R80__out" target="NAD_R80" class="production" id="a_R80_NAD">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="-65" y="3043"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="-143" y="3047"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R80__out" target="NAD" class="production" id="a_R80_NAD">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3825" y="222"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2102" y="4730"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R80__out" target="ATP_R80" class="production" id="a_R80_ATP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="-65" y="3043"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="-19" y="2979"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R80__out" target="ATP" class="production" id="a_R80_ATP">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3825" y="222"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2699" y="5391"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NADH_R83" target="R83__in" class="consumption" id="a_NADH_R83">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6954" y="5585"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6879" y="5562"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NADH" target="R83__in" class="consumption" id="a_NADH_R83">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1049" y="534"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="286" y="214"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="FAD" target="R83__in" class="consumption" id="a_FAD_R83">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6915" y="5816"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6879" y="5562"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="240" y="5391"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="286" y="214"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R83__out" target="FADH" class="production" id="a_R83_FADH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6948" y="5469"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7202" y="5433"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="273" y="223"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="775" y="6052"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R83__out" target="NAD_R83" class="production" id="a_R83_NAD">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6948" y="5469"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6972" y="5394"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R83__out" target="NAD" class="production" id="a_R83_NAD">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="273" y="223"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2094" y="4730"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ATP_R82" target="R82__in" class="consumption" id="a_ATP_R82">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7651" y="3719"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7576" y="3802"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ATP" target="R82__in" class="consumption" id="a_ATP_R82">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2705" y="5395"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3070" y="5071"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R82__out" target="ADP_R82" class="production" id="a_R82_ADP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7470" y="3802"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7424" y="3886"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R82__out" target="ADP" class="production" id="a_R82_ADP">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3074" y="5056"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2950" y="3117"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R82__out" target="ATP_main" class="production" id="a_R82_ATP_main">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7470" y="3802"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7430" y="3729"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3074" y="5056"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3057" y="5047"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R29r__in" target="MALATE" class="production" id="a_MALATE_R29r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5009" y="3752"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5129" y="4021"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1126" y="4425"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1356" y="5391"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R29r__in" target="NAD_R29r" class="production" id="a_NAD_R29r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5009" y="3752"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5088" y="3754"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R29r__in" target="NAD" class="production" id="a_NAD_R29r">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1126" y="4425"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2088" y="4737"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R29r__out" target="OXALO" class="production" id="a_R29r_OXALO">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4900" y="3646"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4515" y="3483"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1123" y="4395"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1248" y="1400"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R29r__out" target="NADH_R29r" class="production" id="a_R29r_NADH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4900" y="3646"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4842" y="3698"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R29r__out" target="NADH" class="production" id="a_R29r_NADH">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1123" y="4395"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1059" y="550"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R7r__in" target="ADP_R7r" class="production" id="a_ADP_R7r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2979" y="2529"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3011" y="2601"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R7r__in" target="ADP" class="production" id="a_ADP_R7r">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2677" y="2848"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2941" y="3098"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R7r__in" target="NAD_R7r" class="production" id="a_NAD_R7r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2979" y="2529"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2903" y="2508"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R7r__in" target="NAD" class="production" id="a_NAD_R7r">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2677" y="2848"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2102" y="4730"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R7r__in" target="GA_3P" class="production" id="a_GA_3P_R7r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2979" y="2529"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1106" y="4690"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2677" y="2848"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2010" y="3839"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R7r__out" target="ATP_R7r" class="production" id="a_R7r_ATP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3077" y="2536"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3155" y="2526"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R7r__out" target="ATP" class="production" id="a_R7r_ATP">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2666" y="2853"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2697" y="5391"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R7r__out" target="NADH_R7r" class="production" id="a_R7r_NADH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3077" y="2536"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3036" y="2602"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R7r__out" target="NADH" class="production" id="a_R7r_NADH">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2666" y="2853"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1066" y="548"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R7r__out" target="PG" class="production" id="a_R7r_PG">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3077" y="2536"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3234" y="2779"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2666" y="2853"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2513" y="2528"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R53r__in" target="PYR_R53r" class="production" id="a_PYR_R53r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="1332"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7610" y="1366"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R53r__in" target="PYR" class="production" id="a_PYR_R53r">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="811" y="223"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1340" y="2507"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R53r__in" target="NADH_R53r" class="production" id="a_NADH_R53r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="1332"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7468" y="1366"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R53r__in" target="NADH" class="production" id="a_NADH_R53r">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="811" y="223"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1052" y="530"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R53r__out" target="NAD_R53r" class="production" id="a_R53r_NAD">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="1169"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7468" y="1135"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R53r__out" target="NAD" class="production" id="a_R53r_NAD">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="811" y="223"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2095" y="4730"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R53r__out" target="LACTATE" class="production" id="a_R53r_LACTATE">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="1169"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="1059"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="811" y="223"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="808" y="172"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="CO2_R40" target="R40__in" class="consumption" id="a_CO2_R40">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4146" y="3310"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4120" y="3236"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="CO2" target="R40__in" class="consumption" id="a_CO2_R40">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3038" y="549"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2467" y="1706"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="PEP" target="R40__in" class="consumption" id="a_PEP_R40">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3939" y="3417"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4120" y="3236"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2461" y="2023"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2467" y="1706"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R40__out" target="OXALO" class="production" id="a_R40_OXALO">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4202" y="3178"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4417" y="3417"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2456" y="1720"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1259" y="1392"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R11r__in" target="RIBULOSE_5_P" class="production" id="a_RIBULOSE_5_P_R11r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2683" y="2184"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2368" y="2030"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2114" y="4036"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2102" y="4069"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R11r__out" target="XYL_5_P" class="production" id="a_R11r_XYL_5_P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2683" y="2184"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="440" y="3219"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2114" y="4027"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2126" y="3995"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="OXALO" target="R42__in" class="consumption" id="a_OXALO_R42">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4417" y="3502"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4236" y="3684"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1259" y="1387"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3060" y="1061"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ATP_R42" target="R42__in" class="consumption" id="a_ATP_R42">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4210" y="3609"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4236" y="3684"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ATP" target="R42__in" class="consumption" id="a_ATP_R42">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2698" y="5391"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3060" y="1061"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R42__out" target="CO2_R42" class="production" id="a_R42_CO2">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4120" y="3684"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4146" y="3609"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R42__out" target="CO2" class="production" id="a_R42_CO2">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3074" y="1043"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3044" y="550"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R42__out" target="PEP" class="production" id="a_R42_PEP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4120" y="3684"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3939" y="3502"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3074" y="1043"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2467" y="2025"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R42__out" target="ADP_R42" class="production" id="a_R42_ADP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4120" y="3684"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4046" y="3710"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R42__out" target="ADP" class="production" id="a_R42_ADP">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3074" y="1043"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2949" y="3094"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R5r__in" target="FRU_BIS_P" class="production" id="a_FRU_BIS_P_R5r">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3009" y="4453"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2752" y="4696"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2130" y="2842"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2077" y="3094"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R5r__out" target="GA_3P" class="production" id="a_R5r_GA_3P">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2958" y="4487"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1126" y="4728"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2128" y="2853"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2005" y="3837"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R5r__out" target="DHAP" class="production" id="a_R5r_DHAP">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2958" y="4487"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1941" y="4951"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2128" y="2853"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1977" y="2528"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="CoASH_R25" target="R25__in" class="consumption" id="a_CoASH_R25">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6948" y="2898"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6910" y="2967"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="CoASH" target="R25__in" class="consumption" id="a_CoASH_R25">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1941" y="7580"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1941" y="7276"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NAD_R25" target="R25__in" class="consumption" id="a_NAD_R25">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6833" y="2982"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6910" y="2967"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NAD" target="R25__in" class="consumption" id="a_NAD_R25">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2098" y="4752"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1941" y="7276"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="AKG" target="R25__in" class="consumption" id="a_AKG_R25">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6737" y="2729"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6910" y="2967"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="86" y="550"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1941" y="7276"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R25__out" target="SUCC_CoA" class="production" id="a_R25_SUCC_CoA">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6975" y="3114"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7036" y="3401"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1944" y="7245"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2002" y="6941"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R25__out" target="NADH_R25" class="production" id="a_R25_NADH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6975" y="3114"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7052" y="3132"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R25__out" target="NADH" class="production" id="a_R25_NADH">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1944" y="7245"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1061" y="550"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R25__out" target="CO2_R25" class="production" id="a_R25_CO2">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6975" y="3114"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6913" y="3161"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R25__out" target="CO2" class="production" id="a_R25_CO2">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1944" y="7245"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3041" y="550"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ISOCIT" target="R24__in" class="consumption" id="a_ISOCIT_R24">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5951" y="2424"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6243" y="2455"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="678" y="907"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="690" y="883"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NAD_R24" target="R24__in" class="consumption" id="a_NAD_R24">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6202" y="2522"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6243" y="2455"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NAD" target="R24__in" class="consumption" id="a_NAD_R24">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2095" y="4730"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="690" y="883"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R24__out" target="NADH_R24" class="production" id="a_R24_NADH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6396" y="2504"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6460" y="2459"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R24__out" target="NADH" class="production" id="a_R24_NADH">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="708" y="859"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1051" y="546"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R24__out" target="AKG" class="production" id="a_R24_AKG">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6396" y="2504"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6650" y="2651"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="708" y="859"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="93" y="544"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R24__out" target="CO2_R24" class="production" id="a_R24_CO2">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6396" y="2504"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="6389" y="2582"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R24__out" target="CO2" class="production" id="a_R24_CO2">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="708" y="859"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3032" y="540"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="OXALO" target="R22__in" class="consumption" id="a_OXALO_R22">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4515" y="3436"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4900" y="3274"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1238" y="1384"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="663" y="1066"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ACETYL_CoA_R22" target="R22__in" class="consumption" id="a_ACETYL_CoA_R22">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4897" y="3352"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4900" y="3274"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="ACETYL_CoA" target="R22__in" class="consumption" id="a_ACETYL_CoA_R22">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1735" y="8241"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="663" y="1066"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R22__out" target="CoASH_R22" class="production" id="a_R22_CoASH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5009" y="3167"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="4958" y="3107"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R22__out" target="CoASH" class="production" id="a_R22_CoASH">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="653" y="1073"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1939" y="7580"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R22__out" target="CITRATE" class="production" id="a_R22_CITRATE">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5009" y="3167"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="5129" y="2899"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="653" y="1073"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="650" y="1022"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="CoASH_R21" target="R21__in" class="consumption" id="a_CoASH_R21">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7863" y="30"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7727" y="-51"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="CoASH" target="R21__in" class="consumption" id="a_CoASH_R21">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1943" y="7580"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3103" y="2202"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NAD_R21" target="R21__in" class="consumption" id="a_NAD_R21">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7860" y="-111"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7727" y="-51"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="NAD" target="R21__in" class="consumption" id="a_NAD_R21">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="2103" y="4730"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3103" y="2202"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="PYR_R21" target="R21__in" class="consumption" id="a_PYR_R21">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7733" y="-143"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7727" y="-51"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="PYR" target="R21__in" class="consumption" id="a_PYR_R21">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1354" y="2516"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3103" y="2202"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R21__out" target="ACETYL_CoA_R21" class="production" id="a_R21_ACETYL_CoA">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7566" y="-23"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7561" y="68"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R21__out" target="ACETYL_CoA" class="production" id="a_R21_ACETYL_CoA">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3103" y="2202"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1739" y="8241"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R21__out" target="CO2_R21" class="production" id="a_R21_CO2">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7566" y="-23"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7433" y="36"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R21__out" target="CO2" class="production" id="a_R21_CO2">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3103" y="2202"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3044" y="550"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R21__out" target="NADH_R21" class="production" id="a_R21_NADH">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7566" y="-23"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7431" y="-106"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R21__out" target="NADH" class="production" id="a_R21_NADH">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="3103" y="2202"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1068" y="546"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="PYR_R20" target="R20__in" class="consumption" id="a_PYR_R20">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7610" y="2277"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="2244"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="PYR" target="R20__in" class="consumption" id="a_PYR_R20">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1332" y="2514"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="412" y="2192"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="CoASH_R20" target="R20__in" class="consumption" id="a_CoASH_R20">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7468" y="2277"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="2244"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="CoASH" target="R20__in" class="consumption" id="a_CoASH_R20">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1938" y="7580"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="412" y="2192"/>
         </sbgn:arc>
-        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R20__out" target="ACETYL_CoA_R20" class="production" id="a_R20_ACETYL_CoA">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="2080"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7468" y="2046"/>
+        <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R20__out" target="ACETYL_CoA" class="production" id="a_R20_ACETYL_CoA">
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="401" y="2202"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="1734" y="8241"/>
         </sbgn:arc>
         <sbgn:arc xmlns:sbgn="http://sbgn.org/libsbgn/0.2" source="R20__out" target="FORMATE" class="production" id="a_R20_FORMATE">
-            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="2080"/>
-            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="7539" y="1970"/>
+            <sbgn:start xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="401" y="2202"/>
+            <sbgn:end xmlns:sbgn="http://sbgn.org/libsbgn/0.2" x="548" y="2043"/>
         </sbgn:arc>
     </sbgn:map>
 </sbgn>

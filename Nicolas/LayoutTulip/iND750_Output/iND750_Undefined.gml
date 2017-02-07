@@ -13,7 +13,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -22,14 +22,14 @@ id 1
 label "M_thmpp_e1"
 graphics [
 x 3.25
-y 2.25
+y 8.75
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -45,7 +45,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -61,7 +61,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -70,14 +70,14 @@ id 4
 label "M_pa_SC_c4"
 graphics [
 x 3.25
-y -4.25
+y 2.25
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -93,7 +93,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -109,7 +109,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -125,7 +125,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -141,7 +141,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -157,7 +157,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -173,7 +173,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -182,14 +182,14 @@ id 11
 label "M_glycogen_c11"
 graphics [
 x 3.25
-y -6.75
+y -0.25
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -205,7 +205,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -221,7 +221,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -237,7 +237,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -253,7 +253,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -269,7 +269,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -285,7 +285,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -301,7 +301,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -317,7 +317,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -325,7 +325,7 @@ node [
 id 20
 label "R_EX_arg__L_e20"
 graphics [
-x 8.25
+x 3.25
 y -7.5
 z 0
 h 1
@@ -333,7 +333,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -342,6 +342,22 @@ id 21
 label "R_EX_asn__L_e21"
 graphics [
 x 8.25
+y -7.5
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 22
+label "R_EX_asp__L_e22"
+graphics [
+x 8.25
 y -1
 z 0
 h 1
@@ -349,13 +365,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 22
-label "R_EX_asp__L_e22"
+id 23
+label "R_EX_btn_e23"
 graphics [
 x -6.75
 y 10.5
@@ -365,13 +381,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 23
-label "R_EX_btn_e23"
+id 24
+label "R_EX_chol_e24"
 graphics [
 x -4.25
 y 10.5
@@ -381,13 +397,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 24
-label "R_EX_chol_e24"
+id 25
+label "R_EX_cit_e25"
 graphics [
 x -1.75
 y 10.5
@@ -397,13 +413,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 25
-label "R_EX_cit_e25"
+id 26
+label "R_EX_co2_e26"
 graphics [
 x 0.75
 y 10.5
@@ -413,13 +429,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 26
-label "R_EX_co2_e26"
+id 27
+label "R_EX_crn_e27"
 graphics [
 x 3.25
 y 10.5
@@ -429,13 +445,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#00ffff"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 27
-label "R_EX_crn_e27"
+id 28
+label "R_EX_csn_e28"
 graphics [
 x 5.75
 y 10.5
@@ -445,13 +461,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 28
-label "R_EX_csn_e28"
+id 29
+label "R_EX_cys__L_e29"
 graphics [
 x 8.25
 y 10.5
@@ -461,23 +477,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 29
-label "R_EX_cys__L_e29"
-graphics [
-x 10.75
-y -7.5
-z 0
-h 1
-w 1
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -486,6 +486,22 @@ id 30
 label "R_EX_cytd_e30"
 graphics [
 x 10.75
+y -7.5
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 31
+label "R_EX_dad_2_e31"
+graphics [
+x 10.75
 y -1
 z 0
 h 1
@@ -493,13 +509,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 31
-label "R_EX_dad_2_e31"
+id 32
+label "R_EX_dann_e32"
 graphics [
 x 10.75
 y 5.5
@@ -509,13 +525,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 32
-label "R_EX_dann_e32"
+id 33
+label "R_EX_dcyt_e33"
 graphics [
 x 13.25
 y -7.5
@@ -525,13 +541,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 33
-label "R_EX_dcyt_e33"
+id 34
+label "R_EX_dgsn_e34"
 graphics [
 x 13.25
 y -1
@@ -541,13 +557,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 34
-label "R_EX_dgsn_e34"
+id 35
+label "R_EX_din_e35"
 graphics [
 x 13.25
 y 5.5
@@ -557,13 +573,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 35
-label "R_EX_din_e35"
+id 36
+label "R_EX_dttp_e36"
 graphics [
 x -6.75
 y 17
@@ -573,13 +589,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 36
-label "R_EX_dttp_e36"
+id 37
+label "R_EX_duri_e37"
 graphics [
 x -4.25
 y 17
@@ -589,13 +605,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 37
-label "R_EX_duri_e37"
+id 38
+label "R_EX_ergst_e38"
 graphics [
 x -1.75
 y 17
@@ -605,13 +621,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 38
-label "R_EX_ergst_e38"
+id 39
+label "R_EX_etoh_e39"
 graphics [
 x 0.75
 y 17
@@ -621,13 +637,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 39
-label "R_EX_etoh_e39"
+id 40
+label "R_EX_fmn_e40"
 graphics [
 x 3.25
 y 17
@@ -637,13 +653,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 40
-label "R_EX_fmn_e40"
+id 41
+label "R_EX_for_e41"
 graphics [
 x 5.75
 y 17
@@ -653,13 +669,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 41
-label "R_EX_for_e41"
+id 42
+label "R_EX_fru_e42"
 graphics [
 x 8.25
 y 17
@@ -669,13 +685,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 42
-label "R_EX_fru_e42"
+id 43
+label "R_EX_fum_e43"
 graphics [
 x 10.75
 y 17
@@ -685,13 +701,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 43
-label "R_EX_fum_e43"
+id 44
+label "R_EX_gal_e44"
 graphics [
 x 13.25
 y 17
@@ -701,23 +717,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 44
-label "R_EX_gal_e44"
-graphics [
-x 15.75
-y -7.5
-z 0
-h 1
-w 1
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -726,14 +726,14 @@ id 45
 label "R_EX_gam6p_e45"
 graphics [
 x 15.75
-y -1
+y -7.5
 z 0
 h 1
 w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -742,6 +742,22 @@ id 46
 label "R_EX_gcald_e46"
 graphics [
 x 15.75
+y -1
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 47
+label "R_EX_glc__D_e47"
+graphics [
+x 15.75
 y 5.5
 z 0
 h 1
@@ -749,13 +765,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 47
-label "R_EX_glc__D_e47"
+id 48
+label "R_EX_gln__L_e48"
 graphics [
 x 15.75
 y 12
@@ -765,23 +781,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ff00ff"
-outline "#000000"
-     ]
-]
-node [
-id 48
-label "R_EX_gln__L_e48"
-graphics [
-x 18.25
-y -7.5
-z 0
-h 1
-w 1
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -790,6 +790,22 @@ id 49
 label "R_EX_glu__L_e49"
 graphics [
 x 18.25
+y -7.5
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 50
+label "R_EX_gly_e50"
+graphics [
+x 18.25
 y -1
 z 0
 h 1
@@ -797,13 +813,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 50
-label "R_EX_gly_e50"
+id 51
+label "R_EX_glyc_e51"
 graphics [
 x 18.25
 y 5.5
@@ -813,13 +829,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 51
-label "R_EX_glyc_e51"
+id 52
+label "R_EX_gsn_e52"
 graphics [
 x 18.25
 y 12
@@ -829,13 +845,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 52
-label "R_EX_gsn_e52"
+id 53
+label "R_EX_gthox_e53"
 graphics [
 x 20.75
 y -7.5
@@ -845,13 +861,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 53
-label "R_EX_gthox_e53"
+id 54
+label "R_EX_gua_e54"
 graphics [
 x 20.75
 y -1
@@ -861,13 +877,13 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
-id 54
-label "R_EX_gua_e54"
+id 55
+label "R_EX_h2o_e55"
 graphics [
 x 20.75
 y 5.5
@@ -877,23 +893,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 55
-label "R_EX_h2o_e55"
-graphics [
-x 20.75
-y 12
-z 0
-h 1
-w 1
-d 1
-type "rectangle"
-width 0.12
-fill "#00ffff"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -901,15 +901,15 @@ node [
 id 56
 label "R_EX_h_e56"
 graphics [
-x 20
-y 18.5
+x 20.25
+y 12
 z 0
 h 1
 w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#77f4f4"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -925,7 +925,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -941,7 +941,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -957,7 +957,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -973,7 +973,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -989,7 +989,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1005,7 +1005,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1021,7 +1021,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1037,7 +1037,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1053,7 +1053,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1069,7 +1069,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1085,7 +1085,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1101,7 +1101,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1117,7 +1117,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1133,7 +1133,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1149,7 +1149,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1165,7 +1165,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1181,7 +1181,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1197,7 +1197,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1213,7 +1213,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#f56bf5"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1229,7 +1229,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1245,7 +1245,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ff00ff"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1261,7 +1261,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1277,7 +1277,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1293,7 +1293,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1309,7 +1309,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1325,7 +1325,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1341,7 +1341,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1357,7 +1357,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1373,7 +1373,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebe6eb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1389,7 +1389,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1405,7 +1405,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1421,7 +1421,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1437,7 +1437,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1453,7 +1453,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1469,7 +1469,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1485,7 +1485,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1501,7 +1501,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1517,7 +1517,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1533,7 +1533,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebe9eb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1549,7 +1549,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1565,7 +1565,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1581,7 +1581,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1597,7 +1597,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1613,7 +1613,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1629,7 +1629,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1645,7 +1645,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1654,14 +1654,14 @@ id 103
 label "R_EX_thmpp_e103"
 graphics [
 x 3.25
-y -2.5
+y 4
 z 0
 h 1
 w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1677,7 +1677,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1693,7 +1693,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1709,7 +1709,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1725,7 +1725,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1741,7 +1741,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1757,7 +1757,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1773,7 +1773,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1789,7 +1789,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1805,7 +1805,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1821,7 +1821,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1837,7 +1837,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1853,7 +1853,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1869,7 +1869,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1885,7 +1885,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1901,7 +1901,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1917,7 +1917,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1933,7 +1933,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1949,7 +1949,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1965,7 +1965,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1981,7 +1981,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -1997,7 +1997,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -2013,7 +2013,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -2029,7 +2029,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -2045,7 +2045,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -2061,7 +2061,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -2077,7 +2077,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -2093,7 +2093,7 @@ w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#d4ecec"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -2109,7 +2109,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2125,7 +2125,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2141,7 +2141,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2157,7 +2157,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2173,7 +2173,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2189,7 +2189,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2197,7 +2197,7 @@ node [
 id 137
 label "M_arg__L_e137"
 graphics [
-x 8.25
+x 3.25
 y -2.75
 z 0
 h 2.5
@@ -2205,7 +2205,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2214,6 +2214,22 @@ id 138
 label "M_asn__L_e138"
 graphics [
 x 8.25
+y -2.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 139
+label "M_asp__L_e139"
+graphics [
+x 8.25
 y 3.75
 z 0
 h 2.5
@@ -2221,13 +2237,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 139
-label "M_asp__L_e139"
+id 140
+label "M_btn_e140"
 graphics [
 x -6.75
 y 15.25
@@ -2237,13 +2253,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 140
-label "M_btn_e140"
+id 141
+label "M_chol_e141"
 graphics [
 x -4.25
 y 15.25
@@ -2253,13 +2269,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 141
-label "M_chol_e141"
+id 142
+label "M_cit_e142"
 graphics [
 x -1.75
 y 15.25
@@ -2269,13 +2285,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 142
-label "M_cit_e142"
+id 143
+label "M_co2_e143"
 graphics [
 x 0.75
 y 15.25
@@ -2285,13 +2301,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 143
-label "M_co2_e143"
+id 144
+label "M_crn_e144"
 graphics [
 x 3.25
 y 15.25
@@ -2301,13 +2317,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 144
-label "M_crn_e144"
+id 145
+label "M_csn_e145"
 graphics [
 x 5.75
 y 15.25
@@ -2317,13 +2333,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 145
-label "M_csn_e145"
+id 146
+label "M_cys__L_e146"
 graphics [
 x 8.25
 y 15.25
@@ -2333,23 +2349,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 146
-label "M_cys__L_e146"
-graphics [
-x 10.75
-y -2.75
-z 0
-h 2.5
-w 2.5
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2358,6 +2358,22 @@ id 147
 label "M_cytd_e147"
 graphics [
 x 10.75
+y -2.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 148
+label "M_dad_2_e148"
+graphics [
+x 10.75
 y 3.75
 z 0
 h 2.5
@@ -2365,13 +2381,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 148
-label "M_dad_2_e148"
+id 149
+label "M_dann_e149"
 graphics [
 x 10.75
 y 10.25
@@ -2381,13 +2397,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 149
-label "M_dann_e149"
+id 150
+label "M_dcyt_e150"
 graphics [
 x 13.25
 y -2.75
@@ -2397,13 +2413,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 150
-label "M_dcyt_e150"
+id 151
+label "M_dgsn_e151"
 graphics [
 x 13.25
 y 3.75
@@ -2413,13 +2429,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 151
-label "M_dgsn_e151"
+id 152
+label "M_din_e152"
 graphics [
 x 13.25
 y 10.25
@@ -2429,13 +2445,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 152
-label "M_din_e152"
+id 153
+label "M_dttp_e153"
 graphics [
 x -6.75
 y 21.75
@@ -2445,13 +2461,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 153
-label "M_dttp_e153"
+id 154
+label "M_duri_e154"
 graphics [
 x -4.25
 y 21.75
@@ -2461,13 +2477,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 154
-label "M_duri_e154"
+id 155
+label "M_ergst_e155"
 graphics [
 x -1.75
 y 21.75
@@ -2477,13 +2493,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 155
-label "M_ergst_e155"
+id 156
+label "M_etoh_e156"
 graphics [
 x 0.75
 y 21.75
@@ -2493,13 +2509,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 156
-label "M_etoh_e156"
+id 157
+label "M_fmn_e157"
 graphics [
 x 3.25
 y 21.75
@@ -2509,13 +2525,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 157
-label "M_fmn_e157"
+id 158
+label "M_for_e158"
 graphics [
 x 5.75
 y 21.75
@@ -2525,13 +2541,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 158
-label "M_for_e158"
+id 159
+label "M_fru_e159"
 graphics [
 x 8.25
 y 21.75
@@ -2541,13 +2557,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 159
-label "M_fru_e159"
+id 160
+label "M_fum_e160"
 graphics [
 x 10.75
 y 21.75
@@ -2557,13 +2573,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 160
-label "M_fum_e160"
+id 161
+label "M_gal_e161"
 graphics [
 x 13.25
 y 21.75
@@ -2573,23 +2589,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 161
-label "M_gal_e161"
-graphics [
-x 15.75
-y -2.75
-z 0
-h 2.5
-w 2.5
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2598,14 +2598,14 @@ id 162
 label "M_gam6p_e162"
 graphics [
 x 15.75
-y 3.75
+y -2.75
 z 0
 h 2.5
 w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2614,6 +2614,22 @@ id 163
 label "M_gcald_e163"
 graphics [
 x 15.75
+y 3.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 164
+label "M_glc__D_e164"
+graphics [
+x 15.75
 y 10.25
 z 0
 h 2.5
@@ -2621,13 +2637,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 164
-label "M_glc__D_e164"
+id 165
+label "M_gln__L_e165"
 graphics [
 x 15.75
 y 16.75
@@ -2637,23 +2653,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 165
-label "M_gln__L_e165"
-graphics [
-x 18.25
-y -2.75
-z 0
-h 2.5
-w 2.5
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2662,6 +2662,22 @@ id 166
 label "M_glu__L_e166"
 graphics [
 x 18.25
+y -2.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 167
+label "M_gly_e167"
+graphics [
+x 18.25
 y 3.75
 z 0
 h 2.5
@@ -2669,13 +2685,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 167
-label "M_gly_e167"
+id 168
+label "M_glyc_e168"
 graphics [
 x 18.25
 y 10.25
@@ -2685,13 +2701,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 168
-label "M_glyc_e168"
+id 169
+label "M_gsn_e169"
 graphics [
 x 18.25
 y 16.75
@@ -2701,13 +2717,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 169
-label "M_gsn_e169"
+id 170
+label "M_gthox_e170"
 graphics [
 x 20.75
 y -2.75
@@ -2717,13 +2733,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 170
-label "M_gthox_e170"
+id 171
+label "M_gua_e171"
 graphics [
 x 20.75
 y 3.75
@@ -2733,13 +2749,13 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
-id 171
-label "M_gua_e171"
+id 172
+label "M_h2o_e172"
 graphics [
 x 20.75
 y 10.25
@@ -2749,23 +2765,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 172
-label "M_h2o_e172"
-graphics [
-x 20.75
-y 16.75
-z 0
-h 2.5
-w 2.5
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2781,7 +2781,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2797,7 +2797,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2813,7 +2813,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2829,7 +2829,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2845,7 +2845,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2861,7 +2861,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2877,7 +2877,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2893,7 +2893,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2909,7 +2909,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2925,7 +2925,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2941,7 +2941,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2957,7 +2957,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2973,7 +2973,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -2989,7 +2989,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3005,7 +3005,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3021,7 +3021,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3037,7 +3037,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3053,7 +3053,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3069,7 +3069,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3085,7 +3085,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3101,7 +3101,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3117,7 +3117,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3133,7 +3133,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3149,7 +3149,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3165,7 +3165,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3181,7 +3181,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3197,7 +3197,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3213,7 +3213,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3229,7 +3229,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3245,7 +3245,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3261,7 +3261,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3277,7 +3277,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3293,7 +3293,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3309,7 +3309,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3325,7 +3325,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3341,7 +3341,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3357,7 +3357,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3373,7 +3373,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3389,7 +3389,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3405,7 +3405,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3421,7 +3421,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3437,7 +3437,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3453,7 +3453,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3469,7 +3469,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3485,7 +3485,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3501,7 +3501,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3517,7 +3517,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3533,7 +3533,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3549,7 +3549,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3565,7 +3565,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3581,7 +3581,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3597,7 +3597,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3613,7 +3613,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3629,7 +3629,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3645,7 +3645,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3661,7 +3661,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3677,7 +3677,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3693,7 +3693,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3709,7 +3709,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3725,7 +3725,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3741,7 +3741,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3757,7 +3757,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3773,7 +3773,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3789,7 +3789,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3805,7 +3805,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3821,7 +3821,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3837,7 +3837,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3853,7 +3853,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3869,7 +3869,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3885,7 +3885,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3901,7 +3901,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3917,7 +3917,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3933,7 +3933,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3949,7 +3949,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3965,7 +3965,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3981,7 +3981,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -3997,7 +3997,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4013,7 +4013,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4029,7 +4029,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4045,7 +4045,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4061,7 +4061,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4077,7 +4077,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4093,7 +4093,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4109,7 +4109,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4125,7 +4125,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4141,7 +4141,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4157,7 +4157,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4173,7 +4173,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4189,7 +4189,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4205,7 +4205,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4221,7 +4221,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4237,7 +4237,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4253,7 +4253,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4269,7 +4269,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4285,7 +4285,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4301,7 +4301,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4317,7 +4317,7 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -4333,13 +4333,141 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 271
-label "Undefined271"
+label "M_h_e271"
+graphics [
+x 20.25
+y 16.25
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 272
+label "M_pi_c272"
+graphics [
+x 37.75
+y 12.75
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 273
+label "M_atp_c273"
+graphics [
+x 37.75
+y 14.25
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 274
+label "M_glu__L_c274"
+graphics [
+x 37.75
+y 15.75
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 275
+label "M_h2o_c275"
+graphics [
+x 37.75
+y 17.25
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 276
+label "M_adp_c276"
+graphics [
+x 37.75
+y 18.75
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 277
+label "M_amp_c277"
+graphics [
+x 37.75
+y 20.25
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 278
+label "M_h_c278"
+graphics [
+x 37.75
+y 21.75
+z 0
+h 1.5
+w 1.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 279
+label "Undefined279"
 graphics [
 x 0
 y 0
@@ -4354,9 +4482,22 @@ outline "#000000"
      ]
 ]
 edge [
+source 271
+target 56
+id 0
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
 source 250
 target 122
-id 0
+id 1
 label ""
 graphics [
 type "line"
@@ -4369,7 +4510,7 @@ Line [
 edge [
 source 246
 target 129
-id 1
+id 2
 label ""
 graphics [
 type "line"
@@ -4382,7 +4523,7 @@ Line [
 edge [
 source 245
 target 124
-id 2
+id 3
 label ""
 graphics [
 type "line"
@@ -4395,7 +4536,7 @@ Line [
 edge [
 source 244
 target 127
-id 3
+id 4
 label ""
 graphics [
 type "line"
@@ -4408,7 +4549,7 @@ Line [
 edge [
 source 243
 target 126
-id 4
+id 5
 label ""
 graphics [
 type "line"
@@ -4421,7 +4562,7 @@ Line [
 edge [
 source 242
 target 125
-id 5
+id 6
 label ""
 graphics [
 type "line"
@@ -4434,7 +4575,7 @@ Line [
 edge [
 source 237
 target 121
-id 6
+id 7
 label ""
 graphics [
 type "line"
@@ -4447,7 +4588,7 @@ Line [
 edge [
 source 236
 target 120
-id 7
+id 8
 label ""
 graphics [
 type "line"
@@ -4460,7 +4601,7 @@ Line [
 edge [
 source 234
 target 128
-id 8
+id 9
 label ""
 graphics [
 type "line"
@@ -4473,7 +4614,7 @@ Line [
 edge [
 source 233
 target 119
-id 9
+id 10
 label ""
 graphics [
 type "line"
@@ -4486,7 +4627,7 @@ Line [
 edge [
 source 232
 target 118
-id 10
+id 11
 label ""
 graphics [
 type "line"
@@ -4499,7 +4640,7 @@ Line [
 edge [
 source 231
 target 117
-id 11
+id 12
 label ""
 graphics [
 type "line"
@@ -4512,7 +4653,7 @@ Line [
 edge [
 source 230
 target 116
-id 12
+id 13
 label ""
 graphics [
 type "line"
@@ -4525,7 +4666,7 @@ Line [
 edge [
 source 229
 target 115
-id 13
+id 14
 label ""
 graphics [
 type "line"
@@ -4538,7 +4679,7 @@ Line [
 edge [
 source 228
 target 114
-id 14
+id 15
 label ""
 graphics [
 type "line"
@@ -4551,7 +4692,7 @@ Line [
 edge [
 source 227
 target 113
-id 15
+id 16
 label ""
 graphics [
 type "line"
@@ -4564,7 +4705,7 @@ Line [
 edge [
 source 226
 target 112
-id 16
+id 17
 label ""
 graphics [
 type "line"
@@ -4577,7 +4718,7 @@ Line [
 edge [
 source 225
 target 111
-id 17
+id 18
 label ""
 graphics [
 type "line"
@@ -4590,7 +4731,7 @@ Line [
 edge [
 source 224
 target 110
-id 18
+id 19
 label ""
 graphics [
 type "line"
@@ -4603,7 +4744,7 @@ Line [
 edge [
 source 223
 target 109
-id 19
+id 20
 label ""
 graphics [
 type "line"
@@ -4616,7 +4757,7 @@ Line [
 edge [
 source 222
 target 108
-id 20
+id 21
 label ""
 graphics [
 type "line"
@@ -4629,7 +4770,7 @@ Line [
 edge [
 source 221
 target 107
-id 21
+id 22
 label ""
 graphics [
 type "line"
@@ -4642,7 +4783,7 @@ Line [
 edge [
 source 220
 target 106
-id 22
+id 23
 label ""
 graphics [
 type "line"
@@ -4655,7 +4796,7 @@ Line [
 edge [
 source 219
 target 105
-id 23
+id 24
 label ""
 graphics [
 type "line"
@@ -4668,7 +4809,7 @@ Line [
 edge [
 source 218
 target 104
-id 24
+id 25
 label ""
 graphics [
 type "line"
@@ -4681,7 +4822,7 @@ Line [
 edge [
 source 217
 target 101
-id 25
+id 26
 label ""
 graphics [
 type "line"
@@ -4694,7 +4835,7 @@ Line [
 edge [
 source 216
 target 100
-id 26
+id 27
 label ""
 graphics [
 type "line"
@@ -4707,7 +4848,7 @@ Line [
 edge [
 source 215
 target 99
-id 27
+id 28
 label ""
 graphics [
 type "line"
@@ -4720,7 +4861,7 @@ Line [
 edge [
 source 214
 target 98
-id 28
+id 29
 label ""
 graphics [
 type "line"
@@ -4733,7 +4874,46 @@ Line [
 edge [
 source 213
 target 97
-id 29
+id 30
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 162
+target 45
+id 31
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 161
+target 44
+id 32
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 160
+target 43
+id 33
 label ""
 graphics [
 type "line"
@@ -4746,7 +4926,7 @@ Line [
 edge [
 source 159
 target 42
-id 30
+id 34
 label ""
 graphics [
 type "line"
@@ -4759,7 +4939,7 @@ Line [
 edge [
 source 158
 target 41
-id 31
+id 35
 label ""
 graphics [
 type "line"
@@ -4772,20 +4952,7 @@ Line [
 edge [
 source 157
 target 40
-id 32
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 156
-target 39
-id 33
+id 36
 label ""
 graphics [
 type "line"
@@ -4798,124 +4965,7 @@ Line [
 edge [
 source 155
 target 38
-id 34
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 152
-target 35
-id 35
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 150
-target 33
-id 36
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 145
-target 28
 id 37
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 143
-target 26
-id 38
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 142
-target 25
-id 39
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 141
-target 24
-id 40
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 139
-target 22
-id 41
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 151
-target 34
-id 42
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 135
-target 18
-id 43
 label ""
 graphics [
 type "line"
@@ -4928,6 +4978,84 @@ Line [
 edge [
 source 153
 target 36
+id 38
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 147
+target 30
+id 39
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 142
+target 25
+id 40
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 141
+target 24
+id 41
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 140
+target 23
+id 42
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 139
+target 22
+id 43
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 154
+target 37
 id 44
 label ""
 graphics [
@@ -4939,8 +5067,8 @@ Line [
 ]
 ]
 edge [
-source 138
-target 21
+source 148
+target 31
 id 45
 label ""
 graphics [
@@ -4952,8 +5080,8 @@ Line [
 ]
 ]
 edge [
-source 144
-target 27
+source 205
+target 89
 id 46
 label ""
 graphics [
@@ -4965,8 +5093,8 @@ Line [
 ]
 ]
 edge [
-source 212
-target 96
+source 156
+target 39
 id 47
 label ""
 graphics [
@@ -4978,8 +5106,8 @@ Line [
 ]
 ]
 edge [
-source 131
-target 14
+source 207
+target 91
 id 48
 label ""
 graphics [
@@ -4991,22 +5119,9 @@ Line [
 ]
 ]
 edge [
-source 149
-target 32
+source 152
+target 35
 id 49
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 134
-target 17
-id 50
 label ""
 graphics [
 type "line"
@@ -5019,6 +5134,19 @@ Line [
 edge [
 source 146
 target 29
+id 50
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 203
+target 87
 id 51
 label ""
 graphics [
@@ -5043,8 +5171,8 @@ Line [
 ]
 ]
 edge [
-source 0
-target 102
+source 135
+target 18
 id 53
 label ""
 graphics [
@@ -5056,8 +5184,8 @@ Line [
 ]
 ]
 edge [
-source 185
-target 69
+source 150
+target 33
 id 54
 label ""
 graphics [
@@ -5069,633 +5197,9 @@ Line [
 ]
 ]
 edge [
-source 186
-target 70
+source 144
+target 27
 id 55
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 161
-target 44
-id 56
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 147
-target 30
-id 57
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 132
-target 15
-id 58
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 160
-target 43
-id 59
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 3
-target 123
-id 60
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 192
-target 76
-id 61
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 154
-target 37
-id 62
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 140
-target 23
-id 63
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 162
-target 45
-id 64
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 148
-target 31
-id 65
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 133
-target 16
-id 66
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 1
-target 103
-id 67
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 137
-target 20
-id 68
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 163
-target 46
-id 69
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 164
-target 47
-id 70
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 165
-target 48
-id 71
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 166
-target 49
-id 72
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 167
-target 50
-id 73
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 168
-target 51
-id 74
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 169
-target 52
-id 75
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 170
-target 53
-id 76
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 171
-target 54
-id 77
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 172
-target 55
-id 78
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 173
-target 57
-id 79
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 174
-target 58
-id 80
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 175
-target 59
-id 81
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 176
-target 60
-id 82
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 177
-target 61
-id 83
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 178
-target 62
-id 84
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 179
-target 63
-id 85
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 180
-target 64
-id 86
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 181
-target 65
-id 87
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 182
-target 66
-id 88
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 183
-target 67
-id 89
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 184
-target 68
-id 90
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 187
-target 71
-id 91
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 188
-target 72
-id 92
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 189
-target 73
-id 93
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 190
-target 74
-id 94
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 191
-target 75
-id 95
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 193
-target 77
-id 96
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 194
-target 78
-id 97
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 195
-target 79
-id 98
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 196
-target 80
-id 99
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 197
-target 81
-id 100
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 198
-target 82
-id 101
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 199
-target 83
-id 102
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 200
-target 84
-id 103
 label ""
 graphics [
 type "line"
@@ -5708,7 +5212,137 @@ Line [
 edge [
 source 201
 target 85
-id 104
+id 56
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 149
+target 32
+id 57
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 3
+target 123
+id 58
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 164
+target 47
+id 59
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 1
+target 103
+id 60
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 134
+target 17
+id 61
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 143
+target 26
+id 62
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 194
+target 78
+id 63
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 132
+target 15
+id 64
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 151
+target 34
+id 65
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 145
+target 28
+id 66
 label ""
 graphics [
 type "line"
@@ -5721,6 +5355,500 @@ Line [
 edge [
 source 202
 target 86
+id 67
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 184
+target 68
+id 68
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 0
+target 102
+id 69
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 133
+target 16
+id 70
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 131
+target 14
+id 71
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 188
+target 72
+id 72
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 137
+target 20
+id 73
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 138
+target 21
+id 74
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 163
+target 46
+id 75
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 165
+target 48
+id 76
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 166
+target 49
+id 77
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 167
+target 50
+id 78
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 168
+target 51
+id 79
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 169
+target 52
+id 80
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 170
+target 53
+id 81
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 171
+target 54
+id 82
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 172
+target 55
+id 83
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 173
+target 57
+id 84
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 174
+target 58
+id 85
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 175
+target 59
+id 86
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 176
+target 60
+id 87
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 177
+target 61
+id 88
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 178
+target 62
+id 89
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 179
+target 63
+id 90
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 180
+target 64
+id 91
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 181
+target 65
+id 92
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 182
+target 66
+id 93
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 183
+target 67
+id 94
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 185
+target 69
+id 95
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 186
+target 70
+id 96
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 187
+target 71
+id 97
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 189
+target 73
+id 98
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 190
+target 74
+id 99
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 191
+target 75
+id 100
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 192
+target 76
+id 101
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 193
+target 77
+id 102
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 195
+target 79
+id 103
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 196
+target 80
+id 104
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 197
+target 81
 id 105
 label ""
 graphics [
@@ -5732,9 +5860,35 @@ Line [
 ]
 ]
 edge [
-source 203
-target 87
+source 198
+target 82
 id 106
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 199
+target 83
+id 107
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 200
+target 84
+id 108
 label ""
 graphics [
 type "line"
@@ -5747,20 +5901,7 @@ Line [
 edge [
 source 204
 target 88
-id 107
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 205
-target 89
-id 108
+id 109
 label ""
 graphics [
 type "line"
@@ -5773,19 +5914,6 @@ Line [
 edge [
 source 206
 target 90
-id 109
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 207
-target 91
 id 110
 label ""
 graphics [
@@ -5839,6 +5967,19 @@ edge [
 source 211
 target 95
 id 114
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 212
+target 96
+id 115
 label ""
 graphics [
 type "line"

@@ -3,57 +3,41 @@ directed 1
 version 2
 node [
 id 0
-label "M_nadh_c0"
+label "M_nad_c0"
 graphics [
-x -6.75
-y -6.75
+x -4.25
+y 2.75
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 1
-label "M_f6p_c1"
+label "M_h_c1"
 graphics [
-x -0.75
+x -7.25
 y -6.75
 z 0
-h 2.5
-w 2.5
+h 1.5
+w 1.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 2
-label "R_M1PD2"
+label "M_mnl1p_c2"
 graphics [
-x -3.75
-y -2
-z 0
-h 1
-w 1
-d 1
-type "rectangle"
-width 0.12
-fill "#ebebeb"
-outline "#000000"
-     ]
-]
-node [
-id 3
-label "M_mnl1p_c3"
-graphics [
-x -3.75
+x 1.75
 y 2.75
 z 0
 h 2.5
@@ -61,13 +45,61 @@ w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#ebebeb"
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 3
+label "R_M1PD3"
+graphics [
+x -1.25
+y -2
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 4
-label "Mannitol Metabolism4"
+label "M_nadh_c4"
+graphics [
+x -1.25
+y -6.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 5
+label "M_f6p_c5"
+graphics [
+x 4.75
+y -6.75
+z 0
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 6
+label "Mannitol Metabolism6"
 graphics [
 x 0
 y 0
@@ -82,8 +114,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 2
-target 1
+source 0
+target 3
 id 0
 label ""
 graphics [
@@ -96,7 +128,7 @@ Line [
 ]
 edge [
 source 2
-target 0
+target 3
 id 1
 label ""
 graphics [
@@ -109,8 +141,34 @@ Line [
 ]
 edge [
 source 3
-target 2
+target 5
 id 2
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 3
+target 4
+id 3
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 3
+target 1
+id 4
 label ""
 graphics [
 type "line"

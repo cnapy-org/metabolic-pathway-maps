@@ -246,12 +246,12 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="S" stoichiometry="1" constant="false"/>
-          <speciesReference species="ATP" stoichiometry="1" constant="false"/>
+          <speciesReference species="S" stoichiometry="1" constant="true"/>
+          <speciesReference species="ATP" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M1" stoichiometry="1" constant="false"/>
-          <speciesReference species="ADP" stoichiometry="1" constant="false"/>
+          <speciesReference species="M1" stoichiometry="1" constant="true"/>
+          <speciesReference species="ADP" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R16" id="R16" name="R16" reversible="false" fast="false">
@@ -261,10 +261,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M12" stoichiometry="1" constant="false"/>
+          <speciesReference species="M12" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M5" stoichiometry="1" constant="false"/>
+          <speciesReference species="M5" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R03" id="R03" name="R03" reversible="false" fast="false">
@@ -274,12 +274,12 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="ADP" stoichiometry="1" constant="false"/>
-          <speciesReference species="M2" stoichiometry="1" constant="false"/>
+          <speciesReference species="ADP" stoichiometry="1" constant="true"/>
+          <speciesReference species="M2" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M3" stoichiometry="1" constant="false"/>
-          <speciesReference species="ATP" stoichiometry="1" constant="false"/>
+          <speciesReference species="M3" stoichiometry="1" constant="true"/>
+          <speciesReference species="ATP" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R02" id="R02" name="R02" reversible="true" fast="false">
@@ -289,10 +289,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M1" stoichiometry="1" constant="false"/>
+          <speciesReference species="M1" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M2" stoichiometry="1" constant="false"/>
+          <speciesReference species="M2" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R05" id="R05" name="R05" reversible="true" fast="false">
@@ -302,10 +302,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M4" stoichiometry="1" constant="false"/>
+          <speciesReference species="M4" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M5" stoichiometry="1" constant="false"/>
+          <speciesReference species="M5" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R04" id="R04" name="R04" reversible="true" fast="false">
@@ -315,10 +315,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M3" stoichiometry="1" constant="false"/>
+          <speciesReference species="M3" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M4" stoichiometry="1" constant="false"/>
+          <speciesReference species="M4" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R07" id="R07" name="R07" reversible="false" fast="false">
@@ -328,10 +328,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M6" stoichiometry="1" constant="false"/>
+          <speciesReference species="M6" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M7" stoichiometry="1" constant="false"/>
+          <speciesReference species="M7" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R06" id="R06" name="R06" reversible="false" fast="false">
@@ -341,10 +341,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M3" stoichiometry="1" constant="false"/>
+          <speciesReference species="M3" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M6" stoichiometry="1" constant="false"/>
+          <speciesReference species="M6" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R09" id="R09" name="R09" reversible="false" fast="false">
@@ -354,10 +354,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M8" stoichiometry="1" constant="false"/>
+          <speciesReference species="M8" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="fuel1" stoichiometry="1" constant="false"/>
+          <speciesReference species="fuel1" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R08" id="R08" name="R08" reversible="false" fast="false">
@@ -367,11 +367,11 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M7" stoichiometry="1" constant="false"/>
+          <speciesReference species="M7" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M5" stoichiometry="0.5" constant="false"/>
-          <speciesReference species="M8" stoichiometry="0.5" constant="false"/>
+          <speciesReference species="M5" stoichiometry="0.5" constant="true"/>
+          <speciesReference species="M8" stoichiometry="0.5" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R11" id="R11" name="R11" reversible="false" fast="false">
@@ -381,10 +381,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M9" stoichiometry="1" constant="false"/>
+          <speciesReference species="M9" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M2" stoichiometry="1" constant="false"/>
+          <speciesReference species="M2" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R14" id="R14" name="R14" reversible="false" fast="false">
@@ -394,11 +394,11 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M11" stoichiometry="1" constant="false"/>
+          <speciesReference species="M11" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M13" stoichiometry="0.3" constant="false"/>
-          <speciesReference species="M12" stoichiometry="0.7" constant="false"/>
+          <speciesReference species="M13" stoichiometry="0.3" constant="true"/>
+          <speciesReference species="M12" stoichiometry="0.7" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R18" id="R18" name="R18" reversible="false" fast="false">
@@ -408,10 +408,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M3" stoichiometry="1" constant="false"/>
+          <speciesReference species="M3" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M8" stoichiometry="2" constant="false"/>
+          <speciesReference species="M8" stoichiometry="2" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R10" id="R10" name="R10" reversible="true" fast="false">
@@ -421,10 +421,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M1" stoichiometry="1" constant="false"/>
+          <speciesReference species="M1" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M9" stoichiometry="1" constant="false"/>
+          <speciesReference species="M9" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R15" id="R15" name="R15" reversible="false" fast="false">
@@ -434,10 +434,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M13" stoichiometry="1" constant="false"/>
+          <speciesReference species="M13" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="fuel2" stoichiometry="1" constant="false"/>
+          <speciesReference species="fuel2" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R17" id="R17" name="R17" reversible="false" fast="false">
@@ -447,10 +447,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M5" stoichiometry="1" constant="false"/>
+          <speciesReference species="M5" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="biomass" stoichiometry="1" constant="false"/>
+          <speciesReference species="biomass" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R12" id="R12" name="R12" reversible="false" fast="false">
@@ -460,10 +460,10 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M9" stoichiometry="1" constant="false"/>
+          <speciesReference species="M9" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M10" stoichiometry="1" constant="false"/>
+          <speciesReference species="M10" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
       <reaction metaid="meta_R13" id="R13" name="R13" reversible="false" fast="false">
@@ -473,12 +473,12 @@
           </listOfKeyValueData>
         </annotation>
         <listOfReactants>
-          <speciesReference species="M9" stoichiometry="1" constant="false"/>
-          <speciesReference species="ADP" stoichiometry="1" constant="false"/>
+          <speciesReference species="M9" stoichiometry="1" constant="true"/>
+          <speciesReference species="ADP" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="M11" stoichiometry="1" constant="false"/>
-          <speciesReference species="ATP" stoichiometry="1" constant="false"/>
+          <speciesReference species="M11" stoichiometry="1" constant="true"/>
+          <speciesReference species="ATP" stoichiometry="1" constant="true"/>
         </listOfProducts>
       </reaction>
     </listOfReactions>
@@ -486,39 +486,39 @@
       <fbc:fluxBound fbc:id="R01_lb" fbc:reaction="R01" fbc:operation="greaterEqual" fbc:value="0"/>
       <fbc:fluxBound fbc:id="R01_ub" fbc:reaction="R01" fbc:operation="lessEqual" fbc:value="100"/>
       <fbc:fluxBound fbc:id="R16_lb" fbc:reaction="R16" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R16_ub" fbc:reaction="R16" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R16_ub" fbc:reaction="R16" fbc:operation="lessEqual" fbc:value="INF"/>
       <fbc:fluxBound fbc:id="R03_lb" fbc:reaction="R03" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R03_ub" fbc:reaction="R03" fbc:operation="lessEqual" fbc:value="1000"/>
-      <fbc:fluxBound fbc:id="R02_lb" fbc:reaction="R02" fbc:operation="greaterEqual" fbc:value="-1000"/>
-      <fbc:fluxBound fbc:id="R02_ub" fbc:reaction="R02" fbc:operation="lessEqual" fbc:value="1000"/>
-      <fbc:fluxBound fbc:id="R05_lb" fbc:reaction="R05" fbc:operation="greaterEqual" fbc:value="-1000"/>
-      <fbc:fluxBound fbc:id="R05_ub" fbc:reaction="R05" fbc:operation="lessEqual" fbc:value="1000"/>
-      <fbc:fluxBound fbc:id="R04_lb" fbc:reaction="R04" fbc:operation="greaterEqual" fbc:value="-1000"/>
-      <fbc:fluxBound fbc:id="R04_ub" fbc:reaction="R04" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R03_ub" fbc:reaction="R03" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R02_lb" fbc:reaction="R02" fbc:operation="greaterEqual" fbc:value="-INF"/>
+      <fbc:fluxBound fbc:id="R02_ub" fbc:reaction="R02" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R05_lb" fbc:reaction="R05" fbc:operation="greaterEqual" fbc:value="-INF"/>
+      <fbc:fluxBound fbc:id="R05_ub" fbc:reaction="R05" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R04_lb" fbc:reaction="R04" fbc:operation="greaterEqual" fbc:value="-INF"/>
+      <fbc:fluxBound fbc:id="R04_ub" fbc:reaction="R04" fbc:operation="lessEqual" fbc:value="INF"/>
       <fbc:fluxBound fbc:id="R07_lb" fbc:reaction="R07" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R07_ub" fbc:reaction="R07" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R07_ub" fbc:reaction="R07" fbc:operation="lessEqual" fbc:value="INF"/>
       <fbc:fluxBound fbc:id="R06_lb" fbc:reaction="R06" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R06_ub" fbc:reaction="R06" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R06_ub" fbc:reaction="R06" fbc:operation="lessEqual" fbc:value="INF"/>
       <fbc:fluxBound fbc:id="R09_lb" fbc:reaction="R09" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R09_ub" fbc:reaction="R09" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R09_ub" fbc:reaction="R09" fbc:operation="lessEqual" fbc:value="INF"/>
       <fbc:fluxBound fbc:id="R08_lb" fbc:reaction="R08" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R08_ub" fbc:reaction="R08" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R08_ub" fbc:reaction="R08" fbc:operation="lessEqual" fbc:value="INF"/>
       <fbc:fluxBound fbc:id="R11_lb" fbc:reaction="R11" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R11_ub" fbc:reaction="R11" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R11_ub" fbc:reaction="R11" fbc:operation="lessEqual" fbc:value="INF"/>
       <fbc:fluxBound fbc:id="R14_lb" fbc:reaction="R14" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R14_ub" fbc:reaction="R14" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R14_ub" fbc:reaction="R14" fbc:operation="lessEqual" fbc:value="INF"/>
       <fbc:fluxBound fbc:id="R18_lb" fbc:reaction="R18" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R18_ub" fbc:reaction="R18" fbc:operation="lessEqual" fbc:value="1000"/>
-      <fbc:fluxBound fbc:id="R10_lb" fbc:reaction="R10" fbc:operation="greaterEqual" fbc:value="-1000"/>
-      <fbc:fluxBound fbc:id="R10_ub" fbc:reaction="R10" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R18_ub" fbc:reaction="R18" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R10_lb" fbc:reaction="R10" fbc:operation="greaterEqual" fbc:value="-INF"/>
+      <fbc:fluxBound fbc:id="R10_ub" fbc:reaction="R10" fbc:operation="lessEqual" fbc:value="INF"/>
       <fbc:fluxBound fbc:id="R15_lb" fbc:reaction="R15" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R15_ub" fbc:reaction="R15" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R15_ub" fbc:reaction="R15" fbc:operation="lessEqual" fbc:value="INF"/>
       <fbc:fluxBound fbc:id="R12_lb" fbc:reaction="R12" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R12_ub" fbc:reaction="R12" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R12_ub" fbc:reaction="R12" fbc:operation="lessEqual" fbc:value="INF"/>
       <fbc:fluxBound fbc:id="R17_lb" fbc:reaction="R17" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R17_ub" fbc:reaction="R17" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R17_ub" fbc:reaction="R17" fbc:operation="lessEqual" fbc:value="INF"/>
       <fbc:fluxBound fbc:id="R13_lb" fbc:reaction="R13" fbc:operation="greaterEqual" fbc:value="0"/>
-      <fbc:fluxBound fbc:id="R13_ub" fbc:reaction="R13" fbc:operation="lessEqual" fbc:value="1000"/>
+      <fbc:fluxBound fbc:id="R13_ub" fbc:reaction="R13" fbc:operation="lessEqual" fbc:value="INF"/>
     </fbc:listOfFluxBounds>
     <fbc:listOfObjectives fbc:activeObjective="objMaxJ17">
       <fbc:objective fbc:id="objMaxJ17" fbc:type="maximize">
