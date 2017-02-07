@@ -696,8 +696,12 @@ def layoutAllPathwaysFromGroups(cmod, global_ops, path_dict, graph, graph_elemen
         else:
             path_layout.append("Sugiyama (OGDF)")
         # apply layout to pathway and track already layouted graph elements
-        path_sg = mvl.layoutPathway(cmod, global_ops, graph, graph_elements, graph_props, path_list, path_name, \
-                                                path_layout[0], small_sps_dict)
+        if path_name in global_ops["ADD_COFACTORS"]:
+            path_sg = mvl.layoutPathway(cmod, graph, graph_elements, graph_props, path_list, path_name,
+                                                path_layout[0], small_sps_dict, add_cofactors=True)
+        else:
+            path_sg = mvl.layoutPathway(cmod, graph, graph_elements, graph_props, path_list, path_name,
+                                                path_layout[0], small_sps_dict, add_cofactors=False)
         # set name of subgraph
         path_sg.setName(path_name)
 
@@ -1345,13 +1349,16 @@ if __name__ == '__main__':
 
                   "PATHWAY_LISTS": True,  # layout annotated groups of sbml file as seperate pathways
                   "LAYOUT_PATHWAYS": True, # needs PATHWAY_LISTS true, so that necessary node lists are generated
-                  "ADD_COFACTORS": True,  # add nodes for small sps/cofactors after they have been deleted in path_dict
+                  "ADD_COFACTORS": ["Respiratory chain"],  # add nodes for small sps/cofactors after they have been
+                                                           # deleted in path_dict
 
                   "TRANSPORT_RADIAL": True,  # apply Tree Radial algorithm to transport reactions in output_whole
-                  "SELECTED_PATHWAYS": ["objective reaction", "Transport"],  # pathways to be saved in output_selected
-                  "GRID_OUTPUT": ["Glycolysis", "TCA cycle", "Respiratory chain", "Aminosugar Metabolism"],
-                  # align pathways on a grid,
-                  # control position
+                  "SELECTED_PATHWAYS": ["objective reaction", # pathways to be saved in output_selected
+                                        "Transport"],
+                  "GRID_OUTPUT": ["Glycolysis", # align pathways on a grid, control position
+                                  "TCA cycle",
+                                  "Respiratory chain",
+                                  "Aminosugar Metabolism"],
 
                   "EXPORT_TLP": True,  # save generated graphs as .tlp files
                   "EXPORT_GML": True,  # export generated graphs as .gml files
