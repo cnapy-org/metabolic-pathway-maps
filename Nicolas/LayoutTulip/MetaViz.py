@@ -2861,13 +2861,14 @@ if __name__ == '__main__':
     #sbml = os.path.join(cDir, "TestModels", "willi", "M5_6.xml")
     #sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_bigggroups.xml")
     sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_compgroups.xml")
+    
+    # ADD OTHER MODELS TO TEST HERE ...
+    
+    
     ## Stijns models
     #sbml = os.path.join(cDir, "TestModels", "stijn", "Y7.xml") #M.getNumReactions: 3498, M.getNumSpecies: 2220
     # Error message when trying to run Metaviz with Y7xml:
-    
-    
-    
-    
+        
     """
     Traceback (most recent call last):
 

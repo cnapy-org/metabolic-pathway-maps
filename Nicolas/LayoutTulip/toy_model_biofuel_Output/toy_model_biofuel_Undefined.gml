@@ -6,7 +6,7 @@ id 0
 label "ADP0"
 graphics [
 x 32.75
-y 69.75
+y 67.75
 z 0
 h 2.5
 w 2.5
@@ -22,7 +22,7 @@ id 1
 label "ATP1"
 graphics [
 x 38.75
-y 52.25
+y 50.25
 z 0
 h 2.5
 w 2.5
@@ -38,7 +38,7 @@ id 2
 label "M12"
 graphics [
 x 25.25
-y 41.25
+y 39.25
 z 0
 h 2.5
 w 2.5
@@ -54,7 +54,7 @@ id 3
 label "M103"
 graphics [
 x 32.75
-y 21.25
+y 19.25
 z 0
 h 2.5
 w 2.5
@@ -70,7 +70,7 @@ id 4
 label "M114"
 graphics [
 x 41.75
-y 21.25
+y 19.25
 z 0
 h 2.5
 w 2.5
@@ -86,7 +86,7 @@ id 5
 label "M125"
 graphics [
 x 38.75
-y 11.75
+y 9.75
 z 0
 h 2.5
 w 2.5
@@ -102,7 +102,7 @@ id 6
 label "M136"
 graphics [
 x 44.75
-y 11.75
+y 9.75
 z 0
 h 2.5
 w 2.5
@@ -118,7 +118,7 @@ id 7
 label "M27"
 graphics [
 x 20.75
-y 21.25
+y 19.25
 z 0
 h 2.5
 w 2.5
@@ -134,7 +134,7 @@ id 8
 label "M38"
 graphics [
 x 2.75
-y 52.25
+y 50.25
 z 0
 h 2.5
 w 2.5
@@ -150,7 +150,7 @@ id 9
 label "M49"
 graphics [
 x -3.25
-y 41.25
+y 39.25
 z 0
 h 2.5
 w 2.5
@@ -165,7 +165,7 @@ node [
 id 10
 label "M510"
 graphics [
-x 2.75
+x 8.75
 y -6.75
 z 0
 h 2.5
@@ -181,8 +181,8 @@ node [
 id 11
 label "M611"
 graphics [
-x 2.75
-y 41.25
+x 8.75
+y 39.25
 z 0
 h 2.5
 w 2.5
@@ -197,8 +197,8 @@ node [
 id 12
 label "M712"
 graphics [
-x 2.75
-y 31.75
+x 8.75
+y 29.75
 z 0
 h 2.5
 w 2.5
@@ -213,8 +213,8 @@ node [
 id 13
 label "M813"
 graphics [
-x 8.75
-y 21.25
+x 2.75
+y 19.25
 z 0
 h 2.5
 w 2.5
@@ -230,7 +230,7 @@ id 14
 label "M914"
 graphics [
 x 29.75
-y 31.75
+y 29.75
 z 0
 h 2.5
 w 2.5
@@ -246,7 +246,7 @@ id 15
 label "S15"
 graphics [
 x 25.25
-y 52.25
+y 50.25
 z 0
 h 2.5
 w 2.5
@@ -277,8 +277,8 @@ node [
 id 17
 label "fuel117"
 graphics [
-x 8.75
-y 11.75
+x 2.75
+y 9.75
 z 0
 h 2.5
 w 2.5
@@ -310,7 +310,7 @@ id 19
 label "R0119"
 graphics [
 x 25.25
-y 46
+y 44
 z 0
 h 1
 w 1
@@ -325,8 +325,8 @@ node [
 id 20
 label "R1620"
 graphics [
-x 29.5068
-y 7
+x 30.1136
+y 5
 z 0
 h 1
 w 1
@@ -342,7 +342,7 @@ id 21
 label "R0321"
 graphics [
 x 14.75
-y 62
+y 60
 z 0
 h 1
 w 1
@@ -358,7 +358,7 @@ id 22
 label "R0222"
 graphics [
 x 23
-y 36.5
+y 34.5
 z 0
 h 1
 w 1
@@ -374,7 +374,7 @@ id 23
 label "R0523"
 graphics [
 x -3.25
-y 36.5
+y 34.5
 z 0
 h 1
 w 1
@@ -390,7 +390,7 @@ id 24
 label "R0424"
 graphics [
 x -3.25
-y 46
+y 44
 z 0
 h 1
 w 1
@@ -405,8 +405,8 @@ node [
 id 25
 label "R0725"
 graphics [
-x 2.75
-y 36.5
+x 8.75
+y 34.5
 z 0
 h 1
 w 1
@@ -421,8 +421,8 @@ node [
 id 26
 label "R0626"
 graphics [
-x 2.75
-y 46
+x 8.75
+y 44
 z 0
 h 1
 w 1
@@ -437,8 +437,8 @@ node [
 id 27
 label "R0927"
 graphics [
-x 8.75
-y 16.5
+x 2.75
+y 14.5
 z 0
 h 1
 w 1
@@ -453,8 +453,8 @@ node [
 id 28
 label "R0828"
 graphics [
-x 2.75
-y 26
+x 8.75
+y 24
 z 0
 h 1
 w 1
@@ -470,7 +470,7 @@ id 29
 label "R1129"
 graphics [
 x 26.75
-y 26
+y 24
 z 0
 h 1
 w 1
@@ -486,7 +486,7 @@ id 30
 label "R1430"
 graphics [
 x 41.75
-y 16.5
+y 14.5
 z 0
 h 1
 w 1
@@ -501,8 +501,8 @@ node [
 id 31
 label "R1831"
 graphics [
-x 8.75
-y 46
+x 2.75
+y 44
 z 0
 h 1
 w 1
@@ -518,7 +518,7 @@ id 32
 label "R1032"
 graphics [
 x 29.75
-y 36.5
+y 34.5
 z 0
 h 1
 w 1
@@ -534,7 +534,7 @@ id 33
 label "R1533"
 graphics [
 x 44.75
-y 7
+y 5
 z 0
 h 1
 w 1
@@ -550,7 +550,7 @@ id 34
 label "R1234"
 graphics [
 x 32.75
-y 26
+y 24
 z 0
 h 1
 w 1
@@ -582,7 +582,7 @@ id 36
 label "R1336"
 graphics [
 x 41.75
-y 26
+y 24
 z 0
 h 1
 w 1
@@ -647,17 +647,17 @@ width 0.1
 Line [
 point [
 x 25.25
-y 46
+y 44
 z 0
 ]
 point [
 x 32.75
-y 52.25
+y 50.25
 z 0
 ]
 point [
 x 32.75
-y 69.75
+y 67.75
 z 0
 ]
 ]
@@ -753,17 +753,17 @@ width 0.1
 Line [
 point [
 x 20.75
-y 21.25
+y 19.25
 z 0
 ]
 point [
 x 14.75
-y 26
+y 24
 z 0
 ]
 point [
 x 14.75
-y 62
+y 60
 z 0
 ]
 ]
@@ -794,17 +794,17 @@ width 0.1
 Line [
 point [
 x 23
-y 36.5
+y 34.5
 z 0
 ]
 point [
 x 20.75
-y 31.75
+y 29.75
 z 0
 ]
 point [
 x 20.75
-y 21.25
+y 19.25
 z 0
 ]
 ]
@@ -822,16 +822,16 @@ width 0.1
 Line [
 point [
 x -3.25
-y 36.5
+y 34.5
 z 0
 ]
 point [
 x -3.25
-y 7
+y 5
 z 0
 ]
 point [
-x 2.75
+x 8.75
 y -6.75
 z 0
 ]
@@ -1201,17 +1201,17 @@ width 0.1
 Line [
 point [
 x 41.75
-y 26
+y 24
 z 0
 ]
 point [
 x 38.75
-y 31.75
+y 29.75
 z 0
 ]
 point [
 x 38.75
-y 52.25
+y 50.25
 z 0
 ]
 ]
@@ -1229,22 +1229,22 @@ width 0.1
 Line [
 point [
 x 32.75
-y 69.75
+y 67.75
 z 0
 ]
 point [
 x 44.75
-y 62
+y 60
 z 0
 ]
 point [
 x 44.75
-y 31.75
+y 29.75
 z 0
 ]
 point [
 x 41.75
-y 26
+y 24
 z 0
 ]
 ]
