@@ -95,10 +95,11 @@ def createPathwayLists(cmod, path_name, del_ub_sps=True, small_threshold=30, ub_
 
     - *cmod* a cbmpy model object
     - *path_name* a string of the pathway/group name
-    - *del_ub_sps* [default=True] delete ids from highly connected species from pathway lists
-    - *small_threshold* an (optional) integer threshold level for filtering highly connected metabolites (default
+    - *del_ub_sps* [default=True] a boolean parameter, if True delete ids from highly connected species from pathway
+    lists
+    - *small_threshold* (optional) an integer threshold level for filtering highly connected metabolites (default
     level: 30)
-    - *ub_sps* a (optional) list of highly connected species ids to remove
+    - *ub_sps* (optional) a list of highly connected species ids to remove
 
     """
     # create a dictionary to store model groups (key: group name - value: group id)
@@ -121,36 +122,41 @@ def createPathwayLists(cmod, path_name, del_ub_sps=True, small_threshold=30, ub_
     gids[path_name]['metabolites'] = path_sps
     # get ubiquitous small metabolites by filtering for high connectivity (default: > 30)
     # get stoich matrix (rows = species, columns = reactions)
-    if del_ub_sps:
-        n = cmod.N.array
-        # convert all matrix entries which are not 0 to 1 (so that one involvement in a reaction is represented by a 1)
-        n[n!=0] = 1 # convert stoich matrix to adjacency matrix
-        # save number of connections (= involvment in a reaction) per species (= row in stoich matrix) in a dict
-        # dict: key = species id of a row; value = integer value of reactions that species is involved in (connections )
-        n_r_conn = {}
-        for row in range(n.shape[0]):
-            n_r_conn[cmod.N.row[row]] = round(n[row, :].sum(), 0)
-        # if the number of connections for a species is bigger than the given threshold
-        # -> put the repsective species id in the list small_sps
-        if ub_sps:
-            small_sps = ub_sps
-        # if no user input is provided, try to automatically determine ubiquitous species based on connectivity
+    n = cmod.N.array
+    # convert all matrix entries which are not 0 to 1 (so that one involvement in a reaction is represented by a 1)
+    n[n!=0] = 1 # convert stoich matrix to adjacency matrix
+    # save number of connections (= involvment in a reaction) per species (= row in stoich matrix) in a dict
+    # dict: key = species id of a row; value = integer value of reactions that species is involved in (connections )
+    n_r_conn = {}
+    for row in range(n.shape[0]):
+        n_r_conn[cmod.N.row[row]] = round(n[row, :].sum(), 0)
+    # if the number of connections for a species is bigger than the given threshold
+    # -> put the repsective species id in the list small_sps
+    if ub_sps:
+        small_sps = ub_sps
+    # if no user input is provided, try to automatically determine ubiquitous species based on connectivity
+    else:
+        # take user threshold if provided
+        if small_threshold:
+            small_sps = [sps_id for sps_id, num_re in n_r_conn.items() if num_re > small_threshold]
+        # if not user threshold is provided make automatic threshold level (dependent on model size)
         else:
-            # take user threshold if provided
-            if small_threshold:
-                small_sps = [sps_id for sps_id, num_re in n_r_conn.items() if num_re > small_threshold]
-            # if not user threshold is provided make automatic threshold level (dependent on model size)
-            else:
-                small_threshold = len(n_r_conn.values()) * 0.2
-                small_sps = [sps_id for sps_id, num_re in n_r_conn.items() if num_re > small_threshold]
-        # remove the small metabolites from the pathways
-        # TODO: do we need to delet the small sps if we don't autoAlias?
-        # TODO: also: record the small sps in a dict: key -> reac id, value -> list of small sps associated with that re
+            small_threshold = len(n_r_conn.values()) * 0.2
+            small_sps = [sps_id for sps_id, num_re in n_r_conn.items() if num_re > small_threshold]
+    # save identified small sps in a dict: key = reaction id, value = list of small sps associated with that reaction
+    small_sps_dict = {}
+    for re in cmod.reactions:
+        small_sps_dict[re.getId()] = [sps for sps in re.getSpeciesIds() if sps in small_sps]
+    # remove the small metabolites from the pathways
+    # Do we need to delete the small species if we don't autoAlias?
+    # -> Yes!, small sps still heavily constrain the layout!
+    # delete identified small sps from pathway list definitions
+    if del_ub_sps:
         for ubs in small_sps:
             if ubs in path_sps:
                 path_sps.remove(ubs)
 
-    return path_sps, path_re
+    return path_sps, path_re, small_sps_dict
 
 
 def create_props(graph):
@@ -662,23 +668,25 @@ def layoutSubgraph(sg, sg_layout=None, user_params=None, x_center=None, y_center
     # center layout: center(viewLayout, newCenter, subgraph)
     # newCenter can be given as coordinates (tlp.Coord(x,y,z)) or
     viewLayout = sg.getLayoutProperty("viewLayout")
-    # todo: pass a tuple and not three variables individually
     if x_center is not None and y_center is not None:
         tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_center, y_center, z_center), sg)
 
     return sg
 
 
-def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout):
+def layoutPathway(cmod, global_ops, g, graph_elements, graph_props, id_list, sg_name, sg_layout, small_sps_dict):
     """
     Create and layout a subgraph based initially on a list of model ids::
 
+    - *cmod* a CBMPY model
+    - *global_ops* a dict with global control variables
     - *g* the initial tulip graph generated by Mimoza
     - *graph_elements* a dict of all initial graph elements (nodes and their layout status)
     - *graph_props* a dict of all graph properties
     - *id_list* a list of model ids (strings)
     - *sg_name* a name for the subgraph (string)
     - *sg_layout* a tulip layout algorithm to be applied on the subgraph (string)
+    - *small_sps_dict* a dict with lists of small sps for each reaction
 
     """
     # generate (initial) list of nodes for pathway elements by going through lists containing selected ids
@@ -748,9 +756,41 @@ def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout):
                 print(n)
                 print(e_type)
                 print(conn_list)
-
     # TODO: add cofactors: take small_sps dict from beginning and add them as node with one edge to reaction nodes
     # TODO: give new cofactor node a different color (light yellow or something)
+    # 3.) add small sps nodes that have been deleted in pathway list creation
+    if global_ops["ADD_COFACTORS"]:
+        for n in sg.getNodes():
+            # only select reaction nodes
+            if graph_props["type"][n] == 2:
+                # get model reaction object from which the reaction node was generated
+                cmod_re_obj = cmod.getReaction(graph_props["id"][n])
+                # get connected species of that reaction (simple lookup in model, while in graph you would need to go two
+                # levels: reac node -> edges -> nodes connected to each edge => not efficient!)
+                cmod_re_conn_sps = cmod_re_obj.getSpeciesIds()
+                for sps in cmod_re_conn_sps:
+                    # if one of the connected species is a small sps
+                    if sps in small_sps_dict[graph_props["id"][n]]:
+                        # add a node representing that small sps, connected with one edge to the reaction it belongs to
+                        new_n = sg.addNode()
+                        graph_props["id"][new_n] = sps
+                        graph_props["type"][new_n] = 3 # cofactor/small species/ubiquitous species type -> 3
+                        graph_props["viewColor"][new_n] = tlp.Color(255,255,153,255) # light yellow
+                        graph_props["viewSize"][new_n] = tlp.Size(1.5, 1.5, 1) # small than metabolite nodes, bigger than
+                                                                               #  reaction nodes
+                        graph_props["viewLabel"][new_n] = sps
+                        graph_props["viewFontSize"][new_n] = 14 # small than metabolite font (18)
+                        # add edge to connect new node to reaction node
+                        # new node is either substrate or product of reaction -> goes either in or out
+                        # get stoich list of reaction: [(1.0, 'id1'), (-1.0, 'id2'), (5.0, 'id3'), ..]
+                        re_stoich_list = cmod_re_obj.getStoichiometry()
+                        for stoich_tup in re_stoich_list:
+                            # if first entry of tuple lesser than 0 -> substrate => In edge
+                            if stoich_tup[1] == sps and stoich_tup[0] < 0:
+                                sg.addEdge(new_n, n)
+                            # if first entry of tuple greater than 0 -> product => Out edge
+                            elif stoich_tup[1] == sps and stoich_tup[0] > 0:
+                                sg.addEdge(n, new_n)
     # layout subgraph
     sg = layoutSubgraph(sg, sg_layout)
     # flag all the nodes of the glycolysis subgraph as "already used" and add pathway info ( = subgraph name) to their
@@ -765,7 +805,50 @@ def layoutPathway(g, graph_elements, graph_props, id_list, sg_name, sg_layout):
     return sg
 
 
-def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg_labels=True, transport_radial=True):
+def positionPathway(graph, graph_props, target_coord_list=None):
+    """
+    Position subgraphs of a Tulip graph at a given position or calculate new psoition from subgraph dimensions.
+    Return new position.::
+
+    - *graph* a parent Tulip graph to get subgraphs from
+    - *graph_props* a dict with properties of the parent graph
+    - *target_coord_list* [default=None] a list of target coordinate tuples (x,y) for subgraphs of graph
+    (same length and order as list of subgraphs)
+
+    """
+    # align each subgraph of parent graph
+    for i, sg in enumerate(list(graph.getSubGraphs())):
+        # move subgraph to position (0,0)
+        graph_props["viewLayout"].center(sg)
+        # calculate dimensions of sg
+        sg_nodes_x_values = [graph_props["viewLayout"][n][0] for n in sg.getNodes()]
+        sg_nodes_y_values = [graph_props["viewLayout"][n][1] for n in sg.getNodes()]
+        sg_nodes_x_max = max([abs(num) for num in sg_nodes_x_values])
+        sg_nodes_x_min = min([num for num in sg_nodes_x_values])
+        sg_nodes_y_max = max([abs(num) for num in sg_nodes_y_values])
+        sg_nodes_y_min = min([num for num in sg_nodes_y_values])
+        # x direction
+        sg_width = sg_nodes_x_max - sg_nodes_x_min
+        # y diection
+        sg_height = sg_nodes_y_max - sg_nodes_y_min
+        # given position: if target coords provided -> use coord tuple for new center
+        if target_coord_list:
+            # unpack list of coord tuples
+            coord_tup = target_coord_list[i]
+            # create tulip.Vec3f objects (will be new center)
+            new_center= tlp.Vec3f(coord_tup[0], coord_tup[1], 0)
+        # if no position is provided: find new center automatically
+        else:
+            # take sg dimensions to calculate new center
+            new_center = tlp.Vec3f(0+sg_width, 0+sg_height, 0)
+        # move sg to new center
+        graph_props["viewLayout"].center(new_center, sg)
+
+        return new_center
+
+
+def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg_labels=True, transport_radial=True,
+                grid_positioning=False, center_obj_trans_re=False):
     """
     Take subgraphs from one graph object and copy them to another graph object::
 
@@ -777,6 +860,10 @@ def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg
     they have been copied
     - *transport_radial* [default=True] a boolean parameter controlling whether or not the Transport subgraph is
     layouted using the 'Tree Radial' Algorithm
+    - *grid_positioning* [default=False] a boolean parameter, if True selected subgraph positions are controlled
+    instead of calculated automatically
+    - *center_obj_trans_re* [default=False] a boolean parameter, if True centers objective reaction and transport
+    reactions
 
     """
     # create new output graph
@@ -805,15 +892,22 @@ def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg
         # reset selection
         input_graph_props["viewSelection"].setAllNodeValue(False)
         input_graph_props["viewSelection"].setAllEdgeValue(False)
-    # separate overlapping individual pathways
-    new_graph.applyLayoutAlgorithm("Connected Component Packing")
+    if grid_positioning is False:
+        # just separate overlapping individual pathways automatically
+        new_graph.applyLayoutAlgorithm("Connected Component Packing")
+    elif grid_positioning is True:
+        # iterate over subgraphs of new_graph and actively position them
+        positionPathway(new_graph, new_graph_props)
     # layout Transport subgraph
-    transport_radial = True
     if transport_radial:
         for sg in new_graph.getSubGraphs():
             if sg.getName() == "Transport":
                 user_params = {"layer spacing": 60, "node spacing": 80}
                 layoutSubgraph(sg, "Tree Radial", user_params, 75, 100, 0)
+    if center_obj_trans_re:
+        for sg in new_graph.getSubGraphs():
+            if sg.getName() == "Transport" or sg.getName() == "objective reaction":
+                new_graph_props["viewLayout"].center(sg)
     # TODO: change type of labels between id or name for all nodes of the entire graph (control with use_names=Fales)
     # add pathway labels (invisible nodes with visible label)
     # TODO: link the pathway label to a nodeon the border of the pathway (so that it doesn't overlap and is visible

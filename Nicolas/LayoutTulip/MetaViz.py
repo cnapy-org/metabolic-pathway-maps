@@ -74,7 +74,7 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     # IF GROUPS EXIST -> fetch groups from sbml (this doesn't use ub_sps_list or ub_re_list)
     # create dictionary of groups where each group name is a key and the values are again dicts with three keys: 'id',
     # 'reactions' and 'metabolites'
-    path_dict = automPathDict(cmod, global_ops)
+    path_dict, small_sps_dict = automPathDict(cmod, global_ops)
 
     # flag (true/false) a list of nodes (already saved as ub_list) so that they can be aliased later
     mvl.markUbiquitousNodes(graph, ub_list)
@@ -172,17 +172,10 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     # needs dict graph elements which is only created it global_ops["AUTO_ALIAS"] is false since it needs 1:1 model id
     # to graph elements
     if global_ops["LAYOUT_PATHWAYS"] is True and global_ops["AUTO_ALIAS"] is False:
-        layoutAllPathwaysFromGroups(path_dict, graph, graph_elements, graph_props)
+        layoutAllPathwaysFromGroups(cmod, global_ops, path_dict, graph, graph_elements, graph_props, small_sps_dict)
         # create and layout the objective reaction block (sg gets added to 'graph')
         mvl.layoutObjFunc(graph, objective_re_id, "Sugiyama (OGDF)", graph_props)
-        pathwayDump(graph, global_ops, graph_registry, graph_props, global_ops["SELECTED_PATHWAYS"])
-        # TODO: control positions of pathway subgraphs
-        # TODO: get highest and lowest x and y coordinate values for each subgraph (max(list(x values)) and max(list(y
-        # TODO: values)))
-        # TODO: then. build a numpy.array() (a matrix) that serves as a template for canvas positions - with subgraph ids
-        # TODO: as matrix entries:
-        # TODO: example: if matrix entry at (1,1) is 1 -> put "Glycolysis" subgraph (id: 1) in top left corner etc.
-        # TODO: moving subgraphs is possible with center Layout
+        pathwayDump(graph, global_ops, graph_registry, graph_props, global_ops["SELECTED_PATHWAYS"], global_ops["GRID_OUTPUT"])
 
     return cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry
 # Part 2: Coloring
@@ -232,11 +225,14 @@ def colorGraphs(global_ops, fba_results, path_dict, graph_registry):
     # TODO: have whole map, all pathways that belong to groups are colored (differently), rest grey
     # TODO: return dict: key -> pathway name, value -> assigned color of the patwhay
     # after ALL the other coloring:
-    # color metabolites light blue and reaction nodes light red (AFTER all other coloring functions!)
+    # color metabolites light blue, all reaction nodes light red and all cofactors light yellow (AFTER all other
+    # coloring functions!)
     for g_name, g_data in graph_registry.items():
         g_obj = g_data[0]
         g_props = g_data[1]
-        colorMetaboliteReactionNodes(g_obj, g_props, tlp.Color(103, 169, 207), tlp.Color(252, 146, 114))
+        colorMetaboliteReactionNodes(g_obj, g_props, tlp.Color(103, 169, 207), # metabolite color
+                                                     tlp.Color(252, 146, 114), # reaction color
+                                                     tlp.Color(255, 255, 153, 255)) # cofactor color
     print("Applied reaction and metabolite node specific coloring to all graphs. \n")
     # TODO: visualize existence of reactions of a smaller model on a big map (e coli vs mutated e coli eg.)
     # save initial graph with all changes ('messy' layout)
@@ -279,6 +275,10 @@ def exportGraph(graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, 
                 tlp.saveGraph(graph_object, "{0}_output_radial_trans_obj_re.tlp".format(cmod.getId()))
                 print("Visualization of selected pathways saved as: {0}_output_radial_trans_obj_re.tlp \n".format(
                     cmod.getId()))
+            if graph_name == "output_grid":
+                # save graph with grid pathway layouts
+                tlp.saveGraph(graph_object, "{0}_output_grid.tlp".format(cmod.getId()))
+                print("Visualization of aligned pathways saved as: {0}_output_grid.tlp \n".format(cmod.getId()))
     # export every graph in graph registry
     if global_ops["EXPORT_GML"]:
         for graph_data in graph_registry.values():
@@ -489,12 +489,13 @@ def automPathDict(cmod, global_ops, small_threshold=30):
                   # etc. ...
 
         for group in cmod.groups:
-            path_sps, path_re = mvl.createPathwayLists(cmod, group.name, small_threshold)
+            path_sps, path_re, small_sps_dict = mvl.createPathwayLists(cmod, group.name, small_threshold)
             path_dict.update({group.name: {"metabolites": path_sps, "reactions": path_re}})
 
         print("Pathway dictionary generated. \n")
 
-        return path_dict
+
+        return path_dict, small_sps_dict
 
 def createInitialGraph(graph_name):
     """
@@ -671,7 +672,19 @@ def colorAllGraphElements(graph, graph_element, color):
 
     return COLORS
 
-def layoutAllPathwaysFromGroups(path_dict, graph, graph_elements, graph_props):
+def layoutAllPathwaysFromGroups(cmod, global_ops, path_dict, graph, graph_elements, graph_props, small_sps_dict):
+    """
+    Generate subgraphs for all pathways contained in path_dict and create subgraph layouts::
+
+    - *cmod* a CBMPY model
+    - *global_ops* a dict with global control variables
+    - *path_dict* a dict with pathways extracted from groups
+    - *graph* a Tulip graph
+    - *graph_elements* a dict of graph nodes mapped to model ids
+    - *graph_props* a dict of graph properties
+    - *small_sps_dict* a dict of small species of each reaction
+
+    """
     # layout all pathways in graph (entire path_dict) to generate subgraphs
     for path_name, path_ids in path_dict.items():
         # fetch pathway ids
@@ -683,7 +696,8 @@ def layoutAllPathwaysFromGroups(path_dict, graph, graph_elements, graph_props):
         else:
             path_layout.append("Sugiyama (OGDF)")
         # apply layout to pathway and track already layouted graph elements
-        path_sg = mvl.layoutPathway(graph, graph_elements, graph_props, path_list, path_name, path_layout[0])
+        path_sg = mvl.layoutPathway(cmod, global_ops, graph, graph_elements, graph_props, path_list, path_name, \
+                                                path_layout[0], small_sps_dict)
         # set name of subgraph
         path_sg.setName(path_name)
 
@@ -699,7 +713,18 @@ def layoutAllPathwaysFromGroups(path_dict, graph, graph_elements, graph_props):
             print("{} subgraph incomplete! \n".format(path_name))
 
 # TODO: control what is output! (have control variables in global_ops, ...)
-def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathways):
+def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathways, grid_pathways):
+    """
+    Define new output graphs and add them to graph registry::
+
+    - *graph* a parent Tulip graph to take subgraphs from
+    - *global_ops* a dict containing global control variables
+    - *graph_registry* a dict containing all generated graph objects (keys: graph names)
+    - *graph_props* a dict containing the properties of the parent graph
+    - *selected_pathways* a list of selected pathways, positioning auto (list of strings)
+    - *grid_pathways* a list of pathways for grid layout, positioning controlled (list of strings)
+
+    """
     # 1.) default dump (all pathways in one SVG file)
     # -> combine all pathways to create a new output graph of the whole network
     if global_ops["TRANSPORT_RADIAL"]:
@@ -730,22 +755,29 @@ def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathway
 
     # 4.) radial transport reactions with obj reaction in the middle
     radial_trans_obj_re_graph, radial_trans_obj_re_props = mvl.dumpToGraph(graph, graph_props, "transport_radial_obj_re",
-                                                                           ["objective reaction", "Transport"])
+                                                                           ["objective reaction", "Transport"],                                                                                          center_obj_trans_re=True)
     graph_registry.update({radial_trans_obj_re_graph.getName(): [radial_trans_obj_re_graph, radial_trans_obj_re_props]})
+
+    # 5.) grid dump (select pathways AND control their location)
+    if grid_pathways:
+        grid_output_graph, grid_output_props = mvl.dumpToGraph(graph, graph_props, "output_grid",
+                                                               grid_pathways, grid_positioning=True)
+        graph_registry.update({grid_output_graph.getName(): [grid_output_graph, grid_output_props]})
 
     # TODO: do - place 4 subgraphs in a new graph and control their location!
     # TODO:    - all small pathways (and labels), less than 10 reactions, layed out on a grid
     # TODO: i need to be able to control the location -> write a function to create grid layout (somehow)
 
-def colorMetaboliteReactionNodes(graph, graph_props, met_color, reac_color):
+def colorMetaboliteReactionNodes(graph, graph_props, met_color, reac_color, cofac_color):
     """
-    Give metabolite and reaction node distinct colors (call after all other coloring functions to not interfere
-    with them!)
+    Give metabolite, reaction and cofactor nodes distinct colors (call after all other coloring functions to not
+    interfere with them!)
 
     - *graph* a Tulip graph
     - *graph_props* a dict of graph properties
     - *met_color* a Tulip color object (wraped around RGB value) for metabolite nodes
     - *reac_color* a Tulip color object (wraped around RGB value) for reaction nodes
+    - *cofac_color* a Tulip color object (wraped around RGB value) for cofactor nodes
 
     """
     # change node color of metabolite and reaction nodes
@@ -754,6 +786,8 @@ def colorMetaboliteReactionNodes(graph, graph_props, met_color, reac_color):
             graph_props["viewColor"][n] = met_color
         if graph_props["type"][n] == 2:  # reaction node
             graph_props["viewColor"][n] = reac_color
+        if graph_props["type"][n] == 3:  # cofactor node
+            graph_props["viewColor"][n] = cofac_color
 
 def saveLayoutSBML(groups_sbml, ub_sps, n2lo):
     """
@@ -1303,9 +1337,6 @@ if __name__ == '__main__':
     # 0.) User Input
     # --------------
     # 1. global control variables
-    # TODO: write script that handles this
-    # TODO: expand global_ops
-    # TODO: write a function that
     # activate/deactivate parts of the pipeline when starting the script from a console (including the one in PyCharm)
     global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph with a certain connectivity
                   # and option to alias biomass (result in maingraph)
@@ -1314,10 +1345,13 @@ if __name__ == '__main__':
 
                   "PATHWAY_LISTS": True,  # layout annotated groups of sbml file as seperate pathways
                   "LAYOUT_PATHWAYS": True, # needs PATHWAY_LISTS true, so that necessary node lists are generated
+                  "ADD_COFACTORS": True,  # add nodes for small sps/cofactors after they have been deleted in path_dict
 
                   "TRANSPORT_RADIAL": True,  # apply Tree Radial algorithm to transport reactions in output_whole
                   "SELECTED_PATHWAYS": ["objective reaction", "Transport"],  # pathways to be saved in output_selected
-                  #"SELECTED_PATHWAYS": False,
+                  "GRID_OUTPUT": ["Glycolysis", "TCA cycle", "Respiratory chain", "Aminosugar Metabolism"],
+                  # align pathways on a grid,
+                  # control position
 
                   "EXPORT_TLP": True,  # save generated graphs as .tlp files
                   "EXPORT_GML": True,  # export generated graphs as .gml files
@@ -1330,7 +1364,6 @@ if __name__ == '__main__':
                   "COLOR_FBA_COLORBLIND": False,  # based on flux values obtained from FBA
                   "COLOR_PATHWAYS": False  # pathways specific coloring
                   }
-
     # 2. read and initialize SBML file with libsbml and cbmpy, do FBA
     ## bgoli 180117: organising our tests
     ## bgoli 180117: other tests
