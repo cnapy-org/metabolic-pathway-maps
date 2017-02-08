@@ -73,7 +73,9 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     # select nodes for aliasing (different methods) #
     #################################################
     # 1.) create alias node list based on connectivity <-> user defined thresholds (aliasing by Mimoza)
-    ub_list, ub_sps, groups_sbml = autoAlias(cmod, global_ops, output_path, 6, 4)
+    ub_list, ub_sps, groups_sbml = autoAlias(cmod, global_ops, output_path,
+                                             global_ops["AUTO_ALIAS_OPTIONS"]["spec_split"],
+                                             global_ops["AUTO_ALIAS_OPTIONS"]["reac_split"])
     # 2.) create alias node list based on biological pathways <-> group info in sbml - if available (aliasing done by own
     # functions)
     # IF GROUPS DON'T EXIST -> provide pathway lists manually:
@@ -81,7 +83,12 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     # IF GROUPS EXIST -> fetch groups from sbml (this doesn't use ub_sps_list or ub_re_list)
     # create dictionary of groups where each group name is a key and the values are again dicts with three keys: 'id',
     # 'reactions' and 'metabolites'
-    path_dict, small_sps_dict = automPathDict(cmod, global_ops)
+    if global_ops["PATHWAY_LISTS"] is True and global_ops["AUTO_ALIAS"] is False:
+        path_dict, small_sps_dict = automPathDict(cmod, global_ops)
+    else:
+        # if model has no groups defined -> return empty dicts
+        path_dict = dict()
+        small_sps_dict = dict()
 
     # flag (true/false) a list of nodes (already saved as ub_list) so that they can be aliased later
     mvl.markUbiquitousNodes(graph, ub_list)
@@ -187,7 +194,7 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     return cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir,\
            output_path
 # Part 2: Coloring
-def colorGraphs(global_ops, fba_results, path_dict, graph_registry):
+def colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, output_path, model_id):
     """
     MetaViz Part 2: Coloring
     ------------------------
@@ -195,10 +202,13 @@ def colorGraphs(global_ops, fba_results, path_dict, graph_registry):
     Take a dict of graphs (graph_registry) and return:
     - ::
 
+    - *COLORS* a dict with predefined colors (RGB values)
     - *global_ops* a dict with global control variables
     - *fba_results* a dict with flux values for all reactions
     - *path_dict* a dict with pathway ids and associated metabolites and reactions
     - *graph_registry* a dict of Tulip graphs and their properties
+    - *output_path* an os.path for all output files
+    - *model_id* the id of the sbml model
 
     """
     #######################################
@@ -244,9 +254,9 @@ def colorGraphs(global_ops, fba_results, path_dict, graph_registry):
     print("Applied reaction and metabolite node specific coloring to all graphs. \n")
     # TODO: visualize existence of reactions of a smaller model on a big map (e coli vs mutated e coli eg.)
     # save initial graph with all changes ('messy' layout)
-    graph_path = os.path.join(output_path, "{}_graph.tlp".format(cmod.getId()))
+    graph_path = os.path.join(output_path, "{}_graph.tlp".format(model_id))
     tlp.saveGraph(graph_registry['initial graph'][0], graph_path)
-    print("Initial graph after coloring saved as: {}_graph.tlp \n".format(cmod.getId()))
+    print("Initial graph after coloring saved as: {}_graph.tlp \n".format(model_id))
 # Part 3: Exporting
 def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, e2lo, ub_sps):
     """
@@ -322,7 +332,7 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
         saveLayoutSBML(groups_sbml, ub_sps, n2lo)
     # save graph layout as SBGN file
     if global_ops['EXPORT_SBGN']:
-        saveLayoutSBGN(groups_sbml, cmod.getId(), output_path, n2lo, e2lo)
+        saveLayoutSBGN(groups_sbml, file_name, output_path, n2lo, e2lo)
 # Part 4: Database
 def buildSQLiteDatabase(selected_graph, output_path):
     """
@@ -342,7 +352,8 @@ def buildSQLiteDatabase(selected_graph, output_path):
     graph_props_edge_tuplelist = encodeGraphPropertyData(selected_graph, graph_props_ordered_e_list,
                                                          graph_prop_ordered_types, edges=True)
     # build SQLite database from extracted and encoded data (to SQLite compatible types)
-    db_path = createSQLiteDB(selected_graph, cmod.getId(), graph_props_node_tuplelist, graph_props_edge_tuplelist,
+    db_path = createSQLiteDB(selected_graph, selected_graph.getName(), graph_props_node_tuplelist,
+                             graph_props_edge_tuplelist,
                              output_path)
 
     return db_path
@@ -393,7 +404,7 @@ def runFBA(cmod):
 
     return fba_results
 
-def autoAlias(cmod, global_ops, output_path, spec_split=6, reac_split=4, split_biomass=True):
+def autoAlias(cmod, global_ops, output_path, spec_split, reac_split, split_biomass=True):
     """
     Alias a number of metabolites/reactions which are selected based on their connectivity. If the amount of connected
     elements is higher than a threshold value, add the respective species to ub_list for Mimoza function node_cloner::
@@ -401,8 +412,8 @@ def autoAlias(cmod, global_ops, output_path, spec_split=6, reac_split=4, split_b
     - *cmod* a CBMPY model
     - *global_ops* a dict with boolean control variables
     - *output_path* an os.path for all output files
-    - *spec_split* [default=6] a threshold value for species splitting (integer)
-    - *reac_split* [default=4] a threshold value for reaction splitting (integer)
+    - *spec_split* a threshold value for species splitting (integer)
+    - *reac_split* a threshold value for reaction splitting (integer)
     - *split_biomass* [default=True] if true, splits biomass reaction
 
     """
@@ -459,7 +470,7 @@ def manualPathDict(path_name, sps_id_list, re_id_list):
 
     return path_dict
 
-def automPathDict(cmod, global_ops, small_threshold=30):
+def automPathDict(cmod, global_ops, small_threshold=10):
     """
     Automatically create a pathway dictionary for all annotated groups in an CBMPY model. Add all reactions which
     are not yet part of a group to a new group ("undefined")::
@@ -471,7 +482,7 @@ def automPathDict(cmod, global_ops, small_threshold=30):
 
     """
     path_dict = {}
-    if global_ops["PATHWAY_LISTS"] and global_ops["AUTO_ALIAS"] is False:
+    if global_ops["PATHWAY_LISTS"]:
         # list of all reaction objects that are associated with a group
         all_groups_member_list = []
         for group in cmod.groups:
@@ -1354,143 +1365,5 @@ def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edge
     return db_graph
 
 
-# execute if in a console (don't execute if the script is imported as a module)
-if __name__ == '__main__':
-
-
-    # 0.) User Input
-    # --------------
-    # 1. global control variables
-    # activate/deactivate parts of the pipeline when starting the script from a console (including the one in PyCharm)
-    global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph with a certain connectivity
-                  # and option to alias biomass (result in maingraph)
-                  # if auto alias is active the automatically generated layout will still be
-                  # overwritten if any other layouting functions are active aswell
-
-                  "PATHWAY_LISTS": True,  # layout annotated groups of sbml file as seperate pathways
-                  "LAYOUT_PATHWAYS": True, # needs PATHWAY_LISTS true, so that necessary node lists are generated
-                  "ADD_COFACTORS": ["Respiratory chain"],  # add nodes for small sps/cofactors after they have been
-                                                           # deleted in path_dict
-
-                  "TRANSPORT_RADIAL": True,  # apply Tree Radial algorithm to transport reactions in output_whole
-                  "SELECTED_PATHWAYS": ["objective reaction", # pathways to be saved in output_selected
-                                        "Transport"],
-                  "GRID_OUTPUT": ["Glycolysis", # align pathways on a grid, control position
-                                  "TCA cycle",
-                                  "Respiratory chain",
-                                  "Aminosugar Metabolism"],
-
-                  "EXPORT_TLP": True,  # save generated graphs as .tlp files
-                  "EXPORT_GML": True,  # export generated graphs as .gml files
-                  "EXPORT_SVG": True,  # export generated graphs as .svg files
-                  "EXPORT_JSON": True,  # export generated graphs as .json files
-                  "EXPORT_SBML": True,  # export generated graphs as .sbml files (in layout plugin)
-                  "EXPORT_SBGN": True,  # export generated graphs as .sbgn files
-
-                  "COLOR_FBA": True,  # color the reaction nodes and in and outgoing edges
-                  "COLOR_FBA_COLORBLIND": False,  # based on flux values obtained from FBA
-                  "COLOR_PATHWAYS": False  # pathways specific coloring
-                  }
-    # 2. read and initialize SBML file with libsbml and cbmpy, do FBA
-    # get current directory
-    cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
-    ## bgoli 180117: organising our tests
-    ## bgoli 180117: other tests
-    # sbml = os.path.join(cDir, "TestModels", "others", "toy_model_biofuel.xml")
-    # sbml = os.path.join(cDir, "TestModels", "others", "e_coli_core.xml")
-    # sbml = os.path.join(cDir, "TestModels", "others", "Ecoli_Carlson2003.xml")
-    # sbml = os.path.join(cDir, "TestModels", "others", "Hpylori_iIT341.xml")
-    # sbml = os.path.join(cDir, "TestModels", "others", "Lactococcus_lactis_MG1363.xml")
-    ## BiGG2 models (with pathway annotation)
-    sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
-    # sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml") # newest E. coli
-    # sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
-    # sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli about 1000 reactions
-    # sbml = os.path.join(cDir, "TestModels", "bigg2", "iND750.xml") # Yeast about 1000 reactions
-    ## Willis models
-    # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6.xml")
-    # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_bigggroups.xml")
-    # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_compgroups.xml")
-
-    # ADD OTHER MODELS TO TEST HERE ...
-
-    ## Stijns models
-    #sbml = os.path.join(cDir, "TestModels", "stijn", "Y7.xml") #M.getNumReactions: 3498, M.getNumSpecies: 2220
-    # Error message when trying to run Metaviz with Y7xml:
-    """
-    Traceback (most recent call last):
-
-    File "C:/Users/Nicolas/surfdrive/LabR1_Teusink_Amsterdam/Project/FindStructuredLayout/MetaViz.py", line 1174, in <module>
-    graph, graph_props)
-    File "C:/Users/Nicolas/surfdrive/LabR1_Teusink_Amsterdam/Project/FindStructuredLayout/MetaViz.py", line 100, in layoutModel
-    root)
-    File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\tulip_graph2geojson.py", line 352,      in graph2geojson
-    process_compartments(c_id2info, meta_graph, n2xy)
-    File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\tulip_graph2geojson.py", line 457,      in process_compartments
-    layout(meta_graph)
-    File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\ubiquitous_layout.py", line 382, in     layout
-    layout_components(gr)
-    File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\layout_utils.py", line 115, in          layout_components
-    iter((followers_rev_or_gen, followers_rev, followers_irrev, followers_irrev_gen_only)))
-    File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\layout_utils.py", line 102, in          process_cc
-    if dfs(cc[0], gr, set(), None, cycle_number_threshold, follower_method) \
-
-    File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\layout_utils.py", line 82, in <lambda>
-    followers_rev_or_gen = lambda n, gr: (gr.opposite(e, n) for e in gr.getInOutEdges(n) if n == gr.source(e)
-    RuntimeError: maximum recursion depth exceeded while calling a Python object
-
-    Process finished with exit code 1
-    """
-    # TODO: maximum recursion depth (999?) reached -> change recursive function dfs in layout_utils.py to iterative
-    # TODO: function?
-    # Y5 with fewer reactions works so its most likely an issue with big models!
-    #sbml = os.path.join(cDir, "TestModels", "stijn", "Y5.xml") # M.getNumReactions: 2110, M.getNumSpecies: 1655
-
-
-    # I.) MetaViz Pipeline
-    # --------------------
-    # 1. create Tulip graph and generate graph objects
-    graph, graph_props = createInitialGraph("initialGraph")
-    print("Initial (empty) Tulip graph created. \n")
-    # 2. take sbml model file and initial graph and run all layouting function calls to return necessary data structures
-    cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir, \
-    output_path = layoutModel(global_ops, sbml, graph, graph_props)
-    print("Layout generated. Subgraph(s) added to initial graph. Output graph(s) created from subgraph(s). \n")
-    # 3. apply coloring algorithms to graphs
-    colorGraphs(global_ops, fba_results, path_dict, graph_registry)
-    print("Graph(s) colored. \n")
-    # 4. export graph SVG, GML, JSON, SBML+layout Plugin and/or SBGN file (controlled by global_ops)
-    exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
-
-
-    # II.) SQLite Database Operations:
-    # --------------------------------
-    # reason for database: to have a tool-independent way of getting network map info -> feed into d3, networkx,
-    # cytoscape, etc...!
-
-    # 1. create SQLite db to store a graph object
-    db_path = buildSQLiteDatabase(graph_registry['output_whole'][0], output_path)
-    # DB INFO ##########################################################################################################
-    # 5 tables in database:
-    # - graph_nodes: every row is a node, each column is a node property
-    # - graph_edges: every row is an edge, each column is an edge property
-    # - node_connectivity: every row is a node, first column contains node ids and second column contains lists of
-    #                      connected edges
-    # - edge connectivity: every row is an edge, first column contains edge ids, second column contains source node ids
-    #                      and third column contains target node ids
-    # - edge color: every row is an edge, first column contains edge id, subsequent columns contain color sets (
-    #                      tuples of (flux value, pickled tulip color prop))
-    ####################################################################################################################
-    # 2. retrieve graph data from SQL database
-    db_graph_node_list, node_col_headers = retrieveDataFromDatabaseTable(db_path, 'graph_nodes')
-    db_graph_edge_list, edge_col_headers = retrieveDataFromDatabaseTable(db_path, 'graph_edges')
-    db_graph_edgeconn_list, edgeconn_col_headers = retrieveDataFromDatabaseTable(db_path, 'edge_connectivity')
-    # 3. SQL --> back to Tulip (to see if everything is preserved)
-    db_graph = buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edgeconn_list,
-                                      node_col_headers, edge_col_headers, "graph_fromDB", output_path)
-
-
-    # TODO: SQL --> d3py/networkx/someother gaph program
-    # TODO: extract only nodes with coords, and ids from graph_nodes table and connectivity between the nodes
-    # TODO: use networkx, and/or D3 (d3py in python) to rebuild a part of the graph only from SQL database output
-    # TODO: do the networkx/d3 thing on a subset of SQL output (only nodes of aspartate pathway, etc.)
+#if __name__ == '__main__':
+# execute this if in a console (don't execute if the script is imported as a module)
