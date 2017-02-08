@@ -11,9 +11,6 @@
 
 
 import os
-import pdb
-# get current directory
-cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
 # tulip imports
 import sys
 sys.path.append('C:\\Program Files\\Tulip-4.10.0\\bin')
@@ -53,20 +50,30 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     - two dict with node and edge layout info of initial graph (n2lo and e2lo)
     - a path to the modified sbml file - with group for ub_sps (groups_sbml)
     - a list of nodes associated with the objective reaction (obj_re_nodes)
-    - a dict with all created graph objects (graph_registry)::
+    - a dict with all created graph objects (graph_registry)
+    - the current directory (cDir)
+    - the path for all output files (output_path)::
 
     - *sbml* a path to an sbml model file
     """
-    # TODO: from here -> wrap into function that is passed a ops dict
+    # get current directory
+    cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
     # create CBMPY model (separate data structure to SBML file)
     cmod, stM, objective_re_id = createCBMPYModel(sbml)
+    # create output folder
+    output_path = os.path.join(cDir, '{}_Output'.format(cmod.getId()))
+    try:
+        os.makedirs(output_path)
+    except OSError:
+        if not os.path.isdir(output_path):
+            raise
     # do FBA and save results
     fba_results = runFBA(cmod)
     #################################################
     # select nodes for aliasing (different methods) #
     #################################################
     # 1.) create alias node list based on connectivity <-> user defined thresholds (aliasing by Mimoza)
-    ub_list, ub_sps, groups_sbml = autoAlias(cmod, global_ops, cDir, 6, 4)
+    ub_list, ub_sps, groups_sbml = autoAlias(cmod, global_ops, output_path, 6, 4)
     # 2.) create alias node list based on biological pathways <-> group info in sbml - if available (aliasing done by own
     # functions)
     # IF GROUPS DON'T EXIST -> provide pathway lists manually:
@@ -85,7 +92,6 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     c_id2level = compDictForMimoza(cmod)
     c_id2info, c_id2outs = compute_c_id2info(c_id2level, cmod)
     # create nodes for all reactions
-    # TODO: needs libSBML model, put the libSBML creation inside
     mvl.reactionsToNodes(get_r_comp, graph, id2n, cmod, c_id2level, c_id2outs)
     # clone/alias nodes selected above (in ub_list)
     # -> chebi info was apparently only important for automatically extracting ubiquitous species ids! (we now provide them)
@@ -106,7 +112,8 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     graph_registry['initial graph'] = [graph, graph_props]
     # graph_registry.update({"initial graph": [graph, graph_props]})
     # save raw Mimoza graph output as backup
-    tlp.saveGraph(graph, "{}_initial.tlp".format(cmod.getId()))
+    initial_path = os.path.join(output_path, "{}_initial.tlp".format(cmod.getId()))
+    tlp.saveGraph(graph, initial_path)
     print("Initial Tulip graph saved as: {}_initial.tlp. \n".format(cmod.getId()))
     ###############################################################
     # map sbml element ids to initial graph nodes in a dictionary #
@@ -177,7 +184,8 @@ def layoutModel(global_ops, sbml, graph, graph_props):
         mvl.layoutObjFunc(graph, objective_re_id, "Sugiyama (OGDF)", graph_props)
         pathwayDump(graph, global_ops, graph_registry, graph_props, global_ops["SELECTED_PATHWAYS"], global_ops["GRID_OUTPUT"])
 
-    return cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry
+    return cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir,\
+           output_path
 # Part 2: Coloring
 def colorGraphs(global_ops, fba_results, path_dict, graph_registry):
     """
@@ -236,14 +244,16 @@ def colorGraphs(global_ops, fba_results, path_dict, graph_registry):
     print("Applied reaction and metabolite node specific coloring to all graphs. \n")
     # TODO: visualize existence of reactions of a smaller model on a big map (e coli vs mutated e coli eg.)
     # save initial graph with all changes ('messy' layout)
-    tlp.saveGraph(graph_registry['initial graph'][0], "{}_graph.tlp".format(cmod.getId()))
+    graph_path = os.path.join(output_path, "{}_graph.tlp".format(cmod.getId()))
+    tlp.saveGraph(graph_registry['initial graph'][0], graph_path)
     print("Initial graph after coloring saved as: {}_graph.tlp \n".format(cmod.getId()))
 # Part 3: Exporting
-def exportGraph(graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, e2lo, ub_sps):
+def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, e2lo, ub_sps):
     """
     Save graphs as .tlp, .sbml and/or .sbgn files and use Tulip export plugins to export graphs as .gml,
     .svg and/or .json files::
 
+    - *output_path* an os.path string for all output files
     - *graph_registry* a dict of all generated Tulip graph objects
     - *global_ops* a dict of the current boolean status of all control variables (turn different export plugins on/off)
     - *cDir* current working directory
@@ -251,34 +261,30 @@ def exportGraph(graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, 
     and the file extensions)
 
     """
-    # create output folder
-    output_path = os.path.join(cDir, '{}_Output'.format(file_name))
-    try:
-        os.makedirs(output_path)
-    except OSError:
-        if not os.path.isdir(output_path):
-            raise
     # save graphs as .tlp files
     if global_ops['EXPORT_TLP'] and global_ops["AUTO_ALIAS"] is False:
         for graph_name, graph_data in graph_registry.items():
             graph_object = graph_data[0]
             if graph_name == "output_whole":
                 # save graph with whole network layout
-                tlp.saveGraph(graph_object, "{0}_output_whole.tlp".format(cmod.getId()))
-                print("Whole network visualization saved as: {0}_output_whole.tlp \n".format(cmod.getId()))
+                whole_path = os.path.join(output_path, "{0}_{1}.tlp".format(file_name, graph_name))
+                tlp.saveGraph(graph_object, whole_path)
+                print("Whole network visualization saved at: {}".format(whole_path))
             if graph_name == "output_selected":
                 # save graph with selected pathway layouts
-                tlp.saveGraph(graph_object, "{0}_output_selected.tlp".format(cmod.getId()))
-                print("Visualization of selected pathways saved as: {0}_output_selected.tlp \n".format(cmod.getId()))
+                selected_path = os.path.join(output_path, "{0}_{1}.tlp".format(file_name, graph_name))
+                tlp.saveGraph(graph_object, selected_path)
+                print("Visualization of selected pathways saved at: {}".format(selected_path))
             if graph_name == "transport_radial_obj_re":
                 # save graph with radial transport reactions and obj reaction in the middle
-                tlp.saveGraph(graph_object, "{0}_output_radial_trans_obj_re.tlp".format(cmod.getId()))
-                print("Visualization of selected pathways saved as: {0}_output_radial_trans_obj_re.tlp \n".format(
-                    cmod.getId()))
+                rad_trans_obj_re_path = os.path.join(output_path, "{0}_{1}.tlp".format(file_name, graph_name))
+                tlp.saveGraph(graph_object, rad_trans_obj_re_path)
+                print("Visualization of selected pathways saved at: {}".format(rad_trans_obj_re_path))
             if graph_name == "output_grid":
                 # save graph with grid pathway layouts
-                tlp.saveGraph(graph_object, "{0}_output_grid.tlp".format(cmod.getId()))
-                print("Visualization of aligned pathways saved as: {0}_output_grid.tlp \n".format(cmod.getId()))
+                grid_path = os.path.join(output_path, "{0}_{1}.gml".format(file_name, graph_name))
+                tlp.saveGraph(graph_object, grid_path)
+                print("Visualization of aligned pathways saved at: {}".format(grid_path))
     # export every graph in graph registry
     if global_ops["EXPORT_GML"]:
         for graph_data in graph_registry.values():
@@ -286,7 +292,7 @@ def exportGraph(graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, 
             gml_path = os.path.join(output_path, "{0}_{1}.gml".format(file_name, graph.getName()))
             # replace forward dashes in graph name to not cause problems with path
             gml_path = gml_path.replace('/', '-')
-            mvl.exportGML(graph, file_name, "gml_output_graph.tlp", gml_path)
+            mvl.exportGML(graph, file_name, gml_path)
             print("Graph exported as: {0}_{1}.gml".format(file_name, graph.getName()))
     if global_ops["EXPORT_SVG"]:
         for graph_data in graph_registry.values():
@@ -316,14 +322,15 @@ def exportGraph(graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, 
         saveLayoutSBML(groups_sbml, ub_sps, n2lo)
     # save graph layout as SBGN file
     if global_ops['EXPORT_SBGN']:
-        saveLayoutSBGN(groups_sbml, cmod.getId(), cDir, n2lo, e2lo)
+        saveLayoutSBGN(groups_sbml, cmod.getId(), output_path, n2lo, e2lo)
 # Part 4: Database
-def buildSQLiteDatabase(selected_graph, ):
+def buildSQLiteDatabase(selected_graph, output_path):
     """
     Create an SQLite database to store a graph object (properties of nodes, properties if edges, node connectivity and
     edge connectivity)::
 
     - *selected_graph* a Tulip graph object
+    - *output_path* an os.path for all output files
 
     """
     # extract data from selected graph
@@ -335,7 +342,10 @@ def buildSQLiteDatabase(selected_graph, ):
     graph_props_edge_tuplelist = encodeGraphPropertyData(selected_graph, graph_props_ordered_e_list,
                                                          graph_prop_ordered_types, edges=True)
     # build SQLite database from extracted and encoded data (to SQLite compatible types)
-    createSQLiteDB(selected_graph, cmod.getId(), graph_props_node_tuplelist, graph_props_edge_tuplelist)
+    db_path = createSQLiteDB(selected_graph, cmod.getId(), graph_props_node_tuplelist, graph_props_edge_tuplelist,
+                             output_path)
+
+    return db_path
 ########################################################################################################################
 
 
@@ -383,14 +393,14 @@ def runFBA(cmod):
 
     return fba_results
 
-def autoAlias(cmod, global_ops, cDir, spec_split=6, reac_split=4, split_biomass=True):
+def autoAlias(cmod, global_ops, output_path, spec_split=6, reac_split=4, split_biomass=True):
     """
     Alias a number of metabolites/reactions which are selected based on their connectivity. If the amount of connected
     elements is higher than a threshold value, add the respective species to ub_list for Mimoza function node_cloner::
 
     - *cmod* a CBMPY model
     - *global_ops* a dict with boolean control variables
-    - *cDir* current working directory
+    - *output_path* an os.path for all output files
     - *spec_split* [default=6] a threshold value for species splitting (integer)
     - *reac_split* [default=4] a threshold value for reaction splitting (integer)
     - *split_biomass* [default=True] if true, splits biomass reaction
@@ -419,8 +429,8 @@ def autoAlias(cmod, global_ops, cDir, spec_split=6, reac_split=4, split_biomass=
     g1.setSBOterm('SBO:0000248')
     g1.addMIRIAMannotation('isDescribedBy', 'ChEBI', 'CHEBI:000000') #dummy annotation
     g1.miriam.isDescribedBy[0] = "http://identifiers.org/ubiquitous" #change dummy to fit mimoza
-    cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(cmod.getId()), add_groups=True)
-    groups_sbml = os.path.join(cDir, "{}_with_groups.xml".format(cmod.getId()))
+    cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(cmod.getId()), output_path, add_groups=True)
+    groups_sbml = os.path.join(output_path, '{}_with_groups.xml'.format(cmod.getId()))
 
     return ub_list, ub_sps, groups_sbml
 
@@ -807,21 +817,38 @@ def saveLayoutSBML(groups_sbml, ub_sps, n2lo):
     gen_model = False
     sbml_manager.save_as_layout_sbml(groups_model, gen_model, groups_sbml, n2lo, ub_sps)
 
-def saveLayoutSBGN(groups_sbml, file_name, cDir, n2lo, e2lo):
+def saveLayoutSBGN(groups_sbml, file_name, output_path, n2lo, e2lo):
     """
     Save graph layout as SBGN file in current working directory cDir::
 
     - *groups_sbml* an SBML file with groups
     - *file_name* the name of the SBGN file (string)
-    - *cDir* current working directory
+    - *output_path* an os.path for all output files
     - *n2lo* a dict with node layout information
     - *e2lo* a dict with edge layout information
 
     """
     # create SBGN file
     # TODO: check SBGN: is it valid?, what information is stored?
-    groups_sbgn = os.path.join(cDir, '{}.sbgn'.format(file_name))
-    # TODO: can we link Mimoza sbgn export function to our graphs?
+    # TODO: -> Error on: http://sysbioapps.dyndns.org/Layout
+    """
+    Error
+
+    Object reference not set to an instance of an object.
+
+   at SBMLExtension.Formats.LibSbgnML.ReadLayoutsFrom(XmlDocument doc)
+   at SBMLExtension.Formats.LayoutFormats.ReadLayouts(XmlDocument oDoc)
+   at SBMLExtension.Util.readLayout(XmlDocument oDoc, Boolean overWriteWithSBGNDefault)
+   at SBMLExtension.Util.readLayout(String sXML, Boolean overWriteWithSBGNDefault)
+   at Welcome.Controllers.LayoutController.UpdateImage(String file, Boolean sbgn)
+
+    If this problem persists, please notify the author.
+    """
+    groups_sbgn = os.path.join(output_path, '{}.sbgn'.format(file_name))
+    # TODO: since Mimoza sbgn export function gets two dicts (n2lo and e2lo) with graph info instead of a graph object
+    # TODO: can we link this function to the other output graphs?
+    # TODO: maybe write code that extracts dicts like n2lo and e2lo from any graph object!
+    # TODO: whats the structure of these dicts?
     SBML_reader = libsbml.SBMLReader()
     groups_document = SBML_reader.readSBML(groups_sbml)
     groups_model = groups_document.getModel()
@@ -962,58 +989,7 @@ def encodeGraphPropertyData(graph, graph_props_ordered_data, graph_prop_ordered_
 
     return graph_props_tuplelist
 
-# def encodeEdgeData(graph, graph_props_ordered_e_list, graph_prop_ordered_types):
-#     """
-#     Encode edge data of all graph properties to SQLite compatible data types (INTEGER, REAL or TEXT)::
-#
-#     - *graph* a Tulip graph
-#     - *graph_props_ordered_e_list* a list of edge data associated with all graph props
-#     - *graph_prop_ordered_types* a list of graph property types
-#
-#     """
-#     graph_props_edge_tuplelist = list()
-#     # add edge ids to beginning of tuple list to serve as primary key in table
-#     graph_props_edge_tuplelist.append([i for i in range(len(list(graph.getEdges())))])
-#     for prop_type, prop_data_list in zip(graph_prop_ordered_types, graph_props_ordered_e_list):
-#         # allowed data types, no encoding needed
-#         if prop_type == 'string':
-#             pass
-#         if prop_type == 'int':
-#             pass
-#         if prop_type == 'double': # in python: float (in SQL -> REAL)
-#             pass
-#         if prop_type == 'bool': # was converted to INTEGER
-#             pass
-#         # data types that require encoding
-#         # every item of properties with these types is a list itself!
-#         enc_types = ['size', 'color', 'layout', 'vector<string>']
-#         # convert data of a type that requires encoding to string
-#         if prop_type in enc_types:
-#             for list_item in list(prop_data_list):
-#                 # edge specific sublist checking
-#                 # in case input list is a list of lists -> flatten!
-#                 if mvl.containsSublist(list_item):
-#                     # flatten list of sublists
-#                     list_item = sum(list_item, [])
-#                 # convert list item to string
-#                 str_item = ','.join(str(item) for item in list_item)
-#                 #print(str_item)
-#                 # remove old list_item
-#                 prop_data_list.remove(list_item)
-#                 # add new string item
-#                 prop_data_list.append(str_item)
-#             #print(prop_type,prop_data_list)
-#         # exlucde props with type 'graph' from tuplelist (viewMetaGraph)
-#         included = True
-#         if prop_type == 'graph':
-#             included = False
-#         # final step: save included, encoded sublist as tuple
-#         if included is True:
-#             graph_props_edge_tuplelist.append(tuple(prop_data_list))
-#
-#     return graph_props_edge_tuplelist
-
-def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_tuplelist):
+def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_tuplelist, output_path):
     """
     Create an SQLite database storing the encoded graph props data of nodes, edges as well as their connectivity::
 
@@ -1021,11 +997,13 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_
     - *db_name* the name of the database
     - *graph_props_node_tuplelist* a list of tuples containing all graph prop data of one node each
     - *graph_props_edge_tuplelist* a list of tuples containing all graph prop data of one edge each
+    - *output_path* an os.path for all output files
 
     """
     # create an SQL database with sqlite3
     # connect to database
-    db = sqlite3.connect('{0}_graph.db'.format(db_name))
+    db_path = os.path.join(output_path, '{0}_graph.db'.format(db_name))
+    db = sqlite3.connect(db_path)
     # get a cursor object
     c = db.cursor()
     # pass SQL statements into cursor
@@ -1190,20 +1168,22 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_
     # close connection to database
     db.close()
 
-def retrieveGraphElementData(db_name, table_name):
+    return db_path
+
+def retrieveGraphElementData(db_path, table_name):
     """
     Retrieve and decode node and egde data of a stored tulip graph as lists of lists (sublists are rows).
     Also return a list of column headers::
 
-    - *db_name* the name of the database
+    - *db_path* an os.path of the database
     - *table_name* a string table name contained in the current database
 
     """
     # connect to database
-    db = sqlite3.connect('{0}_graph.db'.format(db_name))
+    db = sqlite3.connect(db_path)
     # get a cursor object
     c = db.cursor()
-    # retrieve entire table 'graph_nodes'
+    # retrieve entire table
     c.execute('''SELECT * FROM {}'''.format(table_name))
     graph_rows_list = c.fetchall() # list of row tuples
     # change list of row tuples to list of row lists
@@ -1240,17 +1220,17 @@ def retrieveGraphElementData(db_name, table_name):
 
     return graph_rows_list, col_headers
 
-def retrieveDataFromDatabaseTable(db_name, table_name):
+def retrieveDataFromDatabaseTable(db_path, table_name):
     """
     Retrieve and decode data from a Tulip graph stored in an SQLite database. Each row of an SQLite db table is saved in
     a list and all row lists are appended and returned as items of a nested list.Also return a list of column headers::
 
-    - *db_name* name of the database (string)
+    - *db_path* an os.path of the database
     - *table_name* name of a table inside the db (string)
 
     """
     # retrieve encoded data
-    db_graph_data_list, col_headers = retrieveGraphElementData(db_name, table_name)
+    db_graph_data_list, col_headers = retrieveGraphElementData(db_path, table_name)
     # decode data:
     # unpickle the content of a list returned from the db
     # returned lists contain row lists -> ordered list of all properties for one node
@@ -1265,7 +1245,7 @@ def retrieveDataFromDatabaseTable(db_name, table_name):
     return db_graph_data_list, col_headers
 
 def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edgeconn_list, node_col_headers,
-                           edge_col_headers, graph_name):
+                           edge_col_headers, graph_name, output_path):
     """
     Generate a new Tulip graph based on data retrieved from an SQLite database. Save and return generated graph::
 
@@ -1275,6 +1255,7 @@ def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edge
     - *node_col_headers* a list of column headers of the graph_nodes table
     - *edge_col_headers* a list of column headers of the graph_edges table
     - *graph_name* a name for the new Tulip graph (string)
+    - *output_path* an os.path for all output files
 
     """
     # create new graph to reconstruct network from data retrieved from db
@@ -1367,7 +1348,8 @@ def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edge
             if empty_prop.getName() != "viewLayout":
                 empty_prop[e] = e_db_prop
     # save reconstructed db graph
-    tlp.saveGraph(db_graph, 'reconstructed_graph_from_db.tlp')
+    recon_db_graph_path = os.path.join(output_path, 'reconstructed_graph_from_db.tlp')
+    tlp.saveGraph(db_graph, recon_db_graph_path)
 
     return db_graph
 
@@ -1410,6 +1392,8 @@ if __name__ == '__main__':
                   "COLOR_PATHWAYS": False  # pathways specific coloring
                   }
     # 2. read and initialize SBML file with libsbml and cbmpy, do FBA
+    # get current directory
+    cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
     ## bgoli 180117: organising our tests
     ## bgoli 180117: other tests
     # sbml = os.path.join(cDir, "TestModels", "others", "toy_model_biofuel.xml")
@@ -1469,15 +1453,14 @@ if __name__ == '__main__':
     graph, graph_props = createInitialGraph("initialGraph")
     print("Initial (empty) Tulip graph created. \n")
     # 2. take sbml model file and initial graph and run all layouting function calls to return necessary data structures
-    cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry = \
-                                                                                    layoutModel(global_ops, sbml,
-                                                                                                graph, graph_props)
+    cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir, \
+    output_path = layoutModel(global_ops, sbml, graph, graph_props)
     print("Layout generated. Subgraph(s) added to initial graph. Output graph(s) created from subgraph(s). \n")
     # 3. apply coloring algorithms to graphs
     colorGraphs(global_ops, fba_results, path_dict, graph_registry)
     print("Graph(s) colored. \n")
     # 4. export graph SVG, GML, JSON, SBML+layout Plugin and/or SBGN file (controlled by global_ops)
-    exportGraph(graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
+    exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
 
 
     # II.) SQLite Database Operations:
@@ -1486,7 +1469,7 @@ if __name__ == '__main__':
     # cytoscape, etc...!
 
     # 1. create SQLite db to store a graph object
-    buildSQLiteDatabase(graph_registry['output_whole'][0])
+    db_path = buildSQLiteDatabase(graph_registry['output_whole'][0], output_path)
     # DB INFO ##########################################################################################################
     # 5 tables in database:
     # - graph_nodes: every row is a node, each column is a node property
@@ -1499,12 +1482,12 @@ if __name__ == '__main__':
     #                      tuples of (flux value, pickled tulip color prop))
     ####################################################################################################################
     # 2. retrieve graph data from SQL database
-    db_graph_node_list, node_col_headers = retrieveDataFromDatabaseTable(cmod.getId(), 'graph_nodes')
-    db_graph_edge_list, edge_col_headers = retrieveDataFromDatabaseTable(cmod.getId(), 'graph_edges')
-    db_graph_edgeconn_list, edgeconn_col_headers = retrieveDataFromDatabaseTable(cmod.getId(), 'edge_connectivity')
+    db_graph_node_list, node_col_headers = retrieveDataFromDatabaseTable(db_path, 'graph_nodes')
+    db_graph_edge_list, edge_col_headers = retrieveDataFromDatabaseTable(db_path, 'graph_edges')
+    db_graph_edgeconn_list, edgeconn_col_headers = retrieveDataFromDatabaseTable(db_path, 'edge_connectivity')
     # 3. SQL --> back to Tulip (to see if everything is preserved)
     db_graph = buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edgeconn_list,
-                                      node_col_headers, edge_col_headers, "graph_fromDB")
+                                      node_col_headers, edge_col_headers, "graph_fromDB", output_path)
 
 
     # TODO: SQL --> d3py/networkx/someother gaph program

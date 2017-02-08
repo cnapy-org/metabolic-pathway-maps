@@ -994,13 +994,12 @@ def colourFBA(g, flux_dict, color_zero, color_pos=None, color_neg=None, discrete
                 # TODO: add flux value to edge properties
                 #flux[e] = flux[n]
 
-def exportGML(graph, model_id, output_graph_name, gml_path):
+def exportGML(graph, model_id, gml_path):
     """
     Exports a tulip graph as a GML file::
 
     - *graph* a tulip graph (input graph to get elements and properties from)
     - *model_id* id of the libSBML model
-    - *output_graph_name* a name for the output graph G (has unique node ids), file type: .tlp
     - *gml_path* a path for the output GML file (string), file type: .gml
 
     """
@@ -1023,7 +1022,7 @@ def exportGML(graph, model_id, output_graph_name, gml_path):
         GML_props["viewLabel"][n] = GML_props["viewLabel"][n] + str(i)
         i += 1
     # save new output graph 'GML'
-    tlp.saveGraph(GML, '{}'.format(model_id) + '_' + output_graph_name)
+    #tlp.saveGraph(GML, '{}'.format(model_id) + '_' + output_graph_name)
     # export new output graph 'GML' as .gml file (graphic markup language)
     params = tlp.getDefaultPluginParameters('GML Export', graph)
     tlp.exportGraph('GML Export', GML, gml_path, params)
