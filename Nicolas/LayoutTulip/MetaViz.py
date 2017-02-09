@@ -84,7 +84,7 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     # create dictionary of groups where each group name is a key and the values are again dicts with three keys: 'id',
     # 'reactions' and 'metabolites'
     if global_ops["PATHWAY_LISTS"] is True and global_ops["AUTO_ALIAS"] is False:
-        path_dict, small_sps_dict = automPathDict(cmod, global_ops)
+        path_dict, small_sps_dict = automPathDict(cmod, global_ops, global_ops["SMALL_THRSH"])
     else:
         # if model has no groups defined -> return empty dicts
         path_dict = dict()
@@ -166,7 +166,7 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     # TODO: what happens to the output if labels are names (which are longer than ids)
     # TODO: in global_ops: control type of label
     # TODO: also differentiate between metabolite labels and reaction labels
-    labelGraphNodes(graph, "id")
+    labelGraphNodes(graph, global_ops["LABEL_TYPE"])
     # TODO: add labels to edges (possible? alternative?)
     # for e in graph.getEdges():
     #    viewLabel[e] = "test"
@@ -470,7 +470,7 @@ def manualPathDict(path_name, sps_id_list, re_id_list):
 
     return path_dict
 
-def automPathDict(cmod, global_ops, small_threshold=10):
+def automPathDict(cmod, global_ops, small_threshold=30):
     """
     Automatically create a pathway dictionary for all annotated groups in an CBMPY model. Add all reactions which
     are not yet part of a group to a new group ("undefined")::

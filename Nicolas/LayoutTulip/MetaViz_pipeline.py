@@ -15,9 +15,11 @@ global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph 
                                                                           # splitting
 
               "PATHWAY_LISTS": True,  # layout annotated groups of sbml file as seperate pathways
+              "SMALL_THRSH": 30,  # the threshold value of connections a species must have to be a small sps
               "LAYOUT_PATHWAYS": True,  # needs PATHWAY_LISTS true, so that necessary node lists are generated
-              "ADD_COFACTORS": ["Respiratory chain"],  # add nodes for small sps/cofactors after they have been
-              # deleted in path_dict
+              "LABEL_TYPE": "id",  # can either be "id" or "name"
+              "ADD_COFACTORS": ["Respiratory chain",    # add nodes for small sps/cofactors after they have been
+                                ],  # deleted in path_dict
 
               "TRANSPORT_RADIAL": True,  # apply Tree Radial algorithm to transport reactions in output_whole
               "SELECTED_PATHWAYS": ["objective reaction",  # pathways to be saved in output_selected
@@ -45,19 +47,29 @@ cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
 ## bgoli 180117: other tests
 # sbml = os.path.join(cDir, "TestModels", "others", "toy_model_biofuel.xml")
 # sbml = os.path.join(cDir, "TestModels", "others", "e_coli_core.xml")
-# sbml = os.path.join(cDir, "TestModels", "others", "Ecoli_Carlson2003.xml")
+#sbml = os.path.join(cDir, "TestModels", "others", "Ecoli_Carlson2003.xml")
 # sbml = os.path.join(cDir, "TestModels", "others", "Hpylori_iIT341.xml")
 # sbml = os.path.join(cDir, "TestModels", "others", "Lactococcus_lactis_MG1363.xml")
 ## BiGG2 models (with pathway annotation)
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
-# sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml") # newest E. coli
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml") # H.pylori
+sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml") # newest E. coli
 # sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
 # sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli about 1000 reactions
 # sbml = os.path.join(cDir, "TestModels", "bigg2", "iND750.xml") # Yeast about 1000 reactions
 ## Willis models
 # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6.xml")
-sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_bigggroups.xml")
+#sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_bigggroups.xml")
 #sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_compgroups.xml")
+## Willis existence test
+# whole E.coli
+#sbml = os.path.join(cDir, "TestModels", "willi", "(bigg1-eco)-(Ecoli_iAF1260.glc.l3).seqplus.xml")
+# subset E.coli
+#sbml2 = os.path.join(cDir, "TestModels", "willi", "322b_EcoliiAF1260.xml")
+# whole Plantarum
+#sbml = os.path.join(cDir, "TestModels", "willi", "(lab-lplawcfs1)-(Lactobacillus_plantarum_WCFS1).seqplus.xml")
+# subset Plantarum
+# sbml = os.path.join(cDir, "TestModels", "willi", "322b_lplantarum.xml")
+
 ## Stijns models
 # sbml = os.path.join(cDir, "TestModels", "stijn", "Y7.xml") #M.getNumReactions: 3498, M.getNumSpecies: 2220
 # Error message when trying to run Metaviz with Y7xml:
