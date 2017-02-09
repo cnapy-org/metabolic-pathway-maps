@@ -932,7 +932,7 @@ def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg
     return new_graph, new_graph_props
 
 
-def colourFBA(g, flux_dict, color_zero, color_pos=None, color_neg=None, discrete=False):
+def colourFBA(g, flux_dict, color_zero, color_pos=None, color_neg=None, discrete=False, binary_scale=None):
     """
     Colour reaction nodes and adjacent edges dependent on flux value::
 
@@ -942,6 +942,7 @@ def colourFBA(g, flux_dict, color_zero, color_pos=None, color_neg=None, discrete
     - *color_pos* [default=None] a color value (RGB) for maximum flux
     - *color_neg* [default=None] a color value (RGB) for minimum flux
     - *discrete* [default=False] use a discrete, 10 color scale (e.g. for pathway layouting, etc)
+    . *binary_scale* [default=None] use a binary, 2 color scale (list of two colors)
 
     """
     # get necessary graph properties
@@ -964,6 +965,8 @@ def colourFBA(g, flux_dict, color_zero, color_pos=None, color_neg=None, discrete
     elif discrete:
         # e.g. for pathway coloring
         colorScale = tlpgui.ColorScalesManager.getColorScale('Set1_9')
+    elif binary_scale:
+        colorScale = binary_scale
     else:
         # new FAME rainbow coloring: only apply color to nodes with flux
         # don't fade into zero grey! -> have a clear difference between zero flux and flux != 0
@@ -981,7 +984,7 @@ def colourFBA(g, flux_dict, color_zero, color_pos=None, color_neg=None, discrete
         colorMappingParams['maximum value'] = 1
     # compute the color mapping
     g.applyColorAlgorithm('Color Mapping', colorMappingParams)
-    # color all nodes with flux == 0 grey
+    # apply zero color to all nodes with flux == 0
     zero_flux_nodes = [n for n in g.getNodes() if flux[n] == 0]
     setColours(g, zero_flux_nodes, color_zero)
     # color all edges grey (color of edges connected to reactions with flux will be overwritten by node color)

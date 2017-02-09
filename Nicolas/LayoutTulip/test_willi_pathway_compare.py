@@ -32,9 +32,10 @@ global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph 
               "EXPORT_SBML": True,  # export generated graphs as .sbml files (in layout plugin)
               "EXPORT_SBGN": True,  # export generated graphs as .sbgn files
 
-              "COLOR_FBA": True,  # color the reaction nodes and in and outgoing edges
+              "COLOR_FBA": False,  # color the reaction nodes and in and outgoing edges
               "COLOR_FBA_COLORBLIND": False,  # based on flux values obtained from FBA
-              "COLOR_PATHWAYS": False  # pathways specific coloring
+              "COLOR_PATHWAYS": False,  # pathways specific coloring
+              "COLOR_GAPS": True  # highlight gaps (in red), reactions that exist in both (all) models = black
               }
 sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
 

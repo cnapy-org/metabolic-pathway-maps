@@ -220,8 +220,14 @@ def colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, outp
     if global_ops["COLOR_FBA"]:
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]
-            mvl.colourFBA(graph_obj, fba_results,COLORS["light grey"])
+            mvl.colourFBA(graph_obj, fba_results, COLORS["light grey"])
         print("Applied flux coloring to all graphs. \n")
+    if global_ops["COLOR_GAPS"]:
+        # highlight gaps in red, reactions with 0 value (exist in both) -> black
+        for graph_data in graph_registry.values():
+            graph_obj = graph_data[0]
+            mvl.colourFBA(graph_obj, fba_results, COLORS["red"], binary_scale=[tlp.Color.Black, tlp.Color.Black])
+        print("Applied gap coloring to all graphs. \n")
     if global_ops["COLOR_FBA_COLORBLIND"]:
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]

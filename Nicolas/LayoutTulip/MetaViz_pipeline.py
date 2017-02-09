@@ -38,7 +38,8 @@ global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph 
 
               "COLOR_FBA": True,  # color the reaction nodes and in and outgoing edges
               "COLOR_FBA_COLORBLIND": False,  # based on flux values obtained from FBA
-              "COLOR_PATHWAYS": False  # pathways specific coloring
+              "COLOR_PATHWAYS": False,  # pathways specific coloring
+              "COLOR_GAPS": False  # highlight gaps (in red), reactions that exist in both (all) models = black
               }
 # 2. read and initialize SBML file with libsbml and cbmpy, do FBA
 # get current directory
