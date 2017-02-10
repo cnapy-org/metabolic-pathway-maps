@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15.5" height="22.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 25.5 32.5" version="1.1">
+    <rect width="15.5" height="22.5" fill="rgb(255,255,255)"/>
+    <g desc="Graph" transform="translate(8,13.5) scale(1,-1)">
+        <g id="Edges" desc="This is the group of edges">
+            <g id="0">
+                <path d="M -1.25,7.10417 L -5.76994,3.52588" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(0,0,0)"/>
+            </g>
+            <g id="1">
+                <path d="M -0.25,7.10417 L 4.26994,3.52588" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(0,0,0)"/>
+            </g>
+            <g id="2">
+                <path d="M 4.58251,1.69314 L 2.56579,-1.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(0,0,0)"/>
+            </g>
+            <g id="3">
+                <path d="M 2.25,-2.5 L 2.25,-5.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(0,0,0)"/>
+            </g>
+            <g id="4">
+                <path d="M -0.75,11 L -0.75,8" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(0,0,0)"/>
+            </g>
+            <g id="5">
+                <path d="M -0.0825087,1.69314 L 1.93421,-1.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(0,0,0)"/>
+            </g>
+        </g>
+        <g id="Nodes" desc="This is the group of nodes">
+            <g id="0">
+                <ellipse cx="-6.75" cy="2.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="-6.75" y="-2.60714" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_r1p_c</text>
+            </g>
+            <g id="1">
+                <ellipse cx="2.25" cy="-6.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="2.25" y="6.89286" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_xmp_c</text>
+            </g>
+            <g id="2">
+                <ellipse cx="-0.75" cy="12.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="-0.75" y="-12.125" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_xtsn_c</text>
+            </g>
+            <g id="3">
+                <ellipse cx="-0.75" cy="2.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="-0.75" y="-2.625" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_prpp_c</text>
+            </g>
+            <g id="4">
+                <rect x="1.75" y="-2.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="2.25" y="2.06667" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_XPPT</text>
+            </g>
+            <g id="5">
+                <ellipse cx="5.25" cy="2.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="5.25" y="-2.60714" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_xan_c</text>
+            </g>
+            <g id="6">
+                <rect x="-1.25" y="7" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="-0.75" y="-7.44286" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_PUNP7</text>
+            </g>
+            <g id="7">
+                <ellipse cx="0" cy="0" rx="2.5" ry="2.5" fill="rgb(255,0,0)" fill-opacity="1"/>
+                <text x="0" y="0.0909091" font-size="0.272727" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">Salvage pathway of XTP</text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -75,3 +75,21 @@ MetaViz Tests
 =============
 
  - small/medium sized kinetic models from BioModelsDB
+ 
+ 
+CBMViz
+======
+
+I've converted MetaViz into a module cal cbmviz, I would suggest you create a new directory to run stuff from 
+or we archive the source here and leave only test stuff here (when we are sure we don't need it anymore).
+I created cbmviz-test, feel free to use this one or create your own in the Nicolas folder.
+
+Install CBMviz with the commands::
+ 
+ python setup.py build
+ python setup.py install
+
+to access the module simply do::
+
+ import cbmviz
+ 

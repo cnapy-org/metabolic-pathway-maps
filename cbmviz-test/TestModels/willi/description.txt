@@ -1,0 +1,14 @@
+Hi Nicolas,
+
+These are the models I mentioned:
+
+M5_6.xml: There are no groups at all.
+
+M5_6_bigggroups.xml: I used the same group definitions as in the iND750.xml
+
+M5_6_compgroups.xml: There are 5 groups: exchange reactions, transport from external to cytosol, cytosol, transport from cytosol to mitochondrium, mitochondrium
+
+Would be great if you could have a look at those! But of course, if there are more urgent things to fix/do, focus on these things first :)
+
+Best,
+Willi 
