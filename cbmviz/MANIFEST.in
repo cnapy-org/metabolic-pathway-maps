@@ -1,0 +1,15 @@
+include LICENCE_GPLv3.txt
+include README.md
+include src/*
+include src/mod_sbml/*
+include src/mod_sbml/annotation/*
+include src/mod_sbml/annotation/chebi/*
+include src/mod_sbml/annotation/gene_ontology/*
+include src/mod_sbml/annotation/kegg/*
+include src/mod_sbml/annotation/pts/*
+include src/mod_sbml/data/*
+include src/mod_sbml/onto/*
+include src/mod_sbml/sbml/*
+include src/mod_sbml/sbml/compartment/*
+include src/mod_sbml/serialization/*
+include src/mod_sbml/utils/*
