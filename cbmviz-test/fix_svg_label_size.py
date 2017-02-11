@@ -1,6 +1,7 @@
 import os, re
+cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
 
-svgdir = 'd:\\code-git\\metabolic-pathway-maps\\Nicolas\\LayoutTulip\\iAF1260_Output'
+svgdir = os.path.join(cDir, 'iAF1260_Output')
 
 font_size = re.compile('font-size=\"[\.|0-9]*\"')
 new_font_size = 'font-size=\"0.8\"'
