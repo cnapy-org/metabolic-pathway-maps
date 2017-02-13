@@ -13,7 +13,7 @@
 import os
 # tulip imports
 import sys
-sys.path.append('C:\\Program Files\\Tulip-4.10.0\\bin')
+#sys.path.append('C:\\Program Files\\Tulip-4.10.0\\bin')
 from tulipgui import * # for SVG export
 from tulip import tlp
 # modules for SBML model interaction

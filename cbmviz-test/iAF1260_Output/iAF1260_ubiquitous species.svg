@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="6" height="6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 16 16" version="1.1">
+    <rect width="6" height="6" fill="rgb(255,255,255)"/>
+    <g desc="Graph" transform="translate(2.5,2.5) scale(1,-1)">
+        <g id="Edges" desc="This is the group of edges"/>
+        <g id="Nodes" desc="This is the group of nodes">
+            <g id="0">
+                <ellipse cx="0" cy="0" rx="2.5" ry="2.5" fill="rgb(255,0,0)" fill-opacity="1"/>
+                <text x="0" y="0.111111" font-size="0.8" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">ubiquitous species</text>
+            </g>
+        </g>
+    </g>
+</svg>
