@@ -60,18 +60,43 @@ documentation
 =============
 
  - document the code separately (core data structure: graph_dict) -> new REST file that documents that graph dictionary (how?, where?, what structure?)
- - pseudo "UML": visual representation of core datastructure for report (do manually)
+ - pseudo "UML": visual representation of core datastructure for report (do manually)::
  
   - How to think about it when representing it: MetaViz module is a "class", all functions are "methods", the dicts which are passed around is the "data"
 
 final presentation
 ==================
 
+ - use fba meeting as initial template
+ - take repeating example out and add code logic, explanations in
  - VU and Uni Heidelberg logo
  - simple, non-technical ,understandable process diagramm of my code (how does the data flow? where can external data come in?, etc.)
  - credit Mimoza Project in presentation (with GitHub, Homepage, ...) -> "portions of the code were taken from Mimoza Project"
+ - add more detail about how the code works
+ - in use cases: add more info about what I had to do on my end
+ - example pseudo code (abstract version of pipeline in PyCharm Presentation mode)
+
+Report
+======
+
+ - compare MetaViz to Escher (because its Flavour of the Month) -> add Escher to tool comparison table
+ - benchmark code with different models with time module in python and show results in a table (give idea of performance), add hardware specs::
  
+  - 4 models: with and without groups -> does adding groups introduce a time penalty? and if so, is it offset by result layout being better?
+  
+
 MetaViz Tests
 =============
 
- - small/medium sized kinetic models from BioModelsDB
+ - (optional) small/medium sized kinetic models from BioModelsDB
+ - test with iIT341: same reaction id(s) in multiple/adjacent (Glycolysis+TCA) groups -> does it change layout/ break something?
+ - make example script that loads three model files (call MetaViz 3 times) -> 3 graph_dicts -> write function that combines entries of different graph_dicts and merge in one graph (select entries based on group id => take TCA from three different models and put in together in a new output graph)
+ - (later) function to manipulate svg output (change node objects: circles to sectioned squares)
+ - go to Frank/others and ask for a model to try stuff
+ 
+ 
+Package
+=======
+ 
+ - official name for package: "CBMViz" (not in use atm)
+ -  
