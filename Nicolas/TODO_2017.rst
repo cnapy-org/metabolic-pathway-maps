@@ -88,7 +88,12 @@ Report
 MetaViz Tests
 =============
 
+ - create test scripts for every feature (minimal output, kust does this one thing)
+ - add global_ops as "cfg_default" to __init__.py file or even CBConfig file in src (define dict there so it gets added to the namespace)
+ - write doc for global_ops dict (same way as for graph_registry) --> what options collide with each other?, etc.
+ - change code so that if "pathway mode" in global_ops is chosen but model file contains to pathways -> detect that and switch to autoAlias mode (by changing global_ops)
  - (optional) small/medium sized kinetic models from BioModelsDB
+ 
  - test with iIT341: same reaction id(s) in multiple/adjacent (Glycolysis+TCA) groups -> does it change layout/ break something?
  - make example script that loads three model files (call MetaViz 3 times) -> 3 graph_dicts -> write function that combines entries of different graph_dicts and merge in one graph (select entries based on group id => take TCA from three different models and put in together in a new output graph)
  - (later) function to manipulate svg output (change node objects: circles to sectioned squares)
