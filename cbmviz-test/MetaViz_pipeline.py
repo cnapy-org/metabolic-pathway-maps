@@ -22,12 +22,13 @@ cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
 # sbml = os.path.join(cDir, "TestModels", "others", "Hpylori_iIT341.xml")
 # sbml = os.path.join(cDir, "TestModels", "others", "Lactococcus_lactis_MG1363.xml")
 ## BiGG2 models (with pathway annotation)
-sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml") # H.pylori
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml") # H.pylori
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341_no_groups_test.xml") # NO GROUPS TEST
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml") # newest E. coli
-# sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
 # sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli about 1000 reactions
 # sbml = os.path.join(cDir, "TestModels", "bigg2", "iND750.xml") # Yeast about 1000 reactions
+sbml = os.path.join(cDir, "TestModels", "bigg2", "RECON1.xml")
 ## Willis models
 # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6.xml")
 #sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_bigggroups.xml")
@@ -72,6 +73,12 @@ Process finished with exit code 1
 # TODO: function?
 # Y5 with fewer reactions works so its most likely an issue with big models!
 # sbml = os.path.join(cDir, "TestModels", "stijn", "Y5.xml") # M.getNumReactions: 2110, M.getNumSpecies: 1655
+# Franks models
+#sbml = os.path.join(cDir, "TestModels", "frank", "Ecoli_iAF1260.glc.xml")
+#sbml = os.path.join(cDir, "TestModels", "frank", "Ecoli_iAF1260_noox.glc.xml")
+#sbml = os.path.join(cDir, "TestModels", "frank", "Ecoli_iAF1260_ox.glc.xml")
+#sbml = os.path.join(cDir, "TestModels", "frank", "toy_model_maarleveld2014.l3.xml")
+
 
 
 ########################

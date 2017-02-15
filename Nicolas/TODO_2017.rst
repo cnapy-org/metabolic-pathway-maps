@@ -60,6 +60,7 @@ documentation
 =============
 
  - document the code separately (core data structure: graph_dict) -> new REST file that documents that graph dictionary (how?, where?, what structure?)
+ - write doc for global_ops dict (same way as for graph_registry)
  - pseudo "UML": visual representation of core datastructure for report (do manually)::
  
   - How to think about it when representing it: MetaViz module is a "class", all functions are "methods", the dicts which are passed around is the "data"
@@ -91,8 +92,9 @@ MetaViz Tests
  - create test scripts for every feature (minimal output, just does this one thing)
  
  - add global_ops as "cfg_default" to __init__.py file or even CBConfig file in src (define dict there so it gets added to the namespace)
- - write doc for global_ops dict (same way as for graph_registry) --> what options collide with each other?, etc.
+  --> what options collide with each other?, etc.
  - change code so that if "pathway mode" in global_ops is chosen but model file contains to pathways -> detect that and switch to autoAlias mode (by changing global_ops)
+ 
  - (optional) small/medium sized kinetic models from BioModelsDB
  
  - test with iIT341: same reaction id(s) in multiple/adjacent (Glycolysis+TCA) groups -> does it change layout/ break something?

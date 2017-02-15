@@ -390,7 +390,12 @@ def createCBMPYModel(sbml_path, change_flux_bounds=True, ):
     - *change_flux_bounds* [default=True] refactor all occurrences of very high flux values to inf and -inf
     """
     # create CBMPy model
-    cmod = cbmpy.readSBML3FBC(sbml_path)
+    # try to read an SBML level 3 file
+    try:
+        cmod = cbmpy.readSBML3FBC(sbml_path)
+    # if its not level 3, try level 2
+    except AssertionError:
+        cmod = cbmpy.readSBML2FBA(sbml_path)
     # change flux bounds values to not mess with the coloring later on
     if change_flux_bounds:
         cmod.changeAllFluxBoundsWithValue(999999, cbmpy.INF)

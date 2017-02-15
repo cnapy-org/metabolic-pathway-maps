@@ -48,9 +48,9 @@ __CBCONFIG__ = {'VERSION_MAJOR' : 0,
 # default options dictionary controlling CBMViz (group based layout with flux coloring)
 cfg_default = {"AUTO_ALIAS": False,
                # apply aliasing to every node of the graph with a certain connectivity
-               # and option to alias biomass (result in maingraph)
+               # and option to alias biomass (result in main graph)
                # if auto alias is active the automatically generated layout will still be
-               # overwritten if any other layouting functions are active aswell
+               # overwritten if any other layouting functions are active as well
                "AUTO_ALIAS_OPTIONS": {"spec_split": 6, "reac_split": 4},  # threshold values for species and reac
                                                                           # splitting
 
@@ -88,9 +88,9 @@ cfg_default = {"AUTO_ALIAS": False,
 # automatic layouting options dictionary (if no groups are defined)
 cfg_auto = {"AUTO_ALIAS": False,
             # apply aliasing to every node of the graph with a certain connectivity
-            # and option to alias biomass (result in maingraph)
+            # and option to alias biomass (result in main graph)
             # if auto alias is active the automatically generated layout will still be
-            # overwritten if any other layouting functions are active aswell
+            # overwritten if any other layouting functions are active as well
             "AUTO_ALIAS_OPTIONS": {"spec_split": 6, "reac_split": 4},  # threshold values for species and reac
                                                                        # splitting
 
