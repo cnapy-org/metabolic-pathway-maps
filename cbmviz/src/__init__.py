@@ -21,6 +21,10 @@ from MetaViz import *
 import CBConfig
 __version__ = CBConfig.current_version()
 
+# get default options dict
+cfg_default = CBConfig.cfg_default
+# get autoAlias options dict
+cfg_auto = CBConfig.cfg_auto
 
 if not __SILENT_START__:
     print("#################################################################################################")
@@ -37,7 +41,8 @@ if not __SILENT_START__:
     print("# Install packages: pip install geojson tarjan libsbgnpy tulip-python tulipgui-python           #")
     print("# Install CBMPy using: conda install -c bgoli -c sbmlteam cbmpy                                 #")
     print("#                                                                                               #")
-    print("# CBMViz contains code from Mimoza version X.X.X (http://url) paper doi or pubmed id            #")
+    print("# CBMViz contains code from Mimoza version 1.0 (https://github.com/annazhukova/mimoza) "
+          "doi:10.1186/s12918-015-0151-5 #")
     print("#                                                                                               #")
     print("# CBMViz is distributed under the GNU GPL v 3.0 licence, see                                    #")
     print("# LICENCE_GPLv3.txt (supplied with this release) for details                                    #")

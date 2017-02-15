@@ -45,6 +45,86 @@ __CBCONFIG__ = {'VERSION_MAJOR' : 0,
                 'DEBUG' : False
                }
 
+# default options dictionary controlling CBMViz (group based layout with flux coloring)
+cfg_default = {"AUTO_ALIAS": False,
+               # apply aliasing to every node of the graph with a certain connectivity
+               # and option to alias biomass (result in maingraph)
+               # if auto alias is active the automatically generated layout will still be
+               # overwritten if any other layouting functions are active aswell
+               "AUTO_ALIAS_OPTIONS": {"spec_split": 6, "reac_split": 4},  # threshold values for species and reac
+                                                                          # splitting
+
+               "PATHWAY_LISTS": True,    # layout annotated groups of sbml file as seperate pathways
+               "SMALL_THRSH": 30,        # the threshold value of connections a species must have to be a small sps
+               "LAYOUT_PATHWAYS": True,  # needs PATHWAY_LISTS true, so that necessary node lists are generated
+               "LABEL_TYPE": "id",       # can either be "id" or "name"
+               "ADD_COFACTORS": False,
+               #"ADD_COFACTORS": ["Respiratory chain",    # add nodes for small sps/cofactors after they have been
+               #                  "Citric Acid Cycle"],   # deleted in path_dict
+
+               "TRANSPORT_RADIAL": True,                    # apply Tree Radial algorithm to transport reactions in
+                                                            # output_whole
+               "SELECTED_PATHWAYS": ["objective reaction",  # pathways to be saved in output_selected
+                                     "Transport"],
+               "GRID_OUTPUT": ["Glycolysis",                # align pathways on a grid, control position
+                               "TCA cycle",
+                               "Respiratory chain",
+                               "Aminosugar Metabolism"],
+
+               "EXPORT_TLP": True,   # save generated graphs as .tlp files
+               "EXPORT_GML": True,   # export generated graphs as .gml files
+               "EXPORT_SVG": True,   # export generated graphs as .svg files
+               "EXPORT_JSON": True,  # export generated graphs as .json files
+               "EXPORT_SBML": True,  # export generated graphs as .sbml files (in layout plugin)
+               "EXPORT_SBGN": True,  # export generated graphs as .sbgn files
+
+               "COLOR_FBA": True,              # color the reaction nodes and in and outgoing edges
+               "COLOR_FBA_COLORBLIND": False,  # based on flux values obtained from FBA
+               "COLOR_PATHWAYS": False,        # pathways specific coloring
+               "COLOR_GAPS": False             # highlight gaps (in red), reactions that exist in both (all) models =
+                                               # black
+               }
+
+# automatic layouting options dictionary (if no groups are defined)
+cfg_auto = {"AUTO_ALIAS": False,
+            # apply aliasing to every node of the graph with a certain connectivity
+            # and option to alias biomass (result in maingraph)
+            # if auto alias is active the automatically generated layout will still be
+            # overwritten if any other layouting functions are active aswell
+            "AUTO_ALIAS_OPTIONS": {"spec_split": 6, "reac_split": 4},  # threshold values for species and reac
+                                                                       # splitting
+
+            "PATHWAY_LISTS": True,    # layout annotated groups of sbml file as seperate pathways
+            "SMALL_THRSH": 30,        # the threshold value of connections a species must have to be a small sps
+            "LAYOUT_PATHWAYS": True,  # needs PATHWAY_LISTS true, so that necessary node lists are generated
+            "LABEL_TYPE": "id",       # can either be "id" or "name"
+            "ADD_COFACTORS": False,
+            #"ADD_COFACTORS": ["Respiratory chain",    # add nodes for small sps/cofactors after they have been
+            #                  "Citric Acid Cycle"],   # deleted in path_dict
+
+            "TRANSPORT_RADIAL": True,                    # apply Tree Radial algorithm to transport reactions in
+                                                         # output_whole
+            "SELECTED_PATHWAYS": ["objective reaction",  # pathways to be saved in output_selected
+                                  "Transport"],
+            "GRID_OUTPUT": ["Glycolysis",                # align pathways on a grid, control position
+                            "TCA cycle",
+                            "Respiratory chain",
+                            "Aminosugar Metabolism"],
+
+            "EXPORT_TLP": True,   # save generated graphs as .tlp files
+            "EXPORT_GML": True,   # export generated graphs as .gml files
+            "EXPORT_SVG": True,   # export generated graphs as .svg files
+            "EXPORT_JSON": True,  # export generated graphs as .json files
+            "EXPORT_SBML": True,  # export generated graphs as .sbml files (in layout plugin)
+            "EXPORT_SBGN": True,  # export generated graphs as .sbgn files
+
+            "COLOR_FBA": True,              # color the reaction nodes and in and outgoing edges
+            "COLOR_FBA_COLORBLIND": False,  # based on flux values obtained from FBA
+            "COLOR_PATHWAYS": False,        # pathways specific coloring
+            "COLOR_GAPS": False             # highlight gaps (in red), reactions that exist in both (all) models =
+                                           # black
+            }
+
 def current_version():
     """
     Return the current CBMPy version as a string

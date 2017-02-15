@@ -69,13 +69,25 @@ def layoutModel(global_ops, sbml, graph, graph_props):
             raise
     # do FBA and save results
     fba_results = runFBA(cmod)
+    # check if groups are present in model
+    # (if no groups present -> switch to auto alias even if default pathway layout dict cfg_default was used!)
+    # (to avoid error if pathway layouting is selected even if no groups are defined in sbml)
+    if len(cmod.groups) == 0:
+        global_ops["AUTO_ALIAS"] = True
+        global_ops["LAYOUT_PATHWAYS"] = False
+        print("\n No groups defined. Switch to automatic node aliasing. \n)")
     #################################################
     # select nodes for aliasing (different methods) #
     #################################################
     # 1.) create alias node list based on connectivity <-> user defined thresholds (aliasing by Mimoza)
-    ub_list, ub_sps, groups_sbml = autoAlias(cmod, global_ops, output_path,
-                                             global_ops["AUTO_ALIAS_OPTIONS"]["spec_split"],
-                                             global_ops["AUTO_ALIAS_OPTIONS"]["reac_split"])
+    ub_list = list()
+    ub_sps = list()
+    if global_ops["AUTO_ALIAS"]:
+        ub_list, ub_sps = autoAlias(cmod, output_path,
+                                          global_ops["AUTO_ALIAS_OPTIONS"]["spec_split"],
+                                          global_ops["AUTO_ALIAS_OPTIONS"]["reac_split"])
+    # path to sbml model file with an additional group for the automatically selected ubiquitous species
+    groups_sbml = os.path.join(output_path, '{}_with_groups.xml'.format(cmod.getId()))
     # 2.) create alias node list based on biological pathways <-> group info in sbml - if available (aliasing done by own
     # functions)
     # IF GROUPS DON'T EXIST -> provide pathway lists manually:
@@ -83,13 +95,13 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     # IF GROUPS EXIST -> fetch groups from sbml (this doesn't use ub_sps_list or ub_re_list)
     # create dictionary of groups where each group name is a key and the values are again dicts with three keys: 'id',
     # 'reactions' and 'metabolites'
+    small_sps_dict = dict()
     if global_ops["PATHWAY_LISTS"] is True and global_ops["AUTO_ALIAS"] is False:
         path_dict, small_sps_dict = automPathDict(cmod, global_ops, global_ops["SMALL_THRSH"])
     else:
         # if model has no groups defined -> return empty dicts
         path_dict = dict()
         small_sps_dict = dict()
-
     # flag (true/false) a list of nodes (already saved as ub_list) so that they can be aliased later
     mvl.markUbiquitousNodes(graph, ub_list)
     # create initial nodes for all species
@@ -121,7 +133,7 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     # save raw Mimoza graph output as backup
     initial_path = os.path.join(output_path, "{}_initial.tlp".format(cmod.getId()))
     tlp.saveGraph(graph, initial_path)
-    print("Initial Tulip graph saved as: {}_initial.tlp. \n".format(cmod.getId()))
+    print("\n Initial Tulip graph saved as: {}_initial.tlp. \n".format(cmod.getId()))
     ###############################################################
     # map sbml element ids to initial graph nodes in a dictionary #
     ###############################################################
@@ -221,18 +233,18 @@ def colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, outp
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]
             mvl.colourFBA(graph_obj, fba_results, COLORS["light grey"])
-        print("Applied flux coloring to all graphs. \n")
+        print("\n Applied flux coloring to all graphs. \n")
     if global_ops["COLOR_GAPS"]:
         # highlight gaps in red, reactions with 0 value (exist in both) -> black
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]
             mvl.colourFBA(graph_obj, fba_results, COLORS["red"], binary_scale=[tlp.Color.Black, tlp.Color.Black])
-        print("Applied gap coloring to all graphs. \n")
+        print("\n Applied gap coloring to all graphs. \n")
     if global_ops["COLOR_FBA_COLORBLIND"]:
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]
             mvl.colourFBA(graph_obj, fba_results, tlp.Color.Cyan, tlp.Color.Magenta, COLORS["light grey"])
-        print("Applied colorblind flux coloring to all graphs. \n")
+        print("\n Applied colorblind flux coloring to all graphs. \n")
     if global_ops["COLOR_PATHWAYS"]:
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]
@@ -245,7 +257,7 @@ def colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, outp
                     path_coloring_dict[re_id] = i
                 i += 1
             mvl.colourFBA(graph_obj, path_coloring_dict, COLORS["light grey"], discrete=True) # have specific colors!
-        print("Applied pathway coloring to all graphs. \n")
+        print("\n Applied pathway coloring to all graphs. \n")
     # TODO: have whole map, all pathways that belong to groups are colored (differently), rest grey
     # TODO: return dict: key -> pathway name, value -> assigned color of the patwhay
     # after ALL the other coloring:
@@ -257,12 +269,12 @@ def colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, outp
         colorMetaboliteReactionNodes(g_obj, g_props, tlp.Color(103, 169, 207), # metabolite color
                                                      tlp.Color(252, 146, 114), # reaction color
                                                      tlp.Color(255, 255, 153, 255)) # cofactor color
-    print("Applied reaction and metabolite node specific coloring to all graphs. \n")
+    print("\n Applied reaction and metabolite node specific coloring to all graphs. \n")
     # TODO: visualize existence of reactions of a smaller model on a big map (e coli vs mutated e coli eg.)
     # save initial graph with all changes ('messy' layout)
     graph_path = os.path.join(output_path, "{}_graph.tlp".format(model_id))
     tlp.saveGraph(graph_registry['initial graph'][0], graph_path)
-    print("Initial graph after coloring saved as: {}_graph.tlp \n".format(model_id))
+    print("\n Initial graph after coloring saved as: {}_graph.tlp \n".format(model_id))
 # Part 3: Exporting
 def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, e2lo, ub_sps):
     """
@@ -285,22 +297,22 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
                 # save graph with whole network layout
                 whole_path = os.path.join(output_path, "{0}_{1}.tlp".format(file_name, graph_name))
                 tlp.saveGraph(graph_object, whole_path)
-                print("Whole network visualization saved at: {}".format(whole_path))
+                print("\n Whole network visualization saved at: {}".format(whole_path))
             if graph_name == "output_selected":
                 # save graph with selected pathway layouts
                 selected_path = os.path.join(output_path, "{0}_{1}.tlp".format(file_name, graph_name))
                 tlp.saveGraph(graph_object, selected_path)
-                print("Visualization of selected pathways saved at: {}".format(selected_path))
+                print("\n Visualization of selected pathways saved at: {}".format(selected_path))
             if graph_name == "transport_radial_obj_re":
                 # save graph with radial transport reactions and obj reaction in the middle
                 rad_trans_obj_re_path = os.path.join(output_path, "{0}_{1}.tlp".format(file_name, graph_name))
                 tlp.saveGraph(graph_object, rad_trans_obj_re_path)
-                print("Visualization of selected pathways saved at: {}".format(rad_trans_obj_re_path))
+                print("\n Visualization of selected pathways saved at: {}".format(rad_trans_obj_re_path))
             if graph_name == "output_grid":
                 # save graph with grid pathway layouts
                 grid_path = os.path.join(output_path, "{0}_{1}.gml".format(file_name, graph_name))
                 tlp.saveGraph(graph_object, grid_path)
-                print("Visualization of aligned pathways saved at: {}".format(grid_path))
+                print("\n Visualization of aligned pathways saved at: {}".format(grid_path))
     # export every graph in graph registry
     if global_ops["EXPORT_GML"]:
         for graph_data in graph_registry.values():
@@ -410,13 +422,12 @@ def runFBA(cmod):
 
     return fba_results
 
-def autoAlias(cmod, global_ops, output_path, spec_split, reac_split, split_biomass=True):
+def autoAlias(cmod, output_path, spec_split, reac_split, split_biomass=True):
     """
     Alias a number of metabolites/reactions which are selected based on their connectivity. If the amount of connected
     elements is higher than a threshold value, add the respective species to ub_list for Mimoza function node_cloner::
 
     - *cmod* a CBMPY model
-    - *global_ops* a dict with boolean control variables
     - *output_path* an os.path for all output files
     - *spec_split* a threshold value for species splitting (integer)
     - *reac_split* a threshold value for reaction splitting (integer)
@@ -426,10 +437,9 @@ def autoAlias(cmod, global_ops, output_path, spec_split, reac_split, split_bioma
     # create alias node list based on connectivity <-> user defined thresholds (aliasing by Mimoza)
     ub_sp_list = []
     ub_re_list = []
-    if global_ops["AUTO_ALIAS"]:
-        sp_list, re_list = mvl.identifyConnectedNodes(cmod, spec_split, reac_split, split_biomass)
-        ub_sp_list.extend(sp_list)
-        ub_re_list.extend(re_list)
+    sp_list, re_list = mvl.identifyConnectedNodes(cmod, spec_split, reac_split, split_biomass)
+    ub_sp_list.extend(sp_list)
+    ub_re_list.extend(re_list)
     # combine alias species ids and alias reaction ids lists (for Mimoza node cloning functions)
     ub_list = ub_sp_list + ub_re_list
     # add ubiquitous (alias) species group to sbml file and save it as "..._with_groups.xml"
@@ -447,9 +457,8 @@ def autoAlias(cmod, global_ops, output_path, spec_split, reac_split, split_bioma
     g1.addMIRIAMannotation('isDescribedBy', 'ChEBI', 'CHEBI:000000') #dummy annotation
     g1.miriam.isDescribedBy[0] = "http://identifiers.org/ubiquitous" #change dummy to fit mimoza
     cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(cmod.getId()), output_path, add_groups=True)
-    groups_sbml = os.path.join(output_path, '{}_with_groups.xml'.format(cmod.getId()))
 
-    return ub_list, ub_sps, groups_sbml
+    return ub_list, ub_sps
 
 def manualPathDict(path_name, sps_id_list, re_id_list):
     """
@@ -513,12 +522,12 @@ def automPathDict(cmod, global_ops, small_threshold=30):
                   # uc_sps, uc_re = mvl.createPathwayLists(cmod, 'Urea Cycle')
                   # am_sps, am_re = mvl.createPathwayLists(cmod, 'Aminosugar Metabolism')
                   # etc. ...
-
+        small_sps_dict = dict()
         for group in cmod.groups:
             path_sps, path_re, small_sps_dict = mvl.createPathwayLists(cmod, group.name, small_threshold)
             path_dict.update({group.name: {"metabolites": path_sps, "reactions": path_re}})
 
-        print("Pathway dictionary generated. \n")
+        print("\n Pathway dictionary generated. \n")
 
 
         return path_dict, small_sps_dict
@@ -722,15 +731,14 @@ def layoutAllPathwaysFromGroups(cmod, global_ops, path_dict, graph, graph_elemen
         else:
             path_layout.append("Sugiyama (OGDF)")
         # apply layout to pathway and track already layouted graph elements
-        if path_name in global_ops["ADD_COFACTORS"]:
+        if global_ops["ADD_COFACTORS"] is True and path_name in global_ops["ADD_COFACTORS"]:
             path_sg = mvl.layoutPathway(cmod, graph, graph_elements, graph_props, path_list, path_name,
                                                 path_layout[0], small_sps_dict, add_cofactors=True)
         else:
             path_sg = mvl.layoutPathway(cmod, graph, graph_elements, graph_props, path_list, path_name,
-                                                path_layout[0], small_sps_dict, add_cofactors=False)
+                                                    path_layout[0], small_sps_dict, add_cofactors=False)
         # set name of subgraph
         path_sg.setName(path_name)
-
         # test if all reaction and metabolite ids of the group definition are part of the generated subgraph
         # unique set of ids of generated graph nodes
         generated_nodes = set([graph_props["id"][n] for n in path_sg.getNodes()])
@@ -1179,7 +1187,7 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_
                 db_row[i] = str_item
         # add the contents of the row list [integer, pickled tuples] to sqlite db
         c.execute('''INSERT OR IGNORE INTO edge_color VALUES (?,?,?,?)''', db_row)
-    print("Graph data has been stored in SQL database. \n")
+    print("\n Graph data has been stored in SQL database. \n")
     # commit changes to database
     db.commit()
     # close connection to database
