@@ -346,11 +346,11 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
             print("Graph exported as: {0}_{1}.json".format(file_name, graph.getName()))
     # generate SBGN and SBML+Layout Files (Mimoza functions)
     # save graph layout in layout plugin of an SBML file
-    if global_ops['EXPORT_SBML']:
-        saveLayoutSBML(groups_sbml, ub_sps, n2lo)
+    #if global_ops['EXPORT_SBML']:
+    #    saveLayoutSBML(groups_sbml, ub_sps, n2lo)
     # save graph layout as SBGN file
-    if global_ops['EXPORT_SBGN']:
-        saveLayoutSBGN(groups_sbml, file_name, output_path, n2lo, e2lo)
+    #if global_ops['EXPORT_SBGN']:
+    #    saveLayoutSBGN(groups_sbml, file_name, output_path, n2lo, e2lo)
 # Part 4: Database
 def buildSQLiteDatabase(selected_graph, output_path):
     """
@@ -390,6 +390,7 @@ def createCBMPYModel(sbml_path, change_flux_bounds=True, ):
     - *change_flux_bounds* [default=True] refactor all occurrences of very high flux values to inf and -inf
     """
     # create CBMPy model
+    # TODO: there are more than two cases (COBRA, level 1, etc) -> use a function to read the level (exists in CBMPY)
     # try to read an SBML level 3 file
     try:
         cmod = cbmpy.readSBML3FBC(sbml_path)
@@ -663,6 +664,8 @@ def objReNodeList(graph, graph_props, objective_re_id):
 
     return obj_re_nodes
 
+# TODO: generalized version of labelGraphNodes (parameter to select node type: "metabolite", "reaction", "all")
+# TODO: call it twice after modifying it
 def labelGraphNodes(graph, label_type):
     """
     Add Labels to graph nodes (id or name)::
@@ -738,10 +741,14 @@ def layoutAllPathwaysFromGroups(cmod, global_ops, path_dict, graph, graph_elemen
         # apply layout to pathway and track already layouted graph elements
         if global_ops["ADD_COFACTORS"] is True and path_name in global_ops["ADD_COFACTORS"]:
             path_sg = mvl.layoutPathway(cmod, graph, graph_elements, graph_props, path_list, path_name,
-                                                path_layout[0], small_sps_dict, add_cofactors=True)
+                                             path_layout[0], small_sps_dict, add_cofactors=True)
         else:
-            path_sg = mvl.layoutPathway(cmod, graph, graph_elements, graph_props, path_list, path_name,
-                                                    path_layout[0], small_sps_dict, add_cofactors=False)
+            if path_name == "Overlap Test":
+                path_sg = mvl.layoutPathway(cmod, graph, graph_elements, graph_props, path_list, path_name,
+                                        path_layout[0], small_sps_dict, add_cofactors=False, debug_mode=True)
+            else:
+                path_sg = mvl.layoutPathway(cmod, graph, graph_elements, graph_props, path_list, path_name,
+                                        path_layout[0], small_sps_dict, add_cofactors=False)
         # set name of subgraph
         path_sg.setName(path_name)
         # test if all reaction and metabolite ids of the group definition are part of the generated subgraph
@@ -754,6 +761,7 @@ def layoutAllPathwaysFromGroups(cmod, global_ops, path_dict, graph, graph_elemen
         # TODO: -> do an intersection with the two sets (to catch duplications, etc.)
         if len(generated_nodes) != len(input_ids):
             print("{} subgraph incomplete! \n".format(path_name))
+
 
 def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathways, grid_pathways):
     """
@@ -791,7 +799,6 @@ def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathway
     for sg in graph.getSubGraphs():
         # append the returned output graph for each input subgraph to list
         sg_output_graph, sg_output_props = mvl.dumpToGraph(graph, graph_props, sg.getName(), [sg.getName()])
-        # TODO: add pathway label to sg_out_graph
         individual_output_graphs.append(sg_output_graph)
         graph_registry.update({sg_output_graph.getName(): [sg_output_graph, sg_output_props]})
 

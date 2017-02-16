@@ -1,0 +1,24 @@
+Possible Visualizations:
+
+- layout the entire network and highlight (color) the elementary mode and/or the different subnetworks
+  
+  Problems:
+    - results are from SBML level 2 versions of iJR904 and iAF1260 (newer SBMl level 3 version on BiGG have additional elements and different identifiers)
+
+		1. convert them to SBML level 3 and run analysis again? -> not feasable, analysis takes days and faster script (Timo?) needs updating
+		2. map old ids (which we have in suppl. mats) to new ids in BiGG files -> maybe possible? have to try
+
+
+- layout only the elementary mode / only the subnetworks in a separate graph file (and add additional stuff e.g. biomass reaction etc.)
+
+  --> for that autoAlias is enough since the generated subgraphs of the groups are separated and combined in a new graph (full viz not neccessary!)
+
+
+Plan
+
+1. cut out reactions with flux 0 (id list from text file)
+2. define groups for subnetworks (id list from text files)
+3. define groups for uptake reactions, production reactions (both together = exchange reactions)
+4. define biomass
+5. layout these groups together in new graph
+  

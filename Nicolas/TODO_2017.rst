@@ -84,7 +84,7 @@ Report
  - benchmark code with different models with time module in python and show results in a table (give idea of performance), add hardware specs::
  
   - 4 models: with and without groups -> does adding groups introduce a time penalty? and if so, is it offset by result layout being better?
-  
+ 
 
 MetaViz Tests
 =============
@@ -102,6 +102,7 @@ MetaViz Tests
  - (later) function to manipulate svg output (change node objects: circles to sectioned squares)
  - go to Frank/others and ask for a model to try stuff
  
+ - benchmark code and write to text file
  
 Package
 =======
