@@ -17,7 +17,7 @@ global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph 
               "ADD_COFACTORS": ["Respiratory chain",    # add nodes for small sps/cofactors after they have been
                                 ],  # deleted in path_dict
 
-              "TRANSPORT_RADIAL": True,  # apply Tree Radial algorithm to transport reactions in output_whole
+              "TRANSPORT_RADIAL": False,  # apply Tree Radial algorithm to transport reactions in output_whole
               "SELECTED_PATHWAYS": ["objective reaction",  # pathways to be saved in output_selected
                                     "Transport"],
               "GRID_OUTPUT": ["Glycolysis",  # align pathways on a grid, control position
@@ -26,16 +26,16 @@ global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph 
                               "Aminosugar Metabolism"],
 
               "EXPORT_TLP": True,  # save generated graphs as .tlp files
-              "EXPORT_GML": True,  # export generated graphs as .gml files
-              "EXPORT_SVG": True,  # export generated graphs as .svg files
-              "EXPORT_JSON": True,  # export generated graphs as .json files
-              "EXPORT_SBML": True,  # export generated graphs as .sbml files (in layout plugin)
-              "EXPORT_SBGN": True,  # export generated graphs as .sbgn files
+              "EXPORT_GML": False,  # export generated graphs as .gml files
+              "EXPORT_SVG": False,  # export generated graphs as .svg files
+              "EXPORT_JSON": False,  # export generated graphs as .json files
+              "EXPORT_SBML": False,  # export generated graphs as .sbml files (in layout plugin)
+              "EXPORT_SBGN": False,  # export generated graphs as .sbgn files
 
-              "COLOR_FBA": False,  # color the reaction nodes and in and outgoing edges
+              "COLOR_FBA": True,  # color the reaction nodes and in and outgoing edges
               "COLOR_FBA_COLORBLIND": False,  # based on flux values obtained from FBA
               "COLOR_PATHWAYS": False,  # pathways specific coloring
-              "COLOR_GAPS": True  # highlight gaps (in red), reactions that exist in both (all) models = black
+              "COLOR_GAPS": False  # highlight gaps (in red), reactions that exist in both (all) models = black
               }
 sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
 
@@ -54,15 +54,10 @@ print("Layout generated. Subgraph(s) added to initial graph. Output graph(s) cre
 
 
 wmod = cmod.clone()
+#cbmviz.cbmpy.doFBAMinSum(wmod)
+cbmviz.cbmpy.doFBA(wmod)
 
 new_sub_model = wmod.getReactionValues()
-cntr = 0
-for x in new_sub_model.keys():
-    if cntr <= 200:
-        new_sub_model.pop(x)
-    else:
-        new_sub_model[x] = 1000.0
-    cntr += 1
 
 # 3. apply coloring algorithms to graphs
 cbmviz.colorGraphs(COLORS, global_ops, new_sub_model, path_dict, graph_registry, output_path, cmod.getId())
