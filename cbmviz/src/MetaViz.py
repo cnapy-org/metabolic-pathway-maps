@@ -9,8 +9,9 @@
 #  SQLite module: sqlite 3 (https://www.tutorialspoint.com/sqlite/sqlite_installation.htm)                             #
 ########################################################################################################################
 
-
 import os
+# os-independent file name extraction
+import ntpath
 # tulip imports
 import sys
 #sys.path.append('C:\\Program Files\\Tulip-4.10.0\\bin')
@@ -58,10 +59,13 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     """
     # get current directory
     cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
+    # get filename from sbml
+    file_name = ntpath.basename(sbml)
+    file_name = file_name.replace(".xml", "") #remove file extension
     # create CBMPY model (separate data structure to SBML file)
     cmod, stM, objective_re_id = createCBMPYModel(sbml)
     # create output folder
-    output_path = os.path.join(cDir, '{}_Output'.format(cmod.getId()))
+    output_path = os.path.join(cDir, '{}_Output'.format(file_name))
     try:
         os.makedirs(output_path)
     except OSError:
@@ -83,11 +87,11 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     ub_list = list()
     ub_sps = list()
     if global_ops["AUTO_ALIAS"]:
-        ub_list, ub_sps = autoAlias(cmod, output_path,
+        ub_list, ub_sps = autoAlias(cmod, output_path, file_name,
                                           global_ops["AUTO_ALIAS_OPTIONS"]["spec_split"],
                                           global_ops["AUTO_ALIAS_OPTIONS"]["reac_split"])
     # path to sbml model file with an additional group for the automatically selected ubiquitous species
-    groups_sbml = os.path.join(output_path, '{}_with_groups.xml'.format(cmod.getId()))
+    groups_sbml = os.path.join(output_path, '{}_with_groups.xml'.format(file_name))
     # 2.) create alias node list based on biological pathways <-> group info in sbml - if available (aliasing done by own
     # functions)
     # IF GROUPS DON'T EXIST -> provide pathway lists manually:
@@ -127,13 +131,15 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     #  -> everytime a new, important graph is created it gets added to the graph registry
     graph_registry = {}
     # add initial graph to graph registry (before layouting)
-    graph.setName('initial graph')
-    graph_registry['initial graph'] = [graph, graph_props]
+    graph.setName('{}_initial graph'.format(file_name))
+    graph_registry[graph.getName()] = [graph, graph_props]
+    # add file name attribute to graph object
+    graph.cbmviz_file_name = file_name
     # graph_registry.update({"initial graph": [graph, graph_props]})
     # save raw Mimoza graph output as backup
-    initial_path = os.path.join(output_path, "{}_initial.tlp".format(cmod.getId()))
+    initial_path = os.path.join(output_path, "{}_initial.tlp".format(file_name))
     tlp.saveGraph(graph, initial_path)
-    print("\n Initial Tulip graph saved as: {}_initial.tlp. \n".format(cmod.getId()))
+    print("\n Initial Tulip graph saved as: {}_initial.tlp. \n".format(file_name))
     ###############################################################
     # map sbml element ids to initial graph nodes in a dictionary #
     ###############################################################
@@ -258,8 +264,6 @@ def colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, outp
                 i += 1
             mvl.colourFBA(graph_obj, path_coloring_dict, COLORS["light grey"], discrete=True) # have specific colors!
         print("\n Applied pathway coloring to all graphs. \n")
-    # TODO: have whole map, all pathways that belong to groups are colored (differently), rest grey
-    # TODO: return dict: key -> pathway name, value -> assigned color of the patwhay
     # after ALL the other coloring:
     # color metabolites light blue, all reaction nodes light red and all cofactors light yellow (AFTER all other
     # coloring functions!)
@@ -270,11 +274,12 @@ def colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, outp
                                                      tlp.Color(252, 146, 114), # reaction color
                                                      tlp.Color(255, 255, 153, 255)) # cofactor color
     print("\n Applied reaction and metabolite node specific coloring to all graphs. \n")
-    # TODO: visualize existence of reactions of a smaller model on a big map (e coli vs mutated e coli eg.)
-    # save initial graph with all changes ('messy' layout)
-    graph_path = os.path.join(output_path, "{}_graph.tlp".format(model_id))
-    tlp.saveGraph(graph_registry['initial graph'][0], graph_path)
-    print("\n Initial graph after coloring saved as: {}_graph.tlp \n".format(model_id))
+    # if "initial graph" in graph_registry.keys():
+    #     # save initial graph with all changes ('messy' layout)
+    #     initial_graph = graph_registry['initial graph'][0]
+    #     graph_path = os.path.join(output_path, "{}_graph.tlp".format(initial_graph.cbmviz_file_name))
+    #     tlp.saveGraph(initial_graph, graph_path)
+    #     print("\n Initial graph after coloring saved as: {}_graph.tlp \n".format(initial_graph.cbmviz_file_name))
 # Part 3: Exporting
 def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, e2lo, ub_sps):
     """
@@ -293,57 +298,57 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
     if global_ops['EXPORT_TLP'] and global_ops["AUTO_ALIAS"] is False:
         for graph_name, graph_data in graph_registry.items():
             graph_object = graph_data[0]
-            if graph_name == "output_whole":
+            if graph_name == "{}_output_whole".format(graph_object.cbmviz_file_name):
                 # save graph with whole network layout
-                whole_path = os.path.join(output_path, "{0}_{1}.tlp".format(file_name, graph_name))
+                whole_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, whole_path)
                 print("\n Whole network visualization saved at: {}".format(whole_path))
-            if graph_name == "output_selected":
+            if graph_name == "{}_output_selected".format(graph_object.cbmviz_file_name):
                 # save graph with selected pathway layouts
-                selected_path = os.path.join(output_path, "{0}_{1}.tlp".format(file_name, graph_name))
+                selected_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, selected_path)
                 print("\n Visualization of selected pathways saved at: {}".format(selected_path))
-            if graph_name == "transport_radial_obj_re":
+            if graph_name == "{}_transport_radial_obj_re".format(graph_object.cbmviz_file_name):
                 # save graph with radial transport reactions and obj reaction in the middle
-                rad_trans_obj_re_path = os.path.join(output_path, "{0}_{1}.tlp".format(file_name, graph_name))
+                rad_trans_obj_re_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, rad_trans_obj_re_path)
                 print("\n Visualization of selected pathways saved at: {}".format(rad_trans_obj_re_path))
-            if graph_name == "output_grid":
+            if graph_name == "{}_output_grid".format(graph_object.cbmviz_file_name):
                 # save graph with grid pathway layouts
-                grid_path = os.path.join(output_path, "{0}_{1}.gml".format(file_name, graph_name))
+                grid_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, grid_path)
                 print("\n Visualization of aligned pathways saved at: {}".format(grid_path))
     # export every graph in graph registry
     if global_ops["EXPORT_GML"]:
         for graph_data in graph_registry.values():
             graph = graph_data[0]
-            gml_path = os.path.join(output_path, "{0}_{1}.gml".format(file_name, graph.getName()))
+            gml_path = os.path.join(output_path, "{0}.gml".format(graph.getName()))
             # replace forward dashes in graph name to not cause problems with path
             gml_path = gml_path.replace('/', '-')
             mvl.exportGML(graph, file_name, gml_path)
-            print("Graph exported as: {0}_{1}.gml".format(file_name, graph.getName()))
+            print("Graph exported as: {0}.gml".format(graph.getName()))
     if global_ops["EXPORT_SVG"]:
         for graph_data in graph_registry.values():
             graph = graph_data[0]
             # get default parameters of SVG export plugin
             params = tlp.getDefaultPluginParameters('SVG Export', graph)
             # define output path
-            svg_path = os.path.join(output_path, "{0}_{1}.svg".format(file_name, graph.getName()))
+            svg_path = os.path.join(output_path, "{0}.svg".format(graph.getName()))
             # replace forward dashes in graph name to not cause problems with path
             svg_path = svg_path.replace('/', '-')
             tlp.exportGraph('SVG Export', graph, svg_path, params)
-            print("Graph exported as: {0}_{1}.svg".format(file_name, graph.getName()))
+            print("Graph exported as: {0}.svg".format(graph.getName()))
     if global_ops["EXPORT_JSON"]:
         for graph_data in graph_registry.values():
             graph = graph_data[0]
             # get default parameters of JSON export plugin
             params = tlp.getDefaultPluginParameters('JSON Export', graph)
             # define output path
-            json_path = os.path.join(output_path, "{0}_{1}.json".format(file_name, graph.getName()))
+            json_path = os.path.join(output_path, "{0}.json".format(graph.getName()))
             # replace forward dashes in graph name to not cause problems with path
             json_path = json_path.replace('/', '-')
             tlp.exportGraph('JSON Export', graph, json_path, params)
-            print("Graph exported as: {0}_{1}.json".format(file_name, graph.getName()))
+            print("Graph exported as: {0}.json".format(graph.getName()))
     # generate SBGN and SBML+Layout Files (Mimoza functions)
     # save graph layout in layout plugin of an SBML file
     #if global_ops['EXPORT_SBML']:
@@ -428,7 +433,7 @@ def runFBA(cmod):
 
     return fba_results
 
-def autoAlias(cmod, output_path, spec_split, reac_split, split_biomass=True):
+def autoAlias(cmod, output_path, file_name, spec_split, reac_split, split_biomass=True):
     """
     Alias a number of metabolites/reactions which are selected based on their connectivity. If the amount of connected
     elements is higher than a threshold value, add the respective species to ub_list for Mimoza function node_cloner::
@@ -462,7 +467,7 @@ def autoAlias(cmod, output_path, spec_split, reac_split, split_biomass=True):
     g1.setSBOterm('SBO:0000248')
     g1.addMIRIAMannotation('isDescribedBy', 'ChEBI', 'CHEBI:000000') #dummy annotation
     g1.miriam.isDescribedBy[0] = "http://identifiers.org/ubiquitous" #change dummy to fit mimoza
-    cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(cmod.getId()), output_path, add_groups=True)
+    cbmpy.writeSBML3FBC(cmod, '{}_with_groups.xml'.format(file_name), output_path, add_groups=True)
 
     return ub_list, ub_sps
 
@@ -762,7 +767,6 @@ def layoutAllPathwaysFromGroups(cmod, global_ops, path_dict, graph, graph_elemen
         if len(generated_nodes) != len(input_ids):
             print("{} subgraph incomplete! \n".format(path_name))
 
-
 def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathways, grid_pathways):
     """
     Define new output graphs and add them to graph registry::
@@ -780,11 +784,13 @@ def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathway
     if global_ops["TRANSPORT_RADIAL"]:
         whole_output_graph, whole_output_props = mvl.dumpToGraph(graph, graph_props, "output_whole",
                                              [sg.getName() for sg in graph.getSubGraphs()])
+        whole_output_graph.cbmviz_file_name = graph.cbmviz_file_name
         graph_registry.update({whole_output_graph.getName(): [whole_output_graph,whole_output_props]})
     else:
         whole_output_graph, whole_output_props = mvl.dumpToGraph(graph, graph_props, "output_whole",
                                                                  [sg.getName() for sg in graph.getSubGraphs()],
                                                                  transport_radial=False)
+        whole_output_graph.cbmviz_file_name = graph.cbmviz_file_name
         graph_registry.update({whole_output_graph.getName(): [whole_output_graph, whole_output_props]})
 
     # 2.) selected dump (selected pathways in one SVG file)
@@ -792,6 +798,7 @@ def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathway
     if selected_pathways:
         selected_output_graph, selected_output_props = mvl.dumpToGraph(graph, graph_props, "output_selected",
                                                                        selected_pathways)
+        selected_output_graph.cbmviz_file_name = graph.cbmviz_file_name
         graph_registry.update({selected_output_graph.getName(): [selected_output_graph,selected_output_props]})
 
     # 3.) sequential dump (all pathways in individual SVG files)
@@ -799,23 +806,76 @@ def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathway
     for sg in graph.getSubGraphs():
         # append the returned output graph for each input subgraph to list
         sg_output_graph, sg_output_props = mvl.dumpToGraph(graph, graph_props, sg.getName(), [sg.getName()])
+        sg_output_graph.cbmviz_file_name = graph.cbmviz_file_name
         individual_output_graphs.append(sg_output_graph)
         graph_registry.update({sg_output_graph.getName(): [sg_output_graph, sg_output_props]})
 
     # 4.) radial transport reactions with obj reaction in the middle
     radial_trans_obj_re_graph, radial_trans_obj_re_props = mvl.dumpToGraph(graph, graph_props, "transport_radial_obj_re",
                                                                            ["objective reaction", "Transport"],                                                                                          center_obj_trans_re=True)
+    radial_trans_obj_re_graph.cbmviz_file_name = graph.cbmviz_file_name
     graph_registry.update({radial_trans_obj_re_graph.getName(): [radial_trans_obj_re_graph, radial_trans_obj_re_props]})
 
     # 5.) grid dump (select pathways AND control their location)
     if grid_pathways:
         grid_output_graph, grid_output_props = mvl.dumpToGraph(graph, graph_props, "output_grid",
                                                                grid_pathways, grid_positioning=True)
+        grid_output_graph.cbmviz_file_name = graph.cbmviz_file_name
         graph_registry.update({grid_output_graph.getName(): [grid_output_graph, grid_output_props]})
 
     # TODO: do - place 4 subgraphs in a new graph and control their location!
     # TODO:    - all small pathways (and labels), less than 10 reactions, layed out on a grid
     # TODO: i need to be able to control the location -> write a function to create grid layout (somehow)
+
+def combineSubgraphsFromGraphs(subgraph_selection_list):
+    """
+    For different graphs (which can come from different sbml models), per graph select subgraphs by name and
+    copy them to a new output graph. All subgraphs will end up in the same output graph. Return an
+    output graph object containing the selected subgraphs from different input graphs::
+
+    - *subgraph_selection_list* a list of input dictionaries (key: graph_name, value: [graph name, graph_obj, [selected
+    subgraphs]])
+
+    """
+    # new output graph
+    combine_graph = tlp.newGraph()
+    combine_graph.setName("combine_graph")
+    # create graph props for output graph
+    combine_graph_prop_tup = mvl.create_props(combine_graph)
+    # save graph props in dictionary
+    combine_graph_props = {}
+    for prop in combine_graph_prop_tup:
+        combine_graph_props[prop.getName()] = prop
+    # extract info from input list of lists -> get all selected subgraphs from the different input graphs in one list
+    selected_sg_list = list()
+    for input_list in subgraph_selection_list:
+        # extract data from input_list contained in input_dict
+        graph_obj = input_list[0]
+        parent_name = graph_obj.cbmviz_file_name
+        sg_name_list = input_list[1]
+        for sg in graph_obj.getSubGraphs():
+            if sg.getName() in sg_name_list:
+                selected_sg_list.append([parent_name, sg])
+    # add all subgraphs from the different input graphs to combine_graph
+    for sg_info_list in selected_sg_list:
+        # unpack sg_info_list and get selection property of subgraph
+        parent_name = sg_info_list[0]
+        sg = sg_info_list[1]
+        sg_selection = sg.getBooleanProperty("viewSelection")
+        # reset selection
+        sg_selection.setAllNodeValue(False)
+        sg_selection.setAllEdgeValue(False)
+        # when copying the subgraph: select everything that has been copied in combine_graph
+        tlp.copyToGraph(combine_graph, sg, None, sg_selection)
+        # generate a new subgraph in combine_graph from the selection
+        combine_graph.addSubGraph(sg_selection, "{0}_{1}".format(parent_name, sg.getName()))
+        # reset selection
+        sg_selection.setAllNodeValue(False)
+        sg_selection.setAllEdgeValue(False)
+    # apply Connected Component Packing on combine_graph to avoid overlapping
+    combine_graph.applyLayoutAlgorithm("Connected Component Packing")
+
+    return combine_graph
 
 def colorMetaboliteReactionNodes(graph, graph_props, met_color, reac_color, cofac_color):
     """
@@ -1390,6 +1450,63 @@ def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edge
 
     return db_graph
 
+def loadGraphObjFromTulipFile(tulip_file):
+    """
+    Load the graph object contained in a Tulip file (.tlp)::
+
+    - *tulip_file* path to the tulip_file
+    """
+    graph_obj = tlp.loadGraph(tulip_file)
+    return graph_obj
+
+def saveGraphObjToTulipFile(graph_obj, file_name):
+    """
+    Save a Tulip graph object to a .tlp file::
+
+    - *graph_obj* a Tulip graph object
+    - *file_name* file name of the output .tlp file
+
+    """
+    tlp.saveGraph(graph_obj, file_name)
+
+
+def createGraphDictFromGraphObj(input_graph):
+    """
+    Take a graph object (can contain subgraphs), create new output graphs for all subgraphs (intermediary step)
+    and return the graph_registry dictionary from the input graph and the new graph objects
+    (keys: graph names, values: [graph object, {graph property dict}])::
+
+    - *input_graph*
+    - **
+
+    """
+    # save graph props of whole input graph in dictionary
+    input_graph_props = dict()
+    for prop in input_graph.getObjectProperties():
+        input_graph_props[prop.getName()] = prop
+    # build graph registry dict
+    graph_registry = dict()
+    # add whole graph
+    graph_registry[input_graph.getName()] = [input_graph, input_graph_props]
+    # if subgraphs exist: go through subgraphs of input_graph, copy them to new graph objects
+    # and add these new graph objects to the graph_registry
+    if len(list(input_graph.getSubGraphs())) != 0:
+        for subgraph in input_graph.getSubGraphs():
+            # create new empty graph object to populate with subgraph
+            sg_new_graph = tlp.newGraph()
+            sg_new_graph.setName(subgraph.getName())
+            # create props for new graph (cbmviz standard list of props)
+            mvl.create_props(sg_new_graph)
+            # copy all elements from subgraph to sg_new_graph
+            tlp.copyToGraph(sg_new_graph, subgraph)
+            # build prop dict for sg_new_graph
+            sg_new_graph_props = dict()
+            for prop in sg_new_graph.getObjectProperties():
+                sg_new_graph_props[prop.getName()] = prop
+            # add new graph and its props to graph registry
+            graph_registry.update({sg_new_graph.getName(): [sg_new_graph, sg_new_graph_props]})
+
+    return graph_registry
 
 #if __name__ == '__main__':
 # execute this if in a console (don't execute if the script is imported as a module)

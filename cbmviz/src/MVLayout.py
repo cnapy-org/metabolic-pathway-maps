@@ -58,7 +58,6 @@ def identifyConnectedNodes(model, spec_split, reac_split, split_biomass=True):
 
     return sp_list, re_list
 
-
 def identifyBoundarySpecies(sps_list, re_list, cmod):
     """
     Identifies boundary species of given pathway by:
@@ -86,7 +85,6 @@ def identifyBoundarySpecies(sps_list, re_list, cmod):
     bound_sps = level1_sps
 
     return list(set(bound_sps))
-
 
 def createPathwayLists(cmod, path_name, del_ub_sps=True, small_threshold=30, ub_sps=None):
     """
@@ -157,7 +155,6 @@ def createPathwayLists(cmod, path_name, del_ub_sps=True, small_threshold=30, ub_
                 path_sps.remove(ubs)
 
     return path_sps, path_re, small_sps_dict
-
 
 def create_props(graph):
     """
@@ -242,7 +239,6 @@ def create_props(graph):
     #       viewLayout, viewShape, viewSize, viewColor, fake, clone_id, formula, rel_c_ids, edge_direct, flux, \
     #       selection, path, font_size
 
-
 def markUbiquitousNodes(g, ub_list):
     """
     Flag a list of nodes in a graph to be marked as ubiquitous (for aliasing)::
@@ -260,7 +256,6 @@ def markUbiquitousNodes(g, ub_list):
         if id_[n] in ub_list:
             #type[n] = 1
             ub[n] = True
-
 
 def speciesToNodes(graph, input_model, ub_sps, graph_props):
     """
@@ -306,7 +301,6 @@ def speciesToNodes(graph, input_model, ub_sps, graph_props):
         id2n[_id] = n
 
     return id2n
-
 
 def reactionsToNodes(get_r_comp, graph, id2n, input_model, c_id2level, c_id2outs):
     get_sp_comp = lambda _id: input_model.getSpecies(_id).getCompartmentId()
@@ -360,7 +354,6 @@ def reactionsToNodes(get_r_comp, graph, id2n, input_model, c_id2level, c_id2outs
         graph[graph_properties.TRANSPORT][n] = len(all_comps) > 1
         # add compartment id to reaction node
         graph[graph_properties.COMPARTMENT_ID][n] = get_r_comp(all_comps, c_id2level, c_id2outs)
-
 
 # aliasNode() function description:
 # ---------------------------------
@@ -440,7 +433,6 @@ def aliasNode(g, n_alias, n_target, x=None, y=None, n_new=None):
 
     return n_new
 
-
 def layoutObjFunc(g, obj_re_id, sg_layout, prop_dict, obj_name="objective reaction"):
     """
     Layout the objective reaction (with all reagents)::
@@ -496,7 +488,6 @@ def layoutObjFunc(g, obj_re_id, sg_layout, prop_dict, obj_name="objective reacti
 
     return obj_sg
 
-
 def layoutSeparateReactions(g, re_list, re_node_obj, sg_name, layout_alg, graph_props):
     """
     Separate reactions, then create a subgraph with the isolated reactions next to each other and apply a
@@ -542,7 +533,6 @@ def layoutSeparateReactions(g, re_list, re_node_obj, sg_name, layout_alg, graph_
 
     return re_sg
 
-
 def delNodes(g, node_list):
     """
     Delete a set of nodes from a graph (by their id)::
@@ -555,7 +545,6 @@ def delNodes(g, node_list):
     for n in g.getNodes():
         if id_[n] in node_list:
             g.delNode(n)
-
 
 def addLabels(g, node_type, label_type):
     """
@@ -573,7 +562,6 @@ def addLabels(g, node_type, label_type):
         if type[n] == node_type:
             viewLabel[n] = view_label_type[n]
 
-
 # TODO: write a function that takes in model ids and returns a list of the associated nodes and/or egdes
 # TODO: use graph_elements dict
 
@@ -590,7 +578,6 @@ def setColours(g, item_list, colour):
     viewColor = g.getColorProperty("viewColor")
     for e in item_list:
         viewColor[e] = colour
-
 
 def createSubgraph(graph, sg_name, n_list, user_params=None):
     """
@@ -638,7 +625,6 @@ def createSubgraph(graph, sg_name, n_list, user_params=None):
 
     return sg
 
-
 def layoutSubgraph(sg, sg_layout=None, user_params=None, x_center=None, y_center=None, z_center=0):
     """
     Apply layout to subgraph and center it around a given point::
@@ -672,7 +658,6 @@ def layoutSubgraph(sg, sg_layout=None, user_params=None, x_center=None, y_center
         tlp.LayoutProperty.center(viewLayout, tlp.Coord(x_center, y_center, z_center), sg)
 
     return sg
-
 
 def layoutPathway(cmod, g, graph_elements, graph_props, id_list, sg_name, sg_layout, small_sps_dict,
                   add_cofactors=False, debug_mode=False):
@@ -820,7 +805,6 @@ def layoutPathway(cmod, g, graph_elements, graph_props, id_list, sg_name, sg_lay
 
     return sg
 
-
 def positionPathway(graph, graph_props, target_coord_list=None):
     """
     Position subgraphs of a Tulip graph at a given position or calculate new psoition from subgraph dimensions.
@@ -862,7 +846,6 @@ def positionPathway(graph, graph_props, target_coord_list=None):
 
         return new_center
 
-
 def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg_labels=False, transport_radial=True,
                 grid_positioning=False, center_obj_trans_re=False):
     """
@@ -894,7 +877,7 @@ def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg
     for prop in new_graph_tup:
         new_graph_props[prop.getName()] = prop
     # add name to new graph
-    new_graph.setName(new_graph_name)
+    new_graph.setName("{0}_{1}".format(input_graph.cbmviz_file_name, new_graph_name))
     # copy subgraphs to output graph 'new_graph' and recreate subgraphs from selection
     graph_sg_list_new_graph = [sg for sg in input_graph.getSubGraphs()
                                if sg.getName() in sg_selection]
@@ -945,7 +928,6 @@ def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg
     new_graph_props["viewSelection"].setAllEdgeValue(False)
 
     return new_graph, new_graph_props
-
 
 def colourFBA(g, flux_dict, color_zero, color_pos=None, color_neg=None, discrete=False, binary_scale=None):
     """
@@ -1044,7 +1026,6 @@ def exportGML(graph, model_id, gml_path):
     # export new output graph 'GML' as .gml file (graphic markup language)
     params = tlp.getDefaultPluginParameters('GML Export', graph)
     tlp.exportGraph('GML Export', GML, gml_path, params)
-
 
 def containsSublist(l):
     """

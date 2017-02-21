@@ -22,9 +22,9 @@ cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
 # sbml = os.path.join(cDir, "TestModels", "others", "Hpylori_iIT341.xml")
 # sbml = os.path.join(cDir, "TestModels", "others", "Lactococcus_lactis_MG1363.xml")
 ## BiGG2 models (with pathway annotation)
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml") # H.pylori
+sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml") # H.pylori
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341_no_groups_test.xml") # NO GROUPS TEST
-sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341_overlapping_groups_test.xml") # Overlapping groups test
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341_overlapping_groups_test.xml") # Overlapping groups test
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml") # newest E. coli
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
 # sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli about 1000 reactions
@@ -98,7 +98,6 @@ print("Layout generated. Subgraph(s) added to initial graph. Output graph(s) cre
 # 3. apply coloring algorithms to graphs
 cbmviz.colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, output_path, cmod.getId())
 print("Graph(s) colored. \n")
-
 # 4. export graph SVG, GML, JSON, SBML+layout Plugin and/or SBGN file (controlled by global_ops)
 cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
 
@@ -135,10 +134,10 @@ db_graph_edgeconn_list, edgeconn_col_headers = cbmviz.retrieveDataFromDatabaseTa
 db_graph = cbmviz.buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edgeconn_list,
                                   node_col_headers, edge_col_headers, "graph_fromDB", output_path)
 
-
-
-
 # TODO: SQL --> d3py/networkx/someother gaph program
 # TODO: extract only nodes with coords, and ids from graph_nodes table and connectivity between the nodes
 # TODO: use networkx, and/or D3 (d3py in python) to rebuild a part of the graph only from SQL database output
 # TODO: do the networkx/d3 thing on a subset of SQL output (only nodes of aspartate pathway, etc.)
+
+
+
