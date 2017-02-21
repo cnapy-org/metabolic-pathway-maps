@@ -34,11 +34,12 @@ global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph 
               "COLOR_FBA": True,  # color the reaction nodes and in and outgoing edges
               "COLOR_FBA_COLORBLIND": False,  # based on flux values obtained from FBA
               "COLOR_PATHWAYS": False,  # pathways specific coloring
-              "COLOR_GAPS": True  # highlight gaps (in red), reactions that exist in both (all) models = black
+              "COLOR_GAPS": False  # highlight gaps (in red), reactions that exist in both (all) models = black
               }
 
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
 sbml = os.path.join(cDir, "TestModels", "willi", "iAF1260_max_ac.xml") # E. coli about 2000+ reactions
+sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli 
 
 TIME0 = time.time()
 graph, graph_props = cbmviz.createInitialGraph("initialGraph")
