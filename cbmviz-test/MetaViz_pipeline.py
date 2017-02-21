@@ -111,7 +111,7 @@ cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), 
 # cytoscape, etc...!
 
 # 1. create SQLite db to store a graph object
-db_path = cbmviz.buildSQLiteDatabase(graph_registry['output_whole'][0], output_path)
+db_path = cbmviz.buildSQLiteDatabase(graph_registry['iIT341_output_whole'][0], output_path)
 
 # DB INFO ##########################################################################################################
 # 5 tables in database:
@@ -138,6 +138,4 @@ db_graph = cbmviz.buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list,
 # TODO: extract only nodes with coords, and ids from graph_nodes table and connectivity between the nodes
 # TODO: use networkx, and/or D3 (d3py in python) to rebuild a part of the graph only from SQL database output
 # TODO: do the networkx/d3 thing on a subset of SQL output (only nodes of aspartate pathway, etc.)
-
-
-
+# TODO: do: SQL -> NetworkX -> export as DOT file (graphviz format) -> load to get graph object back!

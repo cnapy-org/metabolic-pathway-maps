@@ -20,11 +20,11 @@ test_pylori_graph = graph_registry["iIT341_output_whole"][0]
 test_pylori_graph.cbmviz_file_name = "iIT341"
 test_pylori_list = [test_pylori_graph, ["TCA cycle", "Glycolysis"]]
 # 2.) iJO1366 "Citric Acid Cycle"
-test_ecoli_graph = cbmviz.loadGraphObjFromTulipFile("C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\OutputExamples\pathwayLayout_FBAcolored\iJO1366_Output\iJO1366_output_whole.tlp")
+test_ecoli_graph = cbmviz.loadGraphObjFromFile("C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\OutputExamples\pathwayLayout_FBAcolored\iJO1366_Output\iJO1366_output_whole.tlp")
 test_ecoli_graph.cbmviz_file_name = "iJO1366"
 test_ecoli_list = [test_ecoli_graph, ["Citric Acid Cycle", "Glycolysis/Gluconeogenesis"]]
 # 3.) IND750 "Citric Acid Cycle"
-test_yeast_graph = cbmviz.loadGraphObjFromTulipFile("C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\OutputExamples\pathwayLayout_FBAcolored\iND750_Output\iND750_output_whole.tlp")
+test_yeast_graph = cbmviz.loadGraphObjFromFile("C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\OutputExamples\pathwayLayout_FBAcolored\iND750_Output\iND750_output_whole.tlp")
 test_yeast_graph.cbmviz_file_name = "iND750"
 test_yeast_list = [test_yeast_graph, ["Citric Acid Cycle", "Glycolysis/Gluconeogenesis"]]
 # append the different dicts to the input list

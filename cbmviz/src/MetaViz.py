@@ -209,6 +209,7 @@ def layoutModel(global_ops, sbml, graph, graph_props):
         mvl.layoutObjFunc(graph, objective_re_id, "Sugiyama (OGDF)", graph_props)
         pathwayDump(graph, global_ops, graph_registry, graph_props, global_ops["SELECTED_PATHWAYS"], global_ops["GRID_OUTPUT"])
 
+
     return cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir,\
            output_path
 # Part 2: Coloring
@@ -298,7 +299,11 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
     if global_ops['EXPORT_TLP'] and global_ops["AUTO_ALIAS"] is False:
         for graph_name, graph_data in graph_registry.items():
             graph_object = graph_data[0]
-            if graph_name == "{}_output_whole".format(graph_object.cbmviz_file_name):
+            # get the attribute that should already exist
+            graph_name_split_list = graph_name.split("_")
+            graph_object.cbmviz_file_name = graph_name_split_list[0]
+            if graph_name == "{}_output_whole".format(graph_object.cbmviz_file_name) \
+            or graph_name == "{}".format(graph_object.cbmviz_file_name):
                 # save graph with whole network layout
                 whole_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, whole_path)
@@ -320,35 +325,35 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
                 print("\n Visualization of aligned pathways saved at: {}".format(grid_path))
     # export every graph in graph registry
     if global_ops["EXPORT_GML"]:
-        for graph_data in graph_registry.values():
+        for graph_name, graph_data in graph_registry.items():
             graph = graph_data[0]
-            gml_path = os.path.join(output_path, "{0}.gml".format(graph.getName()))
+            gml_path = os.path.join(output_path, "{0}.gml".format(graph_name))
             # replace forward dashes in graph name to not cause problems with path
             gml_path = gml_path.replace('/', '-')
             mvl.exportGML(graph, file_name, gml_path)
-            print("Graph exported as: {0}.gml".format(graph.getName()))
+            print("Graph exported as: {0}.gml".format(graph_name))
     if global_ops["EXPORT_SVG"]:
-        for graph_data in graph_registry.values():
+        for graph_name, graph_data in graph_registry.items():
             graph = graph_data[0]
             # get default parameters of SVG export plugin
             params = tlp.getDefaultPluginParameters('SVG Export', graph)
             # define output path
-            svg_path = os.path.join(output_path, "{0}.svg".format(graph.getName()))
+            svg_path = os.path.join(output_path, "{0}.svg".format(graph_name))
             # replace forward dashes in graph name to not cause problems with path
             svg_path = svg_path.replace('/', '-')
             tlp.exportGraph('SVG Export', graph, svg_path, params)
-            print("Graph exported as: {0}.svg".format(graph.getName()))
+            print("Graph exported as: {0}.svg".format(graph_name))
     if global_ops["EXPORT_JSON"]:
-        for graph_data in graph_registry.values():
+        for graph_name, graph_data in graph_registry.items():
             graph = graph_data[0]
             # get default parameters of JSON export plugin
             params = tlp.getDefaultPluginParameters('JSON Export', graph)
             # define output path
-            json_path = os.path.join(output_path, "{0}.json".format(graph.getName()))
+            json_path = os.path.join(output_path, "{0}.json".format(graph_name))
             # replace forward dashes in graph name to not cause problems with path
             json_path = json_path.replace('/', '-')
             tlp.exportGraph('JSON Export', graph, json_path, params)
-            print("Graph exported as: {0}.json".format(graph.getName()))
+            print("Graph exported as: {0}.json".format(graph_name))
     # generate SBGN and SBML+Layout Files (Mimoza functions)
     # save graph layout in layout plugin of an SBML file
     #if global_ops['EXPORT_SBML']:
@@ -1450,13 +1455,22 @@ def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edge
 
     return db_graph
 
-def loadGraphObjFromTulipFile(tulip_file):
+def loadGraphObjFromFile(input_file):
     """
-    Load the graph object contained in a Tulip file (.tlp)::
+    Load the graph object contained in a Tulip file (.tlp) or a JSON file (.json)::
 
-    - *tulip_file* path to the tulip_file
+    - *input_file* path to the input file
     """
-    graph_obj = tlp.loadGraph(tulip_file)
+    # TODO: check file extension to filter
+    try:
+        graph_obj = tlp.loadGraph(input_file)
+        file_name = ntpath.basename(input_file)
+        file_name = file_name.split(".", 1)[0]
+        file_name = file_name.split("_", 1)[0]
+        graph_obj.setName(file_name)
+    except Exception as ex:
+        print("{} \n".format(ex))
+
     return graph_obj
 
 def saveGraphObjToTulipFile(graph_obj, file_name):
@@ -1504,7 +1518,9 @@ def createGraphDictFromGraphObj(input_graph):
             for prop in sg_new_graph.getObjectProperties():
                 sg_new_graph_props[prop.getName()] = prop
             # add new graph and its props to graph registry
-            graph_registry.update({sg_new_graph.getName(): [sg_new_graph, sg_new_graph_props]})
+            graph_registry.update({input_graph.getName().split("_", 1)[0] + "_" + sg_new_graph.getName():
+                                                                                                    [sg_new_graph,
+                                                                                                     sg_new_graph_props]})
 
     return graph_registry
 
