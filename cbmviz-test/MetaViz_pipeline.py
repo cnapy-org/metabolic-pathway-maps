@@ -94,9 +94,8 @@ print("Initial (empty) Tulip graph created. \n")
 cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir, \
 output_path = cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
 print("Layout generated. Subgraph(s) added to initial graph. Output graph(s) created from subgraph(s). \n")
-
 # 3. apply coloring algorithms to graphs
-cbmviz.colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, output_path, cmod.getId())
+cbmviz.colorGraphs(global_ops, fba_results, graph_registry, output_path, cmod.getId())
 print("Graph(s) colored. \n")
 # 4. export graph SVG, GML, JSON, SBML+layout Plugin and/or SBGN file (controlled by global_ops)
 cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
@@ -111,7 +110,7 @@ cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), 
 # cytoscape, etc...!
 
 # 1. create SQLite db to store a graph object
-db_path = cbmviz.buildSQLiteDatabase(graph_registry['iIT341_output_whole'][0], output_path)
+db_path = cbmviz.buildSQLiteDatabase(graph_registry['output_whole'][0], output_path)
 
 # DB INFO ##########################################################################################################
 # 5 tables in database:

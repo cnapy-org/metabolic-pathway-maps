@@ -16,7 +16,7 @@ output_path = cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
 # test combine subgraphs function
 # -------------------------------
 # 1.) iIT341 "TCA cycle" (directly from pipeline)
-test_pylori_graph = graph_registry["iIT341_output_whole"][0]
+test_pylori_graph = graph_registry["output_whole"][0]
 test_pylori_graph.cbmviz_file_name = "iIT341"
 test_pylori_list = [test_pylori_graph, ["TCA cycle", "Glycolysis"]]
 # 2.) iJO1366 "Citric Acid Cycle" (from tlp file)
@@ -44,7 +44,7 @@ cbmviz.saveGraphObjToTulipFile(output_combine_graph, "test_combine_output.tlp")
 
 
 # TODO: put the graphs in one (or more?) graph dicts and run coloring+exporting functions
-#cbmviz.colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, output_path, cmod.getId())
+#cbmviz.colorGraphs(global_ops, fba_results, graph_registry, output_path, cmod.getId())
 #cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
 
 

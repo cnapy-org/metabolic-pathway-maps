@@ -34,12 +34,11 @@ global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph 
               "COLOR_FBA": True,  # color the reaction nodes and in and outgoing edges
               "COLOR_FBA_COLORBLIND": False,  # based on flux values obtained from FBA
               "COLOR_PATHWAYS": False,  # pathways specific coloring
-              "COLOR_GAPS": False  # highlight gaps (in red), reactions that exist in both (all) models = black
+              "COLOR_GAPS": True  # highlight gaps (in red), reactions that exist in both (all) models = black
               }
 
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
 sbml = os.path.join(cDir, "TestModels", "willi", "iAF1260_max_ac.xml") # E. coli about 2000+ reactions
-sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli 
 
 TIME0 = time.time()
 graph, graph_props = cbmviz.createInitialGraph("initialGraph")
@@ -47,7 +46,7 @@ TIME1 = time.time()
 cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir, output_path =\
                                                                 cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
 TIME2 = time.time()
-cbmviz.colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, output_path, cmod.getId())
+cbmviz.colorGraphs(global_ops, fba_results, graph_registry, output_path, cmod.getId())
 TIME3 = time.time()
 cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
 TIME4 = time.time()
@@ -71,6 +70,7 @@ print('- export time: {}'.format(round(TIME4-TIME3, 2)))
 #p = pstats.Stats('restats')
 #p.strip_dirs().sort_stats(-1).print_stats()
 
+# Result Thu, Feb 09
 """
 In [17]: P = p.strip_dirs().sort_stats('cumulative').print_stats(50)
 Thu Feb 09 16:13:11 2017    xlayout.prf

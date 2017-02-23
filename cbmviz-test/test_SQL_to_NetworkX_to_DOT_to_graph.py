@@ -47,7 +47,6 @@ except ImportError:
         raise
 # write networkx graph as dot file
 write_dot(G, "glycolysis.dot")
-
 # read dot file with cbmviz
 test_glyc_dot_file_path = os.path.join(cDir, "glycolysis.dot")
 test_glyc_dot_graph = cbmviz.loadGraphObjFromFile(test_glyc_dot_file_path)

@@ -131,11 +131,10 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     #  -> everytime a new, important graph is created it gets added to the graph registry
     graph_registry = {}
     # add initial graph to graph registry (before layouting)
-    graph.setName('{}_initial graph'.format(file_name))
-    graph_registry[graph.getName()] = [graph, graph_props]
+    graph.setName('{}_initial_graph'.format(file_name))
+    graph_registry["initial_graph"] = [graph, graph_props]
     # add file name attribute to graph object
     graph.cbmviz_file_name = file_name
-    # graph_registry.update({"initial graph": [graph, graph_props]})
     # save raw Mimoza graph output as backup
     initial_path = os.path.join(output_path, "{}_initial.tlp".format(file_name))
     tlp.saveGraph(graph, initial_path)
@@ -213,7 +212,7 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     return cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir,\
            output_path
 # Part 2: Coloring
-def colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, output_path, model_id):
+def colorGraphs(global_ops, value_color_dict, graph_registry, output_path, model_id):
     """
     MetaViz Part 2: Coloring
     ------------------------
@@ -221,10 +220,8 @@ def colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, outp
     Take a dict of graphs (graph_registry) and return:
     - ::
 
-    - *COLORS* a dict with predefined colors (RGB values)
     - *global_ops* a dict with global control variables
-    - *fba_results* a dict with flux values for all reactions
-    - *path_dict* a dict with pathway ids and associated metabolites and reactions
+    - *value_color_dict* a dict with reaction ids (keys) and some associated values (flux values for all reactions, etc)
     - *graph_registry* a dict of Tulip graphs and their properties
     - *output_path* an os.path for all output files
     - *model_id* the id of the sbml model
@@ -233,37 +230,39 @@ def colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, outp
     #######################################
     # COLORING: visualize FBA result, ... #
     #######################################
+    # define COLORS dict
+    COLORS = {'red': tlp.Color(255, 0, 0),
+              'green': tlp.Color(0, 255, 0),
+              'blue': tlp.Color(0, 0, 255),
+              'white': tlp.Color(255, 255, 255),
+              'grey': tlp.Color(220, 220, 220),
+              'light grey': tlp.Color(235, 235, 235),
+              'black': tlp.Color(0, 0, 0)
+              }
     # color nodes and edges depending on flux value
     # input format: dict = {"M1": -3, ...}
     # TODO: create new dict: key -> round(flux value, 1), value -> color of the associated node with that flux value
     if global_ops["COLOR_FBA"]:
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]
-            mvl.colourFBA(graph_obj, fba_results, COLORS["light grey"])
+            mvl.colourFBA(graph_obj, value_color_dict, COLORS["light grey"])
         print("\n Applied flux coloring to all graphs. \n")
     if global_ops["COLOR_GAPS"]:
         # highlight gaps in red, reactions with 0 value (exist in both) -> black
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]
-            mvl.colourFBA(graph_obj, fba_results, COLORS["red"], binary_scale=[tlp.Color.Black, tlp.Color.Black])
+            mvl.colourFBA(graph_obj, value_color_dict, tlp.Color.Red, binary_scale=[tlp.Color.Black, tlp.Color.Black])
         print("\n Applied gap coloring to all graphs. \n")
     if global_ops["COLOR_FBA_COLORBLIND"]:
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]
-            mvl.colourFBA(graph_obj, fba_results, tlp.Color.Cyan, tlp.Color.Magenta, COLORS["light grey"])
+            mvl.colourFBA(graph_obj, value_color_dict, tlp.Color.Cyan, tlp.Color.Magenta, COLORS["light grey"])
         print("\n Applied colorblind flux coloring to all graphs. \n")
     if global_ops["COLOR_PATHWAYS"]:
         for graph_data in graph_registry.values():
             graph_obj = graph_data[0]
-            # use path_dict for coloring, create path_coloring_dict where keys = reaction ids and values = pathway
-            # specific numbers
-            path_coloring_dict = dict()
-            i = 1
-            for path_name, path_data in path_dict.items():
-                for re_id in path_data["reactions"]:
-                    path_coloring_dict[re_id] = i
-                i += 1
-            mvl.colourFBA(graph_obj, path_coloring_dict, COLORS["light grey"], discrete=True) # have specific colors!
+            # use path_dict for coloring,
+            mvl.colourFBA(graph_obj, value_color_dict, COLORS["light grey"], discrete=True) # have specific colors!
         print("\n Applied pathway coloring to all graphs. \n")
     # after ALL the other coloring:
     # color metabolites light blue, all reaction nodes light red and all cofactors light yellow (AFTER all other
@@ -296,6 +295,9 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
     and the file extensions)
 
     """
+    # check if output directory already exist, if not make it
+    if not os.path.exists("{}_Output".format(file_name)):
+        os.makedirs("{}_Output".format(file_name))
     # save graphs as .tlp files
     if global_ops['EXPORT_TLP'] and global_ops["AUTO_ALIAS"] is False:
         for graph_name, graph_data in graph_registry.items():
@@ -303,23 +305,22 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
             # get the attribute that should already exist
             graph_name_split_list = graph_name.split("_")
             graph_object.cbmviz_file_name = graph_name_split_list[0]
-            if graph_name == "{}_output_whole".format(graph_object.cbmviz_file_name) \
-            or graph_name == "{}".format(graph_object.cbmviz_file_name):
+            if graph_name == "output_whole":
                 # save graph with whole network layout
                 whole_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, whole_path)
                 print("\n Whole network visualization saved at: {}".format(whole_path))
-            if graph_name == "{}_output_selected".format(graph_object.cbmviz_file_name):
+            if graph_name == "output_selected":
                 # save graph with selected pathway layouts
                 selected_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, selected_path)
                 print("\n Visualization of selected pathways saved at: {}".format(selected_path))
-            if graph_name == "{}_transport_radial_obj_re".format(graph_object.cbmviz_file_name):
+            if graph_name == "transport_radial_obj_re":
                 # save graph with radial transport reactions and obj reaction in the middle
                 rad_trans_obj_re_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, rad_trans_obj_re_path)
                 print("\n Visualization of selected pathways saved at: {}".format(rad_trans_obj_re_path))
-            if graph_name == "{}_output_grid".format(graph_object.cbmviz_file_name):
+            if graph_name == "output_grid":
                 # save graph with grid pathway layouts
                 grid_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, grid_path)
@@ -328,33 +329,36 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
     if global_ops["EXPORT_GML"]:
         for graph_name, graph_data in graph_registry.items():
             graph = graph_data[0]
-            gml_path = os.path.join(output_path, "{0}.gml".format(graph_name))
+            gml_path = os.path.join(output_path, "{}.gml".format(graph_name))
             # replace forward dashes in graph name to not cause problems with path
             gml_path = gml_path.replace('/', '-')
+            gml_path = gml_path.replace(' ', '')
             mvl.exportGML(graph, file_name, gml_path)
-            print("Graph exported as: {0}.gml".format(graph_name))
+            print("Graph exported as: {}.gml".format(graph_name))
     if global_ops["EXPORT_SVG"]:
         for graph_name, graph_data in graph_registry.items():
             graph = graph_data[0]
             # get default parameters of SVG export plugin
             params = tlp.getDefaultPluginParameters('SVG Export', graph)
             # define output path
-            svg_path = os.path.join(output_path, "{0}.svg".format(graph_name))
+            svg_path = os.path.join(output_path, "{}.svg".format(graph_name))
             # replace forward dashes in graph name to not cause problems with path
             svg_path = svg_path.replace('/', '-')
+            svg_path = svg_path.replace(' ', '')
             tlp.exportGraph('SVG Export', graph, svg_path, params)
-            print("Graph exported as: {0}.svg".format(graph_name))
+            print("Graph exported as: {}.svg".format(graph_name))
     if global_ops["EXPORT_JSON"]:
         for graph_name, graph_data in graph_registry.items():
             graph = graph_data[0]
             # get default parameters of JSON export plugin
             params = tlp.getDefaultPluginParameters('JSON Export', graph)
             # define output path
-            json_path = os.path.join(output_path, "{0}.json".format(graph_name))
+            json_path = os.path.join(output_path, "{}.json".format(graph_name))
             # replace forward dashes in graph name to not cause problems with path
             json_path = json_path.replace('/', '-')
+            json_path = json_path.replace(' ', '')
             tlp.exportGraph('JSON Export', graph, json_path, params)
-            print("Graph exported as: {0}.json".format(graph_name))
+            print("Graph exported as: {}.json".format(graph_name))
     # generate SBGN and SBML+Layout Files (Mimoza functions)
     # save graph layout in layout plugin of an SBML file
     #if global_ops['EXPORT_SBML']:
@@ -791,13 +795,13 @@ def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathway
         whole_output_graph, whole_output_props = mvl.dumpToGraph(graph, graph_props, "output_whole",
                                              [sg.getName() for sg in graph.getSubGraphs()])
         whole_output_graph.cbmviz_file_name = graph.cbmviz_file_name
-        graph_registry.update({whole_output_graph.getName(): [whole_output_graph,whole_output_props]})
+        graph_registry.update({"output_whole": [whole_output_graph,whole_output_props]})
     else:
         whole_output_graph, whole_output_props = mvl.dumpToGraph(graph, graph_props, "output_whole",
                                                                  [sg.getName() for sg in graph.getSubGraphs()],
                                                                  transport_radial=False)
         whole_output_graph.cbmviz_file_name = graph.cbmviz_file_name
-        graph_registry.update({whole_output_graph.getName(): [whole_output_graph, whole_output_props]})
+        graph_registry.update({"output_whole": [whole_output_graph, whole_output_props]})
 
     # 2.) selected dump (selected pathways in one SVG file)
     # create a new output graph with a few selected pathways combined
@@ -805,7 +809,7 @@ def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathway
         selected_output_graph, selected_output_props = mvl.dumpToGraph(graph, graph_props, "output_selected",
                                                                        selected_pathways)
         selected_output_graph.cbmviz_file_name = graph.cbmviz_file_name
-        graph_registry.update({selected_output_graph.getName(): [selected_output_graph,selected_output_props]})
+        graph_registry.update({"output_selected": [selected_output_graph,selected_output_props]})
 
     # 3.) sequential dump (all pathways in individual SVG files)
     individual_output_graphs = []
@@ -1466,8 +1470,15 @@ def loadGraphObjFromFile(input_file):
     try:
         graph_obj = tlp.loadGraph(input_file)
         file_name = ntpath.basename(input_file)
-        file_name = file_name.split(".", 1)[0]
-        file_name = file_name.split("_", 1)[0]
+        # delete file extension
+        if file_name.endswith(".xml"):
+            file_name = file_name.replace(".xml", "")
+        elif file_name.endswith(".json"):
+            file_name = file_name.replace(".json", "")
+        elif file_name.endswith(".gml"):
+            file_name = file_name.replace(".gml", "")
+        elif file_name.endswith(".dot"):
+            file_name = file_name.replace(".dot", "")
         graph_obj.setName(file_name)
     except Exception as ex:
         print("{} \n".format(ex))
@@ -1483,7 +1494,6 @@ def saveGraphObjToTulipFile(graph_obj, file_name):
 
     """
     tlp.saveGraph(graph_obj, file_name)
-
 
 def createGraphDictFromGraphObj(input_graph):
     """
@@ -1504,7 +1514,7 @@ def createGraphDictFromGraphObj(input_graph):
     # build graph registry dict
     graph_registry = dict()
     # add whole graph
-    graph_registry[input_graph.getName()] = [input_graph, input_graph_props]
+    graph_registry["output_whole"] = [input_graph, input_graph_props]
     # if subgraphs exist: go through subgraphs of input_graph, copy them to new graph objects
     # and add these new graph objects to the graph_registry
     if len(list(input_graph.getSubGraphs())) != 0:
@@ -1526,6 +1536,23 @@ def createGraphDictFromGraphObj(input_graph):
                                                                                                      sg_new_graph_props]})
 
     return graph_registry
+
+def createPathColoringDict(path_dict):
+    """
+    Create a dictionary with reaction ids (keys) and pathway specific numbers (values) that can be used for coloring
+    - instead of fba_results::
+
+    - *path_dict* a dictionary containing the elements of all pathways (groups) of the model
+
+    """
+    path_coloring_dict = dict()
+    i = 1
+    for path_name, path_data in path_dict.items():
+        for re_id in path_data["reactions"]:
+            path_coloring_dict[re_id] = i
+        i += 1
+
+    return path_coloring_dict
 
 #if __name__ == '__main__':
 # execute this if in a console (don't execute if the script is imported as a module)

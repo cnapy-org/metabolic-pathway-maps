@@ -129,3 +129,14 @@ to access the module simply do::
 
  import cbmviz
  
+
+2017-02-23
+---------- 
+
+CBMViz
+======
+
+- add feature to use node coordinates from SBML+Layout or SBGN and only run Mimoza to change edges+cosmetic stuff (skip majority of layouting in case people want to use their own layout)
+--> understand Mimoza Source Code: where is the Bezier Curve Edge stuff happening?
+
+- write test where a small layout is loaded from a gml file (e.g. from cytoscape) and this small layout is added onto a larger map

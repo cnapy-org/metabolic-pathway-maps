@@ -877,7 +877,7 @@ def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg
     for prop in new_graph_tup:
         new_graph_props[prop.getName()] = prop
     # add name to new graph
-    new_graph.setName("{0}_{1}".format(input_graph.cbmviz_file_name, new_graph_name))
+    new_graph.setName(new_graph_name)
     # copy subgraphs to output graph 'new_graph' and recreate subgraphs from selection
     graph_sg_list_new_graph = [sg for sg in input_graph.getSubGraphs()
                                if sg.getName() in sg_selection]
