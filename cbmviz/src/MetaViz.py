@@ -282,7 +282,8 @@ def colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, outp
     #     tlp.saveGraph(initial_graph, graph_path)
     #     print("\n Initial graph after coloring saved as: {}_graph.tlp \n".format(initial_graph.cbmviz_file_name))
 # Part 3: Exporting
-def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups_sbml, n2lo, e2lo, ub_sps):
+def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups_sbml=None, n2lo=None, e2lo=None,
+                ub_sps=None):
     """
     Save graphs as .tlp, .sbml and/or .sbgn files and use Tulip export plugins to export graphs as .gml,
     .svg and/or .json files::
@@ -1494,6 +1495,8 @@ def createGraphDictFromGraphObj(input_graph):
     - **
 
     """
+    # TODO: add and fill additional props taht cbmviz requires (type, pathway, etc.) if not present in input_graph
+    # TODO: take SBML file as optional parameter for info to fill in these props
     # save graph props of whole input graph in dictionary
     input_graph_props = dict()
     for prop in input_graph.getObjectProperties():
