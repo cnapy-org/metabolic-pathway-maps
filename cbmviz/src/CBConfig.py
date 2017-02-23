@@ -39,7 +39,7 @@ Last edit: $Author: bgoli $ ($Id: CBConfig.py 561 2017-01-24 13:36:09Z bgoli $)
 
 __CBCONFIG__ = {'VERSION_MAJOR' : 0,
                 'VERSION_MINOR' : 1,
-                'VERSION_MICRO' : 0,
+                'VERSION_MICRO' : 1,
                 'VERSION_STATUS' : 'alpha',
                 'VERSION' : '',
                 'DEBUG' : False

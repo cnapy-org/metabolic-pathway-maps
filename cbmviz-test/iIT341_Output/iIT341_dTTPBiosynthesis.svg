@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="203.5" height="509.125" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 213.5 519.125" version="1.1">
+    <rect width="203.5" height="509.125" fill="rgb(255,255,255)"/>
+    <g desc="Graph" transform="translate(2.5,505.625) scale(1,-1)">
+        <g id="Edges" desc="This is the group of edges">
+            <g id="0">
+                <path d="M 198.75,489.625 L 198.75,486.625" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(146,188,99)"/>
+            </g>
+            <g id="1">
+                <path d="M 196.25,503.125 L 196.25,500.125" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="2">
+                <path d="M 198.75,493.625 L 198.75,490.625" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(146,188,99)"/>
+            </g>
+            <g id="3">
+                <path d="M 196.25,493.625 L 196.25,490.625" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(140,187,105)"/>
+            </g>
+            <g id="4">
+                <path d="M 196.25,499.125 L 196.25,496.125" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="5">
+                <path d="M 196.25,489.625 L 196.25,486.625" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(140,187,105)"/>
+            </g>
+        </g>
+        <g id="Nodes" desc="This is the group of nodes">
+            <g id="0">
+                <ellipse cx="196.25" cy="485.375" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="196.25" y="-485.25" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dudp_c</text>
+            </g>
+            <g id="1">
+                <ellipse cx="198.75" cy="494.875" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="198.75" y="-494.75" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dtdp_c</text>
+            </g>
+            <g id="2">
+                <ellipse cx="196.25" cy="504.375" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="196.25" y="-504.25" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dutp_c</text>
+            </g>
+            <g id="3">
+                <rect x="198.25" y="489.625" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="198.75" y="-490.068" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDPK4</text>
+            </g>
+            <g id="4">
+                <rect x="195.75" y="489.625" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="196.25" y="-490.081" font-size="0.133333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_URIDK2r</text>
+            </g>
+            <g id="5">
+                <ellipse cx="0" cy="0" rx="2.5" ry="2.5" fill="rgb(235,235,235)" fill-opacity="1"/>
+                <text x="0" y="0.117647" font-size="0.352941" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">dTTP Biosynthesis</text>
+            </g>
+            <g id="6">
+                <ellipse cx="198.75" cy="485.375" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="198.75" y="-485.25" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dttp_c</text>
+            </g>
+            <g id="7">
+                <rect x="195.75" y="499.125" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="196.25" y="-499.575" font-size="0.15" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_DUTPDP</text>
+            </g>
+            <g id="8">
+                <ellipse cx="196.25" cy="494.875" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="196.25" y="-494.75" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dump_c</text>
+            </g>
+        </g>
+    </g>
+</svg>

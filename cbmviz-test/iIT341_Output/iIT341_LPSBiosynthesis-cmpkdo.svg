@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="84" height="175.125" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 94 185.125" version="1.1">
+    <rect width="84" height="175.125" fill="rgb(255,255,255)"/>
+    <g desc="Graph" transform="translate(2.5,171.625) scale(1,-1)">
+        <g id="Edges" desc="This is the group of edges">
+            <g id="0">
+                <path d="M 73.9175,169.318 L 75.9342,166.125" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(144,188,101)"/>
+            </g>
+            <g id="1">
+                <path d="M 70.9175,150.318 L 72.9342,147.125" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(144,188,101)"/>
+            </g>
+            <g id="2">
+                <path d="M 73.25,146.125 L 73.25,143.125" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(144,188,101)"/>
+            </g>
+            <g id="3">
+                <path d="M 76.25,159.625 L 76.25,156.625" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(144,188,101)"/>
+            </g>
+            <g id="4">
+                <path d="M 75.5825,150.318 L 73.5658,147.125" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(144,188,101)"/>
+            </g>
+            <g id="5">
+                <path d="M 76.25,155.625 L 76.25,152.625" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(144,188,101)"/>
+            </g>
+            <g id="6">
+                <path d="M 76.25,165.125 L 76.25,162.125" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(144,188,101)"/>
+            </g>
+            <g id="7">
+                <path d="M 78.5825,169.318 L 76.5658,166.125" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(144,188,101)"/>
+            </g>
+        </g>
+        <g id="Nodes" desc="This is the group of nodes">
+            <g id="0">
+                <ellipse cx="73.25" cy="170.375" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="73.25" y="-170.232" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_pep_c</text>
+            </g>
+            <g id="1">
+                <ellipse cx="70.25" cy="151.375" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="70.25" y="-151.232" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_ctp_c</text>
+            </g>
+            <g id="2">
+                <ellipse cx="76.25" cy="160.875" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="76.25" y="-160.764" font-size="0.333333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_kdo8p_c</text>
+            </g>
+            <g id="3">
+                <ellipse cx="0" cy="0" rx="2.5" ry="2.5" fill="rgb(235,235,235)" fill-opacity="1"/>
+                <text x="0" y="0.08" font-size="0.24" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">LPS Biosynthesis - cmpkdo</text>
+            </g>
+            <g id="4">
+                <rect x="72.75" y="146.125" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="73.25" y="-146.568" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_KDOCT</text>
+            </g>
+            <g id="5">
+                <ellipse cx="76.25" cy="151.375" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="76.25" y="-151.232" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_kdo_c</text>
+            </g>
+            <g id="6">
+                <rect x="75.75" y="155.625" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="76.25" y="-156.068" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_KDOPP</text>
+            </g>
+            <g id="7">
+                <ellipse cx="73.25" cy="141.875" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="73.25" y="-141.775" font-size="0.3" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_cmpkdo_c</text>
+            </g>
+            <g id="8">
+                <rect x="75.75" y="165.125" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="76.25" y="-165.568" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_KDOPS</text>
+            </g>
+            <g id="9">
+                <ellipse cx="79.25" cy="170.375" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="79.25" y="-170.264" font-size="0.333333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_ara5p_c</text>
+            </g>
+        </g>
+    </g>
+</svg>

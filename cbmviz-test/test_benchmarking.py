@@ -39,6 +39,7 @@ global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph 
 
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
 sbml = os.path.join(cDir, "TestModels", "willi", "iAF1260_max_ac.xml") # E. coli about 2000+ reactions
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iCHOv1.xml")
 
 TIME0 = time.time()
 graph, graph_props = cbmviz.createInitialGraph("initialGraph")

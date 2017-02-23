@@ -27,10 +27,14 @@ sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml") # H.pylori
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341_overlapping_groups_test.xml") # Overlapping groups test
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml") # newest E. coli
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
-# sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli about 1000 reactions
-# sbml = os.path.join(cDir, "TestModels", "bigg2", "iND750.xml") # Yeast about 1000 reactions
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli about 1000 reactions
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iND750.xml") # Yeast about 1000 reactions
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "RECON1.xml")
-## Willis models
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml")
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iMM1415.xml")
+#sbml = os.path.join(cDir, "TestModels", "bigg2", "iCHOv1.xml")
+
+# Willis models
 # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6.xml")
 #sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_bigggroups.xml")
 #sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_compgroups.xml")

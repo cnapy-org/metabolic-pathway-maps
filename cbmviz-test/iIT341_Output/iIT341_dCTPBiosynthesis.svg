@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="430.036" height="347.25" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 440.036 357.25" version="1.1">
+    <rect width="430.036" height="347.25" fill="rgb(255,255,255)"/>
+    <g desc="Graph" transform="translate(2.5,343.75) scale(1,-1)">
+        <g id="Edges" desc="This is the group of edges">
+            <g id="0">
+                <path d="M 419.953,341.443 L 421.97,338.25" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(146,188,99)"/>
+            </g>
+            <g id="1">
+                <path d="M 421.97,337.25 L 419.953,334.057" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(146,188,99)"/>
+            </g>
+            <g id="2">
+                <path d="M 422.602,337.25 L 424.619,334.057" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(146,188,99)"/>
+            </g>
+            <g id="3">
+                <path d="M 425.286,327.75 L 425.286,324.75" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(146,188,99)"/>
+            </g>
+            <g id="4">
+                <path d="M 425.286,331.75 L 425.286,328.75" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(146,188,99)"/>
+            </g>
+            <g id="5">
+                <path d="M 424.619,341.443 L 422.602,338.25" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(146,188,99)"/>
+            </g>
+        </g>
+        <g id="Nodes" desc="This is the group of nodes">
+            <g id="0">
+                <rect x="421.786" y="337.25" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="422.286" y="-337.693" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNDR3</text>
+            </g>
+            <g id="1">
+                <rect x="424.786" y="327.75" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="425.286" y="-328.193" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDPK7</text>
+            </g>
+            <g id="2">
+                <ellipse cx="425.286" cy="333" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="425.286" y="-332.875" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dcdp_c</text>
+            </g>
+            <g id="3">
+                <ellipse cx="425.286" cy="342.5" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="425.286" y="-342.357" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_cdp_c</text>
+            </g>
+            <g id="4">
+                <ellipse cx="419.286" cy="342.5" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="419.286" y="-342.389" font-size="0.333333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_trdrd_c</text>
+            </g>
+            <g id="5">
+                <ellipse cx="425.286" cy="323.5" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="425.286" y="-323.375" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dctp_c</text>
+            </g>
+            <g id="6">
+                <ellipse cx="419.286" cy="333" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="419.286" y="-332.889" font-size="0.333333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_trdox_c</text>
+            </g>
+            <g id="7">
+                <ellipse cx="0" cy="0" rx="2.5" ry="2.5" fill="rgb(235,235,235)" fill-opacity="1"/>
+                <text x="0" y="0.117647" font-size="0.352941" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">dCTP Biosynthesis</text>
+            </g>
+        </g>
+    </g>
+</svg>

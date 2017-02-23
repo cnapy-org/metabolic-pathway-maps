@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33.25" height="96.625" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 43.25 106.625" version="1.1">
+    <rect width="33.25" height="96.625" fill="rgb(255,255,255)"/>
+    <g desc="Graph" transform="translate(2.5,93.125) scale(1,-1)">
+        <g id="Edges" desc="This is the group of edges">
+            <g id="0">
+                <path d="M 21.0658,86.625 L 23.0825,83.4319" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="1">
+                <path d="M 20.4342,86.625 L 18.4175,83.4319" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="2">
+                <path d="M 23.75,81.125 L 23.75,78.125" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(172,189,81)"/>
+            </g>
+            <g id="3">
+                <path d="M 24.3903,90.9676 L 21.2237,87.625" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="4">
+                <path d="M 24.25,78.0208 L 29.75,82.375 29.75,87.125 26.1097,90.9676" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(172,189,81)"/>
+            </g>
+            <g id="5">
+                <path d="M 23.75,77.125 L 23.75,74.125" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(172,189,81)"/>
+            </g>
+            <g id="6">
+                <path d="M 18.7301,81.5991 L 23.25,78.0208" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(172,189,81)"/>
+            </g>
+        </g>
+        <g id="Nodes" desc="This is the group of nodes">
+            <g id="0">
+                <rect x="23.25" y="77.125" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="23.75" y="-77.5679" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ASNS2</text>
+            </g>
+            <g id="1">
+                <ellipse cx="23.75" cy="82.375" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="23.75" y="-82.275" font-size="0.3" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_asp__L_c</text>
+            </g>
+            <g id="2">
+                <ellipse cx="25.25" cy="91.875" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="25.25" y="-91.775" font-size="0.3" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_asn__L_c</text>
+            </g>
+            <g id="3">
+                <ellipse cx="0" cy="0" rx="2.5" ry="2.5" fill="rgb(235,235,235)" fill-opacity="1"/>
+                <text x="0" y="0.0952381" font-size="0.285714" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">Asparagine Metabolism</text>
+            </g>
+            <g id="4">
+                <ellipse cx="17.75" cy="82.375" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="17.75" y="-82.2321" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_nh4_c</text>
+            </g>
+            <g id="5">
+                <rect x="20.25" y="86.625" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="20.75" y="-87.0583" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ASNN</text>
+            </g>
+            <g id="6">
+                <ellipse cx="23.75" cy="72.875" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="23.75" y="-72.7321" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_amp_c</text>
+            </g>
+        </g>
+    </g>
+</svg>

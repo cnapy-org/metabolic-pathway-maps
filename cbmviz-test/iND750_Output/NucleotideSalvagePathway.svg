@@ -1,0 +1,1233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="216.5" height="248" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 226.5 258" version="1.1">
+    <rect width="216.5" height="248" fill="rgb(255,255,255)"/>
+    <g desc="Graph" transform="translate(8,239) scale(1,-1)">
+        <g id="Edges" desc="This is the group of edges">
+            <g id="0">
+                <path d="M 145,35.875 L 145,32.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="1">
+                <path d="M 101.124,135.579 L 117.5,127.618" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="2">
+                <path d="M 116.846,135.644 L 97.5,127.583" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="3">
+                <path d="M 119.105,116.042 L 126.5,112.139" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="4">
+                <path d="M 174.25,13.5 L 174.25,10.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="5">
+                <path d="M 145.167,30.3862 L 147.933,9.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="6">
+                <path d="M 198.458,35.0345 L 197.37,30.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="7">
+                <path d="M 203.917,11.1931 L 205.934,8" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="8">
+                <path d="M 21.8909,167.375 L 19.2665,155.346" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="9">
+                <path d="M 118,126.875 L 118,117.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="10">
+                <path d="M 87.4923,152.983 L 85.2222,147.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="11">
+                <path d="M 38.8387,237.288 L 13,227 13,168.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="12">
+                <path d="M 127.5,153.375 L 120,147.75" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="13">
+                <path d="M 128,147.178 L 101.163,136.584" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="14">
+                <path d="M 63.1087,181.749 L 49.5,168.367" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="15">
+                <path d="M 23.25,9.18804 L 64.7042,-6.31221" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="16">
+                <path d="M 82.75,203 L 82.75,196.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="17">
+                <path d="M 67,218 L 67,204" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="18">
+                <path d="M 51.2111,181.655 L 40.4068,168.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="19">
+                <path d="M 91,126.875 L 91,111.875 85.3188,90.3337" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="20">
+                <path d="M 129.33,153.191 L 134.056,147.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="21">
+                <path d="M 175.48,35.2356 L 178.89,30.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="22">
+                <path d="M 77.5,187.875 L 77.5,183.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(174,189,79)"/>
+            </g>
+            <g id="23">
+                <path d="M 66.8333,203 L 64.7703,196.811" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="24">
+                <path d="M 127.12,56.875 L 129.708,46.0905" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="25">
+                <path d="M 64,187.875 L 64,183.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(142,187,102)"/>
+            </g>
+            <g id="26">
+                <path d="M 52.8913,181.749 L 66.5,168.367" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="27">
+                <path d="M 19.5077,152.983 L 21.7778,147.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="28">
+                <path d="M 45.6651,36.0901 L 52.414,32.2439" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="29">
+                <path d="M 189.417,1.69314 L 191.434,-1.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="30">
+                <path d="M 38.8296,218.811 L -1.5,203.688" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="31">
+                <path d="M 22,111.375 L 22,90.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="32">
+                <path d="M 202.583,11.1931 L 200.566,8" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="33">
+                <path d="M 170.75,29.7917 L 190.096,21.7308" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="34">
+                <path d="M 22.9837,88.3538 L 62,57.767" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="35">
+                <path d="M 8.24286,127.875 L 4,136.125 4,147.375 17.8601,153.612" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="36">
+                <path d="M 40,218 L 40,182.625 22.5,168.285" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="37">
+                <path d="M 64,134.875 L 64,127.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="38">
+                <path d="M 194.083,1.69314 L 192.066,-1.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="39">
+                <path d="M 91,134.875 L 91,127.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="40">
+                <path d="M 165.917,17.6931 L 167.934,14.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="41">
+                <path d="M 194.428,40.5 L 193.209,37.4127" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="42">
+                <path d="M 147.882,87.8805 L 145.047,57.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="43">
+                <path d="M 40.8621,218.345 L 54.5238,204" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(159,189,90)"/>
+            </g>
+            <g id="44">
+                <path d="M 182.583,17.6931 L 180.566,14.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="45">
+                <path d="M 148,8.875 L 148,-5.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="46">
+                <path d="M 134.765,36.875 L 139,44.875 139,57.375 127.442,87.9557" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="47">
+                <path d="M 30.8909,167.375 L 28,154.125 28,147.375 40.5397,136.925" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="48">
+                <path d="M 167.934,7 L 165.917,3.80686" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(161,189,88)"/>
+            </g>
+            <g id="49">
+                <path d="M 34.3871,226.5 L 39.2348,220.238" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="50">
+                <path d="M 192.25,-2.39583 L 196.77,-5.97412" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="51">
+                <path d="M 40.5,167.417 L 54.0786,154.97" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="52">
+                <path d="M 191.75,-2.5 L 191.75,-5.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="53">
+                <path d="M 48.5,226.569 L 40.9472,220.066" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="54">
+                <path d="M 82.0169,194.613 L 77.8621,188.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(174,189,79)"/>
+            </g>
+            <g id="55">
+                <path d="M 168.917,-5.69314 L 171.25,-2 171.25,2.75 168.566,7" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(161,189,88)"/>
+            </g>
+            <g id="56">
+                <path d="M 31.336,44.2561 L 44.6651,36.6599" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="57">
+                <path d="M 203.901,40.5 L 206.25,36.25 206.25,30 200.957,22.2809" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="58">
+                <path d="M 179.25,29.5 L 179.25,22.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="59">
+                <path d="M 22,126.875 L 22,117.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="60">
+                <path d="M 182.616,35.7248 L 170.75,30.2315" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="61">
+                <path d="M 79,152.875 L 79,147.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(142,187,102)"/>
+            </g>
+            <g id="62">
+                <path d="M 155.25,188.027 L 163,182.625 163,9.375 148.851,-5.83477" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="63">
+                <path d="M 52.471,181.467 L 57.7966,168.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="64">
+                <path d="M 203.125,40.5128 L 199.645,37.1223" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="65">
+                <path d="M 31.3273,167.375 L 39.3154,155.171" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="66">
+                <path d="M 180.566,13.5 L 182.583,10.3069" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="67">
+                <path d="M 64.4186,126.875 L 72.1976,117.583" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="68">
+                <path d="M 129,147.178 L 157,136.125 157,9.375 148.609,-5.6585" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="69">
+                <path d="M 124.982,194.851 L 132.702,188.769" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="70">
+                <path d="M 53.2522,30.3998 L 49.1011,9.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="71">
+                <path d="M 191.25,-2.39583 L 186.73,-5.97412" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="72">
+                <path d="M 179.75,29.6354 L 190.24,21.9865" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="73">
+                <path d="M 101,167.569 L 80.0666,154.777" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(142,187,102)"/>
+            </g>
+            <g id="74">
+                <path d="M 50.8783,182.073 L 22.5,168.121" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="75">
+                <path d="M 67.2182,167.375 L 73,154.125 73,117.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="76">
+                <path d="M 196.907,29.5 L 191.957,22.2809" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="77">
+                <path d="M 199.985,44.8426 L 203.151,41.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="78">
+                <path d="M 119.033,146.875 L 109,136.125 109,9.375 67.0458,-6.31221" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="79">
+                <path d="M 167.934,13.5 L 165.917,10.3069" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="80">
+                <path d="M 54.25,153.125 L 50.3125,147.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="81">
+                <path d="M 40,236.5 L 40,227.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="82">
+                <path d="M 15.8667,146.875 L 13.3221,137.333" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="83">
+                <path d="M 187.75,29.5139 L 180.146,22.1213" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="84">
+                <path d="M 148.067,9.875 L 151,31.625 151,57.375 148.118,87.8805" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="85">
+                <path d="M 188.421,29.5 L 190.845,22.4324" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="86">
+                <path d="M 69.5496,194.686 L 64.4397,188.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(142,187,102)"/>
+            </g>
+            <g id="87">
+                <path d="M 50.9771,181.907 L 31.5,168.226" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="88">
+                <path d="M 184.884,35.7248 L 196.75,30.2315" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="89">
+                <path d="M 196.75,29.7569 L 180.374,21.7965" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="90">
+                <path d="M 154.25,188.027 L 147.525,183.34" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="91">
+                <path d="M 94.625,203.286 L 77.8989,196.117" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="92">
+                <path d="M 200.25,1.5 L 200.25,-1.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="93">
+                <path d="M 118.896,135.254 L 127,127.375 127,112.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="94">
+                <path d="M 200.25,7 L 200.25,4" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="95">
+                <path d="M 116.92,135.495 L 103,127.375 103,89.125 63,57.767" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="96">
+                <path d="M 62,57.1812 L 31.4155,45.3267" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="97">
+                <path d="M 129.589,153.512 L 140,147.656" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="98">
+                <path d="M 66.8667,146.875 L 64.3221,137.333" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="99">
+                <path d="M 206.25,7 L 206.25,4" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="100">
+                <path d="M 67.5,203.096 L 75.7776,196.41" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="101">
+                <path d="M 183.02,35.2356 L 179.61,30.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="102">
+                <path d="M 117.605,218.749 L 83.25,203.719" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="103">
+                <path d="M -2,203 L -2,57.375 29.0845,45.3267" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="104">
+                <path d="M 165.25,1.5 L 165.25,-1.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(161,189,88)"/>
+            </g>
+            <g id="105">
+                <path d="M 57.5,167.493 L 40.9933,154.884" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="106">
+                <path d="M 179.75,13.6042 L 175.23,10.0259" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="107">
+                <path d="M 76.1091,167.375 L 78.7335,155.346" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="108">
+                <path d="M 165.566,-2.5 L 167.583,-5.69314" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(161,189,88)"/>
+            </g>
+            <g id="109">
+                <path d="M 174.25,17.5 L 174.25,14.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="110">
+                <path d="M 55.0952,204 L 58,219.25 58,227 41.0732,237.109" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(159,189,90)"/>
+            </g>
+            <g id="111">
+                <path d="M 188.75,29.6354 L 199.24,21.9865" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="112">
+                <path d="M 22.5,111.694 L 83.8243,89.5496" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="113">
+                <path d="M 192.02,35.2356 L 188.61,30.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="114">
+                <path d="M 169.907,29.5 L 164.957,22.2809" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="115">
+                <path d="M 184.48,35.2356 L 187.89,30.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="116">
+                <path d="M 133.38,187.875 L 134.83,183.803" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="117">
+                <path d="M 40.8024,236.792 L 48.5814,227.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="118">
+                <path d="M 85.5,147 L 99,136.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="119">
+                <path d="M 60.619,203 L 55.7576,196.619" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="120">
+                <path d="M 22.5,167.493 L 39.0067,154.884" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="121">
+                <path d="M 173.27,17.9741 L 168.75,14.3958" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="122">
+                <path d="M 22,134.875 L 22,127.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="123">
+                <path d="M 12.8909,167.375 L 10,154.125 10,147.375 12.6779,137.333" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="124">
+                <path d="M 82.8786,194.382 L 83.5,188.375 83.5,182.625 76.2542,168.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="125">
+                <path d="M 22,115.375 L 22,112.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="126">
+                <path d="M 127,111.375 L 127,90.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="127">
+                <path d="M 49.4364,167.375 L 61,154.125 61,147.375 63.6779,137.333" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="128">
+                <path d="M 204.749,44.558 L 203.783,41.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="129">
+                <path d="M 58.3273,167.375 L 66.3154,155.171" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="130">
+                <path d="M 134.609,167.375 L 137.234,155.346" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="131">
+                <path d="M 91,146.875 L 91,137.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="132">
+                <path d="M 128.5,152.875 L 128.5,147.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="133">
+                <path d="M 40,226.5 L 40,220.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="134">
+                <path d="M 168.75,13.6042 L 173.27,10.0259" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="135">
+                <path d="M 88.9334,181.511 L 82.2542,168.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(142,187,102)"/>
+            </g>
+            <g id="136">
+                <path d="M 66.5,167.62 L 41.1139,154.692" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="137">
+                <path d="M 128.5,167.375 L 128.5,155.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="138">
+                <path d="M 143.147,203 L 148.221,196.604" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="139">
+                <path d="M 22.25,9.73679 L -8,31.625 -8,57.375 21.1415,88.2164" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="140">
+                <path d="M 81.5,167.62 L 56.1139,154.692" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(142,187,102)"/>
+            </g>
+            <g id="141">
+                <path d="M 50.8308,182.183 L 13.5,168.064" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="142">
+                <path d="M 118.533,181.833 L 102,168.285" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(142,187,102)"/>
+            </g>
+            <g id="143">
+                <path d="M 120.391,181.749 L 134,168.367" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="144">
+                <path d="M 149.775,194.646 L 154.353,188.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="145">
+                <path d="M 169.042,35.0345 L 170.13,30.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="146">
+                <path d="M 119.154,135.644 L 139,127.375 139,89.125 144.906,57.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="147">
+                <path d="M 145,56.875 L 145,46.125" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="148">
+                <path d="M 72.8333,203 L 70.7703,196.811" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(142,187,102)"/>
+            </g>
+            <g id="149">
+                <path d="M 140.391,167.375 L 137.766,155.346" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="150">
+                <path d="M 49.5625,146.875 L 42.25,137.125" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="151">
+                <path d="M 67.445,218.082 L 72.8095,204" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(142,187,102)"/>
+            </g>
+            <g id="152">
+                <path d="M 170.75,29.5139 L 178.354,22.1213" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="153">
+                <path d="M 54.2424,196.619 L 49,203.5 49,226.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="154">
+                <path d="M 53.065,181.971 L 75.5,168.182" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="155">
+                <path d="M 49.5,226.785 L 65.8519,219.744" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="156">
+                <path d="M 75.5,167.684 L 41.1677,154.571" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="157">
+                <path d="M 52.4873,30.8922 L 23.25,9.73679" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="158">
+                <path d="M 95.625,203.286 L 113.5,195.625 113.5,147.375 100.96,136.925" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="159">
+                <path d="M 115,9.875 L 115,57.375 23.183,88.7211" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="160">
+                <path d="M 66.555,218.082 L 61.1905,204" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="161">
+                <path d="M 76.7751,181.607 L 67.3559,168.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="162">
+                <path d="M 12.4283,135.013 L 8.75714,127.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="163">
+                <path d="M 134.433,146.875 L 133,136.125 133,57.375 130.292,46.0905" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="164">
+                <path d="M 119.795,218.564 L 142.25,203.828" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="165">
+                <path d="M 107,188.135 L 95.5,182.625 95.5,167.875 68.1258,154.668" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="166">
+                <path d="M 115.5,9.13068 L 146.877,-6.20122" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="167">
+                <path d="M 122.856,195.122 L 108,188.595" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="168">
+                <path d="M 39.3908,236.659 L 34.2791,227.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="169">
+                <path d="M 145,43.625 L 145,36.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="170">
+                <path d="M 91.5,127.176 L 116.839,117.087" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="171">
+                <path d="M 54.6754,31.1997 L 114.5,9.55589" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="172">
+                <path d="M 90.4669,181.833 L 107,168.285" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="173">
+                <path d="M 127,87.875 L 127,57.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="174">
+                <path d="M 135.668,181.447 L 140.322,168.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="175">
+                <path d="M 88.5077,152.983 L 90.7778,147.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="176">
+                <path d="M 193.501,44.558 L 194.467,41.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="177">
+                <path d="M 79,146.875 L 79,127.375 73.6092,117.716" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(142,187,102)"/>
+            </g>
+            <g id="178">
+                <path d="M 99.5946,134.943 L 97.1714,127.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="179">
+                <path d="M 125.235,36.875 L 121,44.875 121,111.875 118.667,115.568" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="180">
+                <path d="M 197.75,29.5139 L 205.354,22.1213" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="181">
+                <path d="M 48.6727,167.375 L 40.6846,155.171" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="182">
+                <path d="M 51.7509,181.4 L 49.1017,168.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="183">
+                <path d="M 70.375,194.375 L 70.375,182.625 58.4195,168.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="184">
+                <path d="M 107,167.522 L 89.0216,154.845" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="185">
+                <path d="M 40,167.375 L 40,155.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(143,188,101)"/>
+            </g>
+            <g id="186">
+                <path d="M 178.75,29.5139 L 171.146,22.1213" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="187">
+                <path d="M 129.415,43.7703 L 125.765,36.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="188">
+                <path d="M 67,152.875 L 67,147.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="189">
+                <path d="M 22,146.875 L 22,137.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="190">
+                <path d="M 175.23,17.9741 L 179.75,14.3958" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="191">
+                <path d="M 125.5,35.875 L 125.5,9.375 146.984,-6.02185" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="192">
+                <path d="M 198.265,44.8426 L 195.099,41.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="193">
+                <path d="M 48.5787,9.875 L 30.25,31.625 30.25,43.625" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="194">
+                <path d="M 18.4923,152.983 L 16.2222,147.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="195">
+                <path d="M 13.5,167.62 L 38.8861,154.692" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="196">
+                <path d="M 130.585,43.7703 L 134.235,36.875" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="197">
+                <path d="M 119,147.087 L 101.083,136.75" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="198">
+                <path d="M 195.059,40.5 L 197.93,37.1938" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="199">
+                <path d="M 85,146.875 L 85,90.375" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+            <g id="200">
+                <path d="M 200.25,-2.5 L 200.25,-5.5" fill="none" stroke-width="0.125" stroke-opacity="1" stroke="rgb(235,235,235)"/>
+            </g>
+        </g>
+        <g id="Nodes" desc="This is the group of nodes">
+            <g id="0">
+                <ellipse cx="193.125" cy="45.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="193.125" y="-45.6071" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_ump_n</text>
+            </g>
+            <g id="1">
+                <ellipse cx="148" cy="89.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="148" y="-88.9821" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_xan_c</text>
+            </g>
+            <g id="2">
+                <ellipse cx="148" cy="-6.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="148" y="6.89286" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_r1p_c</text>
+            </g>
+            <g id="3">
+                <ellipse cx="40" cy="154.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="40" y="-154.014" font-size="0.333333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_trdox_c</text>
+            </g>
+            <g id="4">
+                <ellipse cx="52" cy="182.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="52" y="-182.514" font-size="0.333333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_trdrd_c</text>
+            </g>
+            <g id="5">
+                <ellipse cx="206.25" cy="2.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="206.25" y="-2.63889" font-size="0.333333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_thymd_c</text>
+            </g>
+            <g id="6">
+                <ellipse cx="118.75" cy="219.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="118.75" y="-219.107" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_ump_c</text>
+            </g>
+            <g id="7">
+                <ellipse cx="145" cy="44.875" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="145" y="-44.7321" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_xmp_c</text>
+            </g>
+            <g id="8">
+                <ellipse cx="41.5" cy="136.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="41.5" y="-136" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_datp_c</text>
+            </g>
+            <g id="9">
+                <ellipse cx="30.25" cy="44.875" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="30.25" y="-44.7321" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_gmp_c</text>
+            </g>
+            <g id="10">
+                <ellipse cx="22" cy="89.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="22" y="-88.9821" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_gua_c</text>
+            </g>
+            <g id="11">
+                <ellipse cx="53.5" cy="31.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="53.5" y="-31.4821" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_gsn_c</text>
+            </g>
+            <g id="12">
+                <ellipse cx="188.75" cy="2.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="188.75" y="-2.60714" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_gdp_g</text>
+            </g>
+            <g id="13">
+                <ellipse cx="85" cy="89.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="85" y="-89.0139" font-size="0.333333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_2dr1p_c</text>
+            </g>
+            <g id="14">
+                <ellipse cx="205.125" cy="45.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="205.125" y="-45.625" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dump_n</text>
+            </g>
+            <g id="15">
+                <ellipse cx="200.25" cy="-6.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="200.25" y="6.875" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dttp_c</text>
+            </g>
+            <g id="16">
+                <ellipse cx="203.25" cy="12.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="203.25" y="-12.125" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dtmp_c</text>
+            </g>
+            <g id="17">
+                <ellipse cx="22" cy="136.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="22" y="-136" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dgmp_c</text>
+            </g>
+            <g id="18">
+                <ellipse cx="55" cy="154.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="55" y="-154" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dadp_c</text>
+            </g>
+            <g id="19">
+                <ellipse cx="89.5" cy="182.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="89.5" y="-182.5" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_damp_c</text>
+            </g>
+            <g id="20">
+                <ellipse cx="77.5" cy="182.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="77.5" y="-182.482" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_utp_c</text>
+            </g>
+            <g id="21">
+                <ellipse cx="146.5" cy="182.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="146.5" y="-182.482" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_ura_c</text>
+            </g>
+            <g id="22">
+                <ellipse cx="64.375" cy="195.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="64.375" y="-195.482" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_csn_c</text>
+            </g>
+            <g id="23">
+                <ellipse cx="64" cy="182.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="64" y="-182.482" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_ctp_c</text>
+            </g>
+            <g id="24">
+                <ellipse cx="174.75" cy="36.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="174.75" y="-36.1071" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_cdp_n</text>
+            </g>
+            <g id="25">
+                <ellipse cx="179.25" cy="21.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="179.25" y="-21.1071" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_h2o_n</text>
+            </g>
+            <g id="26">
+                <ellipse cx="199.125" cy="45.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="199.125" y="-45.6071" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_atp_n</text>
+            </g>
+            <g id="27">
+                <ellipse cx="198.75" cy="36.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="198.75" y="-36.1071" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_adp_n</text>
+            </g>
+            <g id="28">
+                <ellipse cx="185.75" cy="-6.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="185.75" y="6.95" font-size="0.6" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_h_g</text>
+            </g>
+            <g id="29">
+                <ellipse cx="76.75" cy="195.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="76.75" y="-195.482" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_r5p_c</text>
+            </g>
+            <g id="30">
+                <ellipse cx="127" cy="89.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="127" y="-88.9821" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_imp_c</text>
+            </g>
+            <g id="31">
+                <ellipse cx="118" cy="136.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="118" y="-136" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_prpp_c</text>
+            </g>
+            <g id="32">
+                <ellipse cx="65.875" cy="-6.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="65.875" y="6.85" font-size="0.3" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_rib__D_c</text>
+            </g>
+            <g id="33">
+                <ellipse cx="40" cy="237.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="40" y="-237.607" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_gtp_c</text>
+            </g>
+            <g id="34">
+                <ellipse cx="40" cy="219.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="40" y="-219.107" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_gdp_c</text>
+            </g>
+            <g id="35">
+                <ellipse cx="118" cy="116.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="118" y="-116.5" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_hxan_c</text>
+            </g>
+            <g id="36">
+                <ellipse cx="128.5" cy="154.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="128.5" y="-153.982" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_adn_c</text>
+            </g>
+            <g id="37">
+                <ellipse cx="130" cy="44.875" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="130" y="-44.7321" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_ins_c</text>
+            </g>
+            <g id="38">
+                <ellipse cx="174.25" cy="18.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="174.25" y="-18.6071" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_amp_m</text>
+            </g>
+            <g id="39">
+                <ellipse cx="174.25" cy="9.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="174.25" y="-9.10714" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_adp_m</text>
+            </g>
+            <g id="40">
+                <rect x="101" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="101.5" y="-167.831" font-size="0.133333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_URIDK2r</text>
+            </g>
+            <g id="41">
+                <rect x="66.5" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="67" y="-167.818" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNTR4</text>
+            </g>
+            <g id="42">
+                <rect x="48.5" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="49" y="-167.818" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNTR3</text>
+            </g>
+            <g id="43">
+                <rect x="12.5" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="13" y="-167.818" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNTR2</text>
+            </g>
+            <g id="44">
+                <rect x="187.75" y="29.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="188.25" y="-29.95" font-size="0.15" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNDR4n</text>
+            </g>
+            <g id="45">
+                <rect x="75.5" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="76" y="-167.818" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNDR4</text>
+            </g>
+            <g id="46">
+                <rect x="178.75" y="29.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="179.25" y="-29.95" font-size="0.15" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNDR3n</text>
+            </g>
+            <g id="47">
+                <rect x="57.5" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="58" y="-167.818" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNDR3</text>
+            </g>
+            <g id="48">
+                <rect x="169.75" y="29.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="170.25" y="-29.95" font-size="0.15" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNDR2n</text>
+            </g>
+            <g id="49">
+                <rect x="21.5" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="22" y="-167.818" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNDR2</text>
+            </g>
+            <g id="50">
+                <rect x="196.75" y="29.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="197.25" y="-29.95" font-size="0.15" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNDR1n</text>
+            </g>
+            <g id="51">
+                <rect x="191.25" y="-2.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="191.75" y="2.05714" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDP3g</text>
+            </g>
+            <g id="52">
+                <rect x="-2.5" y="203" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="-2" y="-203.433" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDP3</text>
+            </g>
+            <g id="53">
+                <rect x="72.5" y="203" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="73" y="-203.443" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_CYTK1</text>
+            </g>
+            <g id="54">
+                <ellipse cx="22" cy="116.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="22" y="-116.5" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dgsn_c</text>
+            </g>
+            <g id="55">
+                <rect x="94.625" y="203" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="95.125" y="-203.433" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_AMPN</text>
+            </g>
+            <g id="56">
+                <rect x="66.5" y="203" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="67" y="-203.433" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_CMPN</text>
+            </g>
+            <g id="57">
+                <rect x="163" y="8" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="163.5" y="-8.43333" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ATPM</text>
+            </g>
+            <g id="58">
+                <ellipse cx="88" cy="154.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="88" y="-154.014" font-size="0.333333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dad_2_c</text>
+            </g>
+            <g id="59">
+                <rect x="179.75" y="13.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="180.25" y="-13.9429" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ADK4m</text>
+            </g>
+            <g id="60">
+                <ellipse cx="91" cy="136.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="91" y="-135.982" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_din_c</text>
+            </g>
+            <g id="61">
+                <rect x="167.75" y="7" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="168.25" y="-7.43333" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ADK4</text>
+            </g>
+            <g id="62">
+                <ellipse cx="67" cy="154.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="67" y="-154" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dcdp_c</text>
+            </g>
+            <g id="63">
+                <rect x="39.5" y="226.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="40" y="-226.933" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ADK3</text>
+            </g>
+            <g id="64">
+                <ellipse cx="148.998" cy="195.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="148.998" y="-195.482" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_uri_c</text>
+            </g>
+            <g id="65">
+                <rect x="173.75" y="13.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="174.25" y="-13.9429" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ADK1m</text>
+            </g>
+            <g id="66">
+                <ellipse cx="55" cy="195.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="55" y="-195.5" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_cytd_c</text>
+            </g>
+            <g id="67">
+                <rect x="163" y="-8" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="163.5" y="7.56667" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ADK1</text>
+            </g>
+            <g id="68">
+                <ellipse cx="67" cy="219.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="67" y="-219.107" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_cmp_c</text>
+            </g>
+            <g id="69">
+                <rect x="117.5" y="126.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="118" y="-127.295" font-size="0.24" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ADD</text>
+            </g>
+            <g id="70">
+                <rect x="39.5" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="40" y="-167.818" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNDR1</text>
+            </g>
+            <g id="71">
+                <rect x="144.5" y="56.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="145" y="-57.3083" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_XPPT</text>
+            </g>
+            <g id="72">
+                <rect x="48.5" y="226.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="49" y="-226.95" font-size="0.15" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_CYTDK2</text>
+            </g>
+            <g id="73">
+                <ellipse cx="70.375" cy="195.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="70.375" y="-195.482" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_cdp_c</text>
+            </g>
+            <g id="74">
+                <rect x="134" y="146.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="134.5" y="-147.295" font-size="0.24" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ADA</text>
+            </g>
+            <g id="75">
+                <ellipse cx="192.75" cy="36.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="192.75" y="-36.1071" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_udp_n</text>
+            </g>
+            <g id="76">
+                <ellipse cx="206.25" cy="21.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="206.25" y="-21.125" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dadp_n</text>
+            </g>
+            <g id="77">
+                <rect x="140" y="146.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="140.5" y="-147.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ADNK1</text>
+            </g>
+            <g id="78">
+                <ellipse cx="100" cy="136.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="100" y="-135.982" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_ade_c</text>
+            </g>
+            <g id="79">
+                <rect x="22.25" y="8.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="22.75" y="-9.31786" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_GNNUC</text>
+            </g>
+            <g id="80">
+                <ellipse cx="170.25" cy="21.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="170.25" y="-21.125" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dcdp_n</text>
+            </g>
+            <g id="81">
+                <rect x="119" y="146.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="119.5" y="-147.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ADNUC</text>
+            </g>
+            <g id="82">
+                <ellipse cx="119.5" cy="182.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="119.5" y="-182.5" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dump_c</text>
+            </g>
+            <g id="83">
+                <ellipse cx="165.25" cy="18.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="165.25" y="-18.6071" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_gtp_m</text>
+            </g>
+            <g id="84">
+                <rect x="78.5" y="146.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="79" y="-147.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDPK6</text>
+            </g>
+            <g id="85">
+                <ellipse cx="164.25" cy="21.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="164.25" y="-21.125" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dgdp_n</text>
+            </g>
+            <g id="86">
+                <ellipse cx="183.25" cy="18.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="183.25" y="-18.6071" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_itp_m</text>
+            </g>
+            <g id="87">
+                <rect x="203.125" y="40.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="203.625" y="-40.96" font-size="0.12" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_URIDK2rn</text>
+            </g>
+            <g id="88">
+                <ellipse cx="194.75" cy="2.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="194.75" y="-2.60714" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_h2o_g</text>
+            </g>
+            <g id="89">
+                <rect x="164.75" y="-2.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="165.25" y="2.05714" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDPK9</text>
+            </g>
+            <g id="90">
+                <ellipse cx="168.75" cy="36.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="168.75" y="-36.1071" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_gdp_n</text>
+            </g>
+            <g id="91">
+                <ellipse cx="64" cy="136.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="64" y="-136" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dctp_c</text>
+            </g>
+            <g id="92">
+                <ellipse cx="124" cy="195.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="124" y="-195.5" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dcmp_c</text>
+            </g>
+            <g id="93">
+                <rect x="167.75" y="13.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="168.25" y="-13.9429" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ADK3m</text>
+            </g>
+            <g id="94">
+                <ellipse cx="135.249" cy="182.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="135.249" y="-182.5" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dcyt_c</text>
+            </g>
+            <g id="95">
+                <ellipse cx="79" cy="154.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="79" y="-154" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dudp_c</text>
+            </g>
+            <g id="96">
+                <ellipse cx="168.25" cy="-6.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="168.25" y="6.89286" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_itp_c</text>
+            </g>
+            <g id="97">
+                <ellipse cx="73" cy="116.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="73" y="-116.5" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dutp_c</text>
+            </g>
+            <g id="98">
+                <ellipse cx="191.75" cy="-6.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="191.75" y="6.89286" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_gmp_g</text>
+            </g>
+            <g id="99">
+                <ellipse cx="165.25" cy="9.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="165.25" y="-9.10714" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_gdp_m</text>
+            </g>
+            <g id="100">
+                <rect x="96.5" y="126.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="97" y="-127.308" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ADPT</text>
+            </g>
+            <g id="101">
+                <ellipse cx="19" cy="154.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="19" y="-154" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dgdp_c</text>
+            </g>
+            <g id="102">
+                <ellipse cx="183.25" cy="9.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="183.25" y="-9.10714" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_idp_m</text>
+            </g>
+            <g id="103">
+                <ellipse cx="137.5" cy="154.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="137.5" y="-154" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_duri_c</text>
+            </g>
+            <g id="104">
+                <ellipse cx="165.25" cy="2.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="165.25" y="-2.60714" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_idp_c</text>
+            </g>
+            <g id="105">
+                <ellipse cx="13" cy="136.125" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="13" y="-136" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dgtp_c</text>
+            </g>
+            <g id="106">
+                <ellipse cx="82.75" cy="195.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="82.75" y="-195.482" font-size="0.428571" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_udp_c</text>
+            </g>
+            <g id="107">
+                <rect x="199.75" y="7" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="200.25" y="-7.44286" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_DTMPK</text>
+            </g>
+            <g id="108">
+                <ellipse cx="200.25" cy="21.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="200.25" y="-21.125" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dudp_n</text>
+            </g>
+            <g id="109">
+                <ellipse cx="183.75" cy="36.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="183.75" y="-36.1389" font-size="0.333333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_trdrd_n</text>
+            </g>
+            <g id="110">
+                <rect x="63.5" y="126.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="64" y="-127.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_DCTPD</text>
+            </g>
+            <g id="111">
+                <ellipse cx="191.25" cy="21.25" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="191.25" y="-21.1389" font-size="0.333333" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_trdox_n</text>
+            </g>
+            <g id="112">
+                <rect x="140" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="140.5" y="-167.818" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_DCYTD</text>
+            </g>
+            <g id="113">
+                <ellipse cx="145" cy="31.625" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="145" y="-31.5" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_xtsn_c</text>
+            </g>
+            <g id="114">
+                <rect x="48.5" y="8.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="49" y="-9.30833" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_GSNK</text>
+            </g>
+            <g id="115">
+                <rect x="33.5" y="226.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="34" y="-226.933" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTP3</text>
+            </g>
+            <g id="116">
+                <rect x="62" y="56.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="62.5" y="-57.325" font-size="0.15" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_GUAPRT</text>
+            </g>
+            <g id="117">
+                <rect x="107" y="187.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="107.5" y="-188.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_CYTK2</text>
+            </g>
+            <g id="118">
+                <rect x="134" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="134.5" y="-167.808" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTD1</text>
+            </g>
+            <g id="119">
+                <ellipse cx="200.25" cy="2.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="200.25" y="-2.625" font-size="0.375" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_dtdp_c</text>
+            </g>
+            <g id="120">
+                <rect x="114.5" y="8.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="115" y="-9.31786" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_PUNP3</text>
+            </g>
+            <g id="121">
+                <rect x="30.5" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="31" y="-167.818" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_RNTR1</text>
+            </g>
+            <g id="122">
+                <rect x="134" y="35.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="134.5" y="-36.3083" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_INSK</text>
+            </g>
+            <g id="123">
+                <rect x="82.25" y="203" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="82.75" y="-203.433" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_UMPK</text>
+            </g>
+            <g id="124">
+                <rect x="21.5" y="146.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="22" y="-147.308" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDP4</text>
+            </g>
+            <g id="125">
+                <rect x="194.125" y="40.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="194.625" y="-40.9429" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_UMPKn</text>
+            </g>
+            <g id="126">
+                <rect x="54.5" y="203" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="55" y="-203.443" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDPK1</text>
+            </g>
+            <g id="127">
+                <rect x="77" y="187.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="77.5" y="-188.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDPK2</text>
+            </g>
+            <g id="128">
+                <rect x="63.5" y="187.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="64" y="-188.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDPK3</text>
+            </g>
+            <g id="129">
+                <rect x="199.75" y="-2.5" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="200.25" y="2.05714" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDPK4</text>
+            </g>
+            <g id="130">
+                <rect x="15.5" y="146.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="16" y="-147.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDPK5</text>
+            </g>
+            <g id="131">
+                <rect x="66.5" y="146.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="67" y="-147.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDPK7</text>
+            </g>
+            <g id="132">
+                <ellipse cx="197.75" cy="-6.75" rx="1.25" ry="1.25" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="197.75" y="6.91667" font-size="0.5" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_pi_g</text>
+            </g>
+            <g id="133">
+                <rect x="49.4375" y="146.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="49.9375" y="-147.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NDPK8</text>
+            </g>
+            <g id="134">
+                <rect x="90.5" y="146.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="91" y="-147.308" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_DADA</text>
+            </g>
+            <g id="135">
+                <rect x="144.5" y="35.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="145" y="-36.3179" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTD10</text>
+            </g>
+            <g id="136">
+                <rect x="81.5" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="82" y="-167.808" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_DADK</text>
+            </g>
+            <g id="137">
+                <rect x="126.5" y="56.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="127" y="-57.3179" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTD11</text>
+            </g>
+            <g id="138">
+                <rect x="21.5" y="111.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="22" y="-111.818" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_PUNP4</text>
+            </g>
+            <g id="139">
+                <rect x="142.25" y="203" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="142.75" y="-203.433" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTD2</text>
+            </g>
+            <g id="140">
+                <rect x="125" y="35.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="125.5" y="-36.3179" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_PUNP5</text>
+            </g>
+            <g id="141">
+                <rect x="90.5" y="126.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="91" y="-127.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_PUNP6</text>
+            </g>
+            <g id="142">
+                <rect x="60.5" y="203" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="61" y="-203.433" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTD4</text>
+            </g>
+            <g id="143">
+                <rect x="147.5" y="8.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="148" y="-9.31786" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_PUNP7</text>
+            </g>
+            <g id="144">
+                <rect x="205.75" y="7" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="206.25" y="-7.43333" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTD5</text>
+            </g>
+            <g id="145">
+                <rect x="107" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="107.5" y="-167.808" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTD6</text>
+            </g>
+            <g id="146">
+                <rect x="128" y="167.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="128.5" y="-167.808" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTD7</text>
+            </g>
+            <g id="147">
+                <rect x="126.5" y="111.375" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="127" y="-111.818" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_HXPRT</text>
+            </g>
+            <g id="148">
+                <rect x="21.5" y="126.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="22" y="-127.308" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTD8</text>
+            </g>
+            <g id="149">
+                <rect x="44.6651" y="35.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="45.1651" y="-36.3083" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTD9</text>
+            </g>
+            <g id="150">
+                <rect x="8" y="126.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="8.5" y="-127.308" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTP4</text>
+            </g>
+            <g id="151">
+                <rect x="128" y="146.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="128.5" y="-147.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_PUNP1</text>
+            </g>
+            <g id="152">
+                <rect x="84.5" y="146.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="85" y="-147.318" font-size="0.171429" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_PUNP2</text>
+            </g>
+            <g id="153">
+                <rect x="132.702" y="187.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="133.202" y="-188.308" font-size="0.2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_NTD3</text>
+            </g>
+            <g id="154">
+                <rect x="154.25" y="187.875" width="1" height="1" rx="0.05" ry="0.05" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="154.75" y="-188.325" font-size="0.15" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_PYNP2r</text>
+            </g>
+        </g>
+    </g>
+</svg>
