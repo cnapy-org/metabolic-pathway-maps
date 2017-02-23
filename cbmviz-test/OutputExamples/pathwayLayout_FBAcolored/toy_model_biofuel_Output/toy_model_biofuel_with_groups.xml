@@ -1,0 +1,1315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" xmlns:fbc="http://www.sbml.org/sbml/level3/version1/fbc/version1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:groups="http://www.sbml.org/sbml/level3/version1/groups/version1" xmlns:layout="http://www.sbml.org/sbml/level3/version1/layout/version1" level="3" version="1">
+  <model metaid="meta_toy_model_biofuel" id="toy_model_biofuel" substanceUnits="mmol_per_gdw" timeUnits="hour" extentUnits="mmol_per_gdw">
+    <notes>
+      <html:p>
+        <html:span style="font-family: Courier New,Courier,monospace;">Model%20new_model%20%28cbmpy_fbc_model%29%20generated%20with%20CBMPy%20%280.7.6.457%29%20on%20Mon%2C%2003%20Oct%202016%2009%3A39%3A35.</html:span>
+      </html:p>
+    </notes>
+    <annotation>
+      <listOfGeneAssociations xmlns="http://www.sbml.org/sbml/level3/version1/fbc/version1">
+        <geneAssociation id="R18_assoc" reaction="R18">
+          <gene reference="gP"/>
+        </geneAssociation>
+        <geneAssociation id="R01_assoc" reaction="R01">
+          <gene reference="gA"/>
+        </geneAssociation>
+        <geneAssociation id="R10_assoc" reaction="R10">
+          <and>
+            <gene reference="gH"/>
+            <gene reference="gI"/>
+          </and>
+        </geneAssociation>
+        <geneAssociation id="R12_assoc" reaction="R12">
+          <gene reference="gK"/>
+        </geneAssociation>
+        <geneAssociation id="R05_assoc" reaction="R05">
+          <gene reference="gE"/>
+        </geneAssociation>
+        <geneAssociation id="R11_assoc" reaction="R11">
+          <gene reference="gJ"/>
+        </geneAssociation>
+        <geneAssociation id="R07_assoc" reaction="R07">
+          <gene reference="gF"/>
+        </geneAssociation>
+        <geneAssociation id="R08_assoc" reaction="R08">
+          <gene reference="gG"/>
+        </geneAssociation>
+        <geneAssociation id="R16_assoc" reaction="R16">
+          <gene reference="gN"/>
+        </geneAssociation>
+        <geneAssociation id="R15_assoc" reaction="R15">
+          <gene reference="gN"/>
+        </geneAssociation>
+        <geneAssociation id="R06_assoc" reaction="R06">
+          <gene reference="gF"/>
+        </geneAssociation>
+        <geneAssociation id="R17_assoc" reaction="R17">
+          <gene reference="gO"/>
+        </geneAssociation>
+        <geneAssociation id="R03_assoc" reaction="R03">
+          <gene reference="gC"/>
+        </geneAssociation>
+        <geneAssociation id="R13_assoc" reaction="R13">
+          <gene reference="gL"/>
+        </geneAssociation>
+        <geneAssociation id="R04_assoc" reaction="R04">
+          <gene reference="gD"/>
+        </geneAssociation>
+        <geneAssociation id="R14_assoc" reaction="R14">
+          <gene reference="gM"/>
+        </geneAssociation>
+        <geneAssociation id="R09_assoc" reaction="R09">
+          <and>
+            <gene reference="gH"/>
+            <gene reference="gI"/>
+          </and>
+        </geneAssociation>
+        <geneAssociation id="R02_assoc" reaction="R02">
+          <gene reference="gB"/>
+        </geneAssociation>
+      </listOfGeneAssociations>
+    </annotation>
+    <listOfUnitDefinitions>
+      <unitDefinition id="mmol_per_hour" name="mmol_per_hour">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-3" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="3600"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="per_hour" name="per_hour">
+        <listOfUnits>
+          <unit kind="second" exponent="-1" scale="0" multiplier="3600"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="mmol_per_gdw" name="mmol_per_gdw">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-3" multiplier="1"/>
+          <unit kind="gram" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="hour" name="hour">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="3600"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="meta_Cell" id="Cell" name="Cell" spatialDimensions="3" size="1" units="dimensionless" constant="true">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="CBMPy_info" value="created by SBML writer"/>
+          </listOfKeyValueData>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="meta_ADP" id="ADP" name="ADP" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_ATP" id="ATP" name="ATP" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M1" id="M1" name="M1" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M10" id="M10" name="M10" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M11" id="M11" name="M11" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M12" id="M12" name="M12" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M13" id="M13" name="M13" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M2" id="M2" name="M2" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M3" id="M3" name="M3" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M4" id="M4" name="M4" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M5" id="M5" name="M5" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M6" id="M6" name="M6" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M7" id="M7" name="M7" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M8" id="M8" name="M8" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_M9" id="M9" name="M9" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_S" id="S" name="S" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_biomass" id="biomass" name="biomass" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_fuel1" id="fuel1" name="fuel1" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+      <species metaid="meta_fuel2" id="fuel2" name="fuel2" compartment="Cell" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="SUBSYSTEM" value="metabolism"/>
+          </listOfKeyValueData>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction metaid="meta_R01" id="R01" name="R01" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gA)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="S" stoichiometry="1" constant="true"/>
+          <speciesReference species="ATP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M1" stoichiometry="1" constant="true"/>
+          <speciesReference species="ADP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R16" id="R16" name="R16" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gN)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M12" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R03" id="R03" name="R03" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gC)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="ADP" stoichiometry="1" constant="true"/>
+          <speciesReference species="M2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M3" stoichiometry="1" constant="true"/>
+          <speciesReference species="ATP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R02" id="R02" name="R02" reversible="true" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gB)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R05" id="R05" name="R05" reversible="true" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gE)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R04" id="R04" name="R04" reversible="true" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gD)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M4" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R07" id="R07" name="R07" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gF)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M7" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R06" id="R06" name="R06" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gF)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M6" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R09" id="R09" name="R09" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gH) and (gI)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M8" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="fuel1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R08" id="R08" name="R08" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gG)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M7" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M5" stoichiometry="0.5" constant="true"/>
+          <speciesReference species="M8" stoichiometry="0.5" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R11" id="R11" name="R11" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gJ)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R14" id="R14" name="R14" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gM)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M11" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M13" stoichiometry="0.3" constant="true"/>
+          <speciesReference species="M12" stoichiometry="0.7" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R18" id="R18" name="R18" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gP)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M8" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R10" id="R10" name="R10" reversible="true" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gH) and (gI)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R15" id="R15" name="R15" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gN)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M13" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="fuel2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R17" id="R17" name="R17" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gO)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="biomass" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R12" id="R12" name="R12" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gK)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M10" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+      <reaction metaid="meta_R13" id="R13" name="R13" reversible="false" fast="false">
+        <annotation>
+          <listOfKeyValueData xmlns="http://pysces.sourceforge.net/KeyValueData">
+            <data id="GENE ASSOCIATION" value="(gL)"/>
+          </listOfKeyValueData>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="M9" stoichiometry="1" constant="true"/>
+          <speciesReference species="ADP" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M11" stoichiometry="1" constant="true"/>
+          <speciesReference species="ATP" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+      </reaction>
+    </listOfReactions>
+    <fbc:listOfFluxBounds>
+      <fbc:fluxBound fbc:id="R01_lb" fbc:reaction="R01" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R01_ub" fbc:reaction="R01" fbc:operation="lessEqual" fbc:value="100"/>
+      <fbc:fluxBound fbc:id="R16_lb" fbc:reaction="R16" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R16_ub" fbc:reaction="R16" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R03_lb" fbc:reaction="R03" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R03_ub" fbc:reaction="R03" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R02_lb" fbc:reaction="R02" fbc:operation="greaterEqual" fbc:value="-INF"/>
+      <fbc:fluxBound fbc:id="R02_ub" fbc:reaction="R02" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R05_lb" fbc:reaction="R05" fbc:operation="greaterEqual" fbc:value="-INF"/>
+      <fbc:fluxBound fbc:id="R05_ub" fbc:reaction="R05" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R04_lb" fbc:reaction="R04" fbc:operation="greaterEqual" fbc:value="-INF"/>
+      <fbc:fluxBound fbc:id="R04_ub" fbc:reaction="R04" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R07_lb" fbc:reaction="R07" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R07_ub" fbc:reaction="R07" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R06_lb" fbc:reaction="R06" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R06_ub" fbc:reaction="R06" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R09_lb" fbc:reaction="R09" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R09_ub" fbc:reaction="R09" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R08_lb" fbc:reaction="R08" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R08_ub" fbc:reaction="R08" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R11_lb" fbc:reaction="R11" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R11_ub" fbc:reaction="R11" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R14_lb" fbc:reaction="R14" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R14_ub" fbc:reaction="R14" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R18_lb" fbc:reaction="R18" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R18_ub" fbc:reaction="R18" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R10_lb" fbc:reaction="R10" fbc:operation="greaterEqual" fbc:value="-INF"/>
+      <fbc:fluxBound fbc:id="R10_ub" fbc:reaction="R10" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R15_lb" fbc:reaction="R15" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R15_ub" fbc:reaction="R15" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R12_lb" fbc:reaction="R12" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R12_ub" fbc:reaction="R12" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R17_lb" fbc:reaction="R17" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R17_ub" fbc:reaction="R17" fbc:operation="lessEqual" fbc:value="INF"/>
+      <fbc:fluxBound fbc:id="R13_lb" fbc:reaction="R13" fbc:operation="greaterEqual" fbc:value="0"/>
+      <fbc:fluxBound fbc:id="R13_ub" fbc:reaction="R13" fbc:operation="lessEqual" fbc:value="INF"/>
+    </fbc:listOfFluxBounds>
+    <fbc:listOfObjectives fbc:activeObjective="objMaxJ17">
+      <fbc:objective fbc:id="objMaxJ17" fbc:type="maximize">
+        <fbc:listOfFluxObjectives>
+          <fbc:fluxObjective fbc:reaction="R17" fbc:coefficient="1"/>
+        </fbc:listOfFluxObjectives>
+      </fbc:objective>
+    </fbc:listOfObjectives>
+    <groups:listOfGroups>
+      <groups:group metaid="meta_g_ubiquitous_sps" sboTerm="SBO:0000248" groups:id="g_ubiquitous_sps" groups:name="ubiquitous species" groups:kind="collection">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:vCard4="http://www.w3.org/2006/vcard/ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#meta_g_ubiquitous_sps">
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ubiquitous"/>
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </groups:group>
+    </groups:listOfGroups>
+    <layout:listOfLayouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:layout="http://www.sbml.org/sbml/level3/version1/layout/version1">
+      <layout:layout layout:id="l_">
+        <layout:dimensions layout:width="570.509033203125" layout:height="1757.48988342285"/>
+        <layout:listOfCompartmentGlyphs>
+          <layout:compartmentGlyph layout:id="cg_l__Cell" layout:compartment="Cell">
+            <layout:boundingBox>
+              <layout:position layout:x="16" layout:y="16.0000152587891"/>
+              <layout:dimensions layout:width="538.509033203125" layout:height="1725.48986816406"/>
+            </layout:boundingBox>
+          </layout:compartmentGlyph>
+        </layout:listOfCompartmentGlyphs>
+        <layout:listOfSpeciesGlyphs>
+          <layout:speciesGlyph layout:id="sg_l__ADP" layout:species="ADP">
+            <layout:boundingBox>
+              <layout:position layout:x="411.653747558594" layout:y="1241.03993225098"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__ATP" layout:species="ATP">
+            <layout:boundingBox>
+              <layout:position layout:x="135.170593261719" layout:y="1241.03993225098"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M1" layout:species="M1">
+            <layout:boundingBox>
+              <layout:position layout:x="201.373291015625" layout:y="1701.48988342285"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M10" layout:species="M10">
+            <layout:boundingBox>
+              <layout:position layout:x="259.098815917969" layout:y="1045.62104797363"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M11" layout:species="M11">
+            <layout:boundingBox>
+              <layout:position layout:x="155.412170410156" layout:y="1116.44856262207"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M12" layout:species="M12">
+            <layout:boundingBox>
+              <layout:position layout:x="99.4121704101563" layout:y="948.44856262207"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M13" layout:species="M13">
+            <layout:boundingBox>
+              <layout:position layout:x="211.412170410156" layout:y="948.44856262207"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M2" layout:species="M2">
+            <layout:boundingBox>
+              <layout:position layout:x="466.656982421875" layout:y="1623.59559631348"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M3" layout:species="M3">
+            <layout:boundingBox>
+              <layout:position layout:x="377.488525390625" layout:y="355.493240356445"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M4" layout:species="M4">
+            <layout:boundingBox>
+              <layout:position layout:x="462.824340820313" layout:y="618.130020141602"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M5" layout:species="M5">
+            <layout:boundingBox>
+              <layout:position layout:x="239.412231445313" layout:y="780.44856262207"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M6" layout:species="M6">
+            <layout:boundingBox>
+              <layout:position layout:x="101.335876464844" layout:y="355.493240356445"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M7" layout:species="M7">
+            <layout:boundingBox>
+              <layout:position layout:x="16" layout:y="618.130020141602"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M8" layout:species="M8">
+            <layout:boundingBox>
+              <layout:position layout:x="239.412170410156" layout:y="154.629470825195"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__M9" layout:species="M9">
+            <layout:boundingBox>
+              <layout:position layout:x="20.3153381347656" layout:y="1492.53797912598"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__S" layout:species="S">
+            <layout:boundingBox>
+              <layout:position layout:x="233.910041809082" layout:y="1259.82228088379"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__biomass" layout:species="biomass">
+            <layout:boundingBox>
+              <layout:position layout:x="193.572593688965" layout:y="184.000007629395"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__fuel1" layout:species="fuel1">
+            <layout:boundingBox>
+              <layout:position layout:x="193.572601318359" layout:y="16"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+          <layout:speciesGlyph layout:id="sg_l__fuel2" layout:species="fuel2">
+            <layout:boundingBox>
+              <layout:position layout:x="165.572601318359" layout:y="809.819107055664"/>
+              <layout:dimensions layout:width="40" layout:height="40"/>
+            </layout:boundingBox>
+          </layout:speciesGlyph>
+        </layout:listOfSpeciesGlyphs>
+        <layout:listOfReactionGlyphs>
+          <layout:reactionGlyph layout:id="rg_l__R01" layout:reaction="R01">
+            <layout:boundingBox>
+              <layout:position layout:x="285.412170410156" layout:y="1212.44862365723"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R01_S" layout:speciesGlyph="sg_l__S" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R01_ATP" layout:speciesGlyph="sg_l__ATP" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R01_M1" layout:speciesGlyph="sg_l__M1" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R01_ADP" layout:speciesGlyph="sg_l__ADP" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R16" layout:reaction="R16">
+            <layout:boundingBox>
+              <layout:position layout:x="111.412170410156" layout:y="876.44856262207"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R16_M12" layout:speciesGlyph="sg_l__M12" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R16_M5" layout:speciesGlyph="sg_l__M5" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R03" layout:reaction="R03">
+            <layout:boundingBox>
+              <layout:position layout:x="518.004638671875" layout:y="1361.92665100098"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R03_ADP" layout:speciesGlyph="sg_l__ADP" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R03_M2" layout:speciesGlyph="sg_l__M2" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R03_M3" layout:speciesGlyph="sg_l__M3" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R03_ATP" layout:speciesGlyph="sg_l__ATP" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R02" layout:reaction="R02">
+            <layout:boundingBox>
+              <layout:position layout:x="357.451049804688" layout:y="1713.48988342285"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R02_M1" layout:speciesGlyph="sg_l__M1" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R02_M2" layout:speciesGlyph="sg_l__M2" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R05" layout:reaction="R05">
+            <layout:boundingBox>
+              <layout:position layout:x="389.488525390625" layout:y="747.58479309082"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R05_M4" layout:speciesGlyph="sg_l__M4" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R05_M5" layout:speciesGlyph="sg_l__M5" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R04" layout:reaction="R04">
+            <layout:boundingBox>
+              <layout:position layout:x="474.824340820313" layout:y="484.948013305664"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R04_M3" layout:speciesGlyph="sg_l__M3" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R04_M4" layout:speciesGlyph="sg_l__M4" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R07" layout:reaction="R07">
+            <layout:boundingBox>
+              <layout:position layout:x="28" layout:y="484.948013305664"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R07_M6" layout:speciesGlyph="sg_l__M6" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R07_M7" layout:speciesGlyph="sg_l__M7" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R06" layout:reaction="R06">
+            <layout:boundingBox>
+              <layout:position layout:x="251.412231445313" layout:y="322.629531860352"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R06_M3" layout:speciesGlyph="sg_l__M3" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R06_M6" layout:speciesGlyph="sg_l__M6" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R09" layout:reaction="R09">
+            <layout:boundingBox>
+              <layout:position layout:x="251.412170410156" layout:y="82.6294708251953"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R09_M8" layout:speciesGlyph="sg_l__M8" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R09_fuel1" layout:speciesGlyph="sg_l__fuel1" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R08" layout:reaction="R08">
+            <layout:boundingBox>
+              <layout:position layout:x="113.335876464844" layout:y="747.58479309082"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R08_M7" layout:speciesGlyph="sg_l__M7" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R08_M5" layout:speciesGlyph="sg_l__M5" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R08_M8" layout:speciesGlyph="sg_l__M8" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R11" layout:reaction="R11">
+            <layout:boundingBox>
+              <layout:position layout:x="538.509033203125" layout:y="1504.53797912598"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R11_M9" layout:speciesGlyph="sg_l__M9" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R11_M2" layout:speciesGlyph="sg_l__M2" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R14" layout:reaction="R14">
+            <layout:boundingBox>
+              <layout:position layout:x="167.412170410156" layout:y="1044.44856262207"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R14_M11" layout:speciesGlyph="sg_l__M11" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R14_M13" layout:speciesGlyph="sg_l__M13" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R14_M12" layout:speciesGlyph="sg_l__M12" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R18" layout:reaction="R18">
+            <layout:boundingBox>
+              <layout:position layout:x="139.412170410156" layout:y="250.629470825195"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R18_M3" layout:speciesGlyph="sg_l__M3" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R18_M8" layout:speciesGlyph="sg_l__M8" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R10" layout:reaction="R10">
+            <layout:boundingBox>
+              <layout:position layout:x="92.1673889160156" layout:y="1635.59559631348"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R10_M1" layout:speciesGlyph="sg_l__M1" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R10_M9" layout:speciesGlyph="sg_l__M9" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R15" layout:reaction="R15">
+            <layout:boundingBox>
+              <layout:position layout:x="223.412170410156" layout:y="876.44856262207"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R15_M13" layout:speciesGlyph="sg_l__M13" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R15_fuel2" layout:speciesGlyph="sg_l__fuel2" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R17" layout:reaction="R17">
+            <layout:boundingBox>
+              <layout:position layout:x="251.412170410156" layout:y="250.629470825195"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R17_M5" layout:speciesGlyph="sg_l__M5" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R17_biomass" layout:speciesGlyph="sg_l__biomass" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R12" layout:reaction="R12">
+            <layout:boundingBox>
+              <layout:position layout:x="279.412170410156" layout:y="1128.44856262207"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R12_M9" layout:speciesGlyph="sg_l__M9" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R12_M10" layout:speciesGlyph="sg_l__M10" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+          <layout:reactionGlyph layout:id="rg_l__R13" layout:reaction="R13">
+            <layout:boundingBox>
+              <layout:position layout:x="52.8197326660156" layout:y="1361.92665100098"/>
+              <layout:dimensions layout:width="16" layout:height="16"/>
+            </layout:boundingBox>
+            <layout:listOfSpeciesReferenceGlyphs>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R13_M9" layout:speciesGlyph="sg_l__M9" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R13_ADP" layout:speciesGlyph="sg_l__ADP" layout:role="substrate">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R13_M11" layout:speciesGlyph="sg_l__M11" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+              <layout:speciesReferenceGlyph layout:id="srg_l__R13_ATP" layout:speciesGlyph="sg_l__ATP" layout:role="product">
+                <layout:boundingBox>
+                  <layout:position layout:x="0" layout:y="0"/>
+                  <layout:dimensions layout:width="0" layout:height="0"/>
+                </layout:boundingBox>
+              </layout:speciesReferenceGlyph>
+            </layout:listOfSpeciesReferenceGlyphs>
+          </layout:reactionGlyph>
+        </layout:listOfReactionGlyphs>
+        <layout:listOfTextGlyphs>
+          <layout:textGlyph layout:id="tg_l__Cell" layout:text="Cell" layout:graphicalObject="cg_l__Cell">
+            <layout:boundingBox>
+              <layout:position layout:x="-199.40361328125" layout:y="-674.195932006836"/>
+              <layout:dimensions layout:width="969.316259765625" layout:height="3105.88176269531"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__ADP" layout:text="ADP" layout:graphicalObject="sg_l__ADP">
+            <layout:boundingBox>
+              <layout:position layout:x="395.653747558594" layout:y="1225.03993225098"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__ATP" layout:text="ATP" layout:graphicalObject="sg_l__ATP">
+            <layout:boundingBox>
+              <layout:position layout:x="119.170593261719" layout:y="1225.03993225098"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M1" layout:text="M1" layout:graphicalObject="sg_l__M1">
+            <layout:boundingBox>
+              <layout:position layout:x="185.373291015625" layout:y="1685.48988342285"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M10" layout:text="M10" layout:graphicalObject="sg_l__M10">
+            <layout:boundingBox>
+              <layout:position layout:x="243.098815917969" layout:y="1029.62104797363"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M11" layout:text="M11" layout:graphicalObject="sg_l__M11">
+            <layout:boundingBox>
+              <layout:position layout:x="139.412170410156" layout:y="1100.44856262207"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M12" layout:text="M12" layout:graphicalObject="sg_l__M12">
+            <layout:boundingBox>
+              <layout:position layout:x="83.4121704101563" layout:y="932.44856262207"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M13" layout:text="M13" layout:graphicalObject="sg_l__M13">
+            <layout:boundingBox>
+              <layout:position layout:x="195.412170410156" layout:y="932.44856262207"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M2" layout:text="M2" layout:graphicalObject="sg_l__M2">
+            <layout:boundingBox>
+              <layout:position layout:x="450.656982421875" layout:y="1607.59559631348"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M3" layout:text="M3" layout:graphicalObject="sg_l__M3">
+            <layout:boundingBox>
+              <layout:position layout:x="361.488525390625" layout:y="339.493240356445"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M4" layout:text="M4" layout:graphicalObject="sg_l__M4">
+            <layout:boundingBox>
+              <layout:position layout:x="446.824340820313" layout:y="602.130020141602"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M5" layout:text="M5" layout:graphicalObject="sg_l__M5">
+            <layout:boundingBox>
+              <layout:position layout:x="223.412231445313" layout:y="764.44856262207"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M6" layout:text="M6" layout:graphicalObject="sg_l__M6">
+            <layout:boundingBox>
+              <layout:position layout:x="85.3358764648438" layout:y="339.493240356445"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M7" layout:text="M7" layout:graphicalObject="sg_l__M7">
+            <layout:boundingBox>
+              <layout:position layout:x="0" layout:y="602.130020141602"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M8" layout:text="M8" layout:graphicalObject="sg_l__M8">
+            <layout:boundingBox>
+              <layout:position layout:x="223.412170410156" layout:y="138.629470825195"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__M9" layout:text="M9" layout:graphicalObject="sg_l__M9">
+            <layout:boundingBox>
+              <layout:position layout:x="4.31533813476563" layout:y="1476.53797912598"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__S" layout:text="S" layout:graphicalObject="sg_l__S">
+            <layout:boundingBox>
+              <layout:position layout:x="217.910041809082" layout:y="1243.82228088379"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__biomass" layout:text="biomass" layout:graphicalObject="sg_l__biomass">
+            <layout:boundingBox>
+              <layout:position layout:x="177.572593688965" layout:y="168.000007629395"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__fuel1" layout:text="fuel1" layout:graphicalObject="sg_l__fuel1">
+            <layout:boundingBox>
+              <layout:position layout:x="177.572601318359" layout:y="0"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__fuel2" layout:text="fuel2" layout:graphicalObject="sg_l__fuel2">
+            <layout:boundingBox>
+              <layout:position layout:x="149.572601318359" layout:y="793.819107055664"/>
+              <layout:dimensions layout:width="72" layout:height="72"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R01" layout:text="R01" layout:graphicalObject="rg_l__R01">
+            <layout:boundingBox>
+              <layout:position layout:x="279.012170410156" layout:y="1206.04862365723"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R16" layout:text="R16" layout:graphicalObject="rg_l__R16">
+            <layout:boundingBox>
+              <layout:position layout:x="105.012170410156" layout:y="870.04856262207"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R03" layout:text="R03" layout:graphicalObject="rg_l__R03">
+            <layout:boundingBox>
+              <layout:position layout:x="511.604638671875" layout:y="1355.52665100098"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R02" layout:text="R02" layout:graphicalObject="rg_l__R02">
+            <layout:boundingBox>
+              <layout:position layout:x="351.051049804688" layout:y="1707.08988342285"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R05" layout:text="R05" layout:graphicalObject="rg_l__R05">
+            <layout:boundingBox>
+              <layout:position layout:x="383.088525390625" layout:y="741.18479309082"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R04" layout:text="R04" layout:graphicalObject="rg_l__R04">
+            <layout:boundingBox>
+              <layout:position layout:x="468.424340820313" layout:y="478.548013305664"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R07" layout:text="R07" layout:graphicalObject="rg_l__R07">
+            <layout:boundingBox>
+              <layout:position layout:x="21.6" layout:y="478.548013305664"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R06" layout:text="R06" layout:graphicalObject="rg_l__R06">
+            <layout:boundingBox>
+              <layout:position layout:x="245.012231445312" layout:y="316.229531860352"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R09" layout:text="R09" layout:graphicalObject="rg_l__R09">
+            <layout:boundingBox>
+              <layout:position layout:x="245.012170410156" layout:y="76.2294708251953"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R08" layout:text="R08" layout:graphicalObject="rg_l__R08">
+            <layout:boundingBox>
+              <layout:position layout:x="106.935876464844" layout:y="741.18479309082"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R11" layout:text="R11" layout:graphicalObject="rg_l__R11">
+            <layout:boundingBox>
+              <layout:position layout:x="532.109033203125" layout:y="1498.13797912598"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R14" layout:text="R14" layout:graphicalObject="rg_l__R14">
+            <layout:boundingBox>
+              <layout:position layout:x="161.012170410156" layout:y="1038.04856262207"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R18" layout:text="R18" layout:graphicalObject="rg_l__R18">
+            <layout:boundingBox>
+              <layout:position layout:x="133.012170410156" layout:y="244.229470825195"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R10" layout:text="R10" layout:graphicalObject="rg_l__R10">
+            <layout:boundingBox>
+              <layout:position layout:x="85.7673889160156" layout:y="1629.19559631348"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R15" layout:text="R15" layout:graphicalObject="rg_l__R15">
+            <layout:boundingBox>
+              <layout:position layout:x="217.012170410156" layout:y="870.04856262207"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R17" layout:text="R17" layout:graphicalObject="rg_l__R17">
+            <layout:boundingBox>
+              <layout:position layout:x="245.012170410156" layout:y="244.229470825195"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R12" layout:text="R12" layout:graphicalObject="rg_l__R12">
+            <layout:boundingBox>
+              <layout:position layout:x="273.012170410156" layout:y="1122.04856262207"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+          <layout:textGlyph layout:id="tg_l__R13" layout:text="R13" layout:graphicalObject="rg_l__R13">
+            <layout:boundingBox>
+              <layout:position layout:x="46.4197326660156" layout:y="1355.52665100098"/>
+              <layout:dimensions layout:width="28.8" layout:height="28.8"/>
+            </layout:boundingBox>
+          </layout:textGlyph>
+        </layout:listOfTextGlyphs>
+      </layout:layout>
+    </layout:listOfLayouts>
+  </model>
+</sbml>

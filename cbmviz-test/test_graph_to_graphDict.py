@@ -18,7 +18,8 @@ output_path = cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
 # delete old graph_registry object
 del(graph_registry)
 # import a .tlp file and load graph object
-test_graph_obj = cbmviz.loadGraphObjFromFile("C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\OutputExamples\pathwayLayout_FBAcolored\iIT341_Output\iIT341_output_whole.tlp")
+test_path = os.path.join(cDir, "OutputExamples", "pathwayLayout_FBAcolored", "iIT341_Output", "iIT341_output_whole.tlp")
+test_graph_obj = cbmviz.loadGraphObjFromFile(test_path)
 # store the graph object in a new graph_registry dict
 # (same structure -> keys: graph names, values: [graph_obj, {graph_prop dict}])
 test_graph_registry = cbmviz.createGraphDictFromGraphObj(test_graph_obj)

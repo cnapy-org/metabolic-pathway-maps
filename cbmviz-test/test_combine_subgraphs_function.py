@@ -15,16 +15,20 @@ output_path = cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
 
 # test combine subgraphs function
 # -------------------------------
-# 1.) iIT341 "TCA cycle"
+# 1.) iIT341 "TCA cycle" (directly from pipeline)
 test_pylori_graph = graph_registry["iIT341_output_whole"][0]
 test_pylori_graph.cbmviz_file_name = "iIT341"
 test_pylori_list = [test_pylori_graph, ["TCA cycle", "Glycolysis"]]
-# 2.) iJO1366 "Citric Acid Cycle"
-test_ecoli_graph = cbmviz.loadGraphObjFromFile("C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\OutputExamples\pathwayLayout_FBAcolored\iJO1366_Output\iJO1366_output_whole.tlp")
+# 2.) iJO1366 "Citric Acid Cycle" (from tlp file)
+test_ecoli_path = os.path.join(cDir, "OutputExamples", "pathwayLayout_FBAcolored", "iJO1366_Output",
+                               "iJO1366_output_whole.tlp")
+test_ecoli_graph = cbmviz.loadGraphObjFromFile(test_ecoli_path)
 test_ecoli_graph.cbmviz_file_name = "iJO1366"
 test_ecoli_list = [test_ecoli_graph, ["Citric Acid Cycle", "Glycolysis/Gluconeogenesis"]]
-# 3.) IND750 "Citric Acid Cycle"
-test_yeast_graph = cbmviz.loadGraphObjFromFile("C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\OutputExamples\pathwayLayout_FBAcolored\iND750_Output\iND750_output_whole.tlp")
+# 3.) IND750 "Citric Acid Cycle" (from tlp file)
+test_yeast_path = os.path.join(cDir, "OutputExamples", "pathwayLayout_FBAcolored", "iND750_Output",
+                               "iND750_output_whole.tlp")
+test_yeast_graph = cbmviz.loadGraphObjFromFile(test_yeast_path)
 test_yeast_graph.cbmviz_file_name = "iND750"
 test_yeast_list = [test_yeast_graph, ["Citric Acid Cycle", "Glycolysis/Gluconeogenesis"]]
 # append the different dicts to the input list
@@ -39,8 +43,8 @@ print("output_combine_graph", output_combine_graph)
 cbmviz.saveGraphObjToTulipFile(output_combine_graph, "test_combine_output.tlp")
 
 
-
-cbmviz.colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, output_path, cmod.getId())
-cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
+# TODO: put the graphs in one (or more?) graph dicts and run coloring+exporting functions
+#cbmviz.colorGraphs(COLORS, global_ops, fba_results, path_dict, graph_registry, output_path, cmod.getId())
+#cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
 
 
