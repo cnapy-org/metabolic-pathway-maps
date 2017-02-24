@@ -81,7 +81,7 @@ def factor_nodes(graph, ns=None):
     return meta_ns
 
 
-def comp_to_meta_node(meta_graph, c_id, (go_id, c_name), out_comp, do_layout=True, n2xy=None):
+def comp_to_meta_node(meta_graph, c_id, (go_id, c_name), out_comp, global_ops, do_layout=True, n2xy=None):
     root = meta_graph.getRoot()
     ns = [n for n in meta_graph.getNodes() if root[COMPARTMENT_ID][n] == c_id]
     if not ns:
@@ -99,7 +99,7 @@ def comp_to_meta_node(meta_graph, c_id, (go_id, c_name), out_comp, do_layout=Tru
     root[VIEW_SHAPE][comp_n] = COMPARTMENT_SHAPE
     root[ID][comp_n] = c_id
     root[TERM][comp_n] = go_id
-    root[VIEW_SIZE][comp_n] = get_n_size(meta_graph, comp_n)
+    root[VIEW_SIZE][comp_n] = get_n_size(meta_graph, comp_n, global_ops)
     for meta_e in root.getInOutEdges(comp_n):
         sample_e = next((ee for ee in root[VIEW_META_GRAPH][meta_e] if not root[UBIQUITOUS][ee]),
                         next(iter(root[VIEW_META_GRAPH][meta_e])))

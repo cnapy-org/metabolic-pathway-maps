@@ -257,7 +257,7 @@ def markUbiquitousNodes(g, ub_list):
             #type[n] = 1
             ub[n] = True
 
-def speciesToNodes(graph, input_model, ub_sps, graph_props):
+def speciesToNodes(graph, input_model, ub_sps, graph_props, global_ops):
     """
     Create graph nodes for each species of a given libsbml model. Different properties such as size, shape,
     etc. are added to the nodes::
@@ -266,6 +266,7 @@ def speciesToNodes(graph, input_model, ub_sps, graph_props):
     - *input_model* a libsbml model
     - *ub_sps* a list of species to be flagged as ubiquitous (for aliasing)
     - *graph_props* a dict of graph properties
+    - *global_ops* a dict with global control variables
 
     """
     id2n = {}
@@ -296,13 +297,13 @@ def speciesToNodes(graph, input_model, ub_sps, graph_props):
         # (species nodes = circle, reaction nodes = square)
         graph_props["viewShape"][n] = graph_properties.SPECIES_SHAPE
         # add size to new node of graph (calculated by function get_n_size in file resize.py)
-        graph_props["viewSize"][n] = resize.get_n_size(graph, n)
+        graph_props["viewSize"][n] = resize.get_n_size(graph, n, global_ops)
         # assign the current species id (key) to the new tulip node n (value) in dict id2n
         id2n[_id] = n
 
     return id2n
 
-def reactionsToNodes(get_r_comp, graph, id2n, input_model, c_id2level, c_id2outs):
+def reactionsToNodes(get_r_comp, graph, id2n, input_model, c_id2level, c_id2outs, global_ops):
     get_sp_comp = lambda _id: input_model.getSpecies(_id).getCompartmentId()
 
     def link_reaction_to_species(reaction_node, sp_ref, all_comps, is_substrate=None, reversible=None):
@@ -333,7 +334,7 @@ def reactionsToNodes(get_r_comp, graph, id2n, input_model, c_id2level, c_id2outs
             graph[graph_properties.REVERSIBLE][n] = True
         # add shape and size graph properties
         graph[graph_properties.VIEW_SHAPE][n] = graph_properties.REACTION_SHAPE
-        graph[graph_properties.VIEW_SIZE][n] = resize.get_n_size(graph, n)
+        graph[graph_properties.VIEW_SIZE][n] = resize.get_n_size(graph, n, global_ops)
         # add edges with function link_reaction_to_species
         # -> preserve type of species and directionality
         all_comps = set()

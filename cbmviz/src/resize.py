@@ -1,9 +1,9 @@
 from tulip import *
 from graph_properties import *
 
+# default node sizes
 SPECIES_SIZE = 2.5
 UBIQUITOUS_SPECIES_SIZE = 2
-
 REACTION_SIZE = 1
 
 UBIQUITOUS_EDGE_SIZE = 1
@@ -30,9 +30,13 @@ def get_mn_size(n, root):
     return bb.width(), bb.height()
 
 
-def get_n_size(graph, n):
+def get_n_size(graph, n, global_ops):
     root = graph.getRoot()
     n_type = root[TYPE][n]
+    # take global_ops input for node size
+    SPECIES_SIZE = global_ops["METABOLITE_NODE_SIZE"]  # default 2.5
+    UBIQUITOUS_SPECIES_SIZE = 2
+    REACTION_SIZE = global_ops["REACTION_NODE_SIZE"]  # default 1
     if TYPE_REACTION == n_type:
         if root[FAKE][n]:
             w = h = max(get_mn_size(n, root))

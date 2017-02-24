@@ -5,11 +5,11 @@ node [
 id 0
 label "M_e4hglu_c0"
 graphics [
-x -4.5
-y 23.75
+x 6.25
+y 99.25
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -21,11 +21,11 @@ node [
 id 1
 label "M_nad_c1"
 graphics [
-x 21.75
-y 36
+x 67
+y 144.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -37,11 +37,11 @@ node [
 id 2
 label "M_4hglusa_c2"
 graphics [
-x 21.75
-y -6.75
+x 61
+y -0.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -53,11 +53,11 @@ node [
 id 3
 label "R_EHGLAT3"
 graphics [
-x -0.75
-y 19
+x 17.5
+y 83
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -69,11 +69,11 @@ node [
 id 4
 label "R_HPROx4"
 graphics [
-x 21.75
-y 8.5
+x 61
+y 49
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -85,11 +85,11 @@ node [
 id 5
 label "M_4hpro_LT_c5"
 graphics [
-x 21.75
-y 13.25
+x 61
+y 65.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -101,11 +101,11 @@ node [
 id 6
 label "M_pyr_c6"
 graphics [
-x -6.75
-y 2.75
+x -0.5
+y 30.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -117,11 +117,11 @@ node [
 id 7
 label "M_4h2oglt_c7"
 graphics [
-x -3.75
-y 13.25
+x 8.5
+y 65.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -133,11 +133,11 @@ node [
 id 8
 label "M_glx_c8"
 graphics [
-x -0.75
-y 2.75
+x 17.5
+y 30.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -149,11 +149,11 @@ node [
 id 9
 label "R_HPROa9"
 graphics [
-x 21.75
-y 19
+x 64
+y 83
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -165,11 +165,11 @@ node [
 id 10
 label "M_akg_c10"
 graphics [
-x 1.5
-y 23.75
+x 24.25
+y 99.25
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -181,11 +181,11 @@ node [
 id 11
 label "R_DDPGA11"
 graphics [
-x -3.75
-y 8.5
+x 8.5
+y 49
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -197,11 +197,11 @@ node [
 id 12
 label "R_PHCD12"
 graphics [
-x 9.75
-y 30.25
+x 43
+y 124
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -213,11 +213,11 @@ node [
 id 13
 label "M_glu__L_c13"
 graphics [
-x 2.25
-y 13.25
+x 26.5
+y 65.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -229,11 +229,11 @@ node [
 id 14
 label "R_PHCHGS14"
 graphics [
-x 21.75
-y -2
+x 61
+y 15
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -245,11 +245,11 @@ node [
 id 15
 label "M_1p3h5c_c15"
 graphics [
-x 21.75
-y 2.75
+x 61
+y 30.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -261,11 +261,11 @@ node [
 id 16
 label "M_nadh_c16"
 graphics [
-x 15.75
-y 23.75
+x 55
+y 99.25
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -310,18 +310,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 21.75
-y 8.5
+x 61
+y 49
 z 0
 ]
 point [
-x 15.75
-y 13.25
+x 49
+y 65.5
 z 0
 ]
 point [
-x 15.75
-y 23.75
+x 49
+y 83
+z 0
+]
+point [
+x 55
+y 99.25
 z 0
 ]
 ]
@@ -364,23 +369,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 21.75
-y 36
+x 67
+y 144.5
 z 0
 ]
 point [
-x 27.75
-y 30.25
+x 73
+y 124
 z 0
 ]
 point [
-x 27.75
-y 13.25
+x 73
+y 65.5
 z 0
 ]
 point [
-x 21.75
-y 8.5
+x 61
+y 49
 z 0
 ]
 ]
@@ -449,23 +454,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 21.75
-y 2.75
+x 61
+y 30.5
 z 0
 ]
 point [
-x 33.75
-y 8.5
+x 79
+y 49
 z 0
 ]
 point [
-x 33.75
-y 13.25
+x 79
+y 65.5
 z 0
 ]
 point [
-x 21.75
-y 19
+x 64
+y 83
 z 0
 ]
 ]
@@ -508,18 +513,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 21.75
-y 2.75
+x 61
+y 30.5
 z 0
 ]
 point [
-x 9.75
-y 8.5
+x 43
+y 49
 z 0
 ]
 point [
-x 9.75
-y 30.25
+x 43
+y 124
 z 0
 ]
 ]
@@ -613,6 +618,21 @@ type "line"
 arrow "last"
 width 0.1
 Line [
+point [
+x 64
+y 83
+z 0
+]
+point [
+x 67
+y 99.25
+z 0
+]
+point [
+x 67
+y 144.5
+z 0
+]
 ]
 ]
 ]

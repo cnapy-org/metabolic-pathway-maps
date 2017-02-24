@@ -5,11 +5,11 @@ node [
 id 0
 label "M_s7p_c0"
 graphics [
-x 12
-y 14.25
+x 31.75
+y 67.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -21,11 +21,11 @@ node [
 id 1
 label "M_g6p_c1"
 graphics [
-x -6.75
-y 65
+x -0.5
+y 234.875
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -37,11 +37,11 @@ node [
 id 2
 label "M_6pgc_c2"
 graphics [
-x -6.75
-y 46
+x -0.5
+y 168.875
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -53,11 +53,11 @@ node [
 id 3
 label "M_g3p_c3"
 graphics [
-x 12.75
-y -6.75
+x 39.25
+y -0.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -69,11 +69,11 @@ node [
 id 4
 label "M_nad_c4"
 graphics [
-x -0.75
-y 65
+x 17.5
+y 234.875
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -85,11 +85,11 @@ node [
 id 5
 label "M_nadh_c5"
 graphics [
-x 0.75
-y 55.5
+x 21.25
+y 199.875
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -101,11 +101,11 @@ node [
 id 6
 label "M_e4p_c6"
 graphics [
-x 6.75
-y 2.75
+x 27.25
+y 33.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -117,11 +117,11 @@ node [
 id 7
 label "R_TKT27"
 graphics [
-x 3.75
-y -2
+x 21.25
+y 18
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -133,11 +133,11 @@ node [
 id 8
 label "R_G6PDH18"
 graphics [
-x -0.75
-y 60.25
+x 14.5
+y 217.375
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -149,11 +149,11 @@ node [
 id 9
 label "M_xu5p__D_c9"
 graphics [
-x -2.25
-y 26.25
+x 10.75
+y 104
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -165,11 +165,11 @@ node [
 id 10
 label "R_G6PDH2r10"
 graphics [
-x -6.75
-y 60.25
+x -0.5
+y 217.375
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -181,11 +181,11 @@ node [
 id 11
 label "M_f6p_c11"
 graphics [
-x -0.75
-y -6.75
+x 15.25
+y -0.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -197,11 +197,11 @@ node [
 id 12
 label "M_6pgl_c12"
 graphics [
-x -6.75
-y 55.5
+x -0.5
+y 199.875
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -213,11 +213,11 @@ node [
 id 13
 label "M_r5p_c13"
 graphics [
-x 3
-y 46
+x 20.875
+y 168.875
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -229,11 +229,11 @@ node [
 id 14
 label "R_GND14"
 graphics [
-x -6.75
-y 40.5
+x -0.5
+y 151.25
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -245,11 +245,11 @@ node [
 id 15
 label "R_PGL15"
 graphics [
-x -6.75
-y 50.75
+x -0.5
+y 184.375
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -261,11 +261,11 @@ node [
 id 16
 label "R_RPE16"
 graphics [
-x -2.25
-y 31
+x 10.75
+y 119.5
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -277,11 +277,11 @@ node [
 id 17
 label "R_TALA17"
 graphics [
-x 9.75
-y 9.5
+x 27.25
+y 52
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -293,11 +293,11 @@ node [
 id 18
 label "R_RPI18"
 graphics [
-x 0.182926
-y 40.5
+x 15.607
+y 151.25
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -309,11 +309,11 @@ node [
 id 19
 label "M_ru5p__D_c19"
 graphics [
-x -2.25
-y 35.75
+x 10.75
+y 135
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -325,11 +325,11 @@ node [
 id 20
 label "R_TKT120"
 graphics [
-x 14.25
-y 19
+x 36.25
+y 83
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -387,18 +387,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 3
-y 46
+x 20.875
+y 168.875
 z 0
 ]
 point [
-x 14.25
-y 40.5
+x 36.25
+y 151.25
 z 0
 ]
 point [
-x 14.25
-y 19
+x 36.25
+y 83
 z 0
 ]
 ]
@@ -454,23 +454,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x -2.25
-y 26.25
+x 10.75
+y 104
 z 0
 ]
 point [
-x 0.75
-y 19
+x 15.25
+y 83
 z 0
 ]
 point [
-x 0.75
-y 2.75
+x 15.25
+y 33.5
 z 0
 ]
 point [
-x 3.75
-y -2
+x 21.25
+y 18
 z 0
 ]
 ]
@@ -630,23 +630,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 14.25
-y 19
+x 36.25
+y 83
 z 0
 ]
 point [
-x 18.75
-y 14.25
+x 45.25
+y 67.5
 z 0
 ]
 point [
-x 18.75
-y -2
+x 45.25
+y 18
 z 0
 ]
 point [
-x 12.75
-y -6.75
+x 39.25
+y -0.5
 z 0
 ]
 ]
@@ -663,23 +663,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 9.75
-y 9.5
+x 27.25
+y 52
 z 0
 ]
 point [
-x -5.25
-y 2.75
+x 9.25
+y 33.5
 z 0
 ]
 point [
-x -5.25
-y -2
+x 9.25
+y 18
 z 0
 ]
 point [
-x -0.75
-y -6.75
+x 15.25
+y -0.5
 z 0
 ]
 ]
@@ -748,18 +748,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 12.75
-y -6.75
+x 39.25
+y -0.5
 z 0
 ]
 point [
-x 12.75
-y 2.75
+x 39.25
+y 33.5
 z 0
 ]
 point [
-x 9.75
-y 9.5
+x 27.25
+y 52
 z 0
 ]
 ]

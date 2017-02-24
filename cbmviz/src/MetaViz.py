@@ -117,13 +117,13 @@ def layoutModel(global_ops, sbml, graph, graph_props, output_dir=None):
     # flag (true/false) a list of nodes (already saved as ub_list) so that they can be aliased later
     mvl.markUbiquitousNodes(graph, ub_list)
     # create initial nodes for all species
-    id2n = mvl.speciesToNodes(graph, cmod, ub_list, graph_props)
+    id2n = mvl.speciesToNodes(graph, cmod, ub_list, graph_props, global_ops)
     # save compartment hierarchy to dictionary "c_id2level" for function import_sbml
     # required syntax: c_id2level = {'Cell': (0, ''), 'Boundary': (1, 'Cell')}
     c_id2level = compDictForMimoza(cmod)
     c_id2info, c_id2outs = compute_c_id2info(c_id2level, cmod)
     # create nodes for all reactions
-    mvl.reactionsToNodes(get_r_comp, graph, id2n, cmod, c_id2level, c_id2outs)
+    mvl.reactionsToNodes(get_r_comp, graph, id2n, cmod, c_id2level, c_id2outs, global_ops)
     # clone/alias nodes selected above (in ub_list)
     # -> chebi info was apparently only important for automatically extracting ubiquitous species ids! (we now provide them)
     # => provide them by passing a list (ubs), converted to a set (cloneNodes needs unique ids)
@@ -134,7 +134,7 @@ def layoutModel(global_ops, sbml, graph, graph_props, output_dir=None):
     # actual layouting, creation of graph structure
     # n2lo and e2lo are dictionaries containing node and edge layout info (id, color, coords, etc.) respectively
     fc, (n2lo, e2lo), hidden_c_ids, c_id_hidden_ubs, graph = tulip_graph2geojson.graph2geojson(c_id2info, c_id2outs,
-                                                                                               root)
+                                                                                               root, global_ops)
     # initialize a dict of all existing graphs (key: name, value: a list [graph object, graph props])
     #  -> everytime a new, important graph is created it gets added to the graph registry
     graph_registry = {}
@@ -196,13 +196,13 @@ def layoutModel(global_ops, sbml, graph, graph_props, output_dir=None):
     # for e in graph.getEdges():
     #    viewLabel[e] = "test"
     # -> edge labels are set in "viewLabel" but not visible!
-    COLORS = colorAllGraphElements(graph, "egdes", "grey")
+    colorAllGraphElements(graph, "egdes", "grey")
     # change line types (Polyline, BezierCurve, CatmullRomCurve, CubicSplineCurve)
     # for e in graph.getEdges():
     #    graph_props["viewShape"][e] = tlp.EdgeShape.BezierCurve
-    # TODO: change font globally from 18 -> 8 and 24 -> 12 or something
-    # for n in graph.getNodes():
-    #    graph_props["font_size"] = 8
+    # change font size for all nodes in graph (globally)
+    for n in graph.getNodes():
+        graph_props["viewFontSize"][n] = 80
     # TODO: also write a function that applies "fit lable to node size" thing from tulipgui
     # TODO: see if calling that before layouting changes the layout
     ##############################################################
@@ -305,6 +305,17 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
     # check if output directory already exist, if not make it
     if not os.path.exists("{}_Output".format(file_name)):
         os.makedirs("{}_Output".format(file_name))
+
+    # #change the size of all nodes
+    # for graph_data in graph_registry.values():
+    #    graph_object = graph_data[0]
+    #    graph_props = graph_data[1]
+    #    for n in graph_object.getNodes():
+    #        if graph_props["type"][n] == 1: #metabolite
+    #            graph_props["viewSize"][n] = tlp.Size(15, 10, 1) # factor 4 (2.5*4)
+    #        elif graph_props["type"][n] == 2: #reactions
+    #            graph_props["viewSize"][n] = tlp.Size(10, 10, 1) #factor 4 (1*4)
+
     # save graphs as .tlp files
     if global_ops['EXPORT_TLP'] and global_ops["AUTO_ALIAS"] is False:
         for graph_name, graph_data in graph_registry.items():

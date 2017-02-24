@@ -263,7 +263,7 @@ def export_elements(c_id2info, c_id2outs, c_id2level2features, meta_graph, proce
                  #,id2mask=id2mask, onto=onto)
 
 
-def meta_graph2features(c_id2info, c_id2outs, meta_graph, r2rs_ps, n2xy=None, id2mask=None, onto=None):
+def meta_graph2features(c_id2info, c_id2outs, meta_graph, r2rs_ps, global_ops, n2xy=None, id2mask=None, onto=None):
     root = meta_graph.getRoot()
 
     c_id2level2features = {}
@@ -299,11 +299,11 @@ def meta_graph2features(c_id2info, c_id2outs, meta_graph, r2rs_ps, n2xy=None, id
         else:
             c_id2c_borders = {root[ID][c]: get_comp_borders(c, root) for c in metas}
             all_c_id2c_borders.update(c_id2c_borders)
-        open_meta_ns(meta_graph, metas)
+        open_meta_ns(meta_graph, metas, global_ops)
 
     for c_id in c_id2info.iterkeys():
         (name, go, (l, out_c_id)) = c_id2info[c_id]
-        comp_n = comp_to_meta_node(meta_graph, c_id, (go, name), out_c_id, False, n2xy)
+        comp_n = comp_to_meta_node(meta_graph, c_id, (go, name), out_c_id, global_ops, False, n2xy)
         if not comp_n:
             continue
         bend_edges(meta_graph)
@@ -317,7 +317,7 @@ def meta_graph2features(c_id2info, c_id2outs, meta_graph, r2rs_ps, n2xy=None, id
         color_edges(meta_graph)
         export_edges(c_id2level2features, c_id2outs, meta_graph, processed, e2layout,
                  id2mask=id2mask)
-        open_meta_ns(meta_graph, metas)
+        open_meta_ns(meta_graph, metas, global_ops)
 
     return c_id2level2features, (n2layout, e2layout), meta_graph
 
@@ -342,20 +342,20 @@ def calculate_related_compartments(root):
         root[RELATED_COMPARTMENT_IDS][s] = list(result - {root[COMPARTMENT_ID][s]})
 
 
-def graph2geojson(c_id2info, c_id2outs, graph, n2xy=None, colorer=color, id2mask=None, onto=None):
+def graph2geojson(c_id2info, c_id2outs, graph, global_ops, n2xy=None, colorer=color, id2mask=None, onto=None):
     root = graph.getRoot()
 
     merge_ubs_for_similar_reactions(root)
     r2rs_ps = get_reaction2reactants_products(root)
 
     meta_graph = graph.inducedSubGraph([n for n in graph.getNodes()])
-    process_compartments(c_id2info, meta_graph, n2xy)
+    process_compartments(c_id2info, meta_graph, global_ops, n2xy)
 
     calculate_related_compartments(root)
     colorer(root)
     color_edges(root)
 
-    c_id2level2features, (n2lo, e2lo), new_graph = meta_graph2features(c_id2info, c_id2outs, meta_graph, r2rs_ps, n2xy)
+    c_id2level2features, (n2lo, e2lo), new_graph = meta_graph2features(c_id2info, c_id2outs, meta_graph, r2rs_ps, global_ops, n2xy)
 
     geometry = geojson.Polygon([[0, DIMENSION], [0, 0], [DIMENSION, 0], [DIMENSION, DIMENSION]])
 
@@ -438,7 +438,7 @@ def rescale(c_id2level2features):
                     f.properties[HEIGHT] *= scale_coefficient
 
 
-def process_compartments(c_id2info, meta_graph, n2xy=None):
+def process_compartments(c_id2info, meta_graph, global_ops, n2xy=None):
     # root = meta_graph.getRoot()
     factor_nodes(meta_graph)
 
@@ -449,7 +449,7 @@ def process_compartments(c_id2info, meta_graph, n2xy=None):
             if current_zoom_level == l:
                 # ns = [n for n in meta_graph.getNodes() if root[COMPARTMENT_ID][n] == c_id]
                 # factor_nodes(meta_graph, ns)
-                comp_to_meta_node(meta_graph, c_id, (go, name), out_c_id, True, n2xy)
+                comp_to_meta_node(meta_graph, c_id, (go, name), out_c_id, global_ops, True, n2xy)
         current_zoom_level -= 1
         if n2xy:
             apply_node_coordinates(meta_graph, n2xy)

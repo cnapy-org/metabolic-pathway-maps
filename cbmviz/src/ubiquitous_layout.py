@@ -305,13 +305,13 @@ def bend_edges_around_compartments(graph, es):
                 root[VIEW_LAYOUT][e] = root[VIEW_LAYOUT][e] + [reactant_lo]
 
 
-def open_meta_ns(meta_graph, ns):
+def open_meta_ns(meta_graph, ns, global_ops):
     root = meta_graph.getRoot()
     for n in sorted(ns, key=lambda mn: -root[VIEW_META_GRAPH][mn].getId()):
         inner_ns = root[VIEW_META_GRAPH][n].getNodes()
         meta_graph.openMetaNode(n)
         for inner_n in inner_ns:
-            root[VIEW_SIZE][inner_n] = get_n_size(meta_graph, inner_n)
+            root[VIEW_SIZE][inner_n] = get_n_size(meta_graph, inner_n, global_ops)
 
 
 def layout_ub_sps(graph, r_ns=None, c_id=None):

@@ -5,11 +5,11 @@ node [
 id 0
 label "M_hom__L_c0"
 graphics [
-x 35.25
-y 16.25
+x 32.5
+y 85.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -21,11 +21,11 @@ node [
 id 1
 label "R_SERAT1"
 graphics [
-x 35.25
-y 22
+x 35.5
+y 110
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -37,11 +37,11 @@ node [
 id 2
 label "M_2obut_c2"
 graphics [
-x -6.75
-y -6.75
+x 86.5
+y -0.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -53,11 +53,11 @@ node [
 id 3
 label "R_METB13"
 graphics [
-x 35.25
-y -2
+x 23.5
+y 20
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -69,11 +69,11 @@ node [
 id 4
 label "M_achms_c4"
 graphics [
-x 35.25
-y 3.75
+x 23.5
+y 39.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -85,11 +85,11 @@ node [
 id 5
 label "R_SHSL2r5"
 graphics [
-x 8.25
-y -2
+x 68.5
+y 20
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -101,11 +101,11 @@ node [
 id 6
 label "M_coa_c6"
 graphics [
-x 47.25
-y 3.75
+x -0.5
+y 39.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -117,11 +117,11 @@ node [
 id 7
 label "M_nh4_c7"
 graphics [
-x -0.75
-y -6.75
+x 104.5
+y -0.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -133,11 +133,11 @@ node [
 id 8
 label "R_AHSERL28"
 graphics [
-x 26.25
-y -2
+x 38.5
+y 20
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -149,11 +149,11 @@ node [
 id 9
 label "M_cys__L_c9"
 graphics [
-x 26.25
-y 3.75
+x 41.5
+y 39.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -165,11 +165,11 @@ node [
 id 10
 label "R_CYSS10"
 graphics [
-x 26.25
-y 10.5
+x 44.5
+y 63
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -181,11 +181,11 @@ node [
 id 11
 label "M_cyst__L_c11"
 graphics [
-x 26.25
-y -6.75
+x 32.5
+y -0.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -197,11 +197,11 @@ node [
 id 12
 label "R_SHSL112"
 graphics [
-x 17.25
-y -2
+x 53.5
+y 20
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -213,11 +213,11 @@ node [
 id 13
 label "R_HSERTA13"
 graphics [
-x 35.25
-y 10.5
+x 29.5
+y 63
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -229,11 +229,11 @@ node [
 id 14
 label "M_suchms_c14"
 graphics [
-x 5.25
-y 3.75
+x 65.5
+y 39.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -245,11 +245,11 @@ node [
 id 15
 label "R_SHSL4r15"
 graphics [
-x -0.75
-y -2
+x 86.5
+y 20
 z 0
-h 1
-w 1
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
@@ -261,11 +261,11 @@ node [
 id 16
 label "M_accoa_c16"
 graphics [
-x 29.25
-y 26.75
+x 44.5
+y 125.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -277,11 +277,11 @@ node [
 id 17
 label "M_acser_c17"
 graphics [
-x 29.25
-y 16.25
+x 56.5
+y 85.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -293,11 +293,11 @@ node [
 id 18
 label "M_ac_c18"
 graphics [
-x 35.25
-y -6.75
+x 14.5
+y -0.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -309,11 +309,11 @@ node [
 id 19
 label "M_hcys__L_c19"
 graphics [
-x 17.25
-y -6.75
+x 50.5
+y -0.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -325,11 +325,11 @@ node [
 id 20
 label "M_h2s_c20"
 graphics [
-x 14.25
-y 16.25
+x 74.5
+y 85.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -341,11 +341,11 @@ node [
 id 21
 label "M_succ_c21"
 graphics [
-x 8.25
-y -6.75
+x 68.5
+y -0.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -357,11 +357,11 @@ node [
 id 22
 label "M_ser__L_c22"
 graphics [
-x 35.25
-y 26.75
+x 26.5
+y 125.5
 z 0
-h 2.5
-w 2.5
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
@@ -419,18 +419,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 14.25
-y 16.25
+x 74.5
+y 85.5
 z 0
 ]
 point [
-x 14.25
-y 3.75
+x 77.5
+y 63
 z 0
 ]
 point [
-x 8.25
-y -2
+x 77.5
+y 39.5
+z 0
+]
+point [
+x 68.5
+y 20
 z 0
 ]
 ]
@@ -525,18 +530,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 35.25
-y 22
+x 35.5
+y 110
 z 0
 ]
 point [
-x 47.25
-y 16.25
+x -0.5
+y 85.5
 z 0
 ]
 point [
-x 47.25
-y 3.75
+x -0.5
+y 39.5
 z 0
 ]
 ]
@@ -644,23 +649,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 26.25
-y 10.5
+x 44.5
+y 63
 z 0
 ]
 point [
-x 41.25
-y 3.75
+x 11.5
+y 39.5
 z 0
 ]
 point [
-x 41.25
-y -2
+x 11.5
+y 20
 z 0
 ]
 point [
-x 35.25
-y -6.75
+x 14.5
+y -0.5
 z 0
 ]
 ]
@@ -755,23 +760,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 14.25
-y 16.25
+x 74.5
+y 85.5
 z 0
 ]
 point [
-x 20.25
-y 10.5
+x 53.5
+y 63
 z 0
 ]
 point [
-x 20.25
-y 3.75
+x 53.5
+y 39.5
 z 0
 ]
 point [
-x 26.25
-y -2
+x 38.5
+y 20
 z 0
 ]
 ]
@@ -814,23 +819,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 29.25
-y 26.75
+x 44.5
+y 125.5
 z 0
 ]
 point [
-x 23.25
-y 22
+x 44.5
+y 85.5
 z 0
 ]
 point [
-x 23.25
-y 16.25
-z 0
-]
-point [
-x 35.25
-y 10.5
+x 29.5
+y 63
 z 0
 ]
 ]

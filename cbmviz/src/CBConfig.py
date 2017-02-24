@@ -64,6 +64,9 @@ cfg_default = {"AUTO_ALIAS": False,
 
                "TRANSPORT_RADIAL": False,                    # apply Tree Radial algorithm to transport reactions in
                                                             # output_whole
+               "METABOLITE_NODE_SIZE": 2.5, # for big nodes: set to 10
+               "REACTION_NODE_SIZE": 1, # for big nodes: set to 4
+
                "SELECTED_PATHWAYS": ["objective reaction",  # pathways to be saved in output_selected
                                      "Transport"],
                "GRID_OUTPUT": ["Glycolysis",                # align pathways on a grid, control position
@@ -104,6 +107,10 @@ cfg_auto = {"AUTO_ALIAS": False,
 
             "TRANSPORT_RADIAL": True,                    # apply Tree Radial algorithm to transport reactions in
                                                          # output_whole
+
+            "METABOLITE_NODE_SIZE": 2.5, # for big nodes: set to 10
+            "REACTION_NODE_SIZE": 1, # for big nodes: set to 4
+
             "SELECTED_PATHWAYS": ["objective reaction",  # pathways to be saved in output_selected
                                   "Transport"],
             "GRID_OUTPUT": ["Glycolysis",                # align pathways on a grid, control position

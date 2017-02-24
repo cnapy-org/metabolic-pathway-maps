@@ -10,6 +10,8 @@ import cbmviz
 # dict with boolean variables to activate/deactivate parts of the pipeline + supply data (which pathways are
 # selected, small species threshold, etc.)
 global_ops = cbmviz.cfg_default
+global_ops.update({"METABOLITE_NODE_SIZE": 4})
+global_ops.update({"REACTION_NODE_SIZE": 2})
 
 # 2. read and initialize SBML file with libsbml and cbmpy, do FBA
 # get current directory
