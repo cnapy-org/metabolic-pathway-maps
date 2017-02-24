@@ -27,14 +27,10 @@ sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml") # H.pylori
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341_overlapping_groups_test.xml") # Overlapping groups test
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml") # newest E. coli
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli about 1000 reactions
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iND750.xml") # Yeast about 1000 reactions
+# sbml = os.path.join(cDir, "TestModels", "bigg2", "iJR904.xml") # E. coli about 1000 reactions
+# sbml = os.path.join(cDir, "TestModels", "bigg2", "iND750.xml") # Yeast about 1000 reactions
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "RECON1.xml")
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iJO1366.xml")
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iMM1415.xml")
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iCHOv1.xml")
-
-# Willis models
+## Willis models
 # sbml = os.path.join(cDir, "TestModels", "willi", "M5_6.xml")
 #sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_bigggroups.xml")
 #sbml = os.path.join(cDir, "TestModels", "willi", "M5_6_compgroups.xml")
@@ -93,16 +89,14 @@ Process finished with exit code 1
 # 1. create Tulip graph and generate graph objects
 graph, graph_props = cbmviz.createInitialGraph("initialGraph")
 print("Initial (empty) Tulip graph created. \n")
-
 # 2. take sbml model file and initial graph and run all layouting function calls to return necessary data structures
-cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir, \
-output_path = cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
+cmod, fba_results, graph_registry, cDir, output_path = cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
 print("Layout generated. Subgraph(s) added to initial graph. Output graph(s) created from subgraph(s). \n")
 # 3. apply coloring algorithms to graphs
 cbmviz.colorGraphs(global_ops, fba_results, graph_registry, output_path, cmod.getId())
 print("Graph(s) colored. \n")
 # 4. export graph SVG, GML, JSON, SBML+layout Plugin and/or SBGN file (controlled by global_ops)
-cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
+cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId())
 
 
 

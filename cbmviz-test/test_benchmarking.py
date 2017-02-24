@@ -39,17 +39,15 @@ global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph 
 
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
 sbml = os.path.join(cDir, "TestModels", "willi", "iAF1260_max_ac.xml") # E. coli about 2000+ reactions
-#sbml = os.path.join(cDir, "TestModels", "bigg2", "iCHOv1.xml")
 
 TIME0 = time.time()
 graph, graph_props = cbmviz.createInitialGraph("initialGraph")
 TIME1 = time.time()
-cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir, output_path =\
-                                                                cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
+cmod, fba_results, graph_registry, cDir, output_path = cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
 TIME2 = time.time()
 cbmviz.colorGraphs(global_ops, fba_results, graph_registry, output_path, cmod.getId())
 TIME3 = time.time()
-cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
+cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId())
 TIME4 = time.time()
 #db_path = MetaViz.buildSQLiteDatabase(graph_registry['output_whole'][0], output_path)
 #db_graph_node_list, node_col_headers = MetaViz.retrieveDataFromDatabaseTable(db_path, 'graph_nodes')
@@ -59,7 +57,7 @@ TIME4 = time.time()
                                           #node_col_headers, edge_col_headers, "graph_fromDB", output_path)
 
 
-print('\nTotal time:    {}'.format(round(TIME4-TIME0, 2)))
+print('\nTotal time:  {}'.format(round(TIME4-TIME0, 2)))
 print('- create time: {}'.format(round(TIME1-TIME0, 2)))
 print('- layout time: {}'.format(round(TIME2-TIME1, 2)))
 print('- colour time: {}'.format(round(TIME3-TIME2, 2)))
@@ -120,3 +118,8 @@ Thu Feb 09 16:13:11 2017    xlayout.prf
         6    0.076    0.013    4.704    0.784 factoring.py:84(comp_to_meta_node)
     35878    0.584    0.000    4.650    0.000 evalf.py:517(evalf_mul)
 """
+
+# TODO: write csv file (two columns) with:
+# TODO:       - hardware specs (CPU speed, no of cores, memory)
+# TODO:       - no of reactrions and no of species of the model
+# TODO:       - results of timing

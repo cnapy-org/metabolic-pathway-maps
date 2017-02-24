@@ -38,7 +38,7 @@ import MVLayout as mvl
 ########################################################################################################################
 # wrapping functions to execute entire blocks of logically connected function calls
 # Part 1: Layout
-def layoutModel(global_ops, sbml, graph, graph_props):
+def layoutModel(global_ops, sbml, graph, graph_props, output_dir=None):
     """
     MetaViz Part 1: Layout
     ----------------------
@@ -55,17 +55,25 @@ def layoutModel(global_ops, sbml, graph, graph_props):
     - the current directory (cDir)
     - the path for all output files (output_path)::
 
+    - *global_ops* a dict with control variables
     - *sbml* a path to an sbml model file
+    - *graph* a Tulip graph object
+    - *graph_props* a dict of graph properties
+    - *output_dir* an output dir name (string)
+
     """
     # get current directory
-    cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
+    cDir = os.getcwd()
     # get filename from sbml
     file_name = ntpath.basename(sbml)
     file_name = file_name.replace(".xml", "") #remove file extension
     # create CBMPY model (separate data structure to SBML file)
     cmod, stM, objective_re_id = createCBMPYModel(sbml)
-    # create output folder
-    output_path = os.path.join(cDir, '{}_Output'.format(file_name))
+    # define output path and create output directory
+    if output_dir is None:
+        output_path = os.path.join(cDir, '{}_Output'.format(file_name))
+    else:
+        output_path = os.path.join(cDir, output_dir)
     try:
         os.makedirs(output_path)
     except OSError:
@@ -209,8 +217,7 @@ def layoutModel(global_ops, sbml, graph, graph_props):
         pathwayDump(graph, global_ops, graph_registry, graph_props, global_ops["SELECTED_PATHWAYS"], global_ops["GRID_OUTPUT"])
 
 
-    return cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir,\
-           output_path
+    return cmod, fba_results, graph_registry, cDir, output_path
 # Part 2: Coloring
 def colorGraphs(global_ops, value_color_dict, graph_registry, output_path, model_id):
     """

@@ -39,7 +39,7 @@ Last edit: $Author: bgoli $ ($Id: CBConfig.py 561 2017-01-24 13:36:09Z bgoli $)
 
 __CBCONFIG__ = {'VERSION_MAJOR' : 0,
                 'VERSION_MINOR' : 1,
-                'VERSION_MICRO' : 1,
+                'VERSION_MICRO' : 0,
                 'VERSION_STATUS' : 'alpha',
                 'VERSION' : '',
                 'DEBUG' : False
@@ -62,7 +62,7 @@ cfg_default = {"AUTO_ALIAS": False,
                #"ADD_COFACTORS": ["Respiratory chain",    # add nodes for small sps/cofactors after they have been
                #                  "Citric Acid Cycle"],   # deleted in path_dict
 
-               "TRANSPORT_RADIAL": True,                    # apply Tree Radial algorithm to transport reactions in
+               "TRANSPORT_RADIAL": False,                    # apply Tree Radial algorithm to transport reactions in
                                                             # output_whole
                "SELECTED_PATHWAYS": ["objective reaction",  # pathways to be saved in output_selected
                                      "Transport"],

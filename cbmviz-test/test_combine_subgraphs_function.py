@@ -8,8 +8,7 @@ sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml") # H.pylori
 
 # MetaViz Pipeline
 graph, graph_props = cbmviz.createInitialGraph("initialGraph")
-cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir, \
-output_path = cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
+cmod, fba_results, graph_registry, cDir, output_path = cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
 
 
 
@@ -45,6 +44,6 @@ cbmviz.saveGraphObjToTulipFile(output_combine_graph, "test_combine_output.tlp")
 
 # TODO: put the graphs in one (or more?) graph dicts and run coloring+exporting functions
 #cbmviz.colorGraphs(global_ops, fba_results, graph_registry, output_path, cmod.getId())
-#cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId(), groups_sbml, n2lo, e2lo, ub_sps)
+#cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId())
 
 

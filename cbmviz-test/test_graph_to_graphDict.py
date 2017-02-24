@@ -6,6 +6,7 @@ global_ops = cbmviz.cfg_default
 # turn on pathway coloring
 global_ops.update({"COLOR_FBA": False})
 global_ops.update({"COLOR_PATHWAYS": True})
+
 cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
 sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml") # H.pylori
 file_name = "iIT341"
@@ -26,7 +27,7 @@ test_graph_registry = cbmviz.createGraphDictFromGraphObj(test_graph_obj)
 cmod, stM, obj_re_id = cbmviz.createCBMPYModel(sbml)
 path_dict, small_sps_dict = cbmviz.automPathDict(cmod, global_ops)
 color_input_dict = cbmviz.createPathColoringDict(path_dict)
-cbmviz.colorGraphs(global_ops, color_input_dict, test_graph_registry, output_path, cmod.getId())
-cbmviz.exportGraph(output_path, test_graph_registry, global_ops, cDir, cmod.getId())
+cbmviz.colorGraphs(global_ops, color_input_dict, test_graph_registry, output_path, file_name)
+cbmviz.exportGraph(output_path, test_graph_registry, global_ops, cDir, file_name)
 
 
