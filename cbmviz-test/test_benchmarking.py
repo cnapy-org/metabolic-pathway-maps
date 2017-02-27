@@ -1,59 +1,29 @@
 #from MetaViz import *
-import os, time
+import os, ntpath, time, csv
 cDir = os.path.dirname(os.path.abspath(os.sys.argv[0]))
 import cbmviz
 
-global_ops = {"AUTO_ALIAS": False,  # apply aliasing to every node of the graph with a certain connectivity
-              # and option to alias biomass (result in maingraph)
-              # if auto alias is active the automatically generated layout will still be
-              # overwritten if any other layouting functions are active aswell
-              "AUTO_ALIAS_OPTIONS": {"spec_split": 6, "reac_split": 4},  # threshold values for species and reac
-              "SMALL_THRSH": 30,  # the threshold value of connections a species must have to be a small sps
-              # splitting
-
-              "PATHWAY_LISTS": True,  # layout annotated groups of sbml file as seperate pathways
-              "LAYOUT_PATHWAYS": True,  # needs PATHWAY_LISTS true, so that necessary node lists are generated
-              "LABEL_TYPE": "id",  # can either be "id" or "name"
-              "ADD_COFACTORS": ["Glycolysis-Gluconeogenesis", 'Citric Acid Cycle'],  # add nodes for small sps/cofactors after they have been
-              # deleted in path_dict
-
-              "TRANSPORT_RADIAL": False,  # apply Tree Radial algorithm to transport reactions in output_whole
-              "SELECTED_PATHWAYS": ["Glycolysis-Gluconeogenesis",  "Citric Acid Cycle", "Transport, Outer Membrane", 'Transport, Outer Membrane Porin'],
-              "GRID_OUTPUT": ["Glycolysis-Gluconeogenesis",  # align pathways on a grid, control position
-                              "Citric Acid Cycle",
-                              "Alternate Carbon Metabolism",
-                              "Glyoxylate Metabolism"],
-
-              "EXPORT_TLP": True,  # save generated graphs as .tlp files
-              "EXPORT_GML": False,  # export generated graphs as .gml files
-              "EXPORT_SVG": True,  # export generated graphs as .svg files
-              "EXPORT_JSON": False,  # export generated graphs as .json files
-              "EXPORT_SBML": False,  # export generated graphs as .sbml files (in layout plugin)
-              "EXPORT_SBGN": False,  # export generated graphs as .sbgn files
-
-              "COLOR_FBA": True,  # color the reaction nodes and in and outgoing edges
-              "COLOR_FBA_COLORBLIND": False,  # based on flux values obtained from FBA
-              "COLOR_PATHWAYS": False,  # pathways specific coloring
-              "COLOR_GAPS": True  # highlight gaps (in red), reactions that exist in both (all) models = black
-              }
+global_ops = cbmviz.cfg_default
 
 #sbml = os.path.join(cDir, "TestModels", "bigg2", "iAF1260.xml") # E. coli about 2000+ reactions
 sbml = os.path.join(cDir, "TestModels", "willi", "iAF1260_max_ac.xml") # E. coli about 2000+ reactions
+file_name = ntpath.basename(sbml) # get file name from path
+file_name = file_name.replace(".xml", "") # delete file extension ending
 
 TIME0 = time.time()
 graph, graph_props = cbmviz.createInitialGraph("initialGraph")
 TIME1 = time.time()
 cmod, fba_results, graph_registry, cDir, output_path = cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
 TIME2 = time.time()
-cbmviz.colorGraphs(global_ops, fba_results, graph_registry, output_path, cmod.getId())
+cbmviz.colorGraphs(global_ops, fba_results, graph_registry, output_path, file_name)
 TIME3 = time.time()
-cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId())
+cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, file_name)
 TIME4 = time.time()
-#db_path = MetaViz.buildSQLiteDatabase(graph_registry['output_whole'][0], output_path)
-#db_graph_node_list, node_col_headers = MetaViz.retrieveDataFromDatabaseTable(db_path, 'graph_nodes')
-#db_graph_edge_list, edge_col_headers = MetaViz.retrieveDataFromDatabaseTable(db_path, 'graph_edges')
-#db_graph_edgeconn_list, edgeconn_col_headers = MetaViz.retrieveDataFromDatabaseTable(db_path, 'edge_connectivity')
-#db_graph = MetaViz.buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edgeconn_list,
+#db_path = cbmviz.buildSQLiteDatabase(graph_registry['output_whole'][0], output_path)
+#db_graph_node_list, node_col_headers = cbmviz.retrieveDataFromDatabaseTable(db_path, 'graph_nodes')
+#db_graph_edge_list, edge_col_headers = cbmviz.retrieveDataFromDatabaseTable(db_path, 'graph_edges')
+#db_graph_edgeconn_list, edgeconn_col_headers = cbmviz.retrieveDataFromDatabaseTable(db_path, 'edge_connectivity')
+#db_graph = cbmviz.buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edgeconn_list,
                                           #node_col_headers, edge_col_headers, "graph_fromDB", output_path)
 
 
@@ -119,7 +89,24 @@ Thu Feb 09 16:13:11 2017    xlayout.prf
     35878    0.584    0.000    4.650    0.000 evalf.py:517(evalf_mul)
 """
 
-# TODO: write csv file (two columns) with:
-# TODO:       - hardware specs (CPU speed, no of cores, memory)
-# TODO:       - no of reactrions and no of species of the model
-# TODO:       - results of timing
+# create an csv output file with:
+#        - hardware specs (CPU (speed, no of cores), memory)
+#        - no of reactions and no of species of the model
+#        - results of timing (in seconds)
+# mode 'w+': open and prepare to write to file if it does exist, create file if it doesn't exist
+test_output_file = open("{0}_{1}_benchmark_result.csv".format(time.strftime("%y%m%d") ,file_name), "w+")
+# write csv file
+c = csv.writer(test_output_file, lineterminator = '\n')
+c.writerow(["hardware info"])
+c.writerow(["CPU", "memory"])
+c.writerow(["Intel i5 M430 2x2.7 GHz", "6 GB DDR3"])
+c.writerow(["model info"])
+c.writerow(["species", "reactions"])
+c.writerow(["{}".format(len(list(cmod.species))), "{}".format(len(list(cmod.reactions)))])
+c.writerow(["benchmarking results"])
+c.writerow(["total time", "create time", "layout time", "colour time", "export time"])
+c.writerow(["{}".format(round(TIME4-TIME0, 2)),
+            "{}".format(round(TIME1-TIME0, 2)),
+            "{}".format(round(TIME2-TIME1, 2)),
+            "{}".format(round(TIME3-TIME2, 2)),
+            "{}".format(round(TIME4-TIME3, 2))])

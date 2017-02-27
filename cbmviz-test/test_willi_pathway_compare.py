@@ -10,8 +10,7 @@ sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml")
 
 # MetaViz Pipeline
 graph, graph_props = cbmviz.createInitialGraph("initialGraph")
-cmod, fba_results, path_dict, COLORS, ub_sps, n2lo, e2lo, groups_sbml, obj_re_nodes, graph_registry, cDir, \
-output_path = cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
+cmod, fba_results, graph_registry, cDir, output_path = cbmviz.layoutModel(global_ops, sbml, graph, graph_props)
 
 
 wmod = cmod.clone()

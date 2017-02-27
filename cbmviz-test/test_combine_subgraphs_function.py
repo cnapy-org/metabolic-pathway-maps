@@ -38,12 +38,12 @@ test_input_list.append(test_yeast_list)
 # generate the combined graph
 output_combine_graph = cbmviz.combineSubgraphsFromGraphs(test_input_list)
 print("output_combine_graph", output_combine_graph)
-# save combined graph in new output folder
-cbmviz.saveGraphObjToTulipFile(output_combine_graph, "test_combine_output.tlp")
+# save combined graph
+#cbmviz.saveGraphObjToTulipFile(output_combine_graph, "test_combine_output.tlp")
 
-
-# TODO: put the graphs in one (or more?) graph dicts and run coloring+exporting functions
-#cbmviz.colorGraphs(global_ops, fba_results, graph_registry, output_path, cmod.getId())
-#cbmviz.exportGraph(output_path, graph_registry, global_ops, cDir, cmod.getId())
+# put the graphs in a graph dict and run coloring+exporting functions
+output_combine_dict = cbmviz.createGraphDictFromGraphObj(output_combine_graph)
+cbmviz.colorGraphs(global_ops, fba_results, output_combine_dict, output_path, cmod.getId())
+cbmviz.exportGraph(output_path, output_combine_dict, global_ops, cDir, cmod.getId())
 
 
