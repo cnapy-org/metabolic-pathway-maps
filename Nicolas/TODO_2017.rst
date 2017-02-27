@@ -140,3 +140,4 @@ CBMViz
 --> understand Mimoza Source Code: where is the Bezier Curve Edge stuff happening?
 
 - write test where a small layout is loaded from a gml file (e.g. from cytoscape) and this small layout is added onto a larger map
+--> GML does not have enough info (no ids, pathways, ...), do we want to do this?
