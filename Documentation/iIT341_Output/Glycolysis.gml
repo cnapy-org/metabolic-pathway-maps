@@ -5,7 +5,7 @@ node [
 id 0
 label "M_fmnh2_c0"
 graphics [
-x 77.5
+x 41.5
 y 45.5
 z 0
 h 15
@@ -53,7 +53,7 @@ node [
 id 3
 label "M_accoa_c3"
 graphics [
-x 41.5
+x 77.5
 y 45.5
 z 0
 h 15
@@ -213,7 +213,7 @@ node [
 id 13
 label "R_FBP13"
 graphics [
-x 1.70588
+x 0.545454
 y 101.5
 z 0
 h 10
@@ -309,8 +309,8 @@ node [
 id 19
 label "M_fdp_c19"
 graphics [
-x 11.5
-y 120
+x 8.5
+y 119
 z 0
 h 15
 w 15
@@ -357,7 +357,7 @@ node [
 id 22
 label "M_dhap_c22"
 graphics [
-x 23.5
+x 29.5
 y 86
 z 0
 h 15
@@ -373,7 +373,7 @@ node [
 id 23
 label "R_FBA23"
 graphics [
-x 29.5
+x 23.5
 y 101.5
 z 0
 h 10
@@ -421,7 +421,7 @@ node [
 id 26
 label "R_TPI26"
 graphics [
-x 23.5
+x 26.537
 y 66
 z 0
 h 10
@@ -697,17 +697,17 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 29.5
+x 23.5
 y 101.5
 z 0
 ]
 point [
-x 35.5
+x 17.5
 y 86
 z 0
 ]
 point [
-x 35.5
+x 17.5
 y 66
 z 0
 ]
@@ -847,7 +847,7 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 1.70588
+x 0.545454
 y 101.5
 z 0
 ]

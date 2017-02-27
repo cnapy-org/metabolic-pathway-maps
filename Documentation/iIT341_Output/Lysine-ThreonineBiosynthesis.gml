@@ -35,23 +35,7 @@ outline "#000000"
 ]
 node [
 id 2
-label "M_phom_c2"
-graphics [
-x 17.5
-y 30.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 3
-label "M_thdp_c3"
+label "M_thdp_c2"
 graphics [
 x 50.5
 y 30.5
@@ -66,8 +50,8 @@ outline "#000000"
      ]
 ]
 node [
-id 4
-label "M_hom__L_c4"
+id 3
+label "M_hom__L_c3"
 graphics [
 x 8.5
 y 61.5
@@ -82,8 +66,8 @@ outline "#000000"
      ]
 ]
 node [
-id 5
-label "R_THDPS5"
+id 4
+label "R_THDPS4"
 graphics [
 x 41.5
 y 15
@@ -98,8 +82,8 @@ outline "#000000"
      ]
 ]
 node [
-id 6
-label "R_HSDy6"
+id 5
+label "R_HSDy5"
 graphics [
 x -0.5
 y 46
@@ -114,8 +98,8 @@ outline "#000000"
      ]
 ]
 node [
-id 7
-label "M_sl2a6o_c7"
+id 6
+label "M_sl2a6o_c6"
 graphics [
 x 32.5
 y -0.5
@@ -130,8 +114,8 @@ outline "#000000"
      ]
 ]
 node [
-id 8
-label "R_THRS8"
+id 7
+label "R_THRS7"
 graphics [
 x 17.5
 y 15
@@ -146,8 +130,8 @@ outline "#000000"
      ]
 ]
 node [
-id 9
-label "M_thr__L_c9"
+id 8
+label "M_thr__L_c8"
 graphics [
 x 17.5
 y -0.5
@@ -162,8 +146,8 @@ outline "#000000"
      ]
 ]
 node [
-id 10
-label "R_HSK10"
+id 9
+label "R_HSK9"
 graphics [
 x 17.5
 y 46
@@ -174,6 +158,22 @@ d 1
 type "rectangle"
 width 0.12
 fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 10
+label "M_phom_c10"
+graphics [
+x 17.5
+y 30.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -194,8 +194,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 6
-target 1
+source 0
+target 4
 id 0
 label ""
 graphics [
@@ -207,7 +207,7 @@ Line [
 ]
 ]
 edge [
-source 5
+source 4
 target 11
 id 1
 label ""
@@ -220,8 +220,8 @@ Line [
 ]
 ]
 edge [
-source 0
-target 5
+source 5
+target 1
 id 2
 label ""
 graphics [
@@ -233,8 +233,8 @@ Line [
 ]
 ]
 edge [
-source 2
-target 8
+source 10
+target 7
 id 3
 label ""
 graphics [
@@ -246,8 +246,8 @@ Line [
 ]
 ]
 edge [
-source 4
-target 10
+source 3
+target 9
 id 4
 label ""
 graphics [
@@ -259,8 +259,8 @@ Line [
 ]
 ]
 edge [
-source 3
-target 5
+source 2
+target 4
 id 5
 label ""
 graphics [
@@ -272,8 +272,8 @@ Line [
 ]
 ]
 edge [
-source 10
-target 2
+source 9
+target 10
 id 6
 label ""
 graphics [
@@ -285,22 +285,9 @@ Line [
 ]
 ]
 edge [
-source 8
-target 9
+source 7
+target 8
 id 7
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 5
-target 7
-id 8
 label ""
 graphics [
 type "line"
@@ -313,6 +300,19 @@ Line [
 edge [
 source 4
 target 6
+id 8
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 3
+target 5
 id 9
 label ""
 graphics [

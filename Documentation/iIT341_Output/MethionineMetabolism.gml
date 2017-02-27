@@ -5,7 +5,7 @@ node [
 id 0
 label "M_hom__L_c0"
 graphics [
-x 32.5
+x 71.5
 y 85.5
 z 0
 h 15
@@ -21,7 +21,7 @@ node [
 id 1
 label "R_SERAT1"
 graphics [
-x 35.5
+x 68.5
 y 110
 z 0
 h 10
@@ -35,9 +35,9 @@ outline "#000000"
 ]
 node [
 id 2
-label "M_2obut_c2"
+label "M_succ_c2"
 graphics [
-x 86.5
+x 35.5
 y -0.5
 z 0
 h 15
@@ -51,233 +51,89 @@ outline "#000000"
 ]
 node [
 id 3
-label "R_METB13"
+label "M_2obut_c3"
 graphics [
-x 23.5
-y 20
+x -0.5
+y -0.5
 z 0
-h 10
-w 10
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
-fill "#fc9272"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 4
-label "M_achms_c4"
+label "R_METB14"
 graphics [
-x 23.5
-y 39.5
+x 80.5
+y 20
 z 0
-h 15
-w 15
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 5
-label "R_SHSL2r5"
+label "M_achms_c5"
 graphics [
-x 68.5
-y 20
+x 80.5
+y 38.5
 z 0
-h 10
-w 10
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
-fill "#fc9272"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 6
-label "M_coa_c6"
+label "R_SHSL2r6"
 graphics [
-x -0.5
-y 39.5
+x 35.5
+y 20
 z 0
-h 15
-w 15
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 7
-label "M_nh4_c7"
+label "R_AHSERL27"
 graphics [
-x 104.5
-y -0.5
+x 65.5
+y 20
 z 0
-h 15
-w 15
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 8
-label "R_AHSERL28"
-graphics [
-x 38.5
-y 20
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 9
-label "M_cys__L_c9"
-graphics [
-x 41.5
-y 39.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 10
-label "R_CYSS10"
-graphics [
-x 44.5
-y 63
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 11
-label "M_cyst__L_c11"
-graphics [
-x 32.5
-y -0.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 12
-label "R_SHSL112"
+label "M_acser_c8"
 graphics [
 x 53.5
-y 20
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 13
-label "R_HSERTA13"
-graphics [
-x 29.5
-y 63
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 14
-label "M_suchms_c14"
-graphics [
-x 65.5
-y 39.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 15
-label "R_SHSL4r15"
-graphics [
-x 86.5
-y 20
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 16
-label "M_accoa_c16"
-graphics [
-x 44.5
-y 125.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 17
-label "M_acser_c17"
-graphics [
-x 56.5
 y 85.5
 z 0
 h 15
@@ -290,10 +146,154 @@ outline "#000000"
      ]
 ]
 node [
-id 18
-label "M_ac_c18"
+id 9
+label "R_CYSS9"
 graphics [
-x 14.5
+x 59.5
+y 62
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 10
+label "M_cyst__L_c10"
+graphics [
+x 71.5
+y -0.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 11
+label "R_SHSL111"
+graphics [
+x 50.5
+y 20
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 12
+label "R_HSERTA12"
+graphics [
+x 74.5
+y 62
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 13
+label "M_suchms_c13"
+graphics [
+x 32.5
+y 38.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 14
+label "R_SHSL4r14"
+graphics [
+x 17.5
+y 20
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 15
+label "M_coa_c15"
+graphics [
+x 104.5
+y 38.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 16
+label "M_accoa_c16"
+graphics [
+x 50.5
+y 128.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 17
+label "M_ac_c17"
+graphics [
+x 89.5
+y -0.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 18
+label "M_nh4_c18"
+graphics [
+x 17.5
 y -0.5
 z 0
 h 15
@@ -309,7 +309,7 @@ node [
 id 19
 label "M_hcys__L_c19"
 graphics [
-x 50.5
+x 53.5
 y -0.5
 z 0
 h 15
@@ -325,7 +325,7 @@ node [
 id 20
 label "M_h2s_c20"
 graphics [
-x 74.5
+x 29.5
 y 85.5
 z 0
 h 15
@@ -339,10 +339,10 @@ outline "#000000"
 ]
 node [
 id 21
-label "M_succ_c21"
+label "M_cys__L_c21"
 graphics [
-x 68.5
-y -0.5
+x 62.5
+y 38.5
 z 0
 h 15
 w 15
@@ -357,8 +357,8 @@ node [
 id 22
 label "M_ser__L_c22"
 graphics [
-x 26.5
-y 125.5
+x 68.5
+y 128.5
 z 0
 h 15
 w 15
@@ -370,9 +370,42 @@ outline "#000000"
      ]
 ]
 edge [
-source 9
-target 3
+source 20
+target 6
 id 0
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+point [
+x 29.5
+y 85.5
+z 0
+]
+point [
+x 44.5
+y 62
+z 0
+]
+point [
+x 44.5
+y 38.5
+z 0
+]
+point [
+x 35.5
+y 20
+z 0
+]
+]
+]
+]
+edge [
+source 21
+target 11
+id 1
 label ""
 graphics [
 type "line"
@@ -383,9 +416,61 @@ Line [
 ]
 ]
 edge [
-source 5
+source 9
 target 21
-id 1
+id 2
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 6
+target 2
+id 3
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 11
+target 2
+id 4
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 4
+target 17
+id 5
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 14
+target 2
+id 6
 label ""
 graphics [
 type "line"
@@ -398,91 +483,6 @@ Line [
 edge [
 source 16
 target 1
-id 2
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 20
-target 5
-id 3
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-point [
-x 74.5
-y 85.5
-z 0
-]
-point [
-x 77.5
-y 63
-z 0
-]
-point [
-x 77.5
-y 39.5
-z 0
-]
-point [
-x 68.5
-y 20
-z 0
-]
-]
-]
-]
-edge [
-source 0
-target 13
-id 4
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 22
-target 1
-id 5
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 3
-target 18
-id 6
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 8
-target 19
 id 7
 label ""
 graphics [
@@ -494,8 +494,8 @@ Line [
 ]
 ]
 edge [
-source 9
-target 12
+source 20
+target 7
 id 8
 label ""
 graphics [
@@ -503,12 +503,32 @@ type "line"
 arrow "last"
 width 0.1
 Line [
+point [
+x 29.5
+y 85.5
+z 0
+]
+point [
+x 50.5
+y 62
+z 0
+]
+point [
+x 50.5
+y 38.5
+z 0
+]
+point [
+x 65.5
+y 20
+z 0
+]
 ]
 ]
 ]
 edge [
-source 15
-target 2
+source 14
+target 3
 id 9
 label ""
 graphics [
@@ -520,8 +540,8 @@ Line [
 ]
 ]
 edge [
-source 1
-target 6
+source 6
+target 19
 id 10
 label ""
 graphics [
@@ -529,27 +549,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x 35.5
-y 110
-z 0
-]
-point [
-x -0.5
-y 85.5
-z 0
-]
-point [
-x -0.5
-y 39.5
-z 0
-]
 ]
 ]
 ]
 edge [
-source 8
-target 18
+source 20
+target 9
 id 11
 label ""
 graphics [
@@ -561,8 +566,8 @@ Line [
 ]
 ]
 edge [
-source 15
-target 7
+source 1
+target 15
 id 12
 label ""
 graphics [
@@ -570,12 +575,27 @@ type "line"
 arrow "last"
 width 0.1
 Line [
+point [
+x 68.5
+y 110
+z 0
+]
+point [
+x 104.5
+y 85.5
+z 0
+]
+point [
+x 104.5
+y 38.5
+z 0
+]
 ]
 ]
 ]
 edge [
-source 4
-target 3
+source 5
+target 4
 id 13
 label ""
 graphics [
@@ -587,8 +607,8 @@ Line [
 ]
 ]
 edge [
-source 10
-target 9
+source 0
+target 12
 id 14
 label ""
 graphics [
@@ -600,8 +620,8 @@ Line [
 ]
 ]
 edge [
-source 13
-target 4
+source 12
+target 5
 id 15
 label ""
 graphics [
@@ -613,8 +633,8 @@ Line [
 ]
 ]
 edge [
-source 14
-target 12
+source 13
+target 11
 id 16
 label ""
 graphics [
@@ -626,8 +646,8 @@ Line [
 ]
 ]
 edge [
-source 13
-target 6
+source 14
+target 18
 id 17
 label ""
 graphics [
@@ -639,8 +659,8 @@ Line [
 ]
 ]
 edge [
-source 10
-target 18
+source 9
+target 17
 id 18
 label ""
 graphics [
@@ -649,22 +669,22 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 44.5
-y 63
+x 59.5
+y 62
 z 0
 ]
 point [
-x 11.5
-y 39.5
+x 92.5
+y 38.5
 z 0
 ]
 point [
-x 11.5
+x 92.5
 y 20
 z 0
 ]
 point [
-x 14.5
+x 89.5
 y -0.5
 z 0
 ]
@@ -672,8 +692,8 @@ z 0
 ]
 ]
 edge [
-source 15
-target 21
+source 16
+target 12
 id 19
 label ""
 graphics [
@@ -681,12 +701,32 @@ type "line"
 arrow "last"
 width 0.1
 Line [
+point [
+x 50.5
+y 128.5
+z 0
+]
+point [
+x 41.5
+y 110
+z 0
+]
+point [
+x 41.5
+y 85.5
+z 0
+]
+point [
+x 74.5
+y 62
+z 0
+]
 ]
 ]
 ]
 edge [
-source 14
-target 15
+source 13
+target 14
 id 20
 label ""
 graphics [
@@ -699,7 +739,7 @@ Line [
 ]
 edge [
 source 1
-target 17
+target 8
 id 21
 label ""
 graphics [
@@ -711,8 +751,8 @@ Line [
 ]
 ]
 edge [
-source 17
-target 10
+source 8
+target 9
 id 22
 label ""
 graphics [
@@ -724,8 +764,8 @@ Line [
 ]
 ]
 edge [
-source 12
-target 21
+source 7
+target 17
 id 23
 label ""
 graphics [
@@ -737,8 +777,8 @@ Line [
 ]
 ]
 edge [
-source 4
-target 8
+source 5
+target 7
 id 24
 label ""
 graphics [
@@ -750,8 +790,8 @@ Line [
 ]
 ]
 edge [
-source 20
-target 8
+source 7
+target 19
 id 25
 label ""
 graphics [
@@ -759,32 +799,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x 74.5
-y 85.5
-z 0
-]
-point [
-x 53.5
-y 63
-z 0
-]
-point [
-x 53.5
-y 39.5
-z 0
-]
-point [
-x 38.5
-y 20
-z 0
-]
 ]
 ]
 ]
 edge [
-source 12
-target 11
+source 11
+target 10
 id 26
 label ""
 graphics [
@@ -796,8 +816,8 @@ Line [
 ]
 ]
 edge [
-source 20
-target 10
+source 21
+target 4
 id 27
 label ""
 graphics [
@@ -809,8 +829,8 @@ Line [
 ]
 ]
 edge [
-source 16
-target 13
+source 12
+target 15
 id 28
 label ""
 graphics [
@@ -818,27 +838,12 @@ type "line"
 arrow "last"
 width 0.1
 Line [
-point [
-x 44.5
-y 125.5
-z 0
-]
-point [
-x 44.5
-y 85.5
-z 0
-]
-point [
-x 29.5
-y 63
-z 0
-]
 ]
 ]
 ]
 edge [
-source 3
-target 11
+source 4
+target 10
 id 29
 label ""
 graphics [
@@ -850,8 +855,8 @@ Line [
 ]
 ]
 edge [
-source 14
-target 5
+source 13
+target 6
 id 30
 label ""
 graphics [
@@ -863,8 +868,8 @@ Line [
 ]
 ]
 edge [
-source 5
-target 19
+source 22
+target 1
 id 31
 label ""
 graphics [

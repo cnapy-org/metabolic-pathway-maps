@@ -23,25 +23,13 @@ cbmviz.saveGraphObjToTulipFile(test_gml_graph, "test_gml_graph.tlp")
 # (same structure -> keys: graph names, values: [graph_obj, {graph_prop dict}])
 test_graph_registry = cbmviz.createGraphDictFromGraphObj(test_json_graph)
 #test_graph_registry = cbmviz.createGraphDictFromGraphObj(test_gml_graph)
-# Result:
-# graph from JSOn works,
-# graph from GML causes error:
-"""
-Traceback (most recent call last):
 
-  File "C:/Users/Nicolas/surfdrive/LabR1_Teusink_Amsterdam/Project/CBMViz_TestScripts/test_load_other_file_formats_JSON_GML.py", line 35, in <module>
-    cbmviz.colorGraphs(COLORS, global_ops, fba_results, path_dict, test_graph_registry, output_path, cmod.getId())
-  File "C:\Anaconda2\lib\site-packages\cbmviz\MetaViz.py", line 275, in colorGraphs
-    tlp.Color(255, 255, 153, 255)) # cofactor color
-  File "C:\Anaconda2\lib\site-packages\cbmviz\MetaViz.py", line 902, in colorMetaboliteReactionNodes
-    if graph_props["type"][n] == 1:  # metabolite node
-KeyError: 'type'
-"""
-
+# important note about GML files: they do not record a lot of info which means id, name and pathway graph property
+# info (and also others) are lost! -> coloring fluxes requires ids, coloring pathways required ids and pathway data!
 
 # use this new test graph_registry dict to do the coloring and export new results
 fba_results = dict()
 cbmviz.colorGraphs(global_ops, fba_results, test_graph_registry, output_path, file_name)
 cbmviz.exportGraph(output_path, test_graph_registry, global_ops, cDir, file_name)
 
-
+print(global_ops)

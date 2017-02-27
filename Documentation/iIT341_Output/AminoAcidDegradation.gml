@@ -21,7 +21,7 @@ node [
 id 1
 label "M_3mob_c1"
 graphics [
-x 50.5
+x 89.5
 y -0.5
 z 0
 h 15
@@ -35,10 +35,10 @@ outline "#000000"
 ]
 node [
 id 2
-label "M_1pyr5c_c2"
+label "M_pro__L_c2"
 graphics [
 x -0.5
-y -0.5
+y 30.5
 z 0
 h 15
 w 15
@@ -51,10 +51,10 @@ outline "#000000"
 ]
 node [
 id 3
-label "M_pro__L_c3"
+label "M_ile__L_c3"
 graphics [
-x -0.5
-y 30.5
+x 32.5
+y 39.5
 z 0
 h 15
 w 15
@@ -85,7 +85,7 @@ node [
 id 5
 label "M_leu__L_c5"
 graphics [
-x 35.5
+x 50.5
 y 39.5
 z 0
 h 15
@@ -99,7 +99,23 @@ outline "#000000"
 ]
 node [
 id 6
-label "M_fad_c6"
+label "M_glu__L_c6"
+graphics [
+x 53.5
+y -0.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 7
+label "M_fad_c7"
 graphics [
 x 17.5
 y 30.5
@@ -114,42 +130,10 @@ outline "#000000"
      ]
 ]
 node [
-id 7
-label "R_LEUTA7"
-graphics [
-x 47.5
-y 19
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
 id 8
-label "M_val__L_c8"
+label "M_1pyr5c_c8"
 graphics [
-x 53.5
-y 39.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 9
-label "M_4mop_c9"
-graphics [
-x 32.5
+x -0.5
 y -0.5
 z 0
 h 15
@@ -162,10 +146,26 @@ outline "#000000"
      ]
 ]
 node [
-id 10
-label "M_glu__L_c10"
+id 9
+label "R_LEUTA9"
 graphics [
-x 68.5
+x 59.5
+y 19
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 10
+label "M_4mop_c10"
+graphics [
+x 71.5
 y -0.5
 z 0
 h 15
@@ -181,7 +181,7 @@ node [
 id 11
 label "R_ILETA11"
 graphics [
-x 77.5
+x 44.5
 y 19
 z 0
 h 10
@@ -195,7 +195,23 @@ outline "#000000"
 ]
 node [
 id 12
-label "R_PROD212"
+label "M_val__L_c12"
+graphics [
+x 86.5
+y 39.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 13
+label "R_PROD213"
 graphics [
 x 8.5
 y 15
@@ -210,10 +226,10 @@ outline "#000000"
      ]
 ]
 node [
-id 13
-label "M_3mop_c13"
+id 14
+label "M_3mop_c14"
 graphics [
-x 86.5
+x 35.5
 y -0.5
 z 0
 h 15
@@ -226,27 +242,11 @@ outline "#000000"
      ]
 ]
 node [
-id 14
-label "M_akg_c14"
-graphics [
-x 71.5
-y 39.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
 id 15
-label "M_ile__L_c15"
+label "M_fadh2_c15"
 graphics [
-x 89.5
-y 39.5
+x 17.5
+y -0.5
 z 0
 h 15
 w 15
@@ -261,7 +261,7 @@ node [
 id 16
 label "R_VALTA16"
 graphics [
-x 62.5
+x 74.5
 y 19
 z 0
 h 10
@@ -307,10 +307,10 @@ outline "#000000"
 ]
 node [
 id 19
-label "M_fadh2_c19"
+label "M_akg_c19"
 graphics [
-x 17.5
-y -0.5
+x 68.5
+y 39.5
 z 0
 h 15
 w 15
@@ -322,8 +322,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 17
-target 0
+source 19
+target 16
 id 0
 label ""
 graphics [
@@ -335,100 +335,9 @@ Line [
 ]
 ]
 edge [
-source 11
-target 10
-id 1
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 14
-target 16
-id 2
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 7
-target 10
-id 3
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 14
-target 11
-id 4
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 15
-target 11
-id 5
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 3
-target 12
-id 6
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
 source 5
-target 7
-id 7
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 4
-target 17
-id 8
+target 9
+id 1
 label ""
 graphics [
 type "line"
@@ -441,7 +350,7 @@ Line [
 edge [
 source 17
 target 18
-id 9
+id 2
 label ""
 graphics [
 type "line"
@@ -452,9 +361,9 @@ Line [
 ]
 ]
 edge [
-source 6
-target 12
-id 10
+source 12
+target 16
+id 3
 label ""
 graphics [
 type "line"
@@ -466,73 +375,8 @@ Line [
 ]
 edge [
 source 7
-target 9
-id 11
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 12
-target 19
-id 12
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 8
-target 16
-id 13
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 14
-target 7
-id 14
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 12
-target 2
-id 15
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 16
-target 10
-id 16
+target 13
+id 4
 label ""
 graphics [
 type "line"
@@ -544,8 +388,86 @@ Line [
 ]
 edge [
 source 11
+target 6
+id 5
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 2
 target 13
-id 17
+id 6
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 19
+target 9
+id 7
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 3
+target 11
+id 8
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 16
+target 6
+id 9
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 19
+target 11
+id 10
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 9
+target 10
+id 11
 label ""
 graphics [
 type "line"
@@ -558,6 +480,84 @@ Line [
 edge [
 source 16
 target 1
+id 12
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 9
+target 6
+id 13
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 13
+target 15
+id 14
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 13
+target 8
+id 15
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 17
+target 0
+id 16
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 11
+target 14
+id 17
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 4
+target 17
 id 18
 label ""
 graphics [

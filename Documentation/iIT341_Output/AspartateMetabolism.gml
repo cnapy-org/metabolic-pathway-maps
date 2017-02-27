@@ -5,7 +5,7 @@ node [
 id 0
 label "M_glu__L_c0"
 graphics [
-x 61
+x -0.5
 y -0.5
 z 0
 h 15
@@ -21,7 +21,7 @@ node [
 id 1
 label "M_akg_c1"
 graphics [
-x 70
+x 8.5
 y 39.5
 z 0
 h 15
@@ -37,7 +37,7 @@ node [
 id 2
 label "M_oaa_c2"
 graphics [
-x 79
+x 17.5
 y -0.5
 z 0
 h 15
@@ -53,7 +53,7 @@ node [
 id 3
 label "R_ASPT3"
 graphics [
-x 34
+x 44.5
 y 15
 z 0
 h 10
@@ -69,7 +69,7 @@ node [
 id 4
 label "M_aspsa_c4"
 graphics [
-x -0.5
+x 79
 y 39.5
 z 0
 h 15
@@ -85,7 +85,7 @@ node [
 id 5
 label "M_nh4_c5"
 graphics [
-x 25
+x 35.5
 y -0.5
 z 0
 h 15
@@ -101,7 +101,7 @@ node [
 id 6
 label "R_ASAD6"
 graphics [
-x -0.5
+x 79
 y 15
 z 0
 h 10
@@ -117,7 +117,7 @@ node [
 id 7
 label "M_asp__L_c7"
 graphics [
-x 34
+x 44.5
 y 39.5
 z 0
 h 15
@@ -133,7 +133,7 @@ node [
 id 8
 label "R_ASPK8"
 graphics [
-x 17.4625
+x 61.0375
 y 15
 z 0
 h 10
@@ -149,7 +149,7 @@ node [
 id 9
 label "M_4pasp_c9"
 graphics [
-x 7
+x 71.5
 y -0.5
 z 0
 h 15
@@ -165,7 +165,7 @@ node [
 id 10
 label "R_ASPTA10"
 graphics [
-x 70
+x 8.5
 y 15
 z 0
 h 10
@@ -181,7 +181,7 @@ node [
 id 11
 label "M_fum_c11"
 graphics [
-x 43
+x 53.5
 y -0.5
 z 0
 h 15

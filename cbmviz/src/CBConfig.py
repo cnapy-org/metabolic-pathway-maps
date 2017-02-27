@@ -62,10 +62,11 @@ cfg_default = {"AUTO_ALIAS": False,
                #"ADD_COFACTORS": ["Respiratory chain",    # add nodes for small sps/cofactors after they have been
                #                  "Citric Acid Cycle"],   # deleted in path_dict
 
-               "TRANSPORT_RADIAL": False,                    # apply Tree Radial algorithm to transport reactions in
+               "TRANSPORT_RADIAL": False,                   # apply Tree Radial algorithm to transport reactions in
                                                             # output_whole
                "METABOLITE_NODE_SIZE": 2.5, # for big nodes: set to 10
                "REACTION_NODE_SIZE": 1, # for big nodes: set to 4
+               "COFACTOR_NODE_SIZE": 1.5, # for big nodes: set to 7
 
                "SELECTED_PATHWAYS": ["objective reaction",  # pathways to be saved in output_selected
                                      "Transport"],

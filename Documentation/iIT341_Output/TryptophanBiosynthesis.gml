@@ -99,55 +99,7 @@ outline "#000000"
 ]
 node [
 id 6
-label "M_gln__L_c6"
-graphics [
-x 26.5
-y 70.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 7
-label "R_TRPS17"
-graphics [
-x 92.5
-y 49
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 8
-label "R_ANS8"
-graphics [
-x 17.5
-y 55
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 9
-label "R_TRPS39"
+label "R_TRPS36"
 graphics [
 x 77.5
 y 49
@@ -162,56 +114,8 @@ outline "#000000"
      ]
 ]
 node [
-id 10
-label "R_ANPRT10"
-graphics [
-x 44.5
-y 15
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 11
-label "M_indole_c11"
-graphics [
-x 68.5
-y 33.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 12
-label "R_TRPS212"
-graphics [
-x 86.5
-y 15
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 13
-label "M_pyr_c13"
+id 7
+label "M_pyr_c7"
 graphics [
 x 17.5
 y 30.5
@@ -226,8 +130,56 @@ outline "#000000"
      ]
 ]
 node [
-id 14
-label "M_prpp_c14"
+id 8
+label "M_gln__L_c8"
+graphics [
+x 26.5
+y 70.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 9
+label "M_indole_c9"
+graphics [
+x 68.5
+y 33.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 10
+label "R_TRPS210"
+graphics [
+x 86.5
+y 15
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 11
+label "M_prpp_c11"
 graphics [
 x 35.5
 y 30.5
@@ -242,8 +194,24 @@ outline "#000000"
      ]
 ]
 node [
-id 15
-label "M_anth_c15"
+id 12
+label "R_ANPRT12"
+graphics [
+x 44.5
+y 15
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 13
+label "M_anth_c13"
 graphics [
 x 53.5
 y 30.5
@@ -254,6 +222,38 @@ d 1
 type "rectangle"
 width 0.12
 fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 14
+label "R_TRPS114"
+graphics [
+x 92.5
+y 49
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 15
+label "R_ANS15"
+graphics [
+x 17.5
+y 55
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -274,8 +274,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 9
-target 1
+source 15
+target 7
 id 0
 label ""
 graphics [
@@ -287,8 +287,8 @@ Line [
 ]
 ]
 edge [
-source 4
-target 8
+source 12
+target 16
 id 1
 label ""
 graphics [
@@ -300,22 +300,9 @@ Line [
 ]
 ]
 edge [
-source 15
-target 10
-id 2
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 7
+source 14
 target 2
-id 3
+id 2
 label ""
 graphics [
 type "line"
@@ -346,22 +333,9 @@ z 0
 ]
 ]
 edge [
-source 12
-target 2
-id 4
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 10
-target 16
-id 5
+source 14
+target 1
+id 3
 label ""
 graphics [
 type "line"
@@ -374,20 +348,7 @@ Line [
 edge [
 source 8
 target 15
-id 6
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 0
-target 9
-id 7
+id 4
 label ""
 graphics [
 type "line"
@@ -399,34 +360,8 @@ Line [
 ]
 edge [
 source 3
-target 7
-id 8
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 9
-target 11
-id 9
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 3
-target 12
-id 10
+target 10
+id 5
 label ""
 graphics [
 type "line"
@@ -457,35 +392,9 @@ z 0
 ]
 ]
 edge [
-source 11
-target 12
-id 11
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 6
-target 8
-id 12
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 8
-target 5
-id 13
+source 4
+target 15
+id 6
 label ""
 graphics [
 type "line"
@@ -497,7 +406,98 @@ Line [
 ]
 edge [
 source 0
-target 7
+target 14
+id 7
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 15
+target 5
+id 8
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 6
+target 9
+id 9
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 3
+target 14
+id 10
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 9
+target 10
+id 11
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 13
+target 12
+id 12
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 15
+target 13
+id 13
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 11
+target 12
 id 14
 label ""
 graphics [
@@ -509,8 +509,8 @@ Line [
 ]
 ]
 edge [
-source 8
-target 13
+source 0
+target 6
 id 15
 label ""
 graphics [
@@ -522,8 +522,8 @@ Line [
 ]
 ]
 edge [
-source 14
-target 10
+source 10
+target 2
 id 16
 label ""
 graphics [
@@ -535,7 +535,7 @@ Line [
 ]
 ]
 edge [
-source 7
+source 6
 target 1
 id 17
 label ""

@@ -19,7 +19,7 @@ outline "#000000"
 ]
 node [
 id 1
-label "M_pyr_c1"
+label "M_anth_c1"
 graphics [
 x -0.5
 y -0.5
@@ -35,23 +35,7 @@ outline "#000000"
 ]
 node [
 id 2
-label "R_ANS22"
-graphics [
-x 8.5
-y 15
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 3
-label "M_anth_c3"
+label "M_pyr_c2"
 graphics [
 x 17.5
 y -0.5
@@ -62,6 +46,22 @@ d 1
 type "rectangle"
 width 0.12
 fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 3
+label "R_ANS23"
+graphics [
+x 8.5
+y 15
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
 outline "#000000"
      ]
 ]
@@ -82,8 +82,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 2
-target 1
+source 0
+target 3
 id 0
 label ""
 graphics [
@@ -95,8 +95,8 @@ Line [
 ]
 ]
 edge [
-source 0
-target 2
+source 4
+target 3
 id 1
 label ""
 graphics [
@@ -108,7 +108,7 @@ Line [
 ]
 ]
 edge [
-source 4
+source 3
 target 2
 id 2
 label ""
@@ -121,8 +121,8 @@ Line [
 ]
 ]
 edge [
-source 2
-target 3
+source 3
+target 1
 id 3
 label ""
 graphics [

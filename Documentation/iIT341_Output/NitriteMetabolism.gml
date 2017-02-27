@@ -19,7 +19,23 @@ outline "#000000"
 ]
 node [
 id 1
-label "R_NTRARz1"
+label "M_no2_c1"
+graphics [
+x -0.5
+y -0.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 2
+label "R_NTRARz2"
 graphics [
 x 8.5
 y 15
@@ -34,27 +50,11 @@ outline "#000000"
      ]
 ]
 node [
-id 2
-label "M_no3_c2"
+id 3
+label "M_no3_c3"
 graphics [
 x 17.5
 y 30.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 3
-label "M_no2_c3"
-graphics [
-x -0.5
-y -0.5
 z 0
 h 15
 w 15
@@ -82,8 +82,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 2
-target 1
+source 3
+target 2
 id 0
 label ""
 graphics [
@@ -96,7 +96,7 @@ Line [
 ]
 edge [
 source 0
-target 1
+target 2
 id 1
 label ""
 graphics [
@@ -108,7 +108,7 @@ Line [
 ]
 ]
 edge [
-source 1
+source 2
 target 4
 id 2
 label ""
@@ -121,8 +121,8 @@ Line [
 ]
 ]
 edge [
-source 1
-target 3
+source 2
+target 1
 id 3
 label ""
 graphics [

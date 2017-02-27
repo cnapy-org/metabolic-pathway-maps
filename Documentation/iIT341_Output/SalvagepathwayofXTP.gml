@@ -19,10 +19,10 @@ outline "#000000"
 ]
 node [
 id 1
-label "M_xtsn_c1"
+label "M_xmp_c1"
 graphics [
-x 26.5
-y 64.5
+x 17.5
+y -0.5
 z 0
 h 15
 w 15
@@ -35,10 +35,10 @@ outline "#000000"
 ]
 node [
 id 2
-label "M_r1p_c2"
+label "M_xtsn_c2"
 graphics [
-x 17.5
-y 33.5
+x 26.5
+y 64.5
 z 0
 h 15
 w 15
@@ -67,10 +67,10 @@ outline "#000000"
 ]
 node [
 id 4
-label "M_xmp_c4"
+label "M_r1p_c4"
 graphics [
 x 17.5
-y -0.5
+y 33.5
 z 0
 h 15
 w 15
@@ -114,8 +114,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 0
-target 3
+source 6
+target 4
 id 0
 label ""
 graphics [
@@ -127,8 +127,8 @@ Line [
 ]
 ]
 edge [
-source 6
-target 2
+source 3
+target 1
 id 1
 label ""
 graphics [
@@ -166,8 +166,8 @@ Line [
 ]
 ]
 edge [
-source 3
-target 4
+source 0
+target 3
 id 4
 label ""
 graphics [
@@ -179,7 +179,7 @@ Line [
 ]
 ]
 edge [
-source 1
+source 2
 target 6
 id 5
 label ""

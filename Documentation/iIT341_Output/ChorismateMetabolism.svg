@@ -4,16 +4,16 @@
     <g desc="Graph" transform="translate(8,38) scale(1,-1)">
         <g id="Edges" desc="This is the group of edges">
             <g id="0">
-                <path d="M 5.59677,10 L 3.26602,5.98592" fill="none" stroke-width="1.25" stroke-opacity="1" stroke="rgb(149,188,97)"/>
-            </g>
-            <g id="1">
                 <path d="M 3.26602,24.0141 L 5.59677,20" fill="none" stroke-width="1.25" stroke-opacity="1" stroke="rgb(149,188,97)"/>
             </g>
-            <g id="2">
+            <g id="1">
                 <path d="M 13.734,24.0141 L 11.4032,20" fill="none" stroke-width="1.25" stroke-opacity="1" stroke="rgb(149,188,97)"/>
             </g>
-            <g id="3">
+            <g id="2">
                 <path d="M 11.4032,10 L 13.734,5.98592" fill="none" stroke-width="1.25" stroke-opacity="1" stroke="rgb(149,188,97)"/>
+            </g>
+            <g id="3">
+                <path d="M 5.59677,10 L 3.26602,5.98592" fill="none" stroke-width="1.25" stroke-opacity="1" stroke="rgb(149,188,97)"/>
             </g>
         </g>
         <g id="Nodes" desc="This is the group of nodes">
@@ -23,15 +23,15 @@
             </g>
             <g id="1">
                 <ellipse cx="-0.5" cy="-0.5" rx="7.5" ry="7.5" fill="rgb(103,169,207)" fill-opacity="1"/>
-                <text x="-0.5" y="1.35714" font-size="2.57143" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_pyr_c</text>
+                <text x="-0.5" y="1.25" font-size="2.25" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_anth_c</text>
             </g>
             <g id="2">
-                <rect x="3.5" y="10" width="10" height="10" rx="0.5" ry="0.5" fill="rgb(252,146,114)" fill-opacity="1"/>
-                <text x="8.5" y="-14.3333" font-size="2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ANS2</text>
+                <ellipse cx="17.5" cy="-0.5" rx="7.5" ry="7.5" fill="rgb(103,169,207)" fill-opacity="1"/>
+                <text x="17.5" y="1.35714" font-size="2.57143" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_pyr_c</text>
             </g>
             <g id="3">
-                <ellipse cx="17.5" cy="-0.5" rx="7.5" ry="7.5" fill="rgb(103,169,207)" fill-opacity="1"/>
-                <text x="17.5" y="1.25" font-size="2.25" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">M_anth_c</text>
+                <rect x="3.5" y="10" width="10" height="10" rx="0.5" ry="0.5" fill="rgb(252,146,114)" fill-opacity="1"/>
+                <text x="8.5" y="-14.3333" font-size="2" text-anchor="middle" transform="scale(1,-1)" stroke-width="0" fill="rgb(0,0,0)" fill-opacity="1">R_ANS2</text>
             </g>
             <g id="4">
                 <ellipse cx="17.5" cy="30.5" rx="7.5" ry="7.5" fill="rgb(103,169,207)" fill-opacity="1"/>

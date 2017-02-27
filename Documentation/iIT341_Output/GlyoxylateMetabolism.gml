@@ -82,8 +82,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 0
-target 3
+source 3
+target 4
 id 0
 label ""
 graphics [
@@ -108,8 +108,8 @@ Line [
 ]
 ]
 edge [
-source 3
-target 4
+source 0
+target 3
 id 2
 label ""
 graphics [

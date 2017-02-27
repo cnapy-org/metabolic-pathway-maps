@@ -114,8 +114,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 4
-target 6
+source 5
+target 1
 id 0
 label ""
 graphics [
@@ -166,8 +166,8 @@ Line [
 ]
 ]
 edge [
-source 5
-target 1
+source 4
+target 6
 id 4
 label ""
 graphics [

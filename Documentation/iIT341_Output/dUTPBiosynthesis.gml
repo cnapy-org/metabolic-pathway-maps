@@ -3,7 +3,7 @@ directed 1
 version 2
 node [
 id 0
-label "M_trdrd_c0"
+label "M_udp_c0"
 graphics [
 x -0.5
 y 61.5
@@ -19,39 +19,7 @@ outline "#000000"
 ]
 node [
 id 1
-label "M_trdox_c1"
-graphics [
-x -0.5
-y 30.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 2
-label "M_dudp_c2"
-graphics [
-x 17.5
-y 30.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 3
-label "M_udp_c3"
+label "M_trdrd_c1"
 graphics [
 x 17.5
 y 61.5
@@ -66,10 +34,42 @@ outline "#000000"
      ]
 ]
 node [
+id 2
+label "M_dudp_c2"
+graphics [
+x -0.5
+y 30.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 3
+label "M_trdox_c3"
+graphics [
+x 17.5
+y 30.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
 id 4
 label "R_NDPK64"
 graphics [
-x 17.5
+x -0.5
 y 15
 z 0
 h 10
@@ -85,7 +85,7 @@ node [
 id 5
 label "M_dutp_c5"
 graphics [
-x 17.5
+x -0.5
 y -0.5
 z 0
 h 15
@@ -114,8 +114,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 4
-target 5
+source 1
+target 6
 id 0
 label ""
 graphics [
@@ -127,8 +127,8 @@ Line [
 ]
 ]
 edge [
-source 0
-target 6
+source 6
+target 3
 id 1
 label ""
 graphics [
@@ -166,8 +166,8 @@ Line [
 ]
 ]
 edge [
-source 6
-target 1
+source 4
+target 5
 id 4
 label ""
 graphics [
@@ -179,7 +179,7 @@ Line [
 ]
 ]
 edge [
-source 3
+source 0
 target 6
 id 5
 label ""

@@ -108,8 +108,8 @@ Line [
 ]
 ]
 edge [
-source 3
-target 2
+source 0
+target 3
 id 2
 label ""
 graphics [
@@ -121,8 +121,8 @@ Line [
 ]
 ]
 edge [
-source 0
-target 3
+source 3
+target 2
 id 3
 label ""
 graphics [

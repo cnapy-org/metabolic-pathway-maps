@@ -772,16 +772,17 @@ def layoutAllPathwaysFromGroups(cmod, global_ops, path_dict, graph, graph_elemen
         else:
             path_layout.append("Sugiyama (OGDF)")
         # apply layout to pathway and track already layouted graph elements
-        if global_ops["ADD_COFACTORS"] is True and path_name in global_ops["ADD_COFACTORS"]:
+        if global_ops["ADD_COFACTORS"] is not False and path_name in global_ops["ADD_COFACTORS"]:
             path_sg = mvl.layoutPathway(cmod, graph, graph_elements, graph_props, path_list, path_name,
-                                             path_layout[0], small_sps_dict, add_cofactors=True)
+                                             path_layout[0], small_sps_dict, global_ops, add_cofactors=True)
         else:
             if path_name == "Overlap Test":
                 path_sg = mvl.layoutPathway(cmod, graph, graph_elements, graph_props, path_list, path_name,
-                                        path_layout[0], small_sps_dict, add_cofactors=False, debug_mode=True)
+                                        path_layout[0], small_sps_dict, global_ops, add_cofactors=False,
+                                            debug_mode=True)
             else:
                 path_sg = mvl.layoutPathway(cmod, graph, graph_elements, graph_props, path_list, path_name,
-                                        path_layout[0], small_sps_dict, add_cofactors=False)
+                                        path_layout[0], small_sps_dict, global_ops, add_cofactors=False)
         # set name of subgraph
         path_sg.setName(path_name)
         # test if all reaction and metabolite ids of the group definition are part of the generated subgraph
@@ -811,7 +812,8 @@ def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathway
     # -> combine all pathways to create a new output graph of the whole network
     if global_ops["TRANSPORT_RADIAL"]:
         whole_output_graph, whole_output_props = mvl.dumpToGraph(graph, graph_props, "output_whole",
-                                             [sg.getName() for sg in graph.getSubGraphs()])
+                                             [sg.getName() for sg in graph.getSubGraphs()],
+                                                                 transport_radial=True)
         whole_output_graph.cbmviz_file_name = graph.cbmviz_file_name
         graph_registry.update({"output_whole": [whole_output_graph,whole_output_props]})
     else:
@@ -1480,13 +1482,17 @@ def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edge
 
 def loadGraphObjFromFile(input_file):
     """
-    Load the graph object contained in a Tulip file (.tlp) or a JSON file (.json)::
+    Load the graph object contained in a Tulip file (.tlp), a JSON file (.json), a GML file (.gml) or a DOT file (
+    .dot). Add graph properties that may not have been recorded in input_file (these properties will be empty!)::
 
     - *input_file* path to the input file
+
     """
     # TODO: check file extension to filter
     try:
         graph_obj = tlp.loadGraph(input_file)
+        # go through all expected graph props: add empty prop if it is missing
+        graph_props_tup = mvl.create_props(graph_obj)
         file_name = ntpath.basename(input_file)
         # delete file extension
         if file_name.endswith(".xml"):
@@ -1498,6 +1504,13 @@ def loadGraphObjFromFile(input_file):
         elif file_name.endswith(".dot"):
             file_name = file_name.replace(".dot", "")
         graph_obj.setName(file_name)
+        # TODO: use info in SBML file (if provided) to make graph obj compatible with CBMViz downstream functions?
+        #if sbml_file is not None:
+            # create CBMPY model object from sbml file
+            #cmod = cbmpy.readSBML3FBC(sbml_file)
+            # use info in cmod to add data to new, empty graph props
+            # add id, name, pathway
+            # ...
     except Exception as ex:
         print("{} \n".format(ex))
 

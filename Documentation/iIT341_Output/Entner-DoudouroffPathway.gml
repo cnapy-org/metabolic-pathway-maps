@@ -3,7 +3,7 @@ directed 1
 version 2
 node [
 id 0
-label "M_pyr_c0"
+label "M_g3p_c0"
 graphics [
 x -0.5
 y -0.5
@@ -19,7 +19,7 @@ outline "#000000"
 ]
 node [
 id 1
-label "M_g3p_c1"
+label "M_pyr_c1"
 graphics [
 x 17.5
 y -0.5
@@ -99,7 +99,7 @@ outline "#000000"
 ]
 edge [
 source 3
-target 0
+target 1
 id 0
 label ""
 graphics [
@@ -125,7 +125,7 @@ Line [
 ]
 edge [
 source 3
-target 1
+target 0
 id 2
 label ""
 graphics [

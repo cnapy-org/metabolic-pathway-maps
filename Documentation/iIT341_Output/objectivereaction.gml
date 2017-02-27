@@ -915,7 +915,7 @@ outline "#000000"
 ]
 node [
 id 57
-label "M_coa_c57"
+label "M_dgtp_c57"
 graphics [
 x 935.5
 y 63.5
@@ -931,7 +931,7 @@ outline "#000000"
 ]
 node [
 id 58
-label "M_nad_c58"
+label "M_gln__L_c58"
 graphics [
 x 953.5
 y 63.5
@@ -947,7 +947,7 @@ outline "#000000"
 ]
 node [
 id 59
-label "M_tyr__L_c59"
+label "M_coa_c59"
 graphics [
 x 971.5
 y 63.5
@@ -963,7 +963,7 @@ outline "#000000"
 ]
 node [
 id 60
-label "M_glu__L_c60"
+label "M_5mthf_c60"
 graphics [
 x 989.5
 y 63.5
@@ -979,7 +979,7 @@ outline "#000000"
 ]
 node [
 id 61
-label "M_ctp_c61"
+label "M_pheme_c61"
 graphics [
 x 1007.5
 y 63.5
@@ -995,7 +995,7 @@ outline "#000000"
 ]
 node [
 id 62
-label "M_udpg_c62"
+label "M_his__L_c62"
 graphics [
 x 1025.5
 y 63.5
@@ -1011,7 +1011,7 @@ outline "#000000"
 ]
 node [
 id 63
-label "M_asp__L_c63"
+label "M_thr__L_c63"
 graphics [
 x 1043.5
 y 63.5
@@ -1027,7 +1027,7 @@ outline "#000000"
 ]
 node [
 id 64
-label "M_gln__L_c64"
+label "M_nad_c64"
 graphics [
 x 1061.5
 y 63.5
@@ -1043,7 +1043,7 @@ outline "#000000"
 ]
 node [
 id 65
-label "M_phe__L_c65"
+label "M_tyr__L_c65"
 graphics [
 x 1079.5
 y 63.5
@@ -1059,7 +1059,7 @@ outline "#000000"
 ]
 node [
 id 66
-label "M_arg__L_c66"
+label "M_accoa_c66"
 graphics [
 x 1097.5
 y 63.5
@@ -1075,7 +1075,7 @@ outline "#000000"
 ]
 node [
 id 67
-label "M_his__L_c67"
+label "M_ala__L_c67"
 graphics [
 x 1115.5
 y 63.5
@@ -1091,7 +1091,7 @@ outline "#000000"
 ]
 node [
 id 68
-label "M_pro__L_c68"
+label "M_dctp_c68"
 graphics [
 x 1133.5
 y 63.5
@@ -1107,7 +1107,7 @@ outline "#000000"
 ]
 node [
 id 69
-label "M_pe_HP_c69"
+label "M_pg_HP_c69"
 graphics [
 x 1151.5
 y 63.5
@@ -1123,7 +1123,7 @@ outline "#000000"
 ]
 node [
 id 70
-label "M_ala__L_c70"
+label "M_asp__L_c70"
 graphics [
 x 1169.5
 y 63.5
@@ -1139,7 +1139,7 @@ outline "#000000"
 ]
 node [
 id 71
-label "M_cys__L_c71"
+label "M_ile__L_c71"
 graphics [
 x 1187.5
 y 63.5
@@ -1155,7 +1155,7 @@ outline "#000000"
 ]
 node [
 id 72
-label "M_accoa_c72"
+label "M_arg__L_c72"
 graphics [
 x 1205.5
 y 63.5
@@ -1171,7 +1171,7 @@ outline "#000000"
 ]
 node [
 id 73
-label "M_leu__L_c73"
+label "M_glu__L_c73"
 graphics [
 x 1223.5
 y 63.5
@@ -1187,7 +1187,7 @@ outline "#000000"
 ]
 node [
 id 74
-label "M_succoa_c74"
+label "M_pe_HP_c74"
 graphics [
 x 1241.5
 y 63.5
@@ -1203,7 +1203,7 @@ outline "#000000"
 ]
 node [
 id 75
-label "M_clpn_HP_c75"
+label "M_val__L_c75"
 graphics [
 x 1259.5
 y 63.5
@@ -1219,7 +1219,7 @@ outline "#000000"
 ]
 node [
 id 76
-label "M_gtp_c76"
+label "M_gly_c76"
 graphics [
 x 1277.5
 y 63.5
@@ -1235,7 +1235,7 @@ outline "#000000"
 ]
 node [
 id 77
-label "M_gly_c77"
+label "M_succoa_c77"
 graphics [
 x 1295.5
 y 63.5
@@ -1251,7 +1251,7 @@ outline "#000000"
 ]
 node [
 id 78
-label "M_asn__L_c78"
+label "M_amp_c78"
 graphics [
 x 1313.5
 y 63.5
@@ -1283,7 +1283,7 @@ outline "#000000"
 ]
 node [
 id 80
-label "M_dctp_c80"
+label "M_pro__L_c80"
 graphics [
 x 1349.5
 y 63.5
@@ -1299,7 +1299,7 @@ outline "#000000"
 ]
 node [
 id 81
-label "M_thm_c81"
+label "M_clpn_HP_c81"
 graphics [
 x 1367.5
 y 63.5
@@ -1331,7 +1331,7 @@ outline "#000000"
 ]
 node [
 id 83
-label "M_ile__L_c83"
+label "M_gtp_c83"
 graphics [
 x 1403.5
 y 63.5
@@ -1347,7 +1347,7 @@ outline "#000000"
 ]
 node [
 id 84
-label "M_met__L_c84"
+label "M_thm_c84"
 graphics [
 x 1421.5
 y 63.5
@@ -1363,7 +1363,7 @@ outline "#000000"
 ]
 node [
 id 85
-label "M_ps_HP_c85"
+label "M_lps_HP_c85"
 graphics [
 x 1439.5
 y 63.5
@@ -1379,7 +1379,7 @@ outline "#000000"
 ]
 node [
 id 86
-label "M_lps_HP_c86"
+label "M_leu__L_c86"
 graphics [
 x 1457.5
 y 63.5
@@ -1395,7 +1395,7 @@ outline "#000000"
 ]
 node [
 id 87
-label "M_mqn6_c87"
+label "M_asn__L_c87"
 graphics [
 x 1475.5
 y 63.5
@@ -1411,7 +1411,7 @@ outline "#000000"
 ]
 node [
 id 88
-label "M_dgtp_c88"
+label "M_met__L_c88"
 graphics [
 x 1493.5
 y 63.5
@@ -1443,7 +1443,7 @@ outline "#000000"
 ]
 node [
 id 90
-label "M_val__L_c90"
+label "M_phe__L_c90"
 graphics [
 x 1529.5
 y 63.5
@@ -1459,7 +1459,7 @@ outline "#000000"
 ]
 node [
 id 91
-label "M_ser__L_c91"
+label "M_mqn6_c91"
 graphics [
 x 1547.5
 y 63.5
@@ -1475,7 +1475,7 @@ outline "#000000"
 ]
 node [
 id 92
-label "M_5mthf_c92"
+label "M_fad_c92"
 graphics [
 x 1565.5
 y 63.5
@@ -1491,7 +1491,7 @@ outline "#000000"
 ]
 node [
 id 93
-label "M_fad_c93"
+label "M_ctp_c93"
 graphics [
 x 1583.5
 y 63.5
@@ -1507,7 +1507,7 @@ outline "#000000"
 ]
 node [
 id 94
-label "M_pheme_c94"
+label "M_ser__L_c94"
 graphics [
 x 1601.5
 y 63.5
@@ -1523,7 +1523,7 @@ outline "#000000"
 ]
 node [
 id 95
-label "M_pg_HP_c95"
+label "M_ps_HP_c95"
 graphics [
 x 1619.5
 y 63.5
@@ -1539,7 +1539,7 @@ outline "#000000"
 ]
 node [
 id 96
-label "M_thr__L_c96"
+label "M_cys__L_c96"
 graphics [
 x 1637.5
 y 63.5
@@ -1555,7 +1555,7 @@ outline "#000000"
 ]
 node [
 id 97
-label "M_amp_c97"
+label "M_udpg_c97"
 graphics [
 x 1655.5
 y 63.5

@@ -19,10 +19,10 @@ outline "#000000"
 ]
 node [
 id 1
-label "M_for_c1"
+label "M_5mdru1p_c1"
 graphics [
-x -0.5
-y 30.5
+x 68.5
+y -0.5
 z 0
 h 15
 w 15
@@ -35,7 +35,7 @@ outline "#000000"
 ]
 node [
 id 2
-label "M_o2_c2"
+label "M_dkmpp_c2"
 graphics [
 x -0.5
 y 61.5
@@ -51,17 +51,17 @@ outline "#000000"
 ]
 node [
 id 3
-label "R_DKMPPD3"
+label "M_o2_c3"
 graphics [
-x 8.5
-y 46
+x 17.5
+y 61.5
 z 0
-h 10
-w 10
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
-fill "#fc9272"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -83,71 +83,7 @@ outline "#000000"
 ]
 node [
 id 5
-label "M_5mdr1p_c5"
-graphics [
-x 68.5
-y 30.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 6
-label "M_dkmpp_c6"
-graphics [
-x 17.5
-y 61.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 7
-label "R_MTRI7"
-graphics [
-x 68.5
-y 15
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 8
-label "M_2kmb_c8"
-graphics [
-x 17.5
-y 30.5
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 9
-label "M_glu__L_c9"
+label "M_glu__L_c5"
 graphics [
 x 35.5
 y -0.5
@@ -162,40 +98,8 @@ outline "#000000"
      ]
 ]
 node [
-id 10
-label "R_UNK210"
-graphics [
-x 26.5
-y 15
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 11
-label "R_MTAN11"
-graphics [
-x 59.5
-y 77
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 12
-label "M_ade_c12"
+id 6
+label "M_ade_c6"
 graphics [
 x 50.5
 y 61.5
@@ -210,11 +114,11 @@ outline "#000000"
      ]
 ]
 node [
-id 13
-label "M_5mdru1p_c13"
+id 7
+label "M_5mdr1p_c7"
 graphics [
 x 68.5
-y -0.5
+y 30.5
 z 0
 h 15
 w 15
@@ -226,11 +130,11 @@ outline "#000000"
      ]
 ]
 node [
-id 14
-label "R_MTRK14"
+id 8
+label "R_MTRI8"
 graphics [
 x 68.5
-y 46
+y 15
 z 0
 h 10
 w 10
@@ -242,8 +146,8 @@ outline "#000000"
      ]
 ]
 node [
-id 15
-label "M_5mtr_c15"
+id 9
+label "M_5mtr_c9"
 graphics [
 x 68.5
 y 61.5
@@ -258,8 +162,88 @@ outline "#000000"
      ]
 ]
 node [
-id 16
-label "M_gln__L_c16"
+id 10
+label "M_for_c10"
+graphics [
+x -0.5
+y 30.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 11
+label "M_2kmb_c11"
+graphics [
+x 17.5
+y 30.5
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 12
+label "R_UNK212"
+graphics [
+x 26.5
+y 15
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 13
+label "R_MTAN13"
+graphics [
+x 59.5
+y 77
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 14
+label "R_DKMPPD14"
+graphics [
+x 8.5
+y 46
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 15
+label "M_gln__L_c15"
 graphics [
 x 35.5
 y 30.5
@@ -273,9 +257,25 @@ fill "#67a9cf"
 outline "#000000"
      ]
 ]
+node [
+id 16
+label "R_MTRK16"
+graphics [
+x 68.5
+y 46
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
 edge [
 source 0
-target 11
+target 13
 id 0
 label ""
 graphics [
@@ -287,8 +287,8 @@ Line [
 ]
 ]
 edge [
-source 11
-target 12
+source 12
+target 5
 id 1
 label ""
 graphics [
@@ -300,8 +300,8 @@ Line [
 ]
 ]
 edge [
-source 16
-target 10
+source 12
+target 4
 id 2
 label ""
 graphics [
@@ -313,8 +313,8 @@ Line [
 ]
 ]
 edge [
-source 6
-target 3
+source 13
+target 6
 id 3
 label ""
 graphics [
@@ -327,7 +327,7 @@ Line [
 ]
 edge [
 source 3
-target 1
+target 14
 id 4
 label ""
 graphics [
@@ -339,8 +339,8 @@ Line [
 ]
 ]
 edge [
-source 15
-target 14
+source 9
+target 16
 id 5
 label ""
 graphics [
@@ -352,8 +352,8 @@ Line [
 ]
 ]
 edge [
-source 14
-target 5
+source 16
+target 7
 id 6
 label ""
 graphics [
@@ -365,8 +365,8 @@ Line [
 ]
 ]
 edge [
-source 3
-target 8
+source 14
+target 11
 id 7
 label ""
 graphics [
@@ -378,8 +378,8 @@ Line [
 ]
 ]
 edge [
-source 10
-target 9
+source 15
+target 12
 id 8
 label ""
 graphics [
@@ -391,8 +391,8 @@ Line [
 ]
 ]
 edge [
-source 11
-target 15
+source 13
+target 9
 id 9
 label ""
 graphics [
@@ -404,8 +404,8 @@ Line [
 ]
 ]
 edge [
-source 2
-target 3
+source 14
+target 10
 id 10
 label ""
 graphics [
@@ -417,8 +417,8 @@ Line [
 ]
 ]
 edge [
-source 5
-target 7
+source 7
+target 8
 id 11
 label ""
 graphics [
@@ -430,8 +430,8 @@ Line [
 ]
 ]
 edge [
-source 8
-target 10
+source 11
+target 12
 id 12
 label ""
 graphics [
@@ -443,8 +443,8 @@ Line [
 ]
 ]
 edge [
-source 10
-target 4
+source 8
+target 1
 id 13
 label ""
 graphics [
@@ -456,8 +456,8 @@ Line [
 ]
 ]
 edge [
-source 7
-target 13
+source 2
+target 14
 id 14
 label ""
 graphics [

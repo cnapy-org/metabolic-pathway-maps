@@ -98,48 +98,9 @@ outline "#000000"
      ]
 ]
 edge [
-source 2
-target 3
-id 0
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
 source 5
 target 2
-id 1
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 4
-target 1
-id 2
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 4
-target 5
-id 3
+id 0
 label ""
 graphics [
 type "line"
@@ -152,6 +113,45 @@ Line [
 edge [
 source 0
 target 4
+id 1
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 2
+target 3
+id 2
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 4
+target 1
+id 3
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 4
+target 5
 id 4
 label ""
 graphics [

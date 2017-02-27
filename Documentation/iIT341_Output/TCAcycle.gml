@@ -3,122 +3,122 @@ directed 1
 version 2
 node [
 id 0
-label "M_akg_c0"
+label "M_h2o_c0"
 graphics [
-x 195.5
-y 298.09
+x 328.733
+y 246.447
 z 0
-h 15
-w 15
+h 12.5
+w 12.5
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 1
-label "M_accoa_c1"
+label "M_co2_c1"
 graphics [
-x 57.463
-y 257.559
+x 314.63
+y 270.263
 z 0
-h 15
-w 15
+h 12.5
+w 12.5
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 2
-label "M_coa_c2"
+label "M_h2o_c2"
 graphics [
-x 120.531
-y 298.09
+x 3.2332
+y 196.892
 z 0
-h 15
-w 15
+h 12.5
+w 12.5
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 3
-label "R_OOR3r3"
+label "M_nadp_c3"
 graphics [
-x 158.016
-y 303.48
+x 317.163
+y 74.9155
 z 0
-h 10
-w 10
+h 12.5
+w 12.5
 d 1
 type "rectangle"
 width 0.12
-fill "#fc9272"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 4
-label "R_OCOAT14"
+label "M_h_c4"
 graphics [
-x 120.531
-y 42.7688
+x 52.855
+y 293.801
 z 0
-h 10
-w 10
+h 12.5
+w 12.5
 d 1
 type "rectangle"
 width 0.12
-fill "#fc9272"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 5
-label "M_succoa_c5"
+label "M_h_c5"
 graphics [
-x 158.016
-y 37.3793
+x 169.263
+y 343.184
 z 0
-h 15
-w 15
+h 12.5
+w 12.5
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 6
-label "R_CS6"
+label "M_co2_c6"
 graphics [
-x 86.0832
-y 282.359
+x 141.742
+y 340.248
 z 0
-h 10
-w 10
+h 12.5
+w 12.5
 d 1
 type "rectangle"
 width 0.12
-fill "#fc9272"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 7
-label "M_succ_c7"
+label "M_akg_c7"
 graphics [
-x 86.0832
-y 58.5006
+x 294.763
+y 226.017
 z 0
 h 15
 w 15
@@ -131,10 +131,10 @@ outline "#000000"
 ]
 node [
 id 8
-label "M_mqn6_c8"
+label "M_accoa_c8"
 graphics [
-x 36.9888
-y 115.159
+x 52.709
+y 226.017
 z 0
 h 15
 w 15
@@ -147,10 +147,10 @@ outline "#000000"
 ]
 node [
 id 9
-label "M_icit_c9"
+label "M_coa_c9"
 graphics [
-x 258.568
-y 83.3002
+x 101.803
+y 282.675
 z 0
 h 15
 w 15
@@ -163,42 +163,42 @@ outline "#000000"
 ]
 node [
 id 10
-label "M_cit_c10"
+label "R_OOR3r10"
 graphics [
-x 195.5
-y 42.7688
+x 136.251
+y 298.407
 z 0
-h 15
-w 15
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 11
-label "M_oaa_c11"
+label "M_h2o_c11"
 graphics [
-x 289.712
-y 189.365
+x 173.736
+y -1.75
 z 0
-h 15
-w 15
+h 12.5
+w 12.5
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 12
-label "R_FRD512"
+label "R_OCOAT112"
 graphics [
-x 57.463
-y 83.3002
+x 211.22
+y 298.407
 z 0
 h 10
 w 10
@@ -211,10 +211,10 @@ outline "#000000"
 ]
 node [
 id 13
-label "M_mql6_c13"
+label "M_succoa_c13"
 graphics [
-x 289.712
-y 151.495
+x 173.736
+y 303.796
 z 0
 h 15
 w 15
@@ -227,42 +227,42 @@ outline "#000000"
 ]
 node [
 id 14
-label "M_fad_c14"
+label "M_h2o_c14"
 graphics [
-x 238.722
-y 324.878
+x 34.7299
+y 272.884
 z 0
-h 15
-w 15
+h 12.5
+w 12.5
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#ffff99"
 outline "#000000"
      ]
 ]
 node [
 id 15
-label "M_acac_c15"
+label "R_CS15"
 graphics [
-x 94.1428
-y 8.29378
+x 73.1831
+y 257.875
 z 0
-h 15
-w 15
+h 10
+w 10
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 16
-label "M_fdxrd_c16"
+label "M_succ_c16"
 graphics [
-x 142.409
-y 343.993
+x 245.668
+y 282.675
 z 0
 h 15
 w 15
@@ -275,10 +275,10 @@ outline "#000000"
 ]
 node [
 id 17
-label "M_fum_c17"
+label "M_mqn6_c17"
 graphics [
-x 279.043
-y 225.701
+x 73.1831
+y 83.6163
 z 0
 h 15
 w 15
@@ -291,10 +291,10 @@ outline "#000000"
 ]
 node [
 id 18
-label "M_aacoa_c18"
+label "M_icit_c18"
 graphics [
-x 124.092
-y -0.5
+x 274.289
+y 83.6163
 z 0
 h 15
 w 15
@@ -307,42 +307,10 @@ outline "#000000"
 ]
 node [
 id 19
-label "R_ICDHyr19"
+label "M_cit_c19"
 graphics [
-x 279.043
-y 115.159
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 20
-label "R_MALS20"
-graphics [
-x 36.9888
-y 225.701
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 21
-label "M_glx_c21"
-graphics [
-x -0.5
-y 242.821
+x 211.22
+y 43.0849
 z 0
 h 15
 w 15
@@ -354,11 +322,43 @@ outline "#000000"
      ]
 ]
 node [
-id 22
-label "M_fdxox_c22"
+id 20
+label "M_oaa_c20"
 graphics [
-x 173.622
-y 343.993
+x 305.432
+y 189.681
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 21
+label "R_FRD521"
+graphics [
+x 101.803
+y 58.8167
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 22
+label "M_mql6_c22"
+graphics [
+x 305.432
+y 151.811
 z 0
 h 15
 w 15
@@ -371,26 +371,10 @@ outline "#000000"
 ]
 node [
 id 23
-label "R_AKO23"
+label "M_fad_c23"
 graphics [
-x 229.948
-y 282.359
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 24
-label "M_fadh2_c24"
-graphics [
-x 264.98
-y 308.003
+x 297.014
+y 293.913
 z 0
 h 15
 w 15
@@ -402,11 +386,27 @@ outline "#000000"
      ]
 ]
 node [
-id 25
-label "M_mal__L_c25"
+id 24
+label "M_nadph_c24"
 graphics [
-x 26.3196
-y 189.365
+x 340.084
+y 125.106
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 25
+label "M_acac_c25"
+graphics [
+x 237.609
+y 332.882
 z 0
 h 15
 w 15
@@ -419,26 +419,58 @@ outline "#000000"
 ]
 node [
 id 26
-label "R_FUM26"
+label "M_fdxrd_c26"
 graphics [
-x 258.568
-y 257.559
+x 112.911
+y 334.049
 z 0
-h 10
-w 10
+h 15
+w 15
 d 1
 type "rectangle"
 width 0.12
-fill "#fc9272"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 27
-label "R_ACONT27"
+label "M_fum_c27"
 graphics [
-x 229.948
-y 58.5006
+x 136.251
+y 43.0849
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 28
+label "M_aacoa_c28"
+graphics [
+x 207.66
+y 341.675
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 29
+label "R_ICDHyr29"
+graphics [
+x 294.763
+y 115.475
 z 0
 h 10
 w 10
@@ -450,11 +482,171 @@ outline "#000000"
      ]
 ]
 node [
-id 28
-label "R_MDH428"
+id 30
+label "M_h_c30"
 graphics [
-x 26.3196
-y 151.495
+x 9.60983
+y 223.825
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 31
+label "R_MALS31"
+graphics [
+x 42.0398
+y 189.681
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 32
+label "M_glx_c32"
+graphics [
+x -0.5
+y 167.639
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 33
+label "M_fdxox_c33"
+graphics [
+x 84.7537
+y 320.579
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 34
+label "R_AKO34"
+graphics [
+x 274.289
+y 257.875
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 35
+label "M_fadh2_c35"
+graphics [
+x 273.064
+y 313.93
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 36
+label "M_mal__L_c36"
+graphics [
+x 42.0398
+y 151.811
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 37
+label "M_co2_c37"
+graphics [
+x 330.643
+y 99.0884
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 38
+label "R_FUM38"
+graphics [
+x 173.736
+y 37.6954
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 39
+label "R_ACONT39"
+graphics [
+x 245.668
+y 58.8167
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 40
+label "R_MDH440"
+graphics [
+x 52.709
+y 115.475
 z 0
 h 10
 w 10
@@ -466,8 +658,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 1
-target 6
+source 11
+target 38
 id 0
 label ""
 graphics [
@@ -479,8 +671,8 @@ Line [
 ]
 ]
 edge [
-source 28
-target 11
+source 29
+target 7
 id 1
 label ""
 graphics [
@@ -492,8 +684,8 @@ Line [
 ]
 ]
 edge [
-source 6
-target 2
+source 34
+target 35
 id 2
 label ""
 graphics [
@@ -505,8 +697,8 @@ Line [
 ]
 ]
 edge [
-source 0
-target 3
+source 34
+target 16
 id 3
 label ""
 graphics [
@@ -518,8 +710,8 @@ Line [
 ]
 ]
 edge [
-source 11
-target 6
+source 27
+target 38
 id 4
 label ""
 graphics [
@@ -531,8 +723,8 @@ Line [
 ]
 ]
 edge [
-source 17
-target 12
+source 39
+target 18
 id 5
 label ""
 graphics [
@@ -544,8 +736,8 @@ Line [
 ]
 ]
 edge [
-source 20
-target 2
+source 33
+target 10
 id 6
 label ""
 graphics [
@@ -557,8 +749,8 @@ Line [
 ]
 ]
 edge [
-source 28
-target 13
+source 14
+target 15
 id 7
 label ""
 graphics [
@@ -570,8 +762,8 @@ Line [
 ]
 ]
 edge [
-source 10
-target 27
+source 23
+target 34
 id 8
 label ""
 graphics [
@@ -583,8 +775,8 @@ Line [
 ]
 ]
 edge [
-source 12
-target 8
+source 7
+target 34
 id 9
 label ""
 graphics [
@@ -596,8 +788,8 @@ Line [
 ]
 ]
 edge [
-source 3
-target 5
+source 10
+target 26
 id 10
 label ""
 graphics [
@@ -609,8 +801,8 @@ Line [
 ]
 ]
 edge [
-source 1
-target 20
+source 36
+target 40
 id 11
 label ""
 graphics [
@@ -622,8 +814,8 @@ Line [
 ]
 ]
 edge [
-source 9
-target 19
+source 12
+target 28
 id 12
 label ""
 graphics [
@@ -635,8 +827,8 @@ Line [
 ]
 ]
 edge [
-source 5
-target 4
+source 10
+target 6
 id 13
 label ""
 graphics [
@@ -648,7 +840,7 @@ Line [
 ]
 ]
 edge [
-source 6
+source 5
 target 10
 id 14
 label ""
@@ -661,8 +853,8 @@ Line [
 ]
 ]
 edge [
-source 4
-target 7
+source 18
+target 29
 id 15
 label ""
 graphics [
@@ -674,8 +866,8 @@ Line [
 ]
 ]
 edge [
-source 4
-target 18
+source 25
+target 12
 id 16
 label ""
 graphics [
@@ -687,8 +879,8 @@ Line [
 ]
 ]
 edge [
-source 3
-target 16
+source 8
+target 31
 id 17
 label ""
 graphics [
@@ -700,9 +892,61 @@ Line [
 ]
 ]
 edge [
-source 12
-target 7
+source 10
+target 13
 id 18
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 22
+target 21
+id 19
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 34
+target 1
+id 20
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 19
+target 39
+id 21
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 9
+target 10
+id 22
 label ""
 graphics [
 type "line"
@@ -715,7 +959,7 @@ Line [
 edge [
 source 13
 target 12
-id 19
+id 23
 label ""
 graphics [
 type "line"
@@ -726,9 +970,126 @@ Line [
 ]
 ]
 edge [
-source 21
+source 40
+target 22
+id 24
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 17
+target 40
+id 25
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 12
+target 16
+id 26
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 31
+target 9
+id 27
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 27
+target 21
+id 28
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 20
+target 15
+id 29
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 38
+target 36
+id 30
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 7
+target 10
+id 31
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 15
+target 9
+id 32
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 40
 target 20
-id 20
+id 33
 label ""
 graphics [
 type "line"
@@ -739,9 +1100,9 @@ Line [
 ]
 ]
 edge [
-source 0
-target 23
-id 21
+source 8
+target 15
+id 34
 label ""
 graphics [
 type "line"
@@ -752,9 +1113,9 @@ Line [
 ]
 ]
 edge [
-source 14
-target 23
-id 22
+source 31
+target 36
+id 35
 label ""
 graphics [
 type "line"
@@ -767,7 +1128,7 @@ Line [
 edge [
 source 15
 target 4
-id 23
+id 36
 label ""
 graphics [
 type "line"
@@ -778,87 +1139,9 @@ Line [
 ]
 ]
 edge [
-source 20
-target 25
-id 24
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 22
-target 3
-id 25
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 27
-target 9
-id 26
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 17
-target 26
-id 27
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 8
-target 28
-id 28
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 23
-target 7
-id 29
-label ""
-graphics [
-type "line"
-arrow "last"
-width 0.1
-Line [
-]
-]
-]
-edge [
-source 23
+source 29
 target 24
-id 30
+id 37
 label ""
 graphics [
 type "line"
@@ -869,9 +1152,9 @@ Line [
 ]
 ]
 edge [
-source 19
-target 0
-id 31
+source 29
+target 37
+id 38
 label ""
 graphics [
 type "line"
@@ -882,9 +1165,35 @@ Line [
 ]
 ]
 edge [
-source 25
-target 28
-id 32
+source 3
+target 29
+id 39
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 32
+target 31
+id 40
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 21
+target 17
+id 41
 label ""
 graphics [
 type "line"
@@ -896,8 +1205,8 @@ Line [
 ]
 edge [
 source 2
-target 3
-id 33
+target 31
+id 42
 label ""
 graphics [
 type "line"
@@ -908,9 +1217,48 @@ Line [
 ]
 ]
 edge [
-source 26
-target 25
-id 34
+source 31
+target 30
+id 43
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 21
+target 16
+id 44
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 15
+target 19
+id 45
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 0
+target 34
+id 46
 label ""
 graphics [
 type "line"

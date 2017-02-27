@@ -661,7 +661,7 @@ def layoutSubgraph(sg, sg_layout=None, user_params=None, x_center=None, y_center
     return sg
 
 def layoutPathway(cmod, g, graph_elements, graph_props, id_list, sg_name, sg_layout, small_sps_dict,
-                  add_cofactors=False, debug_mode=False):
+                  global_ops, add_cofactors=False, debug_mode=False):
     """
     Create and layout a subgraph based initially on a list of model ids::
 
@@ -778,8 +778,10 @@ def layoutPathway(cmod, g, graph_elements, graph_props, id_list, sg_name, sg_lay
                         graph_props["id"][new_n] = sps
                         graph_props["type"][new_n] = 3 # cofactor/small species/ubiquitous species type -> 3
                         graph_props["viewColor"][new_n] = tlp.Color(255,255,153,255) # light yellow
-                        graph_props["viewSize"][new_n] = tlp.Size(1.5, 1.5, 1) # small than metabolite nodes, bigger than
-                                                                               #  reaction nodes
+                        graph_props["viewSize"][new_n] = tlp.Size(global_ops["COFACTOR_NODE_SIZE"],
+                                                                  global_ops["COFACTOR_NODE_SIZE"],
+                                                                  1) # smaller than metabolite nodes,
+                                                                     # bigger than reaction nodes
                         graph_props["viewLabel"][new_n] = sps
                         graph_props["viewFontSize"][new_n] = 14 # small than metabolite font (18)
                         # add edge to connect new node to reaction node

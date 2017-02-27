@@ -3,23 +3,7 @@ directed 1
 version 2
 node [
 id 0
-label "M_met__L_c0"
-graphics [
-x -0.5
-y 130
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 1
-label "M_spmd_c1"
+label "M_spmd_c0"
 graphics [
 x 11.5
 y 33.5
@@ -34,24 +18,8 @@ outline "#000000"
      ]
 ]
 node [
-id 2
-label "M_arg__L_c2"
-graphics [
-x 26.5
-y 130
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 3
-label "M_urea_c3"
+id 1
+label "M_urea_c1"
 graphics [
 x 17.5
 y 68
@@ -66,8 +34,8 @@ outline "#000000"
      ]
 ]
 node [
-id 4
-label "M_ptrc_c4"
+id 2
+label "M_ptrc_c2"
 graphics [
 x 35.5
 y 68
@@ -82,24 +50,8 @@ outline "#000000"
      ]
 ]
 node [
-id 5
-label "M_amet_c5"
-graphics [
-x -0.5
-y 99
-z 0
-h 15
-w 15
-d 1
-type "rectangle"
-width 0.12
-fill "#67a9cf"
-outline "#000000"
-     ]
-]
-node [
-id 6
-label "M_sprm_c6"
+id 3
+label "M_sprm_c3"
 graphics [
 x 5.5
 y -0.5
@@ -114,8 +66,8 @@ outline "#000000"
      ]
 ]
 node [
-id 7
-label "R_ARGDC7"
+id 4
+label "R_ARGDC4"
 graphics [
 x 26.5
 y 114.5
@@ -130,8 +82,8 @@ outline "#000000"
      ]
 ]
 node [
-id 8
-label "M_ametam_c8"
+id 5
+label "M_ametam_c5"
 graphics [
 x -0.5
 y 68
@@ -146,8 +98,8 @@ outline "#000000"
      ]
 ]
 node [
-id 9
-label "M_agm_c9"
+id 6
+label "M_agm_c6"
 graphics [
 x 26.5
 y 99
@@ -162,8 +114,8 @@ outline "#000000"
      ]
 ]
 node [
-id 10
-label "R_ADMDC10"
+id 7
+label "R_ADMDC7"
 graphics [
 x -0.5
 y 83.5
@@ -178,8 +130,8 @@ outline "#000000"
      ]
 ]
 node [
-id 11
-label "R_AGMT11"
+id 8
+label "R_AGMT8"
 graphics [
 x 26.5
 y 83.5
@@ -194,8 +146,24 @@ outline "#000000"
      ]
 ]
 node [
-id 12
-label "R_METAT12"
+id 9
+label "M_amet_c9"
+graphics [
+x -0.5
+y 99
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 10
+label "R_METAT10"
 graphics [
 x -0.5
 y 114.5
@@ -210,8 +178,24 @@ outline "#000000"
      ]
 ]
 node [
-id 13
-label "R_SPRMS13"
+id 11
+label "M_met__L_c11"
+graphics [
+x -0.5
+y 130
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 12
+label "R_SPRMS12"
 graphics [
 x 5.5
 y 18
@@ -222,6 +206,22 @@ d 1
 type "rectangle"
 width 0.12
 fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 13
+label "M_arg__L_c13"
+graphics [
+x 26.5
+y 130
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
@@ -258,8 +258,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 5
-target 10
+source 8
+target 1
 id 0
 label ""
 graphics [
@@ -271,7 +271,7 @@ Line [
 ]
 ]
 edge [
-source 8
+source 5
 target 15
 id 1
 label ""
@@ -284,8 +284,8 @@ Line [
 ]
 ]
 edge [
-source 10
-target 8
+source 7
+target 5
 id 2
 label ""
 graphics [
@@ -297,8 +297,8 @@ Line [
 ]
 ]
 edge [
-source 1
-target 13
+source 13
+target 4
 id 3
 label ""
 graphics [
@@ -310,8 +310,8 @@ Line [
 ]
 ]
 edge [
-source 13
-target 6
+source 12
+target 3
 id 4
 label ""
 graphics [
@@ -323,8 +323,8 @@ Line [
 ]
 ]
 edge [
-source 9
-target 11
+source 6
+target 8
 id 5
 label ""
 graphics [
@@ -336,8 +336,8 @@ Line [
 ]
 ]
 edge [
-source 8
-target 13
+source 5
+target 12
 id 6
 label ""
 graphics [
@@ -364,8 +364,8 @@ z 0
 ]
 ]
 edge [
-source 7
-target 9
+source 4
+target 6
 id 7
 label ""
 graphics [
@@ -377,8 +377,8 @@ Line [
 ]
 ]
 edge [
-source 12
-target 5
+source 2
+target 15
 id 8
 label ""
 graphics [
@@ -418,7 +418,7 @@ z 0
 ]
 ]
 edge [
-source 13
+source 12
 target 14
 id 10
 label ""
@@ -431,8 +431,8 @@ Line [
 ]
 ]
 edge [
-source 0
-target 12
+source 8
+target 2
 id 11
 label ""
 graphics [
@@ -444,8 +444,8 @@ Line [
 ]
 ]
 edge [
-source 15
-target 1
+source 11
+target 10
 id 12
 label ""
 graphics [
@@ -457,8 +457,8 @@ Line [
 ]
 ]
 edge [
-source 4
-target 15
+source 15
+target 0
 id 13
 label ""
 graphics [
@@ -470,8 +470,8 @@ Line [
 ]
 ]
 edge [
-source 11
-target 4
+source 9
+target 7
 id 14
 label ""
 graphics [
@@ -483,8 +483,8 @@ Line [
 ]
 ]
 edge [
-source 2
-target 7
+source 10
+target 9
 id 15
 label ""
 graphics [
@@ -496,8 +496,8 @@ Line [
 ]
 ]
 edge [
-source 11
-target 3
+source 0
+target 12
 id 16
 label ""
 graphics [
