@@ -5,8 +5,8 @@ node [
 id 0
 label "M_fmnh2_c0"
 graphics [
-x 41.5
-y 45.5
+x 89.5
+y 48.5
 z 0
 h 15
 w 15
@@ -21,8 +21,8 @@ node [
 id 1
 label "M_g3p_c1"
 graphics [
-x 23.5
-y 45.5
+x 107.5
+y 48.5
 z 0
 h 15
 w 15
@@ -37,8 +37,8 @@ node [
 id 2
 label "M_amp_c2"
 graphics [
-x 95.5
-y 45.5
+x 53.5
+y 48.5
 z 0
 h 15
 w 15
@@ -53,8 +53,8 @@ node [
 id 3
 label "M_accoa_c3"
 graphics [
-x 77.5
-y 45.5
+x 71.5
+y 48.5
 z 0
 h 15
 w 15
@@ -69,8 +69,8 @@ node [
 id 4
 label "M_3pg_c4"
 graphics [
-x 131.5
-y 45.5
+x -0.5
+y 48.5
 z 0
 h 15
 w 15
@@ -85,8 +85,8 @@ node [
 id 5
 label "R_PDH25"
 graphics [
-x 65.5
-y 66
+x 68.5
+y 68
 z 0
 h 10
 w 10
@@ -101,7 +101,7 @@ node [
 id 6
 label "M_nadh_c6"
 graphics [
-x 41.5
+x 71.5
 y -0.5
 z 0
 h 15
@@ -117,8 +117,8 @@ node [
 id 7
 label "M_glc__D_c7"
 graphics [
-x 5.5
-y 86
+x 128.5
+y 88
 z 0
 h 15
 w 15
@@ -133,8 +133,8 @@ node [
 id 8
 label "R_PGI8"
 graphics [
-x 3.08696
-y 27
+x 131.5
+y 24
 z 0
 h 10
 w 10
@@ -149,8 +149,8 @@ node [
 id 9
 label "M_fmn_c9"
 graphics [
-x 70
-y 86
+x 82
+y 88
 z 0
 h 15
 w 15
@@ -165,8 +165,8 @@ node [
 id 10
 label "M_2pg_c10"
 graphics [
-x 122.5
-y 86
+x 8.5
+y 88
 z 0
 h 15
 w 15
@@ -181,8 +181,8 @@ node [
 id 11
 label "R_GAPD11"
 graphics [
-x 41.5
-y 27
+x 71.5
+y 24
 z 0
 h 10
 w 10
@@ -197,8 +197,8 @@ node [
 id 12
 label "R_HEX112"
 graphics [
-x 5.5
-y 66
+x 128.5
+y 68
 z 0
 h 10
 w 10
@@ -213,8 +213,8 @@ node [
 id 13
 label "R_FBP13"
 graphics [
-x 0.545454
-y 101.5
+x 132.294
+y 103.5
 z 0
 h 10
 w 10
@@ -229,8 +229,8 @@ node [
 id 14
 label "R_PGK14"
 graphics [
-x 113.402
-y 27
+x 17.5
+y 24
 z 0
 h 10
 w 10
@@ -245,7 +245,7 @@ node [
 id 15
 label "M_f6p_c15"
 graphics [
-x -0.5
+x 134.5
 y -0.5
 z 0
 h 15
@@ -261,8 +261,8 @@ node [
 id 16
 label "R_ENO16"
 graphics [
-x 113.5
-y 66
+x 17.5
+y 68
 z 0
 h 10
 w 10
@@ -277,8 +277,8 @@ node [
 id 17
 label "R_PPS17"
 graphics [
-x 98.5
-y 66
+x 35.5
+y 68
 z 0
 h 10
 w 10
@@ -293,8 +293,8 @@ node [
 id 18
 label "M_pyr_c18"
 graphics [
-x 88
-y 86
+x 46
+y 88
 z 0
 h 15
 w 15
@@ -309,8 +309,8 @@ node [
 id 19
 label "M_fdp_c19"
 graphics [
-x 8.5
-y 119
+x 122.5
+y 122
 z 0
 h 15
 w 15
@@ -325,8 +325,8 @@ node [
 id 20
 label "M_g6p_c20"
 graphics [
-x 5.5
-y 45.5
+x 128.5
+y 48.5
 z 0
 h 15
 w 15
@@ -341,8 +341,8 @@ node [
 id 21
 label "M_pep_c21"
 graphics [
-x 113.5
-y 45.5
+x 17.5
+y 48.5
 z 0
 h 15
 w 15
@@ -357,8 +357,8 @@ node [
 id 22
 label "M_dhap_c22"
 graphics [
-x 29.5
-y 86
+x 110.5
+y 88
 z 0
 h 15
 w 15
@@ -373,8 +373,8 @@ node [
 id 23
 label "R_FBA23"
 graphics [
-x 23.5
-y 101.5
+x 104.5
+y 103.5
 z 0
 h 10
 w 10
@@ -389,7 +389,7 @@ node [
 id 24
 label "M_13dpg_c24"
 graphics [
-x 86.5
+x 35.5
 y -0.5
 z 0
 h 15
@@ -405,8 +405,8 @@ node [
 id 25
 label "R_PGM25"
 graphics [
-x 131.5
-y 66
+x -0.5
+y 68
 z 0
 h 10
 w 10
@@ -421,8 +421,8 @@ node [
 id 26
 label "R_TPI26"
 graphics [
-x 26.537
-y 66
+x 108.981
+y 68
 z 0
 h 10
 w 10
@@ -437,8 +437,8 @@ node [
 id 27
 label "M_nad_c27"
 graphics [
-x 59.5
-y 45.5
+x 35.5
+y 48.5
 z 0
 h 15
 w 15
@@ -453,8 +453,8 @@ node [
 id 28
 label "M_coa_c28"
 graphics [
-x 52
-y 86
+x 64
+y 88
 z 0
 h 15
 w 15
@@ -697,23 +697,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 23.5
-y 101.5
+x 104.5
+y 103.5
 z 0
 ]
 point [
-x 17.5
-y 86
+x 98.5
+y 88
 z 0
 ]
 point [
-x 17.5
-y 66
+x 98.5
+y 68
 z 0
 ]
 point [
-x 23.5
-y 45.5
+x 107.5
+y 48.5
 z 0
 ]
 ]
@@ -847,22 +847,22 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 0.545454
-y 101.5
+x 132.294
+y 103.5
 z 0
 ]
 point [
-x -6.5
-y 86
+x 140.5
+y 88
 z 0
 ]
 point [
-x -6.5
-y 27
+x 140.5
+y 24
 z 0
 ]
 point [
-x -0.5
+x 134.5
 y -0.5
 z 0
 ]

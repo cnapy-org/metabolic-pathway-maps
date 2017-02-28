@@ -5,8 +5,8 @@ node [
 id 0
 label "M_imp_c0"
 graphics [
-x 108.25
-y 162.25
+x 40
+y 164.5
 z 0
 h 15
 w 15
@@ -21,8 +21,8 @@ node [
 id 1
 label "M_asp__L_c1"
 graphics [
-x 102.25
-y 244.25
+x 112
+y 264.75
 z 0
 h 15
 w 15
@@ -37,8 +37,8 @@ node [
 id 2
 label "M_fum_c2"
 graphics [
-x 126.25
-y 162.25
+x 130
+y 164.5
 z 0
 h 15
 w 15
@@ -53,8 +53,8 @@ node [
 id 3
 label "M_prpp_c3"
 graphics [
-x 6.25
-y 244.25
+x 92.5
+y 264.75
 z 0
 h 15
 w 15
@@ -69,8 +69,8 @@ node [
 id 4
 label "R_PRPPS4"
 graphics [
-x 63.25
-y 275.75
+x 46
+y 292.75
 z 0
 h 10
 w 10
@@ -85,8 +85,8 @@ node [
 id 5
 label "R_PRFGS5"
 graphics [
-x 39.25
-y 112.25
+x 61
+y 108.5
 z 0
 h 10
 w 10
@@ -101,8 +101,8 @@ node [
 id 6
 label "M_r5p_c6"
 graphics [
-x 63.25
-y 291.25
+x 46
+y 308.25
 z 0
 h 15
 w 15
@@ -117,8 +117,8 @@ node [
 id 7
 label "M_fgam_c7"
 graphics [
-x 54.25
-y 129.75
+x 94
+y 132
 z 0
 h 15
 w 15
@@ -133,8 +133,8 @@ node [
 id 8
 label "M_aicar_c8"
 graphics [
-x 90.25
-y 162.25
+x 58
+y 164.5
 z 0
 h 15
 w 15
@@ -149,8 +149,8 @@ node [
 id 9
 label "M_gly_c9"
 graphics [
-x 63.25
-y 196.25
+x 94
+y 212.5
 z 0
 h 15
 w 15
@@ -165,8 +165,8 @@ node [
 id 10
 label "M_10fthf_c10"
 graphics [
-x 72.25
-y 162.25
+x 76
+y 164.5
 z 0
 h 15
 w 15
@@ -181,8 +181,8 @@ node [
 id 11
 label "R_GLUPRT11"
 graphics [
-x 6.25
-y 221.75
+x 92.5
+y 241.5
 z 0
 h 10
 w 10
@@ -197,7 +197,7 @@ node [
 id 12
 label "M_5caiz_c12"
 graphics [
-x 110.5
+x 123.25
 y -0.5
 z 0
 h 15
@@ -213,8 +213,8 @@ node [
 id 13
 label "M_25aics_c13"
 graphics [
-x 108.25
-y 196.25
+x 112
+y 212.5
 z 0
 h 15
 w 15
@@ -229,8 +229,8 @@ node [
 id 14
 label "M_air_c14"
 graphics [
-x 40.6424
-y 55.5
+x 63.2403
+y 51.5
 z 0
 h 15
 w 15
@@ -245,8 +245,8 @@ node [
 id 15
 label "R_PRASCSi15"
 graphics [
-x 108.25
-y 221.75
+x 112
+y 241.5
 z 0
 h 10
 w 10
@@ -261,8 +261,8 @@ node [
 id 16
 label "M_fprica_c16"
 graphics [
-x 94.75
-y 129.75
+x 53.5
+y 132
 z 0
 h 15
 w 15
@@ -277,8 +277,8 @@ node [
 id 17
 label "M_hco3_c17"
 graphics [
-x 104.5
-y 55.5
+x 117.25
+y 51.5
 z 0
 h 15
 w 15
@@ -293,8 +293,8 @@ node [
 id 18
 label "M_pram_c18"
 graphics [
-x 45.25
-y 196.25
+x 76
+y 212.5
 z 0
 h 15
 w 15
@@ -309,8 +309,8 @@ node [
 id 19
 label "M_fpram_c19"
 graphics [
-x 25.6727
-y 86.5
+x 49.253
+y 82.5
 z 0
 h 15
 w 15
@@ -325,8 +325,8 @@ node [
 id 20
 label "M_amp_c20"
 graphics [
-x 120.25
-y 244.25
+x -0.5
+y 264.75
 z 0
 h 15
 w 15
@@ -341,8 +341,8 @@ node [
 id 21
 label "R_ADSL2r21"
 graphics [
-x 108.25
-y 180.75
+x 109
+y 194
 z 0
 h 10
 w 10
@@ -357,8 +357,8 @@ node [
 id 22
 label "M_gln__L_c22"
 graphics [
-x 24.25
-y 244.25
+x 60.25
+y 264.75
 z 0
 h 15
 w 15
@@ -373,8 +373,8 @@ node [
 id 23
 label "R_AICART23"
 graphics [
-x 81.25
-y 146.75
+x 67
+y 149
 z 0
 h 10
 w 10
@@ -389,8 +389,8 @@ node [
 id 24
 label "M_glu__L_c24"
 graphics [
-x -0.5
-y 86.5
+x 101.5
+y 82.5
 z 0
 h 15
 w 15
@@ -405,8 +405,8 @@ node [
 id 25
 label "R_AIRC225"
 graphics [
-x 82.75
-y 21.25
+x 98.5
+y 20.25
 z 0
 h 10
 w 10
@@ -421,8 +421,8 @@ node [
 id 26
 label "M_for_c26"
 graphics [
-x 36.25
-y 162.25
+x 112
+y 164.5
 z 0
 h 15
 w 15
@@ -437,8 +437,8 @@ node [
 id 27
 label "M_gar_c27"
 graphics [
-x 54.25
-y 162.25
+x 94
+y 164.5
 z 0
 h 15
 w 15
@@ -453,8 +453,8 @@ node [
 id 28
 label "R_AIRC328"
 graphics [
-x 138.25
-y 221.75
+x 138.01
+y 241.5
 z 0
 h 10
 w 10
@@ -469,8 +469,8 @@ node [
 id 29
 label "M_5aizc_c29"
 graphics [
-x 138.25
-y 244.25
+x 130
+y 264.75
 z 0
 h 15
 w 15
@@ -485,8 +485,8 @@ node [
 id 30
 label "R_GARFT30"
 graphics [
-x 63.25
-y 146.75
+x 85
+y 149
 z 0
 h 10
 w 10
@@ -501,8 +501,8 @@ node [
 id 31
 label "R_GART31"
 graphics [
-x 45.25
-y 146.75
+x 103
+y 149
 z 0
 h 10
 w 10
@@ -517,8 +517,8 @@ node [
 id 32
 label "M_thf_c32"
 graphics [
-x 72.25
-y 129.75
+x 76
+y 132
 z 0
 h 15
 w 15
@@ -533,8 +533,8 @@ node [
 id 33
 label "R_IMPC33"
 graphics [
-x 101.812
-y 146.75
+x 46.4385
+y 149
 z 0
 h 10
 w 10
@@ -549,8 +549,8 @@ node [
 id 34
 label "R_PRAGSr34"
 graphics [
-x 54.25
-y 180.75
+x 94
+y 194
 z 0
 h 10
 w 10
@@ -565,8 +565,8 @@ node [
 id 35
 label "R_PRAIS35"
 graphics [
-x 21.5864
-y 71
+x 45.7515
+y 67
 z 0
 h 10
 w 10
@@ -627,18 +627,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 6.25
-y 221.75
+x 92.5
+y 241.5
 z 0
 ]
 point [
-x 6.25
-y 112.25
+x 142
+y 212.5
 z 0
 ]
 point [
-x -0.5
-y 86.5
+x 142
+y 108.5
+z 0
+]
+point [
+x 101.5
+y 82.5
 z 0
 ]
 ]
@@ -733,18 +738,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 24.25
-y 244.25
+x 60.25
+y 264.75
 z 0
 ]
 point [
-x 24.25
-y 129.75
+x 28
+y 241.5
 z 0
 ]
 point [
-x 39.25
-y 112.25
+x 28
+y 132
+z 0
+]
+point [
+x 61
+y 108.5
 z 0
 ]
 ]
@@ -1060,17 +1070,22 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 138.25
-y 221.75
+x 138.01
+y 241.5
 z 0
 ]
 point [
-x 138.25
-y 21.25
+x 148
+y 212.5
 z 0
 ]
 point [
-x 110.5
+x 148
+y 20.25
+z 0
+]
+point [
+x 123.25
 y -0.5
 z 0
 ]

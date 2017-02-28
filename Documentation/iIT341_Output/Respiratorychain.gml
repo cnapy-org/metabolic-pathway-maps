@@ -149,7 +149,7 @@ node [
 id 9
 label "R_LDH_D19"
 graphics [
-x 4
+x 52
 y 18
 z 0
 h 10
@@ -181,7 +181,7 @@ node [
 id 11
 label "M_fadh2_c11"
 graphics [
-x 52
+x 4
 y 38.5
 z 0
 h 15
@@ -197,7 +197,7 @@ node [
 id 12
 label "M_lac__D_c12"
 graphics [
-x 4
+x 52
 y 38.5
 z 0
 h 15
@@ -213,7 +213,7 @@ node [
 id 13
 label "R_FADOX13"
 graphics [
-x 52
+x 4
 y 18
 z 0
 h 10
@@ -293,7 +293,7 @@ node [
 id 18
 label "R_NDH_118"
 graphics [
-x 20.5
+x 35.5
 y 18
 z 0
 h 10
@@ -341,7 +341,7 @@ node [
 id 21
 label "M_pyr_c21"
 graphics [
-x 4
+x 52
 y -0.5
 z 0
 h 15
@@ -357,7 +357,7 @@ node [
 id 22
 label "R_NADPHQR22"
 graphics [
-x 35.5
+x 20.5
 y 18
 z 0
 h 10
@@ -373,7 +373,7 @@ node [
 id 23
 label "M_fad_c23"
 graphics [
-x 52
+x 4
 y -0.5
 z 0
 h 15
@@ -440,18 +440,13 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 20.5
+x 35.5
 y 18
 z 0
 ]
 point [
-x 16
+x 40
 y 38.5
-z 0
-]
-point [
-x 16
-y 73
 z 0
 ]
 point [
@@ -636,13 +631,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 35.5
+x 20.5
 y 18
 z 0
 ]
 point [
-x 40
+x 16
 y 38.5
+z 0
+]
+point [
+x 16
+y 73
 z 0
 ]
 point [
@@ -677,17 +677,17 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 52
+x 4
 y 18
 z 0
 ]
 point [
-x 64
+x -8
 y 38.5
 z 0
 ]
 point [
-x 64
+x -8
 y 73
 z 0
 ]
@@ -762,17 +762,17 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 4
+x 52
 y 18
 z 0
 ]
 point [
-x -8
+x 64
 y 38.5
 z 0
 ]
 point [
-x -8
+x 64
 y 73
 z 0
 ]

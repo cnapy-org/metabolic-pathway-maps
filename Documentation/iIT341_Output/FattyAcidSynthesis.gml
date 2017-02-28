@@ -5,7 +5,7 @@ node [
 id 0
 label "M_3hoctaACP_c0"
 graphics [
-x 55
+x 22
 y -0.5
 z 0
 h 15
@@ -21,8 +21,8 @@ node [
 id 1
 label "M_3hpalmACP_c1"
 graphics [
-x 4
-y 207
+x 46
+y 200.5
 z 0
 h 15
 w 15
@@ -37,7 +37,7 @@ node [
 id 2
 label "M_c190cACP_c2"
 graphics [
-x 87.25
+x 70
 y -0.5
 z 0
 h 15
@@ -53,8 +53,8 @@ node [
 id 3
 label "M_ocdcaACP_c3"
 graphics [
-x 43
-y 38.5
+x 88
+y 36.5
 z 0
 h 15
 w 15
@@ -69,8 +69,8 @@ node [
 id 4
 label "M_myrsACP_c4"
 graphics [
-x 4
-y 268
+x 19
+y 254.5
 z 0
 h 15
 w 15
@@ -85,7 +85,7 @@ node [
 id 5
 label "M_ahcys_c5"
 graphics [
-x 105.25
+x 88
 y -0.5
 z 0
 h 15
@@ -101,8 +101,8 @@ node [
 id 6
 label "R_C160SN6"
 graphics [
-x 71.5
-y 54
+x 46
+y 52
 z 0
 h 10
 w 10
@@ -117,8 +117,8 @@ node [
 id 7
 label "M_octeACP_c7"
 graphics [
-x 109.75
-y 38.5
+x 70
+y 36.5
 z 0
 h 15
 w 15
@@ -133,8 +133,8 @@ node [
 id 8
 label "M_palmACP_c8"
 graphics [
-x 69.25
-y 38.5
+x 35.9459
+y 36.5
 z 0
 h 15
 w 15
@@ -149,8 +149,8 @@ node [
 id 9
 label "M_coa_c9"
 graphics [
-x 127
-y 80.5
+x 106
+y 77.5
 z 0
 h 15
 w 15
@@ -165,8 +165,8 @@ node [
 id 10
 label "M_acACP_c10"
 graphics [
-x 139
-y 139.5
+x 118
+y 136.5
 z 0
 h 15
 w 15
@@ -181,8 +181,8 @@ node [
 id 11
 label "R_ACCOAC11"
 graphics [
-x 92.5
-y 239
+x 82
+y 229
 z 0
 h 10
 w 10
@@ -197,8 +197,8 @@ node [
 id 12
 label "M_malcoa_c12"
 graphics [
-x 92.5
-y 207
+x 82
+y 200.5
 z 0
 h 15
 w 15
@@ -214,7 +214,7 @@ id 13
 label "R_C140SN13"
 graphics [
 x 31
-y 54
+y 52
 z 0
 h 10
 w 10
@@ -229,8 +229,8 @@ node [
 id 14
 label "M_malACP_c14"
 graphics [
-x 61
-y 139.5
+x 40
+y 136.5
 z 0
 h 15
 w 15
@@ -245,8 +245,8 @@ node [
 id 15
 label "R_C180SN15"
 graphics [
-x 46
-y 54
+x 88
+y 52
 z 0
 h 10
 w 10
@@ -261,8 +261,8 @@ node [
 id 16
 label "R_C181SN16"
 graphics [
-x 109.75
-y 54
+x 70
+y 52
 z 0
 h 10
 w 10
@@ -277,7 +277,7 @@ node [
 id 17
 label "R_C190cSN17"
 graphics [
-x 96.25
+x 79
 y 15
 z 0
 h 10
@@ -293,8 +293,8 @@ node [
 id 18
 label "M_hco3_c18"
 graphics [
-x 89.5
-y 268
+x 79
+y 254.5
 z 0
 h 15
 w 15
@@ -309,8 +309,8 @@ node [
 id 19
 label "R_KAS1519"
 graphics [
-x 118
-y 108
+x 97
+y 105
 z 0
 h 10
 w 10
@@ -325,8 +325,8 @@ node [
 id 20
 label "M_ACP_c20"
 graphics [
-x 74.5
-y 207
+x 64
+y 200.5
 z 0
 h 15
 w 15
@@ -341,8 +341,8 @@ node [
 id 21
 label "R_KAS_HP21"
 graphics [
-x 16
-y 239
+x 46
+y 229
 z 0
 h 10
 w 10
@@ -357,8 +357,8 @@ node [
 id 22
 label "M_amet_c22"
 graphics [
-x 91.75
-y 38.5
+x 106
+y 36.5
 z 0
 h 15
 w 15
@@ -373,7 +373,7 @@ node [
 id 23
 label "R_KAS_HP223"
 graphics [
-x 55
+x 22
 y 15
 z 0
 h 10
@@ -389,8 +389,8 @@ node [
 id 24
 label "R_ACOATA24"
 graphics [
-x 145
-y 171
+x 124
+y 168
 z 0
 h 10
 w 10
@@ -405,8 +405,8 @@ node [
 id 25
 label "M_actACP_c25"
 graphics [
-x 73
-y 80.5
+x 52
+y 77.5
 z 0
 h 15
 w 15
@@ -421,8 +421,8 @@ node [
 id 26
 label "R_MCOATA26"
 graphics [
-x 118
-y 171
+x 97
+y 168
 z 0
 h 10
 w 10
@@ -437,8 +437,8 @@ node [
 id 27
 label "R_KAS1427"
 graphics [
-x 94
-y 108
+x 73
+y 105
 z 0
 h 10
 w 10
@@ -453,8 +453,8 @@ node [
 id 28
 label "M_accoa_c28"
 graphics [
-x 107.5
-y 268
+x 97
+y 254.5
 z 0
 h 15
 w 15
@@ -476,23 +476,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 71.5
-y 54
+x 46
+y 52
 z 0
 ]
 point [
-x 103
-y 80.5
+x 16
+y 77.5
 z 0
 ]
 point [
-x 103
-y 171
+x 16
+y 168
 z 0
 ]
 point [
-x 74.5
-y 207
+x 64
+y 200.5
 z 0
 ]
 ]
@@ -613,17 +613,17 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 61
-y 139.5
+x 40
+y 136.5
 z 0
 ]
 point [
-x 55
-y 108
+x 22
+y 105
 z 0
 ]
 point [
-x 55
+x 22
 y 15
 z 0
 ]
@@ -654,18 +654,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 107.5
-y 268
+x 97
+y 254.5
 z 0
 ]
 point [
-x 107.5
-y 207
+x 97
+y 200.5
 z 0
 ]
 point [
-x 145
-y 171
+x 124
+y 168
 z 0
 ]
 ]
@@ -708,23 +708,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 61
-y 139.5
+x 40
+y 136.5
 z 0
 ]
 point [
-x 85
-y 108
+x 40
+y 77.5
 z 0
 ]
 point [
-x 85
-y 80.5
-z 0
-]
-point [
-x 109.75
-y 54
+x 70
+y 52
 z 0
 ]
 ]
@@ -741,23 +736,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 61
-y 139.5
+x 40
+y 136.5
 z 0
 ]
 point [
-x 43
-y 108
+x 28
+y 105
 z 0
 ]
 point [
-x 43
-y 80.5
+x 28
+y 77.5
 z 0
 ]
 point [
 x 31
-y 54
+y 52
 z 0
 ]
 ]
@@ -826,23 +821,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 107.5
-y 268
+x 97
+y 254.5
 z 0
 ]
 point [
-x 157
-y 239
+x 136
+y 229
 z 0
 ]
 point [
-x 157
-y 139.5
+x 136
+y 136.5
 z 0
 ]
 point [
-x 118
-y 108
+x 97
+y 105
 z 0
 ]
 ]
@@ -885,23 +880,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 61
-y 139.5
+x 40
+y 136.5
 z 0
 ]
 point [
-x 49
-y 108
+x 64
+y 105
 z 0
 ]
 point [
-x 49
-y 80.5
+x 64
+y 77.5
 z 0
 ]
 point [
-x 46
-y 54
+x 88
+y 52
 z 0
 ]
 ]
@@ -918,18 +913,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 61
-y 139.5
+x 40
+y 136.5
 z 0
 ]
 point [
-x 16
-y 171
+x -2
+y 168
 z 0
 ]
 point [
-x 16
-y 239
+x -2
+y 200.5
+z 0
+]
+point [
+x 46
+y 229
 z 0
 ]
 ]
@@ -985,18 +985,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 61
-y 139.5
+x 40
+y 136.5
 z 0
 ]
 point [
-x 61
-y 80.5
+x 34
+y 105
 z 0
 ]
 point [
-x 71.5
-y 54
+x 34
+y 77.5
+z 0
+]
+point [
+x 46
+y 52
 z 0
 ]
 ]
@@ -1065,18 +1070,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 94
-y 108
+x 73
+y 105
 z 0
 ]
 point [
-x 94
-y 171
+x 73
+y 168
 z 0
 ]
 point [
-x 74.5
-y 207
+x 64
+y 200.5
 z 0
 ]
 ]
@@ -1094,17 +1099,22 @@ width 0.1
 Line [
 point [
 x 31
-y 54
+y 52
 z 0
 ]
 point [
-x 31
-y 171
+x 10
+y 77.5
 z 0
 ]
 point [
-x 74.5
-y 207
+x 10
+y 168
+z 0
+]
+point [
+x 64
+y 200.5
 z 0
 ]
 ]
@@ -1160,23 +1170,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 145
-y 171
+x 124
+y 168
 z 0
 ]
 point [
-x 151
-y 139.5
+x 130
+y 136.5
 z 0
 ]
 point [
-x 151
-y 108
+x 130
+y 105
 z 0
 ]
 point [
-x 127
-y 80.5
+x 106
+y 77.5
 z 0
 ]
 ]
@@ -1194,22 +1204,22 @@ width 0.1
 Line [
 point [
 x 31
-y 54
+y 52
 z 0
 ]
 point [
 x -8
-y 80.5
+y 77.5
 z 0
 ]
 point [
 x -8
-y 239
+y 229
 z 0
 ]
 point [
-x 4
-y 268
+x 19
+y 254.5
 z 0
 ]
 ]
@@ -1226,23 +1236,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 55
+x 22
 y 15
 z 0
 ]
 point [
-x 22
-y 38.5
+x 4
+y 36.5
 z 0
 ]
 point [
-x 22
-y 171
+x 4
+y 168
 z 0
 ]
 point [
-x 74.5
-y 207
+x 64
+y 200.5
 z 0
 ]
 ]
@@ -1259,23 +1269,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 46
-y 54
+x 88
+y 52
 z 0
 ]
 point [
-x 37
-y 80.5
+x 88
+y 168
 z 0
 ]
 point [
-x 37
-y 171
-z 0
-]
-point [
-x 74.5
-y 207
+x 64
+y 200.5
 z 0
 ]
 ]
@@ -1331,18 +1336,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 118
-y 171
+x 97
+y 168
 z 0
 ]
 point [
-x 127
-y 139.5
+x 106
+y 136.5
 z 0
 ]
 point [
-x 127
-y 80.5
+x 106
+y 77.5
 z 0
 ]
 ]
@@ -1359,23 +1364,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 109.75
-y 54
+x 70
+y 52
 z 0
 ]
 point [
-x 109
-y 80.5
+x 82
+y 77.5
 z 0
 ]
 point [
-x 109
-y 171
+x 82
+y 168
 z 0
 ]
 point [
-x 74.5
-y 207
+x 64
+y 200.5
 z 0
 ]
 ]

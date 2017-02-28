@@ -1,0 +1,1271 @@
+graph [
+directed 1
+version 2
+node [
+id 0
+label "M_h2o_c0"
+graphics [
+x 328.733
+y 246.447
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 1
+label "M_co2_c1"
+graphics [
+x 314.63
+y 270.263
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 2
+label "M_h2o_c2"
+graphics [
+x 3.2332
+y 196.892
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 3
+label "M_nadp_c3"
+graphics [
+x 317.163
+y 74.9155
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 4
+label "M_h_c4"
+graphics [
+x 52.855
+y 293.801
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 5
+label "M_h_c5"
+graphics [
+x 169.263
+y 343.184
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 6
+label "M_co2_c6"
+graphics [
+x 141.742
+y 340.248
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 7
+label "2-Oxoglutarate7"
+graphics [
+x 294.763
+y 226.017
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 8
+label "Acetyl-CoA8"
+graphics [
+x 52.709
+y 226.017
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 9
+label "Coenzyme A9"
+graphics [
+x 101.803
+y 282.675
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 10
+label "2-oxoglutarate synthase (rev)10"
+graphics [
+x 136.251
+y 298.407
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 11
+label "M_h2o_c11"
+graphics [
+x 173.736
+y -1.75
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 12
+label "OCOAT112"
+graphics [
+x 211.22
+y 298.407
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 13
+label "Succinyl-CoA13"
+graphics [
+x 173.736
+y 303.796
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 14
+label "M_h2o_c14"
+graphics [
+x 34.7299
+y 272.884
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 15
+label "Citrate synthase15"
+graphics [
+x 73.1831
+y 257.875
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 16
+label "Succinate16"
+graphics [
+x 245.668
+y 282.675
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 17
+label "Menaquinone 617"
+graphics [
+x 73.1831
+y 83.6163
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 18
+label "Isocitrate18"
+graphics [
+x 274.289
+y 83.6163
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 19
+label "Citrate19"
+graphics [
+x 211.22
+y 43.0849
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 20
+label "Oxaloacetate20"
+graphics [
+x 305.432
+y 189.681
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 21
+label "FRD521"
+graphics [
+x 101.803
+y 58.8167
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 22
+label "Menaquinol 622"
+graphics [
+x 305.432
+y 151.811
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 23
+label "Flavin adenine dinucleotide oxidized23"
+graphics [
+x 297.014
+y 293.913
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 24
+label "M_nadph_c24"
+graphics [
+x 340.084
+y 125.106
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 25
+label "Acetoacetate25"
+graphics [
+x 237.609
+y 332.882
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 26
+label "Reduced ferredoxin26"
+graphics [
+x 112.911
+y 334.049
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 27
+label "Fumarate27"
+graphics [
+x 136.251
+y 43.0849
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 28
+label "Acetoacetyl-CoA28"
+graphics [
+x 207.66
+y 341.675
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 29
+label "Isocitrate dehydrogenase (NADP)29"
+graphics [
+x 294.763
+y 115.475
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 30
+label "M_h_c30"
+graphics [
+x 9.60983
+y 223.825
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 31
+label "Malate synthase31"
+graphics [
+x 42.0398
+y 189.681
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 32
+label "Glyoxylate32"
+graphics [
+x -0.5
+y 167.639
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 33
+label "Oxidized ferredoxin33"
+graphics [
+x 84.7537
+y 320.579
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 34
+label "AKO34"
+graphics [
+x 274.289
+y 257.875
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 35
+label "Flavin adenine dinucleotide reduced35"
+graphics [
+x 273.064
+y 313.93
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 36
+label "L-Malate36"
+graphics [
+x 42.0398
+y 151.811
+z 0
+h 15
+w 15
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 37
+label "M_co2_c37"
+graphics [
+x 330.643
+y 99.0884
+z 0
+h 12.5
+w 12.5
+d 1
+type "rectangle"
+width 0.12
+fill "#ffff99"
+outline "#000000"
+     ]
+]
+node [
+id 38
+label "Fumarase38"
+graphics [
+x 173.736
+y 37.6954
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 39
+label "Aconitase39"
+graphics [
+x 245.668
+y 58.8167
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 40
+label "MDH440"
+graphics [
+x 52.709
+y 115.475
+z 0
+h 10
+w 10
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+edge [
+source 11
+target 38
+id 0
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 29
+target 7
+id 1
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 34
+target 35
+id 2
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 34
+target 16
+id 3
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 27
+target 38
+id 4
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 39
+target 18
+id 5
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 33
+target 10
+id 6
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 14
+target 15
+id 7
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 23
+target 34
+id 8
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 7
+target 34
+id 9
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 10
+target 26
+id 10
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 36
+target 40
+id 11
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 12
+target 28
+id 12
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 10
+target 6
+id 13
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 5
+target 10
+id 14
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 18
+target 29
+id 15
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 25
+target 12
+id 16
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 8
+target 31
+id 17
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 10
+target 13
+id 18
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 22
+target 21
+id 19
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 34
+target 1
+id 20
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 19
+target 39
+id 21
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 9
+target 10
+id 22
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 13
+target 12
+id 23
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 40
+target 22
+id 24
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 17
+target 40
+id 25
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 12
+target 16
+id 26
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 31
+target 9
+id 27
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 27
+target 21
+id 28
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 20
+target 15
+id 29
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 38
+target 36
+id 30
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 7
+target 10
+id 31
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 15
+target 9
+id 32
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 40
+target 20
+id 33
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 8
+target 15
+id 34
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 31
+target 36
+id 35
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 15
+target 4
+id 36
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 29
+target 24
+id 37
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 29
+target 37
+id 38
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 3
+target 29
+id 39
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 32
+target 31
+id 40
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 21
+target 17
+id 41
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 2
+target 31
+id 42
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 31
+target 30
+id 43
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 21
+target 16
+id 44
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 15
+target 19
+id 45
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+edge [
+source 0
+target 34
+id 46
+label ""
+graphics [
+type "line"
+arrow "last"
+width 0.1
+Line [
+]
+]
+]
+]

@@ -5,8 +5,8 @@ node [
 id 0
 label "M_ugam_c0"
 graphics [
-x 117.25
-y 271.25
+x 19
+y 317.25
 z 0
 h 15
 w 15
@@ -21,7 +21,7 @@ node [
 id 1
 label "M_kdolipid4_HP_c1"
 graphics [
-x 84.25
+x 121
 y 103.5
 z 0
 h 15
@@ -37,7 +37,7 @@ node [
 id 2
 label "M_core_lps_hp_c2"
 graphics [
-x 90.25
+x 67
 y 54.5
 z 0
 h 15
@@ -69,8 +69,8 @@ node [
 id 4
 label "M_u2hga_HP_c4"
 graphics [
-x 101.125
-y 220.125
+x 28
+y 259
 z 0
 h 15
 w 15
@@ -85,7 +85,7 @@ node [
 id 5
 label "M_lps_HP_c5"
 graphics [
-x 87.25
+x 43
 y -0.5
 z 0
 h 15
@@ -101,8 +101,8 @@ node [
 id 6
 label "R_GALKr6"
 graphics [
-x 108.25
-y 163
+x 37
+y 188
 z 0
 h 10
 w 10
@@ -117,8 +117,8 @@ node [
 id 7
 label "M_3hoctaACP_c7"
 graphics [
-x 81.25
-y 271.25
+x 37
+y 317.25
 z 0
 h 15
 w 15
@@ -133,7 +133,7 @@ node [
 id 8
 label "M_gdp_c8"
 graphics [
-x 105.25
+x 61
 y -0.5
 z 0
 h 15
@@ -149,8 +149,8 @@ node [
 id 9
 label "R_RFA_HP9"
 graphics [
-x 72.25
-y 73
+x 82
+y 72
 z 0
 h 10
 w 10
@@ -165,8 +165,8 @@ node [
 id 10
 label "R_LPADSS_HP10"
 graphics [
-x 42.25
-y 163
+x 103
+y 188
 z 0
 h 10
 w 10
@@ -181,8 +181,8 @@ node [
 id 11
 label "R_U2GAAT11"
 graphics [
-x 108.25
-y 249.75
+x 28
+y 298.75
 z 0
 h 10
 w 10
@@ -197,8 +197,8 @@ node [
 id 12
 label "M_ac_c12"
 graphics [
-x 99.25
-y 271.25
+x 55
+y 317.25
 z 0
 h 15
 w 15
@@ -229,8 +229,8 @@ node [
 id 14
 label "M_u23ga_HP_c14"
 graphics [
-x 41.1468
-y 220.125
+x 136.75
+y 259
 z 0
 h 15
 w 15
@@ -245,8 +245,8 @@ node [
 id 15
 label "M_gal_c15"
 graphics [
-x 108.25
-y 178.75
+x 37
+y 208.75
 z 0
 h 15
 w 15
@@ -261,8 +261,8 @@ node [
 id 16
 label "M_ocdcaACP_c16"
 graphics [
-x 83.125
-y 220.125
+x 49
+y 259
 z 0
 h 15
 w 15
@@ -277,8 +277,8 @@ node [
 id 17
 label "R_GALT17"
 graphics [
-x 105.25
-y 125
+x 82
+y 135
 z 0
 h 10
 w 10
@@ -293,7 +293,7 @@ node [
 id 18
 label "M_adphep_LD_c18"
 graphics [
-x 66.25
+x 61
 y 103.5
 z 0
 h 15
@@ -309,8 +309,8 @@ node [
 id 19
 label "M_u3hga_HP_c19"
 graphics [
-x 63.25
-y 271.25
+x 73
+y 317.25
 z 0
 h 15
 w 15
@@ -325,7 +325,7 @@ node [
 id 20
 label "M_udpgal_c20"
 graphics [
-x 126.25
+x 25
 y 103.5
 z 0
 h 15
@@ -357,8 +357,8 @@ node [
 id 22
 label "R_UAGAAT_HP22"
 graphics [
-x 109.75
-y 327.25
+x 74.5
+y 370.5
 z 0
 h 10
 w 10
@@ -373,8 +373,8 @@ node [
 id 23
 label "M_gal1p_c23"
 graphics [
-x 108.25
-y 142.5
+x 37
+y 165.5
 z 0
 h 15
 w 15
@@ -389,8 +389,8 @@ node [
 id 24
 label "R_LPSSYN_HP24"
 graphics [
-x 96.25
-y 26
+x 52
+y 27
 z 0
 h 10
 w 10
@@ -405,8 +405,8 @@ node [
 id 25
 label "R_U2GAAT225"
 graphics [
-x 92.125
-y 204.625
+x 38.5
+y 243
 z 0
 h 10
 w 10
@@ -421,8 +421,8 @@ node [
 id 26
 label "R_MOAT_HP26"
 graphics [
-x 57.25
-y 125
+x 97
+y 135
 z 0
 h 10
 w 10
@@ -437,8 +437,8 @@ node [
 id 27
 label "M_u2ga_HP_c27"
 graphics [
-x 61.1216
-y 178.75
+x 78.6659
+y 208.75
 z 0
 h 15
 w 15
@@ -453,8 +453,8 @@ node [
 id 28
 label "M_ump_c28"
 graphics [
-x 14.5
-y 178.75
+x 145.75
+y 208.75
 z 0
 h 15
 w 15
@@ -469,8 +469,8 @@ node [
 id 29
 label "R_U23GAAT_HP29"
 graphics [
-x 74.875
-y 249.75
+x 55
+y 298.75
 z 0
 h 10
 w 10
@@ -485,7 +485,7 @@ node [
 id 30
 label "M_gdpfuc_c30"
 graphics [
-x 72.25
+x 85
 y 54.5
 z 0
 h 15
@@ -501,8 +501,8 @@ node [
 id 31
 label "R_UDPG4E31"
 graphics [
-x 126.25
-y 125
+x 22
+y 135
 z 0
 h 10
 w 10
@@ -517,7 +517,7 @@ node [
 id 32
 label "M_adphep_DD_c32"
 graphics [
-x 48.25
+x 43
 y 103.5
 z 0
 h 15
@@ -533,8 +533,8 @@ node [
 id 33
 label "R_UHGADA_HP33"
 graphics [
-x 81.25
-y 289.75
+x 64
+y 332.75
 z 0
 h 10
 w 10
@@ -549,7 +549,7 @@ node [
 id 34
 label "M_cmp_c34"
 graphics [
-x 30.25
+x 85
 y 103.5
 z 0
 h 15
@@ -565,8 +565,8 @@ node [
 id 35
 label "M_udpg_c35"
 graphics [
-x 126.25
-y 142.5
+x 19
+y 165.5
 z 0
 h 15
 w 15
@@ -581,8 +581,8 @@ node [
 id 36
 label "R_USHD_HP36"
 graphics [
-x 23.5
-y 204.625
+x 136.75
+y 243
 z 0
 h 10
 w 10
@@ -597,8 +597,8 @@ node [
 id 37
 label "M_3hpalmACP_c37"
 graphics [
-x 109.75
-y 345.75
+x 74.5
+y 394.25
 z 0
 h 15
 w 15
@@ -613,8 +613,8 @@ node [
 id 38
 label "M_u3aga_HP_c38"
 graphics [
-x 93.03
-y 305.25
+x 68.3113
+y 348.25
 z 0
 h 15
 w 15
@@ -629,8 +629,8 @@ node [
 id 39
 label "M_ACP_c39"
 graphics [
-x 132.25
-y 178.75
+x 103.75
+y 208.75
 z 0
 h 15
 w 15
@@ -645,8 +645,8 @@ node [
 id 40
 label "M_utp_c40"
 graphics [
-x 90.25
-y 142.5
+x 55
+y 165.5
 z 0
 h 15
 w 15
@@ -661,8 +661,8 @@ node [
 id 41
 label "M_cmpkdo_c41"
 graphics [
-x 48.25
-y 142.5
+x 106
+y 165.5
 z 0
 h 15
 w 15
@@ -677,8 +677,8 @@ node [
 id 42
 label "M_lipidX_HP_c42"
 graphics [
-x 35.1554
-y 178.75
+x 127.75
+y 208.75
 z 0
 h 15
 w 15
@@ -693,7 +693,7 @@ node [
 id 43
 label "M_udp_c43"
 graphics [
-x 54.25
+x 97
 y -0.5
 z 0
 h 15
@@ -709,8 +709,8 @@ node [
 id 44
 label "M_lipidA_HP_c44"
 graphics [
-x 66.25
-y 142.5
+x 73
+y 165.5
 z 0
 h 15
 w 15
@@ -725,8 +725,8 @@ node [
 id 45
 label "M_uacgam_c45"
 graphics [
-x 127.75
-y 345.75
+x 40.75
+y 394.25
 z 0
 h 15
 w 15
@@ -741,7 +741,7 @@ node [
 id 46
 label "M_adphep7p_LD_c46"
 graphics [
-x 102.25
+x 103
 y 103.5
 z 0
 h 15
@@ -790,17 +790,17 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 72.25
-y 73
+x 82
+y 72
 z 0
 ]
 point [
-x 54.25
+x 97
 y 54.5
 z 0
 ]
 point [
-x 54.25
+x 97
 y -0.5
 z 0
 ]
@@ -831,23 +831,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 127.75
-y 345.75
+x 40.75
+y 394.25
 z 0
 ]
 point [
-x 144.25
-y 327.25
+x 7
+y 370.5
 z 0
 ]
 point [
-x 144.25
+x 7
 y 54.5
 z 0
 ]
 point [
-x 96.25
-y 26
+x 52
+y 27
 z 0
 ]
 ]
@@ -864,23 +864,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 126.25
-y 142.5
+x 19
+y 165.5
 z 0
 ]
 point [
-x 138.25
-y 125
+x 13
+y 135
 z 0
 ]
 point [
-x 138.25
+x 13
 y 54.5
 z 0
 ]
 point [
-x 96.25
-y 26
+x 52
+y 27
 z 0
 ]
 ]
@@ -923,18 +923,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 126.25
+x 25
 y 103.5
 z 0
 ]
 point [
-x 126.25
+x 25
 y 54.5
 z 0
 ]
 point [
-x 96.25
-y 26
+x 52
+y 27
 z 0
 ]
 ]
@@ -1068,23 +1068,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 48.25
+x 43
 y 103.5
 z 0
 ]
 point [
-x 60.25
-y 73
+x 55
+y 72
 z 0
 ]
 point [
-x 60.25
+x 55
 y 54.5
 z 0
 ]
 point [
-x 96.25
-y 26
+x 52
+y 27
 z 0
 ]
 ]
@@ -1179,18 +1179,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 108.25
-y 249.75
+x 28
+y 298.75
 z 0
 ]
 point [
-x 132.25
-y 220.125
+x 61
+y 259
 z 0
 ]
 point [
-x 132.25
-y 178.75
+x 61
+y 243
+z 0
+]
+point [
+x 103.75
+y 208.75
 z 0
 ]
 ]
@@ -1220,23 +1225,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 126.25
-y 142.5
+x 19
+y 165.5
 z 0
 ]
 point [
-x 114.25
-y 125
+x 73
+y 135
 z 0
 ]
 point [
-x 114.25
+x 73
 y 103.5
 z 0
 ]
 point [
-x 72.25
-y 73
+x 82
+y 72
 z 0
 ]
 ]
@@ -1305,23 +1310,18 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 109.75
-y 327.25
+x 74.5
+y 370.5
 z 0
 ]
 point [
-x 138.25
-y 305.25
+x 103.75
+y 348.25
 z 0
 ]
 point [
-x 138.25
-y 204.625
-z 0
-]
-point [
-x 132.25
-y 178.75
+x 103.75
+y 208.75
 z 0
 ]
 ]
@@ -1403,23 +1403,23 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 74.875
-y 249.75
+x 55
+y 298.75
 z 0
 ]
 point [
-x 113.125
-y 220.125
+x 97.75
+y 259
 z 0
 ]
 point [
-x 113.125
-y 204.625
+x 97.75
+y 243
 z 0
 ]
 point [
-x 132.25
-y 178.75
+x 103.75
+y 208.75
 z 0
 ]
 ]
@@ -1644,22 +1644,22 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 42.25
-y 163
+x 103
+y 188
 z 0
 ]
 point [
-x 18.25
-y 142.5
+x 133
+y 165.5
 z 0
 ]
 point [
-x 18.25
-y 26
+x 133
+y 27
 z 0
 ]
 point [
-x 54.25
+x 97
 y -0.5
 z 0
 ]

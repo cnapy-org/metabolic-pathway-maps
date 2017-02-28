@@ -58,6 +58,7 @@ cfg_default = {"AUTO_ALIAS": False,
                "SMALL_THRSH": 30,        # the threshold value of connections a species must have to be a small sps
                "LAYOUT_PATHWAYS": True,  # needs PATHWAY_LISTS true, so that necessary node lists are generated
                "LABEL_TYPE": "id",       # can either be "id" or "name"
+               "LABEL_FONT_SIZE": 18,     # default value: 18
                "ADD_COFACTORS": False,
                #"ADD_COFACTORS": ["Respiratory chain",    # add nodes for small sps/cofactors after they have been
                #                  "Citric Acid Cycle"],   # deleted in path_dict
@@ -102,6 +103,7 @@ cfg_auto = {"AUTO_ALIAS": False,
             "SMALL_THRSH": 30,        # the threshold value of connections a species must have to be a small sps
             "LAYOUT_PATHWAYS": True,  # needs PATHWAY_LISTS true, so that necessary node lists are generated
             "LABEL_TYPE": "id",       # can either be "id" or "name"
+            "LABEL_FONT_SIZE": 80,    # default value: 80
             "ADD_COFACTORS": False,
             #"ADD_COFACTORS": ["Respiratory chain",    # add nodes for small sps/cofactors after they have been
             #                  "Citric Acid Cycle"],   # deleted in path_dict
@@ -111,6 +113,7 @@ cfg_auto = {"AUTO_ALIAS": False,
 
             "METABOLITE_NODE_SIZE": 2.5, # for big nodes: set to 10
             "REACTION_NODE_SIZE": 1, # for big nodes: set to 4
+            "COFACTOR_NODE_SIZE": 1.5, # for big nodes: set to 7
 
             "SELECTED_PATHWAYS": ["objective reaction",  # pathways to be saved in output_selected
                                   "Transport"],

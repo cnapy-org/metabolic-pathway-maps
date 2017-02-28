@@ -62,7 +62,7 @@ def get_border_coord((x, y), (other_x, other_y), (w, h), n_type):
         return transformation(x, other_x), transformation(y, other_y)
 
 
-def e2feature(graph, e, e_id, transport, e2layout, mask=DEFAULT_LAYER2MASK[DEFAULT_LAYER]):
+def e2feature(graph, e, e_id, transport, e2layout, global_ops, mask=DEFAULT_LAYER2MASK[DEFAULT_LAYER]):
     root = graph.getRoot()
     layout = root[VIEW_LAYOUT]
     s, t = graph.source(e), graph.target(e)
@@ -92,7 +92,7 @@ def e2feature(graph, e, e_id, transport, e2layout, mask=DEFAULT_LAYER2MASK[DEFAU
                       next(iter(root[VIEW_META_GRAPH][real_e])))
     ubiquitous = root[UBIQUITOUS][real_e]
     color = triplet(root[VIEW_COLOR][real_e])
-    props = {WIDTH: get_e_size(root, e).getW(), TYPE: TYPE_EDGE, STOICHIOMETRY: graph[STOICHIOMETRY][e],
+    props = {WIDTH: get_e_size(root, e, global_ops).getW(), TYPE: TYPE_EDGE, STOICHIOMETRY: graph[STOICHIOMETRY][e],
              COLOR: get_edge_color(ubiquitous, generalized, transport, color), LAYER: mask}
     if not transport:
         props[COMPARTMENT_ID] = root[COMPARTMENT_ID][s]

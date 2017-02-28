@@ -5,7 +5,7 @@ node [
 id 0
 label "M_hom__L_c0"
 graphics [
-x 71.5
+x 32.5
 y 85.5
 z 0
 h 15
@@ -21,7 +21,7 @@ node [
 id 1
 label "R_SERAT1"
 graphics [
-x 68.5
+x 35.5
 y 110
 z 0
 h 10
@@ -37,7 +37,7 @@ node [
 id 2
 label "M_succ_c2"
 graphics [
-x 35.5
+x 68.5
 y -0.5
 z 0
 h 15
@@ -53,7 +53,7 @@ node [
 id 3
 label "M_2obut_c3"
 graphics [
-x -0.5
+x 86.5
 y -0.5
 z 0
 h 15
@@ -69,7 +69,7 @@ node [
 id 4
 label "R_METB14"
 graphics [
-x 80.5
+x 23.5
 y 20
 z 0
 h 10
@@ -85,7 +85,7 @@ node [
 id 5
 label "M_achms_c5"
 graphics [
-x 80.5
+x 23.5
 y 38.5
 z 0
 h 15
@@ -101,7 +101,7 @@ node [
 id 6
 label "R_SHSL2r6"
 graphics [
-x 35.5
+x 68.5
 y 20
 z 0
 h 10
@@ -117,7 +117,7 @@ node [
 id 7
 label "R_AHSERL27"
 graphics [
-x 65.5
+x 38.5
 y 20
 z 0
 h 10
@@ -133,7 +133,7 @@ node [
 id 8
 label "M_acser_c8"
 graphics [
-x 53.5
+x 50.5
 y 85.5
 z 0
 h 15
@@ -149,7 +149,7 @@ node [
 id 9
 label "R_CYSS9"
 graphics [
-x 59.5
+x 44.5
 y 62
 z 0
 h 10
@@ -165,7 +165,7 @@ node [
 id 10
 label "M_cyst__L_c10"
 graphics [
-x 71.5
+x 32.5
 y -0.5
 z 0
 h 15
@@ -181,7 +181,7 @@ node [
 id 11
 label "R_SHSL111"
 graphics [
-x 50.5
+x 53.5
 y 20
 z 0
 h 10
@@ -197,7 +197,7 @@ node [
 id 12
 label "R_HSERTA12"
 graphics [
-x 74.5
+x 29.5
 y 62
 z 0
 h 10
@@ -213,7 +213,7 @@ node [
 id 13
 label "M_suchms_c13"
 graphics [
-x 32.5
+x 71.5
 y 38.5
 z 0
 h 15
@@ -229,7 +229,7 @@ node [
 id 14
 label "R_SHSL4r14"
 graphics [
-x 17.5
+x 86.5
 y 20
 z 0
 h 10
@@ -245,7 +245,7 @@ node [
 id 15
 label "M_coa_c15"
 graphics [
-x 104.5
+x -0.5
 y 38.5
 z 0
 h 15
@@ -261,7 +261,7 @@ node [
 id 16
 label "M_accoa_c16"
 graphics [
-x 50.5
+x 53.5
 y 128.5
 z 0
 h 15
@@ -277,7 +277,7 @@ node [
 id 17
 label "M_ac_c17"
 graphics [
-x 89.5
+x 14.5
 y -0.5
 z 0
 h 15
@@ -293,7 +293,7 @@ node [
 id 18
 label "M_nh4_c18"
 graphics [
-x 17.5
+x 104.5
 y -0.5
 z 0
 h 15
@@ -309,7 +309,7 @@ node [
 id 19
 label "M_hcys__L_c19"
 graphics [
-x 53.5
+x 50.5
 y -0.5
 z 0
 h 15
@@ -325,7 +325,7 @@ node [
 id 20
 label "M_h2s_c20"
 graphics [
-x 29.5
+x 74.5
 y 85.5
 z 0
 h 15
@@ -341,7 +341,7 @@ node [
 id 21
 label "M_cys__L_c21"
 graphics [
-x 62.5
+x 41.5
 y 38.5
 z 0
 h 15
@@ -357,7 +357,7 @@ node [
 id 22
 label "M_ser__L_c22"
 graphics [
-x 68.5
+x 35.5
 y 128.5
 z 0
 h 15
@@ -380,22 +380,22 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 29.5
+x 74.5
 y 85.5
 z 0
 ]
 point [
-x 44.5
+x 59.5
 y 62
 z 0
 ]
 point [
-x 44.5
+x 59.5
 y 38.5
 z 0
 ]
 point [
-x 35.5
+x 68.5
 y 20
 z 0
 ]
@@ -504,22 +504,22 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 29.5
+x 74.5
 y 85.5
 z 0
 ]
 point [
-x 50.5
+x 53.5
 y 62
 z 0
 ]
 point [
-x 50.5
+x 53.5
 y 38.5
 z 0
 ]
 point [
-x 65.5
+x 38.5
 y 20
 z 0
 ]
@@ -576,17 +576,17 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 68.5
+x 35.5
 y 110
 z 0
 ]
 point [
-x 104.5
+x -0.5
 y 85.5
 z 0
 ]
 point [
-x 104.5
+x -0.5
 y 38.5
 z 0
 ]
@@ -669,22 +669,22 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 59.5
+x 44.5
 y 62
 z 0
 ]
 point [
-x 92.5
+x 11.5
 y 38.5
 z 0
 ]
 point [
-x 92.5
+x 11.5
 y 20
 z 0
 ]
 point [
-x 89.5
+x 14.5
 y -0.5
 z 0
 ]
@@ -702,22 +702,22 @@ arrow "last"
 width 0.1
 Line [
 point [
-x 50.5
+x 53.5
 y 128.5
 z 0
 ]
 point [
-x 41.5
+x 62.5
 y 110
 z 0
 ]
 point [
-x 41.5
+x 62.5
 y 85.5
 z 0
 ]
 point [
-x 74.5
+x 29.5
 y 62
 z 0
 ]

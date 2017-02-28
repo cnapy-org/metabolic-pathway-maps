@@ -5,8 +5,8 @@ node [
 id 0
 label "M_ump_c0"
 graphics [
-x 25.2539
-y 140.625
+x 119.388
+y 135.5
 z 0
 h 15
 w 15
@@ -21,7 +21,7 @@ node [
 id 1
 label "M_orot_c1"
 graphics [
-x 26.5
+x 23.5
 y -0.5
 z 0
 h 15
@@ -37,8 +37,8 @@ node [
 id 2
 label "M_utp_c2"
 graphics [
-x 28
-y 78.625
+x 129.25
+y 73.5
 z 0
 h 15
 w 15
@@ -53,8 +53,8 @@ node [
 id 3
 label "R_OMPDC3"
 graphics [
-x 22.5079
-y 156.125
+x 109.526
+y 151
 z 0
 h 10
 w 10
@@ -69,8 +69,8 @@ node [
 id 4
 label "M_glu__L_c4"
 graphics [
-x 80.5
-y 41.75
+x 48.25
+y 39.5
 z 0
 h 15
 w 15
@@ -85,8 +85,8 @@ node [
 id 5
 label "R_DHORD35"
 graphics [
-x 44.5
-y 23.25
+x 41.5
+y 18.75
 z 0
 h 10
 w 10
@@ -101,8 +101,8 @@ node [
 id 6
 label "R_CTPS16"
 graphics [
-x 32.5
-y 61.625
+x 120.25
+y 58
 z 0
 h 10
 w 10
@@ -118,7 +118,7 @@ id 7
 label "R_ORPT7"
 graphics [
 x 5.5
-y 156.125
+y 151
 z 0
 h 10
 w 10
@@ -133,8 +133,8 @@ node [
 id 8
 label "R_CBPS8"
 graphics [
-x 102.625
-y 61.625
+x 66.25
+y 58
 z 0
 h 10
 w 10
@@ -149,8 +149,8 @@ node [
 id 9
 label "M_nh4_c9"
 graphics [
-x 46
-y 78.625
+x 111.25
+y 73.5
 z 0
 h 15
 w 15
@@ -165,8 +165,8 @@ node [
 id 10
 label "M_udp_c10"
 graphics [
-x 27.3135
-y 109.625
+x 126.785
+y 104.5
 z 0
 h 15
 w 15
@@ -181,8 +181,8 @@ node [
 id 11
 label "R_NDPK211"
 graphics [
-x 27.6567
-y 94.125
+x 128.017
+y 89
 z 0
 h 10
 w 10
@@ -197,8 +197,8 @@ node [
 id 12
 label "M_gln__L_c12"
 graphics [
-x 93.625
-y 78.625
+x 57.25
+y 73.5
 z 0
 h 15
 w 15
@@ -213,8 +213,8 @@ node [
 id 13
 label "R_ASPCT13"
 graphics [
-x 115.75
-y 23.25
+x 93.25
+y 18.75
 z 0
 h 10
 w 10
@@ -229,8 +229,8 @@ node [
 id 14
 label "M_dhor__S_c14"
 graphics [
-x 62.5
-y 41.75
+x 66.25
+y 39.5
 z 0
 h 15
 w 15
@@ -245,8 +245,8 @@ node [
 id 15
 label "M_ctp_c15"
 graphics [
-x 23.5
-y 41.75
+x 120.25
+y 39.5
 z 0
 h 15
 w 15
@@ -261,7 +261,7 @@ node [
 id 16
 label "M_cbasp_c16"
 graphics [
-x 82
+x 73
 y -0.5
 z 0
 h 15
@@ -277,8 +277,8 @@ node [
 id 17
 label "R_UMPK17"
 graphics [
-x 26.627
-y 125.125
+x 124.319
+y 120
 z 0
 h 10
 w 10
@@ -293,8 +293,8 @@ node [
 id 18
 label "M_hco3_c18"
 graphics [
-x 111.625
-y 78.625
+x 75.25
+y 73.5
 z 0
 h 15
 w 15
@@ -309,8 +309,8 @@ node [
 id 19
 label "M_orot5p_c19"
 graphics [
-x 16.75
-y 172.375
+x 67.375
+y 184.125
 z 0
 h 15
 w 15
@@ -326,7 +326,7 @@ id 20
 label "M_prpp_c20"
 graphics [
 x -0.5
-y 140.625
+y 135.5
 z 0
 h 15
 w 15
@@ -341,8 +341,8 @@ node [
 id 21
 label "M_asp__L_c21"
 graphics [
-x 106.75
-y 41.75
+x 102.25
+y 39.5
 z 0
 h 15
 w 15
@@ -357,8 +357,8 @@ node [
 id 22
 label "M_mqn6_c22"
 graphics [
-x 44.5
-y 41.75
+x 30.25
+y 39.5
 z 0
 h 15
 w 15
@@ -373,8 +373,8 @@ node [
 id 23
 label "R_DHORTS23"
 graphics [
-x 71.0385
-y 23.25
+x 69.7516
+y 18.75
 z 0
 h 10
 w 10
@@ -389,8 +389,8 @@ node [
 id 24
 label "M_cbp_c24"
 graphics [
-x 124.75
-y 41.75
+x 84.25
+y 39.5
 z 0
 h 15
 w 15
@@ -405,7 +405,7 @@ node [
 id 25
 label "M_mql6_c25"
 graphics [
-x 44.5
+x 41.5
 y -0.5
 z 0
 h 15
@@ -455,21 +455,21 @@ width 0.1
 Line [
 point [
 x 5.5
-y 156.125
+y 151
 z 0
 ]
 point [
 x 11.5
-y 140.625
+y 135.5
 z 0
 ]
 point [
 x 11.5
-y 23.25
+y 18.75
 z 0
 ]
 point [
-x 26.5
+x 23.5
 y -0.5
 z 0
 ]

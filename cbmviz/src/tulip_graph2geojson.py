@@ -32,7 +32,7 @@ def update_level2features(feature, c_id2level2features, z, c_id):
         c_id2level2features[c_id][z].append(f)
 
 
-def export_edges(c_id2level2features, c_id2outs, meta_graph, processed, e2layout, id2mask=None):
+def export_edges(c_id2level2features, c_id2outs, meta_graph, processed, e2layout, global_ops, id2mask=None):
     root = meta_graph.getRoot()
     # Let's call "our" compartment the one to which feature list
     # we are about to add the feature
@@ -66,10 +66,10 @@ def export_edges(c_id2level2features, c_id2outs, meta_graph, processed, e2layout
                 if t_type == TYPE_COMPARTMENT or s_type == TYPE_COMPARTMENT:
                     # 1.1.1.a. between two inner compartments
                     if t_type == s_type:
-                        f = e2feature(meta_graph, e, e_id, True, e2layout, mask=mask)
+                        f = e2feature(meta_graph, e, e_id, True, e2layout, global_ops, mask=mask)
                         update_level2features(f, c_id2level2features, 0, s_c_id)
                     else:
-                        f = e2feature(meta_graph, e, e_id, True, e2layout, mask=mask)
+                        f = e2feature(meta_graph, e, e_id, True, e2layout, global_ops, mask=mask)
                         # 1.1.1.b. between an inner compartment and a generalized reaction/species
                         if meta_graph.isMetaNode(s) and meta_graph.isMetaNode(t):
                             z = 1
@@ -109,9 +109,9 @@ def export_edges(c_id2level2features, c_id2outs, meta_graph, processed, e2layout
             # 1.2. it's a simple edge
             else:
                 r = s if TYPE_REACTION == s_type else t
-                f = e2feature(meta_graph, e, e_id, root[TRANSPORT][r], e2layout,
+                f = e2feature(meta_graph, e, e_id, root[TRANSPORT][r], e2layout, global_ops,
                               mask=mask)
-                all_f = e2feature(meta_graph, e, e_id, root[TRANSPORT][r], {},
+                all_f = e2feature(meta_graph, e, e_id, root[TRANSPORT][r], {}, global_ops,
                                   mask=mask)
                 # 1.2.1. between a reaction/species that was generalized on the previous zoom level
                 # and something
@@ -161,9 +161,9 @@ def export_edges(c_id2level2features, c_id2outs, meta_graph, processed, e2layout
             else:
                 z = 0
             for c_id in related_c_ids:
-                f = e2feature(meta_graph, e, e_id, True, e2layout, mask=mask)
+                f = e2feature(meta_graph, e, e_id, True, e2layout, global_ops, mask=mask)
                 update_level2features(f, c_id2level2features, z, c_id)
-            all_f = e2feature(meta_graph, e, e_id, True, {}, mask=mask)
+            all_f = e2feature(meta_graph, e, e_id, True, {}, global_ops, mask=mask)
             update_level2features(all_f, c_id2level2features, z, ALL_COMPARTMENTS)
 
 
@@ -256,8 +256,8 @@ def export_nodes(c_id2info, c_id2outs, c_id2level2features, meta_graph, processe
 
 
 def export_elements(c_id2info, c_id2outs, c_id2level2features, meta_graph, processed, r2rs_ps, n2layout, e2layout,
-                    id2mask=None, onto=None):
-    export_edges(c_id2level2features, c_id2outs, meta_graph, processed, e2layout,
+                    global_ops, id2mask=None, onto=None):
+    export_edges(c_id2level2features, c_id2outs, meta_graph, processed, e2layout, global_ops,
                  id2mask=id2mask)
     export_nodes(c_id2info, c_id2outs, c_id2level2features, meta_graph, processed, r2rs_ps, n2layout)
                  #,id2mask=id2mask, onto=onto)
@@ -275,7 +275,6 @@ def meta_graph2features(c_id2info, c_id2outs, meta_graph, r2rs_ps, global_ops, n
     while True:
         for c_id, sizes in c_id2c_borders.iteritems():
             layout_inner_elements(meta_graph, c_id, sizes)
-
         if n2xy:
             apply_node_coordinates(meta_graph, n2xy)
 
@@ -284,7 +283,8 @@ def meta_graph2features(c_id2info, c_id2outs, meta_graph, r2rs_ps, global_ops, n
         # bend_edges_around_compartments(meta_graph, (e for e in meta_graph.getEdges() if not get_e_id(e) in processed))
         # bend_species_edges(meta_graph)
         color_edges(meta_graph)
-        export_elements(c_id2info, c_id2outs, c_id2level2features, meta_graph, processed, r2rs_ps, n2layout, e2layout)
+        export_elements(c_id2info, c_id2outs, c_id2level2features, meta_graph, processed, r2rs_ps, n2layout,
+                        e2layout, global_ops)
                         #,id2mask=id2mask, onto=onto)
 
         metas = [n for n in meta_graph.getNodes() if meta_graph.isMetaNode(n) and TYPE_COMPARTMENT == root[TYPE][n]]
@@ -308,14 +308,14 @@ def meta_graph2features(c_id2info, c_id2outs, meta_graph, r2rs_ps, global_ops, n
             continue
         bend_edges(meta_graph)
         color_edges(meta_graph)
-        export_edges(c_id2level2features, c_id2outs, meta_graph, processed, e2layout,
+        export_edges(c_id2level2features, c_id2outs, meta_graph, processed, e2layout, global_ops,
                  id2mask=id2mask)
         metas = factor_nodes(meta_graph)
         bend_ubiquitous_edges(meta_graph, metas)
         bend_edges(meta_graph)
         metas.append(comp_n)
         color_edges(meta_graph)
-        export_edges(c_id2level2features, c_id2outs, meta_graph, processed, e2layout,
+        export_edges(c_id2level2features, c_id2outs, meta_graph, processed, e2layout, global_ops,
                  id2mask=id2mask)
         open_meta_ns(meta_graph, metas, global_ops)
 

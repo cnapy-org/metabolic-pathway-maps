@@ -202,7 +202,7 @@ def layoutModel(global_ops, sbml, graph, graph_props, output_dir=None):
     #    graph_props["viewShape"][e] = tlp.EdgeShape.BezierCurve
     # change font size for all nodes in graph (globally)
     for n in graph.getNodes():
-        graph_props["viewFontSize"][n] = 80
+        graph_props["viewFontSize"][n] = global_ops["LABEL_FONT_SIZE"]
     # TODO: also write a function that applies "fit lable to node size" thing from tulipgui
     # TODO: see if calling that before layouting changes the layout
     ##############################################################
