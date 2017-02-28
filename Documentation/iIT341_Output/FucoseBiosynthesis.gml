@@ -3,13 +3,13 @@ directed 1
 version 2
 node [
 id 0
-label "M_dhap_c0"
+label "M_f6p_c0"
 graphics [
-x 32.5
-y -0.5
+x 7.75
+y 2.75
 z 0
-h 15
-w 15
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
@@ -19,29 +19,29 @@ outline "#000000"
 ]
 node [
 id 1
-label "M_gdp_c1"
+label "R_MAN6PI1"
 graphics [
-x -0.5
-y 95.5
+x 7.75
+y 7.5
 z 0
-h 15
-w 15
+h 1
+w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 2
-label "R_MAN6PI2"
+label "R_GMAND2"
 graphics [
-x 17.5
-y 46
+x 1.75
+y 7.5
 z 0
-h 10
-w 10
+h 1
+w 1
 d 1
 type "rectangle"
 width 0.12
@@ -51,93 +51,61 @@ outline "#000000"
 ]
 node [
 id 3
-label "M_gdpfuc_c3"
+label "R_GFUCS3"
 graphics [
-x -0.5
-y -0.5
+x 1.75
+y -2
 z 0
-h 15
-w 15
+h 1
+w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 4
-label "R_GMAND4"
+label "M_gdpfuc_c4"
 graphics [
-x -0.5
-y 46
+x 1.75
+y -6.75
 z 0
-h 10
-w 10
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#fc9272"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 5
-label "M_f6p_c5"
+label "R_PMANM5"
 graphics [
-x 17.5
-y 30.5
+x 7.75
+y 17
 z 0
-h 15
-w 15
+h 1
+w 1
 d 1
 type "rectangle"
 width 0.12
-fill "#67a9cf"
+fill "#fc9272"
 outline "#000000"
      ]
 ]
 node [
 id 6
-label "R_GFUCS6"
+label "M_fc1p_c6"
 graphics [
-x -0.5
-y 15
+x -3.75
+y 2.75
 z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 7
-label "R_PMANM7"
-graphics [
-x 17.5
-y 77
-z 0
-h 10
-w 10
-d 1
-type "rectangle"
-width 0.12
-fill "#fc9272"
-outline "#000000"
-     ]
-]
-node [
-id 8
-label "M_fc1p_c8"
-graphics [
-x 41.5
-y 30.5
-z 0
-h 15
-w 15
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
@@ -146,14 +114,46 @@ outline "#000000"
      ]
 ]
 node [
-id 9
-label "M_lald__L_c9"
+id 7
+label "M_lald__L_c7"
 graphics [
-x 50.5
-y -0.5
+x -6.75
+y -6.75
 z 0
-h 15
-w 15
+h 2.5
+w 2.5
+d 1
+type "rectangle"
+width 0.12
+fill "#67a9cf"
+outline "#000000"
+     ]
+]
+node [
+id 8
+label "R_FCLPA8"
+graphics [
+x -3.75
+y -2
+z 0
+h 1
+w 1
+d 1
+type "rectangle"
+width 0.12
+fill "#fc9272"
+outline "#000000"
+     ]
+]
+node [
+id 9
+label "M_gdpddman_c9"
+graphics [
+x 1.75
+y 2.75
+z 0
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
@@ -163,13 +163,13 @@ outline "#000000"
 ]
 node [
 id 10
-label "R_FCLPA10"
+label "R_MAN1PT210"
 graphics [
-x 41.5
-y 15
+x 1.75
+y 17
 z 0
-h 10
-w 10
+h 1
+w 1
 d 1
 type "rectangle"
 width 0.12
@@ -179,13 +179,13 @@ outline "#000000"
 ]
 node [
 id 11
-label "M_gdpddman_c11"
+label "M_gdpmann_c11"
 graphics [
-x -0.5
-y 30.5
+x 1.75
+y 12.25
 z 0
-h 15
-w 15
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
@@ -195,29 +195,29 @@ outline "#000000"
 ]
 node [
 id 12
-label "R_MAN1PT212"
+label "M_gdp_c12"
 graphics [
-x -0.5
-y 77
+x 1.75
+y 21.75
 z 0
-h 10
-w 10
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
-fill "#fc9272"
+fill "#67a9cf"
 outline "#000000"
      ]
 ]
 node [
 id 13
-label "M_gdpmann_c13"
+label "M_man1p_c13"
 graphics [
-x -0.5
-y 61.5
+x 7.75
+y 21.75
 z 0
-h 15
-w 15
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
@@ -227,13 +227,13 @@ outline "#000000"
 ]
 node [
 id 14
-label "M_man1p_c14"
+label "M_dhap_c14"
 graphics [
-x 17.5
-y 95.5
+x -0.75
+y -6.75
 z 0
-h 15
-w 15
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
@@ -245,11 +245,11 @@ node [
 id 15
 label "M_man6p_c15"
 graphics [
-x 17.5
-y 61.5
+x 7.75
+y 12.25
 z 0
-h 15
-w 15
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
@@ -258,8 +258,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 2
-target 5
+source 3
+target 4
 id 0
 label ""
 graphics [
@@ -271,8 +271,8 @@ Line [
 ]
 ]
 edge [
-source 1
-target 12
+source 8
+target 14
 id 1
 label ""
 graphics [
@@ -284,8 +284,8 @@ Line [
 ]
 ]
 edge [
-source 6
-target 3
+source 12
+target 10
 id 2
 label ""
 graphics [
@@ -297,7 +297,7 @@ Line [
 ]
 ]
 edge [
-source 10
+source 1
 target 0
 id 3
 label ""
@@ -310,8 +310,8 @@ Line [
 ]
 ]
 edge [
-source 10
-target 9
+source 8
+target 7
 id 4
 label ""
 graphics [
@@ -323,8 +323,8 @@ Line [
 ]
 ]
 edge [
-source 8
-target 10
+source 6
+target 8
 id 5
 label ""
 graphics [
@@ -336,7 +336,7 @@ Line [
 ]
 ]
 edge [
-source 7
+source 5
 target 15
 id 6
 label ""
@@ -349,8 +349,8 @@ Line [
 ]
 ]
 edge [
-source 4
-target 11
+source 2
+target 9
 id 7
 label ""
 graphics [
@@ -362,8 +362,8 @@ Line [
 ]
 ]
 edge [
-source 11
-target 6
+source 9
+target 3
 id 8
 label ""
 graphics [
@@ -375,8 +375,8 @@ Line [
 ]
 ]
 edge [
-source 14
-target 12
+source 13
+target 10
 id 9
 label ""
 graphics [
@@ -388,8 +388,8 @@ Line [
 ]
 ]
 edge [
-source 14
-target 7
+source 13
+target 5
 id 10
 label ""
 graphics [
@@ -401,8 +401,8 @@ Line [
 ]
 ]
 edge [
-source 12
-target 13
+source 10
+target 11
 id 11
 label ""
 graphics [
@@ -414,8 +414,8 @@ Line [
 ]
 ]
 edge [
-source 13
-target 4
+source 11
+target 2
 id 12
 label ""
 graphics [
@@ -428,7 +428,7 @@ Line [
 ]
 edge [
 source 15
-target 2
+target 1
 id 13
 label ""
 graphics [

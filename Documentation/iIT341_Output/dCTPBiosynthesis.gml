@@ -5,11 +5,11 @@ node [
 id 0
 label "M_trdrd_c0"
 graphics [
-x -0.5
-y 61.5
+x -6.75
+y 12.25
 z 0
-h 15
-w 15
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
@@ -21,11 +21,11 @@ node [
 id 1
 label "M_trdox_c1"
 graphics [
-x -0.5
-y 30.5
+x -6.75
+y 2.75
 z 0
-h 15
-w 15
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
@@ -37,11 +37,11 @@ node [
 id 2
 label "M_cdp_c2"
 graphics [
-x 17.5
-y 61.5
+x -0.75
+y 12.25
 z 0
-h 15
-w 15
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
@@ -53,11 +53,11 @@ node [
 id 3
 label "M_dcdp_c3"
 graphics [
-x 17.5
-y 30.5
+x -0.75
+y 2.75
 z 0
-h 15
-w 15
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
@@ -69,11 +69,11 @@ node [
 id 4
 label "R_NDPK74"
 graphics [
-x 17.5
-y 15
+x -0.75
+y -2
 z 0
-h 10
-w 10
+h 1
+w 1
 d 1
 type "rectangle"
 width 0.12
@@ -85,11 +85,11 @@ node [
 id 5
 label "R_RNDR35"
 graphics [
-x 8.5
-y 46
+x -3.75
+y 7.5
 z 0
-h 10
-w 10
+h 1
+w 1
 d 1
 type "rectangle"
 width 0.12
@@ -101,11 +101,11 @@ node [
 id 6
 label "M_dctp_c6"
 graphics [
-x 17.5
-y -0.5
+x -0.75
+y -6.75
 z 0
-h 15
-w 15
+h 2.5
+w 2.5
 d 1
 type "rectangle"
 width 0.12
@@ -114,8 +114,8 @@ outline "#000000"
      ]
 ]
 edge [
-source 5
-target 1
+source 4
+target 6
 id 0
 label ""
 graphics [
@@ -166,8 +166,8 @@ Line [
 ]
 ]
 edge [
-source 4
-target 6
+source 5
+target 1
 id 4
 label ""
 graphics [
