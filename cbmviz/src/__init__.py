@@ -17,8 +17,8 @@
 
 __SILENT_START__ = False
 
-from MetaViz import *
-import CBConfig
+from .MetaViz import *
+from . import CBConfig
 __version__ = CBConfig.current_version()
 
 # get default options dict
@@ -28,7 +28,7 @@ cfg_auto = CBConfig.cfg_auto
 
 if not __SILENT_START__:
     print("#################################################################################################")
-    print("# CBMViz - ({}) - Visualization Pipeline for Metabolic Networks                              #".format(__version__))
+    print(("# CBMViz - ({}) - Visualization Pipeline for Metabolic Networks                              #".format(__version__)))
     print("# (c) Nicolas Huber, Brett G. Olivier & Bas Teusink, Vrije Universiteit Amsterdam, 2016-2017    #")
     print("#                                                                                               #")
     print("# CBMViz is developed as part of the BeBasic MetaToolKit Project                                #")

@@ -10,9 +10,9 @@ __author__ = 'anna'
 
 
 def model_statistics(model, org, pathways=True, extracellular=None):
-    print("Compartments: ", model.getNumCompartments(), "Metabolites: ", model.getNumSpecies(), "Reactions: ",
-          model.getNumReactions())
-    print("Compartments: %s" % ", ".join([c.name for c in model.getListOfCompartments()]))
+    print(("Compartments: ", model.getNumCompartments(), "Metabolites: ", model.getNumSpecies(), "Reactions: ",
+          model.getNumReactions()))
+    print(("Compartments: %s" % ", ".join([c.name for c in model.getListOfCompartments()])))
     c2reactions = {}
     s_id2rs = defaultdict(list)
     s_id2r_rs = defaultdict(list)
@@ -42,28 +42,28 @@ def model_statistics(model, org, pathways=True, extracellular=None):
                 if not set(get_reactants(r)) or not set(get_products(r)):
                     boundary_ms.add(m)
                     break
-    print("Boundary metabolites: ", len(boundary_ms))
+    print(("Boundary metabolites: ", len(boundary_ms)))
     boundary_ms_ids = {s.id for s in boundary_ms}
     blocked_ms = {s_id for s_id in s_id2r_rs if s_id not in s_id2p_rs and s_id not in boundary_ms_ids} | \
                  {s_id for s_id in s_id2p_rs if s_id not in s_id2r_rs and s_id not in boundary_ms_ids}
-    print("Real metabolites: ", len(s_id2rs.keys()))
-    print("Blocked metabolites: ", len(blocked_ms))
-    print("Transport reactions: ", len(transport))
+    print(("Real metabolites: ", len(list(s_id2rs.keys()))))
+    print(("Blocked metabolites: ", len(blocked_ms)))
+    print(("Transport reactions: ", len(transport)))
     print("-------------Reaction distribution-----------------")
-    for c_ids in sorted(c2reactions.iterkeys()):
-        print([model.getCompartment(c_id).name for c_id in c_ids], c2reactions[c_ids])
+    for c_ids in sorted(c2reactions.keys()):
+        print(([model.getCompartment(c_id).name for c_id in c_ids], c2reactions[c_ids]))
     print("---------------------------------------------------")
 
     # Pathways
     if pathways:
         pw2r_ids, o_r_ids = get_pathway2r_ids(model=model)
-        if not pw2r_ids.keys():
+        if not list(pw2r_ids.keys()):
             pw2r_ids, o_r_ids = get_subsystem2r_ids(model=model)
         pw_names = []
-        for pw in pw2r_ids.keys():
+        for pw in list(pw2r_ids.keys()):
             pw_name = get_pw_name(org, pw)
             if pw_name:
                 pw = "%s (%s)" % (pw_name, pw)
             pw_names.append(pw)
-        print ("Pathways", sorted(pw_names))
+        print(("Pathways", sorted(pw_names)))
 

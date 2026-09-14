@@ -1,10 +1,10 @@
 from collections import defaultdict
 
-from predefined_layout import apply_node_coordinates
-from node_cloner import merge_nodes
-from resize import get_n_size
-from graph_properties import *
-from ubiquitous_layout import layout
+from .predefined_layout import apply_node_coordinates
+from .node_cloner import merge_nodes
+from .resize import get_n_size
+from .graph_properties import *
+from .ubiquitous_layout import layout
 
 
 __author__ = 'anna'
@@ -21,12 +21,12 @@ def merge_ubs_for_similar_reactions(graph):
             ancestor2nodes[ancestor].append(node)
 
     ubiquitous = root[UBIQUITOUS]
-    for nodes in (nodes for nodes in ancestor2nodes.itervalues() if len(nodes) > 1):
+    for nodes in (nodes for nodes in ancestor2nodes.values() if len(nodes) > 1):
         id2ub_ns = defaultdict(set)
         for node in nodes:
             for n in (n for n in graph.getInOutNodes(node) if ubiquitous[n]):
                 id2ub_ns[root[ID][n]].add(n)
-        for ubs in id2ub_ns.itervalues():
+        for ubs in id2ub_ns.values():
             merge_nodes(root, ubs)
 
 
@@ -43,7 +43,7 @@ def factor_nodes(graph, ns=None):
             ancestor2nodes[ancestor].append(node)
 
     meta_ns = []
-    for (ancestor, type_, c_id), nodes in ((k, ns) for (k, ns) in ancestor2nodes.iteritems() if len(ns) > 1):
+    for (ancestor, type_, c_id), nodes in ((k, ns) for (k, ns) in ancestor2nodes.items() if len(ns) > 1):
         sample_n = nodes[0]
         meta_n = graph.createMetaNode(nodes, False)
 
@@ -81,7 +81,8 @@ def factor_nodes(graph, ns=None):
     return meta_ns
 
 
-def comp_to_meta_node(meta_graph, c_id, (go_id, c_name), out_comp, global_ops, do_layout=True, n2xy=None):
+def comp_to_meta_node(meta_graph, c_id, xxx_todo_changeme, out_comp, global_ops, do_layout=True, n2xy=None):
+    (go_id, c_name) = xxx_todo_changeme
     root = meta_graph.getRoot()
     ns = [n for n in meta_graph.getNodes() if root[COMPARTMENT_ID][n] == c_id]
     if not ns:

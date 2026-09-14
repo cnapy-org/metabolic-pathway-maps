@@ -5,6 +5,7 @@ import libsbml
 
 from cbmviz.mod_sbml.sbml.sbml_manager import get_formulas
 from cbmviz.mod_sbml.annotation.rdf_annotation_helper import get_is_annotations, get_is_vo_annotations, add_annotation
+from functools import reduce
 
 __author__ = 'anna'
 

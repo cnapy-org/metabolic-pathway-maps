@@ -1,4 +1,4 @@
-from graph_properties import CLONE_ID, ID
+from .graph_properties import CLONE_ID, ID
 
 __author__ = 'anna'
 

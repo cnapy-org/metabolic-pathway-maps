@@ -30,7 +30,7 @@ def get_model_name(sbml=None, model=None):
 def _get_prefixed_notes_value(notes, result, prefix):
     if not notes:
         return
-    for i in xrange(0, notes.getNumChildren()):
+    for i in range(0, notes.getNumChildren()):
         child = notes.getChild(i)
         note = child.getCharacters()
         if note:
@@ -259,11 +259,11 @@ def get_pathway_by_species(s_ids, model, ubiquitous_s_ids, blocked_r_ids=None):
             s_ids_to_process |= (r_id2s_ids[r_id] - s_ids_processed)
 
     for s in sorted((model.getSpecies(s_id) for s_id in s_ids_processed), key=lambda s: s.name):
-        print(s.name, s.id, len(s_id2r_ids[s.id]))
+        print((s.name, s.id, len(s_id2r_ids[s.id])))
 
     print("________________________________________")
     for s in sorted((model.getSpecies(s_id) for s_id in ubiquitous_s_ids), key=lambda s: s.name):
-        print(s.name, s.id)
+        print((s.name, s.id))
 
     return r_ids
 
@@ -276,11 +276,11 @@ def create_reaction(model, r_id2st, p_id2st, name=None, reversible=True, id_=Non
     if name:
         new_r.setName(name)
     new_r.setReversible(reversible)
-    for m_id, st in r_id2st.iteritems():
+    for m_id, st in r_id2st.items():
         sr = new_r.createReactant()
         sr.setSpecies(m_id)
         sr.setStoichiometry(st)
-    for m_id, st in p_id2st.iteritems():
+    for m_id, st in p_id2st.items():
         sr = new_r.createProduct()
         sr.setSpecies(m_id)
         sr.setStoichiometry(st)

@@ -48,25 +48,25 @@ sbml = os.path.join(cDir, "TestModels", "bigg2", "iIT341.xml") # H.pylori
 ## Stijns models
 # sbml = os.path.join(cDir, "TestModels", "stijn", "Y7.xml") #M.getNumReactions: 3498, M.getNumSpecies: 2220
 # Error message when trying to run Metaviz with Y7xml:
-"""
+r"""
 Traceback (most recent call last):
 
 File "C:/Users/Nicolas/surfdrive/LabR1_Teusink_Amsterdam/Project/FindStructuredLayout/MetaViz.py", line 1174, in <module>
 graph, graph_props)
 File "C:/Users/Nicolas/surfdrive/LabR1_Teusink_Amsterdam/Project/FindStructuredLayout/MetaViz.py", line 100, in layoutModel
 root)
-File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\tulip_graph2geojson.py", line 352,      in graph2geojson
+File "C:\\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\tulip_graph2geojson.py", line 352,      in graph2geojson
 process_compartments(c_id2info, meta_graph, n2xy)
-File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\tulip_graph2geojson.py", line 457,      in process_compartments
+File "C:\\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\tulip_graph2geojson.py", line 457,      in process_compartments
 layout(meta_graph)
-File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\ubiquitous_layout.py", line 382, in     layout
+File "C:\\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\\ubiquitous_layout.py", line 382, in     layout
 layout_components(gr)
-File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\layout_utils.py", line 115, in          layout_components
+File "C:\\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\layout_utils.py", line 115, in          layout_components
 iter((followers_rev_or_gen, followers_rev, followers_irrev, followers_irrev_gen_only)))
-File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\layout_utils.py", line 102, in          process_cc
+File "C:\\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\layout_utils.py", line 102, in          process_cc
 if dfs(cc[0], gr, set(), None, cycle_number_threshold, follower_method) \
 
-File "C:\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\layout_utils.py", line 82, in <lambda>
+File "C:\\Users\Nicolas\surfdrive\LabR1_Teusink_Amsterdam\Project\FindStructuredLayout\layout_utils.py", line 82, in <lambda>
 followers_rev_or_gen = lambda n, gr: (gr.opposite(e, n) for e in gr.getInOutEdges(n) if n == gr.source(e)
 RuntimeError: maximum recursion depth exceeded while calling a Python object
 

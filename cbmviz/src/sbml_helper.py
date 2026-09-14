@@ -2,10 +2,10 @@ import logging
 
 import libsbml
 
-from mod_sbml.annotation.chebi.chebi_annotator import get_chebi_term_by_annotation, CHEBI_PREFIX
-from mod_sbml.utils.misc import invert_map
-from mod_sbml.annotation.rdf_annotation_helper import add_annotation, get_annotations
-from mod_sbml.sbml.sbml_manager import get_products, get_reactants, get_metabolites, generate_unique_id, create_reaction, \
+from .mod_sbml.annotation.chebi.chebi_annotator import get_chebi_term_by_annotation, CHEBI_PREFIX
+from .mod_sbml.utils.misc import invert_map
+from .mod_sbml.annotation.rdf_annotation_helper import add_annotation, get_annotations
+from .mod_sbml.sbml.sbml_manager import get_products, get_reactants, get_metabolites, generate_unique_id, create_reaction, \
     create_species
 
 GROUP_TYPE_EQUIV = "equivalent"
@@ -142,7 +142,7 @@ def save_as_comp_generalized_sbml(input_model, out_sbml, groups_sbml, r_id2clu, 
     else:
         clu2r_ids = invert_map(r_id2clu)
         logging.info("  creating species groups")
-        for ((c_id, t), s_ids) in clu2s_ids.iteritems():
+        for ((c_id, t), s_ids) in clu2s_ids.items():
             comp = input_model.getCompartment(c_id)
             if len(s_ids) > 1:
                 t = onto.get_term(t)
@@ -178,20 +178,20 @@ def save_as_comp_generalized_sbml(input_model, out_sbml, groups_sbml, r_id2clu, 
                     add_annotation(s_group, libsbml.BQB_IS_DESCRIBED_BY, GROUP_TYPE_EQUIV)
 
         generalize_species = lambda species_id: s_id2gr_id[species_id][0] if (species_id in s_id2gr_id) else species_id
-        s_id_to_generalize = set(s_id2gr_id.iterkeys())
+        s_id_to_generalize = set(s_id2gr_id.keys())
         logging.info("  creating reaction groups")
-        for clu, r_ids in clu2r_ids.iteritems():
+        for clu, r_ids in clu2r_ids.items():
             representative = input_model.getReaction(list(r_ids)[0])
             r_name = "generalized %s" % representative.getName()
             if out_sbml:
                 reactants = dict(get_reactants(representative, stoichiometry=True))
                 products = dict(get_products(representative, stoichiometry=True))
                 if (len(r_ids) == 1) and \
-                        not ((set(reactants.iterkeys()) | set(products.iterkeys())) & s_id_to_generalize):
+                        not ((set(reactants.keys()) | set(products.keys())) & s_id_to_generalize):
                     generalized_model.addReaction(representative)
                     continue
-                r_id2st = {generalize_species(it): st for (it, st) in reactants.iteritems()}
-                p_id2st = {generalize_species(it): st for (it, st) in products.iteritems()}
+                r_id2st = {generalize_species(it): st for (it, st) in reactants.items()}
+                p_id2st = {generalize_species(it): st for (it, st) in products.items()}
                 reversible = next((False for r_id in r_ids if not input_model.getReaction(r_id).getReversible()), True)
                 new_r_id = create_reaction(generalized_model, r_id2st, p_id2st, name=r_name, reversible=reversible,
                                            id_=representative.getId() if len(r_ids) == 1 else None).getId()
@@ -240,7 +240,7 @@ def parse_group_sbml(groups_sbml, chebi):
             gr_id, gr_name = group.getId(), group.getName()
             gr_sbo = group.getSBOTermID()
             try:
-                gr_type = get_annotations(group, libsbml.BQB_IS_DESCRIBED_BY).next()
+                gr_type = next(get_annotations(group, libsbml.BQB_IS_DESCRIBED_BY))
             except StopIteration:
                 continue
             if SBO_BIOCHEMICAL_REACTION == gr_sbo:
@@ -266,7 +266,7 @@ def check_for_groups(groups_sbml, sbo_term, group_type):
         for group in groups_plugin.getListOfGroups():
             gr_sbo = group.getSBOTermID()
             try:
-                gr_type = get_annotations(group, libsbml.BQB_IS_DESCRIBED_BY).next()
+                gr_type = next(get_annotations(group, libsbml.BQB_IS_DESCRIBED_BY))
             except StopIteration:
                 continue
             if sbo_term == gr_sbo and group_type == gr_type:

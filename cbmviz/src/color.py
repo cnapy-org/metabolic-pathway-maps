@@ -1,7 +1,7 @@
 import colorsys
 
 from tulip import tlp
-from graph_properties import *
+from .graph_properties import *
 
 
 __author__ = 'anna'
@@ -67,13 +67,13 @@ def color(graph):
     s_keys -= {(NOT_GENERALIZED, TYPE_SPECIES)}
     i = len(s_keys)
     colors = get_n_colors(i, 0.5, 0.8)
-    key2color = dict(zip(s_keys, colors))
+    key2color = dict(list(zip(s_keys, colors)))
 
     r_keys = {get_key(n, graph) for n in graph.getNodes() if root[TYPE][n] == TYPE_SPECIES}
     r_keys -= {(NOT_GENERALIZED, TYPE_REACTION)}
     i = len(r_keys)
     colors = get_n_colors(i, 0.5, 0.8)
-    key2color.update(dict(zip(r_keys, colors)))
+    key2color.update(dict(list(zip(r_keys, colors))))
 
     key2color[(NOT_GENERALIZED, TYPE_SPECIES)] = RED_RGB
     key2color[(NOT_GENERALIZED, TYPE_REACTION)] = BLUE_RGB
@@ -88,7 +88,7 @@ def color(graph):
     c_keys = {root[ID][n] for n in graph.getNodes() if root[TYPE][n] == TYPE_COMPARTMENT}
     i = len(c_keys)
     colors = get_n_colors(i, 0.5, 0.8)
-    key2color.update(dict(zip(c_keys, colors)))
+    key2color.update(dict(list(zip(c_keys, colors))))
 
     for n in graph.getNodes():
         type_ = root[TYPE][n]
@@ -115,24 +115,24 @@ def color(graph):
 
 def get_n_colors(n, s, v):
     return [(int(255 * r), int(255 * g), int(255 * b)) for (r, g, b) in
-            (colorsys.hsv_to_rgb(x * 1.0 / n, s, v) for x in xrange(n))]
+            (colorsys.hsv_to_rgb(x * 1.0 / n, s, v) for x in range(n))]
 
 
 def color_by_compartment(graph, c_id2m_ids):
     root = graph.getRoot()
     view_color = root.getColorProperty(VIEW_COLOR)
 
-    i = len(c_id2m_ids.keys()) + 1
+    i = len(list(c_id2m_ids.keys())) + 1
 
     colors = get_n_colors(i, 0.7, 0.8)
     ub_colors = get_n_colors(i, 0.2, 0.8)
 
-    key2color = dict(zip(c_id2m_ids.iterkeys(), colors[1:]))
-    key2ub_color = dict(zip(c_id2m_ids.iterkeys(), ub_colors[1:]))
+    key2color = dict(list(zip(iter(c_id2m_ids.keys()), colors[1:])))
+    key2ub_color = dict(list(zip(iter(c_id2m_ids.keys()), ub_colors[1:])))
 
     m_id2color = {}
     m_id2ub_color = {}
-    for c_id, m_ids in c_id2m_ids.iteritems():
+    for c_id, m_ids in c_id2m_ids.items():
         for m_id in m_ids:
             m_id2color[m_id] = key2color[c_id]
             m_id2ub_color[m_id] = key2ub_color[c_id]
@@ -163,14 +163,14 @@ def color_by_pathway(graph, pw2r_ids):
     root = graph.getRoot()
     view_color = root.getColorProperty(VIEW_COLOR)
 
-    i = len(pw2r_ids.keys()) + 1
+    i = len(list(pw2r_ids.keys())) + 1
 
     colors = get_n_colors(i, 0.5, 0.8)
 
-    key2color = dict(zip(pw2r_ids.iterkeys(), colors[1:]))
+    key2color = dict(list(zip(iter(pw2r_ids.keys()), colors[1:])))
 
     r_id2color = {}
-    for pw, r_ids in pw2r_ids.iteritems():
+    for pw, r_ids in pw2r_ids.items():
         for r_id in r_ids:
             r_id2color[r_id] = key2color[pw]
 
@@ -206,7 +206,7 @@ def color_by_id(graph, id2color):
     c_keys = {root[ID][n] for n in graph.getNodes() if root[TYPE][n] == TYPE_COMPARTMENT}
     i = len(c_keys)
     colors = get_n_colors(i, 0.7, 0.7)
-    key2color = dict(zip(c_keys, colors))
+    key2color = dict(list(zip(c_keys, colors)))
 
     for n in (n for n in graph.getNodes() if not graph.isMetaNode(n) and root[TYPE][n] == TYPE_REACTION):
         r, g, b = id2color[root[ID][n]] if root[ID][n] in id2color else BLUE_RGB

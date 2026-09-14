@@ -1,9 +1,9 @@
 from math import sqrt, radians, cos, sin, atan2
 from tulip import tlp
 
-from layout_utils import pack_cc, layout_components
-from resize import get_n_size, UBIQUITOUS_SPECIES_SIZE, REACTION_SIZE, get_n_length
-from graph_properties import UBIQUITOUS, VIEW_LAYOUT, VIEW_SIZE, TYPE_REACTION, TYPE, TYPE_SPECIES, \
+from .layout_utils import pack_cc, layout_components
+from .resize import get_n_size, UBIQUITOUS_SPECIES_SIZE, REACTION_SIZE, get_n_length
+from .graph_properties import UBIQUITOUS, VIEW_LAYOUT, VIEW_SIZE, TYPE_REACTION, TYPE, TYPE_SPECIES, \
     TYPE_COMPARTMENT, VIEW_META_GRAPH, COMPARTMENT_ID
 
 __author__ = 'anna'
@@ -75,7 +75,8 @@ def get_comp_borders(c, root):
     return c_x - c_w, c_y - c_h, c_x + c_w, c_y + c_h
 
 
-def layout_inner_elements(graph, c_id, (c_left_x, c_bottom_y, c_right_x, c_top_y)):
+def layout_inner_elements(graph, c_id, xxx_todo_changeme):
+    (c_left_x, c_bottom_y, c_right_x, c_top_y) = xxx_todo_changeme
     root = graph.getRoot()
 
     neighbours_outside_comp = lambda r: [n for n in graph.getInOutNodes(r) if root[COMPARTMENT_ID][n] != c_id]
@@ -273,7 +274,7 @@ def bend_edges_around_compartments(graph, es):
                         if (x, y) != (s_x, s_y) and (x, y) != (t_x, t_y):
                             bends.append((x, y))
                 if len(bends) == 2:
-                    bends = sorted(bends, key=lambda (x, y): 0 if (s_x == x or s_y == y) else 1)
+                    bends = sorted(bends, key=lambda x_y: 0 if (s_x == x_y[0] or s_y == x_y[1]) else 1)
                 if bends:
                     root[VIEW_LAYOUT][e] = [tlp.Coord(x, y) for (x, y) in bends]
                 break

@@ -155,7 +155,7 @@ class MainWindow(QtGui.QMainWindow):
         :param |QMdiSubWindow| window: |QMdiSubWindow| that was just
                                        activated"""
         if window != None:
-            print('Active idx: {} ({})'.format(window, window.idx))
+            print(('Active idx: {} ({})'.format(window, window.idx)))
             self.cidx = window.idx
 
 
@@ -166,12 +166,12 @@ class MainWindow(QtGui.QMainWindow):
         svg = os.path.join(self.svg_directory, svg)
         print(svg)
         self.view.append(SvgView())
-        print(self.view)
+        print((self.view))
 
         self.count += 1
         sub = QtGui.QMdiSubWindow()
         sub.idx = self.cidx = self.count
-        print(sub.idx, self.cidx, self.count)
+        print((sub.idx, self.cidx, self.count))
         self.backgroundAction.toggled.connect(self.view[self.cidx].setViewBackground)
         self.outlineAction.toggled.connect(self.view[self.cidx].setViewOutline)
         self.highQualityAntialiasingAction.toggled.connect(self.view[self.cidx].setHighQualityAntialiasing)
@@ -211,7 +211,7 @@ class MainWindow(QtGui.QMainWindow):
             self.view.append(SvgView())
             sub = QtGui.QMdiSubWindow()
             sub.idx = self.cidx = self.count
-            print(sub.idx, self.cidx, self.count)
+            print((sub.idx, self.cidx, self.count))
             self.backgroundAction.toggled.connect(self.view[self.cidx].setViewBackground)
             self.outlineAction.toggled.connect(self.view[self.cidx].setViewOutline)
             self.highQualityAntialiasingAction.toggled.connect(self.view[self.cidx].setHighQualityAntialiasing)
@@ -247,7 +247,7 @@ class MainWindow(QtGui.QMainWindow):
 
 
 class SvgView(QtGui.QGraphicsView):
-    Native, OpenGL, Image = range(3)
+    Native, OpenGL, Image = list(range(3))
 
     def __init__(self, parent=None):
         super(SvgView, self).__init__(parent)

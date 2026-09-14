@@ -2,21 +2,21 @@ import logging
 from tulip import tlp
 import cbmpy
 
-from mod_sbml.annotation.gene_ontology.go_annotator import annotate_compartments, get_go_id
-from sbml_helper import parse_group_sbml, GrPlError
-from sbml_manager import check_names, check_compartments
-from mod_sbml.sbml.compartment.compartment_positioner import comp2level
-from mod_sbml.onto import parse_simple
-from mod_sbml.onto.term import Term
-from mod_sbml.annotation.chebi.chebi_serializer import get_chebi
-from mod_sbml.annotation.gene_ontology.go_serializer import get_go
-from mod_sbml.sbml.sbml_manager import get_gene_association, get_formulas
-from mod_sbml.annotation.chebi.chebi_annotator import get_chebi_id
-from node_cloner import clone_node
-from graph_properties import *
-from resize import get_n_size
+from .mod_sbml.annotation.gene_ontology.go_annotator import annotate_compartments, get_go_id
+from .sbml_helper import parse_group_sbml, GrPlError
+from .sbml_manager import check_names, check_compartments
+from .mod_sbml.sbml.compartment.compartment_positioner import comp2level
+from .mod_sbml.onto import parse_simple
+from .mod_sbml.onto.term import Term
+from .mod_sbml.annotation.chebi.chebi_serializer import get_chebi
+from .mod_sbml.annotation.gene_ontology.go_serializer import get_go
+from .mod_sbml.sbml.sbml_manager import get_gene_association, get_formulas
+from .mod_sbml.annotation.chebi.chebi_annotator import get_chebi_id
+from .node_cloner import clone_node
+from .graph_properties import *
+from .resize import get_n_size
 
-import MVLayout as mvl
+from . import MVLayout as mvl
 
 __author__ = 'anna'
 
@@ -82,7 +82,7 @@ def compute_c_id2info(c_id2level, input_model):
         c_id2info[c_id] = (c_name, go_id if go_id else '', c_id2level[c_id])
 
     c_id2outs = {}
-    for c_id in c_id2info.iterkeys():
+    for c_id in c_id2info.keys():
         _, _, (_, out_c_id) = c_id2info[c_id]
         outs = []
         while out_c_id:

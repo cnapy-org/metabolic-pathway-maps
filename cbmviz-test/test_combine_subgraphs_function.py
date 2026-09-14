@@ -37,7 +37,7 @@ test_input_list.append(test_ecoli_list)
 test_input_list.append(test_yeast_list)
 # generate the combined graph
 output_combine_graph = cbmviz.combineSubgraphsFromGraphs(test_input_list)
-print("output_combine_graph", output_combine_graph)
+print(("output_combine_graph", output_combine_graph))
 # save combined graph
 #cbmviz.saveGraphObjToTulipFile(output_combine_graph, "test_combine_output.tlp")
 

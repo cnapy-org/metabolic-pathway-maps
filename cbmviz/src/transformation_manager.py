@@ -4,7 +4,7 @@ __author__ = 'anna'
 MARGIN = 16
 
 
-def transform(((x, y), (w, h)), x_shift, y_shift, scale_factor):
+def transform(xxx_todo_changeme, x_shift, y_shift, scale_factor):
     """
     Transform the given element's layout in the following manner:
         (1) scales the coordinates (x, y) by scale_factor and then shifts them by (x_shift, y_shift)
@@ -16,11 +16,12 @@ def transform(((x, y), (w, h)), x_shift, y_shift, scale_factor):
     :param scale_factor, scale_factor
     :return: transformed layout: (x, y), (w, h).
     """
+    ((x, y), (w, h)) = xxx_todo_changeme
     return shift(scale(convert_coordinates((x, y), (w, h)), scale_factor), x_shift, y_shift), scale((w, h),
                                                                                                     scale_factor)
 
 
-def convert_coordinates((x, y), (w, h)):
+def convert_coordinates(xxx_todo_changeme1, xxx_todo_changeme2):
     """
     Converts coordinates from the Tulip representation: (x, y) -- centre, (w, h) -- width and height
     to SBGN representation (x, y) -- top left corner, (w, h) -- width and height
@@ -28,10 +29,12 @@ def convert_coordinates((x, y), (w, h)):
     :param (w, h), width and height
     :return: SBGN-compatible coordinates: (x, y)
     """
+    (x, y) = xxx_todo_changeme1
+    (w, h) = xxx_todo_changeme2
     return shift((x, y), w / 2, h / 2)
 
 
-def shift((x, y), x_shift=0, y_shift=0):
+def shift(xxx_todo_changeme3, x_shift=0, y_shift=0):
     """
     Shifts coordinates (x, y) by (x_shift, y_shift) in the top left direction.
     :param (x, y), coordinates
@@ -39,16 +42,18 @@ def shift((x, y), x_shift=0, y_shift=0):
     :param y_shift, y shift
     :return: shifted coordinates: (x, y)
     """
+    (x, y) = xxx_todo_changeme3
     return x - x_shift, y - y_shift
 
 
-def scale((x, y), scale_factor=1):
+def scale(xxx_todo_changeme4, scale_factor=1):
     """
     Scales coordinates (x, y) by scale_factor.
     :param (x, y), coordinates
     :param scale_factor, the scale_factor
     :return: scaled coordinates: (x, y)
     """
+    (x, y) = xxx_todo_changeme4
     return x * scale_factor, y * scale_factor
 
 
@@ -63,10 +68,10 @@ def get_layout_characteristics(n2lo):
                                             the width and the height or the area containing the graph.
     """
     x_min, y_min, x_max, y_max, h_min = None, None, None, None, None
-    for v in n2lo.itervalues():
+    for v in n2lo.values():
         if not isinstance(v, dict):
             v = {'': v}
-        for ((x, y), (w, h)) in v.itervalues():
+        for ((x, y), (w, h)) in v.values():
             if x_min is None or x - w / 2 < x_min:
                 x_min = x - w / 2
             if x_max is None or x + w / 2 > x_max:

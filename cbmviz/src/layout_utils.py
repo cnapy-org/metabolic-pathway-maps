@@ -2,8 +2,8 @@ from tulip import tlp
 
 from tarjan import tarjan_iter
 
-from resize import get_mn_size, SPECIES_SIZE
-from graph_properties import *
+from .resize import get_mn_size, SPECIES_SIZE
+from .graph_properties import *
 
 COMPONENT_PACKING = "Connected Component Packing"
 
@@ -24,7 +24,7 @@ def get_distance(qo):
         neighbour_sizes = {n2size[m] for m in qo.getOutNodes(n) if m in n2size}
         return max(neighbour_sizes) if neighbour_sizes else 0
 
-    return max(n2size[n] + get_neighbour_size(n) for n in n2size.iterkeys()) / 2
+    return max(n2size[n] + get_neighbour_size(n) for n in n2size.keys()) / 2
 
 
 def layout_hierarchically(qo, margin=1):

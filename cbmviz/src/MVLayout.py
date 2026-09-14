@@ -27,8 +27,8 @@ import os
 import random
 from tulip import tlp
 from tulipgui import *
-import graph_properties
-import resize
+from . import graph_properties
+from . import resize
 
 
 def identifyConnectedNodes(model, spec_split, reac_split, split_biomass=True):
@@ -136,11 +136,11 @@ def createPathwayLists(cmod, path_name, del_ub_sps=True, small_threshold=30, ub_
     else:
         # take user threshold if provided
         if small_threshold:
-            small_sps = [sps_id for sps_id, num_re in n_r_conn.items() if num_re > small_threshold]
+            small_sps = [sps_id for sps_id, num_re in list(n_r_conn.items()) if num_re > small_threshold]
         # if not user threshold is provided make automatic threshold level (dependent on model size)
         else:
-            small_threshold = len(n_r_conn.values()) * 0.2
-            small_sps = [sps_id for sps_id, num_re in n_r_conn.items() if num_re > small_threshold]
+            small_threshold = len(list(n_r_conn.values())) * 0.2
+            small_sps = [sps_id for sps_id, num_re in list(n_r_conn.items()) if num_re > small_threshold]
     # save identified small sps in a dict: key = reaction id, value = list of small sps associated with that reaction
     small_sps_dict = {}
     for re in cmod.reactions:
@@ -614,7 +614,7 @@ def createSubgraph(graph, sg_name, n_list, user_params=None):
         graph.applyBooleanAlgorithm('Reachable Sub-Graph', params)
     # with user parameters (overwrite default parameters)
     if user_params is not None:
-        for key in user_params.keys():
+        for key in list(user_params.keys()):
             if key in params:
                 params[key] = user_params[key]
                 graph.applyBooleanAlgorithm('Reachable Sub-Graph', params)
@@ -648,7 +648,7 @@ def layoutSubgraph(sg, sg_layout=None, user_params=None, x_center=None, y_center
         sg.applyLayoutAlgorithm(sg_layout, params)
     # with user parameters (overwrite default parameters)
     if sg_layout is not None and user_params is not None:
-        for key in user_params.keys():
+        for key in list(user_params.keys()):
             if key in params:
                 params[key] = user_params[key]
                 sg.applyLayoutAlgorithm(sg_layout, params)
@@ -685,13 +685,13 @@ def layoutPathway(cmod, g, graph_elements, graph_props, id_list, sg_name, sg_lay
     nodes = [n for n in g.getNodes() if graph_props["id"][n] in id_list and n == graph_elements[graph_props["id"][n]][
         "initial_node"]]
     if debug_mode is True:
-        print("nodes", [(n, graph_props["id"][n]) for n in nodes])
+        print(("nodes", [(n, graph_props["id"][n]) for n in nodes]))
     # check for nodes which have already been used for layouting (with the flag in dict graph_elements[node][
     # 'layout'] - boolean value)
     # save the nodes which are excluded because they have already been used for layouting in a list for later use
     ex_nodes = [n for n in nodes if graph_elements[graph_props["id"][n]]['layout'] is True]
     if debug_mode is True:
-        print("ex_nodes", [(n, graph_props["id"][n]) for n in ex_nodes])
+        print(("ex_nodes", [(n, graph_props["id"][n]) for n in ex_nodes]))
     # save the connectivity of the excluded edges
     edge_dict = {}
     for n in ex_nodes:
@@ -701,13 +701,13 @@ def layoutPathway(cmod, g, graph_elements, graph_props, id_list, sg_name, sg_lay
             or e in list(g.getOutEdges(n)) and g.source(e) in nodes and g.target(e) in nodes:
                 edge_dict[graph_props["id"][n]].append([g.source(e),g.target(e)])
     if debug_mode is True:
-        print("edge_dict", edge_dict)
+        print(("edge_dict", edge_dict))
     # exclude the already layouted nodes (ex_nodes) from the main node list (nodes)
     for n in list(nodes):
         if n in ex_nodes:
             nodes.remove(n)
     if debug_mode is True:
-        print("nodes w/o ex nodes", [(n, graph_props["id"][n]) for n in nodes])
+        print(("nodes w/o ex nodes", [(n, graph_props["id"][n]) for n in nodes]))
     # create subgraph with inducedSubgraph function (automatically add all existing edges between seletced nodes aswell)
     # this graph will not have any nodes that have been used for layouting before
     sg = g.inducedSubGraph(nodes)
@@ -719,7 +719,7 @@ def layoutPathway(cmod, g, graph_elements, graph_props, id_list, sg_name, sg_lay
     # 1.) add new nodes (as many as were excluded)
     new_nodes = sg.addNodes(len(ex_nodes))
     if debug_mode is True:
-        print("new_nodes", [(n, graph_props["id"][n]) for n in new_nodes])
+        print(("new_nodes", [(n, graph_props["id"][n]) for n in new_nodes]))
     # give new nodes the same properties as old ones
     for i in range(len(new_nodes)):
         for prop_string in g.getProperties():
@@ -732,7 +732,7 @@ def layoutPathway(cmod, g, graph_elements, graph_props, id_list, sg_name, sg_lay
     for n in new_nodes:
         new_node_lookup_dict[graph_props["id"][n]] = n
     if debug_mode is True:
-        print("new_node_lookup_dict", new_node_lookup_dict)
+        print(("new_node_lookup_dict", new_node_lookup_dict))
     # 2.) re-establish connectivity between the nodes (is stored in model file) and create the necessary edges
     # replace old nodes in edge dict (which were excluded) with newly created nodes that take their place
     # conn_list = a list of anchor node lists (anchor_pair_list)
@@ -744,20 +744,20 @@ def layoutPathway(cmod, g, graph_elements, graph_props, id_list, sg_name, sg_lay
                     # TODO: if this is always true, n gets added for both nodes in anchor_pair_list!
                     # TODO: this results in edges with same node for start and end!
                     # TODO:
-                    if node in ex_nodes and graph_props["id"][node] in new_node_lookup_dict.keys():
+                    if node in ex_nodes and graph_props["id"][node] in list(new_node_lookup_dict.keys()):
                         node_index = anchor_pair_list.index(node)
                         anchor_pair_list.insert(node_index, new_node_lookup_dict[graph_props["id"][node]])
                         anchor_pair_list.remove(node)
             if debug_mode is True:
-                print("anchor_pair_list", [(n, graph_props["id"][n]) for n in anchor_pair_list])
+                print(("anchor_pair_list", [(n, graph_props["id"][n]) for n in anchor_pair_list]))
     # flatten value list of edge_dict
-    edge_dict_values_flat = sum(edge_dict.values(), [])
+    edge_dict_values_flat = sum(list(edge_dict.values()), [])
     # change sublists to tuples (addEdges function needs list of node tuples) - avoid duplicate edges (cast as set)
     edge_dict_value_tup_set = list(set([tuple(sublist) for sublist in edge_dict_values_flat]))
     # add edges to subgraph
     sg.addEdges(edge_dict_value_tup_set)
     if debug_mode is True:
-        print("sg edges", [(e, graph_props["id"][e]) for e in list(sg.getEdges())])
+        print(("sg edges", [(e, graph_props["id"][e]) for e in list(sg.getEdges())]))
     # TODO: add cofactors: take small_sps dict from beginning and add them as node with one edge to reaction nodes
     # TODO: give new cofactor node a different color (light yellow or something)
     # 3.) add small sps nodes that have been deleted in pathway list creation
@@ -955,8 +955,8 @@ def colourFBA(g, flux_dict, color_zero, color_pos=None, color_neg=None, discrete
     network_nodes = {}
     for i in range(len(node_ids)):
         network_nodes[node_ids[i]] = node_objs[i]
-    for r_id, f in flux_dict.items():
-        if r_id in network_nodes.keys():
+    for r_id, f in list(flux_dict.items()):
+        if r_id in list(network_nodes.keys()):
             flux[network_nodes[r_id]] = f
     # choose color scale
     if color_pos and color_neg:

@@ -27,11 +27,11 @@ TIME4 = time.time()
                                           #node_col_headers, edge_col_headers, "graph_fromDB", output_path)
 
 
-print('\nTotal time:  {}'.format(round(TIME4-TIME0, 2)))
-print('- create time: {}'.format(round(TIME1-TIME0, 2)))
-print('- layout time: {}'.format(round(TIME2-TIME1, 2)))
-print('- colour time: {}'.format(round(TIME3-TIME2, 2)))
-print('- export time: {}'.format(round(TIME4-TIME3, 2)))
+print(('\nTotal time:  {}'.format(round(TIME4-TIME0, 2))))
+print(('- create time: {}'.format(round(TIME1-TIME0, 2))))
+print(('- layout time: {}'.format(round(TIME2-TIME1, 2))))
+print(('- colour time: {}'.format(round(TIME3-TIME2, 2))))
+print(('- export time: {}'.format(round(TIME4-TIME3, 2))))
 
 
 #python -m cProfile [-o output_file] [-s sort_order] myscript.py

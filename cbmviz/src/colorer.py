@@ -1,6 +1,6 @@
 __author__ = 'anna'
 
-from graph_properties import TYPE_BG_SPECIES, TYPE_BG_REACTION, TYPE_BG_COMPARTMENT
+from .graph_properties import TYPE_BG_SPECIES, TYPE_BG_REACTION, TYPE_BG_COMPARTMENT
 
 GREY = "#B4B4B4"
 

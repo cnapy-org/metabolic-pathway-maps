@@ -26,13 +26,13 @@ import sqlite3
 import pickle
 # necessary Mimoza modules for graph visualization
 # TODO: put all the Mimoza in a mimoza_functions folder with __ini__.py
-import sbml2tlp
-import tulip_graph2geojson
+from . import sbml2tlp
+from . import tulip_graph2geojson
 # sbml and sbgn export
-import sbml_manager
-import sbgn_helper
+from . import sbml_manager
+from . import sbgn_helper
 # MetaViz functions
-import MVLayout as mvl
+from . import MVLayout as mvl
 
 
 ########################################################################################################################
@@ -146,7 +146,7 @@ def layoutModel(global_ops, sbml, graph, graph_props, output_dir=None):
     # save raw Mimoza graph output as backup
     initial_path = os.path.join(output_path, "{}_initial.tlp".format(file_name))
     tlp.saveGraph(graph, initial_path)
-    print("\n Initial Tulip graph saved as: {}_initial.tlp. \n".format(file_name))
+    print(("\n Initial Tulip graph saved as: {}_initial.tlp. \n".format(file_name)))
     ###############################################################
     # map sbml element ids to initial graph nodes in a dictionary #
     ###############################################################
@@ -250,23 +250,23 @@ def colorGraphs(global_ops, value_color_dict, graph_registry, output_path, model
     # input format: dict = {"M1": -3, ...}
     # TODO: create new dict: key -> round(flux value, 1), value -> color of the associated node with that flux value
     if global_ops["COLOR_FBA"]:
-        for graph_data in graph_registry.values():
+        for graph_data in list(graph_registry.values()):
             graph_obj = graph_data[0]
             mvl.colourFBA(graph_obj, value_color_dict, COLORS["light grey"])
         print("\n Applied flux coloring to all graphs. \n")
     if global_ops["COLOR_GAPS"]:
         # highlight gaps in red, reactions with 0 value (exist in both) -> black
-        for graph_data in graph_registry.values():
+        for graph_data in list(graph_registry.values()):
             graph_obj = graph_data[0]
             mvl.colourFBA(graph_obj, value_color_dict, tlp.Color.Red, binary_scale=[tlp.Color.Black, tlp.Color.Black])
         print("\n Applied gap coloring to all graphs. \n")
     if global_ops["COLOR_FBA_COLORBLIND"]:
-        for graph_data in graph_registry.values():
+        for graph_data in list(graph_registry.values()):
             graph_obj = graph_data[0]
             mvl.colourFBA(graph_obj, value_color_dict, tlp.Color.Cyan, tlp.Color.Magenta, COLORS["light grey"])
         print("\n Applied colorblind flux coloring to all graphs. \n")
     if global_ops["COLOR_PATHWAYS"]:
-        for graph_data in graph_registry.values():
+        for graph_data in list(graph_registry.values()):
             graph_obj = graph_data[0]
             # use path_dict for coloring,
             mvl.colourFBA(graph_obj, value_color_dict, COLORS["light grey"], discrete=True) # have specific colors!
@@ -274,7 +274,7 @@ def colorGraphs(global_ops, value_color_dict, graph_registry, output_path, model
     # after ALL the other coloring:
     # color metabolites light blue, all reaction nodes light red and all cofactors light yellow (AFTER all other
     # coloring functions!)
-    for g_name, g_data in graph_registry.items():
+    for g_name, g_data in list(graph_registry.items()):
         g_obj = g_data[0]
         g_props = g_data[1]
         colorMetaboliteReactionNodes(g_obj, g_props, tlp.Color(103, 169, 207), # metabolite color
@@ -318,7 +318,7 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
 
     # save graphs as .tlp files
     if global_ops['EXPORT_TLP'] and global_ops["AUTO_ALIAS"] is False:
-        for graph_name, graph_data in graph_registry.items():
+        for graph_name, graph_data in list(graph_registry.items()):
             graph_object = graph_data[0]
             # get the attribute that should already exist
             graph_name_split_list = graph_name.split("_")
@@ -327,34 +327,34 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
                 # save graph with whole network layout
                 whole_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, whole_path)
-                print("\n Whole network visualization saved at: {}".format(whole_path))
+                print(("\n Whole network visualization saved at: {}".format(whole_path)))
             if graph_name == "output_selected":
                 # save graph with selected pathway layouts
                 selected_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, selected_path)
-                print("\n Visualization of selected pathways saved at: {}".format(selected_path))
+                print(("\n Visualization of selected pathways saved at: {}".format(selected_path)))
             if graph_name == "transport_radial_obj_re":
                 # save graph with radial transport reactions and obj reaction in the middle
                 rad_trans_obj_re_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, rad_trans_obj_re_path)
-                print("\n Visualization of selected pathways saved at: {}".format(rad_trans_obj_re_path))
+                print(("\n Visualization of selected pathways saved at: {}".format(rad_trans_obj_re_path)))
             if graph_name == "output_grid":
                 # save graph with grid pathway layouts
                 grid_path = os.path.join(output_path, "{}.tlp".format(graph_name))
                 tlp.saveGraph(graph_object, grid_path)
-                print("\n Visualization of aligned pathways saved at: {}".format(grid_path))
+                print(("\n Visualization of aligned pathways saved at: {}".format(grid_path)))
     # export every graph in graph registry
     if global_ops["EXPORT_GML"]:
-        for graph_name, graph_data in graph_registry.items():
+        for graph_name, graph_data in list(graph_registry.items()):
             graph = graph_data[0]
             gml_path = os.path.join(output_path, "{}.gml".format(graph_name))
             # replace forward dashes in graph name to not cause problems with path
             gml_path = gml_path.replace('/', '-')
             gml_path = gml_path.replace(' ', '')
             mvl.exportGML(graph, file_name, gml_path)
-            print("Graph exported as: {}.gml".format(graph_name))
+            print(("Graph exported as: {}.gml".format(graph_name)))
     if global_ops["EXPORT_SVG"]:
-        for graph_name, graph_data in graph_registry.items():
+        for graph_name, graph_data in list(graph_registry.items()):
             graph = graph_data[0]
             # get default parameters of SVG export plugin
             params = tlp.getDefaultPluginParameters('SVG Export', graph)
@@ -364,9 +364,9 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
             svg_path = svg_path.replace('/', '-')
             svg_path = svg_path.replace(' ', '')
             tlp.exportGraph('SVG Export', graph, svg_path, params)
-            print("Graph exported as: {}.svg".format(graph_name))
+            print(("Graph exported as: {}.svg".format(graph_name)))
     if global_ops["EXPORT_JSON"]:
-        for graph_name, graph_data in graph_registry.items():
+        for graph_name, graph_data in list(graph_registry.items()):
             graph = graph_data[0]
             # get default parameters of JSON export plugin
             params = tlp.getDefaultPluginParameters('JSON Export', graph)
@@ -376,7 +376,7 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
             json_path = json_path.replace('/', '-')
             json_path = json_path.replace(' ', '')
             tlp.exportGraph('JSON Export', graph, json_path, params)
-            print("Graph exported as: {}.json".format(graph_name))
+            print(("Graph exported as: {}.json".format(graph_name)))
     # generate SBGN and SBML+Layout Files (Mimoza functions)
     # save graph layout in layout plugin of an SBML file
     #if global_ops['EXPORT_SBML']:
@@ -599,7 +599,7 @@ def compDictForMimoza(cmod):
     """
     comp_list = [''] + cmod.getCompartmentIds()
     level_list = [(x, comp_list[x]) for x in range(len(comp_list))]
-    c_id2level = dict(zip(comp_list[1:], level_list))
+    c_id2level = dict(list(zip(comp_list[1:], level_list)))
 
     return c_id2level
 
@@ -617,7 +617,7 @@ def compute_c_id2info(c_id2level, input_model):
             c_name = c_id
         c_id2info[c_id] = (c_name, '', c_id2level[c_id])
     c_id2outs = {}
-    for c_id in c_id2info.keys():
+    for c_id in list(c_id2info.keys()):
         _, _, (_, out_c_id) = c_id2info[c_id]
         outs = []
         while out_c_id:
@@ -762,7 +762,7 @@ def layoutAllPathwaysFromGroups(cmod, global_ops, path_dict, graph, graph_elemen
 
     """
     # layout all pathways in graph (entire path_dict) to generate subgraphs
-    for path_name, path_ids in path_dict.items():
+    for path_name, path_ids in list(path_dict.items()):
         # fetch pathway ids
         path_list = list(path_ids["metabolites"]) + list(path_ids["reactions"])
         # choose appropriate layout algorithm
@@ -794,7 +794,7 @@ def layoutAllPathwaysFromGroups(cmod, global_ops, path_dict, graph, graph_elemen
         # TODO. after having tested identity
         # TODO: -> do an intersection with the two sets (to catch duplications, etc.)
         if len(generated_nodes) != len(input_ids):
-            print("{} subgraph incomplete! \n".format(path_name))
+            print(("{} subgraph incomplete! \n".format(path_name)))
 
 def pathwayDump(graph, global_ops, graph_registry, graph_props, selected_pathways, grid_pathways):
     """
@@ -1105,7 +1105,7 @@ def encodeGraphPropertyData(graph, graph_props_ordered_data, graph_prop_ordered_
                     prop_data_list[i] = pickle.dumps(item, protocol=0)
                 except Exception as ex:
                     print(ex)
-                    print(prop_type, item, type(item))
+                    print((prop_type, item, type(item)))
         # exlucde props with type 'graph' from tuplelist (viewMetaGraph)
         included = True
         if prop_type == 'graph':
@@ -1257,13 +1257,13 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_
     # table edge_connectivity
     # create dict with key = str(node) and value = integer id of the node
     node_str_int_dict = {}
-    for node, i in zip(graph.getNodes(), range(len(list(graph.getNodes())))):
+    for node, i in zip(graph.getNodes(), list(range(len(list(graph.getNodes()))))):
         node_str_int_dict[str(node)] = i
-    for edge, i in zip(graph.getEdges(), range(len(list(graph.getEdges())))):
+    for edge, i in zip(graph.getEdges(), list(range(len(list(graph.getEdges()))))):
         insert_row = [i, node_str_int_dict[str(graph.source(edge))], node_str_int_dict[str(graph.target(edge))]]
         c.execute('''INSERT OR IGNORE INTO edge_connectivity VALUES (?,?,?)''', insert_row)
     # table node_connectivity
-    for node, i in zip(graph.getNodes(), range(len(list(graph.getNodes())))):
+    for node, i in zip(graph.getNodes(), list(range(len(list(graph.getNodes()))))):
         row = [i, str(list(graph.getInOutEdges(node)))]
         c.execute('''INSERT OR IGNORE INTO node_connectivity VALUES (?,?)''', row)
     # table edge_color
@@ -1319,7 +1319,7 @@ def retrieveGraphElementData(db_path, table_name):
     # -> 'test' is automatically converted to u'test'
     # convert unicode strings to ascii strings
     for ind, row_list in enumerate(graph_rows_list):
-        graph_rows_list[ind] = [str(item) if isinstance(item, unicode) else item for item in row_list]
+        graph_rows_list[ind] = [str(item) if isinstance(item, str) else item for item in row_list]
     # decode queried data (string -> list)
     for row_list in list(graph_rows_list):
         for ind, item in enumerate(row_list):
@@ -1512,7 +1512,7 @@ def loadGraphObjFromFile(input_file):
             # add id, name, pathway
             # ...
     except Exception as ex:
-        print("{} \n".format(ex))
+        print(("{} \n".format(ex)))
 
     return graph_obj
 
@@ -1578,7 +1578,7 @@ def createPathColoringDict(path_dict):
     """
     path_coloring_dict = dict()
     i = 1
-    for path_name, path_data in path_dict.items():
+    for path_name, path_data in list(path_dict.items()):
         for re_id in path_data["reactions"]:
             path_coloring_dict[re_id] = i
         i += 1

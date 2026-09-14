@@ -2,6 +2,7 @@ import os
 
 from cbmviz.mod_sbml.onto.obo_ontology import Ontology
 from cbmviz.mod_sbml.onto.term import Term, FORMULA
+from functools import reduce
 
 __author__ = 'anna'
 
@@ -140,7 +141,7 @@ def save_simple(onto, path):
             processed_terms.add(id_)
             f.write(str(term))
         f.write(RELS_HEADER)
-        for rel in reduce(lambda s1, s2: s1 | s2, onto.rel_map.itervalues(), set()):
+        for rel in reduce(lambda s1, s2: s1 | s2, iter(onto.rel_map.values()), set()):
             f.write("%s\t%s\t%s\n" % rel)
 
 

@@ -1,7 +1,7 @@
 from tulip import tlp
-from mod_sbml.annotation.chebi.chebi_annotator import CONJUGATE_ACID_BASE_RELATIONSHIPS
-from color_keys import key2coord
-from graph_properties import *
+from .mod_sbml.annotation.chebi.chebi_annotator import CONJUGATE_ACID_BASE_RELATIONSHIPS
+from .color_keys import key2coord
+from .graph_properties import *
 
 
 # def getKey2Layout(graph):
@@ -60,7 +60,7 @@ def get_keys(n, graph, onto, primary=False):
     if TYPE_REACTION == graph[TYPE][n]:
         transform = lambda nds: "r_" + "_".join(sorted([get_keys(it, graph, onto, primary)[0] for it in nds]))
         return [transform(graph.getInOutNodes(n)),
-                transform(filter(lambda nd: not ubiquitous[nd], graph.getInOutNodes(n)))]
+                transform([nd for nd in graph.getInOutNodes(n) if not ubiquitous[nd]])]
     else:
         key = None
         if not primary:
@@ -87,7 +87,7 @@ def apply_node_coordinates(graph, n2xy):
         if n_id in n2xy:
             xywh = n2xy[n_id]
             if isinstance(xywh, dict):
-                for r_id, ((x, y), (w, h)) in xywh.iteritems():
+                for r_id, ((x, y), (w, h)) in xywh.items():
                     if root[CLONE_ID][n].find(r_id) != -1:
                         root[VIEW_LAYOUT][n] = tlp.Coord(x, y)
                         root[VIEW_SIZE][n] = tlp.Size(w, h)
@@ -104,7 +104,7 @@ def apply_node_coordinates(graph, n2xy):
                 if root[ID][m] in n2xy:
                     xywh_ = n2xy[root[ID][m]]
                     if isinstance(xywh_, dict):
-                        for r_id, ((x_, y_), (w_, h_)) in xywh_.iteritems():
+                        for r_id, ((x_, y_), (w_, h_)) in xywh_.items():
                             if root[CLONE_ID][m].find(r_id) != -1:
                                 x += x_
                                 y += y_

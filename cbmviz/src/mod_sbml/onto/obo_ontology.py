@@ -4,6 +4,7 @@ from collections import defaultdict
 
 from cbmviz.mod_sbml.utils.misc import remove_from_map
 from cbmviz.mod_sbml.utils.natsort import natsorted, natcasecmp
+from functools import reduce
 
 PART_OF = "part_of"
 
@@ -25,13 +26,13 @@ class Ontology:
         self.parent2children = defaultdict(set)
 
     def get_all_terms(self):
-        return self.id2term.values()
+        return list(self.id2term.values())
 
     def __len__(self):
         return len(self.id2term)
 
     def get_all_term_ids(self):
-        return set(self.id2term.iterkeys())
+        return set(self.id2term.keys())
 
     def add_relationship(self, subj, rel, obj):
         relationship = (subj, rel, obj)
@@ -57,7 +58,7 @@ class Ontology:
 
     def get_relationships(self):
         result = set()
-        for rel_set in self.rel_map.itervalues():
+        for rel_set in self.rel_map.values():
             result |= {rel for (subj, rel, obj) in rel_set}
         return result
 
@@ -85,7 +86,7 @@ class Ontology:
 
     def filter_relationships(self, rel_to_keep):
         to_remove = set()
-        for rel_set in self.rel_map.itervalues():
+        for rel_set in self.rel_map.values():
             for (subj, rel, obj) in rel_set:
                 if rel not in rel_to_keep:
                     to_remove.add((subj, rel, obj))
@@ -238,7 +239,7 @@ class Ontology:
             checked = set()
         parents = term.get_parent_ids() if not rel else {obj for (subj, rel, obj) in
                                                          self.get_term_relationships(term.get_id(), rel, 1)}
-        direct_parents = set(map(lambda t_id: self.get_term(t_id), parents))
+        direct_parents = set([self.get_term(t_id) for t_id in parents])
         if direct:
             return direct_parents
         result = set(direct_parents)

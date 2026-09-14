@@ -9,7 +9,7 @@ new_font_size = 'font-size=\"1.0\"'
 for f in os.listdir(svgdir):
     if not f.endswith('.svg'):
         continue
-    print(os.path.join(svgdir, f))
+    print((os.path.join(svgdir, f)))
     F = file(os.path.join(svgdir, f), 'r')
     outfile = ''
     for l in F:

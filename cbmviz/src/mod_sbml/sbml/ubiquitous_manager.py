@@ -42,7 +42,7 @@ def get_frequent_term_ids(model, threshold=UBIQUITOUS_THRESHOLD):
                 key2vote[key] = 1
 
     ubiquitous_ch_ids = set()
-    for (chebi_id, _), vote in key2vote.iteritems():
+    for (chebi_id, _), vote in key2vote.items():
         if vote > threshold:
             ubiquitous_ch_ids.add(chebi_id)
 

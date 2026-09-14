@@ -1,7 +1,7 @@
 from math import degrees, atan2, sqrt
 from tulip import tlp
 
-from graph_properties import TYPE_SPECIES, TYPE, TYPE_REACTION, ID, VIEW_SIZE, VIEW_LAYOUT, \
+from .graph_properties import TYPE_SPECIES, TYPE, TYPE_REACTION, ID, VIEW_SIZE, VIEW_LAYOUT, \
     VIEW_META_GRAPH
 
 

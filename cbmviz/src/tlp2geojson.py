@@ -6,14 +6,14 @@ import math
 import geojson
 from jinja2 import Environment, PackageLoader
 
-from rename import get_short_name, convert_formula_to_html
-from colorer import get_edge_color, get_reaction_color, get_compartment_color, get_species_color, \
+from .rename import get_short_name, convert_formula_to_html
+from .colorer import get_edge_color, get_reaction_color, get_compartment_color, get_species_color, \
     get_bg_color
-from graph_properties import TYPE_SPECIES, TYPE_COMPARTMENT, TYPE_REACTION, VIEW_SIZE, VIEW_LAYOUT, TYPE, \
+from .graph_properties import TYPE_SPECIES, TYPE_COMPARTMENT, TYPE_REACTION, VIEW_SIZE, VIEW_LAYOUT, TYPE, \
     VIEW_META_GRAPH, UBIQUITOUS, VIEW_COLOR, TYPE_EDGE, STOICHIOMETRY, WIDTH, COLOR, COMPARTMENT_ID, REVERSIBLE, TERM, \
     FORMULA, HEIGHT, T, COMPARTMENT_NAME, TYPE_2_BG_TYPE, ID, TYPE_BG_COMPARTMENT, NAME, \
     ANCESTOR_NAME, LABEL
-from resize import get_e_size
+from .resize import get_e_size
 
 __author__ = 'anna'
 
@@ -35,7 +35,10 @@ BETA_UP = 15 * math.pi / 16
 BETA_DOWN = 17 * math.pi / 16
 
 
-def get_border_coord((x, y), (other_x, other_y), (w, h), n_type):
+def get_border_coord(xxx_todo_changeme, xxx_todo_changeme1, xxx_todo_changeme2, n_type):
+    (x, y) = xxx_todo_changeme
+    (other_x, other_y) = xxx_todo_changeme1
+    (w, h) = xxx_todo_changeme2
     if n_type == TYPE_REACTION:
         edge_angle = degrees(atan2(other_y - y, other_x - x)) if other_y != y or other_x != x else 0
         diag_angle = degrees(atan2(h, w))
@@ -260,7 +263,11 @@ def get_formula(graph, r, r2rs_ps, reversible):
     root = graph.getRoot()
     name_prop = NAME
     format_st = lambda st: "" if st == 1 else ("%g" % st)
-    formatter = lambda (st, n), prop: [root[prop if root[prop][n] else NAME][n], format_st(float(st))]
+    def formatter(stoichiometry_and_node, prop):
+        """Format a reaction participant for the formula template."""
+        stoichiometry, node = stoichiometry_and_node
+        property_name = prop if root[prop][node] else NAME
+        return [root[property_name][node], format_st(float(stoichiometry))]
     if graph.isMetaNode(r):
         r = root[VIEW_META_GRAPH][r].getOneNode()
         name_prop = ANCESTOR_NAME

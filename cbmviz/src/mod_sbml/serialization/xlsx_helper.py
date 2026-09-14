@@ -1,13 +1,11 @@
 import openpyxl
-import openpyxl.styles
-from openpyxl.styles import Style, Font
-from openpyxl.styles.colors import Color
+from openpyxl.styles import Font
 
-BASIC_STYLE = Style(font=Font(color=openpyxl.styles.colors.BLACK, sz=8))
-RED_STYLE = Style(font=Font(color=openpyxl.styles.colors.RED, sz=8))
-BLUE_STYLE = Style(font=Font(color=openpyxl.styles.colors.BLUE, sz=8))
-GREEN_STYLE = Style(font=Font(color=openpyxl.styles.colors.GREEN, sz=8))
-BOLD_STYLE = Style(font=Font(bold=True, sz=8))
+BASIC_STYLE = Font(color="000000", sz=8)
+RED_STYLE = Font(color="FF0000", sz=8)
+BLUE_STYLE = Font(color="0000FF", sz=8)
+GREEN_STYLE = Font(color="00FF00", sz=8)
+BOLD_STYLE = Font(bold=True, sz=8)
 HEADER_STYLE = BOLD_STYLE
 
 __author__ = 'anna'
@@ -15,7 +13,7 @@ __author__ = 'anna'
 
 def serialize_values(x_name, xs, legend, y_lists, path):
     wb = openpyxl.Workbook()
-    ws = wb.create_sheet(0)
+    ws = wb.active
 
     add_values(ws, 1, 1, [x_name], HEADER_STYLE)
     add_values(ws, 1, 2, xs)
@@ -32,7 +30,7 @@ def serialize_values(x_name, xs, legend, y_lists, path):
 
 def get_values_by_column(path, i, skip_header=True):
     workbook = openpyxl.load_workbook(path)
-    worksheet = workbook.get_active_sheet()
+    worksheet = workbook.active
     result = []
     for row in worksheet.rows:
         if skip_header:
@@ -44,9 +42,9 @@ def get_values_by_column(path, i, skip_header=True):
 
 def get_info(path, columns, start_row=1):
     workbook = openpyxl.load_workbook(path)
-    worksheet = workbook.get_active_sheet()
-    r_len = len(worksheet.rows)
-    for i in xrange(start_row, r_len + 1):
+    worksheet = workbook.active
+    r_len = worksheet.max_row
+    for i in range(start_row, r_len + 1):
         yield [worksheet.cell(row=i, column=j).value for j in columns]
 
 
@@ -54,7 +52,7 @@ def add_values(ws, row, col, values, style=BASIC_STYLE):
     j = col
     for v in values:
         ws.cell(row=row, column=j).value = v
-        ws.cell(row=row, column=j).style = style
+        ws.cell(row=row, column=j).font = style
         j += 1
 
 
@@ -72,7 +70,6 @@ def save_data(headers, data, wb=None, ws_name=None, ws_index=0, filename=None, s
     if filename:
         wb.save(filename)
     return ws
-
 
 
 

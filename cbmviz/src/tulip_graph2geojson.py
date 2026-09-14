@@ -5,15 +5,15 @@ import logging
 
 import geojson
 
-from predefined_layout import apply_node_coordinates
-from color import color, color_edges
-from factoring import factor_nodes, comp_to_meta_node, merge_ubs_for_similar_reactions
-from tlp2geojson import e2feature, n2feature, UBIQUITOUS_MASK, LAYER, DEFAULT_MASK
-from graph_properties import ID, COMPARTMENT_ID, \
+from .predefined_layout import apply_node_coordinates
+from .color import color, color_edges
+from .factoring import factor_nodes, comp_to_meta_node, merge_ubs_for_similar_reactions
+from .tlp2geojson import e2feature, n2feature, UBIQUITOUS_MASK, LAYER, DEFAULT_MASK
+from .graph_properties import ID, COMPARTMENT_ID, \
     TYPE_COMPARTMENT, TYPE, TYPE_REACTION, STOICHIOMETRY, RELATED_COMPARTMENT_IDS, TYPE_SPECIES, ANCESTOR_ID, TRANSPORT, \
     CLONE_ID, WIDTH, HEIGHT, VIEW_LAYOUT, VIEW_SIZE, UBIQUITOUS, ALL_COMPARTMENTS, VIEW_META_GRAPH
-from generalized_layout import rotate_generalized_ns, align_generalized_ns
-from ubiquitous_layout import bend_ubiquitous_edges, bend_edges, layout_inner_elements, \
+from .generalized_layout import rotate_generalized_ns, align_generalized_ns
+from .ubiquitous_layout import bend_ubiquitous_edges, bend_edges, layout_inner_elements, \
     get_comp_borders, layout, open_meta_ns, straighten_edges_inside_compartments
 
 DIMENSION = 512
@@ -273,7 +273,7 @@ def meta_graph2features(c_id2info, c_id2outs, meta_graph, r2rs_ps, global_ops, n
 
     all_c_id2c_borders = {}
     while True:
-        for c_id, sizes in c_id2c_borders.iteritems():
+        for c_id, sizes in c_id2c_borders.items():
             layout_inner_elements(meta_graph, c_id, sizes)
         if n2xy:
             apply_node_coordinates(meta_graph, n2xy)
@@ -301,7 +301,7 @@ def meta_graph2features(c_id2info, c_id2outs, meta_graph, r2rs_ps, global_ops, n
             all_c_id2c_borders.update(c_id2c_borders)
         open_meta_ns(meta_graph, metas, global_ops)
 
-    for c_id in c_id2info.iterkeys():
+    for c_id in c_id2info.keys():
         (name, go, (l, out_c_id)) = c_id2info[c_id]
         comp_n = comp_to_meta_node(meta_graph, c_id, (go, name), out_c_id, global_ops, False, n2xy)
         if not comp_n:
@@ -362,18 +362,18 @@ def graph2geojson(c_id2info, c_id2outs, graph, global_ops, n2xy=None, colorer=co
     hidden_c_ids, c_id_hidden_ubs = filter_features(c_id2level2features)
     rescale(c_id2level2features)
     get_l2fs = lambda l2fs: {lev: geojson.FeatureCollection(features, geometry=geometry) for (lev, features) in
-                             l2fs.iteritems()}
-    return {c_id: get_l2fs(l2fs) for (c_id, l2fs) in c_id2level2features.iteritems()}, (n2lo, e2lo), \
+                             l2fs.items()}
+    return {c_id: get_l2fs(l2fs) for (c_id, l2fs) in c_id2level2features.items()}, (n2lo, e2lo), \
            hidden_c_ids, c_id_hidden_ubs, new_graph
 
 
 def filter_features(c_id2level2features):
-    c_ids = c_id2level2features.keys()
+    c_ids = list(c_id2level2features.keys())
     c_id_hidden_ubs, hidden_c_ids = set(), set()
     for c_id in c_ids:
         l2fs = c_id2level2features[c_id]
         total_f_number = 0
-        levels = l2fs.keys()
+        levels = list(l2fs.keys())
         f_num = (len(l2fs[0]) if 0 in l2fs else 0) + (len(l2fs[2]) if 2 in l2fs else 0)
         if f_num > MAX_FEATURE_NUMBER:
             c_id_hidden_ubs.add(c_id)
@@ -389,7 +389,7 @@ def filter_features(c_id2level2features):
 
 
 def rescale(c_id2level2features):
-    for c_id, lev2fs in c_id2level2features.iteritems():
+    for c_id, lev2fs in c_id2level2features.items():
         if ALL_COMPARTMENTS == c_id:
             continue
         fs = []
@@ -420,7 +420,7 @@ def rescale(c_id2level2features):
             continue
 
         processed = set()
-        for fs in lev2fs.itervalues():
+        for fs in lev2fs.values():
             for f in fs:
                 if f.id in processed:
                     continue
@@ -442,9 +442,9 @@ def process_compartments(c_id2info, meta_graph, global_ops, n2xy=None):
     # root = meta_graph.getRoot()
     factor_nodes(meta_graph)
 
-    current_zoom_level = max({info[2][0] for info in c_id2info.itervalues()})
+    current_zoom_level = max({info[2][0] for info in c_id2info.values()})
     while current_zoom_level >= 0:
-        for c_id in c_id2info.iterkeys():
+        for c_id in c_id2info.keys():
             (name, go, (l, out_c_id)) = c_id2info[c_id]
             if current_zoom_level == l:
                 # ns = [n for n in meta_graph.getNodes() if root[COMPARTMENT_ID][n] == c_id]

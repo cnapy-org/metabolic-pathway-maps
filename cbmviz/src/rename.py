@@ -1,4 +1,4 @@
-from graph_properties import *
+from .graph_properties import *
 
 
 def get_short_name(graph, n, onto):

@@ -12,17 +12,7 @@
 
 """
 
-import os
-local_path = os.path.dirname(os.path.abspath(os.sys.argv[0]))
-
-USE_SETUPTOOLS = False
-
-if USE_SETUPTOOLS:
-    # setuptools
-    from setuptools import setup
-else:
-    # distutils
-    from distutils.core import setup
+from setuptools import setup
 
 mydata_files = []
 
@@ -38,7 +28,7 @@ setup(
  packages = mypackages,
  data_files = mydata_files,
  name = "cbmviz",
- summary = "CBMViz: Visualising Genome Scale Metabolic Pathways",
+ description = "CBMViz: Visualising Genome Scale Metabolic Pathways",
  #version = "0.1.0.{}".format(STATUS),
  version = "0.1.1",
  maintainer = 'Brett G. Olivier',
@@ -48,7 +38,22 @@ setup(
  #download_url = "http://sourceforge.net/projects/cbmpy/files/release/0.7/",
  license = "GNU General Public License (GPL)",
  keywords = "computational systems biology, visualisation, genome scale models, sbml, constraint-based modelling, fbc, linear programming, groups" ,
- requires = ['numpy', 'cbmpy', 'libsbml'],
+ python_requires = '>=3.10',
+ install_requires = [
+     'cbmpy',
+     'geojson',
+     'jinja2',
+     'numpy',
+     'openpyxl',
+     'pandas',
+     'python-libsbml',
+     'sympy',
+     'tarjan',
+ ],
+ extras_require = {
+     'visualization': ['libsbgnpy', 'tulip-python', 'tulipgui-python'],
+ },
+ package_data = {'cbmviz.mod_sbml': ['data/*']},
  platforms = ["Windows", "Linux"],
  classifiers = [
  'Development Status :: 4 - Beta',
@@ -58,7 +63,7 @@ setup(
  'License :: OSI Approved :: GNU General Public License (GPL)',
  'Natural Language :: English',
  'Operating System :: OS Independent',
- 'Programming Language :: Python :: 2',
- 'Topic :: Scientific/Engineering :: Bio-Informatics'],
- description = "CBMviz Prototype - Visualization Pipeline for Metabolic Networks")
-
+ 'Programming Language :: Python :: 3',
+ 'Programming Language :: Python :: 3.10',
+ 'Programming Language :: Python :: 3 :: Only',
+ 'Topic :: Scientific/Engineering :: Bio-Informatics'])

@@ -1,7 +1,7 @@
 import libsbgnpy.libsbgn as libsbgn
 from libsbgnpy.libsbgnTypes import Language, GlyphClass, ArcClass
 
-from transformation_manager import scale, get_layout_characteristics, shift, MARGIN, transform
+from .transformation_manager import scale, get_layout_characteristics, shift, MARGIN, transform
 
 SBO_2_GLYPH_TYPE = {'SBO:0000247': GlyphClass.SIMPLE_CHEMICAL, 'SBO:0000245': GlyphClass.MACROMOLECULE,
                     'SBO:0000421': GlyphClass.SIMPLE_CHEMICAL_MULTIMER,
@@ -64,7 +64,7 @@ def save_as_sbgn(n2lo, e2lo, model, out_sbgn):
             s_name = s_id
         if s_id in n2lo:
             if isinstance(n2lo[s_id], dict):
-                elements = n2lo[s_id].iteritems()
+                elements = iter(n2lo[s_id].items())
             else:
                 elements = [('', n2lo[s_id])]
             for r_ids, coords in elements:
@@ -98,7 +98,7 @@ def save_as_sbgn(n2lo, e2lo, model, out_sbgn):
                         g.add_port(in_port)
                     sref_id = s_id
                     if isinstance(n2lo[s_id], dict):
-                        for r_ids in n2lo[s_id].iterkeys():
+                        for r_ids in n2lo[s_id].keys():
                             if r_id in r_ids:
                                 sref_id = "%s_%s" % (s_id, '_'.join(r_ids))
                     a = libsbgn.arc(class_=ArcClass.PRODUCTION if rev else ArcClass.CONSUMPTION,
@@ -120,7 +120,7 @@ def save_as_sbgn(n2lo, e2lo, model, out_sbgn):
                         g.add_port(out_port)
                     sref_id = s_id
                     if isinstance(n2lo[s_id], dict):
-                        for r_ids in n2lo[s_id].iterkeys():
+                        for r_ids in n2lo[s_id].keys():
                             if r_id in r_ids:
                                 sref_id = "%s_%s" % (s_id, '_'.join(r_ids))
                     a = libsbgn.arc(class_=ArcClass.PRODUCTION, target=sref_id, source=out_port.get_id(),

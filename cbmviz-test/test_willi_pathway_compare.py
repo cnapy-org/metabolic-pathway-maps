@@ -18,7 +18,7 @@ wmod = cmod.clone()
 # flux values get either deleted or overwritten by the value 1000 (to have big contrast for binary coloring)
 new_sub_model = wmod.getReactionValues()
 cntr = 0
-for x in new_sub_model.keys():
+for x in list(new_sub_model.keys()):
     if cntr <= 200:
         new_sub_model.pop(x)
     else:

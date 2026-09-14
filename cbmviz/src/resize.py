@@ -1,5 +1,5 @@
 from tulip import *
-from graph_properties import *
+from .graph_properties import *
 
 # default node sizes
 SPECIES_SIZE = 2.5

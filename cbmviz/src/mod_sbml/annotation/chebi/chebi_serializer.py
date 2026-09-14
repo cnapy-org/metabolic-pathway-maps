@@ -4,6 +4,7 @@ from cbmviz.mod_sbml.annotation.chebi.chebi_annotator import EQUIVALENT_RELATION
     add_equivalent_chebi_ids, get_cofactor_ids
 from cbmviz.mod_sbml.onto import parse, save_simple, save
 from cbmviz.mod_sbml import annotation
+from functools import reduce
 
 __author__ = 'anna'
 
