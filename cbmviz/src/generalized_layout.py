@@ -104,7 +104,7 @@ def rotate_generalized_ns(graph):
         # we'd rather pretend that our node was slightly smaller
         if TYPE_SPECIES == root[TYPE][n] and abs(alpha % 90) != 0:
             r = root[VIEW_SIZE][n].getW() / sqrt(2)
-            root[VIEW_SIZE][n] = tlp.Size(r, r)
+            root[VIEW_SIZE][n] = tlp.Size(r, r, 1)
 
             # o_n_1.extend(o_n_2)
             # for m in o_n_1:

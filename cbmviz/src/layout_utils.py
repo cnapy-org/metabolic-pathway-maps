@@ -5,7 +5,7 @@ from tarjan import tarjan_iter
 from .resize import get_mn_size, SPECIES_SIZE
 from .graph_properties import *
 
-COMPONENT_PACKING = "Connected Component Packing"
+COMPONENT_PACKING = "Connected Components Packing"
 
 FM3 = "FM^3 (OGDF)"
 
@@ -14,6 +14,22 @@ CIRCULAR = "Circular (OGDF)"
 HIERARCHICAL_GRAPH = "Sugiyama (OGDF)"  # "Hierarchical Graph"
 
 OVERLAP_REMOVAL = "Fast Overlap Removal"
+
+
+def apply_algorithm(apply_method, plugin_name, *args):
+    """
+    Call a Tulip graph.apply*Algorithm method and warn if the plugin reports a failure
+    (Tulip returns a (success, error message) tuple instead of raising)::
+
+    - *apply_method* a bound method, e.g. graph.applyLayoutAlgorithm
+    - *plugin_name* the name of the Tulip plugin
+    - *args* the remaining arguments of the apply method (result property and/or parameters)
+
+    """
+    result = apply_method(plugin_name, *args)
+    if isinstance(result, tuple) and not result[0]:
+        print("WARNING: Tulip plugin '{}' failed: {}".format(plugin_name, result[1]))
+    return result
 
 
 def get_distance(qo):
@@ -31,14 +47,10 @@ def layout_hierarchically(qo, margin=1):
     root = qo.getRoot()
     ds = tlp.getDefaultPluginParameters(HIERARCHICAL_GRAPH, qo)
     if qo.numberOfNodes() > 1:
-        # looks like there is a bug in Tulip and it uses the 'layer spacing' value
-        # instead of the 'node spacing' one and visa versa
         d = SPECIES_SIZE + margin #get_distance(qo)
-        ds["layer spacing"] = d
-        ds["node spacing"] = d
         ds["layer distance"] = d
         ds["node distance"] = d
-    qo.applyLayoutAlgorithm(HIERARCHICAL_GRAPH, root[VIEW_LAYOUT], ds)
+    apply_algorithm(qo.applyLayoutAlgorithm, HIERARCHICAL_GRAPH, root[VIEW_LAYOUT], ds)
 
 
 def layout_circle(qo, margin=1):
@@ -46,18 +58,18 @@ def layout_circle(qo, margin=1):
     ds = tlp.getDefaultPluginParameters(CIRCULAR, qo)
     if qo.numberOfNodes() > 1:
         dist = get_distance(qo) + margin
-        ds["minDistCircle"] = dist
-        ds["minDistLevel"] = dist
-        ds["minDistCC"] = 1
-        ds["minDistSibling"] = dist
-    qo.applyLayoutAlgorithm(CIRCULAR, root[VIEW_LAYOUT], ds)
+        ds["circles spacing"] = dist
+        ds["levels spacing"] = dist
+        ds["connected components spacing"] = 1
+        ds["nodes spacing"] = dist
+    apply_algorithm(qo.applyLayoutAlgorithm, CIRCULAR, root[VIEW_LAYOUT], ds)
 
 
 def layout_force(qo, margin=1):
     root = qo.getRoot()
     ds = tlp.getDefaultPluginParameters(FM3, qo)
-    ds["Unit edge length"] = 2 * SPECIES_SIZE + margin
-    qo.applyLayoutAlgorithm(FM3, root[VIEW_LAYOUT], ds)
+    ds["unit edge length"] = 2 * SPECIES_SIZE + margin
+    apply_algorithm(qo.applyLayoutAlgorithm, FM3, root[VIEW_LAYOUT], ds)
 
     remove_overlaps(qo, margin)
 
@@ -65,7 +77,7 @@ def layout_force(qo, margin=1):
 def pack_cc(graph):
     root = graph.getRoot()
     ds = tlp.getDefaultPluginParameters(COMPONENT_PACKING, graph)
-    graph.applyLayoutAlgorithm(COMPONENT_PACKING, root[VIEW_LAYOUT], ds)
+    apply_algorithm(graph.applyLayoutAlgorithm, COMPONENT_PACKING, root[VIEW_LAYOUT], ds)
 
 
 def remove_overlaps(graph, margin=1):
@@ -73,7 +85,7 @@ def remove_overlaps(graph, margin=1):
     ds = tlp.getDefaultPluginParameters(OVERLAP_REMOVAL, graph)
     ds["x border"] = margin
     ds["y border"] = margin
-    graph.applyLayoutAlgorithm(OVERLAP_REMOVAL, root[VIEW_LAYOUT], ds)
+    apply_algorithm(graph.applyLayoutAlgorithm, OVERLAP_REMOVAL, root[VIEW_LAYOUT], ds)
 
 
 # TODO: find out what this is doing (print statements, etc.)
@@ -120,7 +132,7 @@ def layout_components(graph, cycle_number_threshold=40, node_number_threshold=30
         for mn in meta_ns:
             root[VIEW_SHAPE][mn] = COMPARTMENT_SHAPE
             w, h = get_mn_size(mn, root)
-            root[VIEW_SIZE][mn] = tlp.Size(w, h)
+            root[VIEW_SIZE][mn] = tlp.Size(w, h, 1)
         if gr.numberOfNodes() < node_number_threshold and \
                 not next((n for n in gr.getNodes() if root[TYPE][n] == TYPE_COMPARTMENT), False):
             layout_hierarchically(gr)

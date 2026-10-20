@@ -29,6 +29,7 @@ from tulip import tlp
 from tulipgui import *
 from . import graph_properties
 from . import resize
+from .layout_utils import apply_algorithm
 
 
 def identifyConnectedNodes(model, spec_split, reac_split, split_biomass=True):
@@ -187,7 +188,7 @@ def create_props(graph):
     viewBorderWidth = graph.getDoubleProperty("viewBorderWidth")
     viewColor = graph.getColorProperty("viewColor")
     viewFont = graph.getStringProperty("viewFont")
-    viewFontAwesomeIcon = graph.getStringProperty("viewFontAwesomeIcon")
+    viewFontAwesomeIcon = graph.getStringProperty("viewIcon")
     viewFontSize = graph.getIntegerProperty("viewFontSize")
     viewLabel = graph.getStringProperty("viewLabel")
     viewLabelBorderColor = graph.getColorProperty("viewLabelBorderColor")
@@ -603,21 +604,21 @@ def createSubgraph(graph, sg_name, n_list, user_params=None):
             selection[n] = True
     # select reachable edges from node selection
     # get default parameters of Reachable Sub-Graph algorithm
-    params = tlp.getDefaultPluginParameters('Reachable Sub-Graph', graph)
-    # tlp.getDefaultPluginParameters("Reachable Sub-Graph")
-    #    {'distance': 5L,
-    #    'edges direction': 'output edges',
-    #    'result': None,
-    #    'starting nodes': None}
+    params = tlp.getDefaultPluginParameters('Reachable SubGraph', graph)
+    # tlp.getDefaultPluginParameters("Reachable SubGraph") (Tulip 6.1)
+    #    {'edge direction': 'output edges',
+    #    'selection': viewSelection (starting nodes),
+    #    'max distance': 5,
+    #    'result': viewSelection}
     # with default parameters
     if user_params is None:
-        graph.applyBooleanAlgorithm('Reachable Sub-Graph', params)
+        apply_algorithm(graph.applyBooleanAlgorithm, 'Reachable SubGraph', params)
     # with user parameters (overwrite default parameters)
     if user_params is not None:
         for key in list(user_params.keys()):
             if key in params:
                 params[key] = user_params[key]
-                graph.applyBooleanAlgorithm('Reachable Sub-Graph', params)
+                apply_algorithm(graph.applyBooleanAlgorithm, 'Reachable SubGraph', params)
     # create subgraph from selection
     sg = graph.addSubGraph(selection, sg_name)
     # reset selection
@@ -645,13 +646,13 @@ def layoutSubgraph(sg, sg_layout=None, user_params=None, x_center=None, y_center
     # apply algorithm to subgraph
     # with default parameters
     if sg_layout is not None and user_params is None:
-        sg.applyLayoutAlgorithm(sg_layout, params)
+        apply_algorithm(sg.applyLayoutAlgorithm, sg_layout, params)
     # with user parameters (overwrite default parameters)
     if sg_layout is not None and user_params is not None:
         for key in list(user_params.keys()):
             if key in params:
                 params[key] = user_params[key]
-                sg.applyLayoutAlgorithm(sg_layout, params)
+                apply_algorithm(sg.applyLayoutAlgorithm, sg_layout, params)
     # center layout: center(viewLayout, newCenter, subgraph)
     # newCenter can be given as coordinates (tlp.Coord(x,y,z)) or
     viewLayout = sg.getLayoutProperty("viewLayout")
@@ -896,7 +897,7 @@ def dumpToGraph(input_graph, input_graph_props, new_graph_name, sg_selection, sg
         input_graph_props["viewSelection"].setAllEdgeValue(False)
     if grid_positioning is False:
         # just separate overlapping individual pathways automatically
-        new_graph.applyLayoutAlgorithm("Connected Component Packing")
+        apply_algorithm(new_graph.applyLayoutAlgorithm, "Connected Components Packing")
     elif grid_positioning is True:
         # iterate over subgraphs of new_graph and actively position them
         positionPathway(new_graph, new_graph_props)
@@ -945,6 +946,9 @@ def colourFBA(g, flux_dict, color_zero, color_pos=None, color_neg=None, discrete
     . *binary_scale* [default=None] use a binary, 2 color scale (list of two colors)
 
     """
+    # nothing to color in empty graphs (e.g. a pathway subgraph without nodes)
+    if g.numberOfNodes() == 0:
+        return
     # get necessary graph properties
     # save flux results as graph integer property "flux"
     flux = g.getDoubleProperty("flux")
@@ -961,29 +965,29 @@ def colourFBA(g, flux_dict, color_zero, color_pos=None, color_neg=None, discrete
     # choose color scale
     if color_pos and color_neg:
         # creates a regular color scale going from neg color to zero color to pos color
-        colorScale = [color_neg, color_zero, color_pos]
+        colorScale = tlp.ColorScale([color_neg, color_zero, color_pos])
     elif discrete:
         # e.g. for pathway coloring
         colorScale = tlpgui.ColorScalesManager.getColorScale('Set1_9')
     elif binary_scale:
-        colorScale = binary_scale
+        colorScale = tlp.ColorScale(binary_scale)
     else:
         # new FAME rainbow coloring: only apply color to nodes with flux
         # don't fade into zero grey! -> have a clear difference between zero flux and flux != 0
-        colorScale = tlpgui.ColorScalesManager.getColorScale('rainbow')
+        colorScale = tlpgui.ColorScalesManager.getColorScale('Rainbow')
     # set the parameters for the 'Color Mapping' color algorithm
     colorMappingParams = tlp.getDefaultPluginParameters('Color Mapping', g)
-    colorMappingParams['input property'] = flux
+    colorMappingParams['property'] = flux
     colorMappingParams['color scale'] = colorScale
     # overwrite min and max values to make color scale symmetric -> color zero needs to be applied to zero and not a
     # non zero middle value between real min and max -> mid value between -1 and 1 is 0
     if discrete is False: # only call when using flux values and rainbow color scale
-        colorMappingParams['override minimum value'] = True
-        colorMappingParams['minimum value'] = -1
-        colorMappingParams['override maximum value'] = True
-        colorMappingParams['maximum value'] = 1
+        colorMappingParams['override min value'] = True
+        colorMappingParams['min value'] = -1
+        colorMappingParams['override max value'] = True
+        colorMappingParams['max value'] = 1
     # compute the color mapping
-    g.applyColorAlgorithm('Color Mapping', colorMappingParams)
+    apply_algorithm(g.applyColorAlgorithm, 'Color Mapping', colorMappingParams)
     # apply zero color to all nodes with flux == 0
     zero_flux_nodes = [n for n in g.getNodes() if flux[n] == 0]
     setColours(g, zero_flux_nodes, color_zero)

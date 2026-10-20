@@ -21,7 +21,7 @@ MOLECULAR_ENTITY = 'chebi:23367'
 
 CHEBI_PREFIX = "obo.chebi"
 
-CHEBI_ID_PATTERN = "[cC][Hh][Ee][Bb][Ii]\:\d+"
+CHEBI_ID_PATTERN = r"[cC][Hh][Ee][Bb][Ii]\:\d+"
 
 
 def get_chebi_id(m):

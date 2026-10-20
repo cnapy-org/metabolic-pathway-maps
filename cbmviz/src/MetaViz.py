@@ -20,6 +20,7 @@ from tulip import tlp
 # modules for SBML model interaction
 import libsbml
 import cbmpy
+from . import cbmpy_compat  # workarounds for cbmpy with NumPy 2 and broken swiglpk array conversion
 # SQL database API
 import sqlite3
 # type conversion for db storage
@@ -33,6 +34,7 @@ from . import sbml_manager
 from . import sbgn_helper
 # MetaViz functions
 from . import MVLayout as mvl
+from .layout_utils import apply_algorithm
 
 
 ########################################################################################################################
@@ -347,10 +349,7 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
     if global_ops["EXPORT_GML"]:
         for graph_name, graph_data in list(graph_registry.items()):
             graph = graph_data[0]
-            gml_path = os.path.join(output_path, "{}.gml".format(graph_name))
-            # replace forward dashes in graph name to not cause problems with path
-            gml_path = gml_path.replace('/', '-')
-            gml_path = gml_path.replace(' ', '')
+            gml_path = os.path.join(output_path, "{}.gml".format(exportFileName(graph_name)))
             mvl.exportGML(graph, file_name, gml_path)
             print(("Graph exported as: {}.gml".format(graph_name)))
     if global_ops["EXPORT_SVG"]:
@@ -359,24 +358,22 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
             # get default parameters of SVG export plugin
             params = tlp.getDefaultPluginParameters('SVG Export', graph)
             # define output path
-            svg_path = os.path.join(output_path, "{}.svg".format(graph_name))
-            # replace forward dashes in graph name to not cause problems with path
-            svg_path = svg_path.replace('/', '-')
-            svg_path = svg_path.replace(' ', '')
-            tlp.exportGraph('SVG Export', graph, svg_path, params)
-            print(("Graph exported as: {}.svg".format(graph_name)))
+            svg_path = os.path.join(output_path, "{}.svg".format(exportFileName(graph_name)))
+            if tlp.exportGraph('SVG Export', graph, svg_path, params):
+                print(("Graph exported as: {}.svg".format(graph_name)))
+            else:
+                print("WARNING: SVG export of graph '{}' to {} failed".format(graph_name, svg_path))
     if global_ops["EXPORT_JSON"]:
         for graph_name, graph_data in list(graph_registry.items()):
             graph = graph_data[0]
             # get default parameters of JSON export plugin
             params = tlp.getDefaultPluginParameters('JSON Export', graph)
             # define output path
-            json_path = os.path.join(output_path, "{}.json".format(graph_name))
-            # replace forward dashes in graph name to not cause problems with path
-            json_path = json_path.replace('/', '-')
-            json_path = json_path.replace(' ', '')
-            tlp.exportGraph('JSON Export', graph, json_path, params)
-            print(("Graph exported as: {}.json".format(graph_name)))
+            json_path = os.path.join(output_path, "{}.json".format(exportFileName(graph_name)))
+            if tlp.exportGraph('JSON Export', graph, json_path, params):
+                print(("Graph exported as: {}.json".format(graph_name)))
+            else:
+                print("WARNING: JSON export of graph '{}' to {} failed".format(graph_name, json_path))
     # generate SBGN and SBML+Layout Files (Mimoza functions)
     # save graph layout in layout plugin of an SBML file
     #if global_ops['EXPORT_SBML']:
@@ -384,6 +381,16 @@ def exportGraph(output_path, graph_registry, global_ops, cDir, file_name, groups
     # save graph layout as SBGN file
     #if global_ops['EXPORT_SBGN']:
     #    saveLayoutSBGN(groups_sbml, file_name, output_path, n2lo, e2lo)
+def exportFileName(graph_name):
+    """
+    Return the file name (without extension) used to export a graph: forward slashes in the graph name are replaced by
+    dashes and spaces are removed (only the graph name is changed, not the output directory)::
+
+    - *graph_name* the name of the graph in the graph registry
+
+    """
+    return graph_name.replace('/', '-').replace(' ', '')
+
 # Part 4: Database
 def buildSQLiteDatabase(selected_graph, output_path):
     """
@@ -405,9 +412,21 @@ def buildSQLiteDatabase(selected_graph, output_path):
     # build SQLite database from extracted and encoded data (to SQLite compatible types)
     db_path = createSQLiteDB(selected_graph, selected_graph.getName(), graph_props_node_tuplelist,
                              graph_props_edge_tuplelist,
-                             output_path)
+                             output_path, getGraphPropertyColumns(selected_graph))
 
     return db_path
+
+def getGraphPropertyColumns(graph):
+    """
+    Return a list of (column name, SQLite type) tuples for all graph properties that are stored in the database, in the
+    same order as the encoded data of encodeGraphPropertyData (properties of type 'graph' are not stored)::
+
+    - *graph* a Tulip graph
+
+    """
+    sql_types = {'bool': 'INTEGER', 'int': 'INTEGER', 'double': 'REAL'}
+    return [(prop.getName(), sql_types.get(prop.getTypename(), 'TEXT')) for prop in graph.getObjectProperties()
+            if prop.getTypename() != 'graph']
 ########################################################################################################################
 
 
@@ -537,18 +556,18 @@ def automPathDict(cmod, global_ops, small_threshold=30):
     """
     path_dict = {}
     if global_ops["PATHWAY_LISTS"]:
-        # list of all reaction objects that are associated with a group
-        all_groups_member_list = []
+        # ids of all reactions that are associated with a group (compare ids: newer cbmpy versions store the group
+        # members as weak references, which are never equal to the reaction objects)
+        all_groups_member_ids = set()
         for group in cmod.groups:
-            for member in group.members:
-                all_groups_member_list.append(member)
+            all_groups_member_ids.update(group.getMemberIDs())
         # group all the ungrouped reactions and their metabolites in a new group "undefined" to have
         # them later (otherwise they won't show up in the output graphs since they are not in path_dict)
         cmod.createGroup('undefined')
         undef = cmod.getGroup('undefined')
         undef.setName('Undefined')
         for reaction in cmod.reactions:
-            if reaction not in all_groups_member_list:
+            if reaction.getId() not in all_groups_member_ids:
                 undef.addMember(reaction)
 
         # loop over all groups in iIT341 and automatically create id lists for all groups
@@ -903,7 +922,7 @@ def combineSubgraphsFromGraphs(subgraph_selection_list):
         sg_selection.setAllNodeValue(False)
         sg_selection.setAllEdgeValue(False)
     # apply Connected Component Packing on combine_graph to avoid overlapping
-    combine_graph.applyLayoutAlgorithm("Connected Component Packing")
+    apply_algorithm(combine_graph.applyLayoutAlgorithm, "Connected Components Packing")
 
     return combine_graph
 
@@ -1068,7 +1087,8 @@ def encodeGraphPropertyData(graph, graph_props_ordered_data, graph_prop_ordered_
     # 'size' contains elements of type: _tulip.Size
     # 'color' contains elements of type: _tulip.Color
     # 'layout' and 'vector<string>' contain elements of type: _tulip.Vec3f
-    tulip_prop_types = ('size', 'color', 'layout', 'vector<string>')
+    # (and every other type that SQLite can not store directly, e.g. vector properties)
+    sqlite_prop_types = ('string', 'int', 'double', 'bool', 'graph')
     # replace items of sublists that need to be encoded
     for prop_type, prop_data_list in zip(graph_prop_ordered_types, graph_props_ordered_data):
         # allowed data types, no encoding needed
@@ -1099,7 +1119,7 @@ def encodeGraphPropertyData(graph, graph_props_ordered_data, graph_prop_ordered_
                 str_item = pickle.dumps(list_item)
                 prop_data_list[i] = str_item
         # convert data of a type that requires encoding to string
-        if prop_type in tulip_prop_types and prop_type != 'layout':
+        if prop_type not in sqlite_prop_types and prop_type != 'layout':
             for i, item in enumerate(prop_data_list):
                 try:
                     prop_data_list[i] = pickle.dumps(item, protocol=0)
@@ -1116,7 +1136,8 @@ def encodeGraphPropertyData(graph, graph_props_ordered_data, graph_prop_ordered_
 
     return graph_props_tuplelist
 
-def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_tuplelist, output_path):
+def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_tuplelist, output_path,
+                   prop_columns=None):
     """
     Create an SQLite database storing the encoded graph props data of nodes, edges as well as their connectivity::
 
@@ -1125,8 +1146,15 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_
     - *graph_props_node_tuplelist* a list of tuples containing all graph prop data of one node each
     - *graph_props_edge_tuplelist* a list of tuples containing all graph prop data of one edge each
     - *output_path* an os.path for all output files
+    - *prop_columns* [default=None] list of (column name, SQLite type) tuples of the stored graph properties,
+      see getGraphPropertyColumns (derived from *graph* if not given)
 
     """
+    if prop_columns is None:
+        prop_columns = getGraphPropertyColumns(graph)
+    # the property columns depend on the Tulip version and on the plugins that were applied (e.g. SVG export adds
+    # viewIcon), so build them from the graph properties instead of using a fixed list
+    prop_columns_sql = ''.join(',\n    "{}" {}'.format(name, sql_type) for name, sql_type in prop_columns)
     # create an SQL database with sqlite3
     # connect to database
     db_path = os.path.join(output_path, '{0}_graph.db'.format(db_name))
@@ -1135,93 +1163,11 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_
     c = db.cursor()
     # pass SQL statements into cursor
     # create empty graph node table (skips if table already exists)
-    c.execute('''CREATE TABLE IF NOT EXISTS graph_nodes(node_id INTEGER PRIMARY KEY,
-    anc_id TEXT,
-    anc_name TEXT,
-    anc_term TEXT,
-    c_id TEXT,
-    clone_id TEXT,
-    edge_directionality TEXT,
-    f TEXT,
-    fake INTEGER,
-    flux REAL,
-    id TEXT,
-    name TEXT,
-    pathway TEXT,
-    rel_c_ids TEXT,
-    rev INTEGER,
-    stoich REAL,
-    term TEXT,
-    tr INTEGER,
-    type INTEGER,
-    ub INTEGER,
-    viewBorderColor TEXT,
-    viewBorderWidth REAL,
-    viewColor TEXT,
-    viewFont TEXT,
-    viewFontAwesomeIcon TEXT,
-    viewFontSize INTEGER,
-    viewLabel TEXT,
-    viewLabelBorderColor TEXT,
-    viewLabelBorderWidth REAL,
-    viewLabelColor TEXT,
-    viewLabelPosition INTEGER,
-    viewLayout TEXT,
-    viewMetric REAL,
-    viewRotation REAL,
-    viewSelection INTEGER,
-    viewShape INTEGER,
-    viewSize INTEGER,
-    viewSrcAnchorShape INTEGER,
-    viewSrcAnchorSize TEXT,
-    viewTexture TEXT,
-    viewTgtAnchorShape INTEGER,
-    viewTgtAnchorSize TEXT)
-    ''')
+    c.execute('''CREATE TABLE IF NOT EXISTS graph_nodes(node_id INTEGER PRIMARY KEY{})
+    '''.format(prop_columns_sql))
     # create empty graph edge table (skips if table already exists)
-    c.execute('''CREATE TABLE IF NOT EXISTS graph_edges(edge_id INTEGER PRIMARY KEY,
-    anc_id TEXT,
-    anc_name TEXT,
-    anc_term TEXT,
-    c_id TEXT,
-    clone_id TEXT,
-    edge_directionality TEXT,
-    f TEXT,
-    fake INTEGER,
-    flux REAL,
-    id TEXT,
-    name TEXT,
-    pathway TEXT,
-    rel_c_ids TEXT,
-    rev INTEGER,
-    stoich REAL,
-    term TEXT,
-    tr INTEGER,
-    type INTEGER,
-    ub INTEGER,
-    viewBorderColor TEXT,
-    viewBorderWidth REAL,
-    viewColor TEXT,
-    viewFont TEXT,
-    viewFontAwesomeIcon TEXT,
-    viewFontSize INTEGER,
-    viewLabel TEXT,
-    viewLabelBorderColor TEXT,
-    viewLabelBorderWidth REAL,
-    viewLabelColor TEXT,
-    viewLabelPosition INTEGER,
-    viewLayout TEXT,
-    viewMetric REAL,
-    viewRotation REAL,
-    viewSelection INTEGER,
-    viewShape INTEGER,
-    viewSize INTEGER,
-    viewSrcAnchorShape INTEGER,
-    viewSrcAnchorSize TEXT,
-    viewTexture TEXT,
-    viewTgtAnchorShape INTEGER,
-    viewTgtAnchorSize TEXT)
-    ''')
+    c.execute('''CREATE TABLE IF NOT EXISTS graph_edges(edge_id INTEGER PRIMARY KEY{})
+    '''.format(prop_columns_sql))
     # create empty connectivity table (each row is an edge with id, source node id and target node id as columns)
     c.execute('''CREATE TABLE IF NOT EXISTS edge_connectivity(edge_id INTEGER PRIMARY KEY,
     source_node_id TEXT,
@@ -1246,14 +1192,13 @@ def createSQLiteDB(graph, db_name, graph_props_node_tuplelist, graph_props_edge_
     for i in range(len(list(graph.getEdges()))):
         graph_props_edge_insertlist.append([tup[i] for tup in graph_props_edge_tuplelist])
     # fill tables with encoded values
+    placeholders = ','.join('?' * (len(prop_columns) + 1))
     # table graph_node
     for l in graph_props_node_insertlist:
-        c.execute('''INSERT OR IGNORE INTO graph_nodes VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
-        ?,?,?,?,?,?,?,?,?,?,?,?,?)''', l)
+        c.execute('''INSERT OR IGNORE INTO graph_nodes VALUES ({})'''.format(placeholders), l)
     # table graph_edges
     for l in graph_props_edge_insertlist:
-        c.execute('''INSERT OR IGNORE INTO graph_edges VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,
-        ?,?,?,?,?,?,?,?,?,?,?,?,?)''', l)
+        c.execute('''INSERT OR IGNORE INTO graph_edges VALUES ({})'''.format(placeholders), l)
     # table edge_connectivity
     # create dict with key = str(node) and value = integer id of the node
     node_str_int_dict = {}
@@ -1363,13 +1308,41 @@ def retrieveDataFromDatabaseTable(db_path, table_name):
     # returned lists contain row lists -> ordered list of all properties for one node
     for row_list in db_graph_data_list:
         for i, prop_value in enumerate(row_list):
+            # databases written with Python 2 contain the pickled data (protocol 0) as text
+            if isinstance(prop_value, str):
+                prop_value = prop_value.encode('latin-1', errors='ignore')
             try:
-                list_obj = pickle.loads(prop_value)
+                list_obj = pickle.loads(prop_value, encoding='latin-1')
                 row_list[i] = list_obj
-            except:
+            except Exception:
                 pass
 
     return db_graph_data_list, col_headers
+
+def setGraphPropertyValueFromDB(graph, prop_name, element, db_value):
+    """
+    Set the value of a node/edge in an existing graph property from a value retrieved from the SQLite database and
+    convert it back to the Tulip type of the property (properties that do not exist in the graph are skipped)::
+
+    - *graph* a Tulip graph
+    - *prop_name* the name of the graph property (= column name in the database)
+    - *element* a node or edge of the graph
+    - *db_value* the decoded value from the database
+
+    """
+    if not graph.existProperty(prop_name):
+        return
+    prop = graph.getProperty(prop_name)
+    prop_type = prop.getTypename()
+    if prop_type == 'bool':
+        db_value = bool(db_value)
+    elif prop_type == 'color':
+        db_value = tlp.Color(*[int(v) for v in db_value])
+    elif prop_type == 'size':
+        db_value = tlp.Size(*db_value[:3])
+    elif prop_type == 'layout':
+        db_value = tlp.Coord(*db_value[:3])
+    prop[element] = db_value
 
 def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edgeconn_list, node_col_headers,
                            edge_col_headers, graph_name, output_path):
@@ -1391,34 +1364,11 @@ def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edge
     db_graph.setName(graph_name)
     # add new, empty nodes to graph
     db_graph.addNodes(len(db_graph_node_list))
-    # convert data in db_graph_node_list back to tulip types
-    for row_sublist in db_graph_node_list:
-        # remove ids (first entry) from sublists of db_graph_node list to have equal amount of props again
-        row_sublist.pop(0)
-        # get a list of column headers (which will have same length and order as row list!)
-        # if I want an entry of row_sublist: row_sublist[col_header_list.index("viewColor")] = viewColor data
-        # go through each sublist of db retreived list and change entries of row list back to tulip specific types if
-        #  necessary
-        # since first column gets removed, the index needs to be always shifted back by 1
-        for i, prop_item in enumerate(row_sublist):
-            if prop_item == row_sublist[node_col_headers.index("viewColor")-1] or \
-               prop_item == row_sublist[node_col_headers.index("viewBorderColor")-1] or \
-               prop_item == row_sublist[node_col_headers.index("viewLabelColor")-1] or \
-               prop_item == row_sublist[node_col_headers.index("viewLabelBorderColor")-1]:
-                # it needs to be converted to tulip.Color
-                row_sublist[i] = tlp.Color(prop_item[0], prop_item[1], prop_item[2], prop_item[3])
-            elif prop_item == row_sublist[node_col_headers.index("viewSize")-1] or \
-                 prop_item == row_sublist[node_col_headers.index("viewSrcAnchorSize")-1] or \
-                 prop_item == row_sublist[node_col_headers.index("viewTgtAnchorSize")-1]:
-                # it needs to be converted to tulip.Size
-                row_sublist[i] = tlp.Size(prop_item[0], prop_item[1], prop_item[2])
-            elif prop_item == row_sublist[node_col_headers.index("viewLayout")-1]:
-                # it needs to be converted to tulip.Layout
-                row_sublist[i] = tlp.Vec3f(prop_item[0], prop_item[1], prop_item[2])
     # overwrite the empty/default prop values of new nodes with the prop values retrieved from db
+    # (matched by column name, the first column is the node id)
     for n, n_db_prop_sublist in zip(db_graph.getNodes(), db_graph_node_list):
-        for empty_prop, n_db_prop in zip(db_graph_props, n_db_prop_sublist):
-            empty_prop[n] = n_db_prop
+        for prop_name, n_db_prop in zip(node_col_headers[1:], n_db_prop_sublist[1:]):
+            setGraphPropertyValueFromDB(db_graph, prop_name, n, n_db_prop)
     # prepare edge connectivity data to add edges:
     for i, sublist in enumerate(db_graph_edgeconn_list):
         # convert node id strings to [source id, target id] lists from extracted edge connectivity list:
@@ -1443,37 +1393,12 @@ def buildTulipGraphFromSQL(db_graph_node_list, db_graph_edge_list, db_graph_edge
     # add edges to db_graph - function tlp.addEdges takes scr and tgt node tuples as parameter
     db_graph.addEdges(db_graph_edgeconn_list)
     # TODO: also add props to edges (also save them in SQL db)
-    # convert data in db_graph_edge_list back to tulip types
-    for row_sublist in db_graph_edge_list:
-        # remove ids (first entry) from sublists of db_graph_edge_list to have equal amount of props again
-        row_sublist.pop(0)
-        # get a list of column headers (which will have same length and order as row list!)
-        # if I want an entry of row_sublist: row_sublist[col_header_list.index("viewColor")] = viewColor data
-        # go through each sublist of db retreived list and change entries of row list back to tulip specific types if
-        #  necessary
-        # since first column gets removed, the index needs to be always shifted back by 1
-        for i, prop_item in enumerate(row_sublist):
-            if prop_item == row_sublist[edge_col_headers.index("viewColor")-1] or \
-                            prop_item == row_sublist[edge_col_headers.index("viewBorderColor")-1] or \
-                            prop_item == row_sublist[edge_col_headers.index("viewLabelColor")-1] or \
-                            prop_item == row_sublist[edge_col_headers.index("viewLabelBorderColor")-1]:
-                # it needs to be converted to tulip.Color
-                row_sublist[i] = tlp.Color(prop_item[0], prop_item[1], prop_item[2], prop_item[3])
-            elif prop_item == row_sublist[edge_col_headers.index("viewSize")-1] or \
-                            prop_item == row_sublist[edge_col_headers.index("viewSrcAnchorSize")-1] or \
-                            prop_item == row_sublist[edge_col_headers.index("viewTgtAnchorSize")-1]:
-                # it needs to be converted to tulip.Size
-                row_sublist[i] = tlp.Size(prop_item[0], prop_item[1], prop_item[2])
-            #elif prop_item == row_sublist[edge_col_headers.index("viewLayout")-1] and \
-            #     len(row_sublist[edge_col_headers.index("viewLayout") - 1]) > 0:
-                # it needs to be converted to tulip.Layout (but only if the coords list is not empty)
-            #    print(row_sublist[edge_col_headers.index("viewLayout")-1])
-            #    row_sublist[i] = tlp.Vec3f(prop_item[0], prop_item[1], prop_item[2])
-    # overwrite the empty/default prop values of new edge with the prop values retrieved from db
+    # overwrite the empty/default prop values of new edges with the prop values retrieved from db
+    # (matched by column name, the first column is the edge id; edge bends (viewLayout) are not restored)
     for e, e_db_prop_sublist in zip(db_graph.getEdges(), db_graph_edge_list):
-        for empty_prop, e_db_prop in zip(db_graph_props, e_db_prop_sublist):
-            if empty_prop.getName() != "viewLayout":
-                empty_prop[e] = e_db_prop
+        for prop_name, e_db_prop in zip(edge_col_headers[1:], e_db_prop_sublist[1:]):
+            if prop_name != "viewLayout":
+                setGraphPropertyValueFromDB(db_graph, prop_name, e, e_db_prop)
     # save reconstructed db graph
     recon_db_graph_path = os.path.join(output_path, 'reconstructed_graph_from_db.tlp')
     tlp.saveGraph(db_graph, recon_db_graph_path)

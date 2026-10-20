@@ -9,7 +9,7 @@ GO_PREFIX = 'go'
 
 __author__ = 'anna'
 
-GO_ID_PATTERN = "[gG][Oo]\:\d+"
+GO_ID_PATTERN = r"[gG][Oo]\:\d+"
 
 
 def get_go_id(c):

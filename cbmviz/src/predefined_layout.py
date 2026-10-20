@@ -90,12 +90,12 @@ def apply_node_coordinates(graph, n2xy):
                 for r_id, ((x, y), (w, h)) in xywh.items():
                     if root[CLONE_ID][n].find(r_id) != -1:
                         root[VIEW_LAYOUT][n] = tlp.Coord(x, y)
-                        root[VIEW_SIZE][n] = tlp.Size(w, h)
+                        root[VIEW_SIZE][n] = tlp.Size(w, h, 1)
                         break
             else:
                 (x, y), (w, h) = xywh
                 root[VIEW_LAYOUT][n] = tlp.Coord(x, y)
-                root[VIEW_SIZE][n] = tlp.Size(w, h)
+                root[VIEW_SIZE][n] = tlp.Size(w, h, 1)
         elif graph.isMetaNode(n):
             x, y = 0, 0
             w, h = 0, 0
@@ -121,5 +121,5 @@ def apply_node_coordinates(graph, n2xy):
                         h += h_
             if count:
                 root[VIEW_LAYOUT][n] = tlp.Coord(x / count, y / count)
-                root[VIEW_SIZE][n] = tlp.Size(w, h)
+                root[VIEW_SIZE][n] = tlp.Size(w, h, 1)
     root[VIEW_LAYOUT].setAllEdgeValue([])

@@ -43,16 +43,18 @@ setup(
      'cbmpy',
      'geojson',
      'jinja2',
+     # libsbgnpy 0.4 and newer have a different API
+     'libsbgnpy>=0.3.3,<0.4',
      'numpy',
      'openpyxl',
      'pandas',
      'python-libsbml',
+     'swiglpk',
      'sympy',
      'tarjan',
  ],
- extras_require = {
-     'visualization': ['libsbgnpy', 'tulip-python', 'tulipgui-python'],
- },
+ # the Tulip 6.1 Python bindings (tulip, tulipgui) are not on PyPI and have to be built from source,
+ # see the README in the repository root
  package_data = {'cbmviz.mod_sbml': ['data/*']},
  platforms = ["Windows", "Linux"],
  classifiers = [
@@ -64,6 +66,4 @@ setup(
  'Natural Language :: English',
  'Operating System :: OS Independent',
  'Programming Language :: Python :: 3',
- 'Programming Language :: Python :: 3.10',
- 'Programming Language :: Python :: 3 :: Only',
- 'Topic :: Scientific/Engineering :: Bio-Informatics'])
+ 'Pr

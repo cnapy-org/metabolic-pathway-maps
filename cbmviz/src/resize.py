@@ -50,9 +50,9 @@ def get_n_size(graph, n, global_ops):
         w = h = UBIQUITOUS_SPECIES_SIZE
     else:
         w = h = SPECIES_SIZE * get_n_length(graph, n)
-    return tlp.Size(w, h)
+    return tlp.Size(w, h, 1)
 
 
 def get_e_size(graph, e, global_ops):
     sz = _get_e_size(graph.getRoot(), e, global_ops)
-    return tlp.Size(sz, sz)
+    return tlp.Size(sz, sz, 1)

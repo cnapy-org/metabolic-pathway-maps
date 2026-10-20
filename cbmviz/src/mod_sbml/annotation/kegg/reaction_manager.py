@@ -21,14 +21,14 @@ KEGG_COMPOUND_FILE_CSV = \
 
 
 def get_compounds_by_rn(rn):
-    compounds_by_reaction = urllib.request.urlopen('http://rest.kegg.jp/link/compound/%s' % rn).read()
+    compounds_by_reaction = urllib.request.urlopen('http://rest.kegg.jp/link/compound/%s' % rn).read().decode('utf-8')
     return {c for c in {c.replace("%s\t" % rn, '').strip() for c in compounds_by_reaction.split("\n")} if
             c.find('cpd:') != -1}
 
 
 def get_rn2formula():
     rn2formula = {}
-    reactions = urllib.request.urlopen('http://rest.kegg.jp/list/reaction').read()
+    reactions = urllib.request.urlopen('http://rest.kegg.jp/list/reaction').read().decode('utf-8')
     for line in reactions.split("\n"):
         if line.find("rn:") != -1:
             rn, r_formula = line.split("\t")
@@ -38,7 +38,7 @@ def get_rn2formula():
 
 def get_cps2rn():
     cps2rn = defaultdict(set)
-    reactions = urllib.request.urlopen('http://rest.kegg.jp/list/reaction').read()
+    reactions = urllib.request.urlopen('http://rest.kegg.jp/list/reaction').read().decode('utf-8')
     for line in reactions.split("\n"):
         if line.find("rn:") != -1:
             rn, r_formula = line.split("\t")
@@ -50,7 +50,7 @@ def get_cps2rn():
 def get_kegg_r_info(rn):
     name, equation, ec = '', '', ''
     try:
-        reactions = urllib.request.urlopen('http://rest.kegg.jp/get/%s' % rn).read()
+        reactions = urllib.request.urlopen('http://rest.kegg.jp/get/%s' % rn).read().decode('utf-8')
         for line in reactions.split("\n"):
             if line.find("NAME") != -1:
                 name = line.replace("NAME", '').strip()
@@ -66,7 +66,7 @@ def get_kegg_r_info(rn):
 def get_kegg_c_info(cpd):
     names, formula = {}, ''
     try:
-        compound = urllib.request.urlopen('http://rest.kegg.jp/get/%s' % cpd).read()
+        compound = urllib.request.urlopen('http://rest.kegg.jp/get/%s' % cpd).read().decode('utf-8')
         cur_line = ''
         for line in compound.split("\n"):
             if line.find(';') != -1:
@@ -88,7 +88,7 @@ def get_kegg_c_info(cpd):
 def serialize_reactions_csv(path=KEGG_REACTION_FILE_CSV):
     data = []
     index = []
-    rns = {it.split('\t')[0] for it in urllib.request.urlopen('http://rest.kegg.jp/list/reaction').read().split("\n")
+    rns = {it.split('\t')[0] for it in urllib.request.urlopen('http://rest.kegg.jp/list/reaction').read().decode('utf-8').split("\n")
            if it.find('rn:') != -1}
     for rn in rns:
         r_id = rn.replace('rn:', '').strip()
@@ -100,7 +100,7 @@ def serialize_reactions_csv(path=KEGG_REACTION_FILE_CSV):
 def serialize_compounds_csv(path=KEGG_COMPOUND_FILE_CSV):
     data = []
     index = []
-    cpds = {it.split('\t')[0] for it in urllib.request.urlopen('http://rest.kegg.jp/list/compound').read().split("\n")
+    cpds = {it.split('\t')[0] for it in urllib.request.urlopen('http://rest.kegg.jp/list/compound').read().decode('utf-8').split("\n")
             if it.find('cpd:') != -1}
     for cpd in cpds:
         c_id = cpd.replace('cpd:', '').strip()
@@ -187,7 +187,7 @@ def get_kegg_r_id_by_kegg_m_ids(kegg_m_ids):
     kegg_r_ids = None
     for m_id in kegg_m_ids:
         rs = {it.replace('cpd:%s' % m_id, '').strip()
-              for it in urllib.request.urlopen('http://rest.kegg.jp/link/reaction/cpd:%s' % m_id).read().split("\n") if it}
+              for it in urllib.request.urlopen('http://rest.kegg.jp/link/reaction/cpd:%s' % m_id).read().decode('utf-8').split("\n") if it}
         if kegg_r_ids is None:
             kegg_r_ids = rs
         else:
