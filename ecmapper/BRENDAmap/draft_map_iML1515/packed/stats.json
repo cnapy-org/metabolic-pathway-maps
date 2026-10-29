@@ -1,0 +1,2278 @@
+{
+ "original": {
+  "subsystems": 193,
+  "enzyme_nodes": 2848,
+  "main_metabolite_nodes": 2818,
+  "cofactor_nodes": 6257,
+  "edges": 12381,
+  "inter_pathway_links": 234,
+  "model_reactions": 0,
+  "enzyme_nodes_map": 2848
+ },
+ "redundant_subsystems": {
+  "dropped": [
+   {
+    "subsystem": "CDP-diacylglycerol-biosynthesis",
+    "reactions": [
+     "G3PD2"
+    ],
+    "subset_of": "lipid-metabolism"
+   },
+   {
+    "subsystem": "S-reticuline-biosynthesis",
+    "reactions": [
+     "TYRTA"
+    ],
+    "subset_of": "tyrosine-metabolism"
+   },
+   {
+    "subsystem": "acetoin-degradation",
+    "reactions": [
+     "ACLS"
+    ],
+    "subset_of": "valine-metabolism"
+   },
+   {
+    "subsystem": "adipate-degradation",
+    "reactions": [
+     "DHACOAH",
+     "HADPCOADH3"
+    ],
+    "subset_of": "phenylacetate-degradation-aerobic"
+   },
+   {
+    "subsystem": "benzoxazinoid-glucosides-biosynthesis",
+    "reactions": [
+     "TRPS3"
+    ],
+    "subset_of": "tryptophan-metabolism"
+   },
+   {
+    "subsystem": "ceramide-biosynthesis",
+    "reactions": [
+     "FACOAL160t2pp"
+    ],
+    "subset_of": "lipid-metabolism"
+   },
+   {
+    "subsystem": "degradation-of-aromatic-nitrogen-containing-compounds",
+    "reactions": [
+     "NNAM"
+    ],
+    "subset_of": "NAD-metabolism"
+   },
+   {
+    "subsystem": "glycogen-biosynthesis",
+    "reactions": [
+     "GALUi",
+     "PGMT"
+    ],
+    "subset_of": "degradation-of-hexoses"
+   },
+   {
+    "subsystem": "ornithine-metabolism",
+    "reactions": [
+     "ACKr",
+     "PTAr"
+    ],
+    "subset_of": "acetate-fermentation"
+   },
+   {
+    "subsystem": "phenol-degradation",
+    "reactions": [
+     "HOPNTAL",
+     "OP4ENH"
+    ],
+    "subset_of": "3-phenylpropionate-degradation"
+   },
+   {
+    "subsystem": "tropane-alkaloid-biosynthesis",
+    "reactions": [
+     "ORNDC"
+    ],
+    "subset_of": "polyamine-pathway"
+   }
+  ],
+  "set_aside": [
+   {
+    "subsystem": "acetyl-CoA-biosynthesis",
+    "rule": "B",
+    "reactions": 1,
+    "covered": 1.0
+   },
+   {
+    "subsystem": "butanoate-fermentation",
+    "rule": "B",
+    "reactions": 3,
+    "covered": 1.0
+   },
+   {
+    "subsystem": "aerobic-toluene-degradation",
+    "rule": "B",
+    "reactions": 4,
+    "covered": 1.0
+   },
+   {
+    "subsystem": "C4-and-CAM-carbon-fixation",
+    "rule": "B",
+    "reactions": 9,
+    "covered": 1.0
+   },
+   {
+    "subsystem": "methylaspartate-cycle",
+    "rule": "B",
+    "reactions": 11,
+    "covered": 1.0
+   },
+   {
+    "subsystem": "photosynthesis",
+    "rule": "C",
+    "reactions": 13,
+    "covered": 0.9230769230769231
+   }
+  ]
+ },
+ "step1_subsystems": {
+  "subsystems": 104,
+  "enzyme_nodes": 1841,
+  "main_metabolite_nodes": 1759,
+  "cofactor_nodes": 3910,
+  "edges": 7908,
+  "inter_pathway_links": 151,
+  "model_reactions": 714,
+  "enzyme_nodes_on-map": 758,
+  "enzyme_nodes_map": 1041,
+  "enzyme_nodes_vicinity": 42
+ },
+ "step2_pruned": {
+  "subsystems": 104,
+  "enzyme_nodes": 800,
+  "main_metabolite_nodes": 941,
+  "cofactor_nodes": 1603,
+  "edges": 3307,
+  "inter_pathway_links": 109,
+  "model_reactions": 714,
+  "enzyme_nodes_on-map": 758,
+  "enzyme_nodes_vicinity": 42
+ },
+ "step3_completed": {
+  "subsystems": 104,
+  "enzyme_nodes": 1073,
+  "main_metabolite_nodes": 1196,
+  "cofactor_nodes": 1969,
+  "edges": 4474,
+  "inter_pathway_links": 205,
+  "model_reactions": 1010,
+  "enzyme_nodes_on-map": 758,
+  "enzyme_nodes_vicinity": 42,
+  "enzyme_nodes_added": 273
+ },
+ "relayout": [
+  {
+   "subsystem": "3-phenylpropionate-degradation",
+   "layout": "current",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 1016263.6049999999
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 1036111.5225
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 1154138.8725
+   },
+   "dot": {
+    "crossings_main": 1,
+    "crossings_all": 3,
+    "area": 937242.7800000001
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 1047714.2325
+   }
+  },
+  {
+   "subsystem": "L-lactaldehyde-degradation",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 178733.625
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 213819.53999999998
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 170855.44
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 191119.11
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 165929.26999999996
+   }
+  },
+  {
+   "subsystem": "NAD-metabolism",
+   "layout": "current",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 3,
+    "area": 912311.3375000001
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 3,
+    "area": 912311.3375000001
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 3,
+    "area": 1138627.1975000002
+   },
+   "dot": {
+    "crossings_main": 10,
+    "crossings_all": 25,
+    "area": 1214428.3625
+   },
+   "neato": {
+    "crossings_main": 2,
+    "crossings_all": 18,
+    "area": 1199465.3125
+   }
+  },
+  {
+   "subsystem": "UDP-GlcNAc-biosynthesis",
+   "layout": "current",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 178343.5875
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 203292.4
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 203292.4
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 357242.6025
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 221745.8175
+   }
+  },
+  {
+   "subsystem": "acetate-fermentation",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 9,
+    "crossings_all": 9,
+    "area": 688770.7750000001
+   },
+   "spring": {
+    "crossings_main": 2,
+    "crossings_all": 3,
+    "area": 636407.8500000001
+   },
+   "fdp": {
+    "crossings_main": 2,
+    "crossings_all": 2,
+    "area": 576119.25
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 610073.15
+   },
+   "neato": {
+    "crossings_main": 2,
+    "crossings_all": 6,
+    "area": 678529.5850000001
+   }
+  },
+  {
+   "subsystem": "alanine-metabolism",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 849259.8
+   },
+   "spring": {
+    "crossings_main": 3,
+    "crossings_all": 3,
+    "area": 751053.1150000001
+   },
+   "fdp": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 744392.9550000001
+   },
+   "dot": {
+    "crossings_main": 1,
+    "crossings_all": 1,
+    "area": 795145.3724999998
+   },
+   "neato": {
+    "crossings_main": 3,
+    "crossings_all": 3,
+    "area": 708348.1575
+   }
+  },
+  {
+   "subsystem": "allantoin-degradation",
+   "layout": "current",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 598418.5625000001
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 749690.4375000001
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 648107.7775000001
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 467384.7375
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 510372.37499999994
+   }
+  },
+  {
+   "subsystem": "arachidonate-biosynthesis",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 81,
+    "crossings_all": 122,
+    "area": 1725979.5000000002
+   },
+   "spring": {
+    "crossings_main": 25,
+    "crossings_all": 37,
+    "area": 1777365.0225000002
+   },
+   "fdp": {
+    "crossings_main": 22,
+    "crossings_all": 31,
+    "area": 1678299.9000000001
+   },
+   "dot": {
+    "crossings_main": 19,
+    "crossings_all": 28,
+    "area": 1640570.9674999998
+   },
+   "neato": {
+    "crossings_main": 17,
+    "crossings_all": 33,
+    "area": 1565207.1024999998
+   }
+  },
+  {
+   "subsystem": "carnitine-metabolism",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 7,
+    "crossings_all": 14,
+    "area": 265882.2
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 3,
+    "area": 312315.235
+   },
+   "fdp": {
+    "crossings_main": 5,
+    "crossings_all": 9,
+    "area": 309578.955
+   },
+   "dot": {
+    "crossings_main": 1,
+    "crossings_all": 5,
+    "area": 307029.1825
+   },
+   "neato": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 283553.97750000004
+   }
+  },
+  {
+   "subsystem": "chorismate-metabolism",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 2,
+    "crossings_all": 3,
+    "area": 639240.7525000001
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 1,
+    "area": 580950.3925000001
+   },
+   "fdp": {
+    "crossings_main": 2,
+    "crossings_all": 3,
+    "area": 642355.425
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 738012.0975
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 938772.835
+   }
+  },
+  {
+   "subsystem": "citric-acid-cycle",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 3,
+    "crossings_all": 4,
+    "area": 1121377.77
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 6,
+    "area": 1022501.5499999998
+   },
+   "fdp": {
+    "crossings_main": 5,
+    "crossings_all": 13,
+    "area": 1098592.455
+   },
+   "dot": {
+    "crossings_main": 13,
+    "crossings_all": 22,
+    "area": 929327.4199999998
+   },
+   "neato": {
+    "crossings_main": 1,
+    "crossings_all": 7,
+    "area": 1061711.855
+   }
+  },
+  {
+   "subsystem": "coenzyme-A-metabolism",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 2,
+    "crossings_all": 5,
+    "area": 505981.0949999999
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 3,
+    "area": 605603.745
+   },
+   "fdp": {
+    "crossings_main": 1,
+    "crossings_all": 1,
+    "area": 482267.655
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 491065.575
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 619788.5100000001
+   }
+  },
+  {
+   "subsystem": "d-mannose-degradation",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 6,
+    "area": 381576.5175
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 1,
+    "area": 378595.795
+   },
+   "fdp": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 370856.51749999996
+   },
+   "dot": {
+    "crossings_main": 1,
+    "crossings_all": 5,
+    "area": 448402.08
+   },
+   "neato": {
+    "crossings_main": 1,
+    "crossings_all": 3,
+    "area": 368920.3575
+   }
+  },
+  {
+   "subsystem": "degradation-of-hexoses",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 14,
+    "crossings_all": 22,
+    "area": 1757960.5124999997
+   },
+   "spring": {
+    "crossings_main": 2,
+    "crossings_all": 7,
+    "area": 1346980.05
+   },
+   "fdp": {
+    "crossings_main": 3,
+    "crossings_all": 5,
+    "area": 1402574.3750000002
+   },
+   "dot": {
+    "crossings_main": 8,
+    "crossings_all": 11,
+    "area": 2002979.3425
+   },
+   "neato": {
+    "crossings_main": 3,
+    "crossings_all": 11,
+    "area": 1557792.8575000002
+   }
+  },
+  {
+   "subsystem": "degradation-of-pentoses",
+   "layout": "current",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 8,
+    "area": 1031410.7025
+   },
+   "spring": {
+    "crossings_main": 5,
+    "crossings_all": 12,
+    "area": 1040020.7650000001
+   },
+   "fdp": {
+    "crossings_main": 5,
+    "crossings_all": 7,
+    "area": 902598.9225000001
+   },
+   "dot": {
+    "crossings_main": 1,
+    "crossings_all": 10,
+    "area": 728754.23
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 9,
+    "area": 936425.7375
+   }
+  },
+  {
+   "subsystem": "degradation-of-sugar-acids",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 2,
+    "crossings_all": 3,
+    "area": 1190826.0125000004
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 5,
+    "area": 1106434.8500000003
+   },
+   "fdp": {
+    "crossings_main": 1,
+    "crossings_all": 1,
+    "area": 1156942.1000000003
+   },
+   "dot": {
+    "crossings_main": 2,
+    "crossings_all": 5,
+    "area": 1184511.1250000002
+   },
+   "neato": {
+    "crossings_main": 1,
+    "crossings_all": 6,
+    "area": 1363785.5400000005
+   }
+  },
+  {
+   "subsystem": "degradation-of-sugar-alcohols",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 76,
+    "crossings_all": 135,
+    "area": 1925513.0574999999
+   },
+   "spring": {
+    "crossings_main": 23,
+    "crossings_all": 43,
+    "area": 2349307.6375
+   },
+   "fdp": {
+    "crossings_main": 19,
+    "crossings_all": 35,
+    "area": 2073054.8025
+   },
+   "dot": {
+    "crossings_main": 11,
+    "crossings_all": 20,
+    "area": 2374440.6400000006
+   },
+   "neato": {
+    "crossings_main": 15,
+    "crossings_all": 33,
+    "area": 1834905.2925
+   }
+  },
+  {
+   "subsystem": "enterobactin-biosynthesis",
+   "layout": "current",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 279971.94
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 294255.57499999995
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 337418.4075
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 198767.6075
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 345285.0175
+   }
+  },
+  {
+   "subsystem": "ethanol-fermentation",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 2,
+    "crossings_all": 2,
+    "area": 209196.505
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 268591.05000000005
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 235731.575
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 297189.30500000005
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 349825.08
+   }
+  },
+  {
+   "subsystem": "flavin-biosynthesis",
+   "layout": "neato",
+   "current": {
+    "crossings_main": 9,
+    "crossings_all": 23,
+    "area": 1037395.4475
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 4,
+    "area": 841289.2599999999
+   },
+   "fdp": {
+    "crossings_main": 2,
+    "crossings_all": 2,
+    "area": 847928.375
+   },
+   "dot": {
+    "crossings_main": 2,
+    "crossings_all": 3,
+    "area": 1010082.9375000001
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 5,
+    "area": 1075250.85
+   }
+  },
+  {
+   "subsystem": "formaldehyde-oxidation",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 417093.9375000001
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 342589.20000000007
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 342589.20000000007
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 253538.58500000002
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 420557.7375000001
+   }
+  },
+  {
+   "subsystem": "glutamate-and-glutamine-metabolism",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 13,
+    "crossings_all": 27,
+    "area": 1047778.0250000001
+   },
+   "spring": {
+    "crossings_main": 6,
+    "crossings_all": 25,
+    "area": 1043159.7974999999
+   },
+   "fdp": {
+    "crossings_main": 14,
+    "crossings_all": 25,
+    "area": 919414.325
+   },
+   "dot": {
+    "crossings_main": 4,
+    "crossings_all": 22,
+    "area": 1468166.175
+   },
+   "neato": {
+    "crossings_main": 7,
+    "crossings_all": 33,
+    "area": 1144678.7075
+   }
+  },
+  {
+   "subsystem": "glutathione-metabolism",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 6,
+    "area": 491927.60500000004
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 452752.5975000001
+   },
+   "fdp": {
+    "crossings_main": 1,
+    "crossings_all": 1,
+    "area": 441789.69000000006
+   },
+   "dot": {
+    "crossings_main": 3,
+    "crossings_all": 5,
+    "area": 424944.67500000005
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 381266.6499999999
+   }
+  },
+  {
+   "subsystem": "glycine-betaine-biosynthesis",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 4,
+    "area": 127113.46750000003
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 5,
+    "area": 110069.375
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 157059.5
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 128200.745
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 107486.705
+   }
+  },
+  {
+   "subsystem": "glycogen-metabolism",
+   "layout": "neato",
+   "current": {
+    "crossings_main": 154,
+    "crossings_all": 215,
+    "area": 955270.5725
+   },
+   "spring": {
+    "crossings_main": 23,
+    "crossings_all": 33,
+    "area": 1122566.0775000001
+   },
+   "fdp": {
+    "crossings_main": 26,
+    "crossings_all": 35,
+    "area": 972823.5000000002
+   },
+   "dot": {
+    "crossings_main": 29,
+    "crossings_all": 34,
+    "area": 1601959.1375
+   },
+   "neato": {
+    "crossings_main": 14,
+    "crossings_all": 23,
+    "area": 1339521.9749999999
+   }
+  },
+  {
+   "subsystem": "glycolate-and-glyoxylate-degradation",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 339277.095
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 292466.33
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 287452.4625
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 320485.69999999995
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 3,
+    "area": 345254.775
+   }
+  },
+  {
+   "subsystem": "glycolysis",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 529489.1000000001
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 587313.2325
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 594746.15
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 550721.3625
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 605984.6924999999
+   }
+  },
+  {
+   "subsystem": "heme-metabolism",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 3,
+    "area": 1451835.9375000005
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 1430393.4375000005
+   },
+   "fdp": {
+    "crossings_main": 1,
+    "crossings_all": 4,
+    "area": 1262427.1875000002
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 1904223.8475
+   },
+   "neato": {
+    "crossings_main": 2,
+    "crossings_all": 4,
+    "area": 1841097.5325000002
+   }
+  },
+  {
+   "subsystem": "isoprenoid-biosynthesis",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 1006856.7975000002
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 833058.4249999999
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 869313.6749999999
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 732006.6125000002
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 838025.6325000002
+   }
+  },
+  {
+   "subsystem": "ketogluconate-metabolism",
+   "layout": "neato",
+   "current": {
+    "crossings_main": 7,
+    "crossings_all": 17,
+    "area": 689347.6799999999
+   },
+   "spring": {
+    "crossings_main": 5,
+    "crossings_all": 11,
+    "area": 583531.14
+   },
+   "fdp": {
+    "crossings_main": 5,
+    "crossings_all": 12,
+    "area": 643615.905
+   },
+   "dot": {
+    "crossings_main": 1,
+    "crossings_all": 28,
+    "area": 708448.0275
+   },
+   "neato": {
+    "crossings_main": 1,
+    "crossings_all": 18,
+    "area": 626580.72
+   }
+  },
+  {
+   "subsystem": "lipid-A-biosynthesis",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 140,
+    "crossings_all": 189,
+    "area": 3076826.965
+   },
+   "spring": {
+    "crossings_main": 43,
+    "crossings_all": 65,
+    "area": 3566298.562500001
+   },
+   "fdp": {
+    "crossings_main": 47,
+    "crossings_all": 63,
+    "area": 3631151.5950000007
+   },
+   "dot": {
+    "crossings_main": 60,
+    "crossings_all": 77,
+    "area": 8172288.74
+   },
+   "neato": {
+    "crossings_main": 95,
+    "crossings_all": 144,
+    "area": 4110519.4125000006
+   }
+  },
+  {
+   "subsystem": "lipid-metabolism",
+   "layout": "neato",
+   "current": {
+    "crossings_main": 95,
+    "crossings_all": 180,
+    "area": 4424347.3725000005
+   },
+   "spring": {
+    "crossings_main": 55,
+    "crossings_all": 106,
+    "area": 4200534.505000001
+   },
+   "fdp": {
+    "crossings_main": 47,
+    "crossings_all": 81,
+    "area": 3931072.1975000002
+   },
+   "dot": {
+    "crossings_main": 24,
+    "crossings_all": 38,
+    "area": 3992577.1950000003
+   },
+   "neato": {
+    "crossings_main": 17,
+    "crossings_all": 41,
+    "area": 4933312.0875
+   }
+  },
+  {
+   "subsystem": "lipoate-biosynthesis",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 5,
+    "area": 277491.075
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 269436.03750000003
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 241277.0975
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 299621.375
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 303821.09
+   }
+  },
+  {
+   "subsystem": "lysine-metabolism",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 4,
+    "crossings_all": 6,
+    "area": 909115.2525000001
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 1,
+    "area": 967282.5825000001
+   },
+   "fdp": {
+    "crossings_main": 2,
+    "crossings_all": 3,
+    "area": 790774.8225000001
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 754539.3450000001
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 1930433.11
+   }
+  },
+  {
+   "subsystem": "metabolism-of-amino-sugars-and-derivatives",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 2,
+    "crossings_all": 3,
+    "area": 630572.5399999999
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 691487.9924999999
+   },
+   "fdp": {
+    "crossings_main": 2,
+    "crossings_all": 2,
+    "area": 479028.72000000003
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 860788.7750000003
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 820377.25
+   }
+  },
+  {
+   "subsystem": "metabolism-of-disaccharids",
+   "layout": "neato",
+   "current": {
+    "crossings_main": 16,
+    "crossings_all": 23,
+    "area": 1130991.7750000001
+   },
+   "spring": {
+    "crossings_main": 2,
+    "crossings_all": 6,
+    "area": 1076588.7
+   },
+   "fdp": {
+    "crossings_main": 9,
+    "crossings_all": 12,
+    "area": 862766.8175
+   },
+   "dot": {
+    "crossings_main": 2,
+    "crossings_all": 3,
+    "area": 1023643.2
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 1387491.2025
+   }
+  },
+  {
+   "subsystem": "methionine-metabolism",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 72,
+    "crossings_all": 78,
+    "area": 2295318.3575
+   },
+   "spring": {
+    "crossings_main": 55,
+    "crossings_all": 73,
+    "area": 1878726.54
+   },
+   "fdp": {
+    "crossings_main": 45,
+    "crossings_all": 56,
+    "area": 2085376.3875000002
+   },
+   "dot": {
+    "crossings_main": 29,
+    "crossings_all": 33,
+    "area": 3758997.225
+   },
+   "neato": {
+    "crossings_main": 30,
+    "crossings_all": 46,
+    "area": 1925571.95
+   }
+  },
+  {
+   "subsystem": "molybdenum-cofactor-biosynthesis",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 5,
+    "crossings_all": 12,
+    "area": 552607.8125
+   },
+   "spring": {
+    "crossings_main": 3,
+    "crossings_all": 7,
+    "area": 544196.25
+   },
+   "fdp": {
+    "crossings_main": 4,
+    "crossings_all": 11,
+    "area": 430541.475
+   },
+   "dot": {
+    "crossings_main": 3,
+    "crossings_all": 5,
+    "area": 492472.57499999995
+   },
+   "neato": {
+    "crossings_main": 7,
+    "crossings_all": 16,
+    "area": 597062.4375
+   }
+  },
+  {
+   "subsystem": "octane-oxidation",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 6,
+    "area": 103135.72499999999
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 6,
+    "area": 103135.72499999999
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 146339.64750000002
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 125295.7475
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 146339.64750000002
+   }
+  },
+  {
+   "subsystem": "palmitate-biosynthesis",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 7,
+    "crossings_all": 20,
+    "area": 1914747.775
+   },
+   "spring": {
+    "crossings_main": 3,
+    "crossings_all": 7,
+    "area": 1566080.7525
+   },
+   "fdp": {
+    "crossings_main": 2,
+    "crossings_all": 2,
+    "area": 1671031.6875000002
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 1899908.3875000002
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 3,
+    "area": 2645750.8875000007
+   }
+  },
+  {
+   "subsystem": "pentose-phosphate-pathway",
+   "layout": "neato",
+   "current": {
+    "crossings_main": 3,
+    "crossings_all": 4,
+    "area": 776193.0000000001
+   },
+   "spring": {
+    "crossings_main": 4,
+    "crossings_all": 5,
+    "area": 662018.225
+   },
+   "fdp": {
+    "crossings_main": 4,
+    "crossings_all": 5,
+    "area": 598552.0149999999
+   },
+   "dot": {
+    "crossings_main": 1,
+    "crossings_all": 1,
+    "area": 619345.125
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 948403.6199999998
+   }
+  },
+  {
+   "subsystem": "peptidoglycan-biosynthesis",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 77,
+    "crossings_all": 106,
+    "area": 3249341.9000000004
+   },
+   "spring": {
+    "crossings_main": 32,
+    "crossings_all": 47,
+    "area": 2645885.250000001
+   },
+   "fdp": {
+    "crossings_main": 31,
+    "crossings_all": 38,
+    "area": 2521509.8625000003
+   },
+   "dot": {
+    "crossings_main": 20,
+    "crossings_all": 26,
+    "area": 5150890.6049999995
+   },
+   "neato": {
+    "crossings_main": 27,
+    "crossings_all": 37,
+    "area": 3717338.465000001
+   }
+  },
+  {
+   "subsystem": "phenylacetate-degradation-aerobic",
+   "layout": "current",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 554329.65
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 604876.41
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 507220.65
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 626690.3600000001
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 1015496.5275
+   }
+  },
+  {
+   "subsystem": "phenylalanine-metabolism",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 468638.1525
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 1,
+    "area": 368362.1675
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 300143.3725
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 351279.33749999997
+   },
+   "neato": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 385158.95
+   }
+  },
+  {
+   "subsystem": "polyamine-pathway",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 788572.6124999999
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 769051.725
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 752896.0425
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 710205.65
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 788933.3550000001
+   }
+  },
+  {
+   "subsystem": "proline-metabolism",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 430469.70499999996
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 527167.2599999999
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 427653.17999999993
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 473878.81500000006
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 442213.88000000006
+   }
+  },
+  {
+   "subsystem": "purine-metabolism",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 76,
+    "crossings_all": 131,
+    "area": 5704435.9350000005
+   },
+   "spring": {
+    "crossings_main": 22,
+    "crossings_all": 54,
+    "area": 4744073.700000003
+   },
+   "fdp": {
+    "crossings_main": 7,
+    "crossings_all": 26,
+    "area": 4905140.182500003
+   },
+   "dot": {
+    "crossings_main": 35,
+    "crossings_all": 96,
+    "area": 8440229.954999996
+   },
+   "neato": {
+    "crossings_main": 20,
+    "crossings_all": 72,
+    "area": 7333940.862500001
+   }
+  },
+  {
+   "subsystem": "pyrimidine-metabolism",
+   "layout": "neato",
+   "current": {
+    "crossings_main": 32,
+    "crossings_all": 77,
+    "area": 3738519.1849999996
+   },
+   "spring": {
+    "crossings_main": 15,
+    "crossings_all": 44,
+    "area": 3887846.4375
+   },
+   "fdp": {
+    "crossings_main": 22,
+    "crossings_all": 54,
+    "area": 4050336.472500001
+   },
+   "dot": {
+    "crossings_main": 11,
+    "crossings_all": 28,
+    "area": 7218359.2
+   },
+   "neato": {
+    "crossings_main": 8,
+    "crossings_all": 34,
+    "area": 4141929.15
+   }
+  },
+  {
+   "subsystem": "reductive-acetyl-coenzyme-A-pathway",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 1,
+    "area": 489035.06999999995
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 359496.61500000005
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 458072.67
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 576105.495
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 3,
+    "area": 443159.945
+   }
+  },
+  {
+   "subsystem": "serine-metabolism",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 553777.9099999999
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 591579.7799999999
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 511622.92500000005
+   },
+   "dot": {
+    "crossings_main": 3,
+    "crossings_all": 13,
+    "area": 560607.4850000001
+   },
+   "neato": {
+    "crossings_main": 1,
+    "crossings_all": 6,
+    "area": 560138.2875000001
+   }
+  },
+  {
+   "subsystem": "sulfate-reduction",
+   "layout": "neato",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 4,
+    "area": 355675.64999999997
+   },
+   "spring": {
+    "crossings_main": 2,
+    "crossings_all": 6,
+    "area": 342013.01
+   },
+   "fdp": {
+    "crossings_main": 1,
+    "crossings_all": 4,
+    "area": 376858.62000000005
+   },
+   "dot": {
+    "crossings_main": 3,
+    "crossings_all": 4,
+    "area": 428954.62500000006
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 407906.48250000004
+   }
+  },
+  {
+   "subsystem": "tetrahydrofolate-metabolism",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 1,
+    "area": 1143040.5
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 1143040.5
+   },
+   "fdp": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 1092747.2175
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 1264383.025
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 1,
+    "area": 1441400.8950000003
+   }
+  },
+  {
+   "subsystem": "threonine-metabolism",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 8,
+    "crossings_all": 10,
+    "area": 1035799.0750000001
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 5,
+    "area": 1073398.5724999998
+   },
+   "fdp": {
+    "crossings_main": 2,
+    "crossings_all": 5,
+    "area": 900526.3575000002
+   },
+   "dot": {
+    "crossings_main": 2,
+    "crossings_all": 4,
+    "area": 1026742.785
+   },
+   "neato": {
+    "crossings_main": 3,
+    "crossings_all": 3,
+    "area": 1508575.8025
+   }
+  },
+  {
+   "subsystem": "tryptophan-metabolism",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 2,
+    "crossings_all": 7,
+    "area": 874483.5625000001
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 3,
+    "area": 726480.6475000002
+   },
+   "fdp": {
+    "crossings_main": 5,
+    "crossings_all": 8,
+    "area": 616060.8300000001
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 1046609.8425000001
+   },
+   "neato": {
+    "crossings_main": 1,
+    "crossings_all": 3,
+    "area": 1484045.145
+   }
+  },
+  {
+   "subsystem": "ubiquinone-biosynthesis",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 9,
+    "area": 860076.3275000001
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 956955.4425000001
+   },
+   "fdp": {
+    "crossings_main": 1,
+    "crossings_all": 3,
+    "area": 1094775.1900000002
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 900654.5624999999
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 9,
+    "area": 1315048.9950000003
+   }
+  },
+  {
+   "subsystem": "valine-metabolism",
+   "layout": "fdp",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 1,
+    "area": 403803.33749999997
+   },
+   "spring": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 316805.13
+   },
+   "fdp": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 247469.26249999998
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 278094.2575
+   },
+   "neato": {
+    "crossings_main": 0,
+    "crossings_all": 0,
+    "area": 258243.69499999998
+   }
+  },
+  {
+   "subsystem": "vitamin-B1-metabolism",
+   "layout": "dot",
+   "current": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 1008413.55
+   },
+   "spring": {
+    "crossings_main": 1,
+    "crossings_all": 2,
+    "area": 942178.9650000001
+   },
+   "fdp": {
+    "crossings_main": 2,
+    "crossings_all": 7,
+    "area": 932242.1624999999
+   },
+   "dot": {
+    "crossings_main": 0,
+    "crossings_all": 2,
+    "area": 781939.785
+   },
+   "neato": {
+    "crossings_main": 1,
+    "crossings_all": 3,
+    "area": 926084.5425000001
+   }
+  },
+  {
+   "subsystem": "vitamin-B12-metabolism",
+   "layout": "spring",
+   "current": {
+    "crossings_main": 190,
+    "crossings_all": 216,
+    "area": 1210262.2875000003
+   },
+   "spring": {
+    "crossings_main": 63,
+    "crossings_all": 67,
+    "area": 1577792.9100000001
+   },
+   "fdp": {
+    "crossings_main": 92,
+    "crossings_all": 95,
+    "area": 1328399.0225000002
+   },
+   "dot": {
+    "crossings_main": 167,
+    "crossings_all": 173,
+    "area": 1958655.3950000003
+   },
+   "neato": {
+    "crossings_main": 79,
+    "crossings_all": 81,
+    "area": 1627547.67
+   }
+  },
+  {
+   "subsystem": "vitamin-B6-metabolism",
+   "layout": "neato",
+   "current": {
+    "crossings_main": 31,
+    "crossings_all": 58,
+    "area": 1030008.525
+   },
+   "spring": {
+    "crossings_main": 7,
+    "crossings_all": 19,
+    "area": 1061318.475
+   },
+   "fdp": {
+    "crossings_main": 8,
+    "crossings_all": 23,
+    "area": 1006929.2500000002
+   },
+   "dot": {
+    "crossings_main": 4,
+    "crossings_all": 6,
+    "area": 1482179.7749999997
+   },
+   "neato": {
+    "crossings_main": 2,
+    "crossings_all": 9,
+    "area": 1308918.5500000003
+   }
+  }
+ ],
+ "internal_before_condensing": {
+  "crossings_main": 226,
+  "crossings_all": 383,
+  "overlapping_nodes": 26,
+  "drawing_area": 145761604.14740083
+ },
+ "internal_after_condensing": {
+  "crossings_main": 250,
+  "crossings_all": 490,
+  "overlapping_nodes": 0,
+  "drawing_area": 71360561.57811238
+ },
+ "hubs_all": [
+  {
+   "key": 31,
+   "name": "pyruvate",
+   "subsystems": 24,
+   "links": 7
+  },
+  {
+   "key": 29,
+   "name": "acetyl-CoA",
+   "subsystems": 19,
+   "links": 9
+  },
+  {
+   "key": 147,
+   "name": "D-glyceraldehyde 3-phosphate",
+   "subsystems": 12,
+   "links": 4
+  },
+  {
+   "key": 87,
+   "name": "D-fructose 6-phosphate",
+   "subsystems": 8,
+   "links": 6
+  },
+  {
+   "key": 95,
+   "name": "L-Serine",
+   "subsystems": 8,
+   "links": 6
+  },
+  {
+   "key": 57,
+   "name": "oxaloacetate",
+   "subsystems": 8,
+   "links": 3
+  },
+  {
+   "key": 278,
+   "name": "dihydroxyacetone phosphate",
+   "subsystems": 8,
+   "links": 2
+  },
+  {
+   "key": 204,
+   "name": "Chorismate",
+   "subsystems": 7,
+   "links": 5
+  },
+  {
+   "key": 41,
+   "name": "L-glutamate",
+   "subsystems": 7,
+   "links": 2
+  },
+  {
+   "key": 37,
+   "name": "GTP",
+   "subsystems": 6,
+   "links": 4
+  },
+  {
+   "key": 170,
+   "name": "fumarate",
+   "subsystems": 6,
+   "links": 3
+  },
+  {
+   "key": 224,
+   "name": "succinyl-CoA",
+   "subsystems": 6,
+   "links": 3
+  },
+  {
+   "key": 90,
+   "name": "acetaldehyde",
+   "subsystems": 6,
+   "links": 1
+  },
+  {
+   "key": 17973,
+   "name": "UDP-alpha-N-acetyl-D-glucosamine",
+   "subsystems": 5,
+   "links": 4
+  },
+  {
+   "key": 47,
+   "name": "Acetate",
+   "subsystems": 5,
+   "links": 2
+  },
+  {
+   "key": 51,
+   "name": "phosphoenolpyruvate",
+   "subsystems": 5,
+   "links": 2
+  },
+  {
+   "key": 58,
+   "name": "succinate",
+   "subsystems": 5,
+   "links": 2
+  },
+  {
+   "key": 183,
+   "name": "D-ribose 5-phosphate",
+   "subsystems": 5,
+   "links": 1
+  },
+  {
+   "key": 443,
+   "name": "D-ribulose 5-phosphate",
+   "subsystems": 5,
+   "links": 1
+  },
+  {
+   "key": 72,
+   "name": "glycine",
+   "subsystems": 4,
+   "links": 3
+  },
+  {
+   "key": 1392,
+   "name": "(E,E)-farnesyl diphosphate",
+   "subsystems": 4,
+   "links": 2
+  },
+  {
+   "key": 10090,
+   "name": "2-phospho-(R)-glycerate",
+   "subsystems": 4,
+   "links": 2
+  },
+  {
+   "key": 103,
+   "name": "L-Alanine",
+   "subsystems": 4,
+   "links": 2
+  },
+  {
+   "key": 107,
+   "name": "alpha-D-glucose 1-phosphate",
+   "subsystems": 4,
+   "links": 2
+  },
+  {
+   "key": 440,
+   "name": "carbamoyl phosphate",
+   "subsystems": 4,
+   "links": 2
+  },
+  {
+   "key": 2454,
+   "name": "(R)-Glycerate",
+   "subsystems": 4,
+   "links": 1
+  },
+  {
+   "key": 829,
+   "name": "3-methyl-2-oxobutanoate",
+   "subsystems": 4,
+   "links": 1
+  },
+  {
+   "key": 644,
+   "name": "D-xylulose 5-phosphate",
+   "subsystems": 4,
+   "links": 1
+  },
+  {
+   "key": 517,
+   "name": "hexadecanoate",
+   "subsystems": 4,
+   "links": 1
+  },
+  {
+   "key": 43607,
+   "name": "6-phospho-gluconate",
+   "subsystems": 3,
+   "links": 2
+  },
+  {
+   "key": 105,
+   "name": "D-glucose 6-phosphate",
+   "subsystems": 3,
+   "links": 2
+  },
+  {
+   "key": "Fe2+ mitochondria",
+   "name": "Fe2+ mitochondria",
+   "subsystems": 3,
+   "links": 2
+  },
+  {
+   "key": 192,
+   "name": "L-ornithine",
+   "subsystems": 3,
+   "links": 2
+  },
+  {
+   "key": 130,
+   "name": "formaldehyde",
+   "subsystems": 3,
+   "links": 2
+  },
+  {
+   "key": 120,
+   "name": "formate",
+   "subsystems": 3,
+   "links": 2
+  },
+  {
+   "key": 604,
+   "name": "glycolaldehyde",
+   "subsystems": 3,
+   "links": 2
+  },
+  {
+   "key": 1263,
+   "name": "1-deoxy-D-xylulose 5-phosphate",
+   "subsystems": 3,
+   "links": 1
+  },
+  {
+   "key": 34,
+   "name": "2-oxoglutarate",
+   "subsystems": 3,
+   "links": 1
+  },
+  {
+   "key": 194,
+   "name": "3-phosphoglycerate",
+   "subsystems": 3,
+   "links": 1
+  },
+  {
+   "key": 597,
+   "name": "4-aminobutanoate",
+   "subsystems": 3,
+   "links": 1
+  }
+ ],
+ "anneal_seeds": [
+  {
+   "links": 0,
+   "crossings": 0,
+   "box_crossings": 0,
+   "link_length": 0.0,
+   "width": 12756.930000000002,
+   "height": 7819.0,
+   "area_ratio": 1.2335637145295866,
+   "cost": 107.28299494506508
+  },
+  {
+   "links": 0,
+   "crossings": 0,
+   "box_crossings": 0,
+   "link_length": 0.0,
+   "width": 12805.705000000002,
+   "height": 7727.0,
+   "area_ratio": 1.2237102721466895,
+   "cost": 106.58151408821847
+  },
+  {
+   "links": 0,
+   "crossings": 0,
+   "box_crossings": 0,
+   "link_length": 0.0,
+   "width": 12446.105000000001,
+   "height": 7980.0,
+   "area_ratio": 1.2282889712153016,
+   "cost": 106.94005730450043
+  },
+  {
+   "links": 0,
+   "crossings": 0,
+   "box_crossings": 0,
+   "link_length": 0.0,
+   "width": 12381.675000000003,
+   "height": 7952.0,
+   "area_ratio": 1.2176429878894364,
+   "cost": 106.04194143829746
+  }
+ ],
+ "arrangements": {
+  "original order (compacted)": {
+   "links": 0,
+   "crossings": 0,
+   "box_crossings": 0,
+   "link_length": 0.0,
+   "width": 20268.965000000007,
+   "height": 9085.5,
+   "area_ratio": 2.277427738433094
+  },
+  "original order (sequence pair packing)": {
+   "links": 0,
+   "crossings": 0,
+   "box_crossings": 0,
+   "link_length": 0.0,
+   "width": 23292.205000000005,
+   "height": 8353.5,
+   "area_ratio": 2.406264041726227
+  },
+  "packed": {
+   "links": 0,
+   "crossings": 0,
+   "box_crossings": 0,
+   "link_length": 0.0,
+   "width": 12381.675000000003,
+   "height": 7952.0,
+   "area_ratio": 1.2176429878894364,
+   "cost": 106.04194143829746
+  }
+ },
+ "log": [
+  "step 1: 115 of 193 subsystems have model reactions",
+  "step 1: removed 11 subsystems whose model reactions are a proper subset of another's; set aside 6 (rule B: 5, C: 1, D: 0)",
+  "step 2: removed 1041 of 1841 enzyme nodes without model reactions and 3125 metabolite nodes; 0 links bridged",
+  "step 3: added 297 of 791 candidate model reactions (not on the map, no boundary reactions, transporters) on 273 new enzyme nodes, 159 nodes of metabolites not on the map, 96 linked nodes of metabolites drawn in other subsystems",
+  "1 edges between subsystems: metabolite drawn in the subsystem of the enzyme node",
+  "step 3b: 59 subsystems with added reactions laid out again (spring, fdp, dot, neato): {'current': 7, 'spring': 13, 'fdp': 16, 'dot': 14, 'neato': 9}; crossings of main-metabolite links in them 1154 -> 250",
+  "split: 2 maps; 2 inter-pathway links between maps replaced by references on 3 metabolite nodes",
+  "pack: removed all 203 inter-pathway links"
+ ],
+ "routed_edges": 465,
+ "escher": {
+  "reactions": 1124,
+  "nodes": 6544,
+  "text_labels": 99,
+  "bigg_reactions": 1010
+ },
+ "final": {
+  "subsystems": 98,
+  "enzyme_nodes": 1033,
+  "main_metabolite_nodes": 1144,
+  "cofactor_nodes": 1891,
+  "edges": 4313,
+  "inter_pathway_links": 0,
+  "model_reactions": 1010,
+  "enzyme_nodes_on-map": 718,
+  "enzyme_nodes_vicinity": 42,
+  "enzyme_nodes_added": 273
+ },
+ "coverage": {
+  "reactions": 2712,
+  "boundary": 337,
+  "transporters": 768,
+  "other": 1607,
+  "drawn": 1010,
+  "drawn_from_map": 713,
+  "drawn_added": 297,
+  "drawn_other": 1010,
+  "coverage_other": 0.6285003111387679
+ },
+ "set_aside_map": {
+  "arrangement": {
+   "links": 0,
+   "crossings": 0,
+   "box_crossings": 0,
+   "link_length": 0.0,
+   "width": 2530.7850000000003,
+   "height": 1438.5,
+   "area_ratio": 1.3647300436261631,
+   "cost": 118.9858739765871
+  },
+  "routed_edges": 9,
+  "escher": {
+   "reactions": 45,
+   "nodes": 269,
+   "text_labels": 8,
+   "bigg_reactions": 38
+  },
+  "final": {
+   "subsystems": 6,
+   "enzyme_nodes": 40,
+   "main_metabolite_nodes": 52,
+   "cofactor_nodes": 78,
+   "edges": 160,
+   "inter_pathway_links": 0,
+   "model_reactions": 38,
+   "enzyme_nodes_on-map": 40
+  }
+ }
+}

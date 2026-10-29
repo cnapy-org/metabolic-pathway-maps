@@ -302,6 +302,36 @@ assign both EC numbers to them. The others are:
 `propagate` also accepts the D-lactaldehyde dehydrogenase on a methylglyoxal
 reductase node that produces L-lactaldehyde. e_coli_core gets no new matches.
 
+## Draft maps from the BRENDA map
+
+`ecmapper.draft_map` builds a draft map of a model from its matches to the
+BRENDA map: it keeps the subsystems and enzyme nodes with model reactions
+(subsystems that only repeat reactions drawn elsewhere are removed or set
+aside on a separate map),
+adds model reactions that connect drawn metabolites, lays out the
+subsystems with added reactions again (networkx and Graphviz layouts, the
+one with the fewest crossings is kept; `--circle` draws the cycle of named
+subsystems such as the citric acid cycle on a circle), condenses the
+subsystems and arranges them with few crossings of inter-pathway links
+(or, with `--pack`, packs them into as little space as possible and drops
+the inter-pathway links); edges that would pass through other nodes are
+routed around them. With `--split`, it makes a central map and
+auxiliary maps (one per BRENDA colour group) with references between them
+and an overview. It writes an SVG in the style of the BRENDA map, an Escher
+map (laid out like the SVG: straight main lines, curved cofactor branches)
+and box positions for CNApy (with `--split`: for each map).
+
+```bash
+python -m pip install -e "./ecmapper[draft-map]"   # numpy, scipy, numba, networkx, pygraphviz (includes Graphviz)
+cd ecmapper
+python -m ecmapper.draft_map.prepare iML1515.xml BRENDAmap/BRENDA_map_reactions.json iML1515_prep.pkl --subsystems iML1515.json
+python -m ecmapper.draft_map.run iML1515_prep.pkl BRENDAmap/BRENDA_map_reactions.json BRENDAmap/BRENDA_map.svg OUT --hub-subsystems 6
+```
+
+See [DRAFT_MAP.md](DRAFT_MAP.md) for the method, the options, a comparison
+of layout tools and the results for iML1515
+([BRENDAmap/draft_map_iML1515](BRENDAmap/draft_map_iML1515)).
+
 ## Limitations
 
 - The BiGGr namespace does not contain all legacy BiGG reactions, e.g. many
@@ -333,3 +363,6 @@ cd ecmapper
 pytest               # offline tests with excerpts of the resource files
 pytest -m network    # download the real files and map e_coli_core
 ```
+
+`tests/test_draft_map.py` is skipped without the `draft-map` dependencies
+(`pip install -e "./ecmapper[dev,draft-map]"`).
