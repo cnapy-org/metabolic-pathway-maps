@@ -1,0 +1,1168 @@
+{
+ "summary": {
+  "validation_ok": true,
+  "crossings": 1,
+  "dots_too_close": 0,
+  "lines_near_dots": 4,
+  "label_overlaps": 0,
+  "titles_on_lines": 0
+ },
+ "splits": [
+  [
+   "h2o_c",
+   "ATPS4rpp",
+   "1244",
+   "4098"
+  ],
+  [
+   "h2o_c",
+   "NTP1",
+   "1244",
+   "4099"
+  ],
+  [
+   "pi_c",
+   "ATPS4rpp",
+   "1245",
+   "4100"
+  ],
+  [
+   "pi_c",
+   "NTP1",
+   "1245",
+   "4101"
+  ],
+  [
+   "nadh_c",
+   "THD2pp",
+   "131",
+   "4102"
+  ],
+  [
+   "prpp_c",
+   "HXPRT",
+   "1689",
+   "4103"
+  ],
+  [
+   "ppi_c",
+   "HXPRT",
+   "1691",
+   "4104"
+  ],
+  [
+   "nh4_c",
+   "SERD_L",
+   "1726",
+   "4105"
+  ],
+  [
+   "h2o_c",
+   "NMNt7pp",
+   "221",
+   "4106"
+  ],
+  [
+   "r5p_c",
+   "NMNt7pp",
+   "222",
+   "4107"
+  ],
+  [
+   "o2_c",
+   "FDMO3",
+   "3428",
+   "4108"
+  ],
+  [
+   "o2_c",
+   "FDMO4",
+   "3428",
+   "4109"
+  ],
+  [
+   "o2_c",
+   "FDMO6",
+   "3428",
+   "4110"
+  ],
+  [
+   "h2o_c",
+   "FDMO3",
+   "3430",
+   "4111"
+  ],
+  [
+   "h2o_c",
+   "FDMO4",
+   "3430",
+   "4112"
+  ],
+  [
+   "h2o_c",
+   "FDMO6",
+   "3430",
+   "4113"
+  ],
+  [
+   "co2_c",
+   "CPPPGO",
+   "811",
+   "4114"
+  ],
+  [
+   "ade_c",
+   "AMPN",
+   "1676",
+   "4115"
+  ],
+  [
+   "r5p_c",
+   "AMPN",
+   "1894",
+   "4116"
+  ],
+  [
+   "ade_c",
+   "5DOAN",
+   "1676",
+   "4117"
+  ],
+  [
+   "2dr1p_c",
+   "PUNP4",
+   "1053",
+   "4118"
+  ],
+  [
+   "dcyt_c",
+   "DCYTD",
+   "2318",
+   "4119"
+  ],
+  [
+   "2dr1p_c",
+   "TMDPP",
+   "2346",
+   "4120"
+  ],
+  [
+   "dtdp_c",
+   "RHAT1",
+   "2516",
+   "4121"
+  ],
+  [
+   "dtdp_c",
+   "AADDGT",
+   "2516",
+   "4122"
+  ],
+  [
+   "glu__L_c",
+   "4ABZGLUH",
+   "672",
+   "4123"
+  ],
+  [
+   "ala__L_c",
+   "ALATA_L2",
+   "3261",
+   "4124"
+  ],
+  [
+   "pyr_c",
+   "ALATA_D2",
+   "3250",
+   "4125"
+  ],
+  [
+   "cu2_c",
+   "BMOCOS",
+   "3325",
+   "4126"
+  ],
+  [
+   "cu2_c",
+   "WCOS",
+   "3325",
+   "4127"
+  ],
+  [
+   "cu2_c",
+   "BWCOS",
+   "3325",
+   "4128"
+  ],
+  [
+   "mptamp_c",
+   "WCOS",
+   "912",
+   "4129"
+  ],
+  [
+   "mptamp_c",
+   "BWCOS",
+   "912",
+   "4130"
+  ],
+  [
+   "fmnh2_c",
+   "ARBTNR2",
+   "2872",
+   "4131"
+  ],
+  [
+   "fmn_c",
+   "ARBTNR2",
+   "2870",
+   "4132"
+  ],
+  [
+   "fe2_c",
+   "ARBTNR3",
+   "3274",
+   "4133"
+  ],
+  [
+   "fmnh2_c",
+   "CPGNR2",
+   "2872",
+   "4134"
+  ],
+  [
+   "fmn_c",
+   "CPGNR2",
+   "2870",
+   "4135"
+  ],
+  [
+   "fe2_c",
+   "CPGNR2",
+   "3274",
+   "4136"
+  ],
+  [
+   "fe2_c",
+   "CPGNR3",
+   "3274",
+   "4137"
+  ],
+  [
+   "rbflvrd_c",
+   "CPGNR3",
+   "3286",
+   "4138"
+  ],
+  [
+   "ribflv_c",
+   "CPGNR3",
+   "3287",
+   "4139"
+  ],
+  [
+   "fmnh2_c",
+   "FE3HOXR2",
+   "2872",
+   "4140"
+  ],
+  [
+   "fmn_c",
+   "FE3HOXR2",
+   "2870",
+   "4141"
+  ],
+  [
+   "fe2_c",
+   "FE3HOXR2",
+   "3274",
+   "4142"
+  ],
+  [
+   "fe2_c",
+   "FE3HOXR3",
+   "3274",
+   "4143"
+  ],
+  [
+   "rbflvrd_c",
+   "FE3HOXR3",
+   "3286",
+   "4144"
+  ],
+  [
+   "ribflv_c",
+   "FE3HOXR3",
+   "3287",
+   "4145"
+  ],
+  [
+   "fmnh2_c",
+   "FECRMR2",
+   "2872",
+   "4146"
+  ],
+  [
+   "fmn_c",
+   "FECRMR2",
+   "2870",
+   "4147"
+  ],
+  [
+   "fe2_c",
+   "FECRMR2",
+   "3274",
+   "4148"
+  ],
+  [
+   "fe2_c",
+   "FECRMR3",
+   "3274",
+   "4149"
+  ],
+  [
+   "rbflvrd_c",
+   "FECRMR3",
+   "3286",
+   "4150"
+  ],
+  [
+   "ribflv_c",
+   "FECRMR3",
+   "3287",
+   "4151"
+  ],
+  [
+   "fmnh2_c",
+   "FEENTERR2",
+   "2872",
+   "4152"
+  ],
+  [
+   "fmn_c",
+   "FEENTERR2",
+   "2870",
+   "4153"
+  ],
+  [
+   "fe2_c",
+   "FEENTERR2",
+   "3274",
+   "4154"
+  ],
+  [
+   "fe2_c",
+   "FEENTERR3",
+   "3274",
+   "4155"
+  ],
+  [
+   "rbflvrd_c",
+   "FEENTERR3",
+   "3286",
+   "4156"
+  ],
+  [
+   "ribflv_c",
+   "FEENTERR3",
+   "3287",
+   "4157"
+  ],
+  [
+   "fmnh2_c",
+   "FEOXAMR2",
+   "2872",
+   "4158"
+  ],
+  [
+   "fmn_c",
+   "FEOXAMR2",
+   "2870",
+   "4159"
+  ],
+  [
+   "fe2_c",
+   "FEOXAMR2",
+   "3274",
+   "4160"
+  ],
+  [
+   "fe2_c",
+   "FEOXAMR3",
+   "3274",
+   "4161"
+  ],
+  [
+   "rbflvrd_c",
+   "FEOXAMR3",
+   "3286",
+   "4162"
+  ],
+  [
+   "ribflv_c",
+   "FEOXAMR3",
+   "3287",
+   "4163"
+  ],
+  [
+   "fmnh2_c",
+   "FDMO",
+   "2872",
+   "4164"
+  ],
+  [
+   "fmn_c",
+   "FDMO",
+   "2870",
+   "4165"
+  ],
+  [
+   "fmnh2_c",
+   "FDMO2",
+   "2872",
+   "4166"
+  ],
+  [
+   "fmn_c",
+   "FDMO2",
+   "2870",
+   "4167"
+  ],
+  [
+   "so3_c",
+   "FDMO2",
+   "3413",
+   "4168"
+  ],
+  [
+   "fmnh2_c",
+   "FDMO3",
+   "2872",
+   "4169"
+  ],
+  [
+   "fmn_c",
+   "FDMO3",
+   "2870",
+   "4170"
+  ],
+  [
+   "so3_c",
+   "FDMO3",
+   "3413",
+   "4171"
+  ],
+  [
+   "fmnh2_c",
+   "FDMO4",
+   "2872",
+   "4172"
+  ],
+  [
+   "fmn_c",
+   "FDMO4",
+   "2870",
+   "4173"
+  ],
+  [
+   "so3_c",
+   "FDMO4",
+   "3413",
+   "4174"
+  ],
+  [
+   "fmnh2_c",
+   "FDMO6",
+   "2872",
+   "4175"
+  ],
+  [
+   "fmn_c",
+   "FDMO6",
+   "2870",
+   "4176"
+  ],
+  [
+   "so3_c",
+   "FDMO6",
+   "3413",
+   "4177"
+  ],
+  [
+   "fald_c",
+   "MTRPOX",
+   "3429",
+   "4178"
+  ]
+ ],
+ "merges": [
+  [
+   "mptamp_c",
+   "4129",
+   "4130"
+  ],
+  [
+   "gtp_c",
+   "1",
+   "527"
+  ],
+  [
+   "gtp_c",
+   "1",
+   "2566"
+  ],
+  [
+   "ahdt_c",
+   "3",
+   "2568"
+  ],
+  [
+   "dhnpt_c",
+   "29",
+   "3400"
+  ],
+  [
+   "6hmhptpp_c",
+   "53",
+   "2672"
+  ],
+  [
+   "25drapp_c",
+   "529",
+   "66"
+  ],
+  [
+   "4abz_c",
+   "2671",
+   "3199"
+  ],
+  [
+   "pnto__R_c",
+   "986",
+   "460"
+  ],
+  [
+   "gdp_c",
+   "1015",
+   "1041"
+  ],
+  [
+   "adocbip_c",
+   "2898",
+   "2910"
+  ],
+  [
+   "mlthf_c",
+   "1775",
+   "2646"
+  ],
+  [
+   "dscl_c",
+   "761",
+   "2843"
+  ],
+  [
+   "scl_c",
+   "764",
+   "2846"
+  ],
+  [
+   "cytd_c",
+   "2118",
+   "2448"
+  ],
+  [
+   "cmp_c",
+   "2120",
+   "2359"
+  ],
+  [
+   "csn_c",
+   "2157",
+   "2182"
+  ]
+ ],
+ "dropped_title_labels": [
+  "4083"
+ ],
+ "curves": {
+  "t": 0.6,
+  "bend": 55,
+  "bend_stack": 15,
+  "stacked": [
+   "1255",
+   "1275",
+   "182",
+   "2080",
+   "2092",
+   "2104",
+   "3074",
+   "3310",
+   "3322",
+   "3596",
+   "3847",
+   "633",
+   "826",
+   "839"
+  ],
+  "bend_override": {
+   "168": 0
+  },
+  "nested_arc_lanes": true
+ },
+ "packing": {
+  "before": [
+   24,
+   -514,
+   18338.6,
+   10976
+  ],
+  "after": [
+   -3878.4000000000005,
+   -1384.0,
+   9121.6,
+   5656.0
+  ],
+  "moves": [
+   {
+    "reactions": [
+     "ASPCT",
+     "CSND",
+     "CTPS2",
+     "CYTD",
+     "CYTDH",
+     "CYTDK2",
+     "CYTK1",
+     "CYTK2",
+     "DCTPD",
+     "DCYTD",
+     "DHORD2",
+     "DHORD5",
+     "DHORDfum",
+     "DHORTS",
+     "DTMPK",
+     "DURIK1",
+     "DURIPP",
+     "DUTPDP",
+     "NDPK2",
+     "NDPK3",
+     "NDPK4",
+     "NDPK6",
+     "NDPK7",
+     "NTD1",
+     "NTD3",
+     "NTD4",
+     "NTD5",
+     "NTPP3",
+     "NTPP4",
+     "NTPP7",
+     "OMPDC",
+     "ORPT",
+     "PYK6",
+     "PYNP2r",
+     "RNDR3",
+     "RNDR4",
+     "TMDK1",
+     "TMDPP",
+     "TMDS",
+     "UMPK",
+     "UMPK",
+     "UPPRT",
+     "URIH",
+     "URIK2"
+    ],
+    "dx": -8507,
+    "dy": -766
+   },
+   {
+    "reactions": [
+     "4ABZGLUH",
+     "ACP1_FMN",
+     "ADCL",
+     "ADCS",
+     "APRAUR",
+     "CCGS",
+     "CDGS",
+     "CPH4S",
+     "DB4PS",
+     "DHFR",
+     "DHFS",
+     "DHMPTR",
+     "DHNPA2r",
+     "DHNPTE",
+     "DHPPDA2",
+     "DHPS2",
+     "DHPTPE",
+     "DNMPPA",
+     "DNTPPA",
+     "FADRx2",
+     "FLVR",
+     "FLVRx",
+     "FMNAT",
+     "FTHFD",
+     "GARFT",
+     "GTPCI",
+     "GTPCI",
+     "GTPCII2",
+     "GTPCII2",
+     "HPPK2",
+     "PMDPHT",
+     "RBFK",
+     "RBFSa",
+     "RBFSb"
+    ],
+    "dx": -7844,
+    "dy": -1308
+   },
+   {
+    "reactions": [
+     "ASPO3",
+     "ASPO4",
+     "ASPO6",
+     "NADDP",
+     "NADK",
+     "NADN",
+     "NADPPPS",
+     "NADS1",
+     "NADTRHD",
+     "NADTRHD",
+     "NADTRHD",
+     "NAMNPP",
+     "NMNAT",
+     "NMNDA",
+     "NMNN",
+     "NMNt7pp",
+     "NNAM",
+     "NNATr",
+     "NNDPR",
+     "QULNS",
+     "THD2pp"
+    ],
+    "dx": -7298,
+    "dy": -284
+   },
+   {
+    "reactions": [
+     "4HTHRK",
+     "ALATA_D2",
+     "ALATA_L2",
+     "E4PD",
+     "HYPOE",
+     "OHPBAT",
+     "PDX5PO2",
+     "PDX5POi",
+     "PDX5PS",
+     "PDXPP",
+     "PERD",
+     "PYAM5PO",
+     "PYDAMK",
+     "PYDXK",
+     "PYDXNK",
+     "PYDXPP"
+    ],
+    "dx": -10453,
+    "dy": -2048
+   },
+   {
+    "reactions": [
+     "CPPPGO",
+     "CPPPGO2",
+     "FCLT",
+     "G1SAT",
+     "GLUTRR",
+     "GLUTRS",
+     "HEMEOS",
+     "HMBS",
+     "PPBNGS",
+     "PPPGO",
+     "PPPGO3",
+     "UPP3MT",
+     "UPP3S",
+     "UPPDC1"
+    ],
+    "dx": -8476,
+    "dy": -178
+   },
+   {
+    "reactions": [
+     "BMOCOS",
+     "CPMPS",
+     "MOCDS",
+     "MOCOS",
+     "MPTAT",
+     "MPTS"
+    ],
+    "dx": -14325,
+    "dy": -4216
+   },
+   {
+    "reactions": [
+     "DXPS",
+     "HETZK",
+     "TDP",
+     "THZPSN3",
+     "TMK",
+     "TMPK",
+     "TMPPP",
+     "TYRL"
+    ],
+    "dx": -20368,
+    "dy": -2724
+   },
+   {
+    "reactions": [
+     "DPCOAK",
+     "DPR",
+     "MOHMT",
+     "PANTS",
+     "PNTK",
+     "PPCDC",
+     "PPNCL2",
+     "PTPATi",
+     "TPRDCOAS"
+    ],
+    "dx": -12202,
+    "dy": -8198
+   },
+   {
+    "reactions": [
+     "AMMQLT8",
+     "DHNAOT4",
+     "DHNCOAS",
+     "DHNCOAT",
+     "ICHORS_copy1",
+     "ICHORS_copy2",
+     "SEPHCHCS",
+     "SHCHCS3",
+     "SUCBZL",
+     "SUCBZS"
+    ],
+    "dx": -10079,
+    "dy": -1624
+   },
+   {
+    "reactions": [
+     "GHMT2r",
+     "MTHFD",
+     "MTHFR2",
+     "SERD_D",
+     "SERD_L"
+    ],
+    "dx": -11655,
+    "dy": -9828
+   },
+   {
+    "reactions": [
+     "ACBIPGT",
+     "ADOCBIK",
+     "ADOCBLS",
+     "NNDMBRT",
+     "RZ5PP"
+    ],
+    "dx": -3661,
+    "dy": -3344
+   },
+   {
+    "reactions": [
+     "AMAOTr",
+     "AOXSr2",
+     "BTS5",
+     "DBTS"
+    ],
+    "dx": -5242,
+    "dy": -8078
+   },
+   {
+    "reactions": [
+     "ADPRDP",
+     "CMPN",
+     "PPM",
+     "YUMPS"
+    ],
+    "dx": 1098,
+    "dy": -3508
+   },
+   {
+    "reactions": [
+     "3KGK",
+     "ASCBPL",
+     "DOGULNR",
+     "KG6PDC"
+    ],
+    "dx": -8097,
+    "dy": -3084
+   },
+   {
+    "reactions": [
+     "SHCHD2",
+     "SHCHD2",
+     "SHCHF",
+     "UPP3MT",
+     "UPP3MT"
+    ],
+    "dx": -9227,
+    "dy": -3018
+   },
+   {
+    "reactions": [
+     "ARBTNR2",
+     "ARBTNR3"
+    ],
+    "dx": -229,
+    "dy": -6298
+   },
+   {
+    "reactions": [
+     "CPGNR2",
+     "CPGNR3"
+    ],
+    "dx": -2952,
+    "dy": -5018
+   },
+   {
+    "reactions": [
+     "FEENTERR2",
+     "FEENTERR3"
+    ],
+    "dx": -5632,
+    "dy": -3648
+   },
+   {
+    "reactions": [
+     "FECRMR2",
+     "FECRMR3"
+    ],
+    "dx": 3488,
+    "dy": -8328
+   },
+   {
+    "reactions": [
+     "FE3HOXR2",
+     "FE3HOXR3"
+    ],
+    "dx": -5552,
+    "dy": -8938
+   },
+   {
+    "reactions": [
+     "FEOXAMR2",
+     "FEOXAMR3"
+    ],
+    "dx": -7752,
+    "dy": -7280
+   },
+   {
+    "reactions": [
+     "FMNRx",
+     "FMNRx2"
+    ],
+    "dx": -3980,
+    "dy": -7511
+   },
+   {
+    "reactions": [
+     "NTD9pp"
+    ],
+    "dx": 879,
+    "dy": -7000
+   },
+   {
+    "reactions": [
+     "GDPDPK",
+     "GTPDPDP",
+     "GTPDPK",
+     "PPGPPDP"
+    ],
+    "dx": -3730,
+    "dy": -7871
+   },
+   {
+    "reactions": [
+     "AACPS9",
+     "OCTNLL"
+    ],
+    "dx": -7854,
+    "dy": -5707
+   },
+   {
+    "reactions": [
+     "BWCOS",
+     "WCOS"
+    ],
+    "dx": -14339,
+    "dy": -5350
+   },
+   {
+    "reactions": [
+     "FDMO"
+    ],
+    "dx": -6634,
+    "dy": -3360
+   },
+   {
+    "reactions": [
+     "RHAT1"
+    ],
+    "dx": -2471,
+    "dy": 250
+   },
+   {
+    "reactions": [
+     "FDMO2"
+    ],
+    "dx": 1177,
+    "dy": -6650
+   },
+   {
+    "reactions": [
+     "FDMO3"
+    ],
+    "dx": -2263,
+    "dy": -9460
+   },
+   {
+    "reactions": [
+     "FDMO6"
+    ],
+    "dx": -9023,
+    "dy": -10800
+   },
+   {
+    "reactions": [
+     "FDMO4"
+    ],
+    "dx": -3253,
+    "dy": -3470
+   },
+   {
+    "reactions": [
+     "AADDGT"
+    ],
+    "dx": -4404,
+    "dy": -4400
+   },
+   {
+    "reactions": [
+     "MTRPOX"
+    ],
+    "dx": -709,
+    "dy": -5420
+   },
+   {
+    "reactions": [
+     "ACKr",
+     "PTAr"
+    ],
+    "dx": -8885,
+    "dy": -9490
+   },
+   {
+    "reactions": [
+     "ICYSDS",
+     "SCYSDS"
+    ],
+    "dx": 366,
+    "dy": -6410
+   },
+   {
+    "reactions": [
+     "5DOAN"
+    ],
+    "dx": 1705,
+    "dy": -220
+   },
+   {
+    "reactions": [
+     "LIPAMPL",
+     "LIPATPT"
+    ],
+    "dx": -9824,
+    "dy": -9150
+   },
+   {
+    "reactions": [
+     "NTD5pp"
+    ],
+    "dx": 320,
+    "dy": -5720
+   },
+   {
+    "reactions": [
+     "GAL1PPpp"
+    ],
+    "dx": -1720,
+    "dy": -6160
+   },
+   {
+    "reactions": [
+     "NTD7pp"
+    ],
+    "dx": -760,
+    "dy": -5160
+   },
+   {
+    "reactions": [
+     "NTD3pp"
+    ],
+    "dx": -2640,
+    "dy": -5580
+   },
+   {
+    "reactions": [
+     "NTD10pp"
+    ],
+    "dx": -1640,
+    "dy": -5280
+   },
+   {
+    "reactions": [
+     "NTD11pp"
+    ],
+    "dx": -800,
+    "dy": -5560
+   },
+   {
+    "reactions": [
+     "NTD4pp"
+    ],
+    "dx": 2440,
+    "dy": -6300
+   },
+   {
+    "reactions": [
+     "ACP1p"
+    ],
+    "dx": 1840,
+    "dy": -6820
+   },
+   {
+    "reactions": [
+     "NTD1pp"
+    ],
+    "dx": 640,
+    "dy": -7060
+   },
+   {
+    "reactions": [
+     "NTD6pp"
+    ],
+    "dx": -5080,
+    "dy": -6280
+   },
+   {
+    "reactions": [
+     "NTD8pp"
+    ],
+    "dx": -480,
+    "dy": -7880
+   }
+  ]
+ },
+ "title_nudges": [],
+ "canvas": {
+  "x": -4032.4000000000005,
+  "y": -1534.0,
+  "width": 13304.0,
+  "height": 7344.0
+ }
+}
