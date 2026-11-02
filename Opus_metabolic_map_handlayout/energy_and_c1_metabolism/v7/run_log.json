@@ -1,0 +1,188 @@
+{
+ "summary": {
+  "validation_ok": true,
+  "crossings": 2,
+  "dots_too_close": 0,
+  "lines_near_dots": 0,
+  "label_overlaps": 0,
+  "titles_on_lines": 0
+ },
+ "splits": [
+  [
+   "h2o_c",
+   "ECOAH1",
+   "41",
+   "595"
+  ],
+  [
+   "nadh_c",
+   "HACD1",
+   "61",
+   "596"
+  ],
+  [
+   "nad_c",
+   "HACD1",
+   "62",
+   "597"
+  ]
+ ],
+ "merges": [
+  [
+   "for_c",
+   "151",
+   "227"
+  ]
+ ],
+ "dropped_title_labels": [],
+ "curves": {
+  "t": 0.6,
+  "bend": 55,
+  "bend_stack": 15,
+  "stacked": [
+   "190",
+   "202",
+   "459",
+   "471",
+   "483"
+  ],
+  "bend_override": {},
+  "nested_arc_lanes": true
+ },
+ "packing": {
+  "before": [
+   -702.0,
+   -336.7714535251703,
+   5533.6,
+   3991.845700514164
+  ],
+  "after": [
+   -900,
+   -700,
+   5601,
+   4201
+  ],
+  "moves": [
+   {
+    "reactions": [
+     "ACACT1r",
+     "ACCOAC",
+     "ECOAH1",
+     "ECOAH1",
+     "HACD1",
+     "HACD1"
+    ],
+    "dx": -2,
+    "dy": 16
+   },
+   {
+    "reactions": [
+     "ARGSL",
+     "ARGSS",
+     "CBMKr",
+     "OCBT"
+    ],
+    "dx": 5,
+    "dy": -12
+   },
+   {
+    "reactions": [
+     "CHRPL",
+     "HBZOPT",
+     "OCTDPS",
+     "OHPHM",
+     "OMPHHXy",
+     "OPHBDC",
+     "OPHHX3",
+     "OPHHXy"
+    ],
+    "dx": -5,
+    "dy": 4
+   },
+   {
+    "reactions": [
+     "DHGLYH",
+     "GLXCL",
+     "GLYCLTDx",
+     "GLYCLTDy",
+     "GLYCTO2",
+     "GLYCTO3",
+     "GLYCTO4"
+    ],
+    "dx": 7,
+    "dy": -6
+   },
+   {
+    "reactions": [
+     "DMQMT",
+     "OMMBLHX3",
+     "OMMBLHXy"
+    ],
+    "dx": 6,
+    "dy": 4
+   },
+   {
+    "reactions": [
+     "CAT"
+    ],
+    "dx": 16,
+    "dy": 4
+   },
+   {
+    "reactions": [
+     "GHBDHx"
+    ],
+    "dx": 171,
+    "dy": 158
+   },
+   {
+    "reactions": [
+     "GLYCK"
+    ],
+    "dx": -4,
+    "dy": 18
+   },
+   {
+    "reactions": [
+     "PCNO"
+    ],
+    "dx": 1,
+    "dy": -2
+   },
+   {
+    "reactions": [
+     "MSAR"
+    ],
+    "dx": -11,
+    "dy": 16
+   },
+   {
+    "reactions": [
+     "MMM"
+    ],
+    "dx": 52,
+    "dy": 9
+   }
+  ]
+ },
+ "title_nudges": [
+  [
+   "CO2 fixation in Crenarchaeota (3-hydroxypropionate/4-hydroxybutyrate cycle)",
+   -52,
+   -193,
+   true
+  ],
+  [
+   "methane metabolism",
+   -69,
+   40,
+   true
+  ]
+ ],
+ "canvas": {
+  "x": -870.0,
+  "y": -550.7289870407892,
+  "width": 6560.0,
+  "height": 4698.728987040789
+ }
+}
