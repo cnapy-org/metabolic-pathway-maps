@@ -6,15 +6,15 @@ This is a hand-laid-out Escher map of
 
 **Files**
 - `spec.py`: the hand coordinates, commented per zone.
-- `v6/nucleotides_and_cofactors.escher_final.json`: the final Escher map.
-- `v6/qa_report.md` and `v6/run_log.json`: QA report and run log of the final run.
-- `v6/overview.png`: a matplotlib preview. It is not an Escher rendering.
+- `v7/nucleotides_and_cofactors.escher_final.json`: the final Escher map.
+- `v7/qa_report.md` and `v7/run_log.json`: QA report and run log of the final run.
+- `v7/overview.png`: a matplotlib preview. It is not an Escher rendering.
 - `inspect/`: the Phase 0 report and the generated skeleton.
 
 **Reproduce**
 
 ```bash
-PYTHONPATH=../escher_handlayout_toolkit python -m escher_handlayout run spec.py --out v6 --render
+PYTHONPATH=../escher_handlayout_toolkit python -m escher_handlayout run spec.py --out v7 --render
 ```
 
 ## Counts
@@ -25,7 +25,7 @@ PYTHONPATH=../escher_handlayout_toolkit python -m escher_handlayout run spec.py 
 | nodes | 1825 | 1889 |
 | metabolite nodes | 910 | 974 |
 | text labels | 51 (18 titles, 33 exit labels) | 54 (21 titles, 33 exit labels) |
-| canvas | 12976 × 8246 | 13304 × 7344 |
+| canvas | 12976 × 8246 | 17728 × 10406 |
 
 Nodes go up because of the changes below. Primary-node splits that are later merged back count
 twice in the run log, so the totals there do not simply add up.
@@ -33,8 +33,9 @@ twice in the run log, so the totals there do not simply add up.
 - **My primary-node splits:** listed under Decisions; `run_log.json` lists all 81 splits.
 - **Merges:** 17 merges remove nodes again.
 
-**Area:** 18315 × 11490 before packing and 13000 × 7040 after packing. That is 91.5 M map units², the
-draft canvas was 107 M.
+**Area:** 17428 × 10083 = 175.7 M map units² (canvas 17728 × 10406 with margin). The draft canvas
+was 107 M. v6 reached 91.5 M (canvas 13304 × 7344) with automatic packing, but only by dropping small
+pieces into holes of other zones (see "Global arrangement").
 **Curvature:** t = 0.6, the default.
 
 ## Zones (subsystems)
@@ -79,8 +80,23 @@ vitamin B12, ascorbate and lipoate.
 - **Heme:** a straight column from Glu-tRNA to protoheme and heme O, with the siroheme branch on the
   right.
 - **Small pathways (B6, B1, K, MoCo, CoA, biotin, ppGpp, B12, ascorbate, lipoate):** chains, snakes or
-  hourglasses. Every piece that is not connected to anything else was placed by the packer (Phase 5).
-  Zone titles are anchored to a node, so they travel with their piece.
+  hourglasses. Zone titles are anchored to a node of their zone.
+
+## Global arrangement (hand-chosen, since v7)
+Every zone and every detached piece is placed by hand (`ORIGIN`). `PACK = dict(mode='keep')` turns
+automatic packing off; the QA report confirms that no two pieces overlap. In v6 the packer had placed
+49 detached pieces wherever they fit, so e.g. the flavin-reductase rows were scattered over the whole
+map and several titles sat far from their pieces.
+
+| column | contents (top → bottom) |
+|---|---|
+| A | pyrimidine; vitamin B6 + vitamin B1; pantothenate/CoA + lipoate; vitamin K + biotin |
+| B | purine, with the periplasmic nucleotidases + acetate kinase/PTA in its empty upper-left corner and serine/one-carbon + ppGpp in its upper-right corner (ppGpp next to GTP/GDP, serine/C1 next to THF in column C); below purine the flavin-reductase block |
+| C | GTP-derived cofactors around the shared GTP node (pterin + THF above, riboflavin/FMN/FAD below); molybdenum cofactor below |
+| D | NAD; heme; vitamin B12; ascorbate |
+
+The flavin-reductase zone is a compact grid: FMNRx top left, the 6 siderophore rows as 2 rows × 3
+columns, the 5 sulfonate monooxygenases as one column on the right, MTRPOX below.
 
 ## Decisions
 
@@ -144,8 +160,10 @@ pathways:
   - NTD5 passes TMDK1's ATP/ADP dots (27); these are neighbouring lanes.
 - **Large bulges:** the bypass lanes (ADPT, HXPRT, XPPT, GUAPRT, UPPRT, CYTK2, NTPTP1) and the PYK6
   hourglass draw as large curves. This is readable but bulky.
-- **Packing:** the packer moves almost every small piece, so the global position of the small cofactor
-  pathways is the packer's choice, not a hand choice. Titles move with their pieces.
+- **Area:** 175.7 M, 1.9× the packed v6 (91.5 M). Keeping each zone together leaves white space
+  (e.g. right of the flavin-reductase block, between purine and the GTP column, under column A), and the
+  small zones in the purine corners are the only nesting. A target of ≤ 1.3× v6 was not reachable
+  without putting pieces of one zone into holes of another.
 - **Estimates:** text widths and the QA heuristics are estimates.
 - **No dots closer than 45 units**, no overlapping label boxes and no titles on lines.
 

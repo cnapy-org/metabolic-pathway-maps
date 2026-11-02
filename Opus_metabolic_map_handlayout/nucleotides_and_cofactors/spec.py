@@ -1,8 +1,9 @@
 """SPEC - iML1515 'nucleotides and cofactors' split map (BRENDA draft, 305 reactions) -> hand layout.
 
 Every coordinate of a PRIMARY metabolite below was chosen by hand (zone-local coordinates, x right,
-y DOWN, ~300-700 between neighbours). The toolkit only places markers/cofactors, curves, labels and
-packs the detached pieces (most cofactor pathways are not connected to each other).
+y DOWN, ~300-700 between neighbours). The global arrangement is hand-chosen too (ORIGIN): every
+zone and every detached piece stays where it is placed (PACK mode 'keep'). The toolkit only places
+markers/cofactors, curves and labels.
 
 Zones
   PUR  purine metabolism: NMP row AMP-IMP-XMP-GMP, nucleosides below, bases below that,
@@ -93,12 +94,19 @@ MERGES = [('1', ['527', '2566']),        # GTP: pterin, THF (queuosine) and flav
           ('2118', ['2448']), ('2120', ['2359']), ('2157', ['2182'])]  # cytd, cmp, csn
 HUBS = ['1', '1303', '1362', '1330', '2146', '80', '1153', '1243']
 
-ORIGIN = {'PUR': (2700, 4000), 'PYR': (7100, 1000), 'NAD': (12600, 300),
-          'PTE': (14700, 3300), 'THF': (14700, 3300), 'FLAV': (14700, 3300),
-          'HEME': (17000, 300), 'B6': (8300, 5600), 'FRED': (300, 6900),
-          'VK': (10400, 6600), 'MOCO': (12000, 3700), 'B1': (17100, 5000), 'COA': (13600, 7500),
-          'BIO': (10400, 7400), 'PPG': (6200, 8000), 'B12': (11300, 8200), 'ASC': (13600, 8500),
-          'LIP': (15600, 8400), 'ACE': (17000, 8400), 'C1': (12000, 9300), 'PERI': (6400, 9200)}
+ORIGIN = {
+    # column A: pyrimidine, below it B6 + B1, then CoA + lipoate, vitamin K + biotin
+    'PYR': (1000, 901), 'B6': (1275, 5220), 'B1': (3679, 5270),
+    'COA': (200, 7885), 'LIP': (3740, 7885), 'VK': (200, 9054), 'BIO': (2459, 9234),
+    # column B: purine; its two empty corners above the NTP rows hold related small zones
+    'PUR': (7816, 4614),
+    'PERI': (5313, 694), 'ACE': (5241, 2940),          # upper left corner
+    'C1': (10764, 1144), 'PPG': (9700, 2394),          # upper right corner, next to GTP / THF
+    'FRED': (5322, 7333),                              # below purine
+    # column C: GTP-derived cofactors (pterin + THF above GTP, flavins below), MoCo below
+    'PTE': (13570, 3350), 'THF': (13570, 3350), 'FLAV': (13570, 3350), 'MOCO': (13749, 7319),
+    # column D: NAD, heme, B12, ascorbate
+    'NAD': (16620, 444), 'HEME': (15819, 3653), 'B12': (15295, 8522), 'ASC': (15295, 10031)}
 
 
 def layout(L):
@@ -268,19 +276,21 @@ def layout(L):
         R(rid, Z, side='U', axis=(-1, 0), mid=(x, 2300), gap=40)
 
     # ======================================================================== FRED flavin reductases
+    # compact grid: FMNRx pair top left, 6 siderophore rows in 2 rows x 3 columns, the 5 sulfonate
+    # monooxygenases as one column on the right, MTRPOX below the siderophore block
     pos = {'2870': (0, 0), '2872': (600, 0)}
     for i, (r2, r3, xf, xu) in enumerate(SIDERO):
-        x0, y0 = 1800*(i % 3), 1050 + 950*(i // 3)
+        x0, y0 = 1700*(i % 3), 800 + 950*(i // 3)
         pos.update({xf: (x0, y0), xu: (x0+1000, y0),
                     S['fmnh2_'+r2]: (x0, y0-300), S['fmn_'+r2]: (x0+1000, y0-330),
                     S.get('fe2_'+r2, '3274'): (x0+1250, y0-170),
                     S.get('rbflvrd_'+r3, '3286'): (x0, y0+300), S.get('ribflv_'+r3, '3287'): (x0+1000, y0+330),
                     S['fe2_'+r3]: (x0+1250, y0+170)})
     for i, (rid, x, a) in enumerate(FDMO):
-        x0, y0 = 5600, 250 + 650*i
+        x0, y0 = 5100, 100 + 650*i
         pos.update({x: (x0, y0), S['fmnh2_'+rid]: (x0, y0-250), a: (x0+1000, y0),
                     S['fmn_'+rid]: (x0+1000, y0-250), S.get('so3_'+rid, '3413'): (x0+1250, y0-125)})
-    pos.update({'3650': (5600, 3600), S['fald_M']: (6600, 3450), '3654': (6600, 3750)})
+    pos.update({'3650': (0, 2650), S['fald_M']: (1000, 2500), '3654': (1000, 2800)})
     L.setp('FRED', pos)
     Z = 'FRED'
     R('2883', Z, shift=(0, -75), side='U', dist=100); R('2895', Z, shift=(0, 75), side='D', dist=100)  # FMNRx x2
@@ -406,5 +416,5 @@ CURVES = dict(t=0.6, bend=55, bend_stack=15,
               stacked=['1255', '1275', '2080', '2092', '2104', '182', '3310', '3322', '633', '3596',
                        '826', '839', '3074', '3847'],
               bend_override={'168': 0}, special_links={('1344', '1303'): (1, -1)})
-PACK = dict(keep_out=[], auto_ring_keep_out=True)
+PACK = dict(mode='keep')        # hand arrangement (ORIGIN); no automatic packing
 RENDER_SCALE = 0.25
