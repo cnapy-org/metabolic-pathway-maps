@@ -1,0 +1,398 @@
+# Phase 0 report
+
+- reactions 159, nodes 924 {'metabolite': 447, 'midmarker': 159, 'multimarker': 318}, text labels 30
+- metabolite nodes: 178 primary, 269 secondary; canvas {'x': -145, 'y': -200, 'width': 9556, 'height': 6910}
+
+## Titles
+- `2084` 'arachidonate biosynthesis' at (6141, 4525)
+- `2085` 'isoprenoid biosynthesis' at (3742, 0)
+- `2086` 'lipid A biosynthesis' at (2108, 3058)
+- `2087` 'lipid metabolism' at (6879, 0)
+- `2088` 'mevalonate metabolism' at (8408, 4525)
+- `2089` 'palmitate biosynthesis' at (1380, 0)
+- `2090` 'teichoic acid biosynthesis' at (310, 2529)
+
+## Subsystem proposal (primary-node components -> nearest title). CHECK IT.
+- **lipid metabolism** (`2087`, dist 94) n=46: KAS15#349, ALCD19#363, MCOATA#388, ACCOAC#405, MACPD#416, G3PD2#430, ACOATA#442, ECOAH2#470, HACD2#483, ECOAH1#495, ECOAH1#504, ACOAD7f#518, ECOAH2#540, ACOAD7f#552, FACOAL161t2pp#570, ACOAD1f#583, ACOAD1f#595, ACOAD1f#607, ACOAD2f#620, ACOAD2f#632, ACACT2r#644, FACOAL60t2pp#661, FACOAE60#674, FACOAL160t2pp#691, FACOAE160#704, ACACT3r#1059, ACACT4r#1072, ACACT8r#1084, ACOAD1fr#1096, CTECOAI7#1104, FACOAE161#1153, G3PT#1191, GAPP#1204, HXCT#1215, KAS14#1228, LPLIPAL1A161pp#1283, LPLIPAL2A161#1295, OGMEACPS#1438, PLIPA1A161pp#1490, PLIPA2A161pp#1609, APG3PAT161#1768, APH161#1805, G3PAT161#1829, TDPADGAT#1950, 3OAS181#1980, AACPS4#1996
+- **lipid A biosynthesis** (`2086`, dist 94) n=26: EDTXS1#204, MOAT2#217, UAGAAT#231, UHGADA#244, U23GAAT#257, EDTXS2#270, MOAT#283, HEPT1#296, LPADSS#309, USHD#321, TDSK#333, LPLIPAL2G160#1384, LPLIPAL2G161#1397, LPLIPAL2G181#1409, 2AGPEAT161#1669, 2AGPEAT181#1686, 2AGPGAT160#1702, 2AGPGAT161#1718, 2AGPGAT181#1731, LPLIPAL2E160#1877, LPLIPAL2E161#1888, LPLIPAL2E181#1899, MOAT3C#1912, 2AGPEAT160#1966, EDTXS3#2037, FA161ACPHi#2049
+- **arachidonate biosynthesis** (`2084`, dist 94) n=20: FA160ACPHi#14, FACOAL181t2pp#70, FACOAE181#1166, G3PAT160#1179, LPLIPAL1A160pp#1270, LPLIPAL1A181pp#1307, LPLIPAL2A181#1319, LPLIPAL2A160#1370, PLIPA1A160pp#1477, PLIPA1A181pp#1503, PLIPA2A160pp#1598, PLIPA2A181pp#1620, AGPAT160#1743, APG3PAT160#1755, APG3PAT181#1781, APH160#1793, APH181#1817, G3PAT181#1841, AACPS5#2012, ACPPAT160#2024
+- **lipid A biosynthesis** (`2086`, dist 111) n=20: LPLIPAL1G160pp#1333, LPLIPAL1G161pp#1346, LPLIPAL1G181pp#1358, PETNT161pp#1452, PETNT181pp#1464, PLIPA1E161pp#1515, PLIPA2E161pp#1526, PLIPA1E181pp#1538, PLIPA2E181pp#1549, PLIPA1G160pp#1562, PLIPA1G161pp#1575, PLIPA1G181pp#1587, PLIPA2G160pp#1631, PLIPA2G161pp#1642, PLIPA2G181pp#1652, LPLIPAL1E161pp#1853, LPLIPAL1E181pp#1864, PLIPA1E160pp#1925, PLIPA2E160pp#1937, LPLIPAL1E160pp#2060
+- **palmitate biosynthesis** (`2089`, dist 420, LOW CONFIDENCE) n=11: 3HAD140#924, EAR140x#937, 3OAS160#952, FA160ACPHi#966, EAR160x#979, 3HAD160#990, 3OAR160#1002, 3OAS180#1031, AACPS3#1047, EAR140y#1116, EAR160y#1128
+- **isoprenoid biosynthesis** (`2085`, dist 94) n=10: DXPS#84, DXPRIi#97, MEPCT#110, CDPMEK#123, MECDPS#134, DMPPS#150, IPDPS#164, DMATT#177, GRTT#190, MECDPDH5#1423
+- **palmitate biosynthesis** (`2089`, dist 686, LOW CONFIDENCE) n=8: 3OAS60#742, 3OAR60#769, 3HAD60#780, EAR60x#793, 3OAS80#808, 3HAD80#836, 3OAR80#848, EAR60y#1140
+- **arachidonate biosynthesis** (`2084`, dist 761, LOW CONFIDENCE) n=3: 3OAR180#28, EAR180x#42, 3HAD180#52
+- **palmitate biosynthesis** (`2089`, dist 210) n=3: 3OAS100#824, 3OAR100#861, 3HAD100#872
+- **palmitate biosynthesis** (`2089`, dist 359, LOW CONFIDENCE) n=3: 3OAS120#888, 3HAD120#900, 3OAR120#912
+- **isoprenoid biosynthesis** (`2085`, dist 2408, LOW CONFIDENCE) n=2: 3OAS121#458, 3OAR121#531
+- **arachidonate biosynthesis** (`2084`, dist 1932, LOW CONFIDENCE) n=1: 3HAD100#375
+- **mevalonate metabolism** (`2088`, dist 213) n=1: IPDDI#714
+- **mevalonate metabolism** (`2088`, dist 245) n=1: ACACT1r#726
+- **palmitate biosynthesis** (`2089`, dist 1177, LOW CONFIDENCE) n=1: 3OAR40#756
+- **teichoic acid biosynthesis** (`2090`, dist 94) n=1: ACGAMT#1016
+- **arachidonate biosynthesis** (`2084`, dist 674, LOW CONFIDENCE) n=1: LIPAHT2ex#1242
+- **lipid A biosynthesis** (`2086`, dist 234) n=1: LIPAHTex#1256
+
+## Components over all shared nodes (draft as is): [46, 26, 20, 20, 11, 10, 8, 3, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1]
+
+## Shared secondary nodes (split automatically, one per reaction)
+- h2o_c `137`: ['DMPPS', 'IPDPS']
+- h2o_c `460`: ['ECOAH2', 'ECOAH2']
+- h2o_c `486`: ['ECOAH1', 'ECOAH1']
+- h2o_p `1335`: ['LPLIPAL1G161pp', 'LPLIPAL1G181pp']
+- h2o_c `1386`: ['LPLIPAL2G161', 'LPLIPAL2G181']
+- h2o_p `1504`: ['PLIPA1E161pp', 'PLIPA2E161pp']
+- h2o_p `1527`: ['PLIPA1E181pp', 'PLIPA2E181pp']
+- h2o_p `1563`: ['PLIPA1G161pp', 'PLIPA1G181pp']
+- h2o_p `1632`: ['PLIPA2G161pp', 'PLIPA2G181pp']
+- atp_c `1703`: ['2AGPGAT161', '2AGPGAT181']
+- amp_c `1704`: ['2AGPGAT161', '2AGPGAT181']
+- ppi_c `1706`: ['2AGPGAT161', '2AGPGAT181']
+
+## Duplicate reactions (keep; draw as lanes)
+- FA160ACPHi: ['14', '966']
+- 3HAD100: ['375', '872']
+- ECOAH2: ['470', '540']
+- ECOAH1: ['495', '504']
+- ACOAD7f: ['518', '552']
+- ACOAD1f: ['583', '595', '607']
+- ACOAD2f: ['620', '632']
+
+## Families between the same primary metabolites
+- ['hdca_c', 'palmACP_c']: [('FA160ACPHi', '14'), ('FA160ACPHi', '966'), ('AACPS3', '1047')]
+- ['3hdecACP_c', 'tdec2eACP_c']: [('3HAD100', '375'), ('3HAD100', '872')]
+- ['3ocddec5eACP_c']: [('3OAS121', '458'), ('3OAR121', '531')]
+- ['3hhcoa_c', 'hx2coa_c']: [('ECOAH2', '470'), ('ECOAH2', '540')]
+- ['3hbcoa_c', 'b2coa_c']: [('ECOAH1', '495'), ('ECOAH1', '504')]
+- ['hdd2coa_c', 'pmtcoa_c']: [('ACOAD7f', '518'), ('ACOAD7f', '552')]
+- ['b2coa_c', 'btcoa_c']: [('ACOAD1f', '583'), ('ACOAD1f', '595'), ('ACOAD1f', '607'), ('ACOAD1fr', '1096')]
+- ['hx2coa_c', 'hxcoa_c']: [('ACOAD2f', '620'), ('ACOAD2f', '632')]
+- ['hexACP_c', 'thex2eACP_c']: [('EAR60x', '793'), ('EAR60y', '1140')]
+- ['myrsACP_c', 'tmrs2eACP_c']: [('EAR140x', '937'), ('EAR140y', '1116')]
+- ['palmACP_c', 'tpalm2eACP_c']: [('EAR160x', '979'), ('EAR160y', '1128')]
+- ['hdcea_c', 'hdeACP_c']: [('AACPS4', '1996'), ('FA161ACPHi', '2049')]
+
+## Primary metabolites drawn as several nodes (merge candidates)
+- palmACP_c: ['2', '954']
+- hdca_c: ['4', '694', '956', '1374']
+- ocdcea_p: ['55', '1348']
+- g3p_c: ['71', '1192']
+- dmpp_c: ['136', '706']
+- ipdp_c: ['151', '705']
+- uacgam_c: ['218', '1003']
+- malACP_c: ['335', '1017']
+- actACP_c: ['336', '743']
+- 3hdecACP_c: ['364', '850']
+- tdec2eACP_c: ['366', '863']
+- accoa_c: ['389', '715']
+- glyc3p_c: ['417', '1167']
+- hdcea_p: ['555', '1336']
+- hdca_p: ['677', '1260', '1323']
+- hdcea_c: ['1143', '1387']
+- ocdcea_c: ['1156', '1399']
+- hdca_e: ['1230', '1243']
+- glyc3p_p: ['1259', '1273']
+- hdeACP_c: ['1818', '2025']
+
+## Primaries > 900 units from their reaction
+- FACOAL161t2pp#570: hdcoa_c `557` 1151
+- ACOAD2f#632: hx2coa_c `461` 1013
+- FACOAE161#1153: hdcoa_c `557` 1449
+- KAS14#1228: acACP_c `406` 1063
+- LPLIPAL1G160pp#1333: hdca_p `1323` 912
+- LPLIPAL1G161pp#1346: hdcea_p `1336` 1120
+- LPLIPAL1G181pp#1358: ocdcea_p `1348` 1080
+- OGMEACPS#1438: malACP_c `335` 1024
+- PETNT161pp#1452: 12dgr161_p `1441` 934
+- PLIPA1G161pp#1575: 2agpg161_p `1565` 1007
+- PLIPA1G181pp#1587: 2agpg181_p `1577` 961
+- APH160#1793: hdca_c `4` 966
+- PLIPA2E160pp#1937: pe160_p `1914` 1016
+- EDTXS3#2037: hdeACP_c `2025` 914
+
+## In stoichiometry but not drawn (usually protons; leave as is)
+- FA160ACPHi#14: ['h_c']
+- 3OAR180#28: ['h_c']
+- EAR180x#42: ['h_c']
+- FACOAL181t2pp#70: ['h_c', 'h_p']
+- DXPS#84: ['h_c']
+- DXPRIi#97: ['h_c']
+- MEPCT#110: ['h_c']
+- CDPMEK#123: ['h_c']
+- DMPPS#150: ['h_c']
+- IPDPS#164: ['h_c']
+- MOAT2#217: ['h_c']
+- U23GAAT#257: ['h_c']
+- MOAT#283: ['h_c']
+- HEPT1#296: ['h_c']
+- LPADSS#309: ['h_c']
+- USHD#321: ['h_c']
+- TDSK#333: ['h_c']
+- KAS15#349: ['h_c']
+- ALCD19#363: ['h_c']
+- ACCOAC#405: ['h_c']
+- MACPD#416: ['h_c']
+- G3PD2#430: ['h_c']
+- 3OAS121#458: ['h_c']
+- HACD2#483: ['h_c']
+- 3OAR121#531: ['h_c']
+- FACOAL161t2pp#570: ['h_c', 'h_p']
+- FACOAL60t2pp#661: ['h_c', 'h_p']
+- FACOAE60#674: ['h_c']
+- FACOAL160t2pp#691: ['h_c', 'h_p']
+- FACOAE160#704: ['h_c']
+- 3OAS60#742: ['h_c']
+- 3OAR40#756: ['h_c']
+- 3OAR60#769: ['h_c']
+- EAR60x#793: ['h_c']
+- 3OAS80#808: ['h_c']
+- 3OAS100#824: ['h_c']
+- 3OAR80#848: ['h_c']
+- 3OAR100#861: ['h_c']
+- 3OAS120#888: ['h_c']
+- 3OAR120#912: ['h_c']
+- EAR140x#937: ['h_c']
+- 3OAS160#952: ['h_c']
+- FA160ACPHi#966: ['h_c']
+- EAR160x#979: ['h_c']
+- 3OAR160#1002: ['h_c']
+- 3OAS180#1031: ['h_c']
+- EAR140y#1116: ['h_c']
+- EAR160y#1128: ['h_c']
+- EAR60y#1140: ['h_c']
+- FACOAE161#1153: ['h_c']
+- FACOAE181#1166: ['h_c']
+- KAS14#1228: ['h_c']
+- LIPAHT2ex#1242: ['h_e']
+- LIPAHTex#1256: ['h_e']
+- LPLIPAL1A160pp#1270: ['h_p']
+- LPLIPAL1A161pp#1283: ['h_p']
+- LPLIPAL2A161#1295: ['h_c']
+- LPLIPAL1A181pp#1307: ['h_p']
+- LPLIPAL2A181#1319: ['h_c']
+- LPLIPAL1G160pp#1333: ['h_p']
+- LPLIPAL1G161pp#1346: ['h_p']
+- LPLIPAL1G181pp#1358: ['h_p']
+- LPLIPAL2A160#1370: ['h_c']
+- LPLIPAL2G160#1384: ['h_c']
+- LPLIPAL2G161#1397: ['h_c']
+- LPLIPAL2G181#1409: ['h_c']
+- MECDPDH5#1423: ['h_c']
+- OGMEACPS#1438: ['h_c']
+- PLIPA1E161pp#1515: ['h_p']
+- PLIPA2E161pp#1526: ['h_p']
+- PLIPA1E181pp#1538: ['h_p']
+- PLIPA2E181pp#1549: ['h_p']
+- PLIPA1G160pp#1562: ['h_p']
+- PLIPA1G161pp#1575: ['h_p']
+- PLIPA1G181pp#1587: ['h_p']
+- PLIPA2A160pp#1598: ['h_p']
+- PLIPA2A161pp#1609: ['h_p']
+- PLIPA2A181pp#1620: ['h_p']
+- PLIPA2G160pp#1631: ['h_p']
+- PLIPA2G161pp#1642: ['h_p']
+- PLIPA2G181pp#1652: ['h_p']
+- APG3PAT160#1755: ['h_c']
+- APG3PAT161#1768: ['h_c']
+- APG3PAT181#1781: ['h_c']
+- APH160#1793: ['h_c']
+- APH161#1805: ['h_c']
+- APH181#1817: ['h_c']
+- LPLIPAL1E161pp#1853: ['h_p']
+- LPLIPAL1E181pp#1864: ['h_p']
+- LPLIPAL2E160#1877: ['h_c']
+- LPLIPAL2E161#1888: ['h_c']
+- LPLIPAL2E181#1899: ['h_c']
+- MOAT3C#1912: ['h_c']
+- PLIPA1E160pp#1925: ['h_p']
+- PLIPA2E160pp#1937: ['h_p']
+- TDPADGAT#1950: ['h_c']
+- 3OAS181#1980: ['h_c']
+- ACPPAT160#2024: ['h_c']
+- FA161ACPHi#2049: ['h_c']
+- LPLIPAL1E160pp#2060: ['h_p']
+
+## Exit labels -> owner node (row rule)
+- `2061` '→ Amino acids' -> frdp_c `179`
+- `2062` '→ Carbohydrates' -> uacgam_c `218`
+- `2063` '→ Carbohydrates' -> ckdo_c `271`
+- `2064` '→ Carbohydrates' -> glyc_c `352`
+- `2065` '→ Central' -> accoa_c `389`
+- `2066` '→ Central' -> dhap_c `419`
+- `2067` '→ Central' -> accoa_c `715`
+- `2068` '→ Carbohydrates' -> myrsACP_c `926`
+- `2069` '→ Carbohydrates' -> uacgam_c `1003`
+- `2070` '→ Carbohydrates' -> unaga_c `1006`
+- `2071` '→ Fermentation' -> occoa_c `1060`
+- `2072` '→ Carbohydrates' -> glyc3p_p `1259`
+- `2073` '→ Central' -> g3p_c `1192`
+- `2074` '→ Central' -> ac_c `1205`
+- `2075` '→ Amino acids' -> colipa_e `1229`
+- `2076` '→ Carbohydrates' -> g3pg_p `1322`
+- `2077` '→ Amino acids' -> malcoame_c `1424`
+- `2078` '→ Amino acids' -> pe161_p `1440`
+- `2079` '→ Amino acids' -> pe181_c `1673`
+- `2080` '→ Carbohydrates' -> pg181_c `1719`
+- `2081` '→ Nucleotides' -> phphhlipa_c `1900`
+- `2082` '→ Nucleotides' -> dtdp4aaddg_c `1940`
+- `2083` '→ Carbohydrates' -> kdo2lipid4p_c `2027`
+
+## Reactions
+- `14` FA160ACPHi: h2o_c + palmACP_c -> ACP_c + h_c + hdca_c
+- `28` 3OAR180: 3ooctdACP_c + h_c + nadph_c <=> 3hoctaACP_c + nadp_c
+- `42` EAR180x: h_c + nadh_c + toctd2eACP_c -> nad_c + ocdcaACP_c
+- `52` 3HAD180: 3hoctaACP_c -> h2o_c + toctd2eACP_c
+- `70` FACOAL181t2pp: atp_c + coa_c + h_p + ocdcea_p -> amp_c + h_c + odecoa_c + ppi_c
+- `84` DXPS: g3p_c + h_c + pyr_c -> co2_c + dxyl5p_c
+- `97` DXPRIi: dxyl5p_c + h_c + nadph_c -> 2me4p_c + nadp_c
+- `110` MEPCT: 2me4p_c + ctp_c + h_c -> 4c2me_c + ppi_c
+- `123` CDPMEK: 4c2me_c + atp_c -> 2p4c2me_c + adp_c + h_c
+- `134` MECDPS: 2p4c2me_c -> 2mecdp_c + cmp_c
+- `150` DMPPS: h2mb4p_c + h_c + nadh_c -> dmpp_c + h2o_c + nad_c
+- `164` IPDPS: h2mb4p_c + h_c + nadh_c -> h2o_c + ipdp_c + nad_c
+- `177` DMATT: dmpp_c + ipdp_c -> grdp_c + ppi_c
+- `190` GRTT: grdp_c + ipdp_c -> frdp_c + ppi_c
+- `204` EDTXS1: ddcaACP_c + kdo2lipid4_c -> ACP_c + kdo2lipid4L_c
+- `217` MOAT2: ckdo_c + kdolipid4_c -> cmp_c + h_c + kdo2lipid4_c
+- `231` UAGAAT: 3hmrsACP_c + uacgam_c <=> ACP_c + u3aga_c
+- `244` UHGADA: h2o_c + u3aga_c -> ac_c + u3hga_c
+- `257` U23GAAT: 3hmrsACP_c + u3hga_c -> ACP_c + h_c + u23ga_c
+- `270` EDTXS2: kdo2lipid4L_c + myrsACP_c -> ACP_c + lipa_c
+- `283` MOAT: ckdo_c + lipidA_c -> cmp_c + h_c + kdolipid4_c
+- `296` HEPT1: adphep_LD_c + lipa_c -> adp_c + h_c + hlipa_c
+- `309` LPADSS: lipidX_c + u23ga_c -> h_c + lipidAds_c + udp_c
+- `321` USHD: h2o_c + u23ga_c -> 2 h_c + lipidX_c + ump_c
+- `333` TDSK: atp_c + lipidAds_c -> adp_c + h_c + lipidA_c
+- `349` KAS15: accoa_c + h_c + malACP_c -> actACP_c + co2_c + coa_c
+- `363` ALCD19: glyald_c + h_c + nadh_c <=> glyc_c + nad_c
+- `375` 3HAD100: 3hdecACP_c -> h2o_c + tdec2eACP_c
+- `388` MCOATA: ACP_c + malcoa_c <=> coa_c + malACP_c
+- `405` ACCOAC: accoa_c + atp_c + hco3_c -> adp_c + h_c + malcoa_c + pi_c
+- `416` MACPD: h_c + malACP_c -> acACP_c + co2_c
+- `430` G3PD2: glyc3p_c + nadp_c <=> dhap_c + h_c + nadph_c
+- `442` ACOATA: ACP_c + accoa_c <=> acACP_c + coa_c
+- `458` 3OAS121: cdec3eACP_c + h_c + malACP_c -> 3ocddec5eACP_c + ACP_c + co2_c
+- `470` ECOAH2: 3hhcoa_c <=> h2o_c + hx2coa_c
+- `483` HACD2: 3ohcoa_c + h_c + nadh_c <=> 3hhcoa_c + nad_c
+- `495` ECOAH1: 3hbcoa_c <=> b2coa_c + h2o_c
+- `504` ECOAH1: 3hbcoa_c <=> b2coa_c + h2o_c
+- `518` ACOAD7f: fad_c + pmtcoa_c <=> fadh2_c + hdd2coa_c
+- `531` 3OAR121: 3ocddec5eACP_c + h_c + nadph_c -> 3hcddec5eACP_c + nadp_c
+- `540` ECOAH2: 3hhcoa_c <=> h2o_c + hx2coa_c
+- `552` ACOAD7f: fad_c + pmtcoa_c <=> fadh2_c + hdd2coa_c
+- `570` FACOAL161t2pp: atp_c + coa_c + h_p + hdcea_p -> amp_c + h_c + hdcoa_c + ppi_c
+- `583` ACOAD1f: btcoa_c + fad_c -> b2coa_c + fadh2_c
+- `595` ACOAD1f: btcoa_c + fad_c -> b2coa_c + fadh2_c
+- `607` ACOAD1f: btcoa_c + fad_c -> b2coa_c + fadh2_c
+- `620` ACOAD2f: fad_c + hxcoa_c <=> fadh2_c + hx2coa_c
+- `632` ACOAD2f: fad_c + hxcoa_c <=> fadh2_c + hx2coa_c
+- `644` ACACT2r: accoa_c + btcoa_c <=> 3ohcoa_c + coa_c
+- `661` FACOAL60t2pp: atp_c + coa_c + h_p + hxa_p -> amp_c + h_c + hxcoa_c + ppi_c
+- `674` FACOAE60: h2o_c + hxcoa_c -> coa_c + h_c + hxa_c
+- `691` FACOAL160t2pp: atp_c + coa_c + h_p + hdca_p -> amp_c + h_c + pmtcoa_c + ppi_c
+- `704` FACOAE160: h2o_c + pmtcoa_c -> coa_c + h_c + hdca_c
+- `714` IPDDI: ipdp_c <=> dmpp_c
+- `726` ACACT1r: 2 accoa_c <=> aacoa_c + coa_c
+- `742` 3OAS60: butACP_c + h_c + malACP_c -> 3ohexACP_c + ACP_c + co2_c
+- `756` 3OAR40: actACP_c + h_c + nadph_c <=> 3haACP_c + nadp_c
+- `769` 3OAR60: 3ohexACP_c + h_c + nadph_c <=> 3hhexACP_c + nadp_c
+- `780` 3HAD60: 3hhexACP_c -> h2o_c + thex2eACP_c
+- `793` EAR60x: h_c + nadh_c + thex2eACP_c -> hexACP_c + nad_c
+- `808` 3OAS80: h_c + hexACP_c + malACP_c -> 3ooctACP_c + ACP_c + co2_c
+- `824` 3OAS100: h_c + malACP_c + ocACP_c -> 3odecACP_c + ACP_c + co2_c
+- `836` 3HAD80: 3hoctACP_c -> h2o_c + toct2eACP_c
+- `848` 3OAR80: 3ooctACP_c + h_c + nadph_c <=> 3hoctACP_c + nadp_c
+- `861` 3OAR100: 3odecACP_c + h_c + nadph_c <=> 3hdecACP_c + nadp_c
+- `872` 3HAD100: 3hdecACP_c -> h2o_c + tdec2eACP_c
+- `888` 3OAS120: dcaACP_c + h_c + malACP_c -> 3oddecACP_c + ACP_c + co2_c
+- `900` 3HAD120: 3hddecACP_c -> h2o_c + tddec2eACP_c
+- `912` 3OAR120: 3oddecACP_c + h_c + nadph_c <=> 3hddecACP_c + nadp_c
+- `924` 3HAD140: 3hmrsACP_c -> h2o_c + tmrs2eACP_c
+- `937` EAR140x: h_c + nadh_c + tmrs2eACP_c -> myrsACP_c + nad_c
+- `952` 3OAS160: h_c + malACP_c + myrsACP_c -> 3opalmACP_c + ACP_c + co2_c
+- `966` FA160ACPHi: h2o_c + palmACP_c -> ACP_c + h_c + hdca_c
+- `979` EAR160x: h_c + nadh_c + tpalm2eACP_c -> nad_c + palmACP_c
+- `990` 3HAD160: 3hpalmACP_c -> h2o_c + tpalm2eACP_c
+- `1002` 3OAR160: 3opalmACP_c + h_c + nadph_c <=> 3hpalmACP_c + nadp_c
+- `1016` ACGAMT: uacgam_c + udcpp_c -> ump_c + unaga_c
+- `1031` 3OAS180: h_c + malACP_c + palmACP_c -> 3ooctdACP_c + ACP_c + co2_c
+- `1047` AACPS3: ACP_c + atp_c + hdca_c -> amp_c + palmACP_c + ppi_c
+- `1059` ACACT3r: accoa_c + hxcoa_c <=> 3oocoa_c + coa_c
+- `1072` ACACT4r: accoa_c + occoa_c <=> 3odcoa_c + coa_c
+- `1084` ACACT8r: 3ohodcoa_c + coa_c <=> accoa_c + pmtcoa_c
+- `1096` ACOAD1fr: b2coa_c + fadh2_c -> btcoa_c + fad_c
+- `1104` CTECOAI7: hdcoa_c <=> hdd2coa_c
+- `1116` EAR140y: h_c + nadph_c + tmrs2eACP_c -> myrsACP_c + nadp_c
+- `1128` EAR160y: h_c + nadph_c + tpalm2eACP_c -> nadp_c + palmACP_c
+- `1140` EAR60y: h_c + nadph_c + thex2eACP_c -> hexACP_c + nadp_c
+- `1153` FACOAE161: h2o_c + hdcoa_c -> coa_c + h_c + hdcea_c
+- `1166` FACOAE181: h2o_c + odecoa_c -> coa_c + h_c + ocdcea_c
+- `1179` G3PAT160: glyc3p_c + palmACP_c -> 1hdecg3p_c + ACP_c
+- `1191` G3PT: glyc3p_c + h2o_c -> glyc_c + pi_c
+- `1204` GAPP: g3p_c + h2o_c -> glyald_c + pi_c
+- `1215` HXCT: accoa_c + hxa_c -> ac_c + hxcoa_c
+- `1228` KAS14: acACP_c + h_c + malACP_c -> ACP_c + actACP_c + co2_c
+- `1242` LIPAHT2ex: colipa_e + h_e + hdca_e -> h2o_e + hacolipa_e
+- `1256` LIPAHTex: h_e + hdca_e + lipa_e -> h2o_e + halipa_e
+- `1270` LPLIPAL1A160pp: 1hdecg3p_p + h2o_p -> glyc3p_p + h_p + hdca_p
+- `1283` LPLIPAL1A161pp: 1hdec9eg3p_p + h2o_p -> glyc3p_p + h_p + hdcea_p
+- `1295` LPLIPAL2A161: 2hdec9eg3p_c + h2o_c -> glyc3p_c + 2 h_c + hdcea_c
+- `1307` LPLIPAL1A181pp: 1odec11eg3p_p + h2o_p -> glyc3p_p + h_p + ocdcea_p
+- `1319` LPLIPAL2A181: 2odec11eg3p_c + h2o_c -> glyc3p_c + 2 h_c + ocdcea_c
+- `1333` LPLIPAL1G160pp: 1agpg160_p + h2o_p -> g3pg_p + h_p + hdca_p
+- `1346` LPLIPAL1G161pp: 1agpg161_p + h2o_p -> g3pg_p + h_p + hdcea_p
+- `1358` LPLIPAL1G181pp: 1agpg181_p + h2o_p -> g3pg_p + h_p + ocdcea_p
+- `1370` LPLIPAL2A160: 2hdecg3p_c + h2o_c -> glyc3p_c + 2 h_c + hdca_c
+- `1384` LPLIPAL2G160: 2agpg160_c + h2o_c -> g3pg_c + h_c + hdca_c
+- `1397` LPLIPAL2G161: 2agpg161_c + h2o_c -> g3pg_c + h_c + hdcea_c
+- `1409` LPLIPAL2G181: 2agpg181_c + h2o_c -> g3pg_c + h_c + ocdcea_c
+- `1423` MECDPDH5: 2mecdp_c + 2 flxr_c + h_c -> 2 flxso_c + h2mb4p_c + h2o_c
+- `1438` OGMEACPS: h_c + malACP_c + malcoame_c -> co2_c + coa_c + ogmeACP_c
+- `1452` PETNT161pp: lipa_p + pe161_p -> 12dgr161_p + enlipa_p
+- `1464` PETNT181pp: lipa_p + pe181_p -> 12dgr181_p + enlipa_p
+- `1477` PLIPA1A160pp: h2o_p + pa160_p -> 2hdecg3p_p + hdca_p
+- `1490` PLIPA1A161pp: h2o_p + pa161_p -> 2hdec9eg3p_p + hdcea_p
+- `1503` PLIPA1A181pp: h2o_p + pa181_p -> 2odec11eg3p_p + ocdcea_p
+- `1515` PLIPA1E161pp: h2o_p + pe161_p -> 2agpe161_p + h_p + hdcea_p
+- `1526` PLIPA2E161pp: h2o_p + pe161_p -> 1agpe161_p + h_p + hdcea_p
+- `1538` PLIPA1E181pp: h2o_p + pe181_p -> 2agpe181_p + h_p + ocdcea_p
+- `1549` PLIPA2E181pp: h2o_p + pe181_p -> 1agpe181_p + h_p + ocdcea_p
+- `1562` PLIPA1G160pp: h2o_p + pg160_p -> 2agpg160_p + h_p + hdca_p
+- `1575` PLIPA1G161pp: h2o_p + pg161_p -> 2agpg161_p + h_p + hdcea_p
+- `1587` PLIPA1G181pp: h2o_p + pg181_p -> 2agpg181_p + h_p + ocdcea_p
+- `1598` PLIPA2A160pp: h2o_p + pa160_p -> 1hdecg3p_p + h_p + hdca_p
+- `1609` PLIPA2A161pp: h2o_p + pa161_p -> 1hdec9eg3p_p + h_p + hdcea_p
+- `1620` PLIPA2A181pp: h2o_p + pa181_p -> 1odec11eg3p_p + h_p + ocdcea_p
+- `1631` PLIPA2G160pp: h2o_p + pg160_p -> 1agpg160_p + h_p + hdca_p
+- `1642` PLIPA2G161pp: h2o_p + pg161_p -> 1agpg161_p + h_p + hdcea_p
+- `1652` PLIPA2G181pp: h2o_p + pg181_p -> 1agpg181_p + h_p + ocdcea_p
+- `1669` 2AGPEAT161: 2agpe161_c + atp_c + hdcea_c -> amp_c + pe161_c + ppi_c
+- `1686` 2AGPEAT181: 2agpe181_c + atp_c + ocdcea_c -> amp_c + pe181_c + ppi_c
+- `1702` 2AGPGAT160: 2agpg160_c + atp_c + hdca_c -> amp_c + pg160_c + ppi_c
+- `1718` 2AGPGAT161: 2agpg161_c + atp_c + hdcea_c -> amp_c + pg161_c + ppi_c
+- `1731` 2AGPGAT181: 2agpg181_c + atp_c + ocdcea_c -> amp_c + pg181_c + ppi_c
+- `1743` AGPAT160: 1hdecg3p_c + palmACP_c -> ACP_c + pa160_c
+- `1755` APG3PAT160: glyc3p_c + hdcap_c -> 1hdecg3p_c + h_c + pi_c
+- `1768` APG3PAT161: glyc3p_c + hdceap_c -> 1hdec9eg3p_c + h_c + pi_c
+- `1781` APG3PAT181: glyc3p_c + ocdceap_c -> 1odec11eg3p_c + h_c + pi_c
+- `1793` APH160: h2o_c + hdcap_c -> 2 h_c + hdca_c + pi_c
+- `1805` APH161: h2o_c + hdceap_c -> 2 h_c + hdcea_c + pi_c
+- `1817` APH181: h2o_c + ocdceap_c -> 2 h_c + ocdcea_c + pi_c
+- `1829` G3PAT161: glyc3p_c + hdeACP_c -> 1hdec9eg3p_c + ACP_c
+- `1841` G3PAT181: glyc3p_c + octeACP_c -> 1odec11eg3p_c + ACP_c
+- `1853` LPLIPAL1E161pp: 1agpe161_p + h2o_p -> g3pe_p + h_p + hdcea_p
+- `1864` LPLIPAL1E181pp: 1agpe181_p + h2o_p -> g3pe_p + h_p + ocdcea_p
+- `1877` LPLIPAL2E160: 2agpe160_c + h2o_c -> g3pe_c + h_c + hdca_c
+- `1888` LPLIPAL2E161: 2agpe161_c + h2o_c -> g3pe_c + h_c + hdcea_c
+- `1899` LPLIPAL2E181: 2agpe181_c + h2o_c -> g3pe_c + h_c + ocdcea_c
+- `1912` MOAT3C: ckdo_c + phphhlipa_c -> cmp_c + h_c + kphphhlipa_c
+- `1925` PLIPA1E160pp: h2o_p + pe160_p -> 2agpe160_p + h_p + hdca_p
+- `1937` PLIPA2E160pp: h2o_p + pe160_p -> 1agpe160_p + h_p + hdca_p
+- `1950` TDPADGAT: accoa_c + dtdp4addg_c -> coa_c + dtdp4aaddg_c + h_c
+- `1966` 2AGPEAT160: 2agpe160_c + atp_c + hdca_c -> amp_c + pe160_c + ppi_c
+- `1980` 3OAS181: h_c + hdeACP_c + malACP_c -> 3ocvac11eACP_c + ACP_c + co2_c
+- `1996` AACPS4: ACP_c + atp_c + hdcea_c -> amp_c + hdeACP_c + ppi_c
+- `2012` AACPS5: ACP_c + atp_c + ocdcea_c -> amp_c + octeACP_c + ppi_c
+- `2024` ACPPAT160: h_c + palmACP_c + pi_c -> ACP_c + hdcap_c
+- `2037` EDTXS3: hdeACP_c + kdo2lipid4_c -> ACP_c + kdo2lipid4p_c
+- `2049` FA161ACPHi: h2o_c + hdeACP_c -> ACP_c + h_c + hdcea_c
+- `2060` LPLIPAL1E160pp: 1agpe160_p + h2o_p -> g3pe_p + h_p + hdca_p
