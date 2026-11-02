@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "escher-handlayout"
+version = "1.0.0"
+description = "Toolkit for hand-specified layouts of Escher metabolic maps (no automatic graph layout)"
+requires-python = ">=3.9"
+dependencies = ["numpy", "scipy", "matplotlib"]
+
+[project.scripts]
+escher-handlayout = "escher_handlayout.__main__:main"
+
+[tool.setuptools]
+packages = ["escher_handlayout"]
