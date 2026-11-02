@@ -6,7 +6,7 @@ This folder holds the hand-laid-out version of the iML1515 "set aside" draft map
 
 - Input: `ecmapper/BRENDAmap/draft_map_iML1515/split/set_aside.escher.json`
 - Spec (all primary coordinates chosen by hand): `spec.py`
-- Final run: `v1/`
+- Final run: `v2/`
   - `set_aside_final.json` is the Escher map.
   - `qa_report.md` and `run_log.json` hold the QA results and the run log.
   - `overview.png` is a matplotlib preview, not an Escher rendering.
@@ -15,7 +15,7 @@ This folder holds the hand-laid-out version of the iML1515 "set aside" draft map
 Reproduce from the repository root:
 
 ```bash
-PYTHONPATH=Opus_metabolic_map_handlayout/escher_handlayout_toolkit python -m escher_handlayout run Opus_metabolic_map_handlayout/set_aside/spec.py --out Opus_metabolic_map_handlayout/set_aside/v1 --name set_aside_final --render
+PYTHONPATH=Opus_metabolic_map_handlayout/escher_handlayout_toolkit python -m escher_handlayout run Opus_metabolic_map_handlayout/set_aside/spec.py --out Opus_metabolic_map_handlayout/set_aside/v2 --name set_aside_final --render
 ```
 
 ## Counts
@@ -101,14 +101,17 @@ All zone titles come from the draft title labels.
 
 - Curvature t = 0.6. The stacked lanes use a bend of 15; all other reactions use the default bend of 55.
 - Area before packing: 6933 × 4138 = 28.7 M.
-- Area after packing: 4303 × 4360 = 18.8 M.
-- Canvas: 4603 × 4682 including the 150 margin.
+- Area after packing: 5680 × 3260 = 18.5 M.
+- Canvas: 5980 × 3568 including the 150 margin.
+- v2 differs from v1 only in where packing put the four detached pieces: the toolkit now treats the
+  ring keep-out as a true disc instead of its bounding square, so the Calvin-cycle pieces fit beside
+  the ring and the canvas is landscape instead of square (v1: 4303 × 4360 = 18.8 M).
 - Keep-out zones: the interior of the C4 square (explicit `PACK` box) and the ring interior (automatic).
 
 ## Decisions
 
 1. **One C4/CAM square.** The draft spread the C4 reactions over three pieces, and BRENDA files some of the PPC/ME2 copies under "photosynthesis". All PPC, MDH and ME copies are drawn on one square, using stacked lanes for the duplicates. Their zone membership in the map follows the C4 title.
-2. **Acetyl-CoA hub.** The four acetyl-CoA copies are merged into one hub, which connects PDH, the toluene chain, ACACT1r and CS into one main piece. The draft had two identical exit labels '→ Central', one on each of two of these copies. After the merge, one of them (label 579) is removed in `prepare()`; this only touches annotation.
+2. **Acetyl-CoA hub.** The four acetyl-CoA copies are merged into one hub, which connects PDH, the toluene chain, ACACT1r and CS into one main piece. The draft had two identical exit labels '→ Central', one on each of two of these copies. After the merge, one of them (label 579) is removed with `DROP_LABELS`; this only touches annotation.
 3. **PDH substrate.** The PDH pyruvate is merged into the C4 square's pyruvate, so pyruvate sits between the C4 cycle and acetyl-CoA.
 4. **Open ring.** The methylaspartate cycle is drawn as an open ring with the textbook TCA order, because AKGDH is absent.
 5. **No biochemistry changed.** Reactions, IDs, stoichiometry, reversibility and genes are unchanged, and all "backwards" directions are kept: SUCOAS succ → succoa, PYK pep → pyr, MDH mal → oaa, PPCK oaa → pep.
@@ -132,4 +135,4 @@ Remaining weak spots:
 ## Testing
 
 The map was validated structurally by the toolkit and its QA checks; it was not loaded in Escher. The
-preview `v1/overview.png` was inspected visually.
+preview `v2/overview.png` was inspected visually.

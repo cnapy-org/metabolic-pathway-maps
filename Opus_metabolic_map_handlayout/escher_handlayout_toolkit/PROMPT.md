@@ -165,6 +165,8 @@ look at the overview as an extra check; it is optional.
 - Packing ignores your global arrangement of detached pieces. If you place every piece by hand, set
   `PACK = dict(mode='keep')` and fix any `piece_overlaps` the QA report lists (do not use tiny
   keep-out boxes at the canvas corners as a workaround).
+- Duplicate exit labels left on one merged node are removed automatically; remove other unwanted draft
+  labels with `DROP_LABELS`, not by editing `L.T` in `prepare()`.
 - Packing may drop a small piece into an empty ring interior – ring interiors are kept free
   automatically (`auto_ring_keep_out`); add `('box', …)` keep-outs for other enclosed areas.
 - Duplicate reactions (same `bigg_id`) are kept and drawn as lanes; variant families with different

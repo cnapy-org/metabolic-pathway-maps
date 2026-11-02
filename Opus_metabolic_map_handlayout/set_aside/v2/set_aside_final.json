@@ -1714,8 +1714,8 @@
     "name": "3-hydroxyacyl-CoA dehydratase (3-hydroxybutanoyl-CoA)",
     "bigg_id": "ECOAH1",
     "reversibility": true,
-    "label_x": -1996.88,
-    "label_y": -2134.5,
+    "label_x": 1443.12,
+    "label_y": -734.5,
     "gene_reaction_rule": "b2341 or b3846",
     "genes": [
      {
@@ -1770,12 +1770,12 @@
       "from_node_id": "267",
       "to_node_id": "263",
       "b1": {
-       "x": -1961.43,
-       "y": -2108.0
+       "x": 1478.57,
+       "y": -708.0
       },
       "b2": {
-       "x": -1918.34,
-       "y": -2070.48
+       "x": 1521.66,
+       "y": -670.48
       }
      }
     }
@@ -1784,8 +1784,8 @@
     "name": "Acetyl-CoA:butyrate-CoA transferase",
     "bigg_id": "BUTCT",
     "reversibility": false,
-    "label_x": -1193.96,
-    "label_y": -2134.5,
+    "label_x": 1566.04,
+    "label_y": -2094.5,
     "gene_reaction_rule": "b2222 and b2221",
     "genes": [
      {
@@ -1832,12 +1832,12 @@
       "from_node_id": "273",
       "to_node_id": "278",
       "b1": {
-       "x": -1314.5,
-       "y": -2070.48
+       "x": 1445.5,
+       "y": -2030.48
       },
       "b2": {
-       "x": -1271.41,
-       "y": -2108.0
+       "x": 1488.59,
+       "y": -2068.0
       }
      },
      "283": {
@@ -1850,12 +1850,12 @@
       "from_node_id": "280",
       "to_node_id": "275",
       "b1": {
-       "x": -1158.51,
-       "y": -2108.0
+       "x": 1601.49,
+       "y": -2068.0
       },
       "b2": {
-       "x": -1115.42,
-       "y": -2070.48
+       "x": 1644.58,
+       "y": -2030.48
       }
      },
      "285": {
@@ -2940,8 +2940,8 @@
     "name": "Ribose-5-phosphate isomerase",
     "bigg_id": "RPI",
     "reversibility": true,
-    "label_x": -2317.72,
-    "label_y": 838.05,
+    "label_x": 762.28,
+    "label_y": -1201.95,
     "gene_reaction_rule": "b2914 or b4090",
     "genes": [
      {
@@ -2994,8 +2994,8 @@
     "name": "Phosphoglycerate kinase",
     "bigg_id": "PGK",
     "reversibility": true,
-    "label_x": -642.6,
-    "label_y": -1735.95,
+    "label_x": 2077.4,
+    "label_y": -1895.95,
     "gene_reaction_rule": "b2926",
     "genes": [
      {
@@ -3044,12 +3044,12 @@
       "from_node_id": "438",
       "to_node_id": "442",
       "b1": {
-       "x": -635.08,
-       "y": -1841.54
+       "x": 2084.92,
+       "y": -2001.54
       },
       "b2": {
-       "x": -672.6,
-       "y": -1798.45
+       "x": 2047.4,
+       "y": -1958.45
       }
      },
      "448": {
@@ -3062,12 +3062,12 @@
       "from_node_id": "444",
       "to_node_id": "440",
       "b1": {
-       "x": -672.6,
-       "y": -1685.55
+       "x": 2047.4,
+       "y": -1845.55
       },
       "b2": {
-       "x": -635.08,
-       "y": -1642.46
+       "x": 2084.92,
+       "y": -1802.46
       }
      }
     }
@@ -3076,8 +3076,8 @@
     "name": "L-ribulose-phosphate 4-epimerase",
     "bigg_id": "RBP4E",
     "reversibility": true,
-    "label_x": -1617.72,
-    "label_y": 838.05,
+    "label_x": 1462.28,
+    "label_y": -1201.95,
     "gene_reaction_rule": "b0061 or b4198 or b3583",
     "genes": [
      {
@@ -3134,8 +3134,8 @@
     "name": "Ribulose 5-phosphate 3-epimerase",
     "bigg_id": "RPE",
     "reversibility": true,
-    "label_x": -1967.72,
-    "label_y": 838.05,
+    "label_x": 1112.28,
+    "label_y": -1201.95,
     "gene_reaction_rule": "b3386",
     "genes": [
      {
@@ -3184,8 +3184,8 @@
     "name": "L-xylulose 5-phosphate 3-epimerase",
     "bigg_id": "X5PL3E",
     "reversibility": false,
-    "label_x": -1251.72,
-    "label_y": 605.5,
+    "label_x": 1828.28,
+    "label_y": -1434.5,
     "gene_reaction_rule": "b4197 or b3582",
     "genes": [
      {
@@ -3328,8 +3328,8 @@
     "name": "Transketolase",
     "bigg_id": "TKT2",
     "reversibility": true,
-    "label_x": -1525.88,
-    "label_y": 996.5,
+    "label_x": 1554.12,
+    "label_y": -1043.5,
     "gene_reaction_rule": "b2935 or b2465",
     "genes": [
      {
@@ -3376,12 +3376,12 @@
       "from_node_id": "494",
       "to_node_id": "498",
       "b1": {
-       "x": -1597.26,
-       "y": 994.48
+       "x": 1482.74,
+       "y": -1045.52
       },
       "b2": {
-       "x": -1554.17,
-       "y": 1032.0
+       "x": 1525.83,
+       "y": -1008.0
       }
      },
      "503": {
@@ -3400,12 +3400,12 @@
       "from_node_id": "500",
       "to_node_id": "496",
       "b1": {
-       "x": -1441.27,
-       "y": 1032.0
+       "x": 1638.73,
+       "y": -1008.0
       },
       "b2": {
-       "x": -1398.18,
-       "y": 994.48
+       "x": 1681.82,
+       "y": -1045.52
       }
      }
     }
@@ -3414,8 +3414,8 @@
     "name": "Fructose-bisphosphatase",
     "bigg_id": "FBP",
     "reversibility": false,
-    "label_x": -1142.72,
-    "label_y": 1263.05,
+    "label_x": 1937.28,
+    "label_y": -776.95,
     "gene_reaction_rule": "b4232 or b3925 or b2930 or b3697",
     "genes": [
      {
@@ -3476,12 +3476,12 @@
       "from_node_id": "508",
       "to_node_id": "511",
       "b1": {
-       "x": -1135.2,
-       "y": 1356.54
+       "x": 1944.8,
+       "y": -683.46
       },
       "b2": {
-       "x": -1172.72,
-       "y": 1313.45
+       "x": 1907.28,
+       "y": -726.55
       }
      },
      "517": {
@@ -3494,12 +3494,12 @@
       "from_node_id": "513",
       "to_node_id": "509",
       "b1": {
-       "x": -1172.72,
-       "y": 1200.55
+       "x": 1907.28,
+       "y": -839.45
       },
       "b2": {
-       "x": -1135.2,
-       "y": 1157.46
+       "x": 1944.8,
+       "y": -882.54
       }
      }
     }
@@ -3508,8 +3508,8 @@
     "name": "Transketolase",
     "bigg_id": "TKT1",
     "reversibility": true,
-    "label_x": -2142.72,
-    "label_y": 1263.05,
+    "label_x": 937.28,
+    "label_y": -776.95,
     "gene_reaction_rule": "b2935 or b2465",
     "genes": [
      {
@@ -3556,36 +3556,36 @@
       "from_node_id": "427",
       "to_node_id": "523",
       "b1": {
-       "x": -2266.52,
-       "y": 1015.08
+       "x": 813.48,
+       "y": -1024.92
       },
       "b2": {
-       "x": -2172.72,
-       "y": 1147.9
+       "x": 907.28,
+       "y": -892.1
       }
      },
      "528": {
       "from_node_id": "452",
       "to_node_id": "523",
       "b1": {
-       "x": -2078.92,
-       "y": 1015.08
+       "x": 1001.08,
+       "y": -1024.92
       },
       "b2": {
-       "x": -2172.72,
-       "y": 1147.9
+       "x": 907.28,
+       "y": -892.1
       }
      },
      "529": {
       "from_node_id": "525",
       "to_node_id": "520",
       "b1": {
-       "x": -2172.72,
-       "y": 1313.45
+       "x": 907.28,
+       "y": -726.55
       },
       "b2": {
-       "x": -2210.24,
-       "y": 1356.54
+       "x": 869.76,
+       "y": -683.46
       }
      },
      "530": {
@@ -3686,8 +3686,8 @@
     "name": "Fructose-bisphosphate aldolase",
     "bigg_id": "FBA",
     "reversibility": true,
-    "label_x": -1142.72,
-    "label_y": 1713.05,
+    "label_x": 1937.28,
+    "label_y": -326.95,
     "gene_reaction_rule": "b2925 or b2097",
     "genes": [
      {
@@ -3742,12 +3742,12 @@
       "from_node_id": "553",
       "to_node_id": "549",
       "b1": {
-       "x": -1172.72,
-       "y": 1763.45
+       "x": 1907.28,
+       "y": -276.55
       },
       "b2": {
-       "x": -1210.24,
-       "y": 1806.54
+       "x": 1869.76,
+       "y": -233.46
       }
      }
     }
@@ -3756,8 +3756,8 @@
     "name": "Triose-phosphate isomerase",
     "bigg_id": "TPI",
     "reversibility": true,
-    "label_x": -951.72,
-    "label_y": 1905.5,
+    "label_x": 2128.28,
+    "label_y": -134.5,
     "gene_reaction_rule": "b3919",
     "genes": [
      {
@@ -3806,8 +3806,8 @@
     "name": "Sedoheptulose 1,7-bisphosphate D-glyceraldehyde-3-phosphate-lyase",
     "bigg_id": "FBA3",
     "reversibility": true,
-    "label_x": -1351.72,
-    "label_y": 1905.5,
+    "label_x": 1728.28,
+    "label_y": -134.5,
     "gene_reaction_rule": "b2925",
     "genes": [
      {
@@ -3858,12 +3858,12 @@
       "from_node_id": "573",
       "to_node_id": "569",
       "b1": {
-       "x": -1316.27,
-       "y": 1932.0
+       "x": 1763.73,
+       "y": -108.0
       },
       "b2": {
-       "x": -1273.18,
-       "y": 1969.52
+       "x": 1806.82,
+       "y": -70.48
       }
      }
     }
@@ -4687,103 +4687,103 @@
    },
    "261": {
     "node_type": "metabolite",
-    "x": -2217.88,
-    "y": -2108.0,
+    "x": 1222.12,
+    "y": -708.0,
     "bigg_id": "3hbcoa_c",
     "name": "(S)-3-Hydroxybutanoyl-CoA",
-    "label_x": -2199.68,
-    "label_y": -2132.7,
+    "label_x": 1240.32,
+    "label_y": -732.7,
     "node_is_primary": true
    },
    "262": {
     "node_type": "metabolite",
-    "x": -1817.88,
-    "y": -2108.0,
+    "x": 1622.12,
+    "y": -708.0,
     "bigg_id": "b2coa_c",
     "name": "Crotonoyl-CoA",
-    "label_x": -1791.88,
-    "label_y": -2100.85,
+    "label_x": 1648.12,
+    "label_y": -700.85,
     "node_is_primary": true
    },
    "263": {
     "node_type": "metabolite",
-    "x": -1927.88,
-    "y": -1968.0,
+    "x": 1512.12,
+    "y": -568.0,
     "bigg_id": "h2o_c",
     "name": "H2O H2O",
-    "label_x": -1913.88,
-    "label_y": -1962.5,
+    "label_x": 1526.12,
+    "label_y": -562.5,
     "node_is_primary": false
    },
    "264": {
     "node_type": "midmarker",
-    "x": -2017.88,
-    "y": -2108.0
+    "x": 1422.12,
+    "y": -708.0
    },
    "265": {
     "node_type": "multimarker",
-    "x": -2052.88,
-    "y": -2108.0
+    "x": 1387.12,
+    "y": -708.0
    },
    "267": {
     "node_type": "multimarker",
-    "x": -1982.88,
-    "y": -2108.0
+    "x": 1457.12,
+    "y": -708.0
    },
    "273": {
     "node_type": "metabolite",
-    "x": -1304.96,
-    "y": -1968.0,
+    "x": 1455.04,
+    "y": -1928.0,
     "bigg_id": "accoa_c",
     "name": "Acetyl-CoA",
-    "label_x": -1290.96,
-    "label_y": -1962.5,
+    "label_x": 1469.04,
+    "label_y": -1922.5,
     "node_is_primary": false
    },
    "274": {
     "node_type": "metabolite",
-    "x": -1464.96,
-    "y": -2108.0,
+    "x": 1295.04,
+    "y": -2068.0,
     "bigg_id": "but_c",
     "name": "Butyrate (n-C4:0)",
-    "label_x": -1446.76,
-    "label_y": -2132.7,
+    "label_x": 1313.24,
+    "label_y": -2092.7,
     "node_is_primary": true
    },
    "275": {
     "node_type": "metabolite",
-    "x": -1124.96,
-    "y": -1968.0,
+    "x": 1635.04,
+    "y": -1928.0,
     "bigg_id": "ac_c",
     "name": "Acetate",
-    "label_x": -1110.96,
-    "label_y": -1962.5,
+    "label_x": 1649.04,
+    "label_y": -1922.5,
     "node_is_primary": false
    },
    "276": {
     "node_type": "metabolite",
-    "x": -964.96,
-    "y": -2108.0,
+    "x": 1795.04,
+    "y": -2068.0,
     "bigg_id": "btcoa_c",
     "name": "Butanoyl-CoA",
-    "label_x": -938.96,
-    "label_y": -2100.85,
+    "label_x": 1821.04,
+    "label_y": -2060.85,
     "node_is_primary": true
    },
    "277": {
     "node_type": "midmarker",
-    "x": -1214.96,
-    "y": -2108.0
+    "x": 1545.04,
+    "y": -2068.0
    },
    "278": {
     "node_type": "multimarker",
-    "x": -1249.96,
-    "y": -2108.0
+    "x": 1510.04,
+    "y": -2068.0
    },
    "280": {
     "node_type": "multimarker",
-    "x": -1179.96,
-    "y": -2108.0
+    "x": 1580.04,
+    "y": -2068.0
    },
    "287": {
     "node_type": "metabolite",
@@ -5262,168 +5262,168 @@
    },
    "427": {
     "node_type": "metabolite",
-    "x": -2522.72,
-    "y": 1032.0,
+    "x": 557.28,
+    "y": -1008.0,
     "bigg_id": "r5p_c",
     "name": "Alpha-D-Ribose 5-phosphate",
-    "label_x": -2589.28,
-    "label_y": 1007.3,
+    "label_x": 490.72,
+    "label_y": -1032.7,
     "node_is_primary": true
    },
    "428": {
     "node_type": "metabolite",
-    "x": -2172.72,
-    "y": 632.0,
+    "x": 907.28,
+    "y": -1408.0,
     "bigg_id": "ru5p__D_c",
     "name": "D-Ribulose 5-phosphate",
-    "label_x": -2146.72,
-    "label_y": 639.15,
+    "label_x": 933.28,
+    "label_y": -1400.85,
     "node_is_primary": true
    },
    "429": {
     "node_type": "midmarker",
-    "x": -2347.72,
-    "y": 832.0
+    "x": 732.28,
+    "y": -1208.0
    },
    "430": {
     "node_type": "multimarker",
-    "x": -2370.77,
-    "y": 858.34
+    "x": 709.23,
+    "y": -1181.66
    },
    "432": {
     "node_type": "multimarker",
-    "x": -2324.67,
-    "y": 805.66
+    "x": 755.33,
+    "y": -1234.34
    },
    "437": {
     "node_type": "metabolite",
-    "x": -672.6,
-    "y": -1942.0,
+    "x": 2047.4,
+    "y": -2102.0,
     "bigg_id": "3pg_c",
     "name": "3-Phospho-D-glycerate",
-    "label_x": -646.6,
-    "label_y": -1934.85,
+    "label_x": 2073.4,
+    "label_y": -2094.85,
     "node_is_primary": true
    },
    "438": {
     "node_type": "metabolite",
-    "x": -532.6,
-    "y": -1832.0,
+    "x": 2187.4,
+    "y": -1992.0,
     "bigg_id": "atp_c",
     "name": "ATP C10H12N5O13P3",
-    "label_x": -518.6,
-    "label_y": -1826.5,
+    "label_x": 2201.4,
+    "label_y": -1986.5,
     "node_is_primary": false
    },
    "439": {
     "node_type": "metabolite",
-    "x": -672.6,
-    "y": -1542.0,
+    "x": 2047.4,
+    "y": -1702.0,
     "bigg_id": "13dpg_c",
     "name": "3-Phospho-D-glyceroyl phosphate",
-    "label_x": -646.6,
-    "label_y": -1534.85,
+    "label_x": 2073.4,
+    "label_y": -1694.85,
     "node_is_primary": true
    },
    "440": {
     "node_type": "metabolite",
-    "x": -532.6,
-    "y": -1652.0,
+    "x": 2187.4,
+    "y": -1812.0,
     "bigg_id": "adp_c",
     "name": "ADP C10H12N5O10P2",
-    "label_x": -518.6,
-    "label_y": -1646.5,
+    "label_x": 2201.4,
+    "label_y": -1806.5,
     "node_is_primary": false
    },
    "441": {
     "node_type": "midmarker",
-    "x": -672.6,
-    "y": -1742.0
+    "x": 2047.4,
+    "y": -1902.0
    },
    "442": {
     "node_type": "multimarker",
-    "x": -672.6,
-    "y": -1777.0
+    "x": 2047.4,
+    "y": -1937.0
    },
    "444": {
     "node_type": "multimarker",
-    "x": -672.6,
-    "y": -1707.0
+    "x": 2047.4,
+    "y": -1867.0
    },
    "451": {
     "node_type": "metabolite",
-    "x": -1472.72,
-    "y": 632.0,
+    "x": 1607.28,
+    "y": -1408.0,
     "bigg_id": "ru5p__L_c",
     "name": "L-Ribulose 5-phosphate",
-    "label_x": -1454.52,
-    "label_y": 607.3,
+    "label_x": 1625.48,
+    "label_y": -1432.7,
     "node_is_primary": true
    },
    "452": {
     "node_type": "metabolite",
-    "x": -1822.72,
-    "y": 1032.0,
+    "x": 1257.28,
+    "y": -1008.0,
     "bigg_id": "xu5p__D_c",
     "name": "D-Xylulose 5-phosphate",
-    "label_x": -1879.14,
-    "label_y": 955.5,
+    "label_x": 1200.86,
+    "label_y": -1084.5,
     "node_is_primary": true
    },
    "453": {
     "node_type": "midmarker",
-    "x": -1647.72,
-    "y": 832.0
+    "x": 1432.28,
+    "y": -1208.0
    },
    "454": {
     "node_type": "multimarker",
-    "x": -1624.67,
-    "y": 805.66
+    "x": 1455.33,
+    "y": -1234.34
    },
    "456": {
     "node_type": "multimarker",
-    "x": -1670.77,
-    "y": 858.34
+    "x": 1409.23,
+    "y": -1181.66
    },
    "461": {
     "node_type": "midmarker",
-    "x": -1997.72,
-    "y": 832.0
+    "x": 1082.28,
+    "y": -1208.0
    },
    "462": {
     "node_type": "multimarker",
-    "x": -2020.77,
-    "y": 805.66
+    "x": 1059.23,
+    "y": -1234.34
    },
    "464": {
     "node_type": "multimarker",
-    "x": -1974.67,
-    "y": 858.34
+    "x": 1105.33,
+    "y": -1181.66
    },
    "469": {
     "node_type": "metabolite",
-    "x": -1072.72,
-    "y": 632.0,
+    "x": 2007.28,
+    "y": -1408.0,
     "bigg_id": "xu5p__L_c",
     "name": "L-Xylulose 5-phosphate",
-    "label_x": -1046.72,
-    "label_y": 639.15,
+    "label_x": 2033.28,
+    "label_y": -1400.85,
     "node_is_primary": true
    },
    "470": {
     "node_type": "midmarker",
-    "x": -1272.72,
-    "y": 632.0
+    "x": 1807.28,
+    "y": -1408.0
    },
    "471": {
     "node_type": "multimarker",
-    "x": -1237.72,
-    "y": 632.0
+    "x": 1842.28,
+    "y": -1408.0
    },
    "473": {
     "node_type": "multimarker",
-    "x": -1307.72,
-    "y": 632.0
+    "x": 1772.28,
+    "y": -1408.0
    },
    "478": {
     "node_type": "metabolite",
@@ -5472,128 +5472,128 @@
    },
    "494": {
     "node_type": "metabolite",
-    "x": -1587.72,
-    "y": 892.0,
+    "x": 1492.28,
+    "y": -1148.0,
     "bigg_id": "e4p_c",
     "name": "D-Erythrose 4-phosphate",
-    "label_x": -1573.72,
-    "label_y": 897.5,
+    "label_x": 1506.28,
+    "label_y": -1142.5,
     "node_is_primary": false
    },
    "495": {
     "node_type": "metabolite",
-    "x": -1172.72,
-    "y": 1032.0,
+    "x": 1907.28,
+    "y": -1008.0,
     "bigg_id": "f6p_c",
     "name": "D-Fructose 6-phosphate",
-    "label_x": -1146.72,
-    "label_y": 1039.15,
+    "label_x": 1933.28,
+    "label_y": -1000.85,
     "node_is_primary": true
    },
    "496": {
     "node_type": "metabolite",
-    "x": -1407.72,
-    "y": 892.0,
+    "x": 1672.28,
+    "y": -1148.0,
     "bigg_id": "g3p_c",
     "name": "Glyceraldehyde 3-phosphate",
-    "label_x": -1393.72,
-    "label_y": 897.5,
+    "label_x": 1686.28,
+    "label_y": -1142.5,
     "node_is_primary": false
    },
    "497": {
     "node_type": "midmarker",
-    "x": -1497.72,
-    "y": 1032.0
+    "x": 1582.28,
+    "y": -1008.0
    },
    "498": {
     "node_type": "multimarker",
-    "x": -1532.72,
-    "y": 1032.0
+    "x": 1547.28,
+    "y": -1008.0
    },
    "500": {
     "node_type": "multimarker",
-    "x": -1462.72,
-    "y": 1032.0
+    "x": 1617.28,
+    "y": -1008.0
    },
    "507": {
     "node_type": "metabolite",
-    "x": -1172.72,
-    "y": 1482.0,
+    "x": 1907.28,
+    "y": -558.0,
     "bigg_id": "fdp_c",
     "name": "D-Fructose 1,6-bisphosphate",
-    "label_x": -1146.72,
-    "label_y": 1489.15,
+    "label_x": 1933.28,
+    "label_y": -550.85,
     "node_is_primary": true
    },
    "508": {
     "node_type": "metabolite",
-    "x": -1032.72,
-    "y": 1347.0,
+    "x": 2047.28,
+    "y": -693.0,
     "bigg_id": "h2o_c",
     "name": "H2O H2O",
-    "label_x": -1018.72,
-    "label_y": 1352.5,
+    "label_x": 2061.28,
+    "label_y": -687.5,
     "node_is_primary": false
    },
    "509": {
     "node_type": "metabolite",
-    "x": -1032.72,
-    "y": 1167.0,
+    "x": 2047.28,
+    "y": -873.0,
     "bigg_id": "pi_c",
     "name": "Phosphate",
-    "label_x": -1018.72,
-    "label_y": 1172.5,
+    "label_x": 2061.28,
+    "label_y": -867.5,
     "node_is_primary": false
    },
    "510": {
     "node_type": "midmarker",
-    "x": -1172.72,
-    "y": 1257.0
+    "x": 1907.28,
+    "y": -783.0
    },
    "511": {
     "node_type": "multimarker",
-    "x": -1172.72,
-    "y": 1292.0
+    "x": 1907.28,
+    "y": -748.0
    },
    "513": {
     "node_type": "multimarker",
-    "x": -1172.72,
-    "y": 1222.0
+    "x": 1907.28,
+    "y": -818.0
    },
    "520": {
     "node_type": "metabolite",
-    "x": -2312.72,
-    "y": 1347.0,
+    "x": 767.28,
+    "y": -693.0,
     "bigg_id": "g3p_c",
     "name": "Glyceraldehyde 3-phosphate",
-    "label_x": -2302.92,
-    "label_y": 1332.2,
+    "label_x": 777.08,
+    "label_y": -707.8,
     "node_is_primary": false
    },
    "521": {
     "node_type": "metabolite",
-    "x": -2172.72,
-    "y": 1482.0,
+    "x": 907.28,
+    "y": -558.0,
     "bigg_id": "s7p_c",
     "name": "Sedoheptulose 7-phosphate",
-    "label_x": -2146.72,
-    "label_y": 1489.15,
+    "label_x": 933.28,
+    "label_y": -550.85,
     "node_is_primary": true
    },
    "522": {
     "node_type": "midmarker",
-    "x": -2172.72,
-    "y": 1257.0
+    "x": 907.28,
+    "y": -783.0
    },
    "523": {
     "node_type": "multimarker",
-    "x": -2172.72,
-    "y": 1222.0
+    "x": 907.28,
+    "y": -818.0
    },
    "525": {
     "node_type": "multimarker",
-    "x": -2172.72,
-    "y": 1292.0
+    "x": 907.28,
+    "y": -748.0
    },
    "533": {
     "node_type": "metabolite",
@@ -5642,98 +5642,98 @@
    },
    "548": {
     "node_type": "metabolite",
-    "x": -1172.72,
-    "y": 1932.0,
+    "x": 1907.28,
+    "y": -108.0,
     "bigg_id": "dhap_c",
     "name": "Dihydroxyacetone phosphate",
-    "label_x": -1154.52,
-    "label_y": 1907.3,
+    "label_x": 1925.48,
+    "label_y": -132.7,
     "node_is_primary": true
    },
    "549": {
     "node_type": "metabolite",
-    "x": -1312.72,
-    "y": 1797.0,
+    "x": 1767.28,
+    "y": -243.0,
     "bigg_id": "g3p_c",
     "name": "Glyceraldehyde 3-phosphate",
-    "label_x": -1302.92,
-    "label_y": 1782.2,
+    "label_x": 1777.08,
+    "label_y": -257.8,
     "node_is_primary": false
    },
    "550": {
     "node_type": "midmarker",
-    "x": -1172.72,
-    "y": 1707.0
+    "x": 1907.28,
+    "y": -333.0
    },
    "551": {
     "node_type": "multimarker",
-    "x": -1172.72,
-    "y": 1672.0
+    "x": 1907.28,
+    "y": -368.0
    },
    "553": {
     "node_type": "multimarker",
-    "x": -1172.72,
-    "y": 1742.0
+    "x": 1907.28,
+    "y": -298.0
    },
    "559": {
     "node_type": "metabolite",
-    "x": -772.72,
-    "y": 1932.0,
+    "x": 2307.28,
+    "y": -108.0,
     "bigg_id": "g3p_c",
     "name": "Glyceraldehyde 3-phosphate",
-    "label_x": -746.72,
-    "label_y": 1939.15,
+    "label_x": 2333.28,
+    "label_y": -100.85,
     "node_is_primary": true
    },
    "560": {
     "node_type": "midmarker",
-    "x": -972.72,
-    "y": 1932.0
+    "x": 2107.28,
+    "y": -108.0
    },
    "561": {
     "node_type": "multimarker",
-    "x": -1007.72,
-    "y": 1932.0
+    "x": 2072.28,
+    "y": -108.0
    },
    "563": {
     "node_type": "multimarker",
-    "x": -937.72,
-    "y": 1932.0
+    "x": 2142.28,
+    "y": -108.0
    },
    "568": {
     "node_type": "metabolite",
-    "x": -1572.72,
-    "y": 1932.0,
+    "x": 1507.28,
+    "y": -108.0,
     "bigg_id": "s17bp_c",
     "name": "Sedoheptulose 1,7-bisphosphate",
-    "label_x": -1554.52,
-    "label_y": 1907.3,
+    "label_x": 1525.48,
+    "label_y": -132.7,
     "node_is_primary": true
    },
    "569": {
     "node_type": "metabolite",
-    "x": -1282.72,
-    "y": 2072.0,
+    "x": 1797.28,
+    "y": 32.0,
     "bigg_id": "e4p_c",
     "name": "D-Erythrose 4-phosphate",
-    "label_x": -1268.72,
-    "label_y": 2077.5,
+    "label_x": 1811.28,
+    "label_y": 37.5,
     "node_is_primary": false
    },
    "570": {
     "node_type": "midmarker",
-    "x": -1372.72,
-    "y": 1932.0
+    "x": 1707.28,
+    "y": -108.0
    },
    "571": {
     "node_type": "multimarker",
-    "x": -1407.72,
-    "y": 1932.0
+    "x": 1672.28,
+    "y": -108.0
    },
    "573": {
     "node_type": "multimarker",
-    "x": -1337.72,
-    "y": 1932.0
+    "x": 1742.28,
+    "y": -108.0
    },
    "588": {
     "node_type": "metabolite",
@@ -5799,30 +5799,30 @@
    },
    "586": {
     "text": "photosynthesis",
-    "x": -2172.72,
-    "y": 412.0
+    "x": 907.28,
+    "y": -1628.0
    },
    "591": {
     "text": "butanoate fermentation",
-    "x": -2277.88,
-    "y": -2218.0
+    "x": 1162.12,
+    "y": -818.0
    },
    "592": {
     "text": "butanoate fermentation",
-    "x": -1524.96,
-    "y": -2218.0
+    "x": 1235.04,
+    "y": -2178.0
    },
    "593": {
     "text": "photosynthesis",
-    "x": -732.6,
-    "y": -2052.0
+    "x": 1987.4,
+    "y": -2212.0
    }
   },
   "canvas": {
    "x": -3448.36,
    "y": -2430.0,
-   "width": 4602.55,
-   "height": 4682.0
+   "width": 5980.0,
+   "height": 3567.56
   }
  }
 ]

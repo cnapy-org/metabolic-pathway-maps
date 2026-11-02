@@ -56,9 +56,23 @@ def raster(el, x0, y0, W, H):
         if i0 <= i1 and j0 <= j1: G[j0:j1+1, i0:i1+1] = True
     pts, circ, boxes = el
     for x, y in pts: mark(x, y, x, y)
-    for x, y, r in circ: mark(x-r, y-r, x+r, y+r)
+    for c in circ:                         # node dots: bounding square (extra clearance);
+        x, y, r = c[:3]                    # keep-out discs (tagged 'disc'): exact disc
+        if len(c) > 3: mark_disc(G, x0, y0, x, y, r)
+        else: mark(x-r, y-r, x+r, y+r)
     for b in boxes: mark(*b)
     return G
+
+def mark_disc(G, x0, y0, x, y, r):
+    """mark the cells that a disc touches (not its bounding square): a cell is occupied when the point
+    of the cell rectangle nearest to the centre lies inside the disc"""
+    H, W = G.shape
+    i0 = max(0, int((x-r-x0)//CELL)); i1 = min(W-1, int((x+r-x0)//CELL))
+    j0 = max(0, int((y-r-y0)//CELL)); j1 = min(H-1, int((y+r-y0)//CELL))
+    if i0 > i1 or j0 > j1: return
+    cx0 = x0+np.arange(i0, i1+1)*CELL; cy0 = y0+np.arange(j0, j1+1)*CELL
+    dx = np.clip(x, cx0, cx0+CELL)-x; dy = np.clip(y, cy0, cy0+CELL)-y
+    G[j0:j1+1, i0:i1+1] |= dy[:, None]**2+dx[None, :]**2 < r*r
 
 def dilate(G, k):
     out = G.copy()
@@ -116,7 +130,8 @@ def pack(L, piece_texts, main_texts, keep_out=(), auto_ring_keep_out=True, mode=
     occ = elements(L, main, main_texts)
     ko = list(keep_out)+(ring_keep_out(L, main) if auto_ring_keep_out else [])
     for kind, data in ko:
-        (occ[1] if kind == 'circ' else occ[2]).append(data)
+        if kind == 'circ': occ[1].append(tuple(data[:3])+('disc',))
+        else: occ[2].append(data)
     placed = [occ]
     def union(els):
         bs = [bbox_of(e) for e in els]

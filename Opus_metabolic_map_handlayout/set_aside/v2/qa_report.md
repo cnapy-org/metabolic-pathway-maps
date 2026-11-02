@@ -42,13 +42,13 @@
 
 ## Area
 - before packing 6933 x 4138 = 28.68 M
-- after packing  4303 x 4360 = 18.76 M
-- canvas 4603 x 4682 (margin incl.)
+- after packing  5680 x 3260 = 18.51 M
+- canvas 5980 x 3568 (margin incl.)
 
 ## Moves of detached pieces
-- ['FBA', 'FBA3', 'FBP', 'RBP4E', 'RPE', 'RPI', 'TKT1', 'TKT2', 'TPI', 'X5PL3E']: dx=-3723 dy=3332
-- ['PGK']: dx=-3973 dy=358
-- ['BUTCT']: dx=-3765 dy=892
-- ['ECOAH1']: dx=-3718 dy=892
+- ['FBA', 'FBA3', 'FBP', 'RBP4E', 'RPE', 'RPI', 'TKT1', 'TKT2', 'TPI', 'X5PL3E']: dx=-643 dy=1292
+- ['PGK']: dx=-1253 dy=198
+- ['BUTCT']: dx=-1005 dy=932
+- ['ECOAH1']: dx=-278 dy=2292
 
 ## Title nudges

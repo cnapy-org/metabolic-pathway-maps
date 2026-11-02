@@ -131,7 +131,7 @@ change to the biochemistry: `PGP`, `PNT`, `RIB` and `O16` (from PERI, PEN and LP
 
   These act as co-substrates or side products next to their reaction.
 - **Duplicate exit labels removed:** two draft exit labels would have landed twice on the same merged
-  node (f6p `2328`, g6p `2317`), so they were deleted. `→ Central, Amino acids` stays on g6p.
+  node (f6p `2328`, g6p `2317`), so they are removed with `DROP_LABELS`. `→ Central, Amino acids` stays on g6p.
 - **Packing off (v4):** automatic packing stacked all pieces vertically next to the tall main
   component (4693 × 18360). v3 worked around that with two tiny keep-out boxes, but the packer still
   chose where each pathway went. v4 sets `PACK = dict(mode='keep')` and places every piece by hand.

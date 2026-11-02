@@ -53,6 +53,9 @@ EXTRA_TITLES = [
 EXIT_OWNER = {}
 
 # ------------------------------------------------------------------ splits (local copies of primaries)
+# duplicate '→ Central' exit labels that would land on the same merged node (f6p 52, g6p 299)
+DROP_LABELS = ['2328', '2317']
+
 def prepare(L):
     S = L.S
     # glucose: one copy for G1PP + HEX1, otherwise one local copy per maltodextrin reaction
@@ -72,8 +75,6 @@ def prepare(L):
     for r in ('1857', '1869', '1953'): L.merge(S['g3p_D'], L.split('909', r))
     S['ttdca_L'] = L.split('1943', '1953')       # LPLIPAL2A140 product, local
     S['ttdcap_A'] = L.split('2212', '2223')      # APG3PAT140 co-substrate, local (avoids a crossing)
-    # duplicate '→ Central' exit labels that would land on the same merged node (f6p 52, g6p 299)
-    for k in ('2328', '2317'): del L.T[k]; L.exit_owner.pop(k, None)
 
 # ------------------------------------------------------------------ global arrangement (by hand)
 # Middle: main component (g1p hub, glycogen/maltodextrins, Leloir, disaccharides), x -2500..1440.

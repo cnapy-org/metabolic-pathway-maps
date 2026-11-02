@@ -98,5 +98,5 @@ Validated structurally by the toolkit (`validate`: all PASS). **Not loaded in Es
 
 ## Toolkit observations
 - **Packing had no off-switch** (fixed: the toolkit now has `PACK = dict(mode='keep')`, used since v8).
-- **Keep-out circles are rasterised as their bounding square.** A ring-interior keep-out disc therefore
-  collides with inner cofactor dots near the diagonals. The same is true of `auto_ring_keep_out`.
+- **Keep-out circles were rasterised as their bounding square** (fixed: keep-out discs, including
+  `auto_ring_keep_out`, are now rasterised as true discs; v8 needs no disc because packing is off).

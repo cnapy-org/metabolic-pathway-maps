@@ -37,7 +37,7 @@ def _set(s, b1, b2): s['b1'] = {'x': b1[0], 'y': b1[1]}; s['b2'] = {'x': b2[0], 
 
 def apply_curves(L, cfg):
     t = cfg['t']
-    special = {(L.S.get(r, r), L.S.get(n, n)): v for (r, n), v in cfg['special_links'].items()}
+    special = {(L.S.get(r, r), L.resolve(n, f'special_links[{r!r}]')): v for (r, n), v in cfg['special_links'].items()}
     for rid, r in L.R.items():
         m = L.meta[rid]; u = m['u']
         for s in r['segments'].values():

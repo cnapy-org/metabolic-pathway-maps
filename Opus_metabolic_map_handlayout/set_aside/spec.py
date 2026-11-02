@@ -36,10 +36,9 @@ EXTRA_TITLES = [dict(text='butanoate fermentation', anchor='261', offset=(-60, -
 
 EXIT_OWNER = {}        # automatic owner rule (both '→ Central' labels sit on acetyl-CoA copies)
 
-def prepare(L):
-    # acetyl-CoA copies 249 and 301 both carry an identical '→ Central' exit label; after merging
-    # them into one hub the duplicate label 579 is dropped (annotation only, no biochemistry).
-    L.T.pop('579', None); L.exit_owner.pop('579', None)
+# acetyl-CoA copies 249 and 301 both carry an identical '→ Central' exit label; after merging them
+# into one hub the duplicate label 579 is dropped (annotation only, no biochemistry).
+DROP_LABELS = ['579']
 
 # ------------------------------------------------------------------ global arrangement
 ORIGIN = {'MC': (0, 0), 'ATD': (0, 0), 'ACB': (0, 0), 'BF': (0, 0), 'C4': (-2700, -1300),

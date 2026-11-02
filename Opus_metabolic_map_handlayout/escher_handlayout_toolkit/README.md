@@ -108,7 +108,8 @@ escher-handlayout render final.json out.png --scale 0.2 [--region x0 y0 x1 y1]
 ## What the pipeline does (`run`)
 
 1. **Load and split cofactors:** load the draft and give every reaction its own cofactor nodes.
-2. **Splits and merges:** apply the spec's `prepare()` (splits), then `MERGES`.
+2. **Splits and merges:** apply the spec's `prepare()` (splits), then `MERGES`, then `DROP_LABELS`.
+   Identical exit labels that now sit on one node are reduced to one.
 3. **Hand layout:** call `layout()` twice, so every reaction sees final primary positions.
    Unplaced nodes or reactions abort the run with a message.
 4. **Titles and exit labels:**
