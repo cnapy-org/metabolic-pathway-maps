@@ -1,11 +1,12 @@
 {
  "summary": {
   "validation_ok": true,
-  "crossings": 4,
+  "crossings": 5,
   "dots_too_close": 0,
   "lines_near_dots": 0,
   "label_overlaps": 0,
-  "titles_on_lines": 0
+  "titles_on_lines": 0,
+  "piece_overlaps": 0
  },
  "splits": [
   [
@@ -537,303 +538,19 @@
  },
  "packing": {
   "before": [
-   -6426,
-   -3864,
-   7981.92,
-   4526
+   -9100,
+   -3800,
+   8031.08,
+   4570
   ],
   "after": [
-   -6500,
-   -3744,
-   7500,
-   4310
+   -9100,
+   -3800,
+   8031.08,
+   4570
   ],
-  "moves": [
-   {
-    "reactions": [
-     "ACM6PH",
-     "ACMAMUT",
-     "ACNML",
-     "AGDC",
-     "AMANAPEr",
-     "AMANK",
-     "G1PACT",
-     "G6PDA",
-     "GF6PTA",
-     "PGAMT",
-     "UACMAMO",
-     "UAG2E",
-     "UAGDP"
-    ],
-    "dx": 3,
-    "dy": 10
-   },
-   {
-    "reactions": [
-     "AACPS1",
-     "ACPPAT140",
-     "AGPAT140",
-     "ALKP",
-     "APG3PAT140",
-     "DHAPT",
-     "EDTXS4",
-     "F6PA",
-     "FA140ACPHi",
-     "G3PAT140",
-     "G3PD5",
-     "G3PD6",
-     "G3PD7",
-     "GLTPD",
-     "GLYCDx",
-     "GLYK",
-     "GPDDA4",
-     "M1PD",
-     "PFK_2",
-     "PFK_2",
-     "SBTPD",
-     "TGBPA",
-     "TGBPA"
-    ],
-    "dx": 1093,
-    "dy": -280
-   },
-   {
-    "reactions": [
-     "CLPNS160pp",
-     "CLPNS161pp",
-     "CLPNS181pp",
-     "GPDDA1pp",
-     "GPDDA2pp",
-     "GPDDA3pp",
-     "GPDDA4pp",
-     "LPLIPAL1A140pp"
-    ],
-    "dx": 775,
-    "dy": -2580
-   },
-   {
-    "reactions": [
-     "ALTRH",
-     "DDGALK",
-     "DDGALK",
-     "DDGLK",
-     "DDGLK",
-     "DDPGALA",
-     "DDPGALA",
-     "EDA",
-     "GALCTND",
-     "GALCTND",
-     "GALCTND",
-     "GUI1",
-     "GUI2",
-     "MANAO",
-     "MNNH",
-     "TAGURr"
-    ],
-    "dx": 9,
-    "dy": -16
-   },
-   {
-    "reactions": [
-     "2DGULRGx",
-     "2DGULRGy",
-     "2DGULRx",
-     "2DGULRy",
-     "5DGLCNR",
-     "5DKGR",
-     "DKGLCNR1",
-     "DKGLCNR1",
-     "DKGLCNR2x",
-     "DKGLCNR2y",
-     "GNK",
-     "GNP",
-     "IDOND",
-     "IDOND",
-     "IDOND2"
-    ],
-    "dx": 97,
-    "dy": -70
-   },
-   {
-    "reactions": [
-     "ARABDI",
-     "ARABDI",
-     "ARAI",
-     "ARAI",
-     "LYXI",
-     "RBK_L1",
-     "RBK_L1",
-     "RBP4E",
-     "RBP4E",
-     "RPE",
-     "RPE",
-     "RU5PP",
-     "X5PL3E",
-     "X5PL3E",
-     "XYHDL",
-     "XYLI1",
-     "XYLK",
-     "XYLK",
-     "XYLK2",
-     "XYLK2"
-    ],
-    "dx": -8,
-    "dy": -10
-   },
-   {
-    "reactions": [
-     "FCI",
-     "FCLK",
-     "FCLPA",
-     "LKDRA",
-     "RHMND",
-     "RMI",
-     "RMK",
-     "RMPA"
-    ],
-    "dx": 19,
-    "dy": 0
-   },
-   {
-    "reactions": [
-     "G1PPpp",
-     "GLCDpp",
-     "LACZpp",
-     "TREHpp",
-     "UDPGPpp"
-    ],
-    "dx": 3657,
-    "dy": 150
-   },
-   {
-    "reactions": [
-     "GDPMNH",
-     "GDPMNP",
-     "GMAND",
-     "HEX4",
-     "MAN1PT2",
-     "MAN6PI",
-     "MN6PP",
-     "PMANM"
-    ],
-    "dx": 475,
-    "dy": -170
-   },
-   {
-    "reactions": [
-     "GALCTD",
-     "GLCRAL",
-     "GLCRD",
-     "GLYCK2",
-     "HPYRI",
-     "MANPGH",
-     "TRSARr"
-    ],
-    "dx": -2552,
-    "dy": -3230
-   },
-   {
-    "reactions": [
-     "GPDDA1",
-     "GPDDA2",
-     "GPDDA3",
-     "LPLIPAL2A140"
-    ],
-    "dx": -65,
-    "dy": 2880
-   },
-   {
-    "reactions": [
-     "GALT1",
-     "GLCTR1",
-     "GLCTR2",
-     "GLCTR3"
-    ],
-    "dx": -714,
-    "dy": -1690
-   },
-   {
-    "reactions": [
-     "2DDARAA",
-     "DXYLTD",
-     "GCALDD",
-     "PGLYCP"
-    ],
-    "dx": 9,
-    "dy": -20
-   },
-   {
-    "reactions": [
-     "A5PISO",
-     "KDOCT2",
-     "KDOPP",
-     "KDOPS"
-    ],
-    "dx": 317,
-    "dy": -385
-   },
-   {
-    "reactions": [
-     "3SLAR",
-     "6D6SPA"
-    ],
-    "dx": -172,
-    "dy": 10
-   },
-   {
-    "reactions": [
-     "G1PTT",
-     "TDPDRE",
-     "TDPDRR",
-     "TDPGDH"
-    ],
-    "dx": -1125,
-    "dy": -176
-   },
-   {
-    "reactions": [
-     "KDUI"
-    ],
-    "dx": -482,
-    "dy": 0
-   },
-   {
-    "reactions": [
-     "O16GLCT2"
-    ],
-    "dx": -15,
-    "dy": -430
-   },
-   {
-    "reactions": [
-     "R5PP",
-     "RBK"
-    ],
-    "dx": 16,
-    "dy": -606
-   },
-   {
-    "reactions": [
-     "UACGAMPpp"
-    ],
-    "dx": 627,
-    "dy": -350
-   },
-   {
-    "reactions": [
-     "R5PPpp"
-    ],
-    "dx": 207,
-    "dy": 650
-   },
-   {
-    "reactions": [
-     "UDPGALPpp"
-    ],
-    "dx": 127,
-    "dy": -630
-   }
-  ]
+  "moves": [],
+  "overlaps": []
  },
  "title_nudges": [
   [
@@ -862,9 +579,9 @@
   ]
  ],
  "canvas": {
-  "x": -6851.330330515626,
-  "y": -3894,
-  "width": 14501.330330515626,
-  "height": 8198.0
+  "x": -9250,
+  "y": -3950,
+  "width": 17431.08,
+  "height": 8674
  }
 }

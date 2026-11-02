@@ -1,12 +1,12 @@
 """SPEC - iML1515 carbohydrates (BRENDA draft, 193 reactions) -> hand-laid-out Escher map.
 
 Every coordinate of a PRIMARY metabolite below was chosen by hand (zone-local, Escher convention:
-x right, y DOWN). The toolkit only places markers/cofactors, curves, labels and packs detached pieces.
+x right, y DOWN). The toolkit only places markers/cofactors, curves and labels.
 
 Main component (fixed): the glucose-1-phosphate hub with glycogen + maltodextrins (left column),
 Leloir pathway (above), trehalose / disaccharides / fructose (below g6p).
-All other pathways are self-contained pieces (each with its own title) that the packer arranges
-around the main component."""
+All other pathways are self-contained pieces (each with its own title). Their global arrangement is
+also chosen by hand (ORIGIN); packing is off (PACK mode='keep')."""
 
 INPUT = '../../ecmapper/BRENDAmap/draft_map_iML1515/split/carbohydrates.escher.json'
 
@@ -30,21 +30,25 @@ ZONES = {
  'RHM':  dict(title=None, color='#2ca02c'),
  'SQ':   dict(title='sulfoquinovose degradation', title_id='2360', anchor=('1520', (-60, -560)), color='#8c564b'),
  'SGA':  dict(title='sulfated glycosaminoglycan metabolism', title_id='2359', anchor=('1484', (-60, -120)), color='#8c564b'),
- 'PERI': dict(title=None, color='#555555'),
+ 'PERI': dict(title=None, color='#555555'),   # periplasm: sugar hydrolases / phosphatases
+ 'PGP':  dict(title=None, color='#555555'),   # periplasm: glycerophosphodiesters, cardiolipin
+ 'PNT':  dict(title=None, color='#555555'),   # periplasm: three single nucleotide-sugar phosphatases
+ 'RIB':  dict(title=None, color='#ff7f0e'),   # ribose (RBK / R5PP)
+ 'O16':  dict(title=None, color='#7f7f7f'),   # O16 antigen glucosyltransferase
 }
 TITLE_POS = {'GLYC': (-2500, -3700), 'HEX': (-700, -2000), 'DIS': (-1900, 2000)}
 EXTRA_TITLES = [
     dict(text='LPS core glucosylation (UDP-glucose)', anchor='2236', offset=(-200, -200), zone='LPS'),
-    dict(text='O16 antigen', anchor='2058', offset=(-60, -150), zone='LPS'),
-    dict(text='ribose', anchor='430', offset=(-60, -220), zone='PEN'),
+    dict(text='O16 antigen', anchor='2058', offset=(-60, -150), zone='O16'),
+    dict(text='ribose', anchor='430', offset=(-60, -220), zone='RIB'),
     dict(text='D-glucarate / D-galactarate degradation', anchor='782', offset=(-60, -230), zone='GLR'),
     dict(text='glycerophosphodiester degradation', anchor='1845', offset=(-500, -900), zone='GPD'),
     dict(text='L-rhamnose / L-fucose degradation', anchor='385', offset=(-500, -220), zone='RHM'),
     dict(text='periplasm: sugar hydrolases / phosphatases', anchor='1395', offset=(-400, -220), zone='PERI'),
-    dict(text='periplasm: glycerophosphodiesters, cardiolipin', anchor='1883', offset=(-300, -220), zone='PERI'),
-    dict(text='periplasm', anchor='2136', offset=(-60, -110), zone='PERI'),
-    dict(text='periplasm', anchor='2122', offset=(-60, -110), zone='PERI'),
-    dict(text='periplasm', anchor='2096', offset=(-60, -110), zone='PERI'),
+    dict(text='periplasm: glycerophosphodiesters, cardiolipin', anchor='1883', offset=(-300, -220), zone='PGP'),
+    dict(text='periplasm', anchor='2136', offset=(-60, -110), zone='PNT'),
+    dict(text='periplasm', anchor='2122', offset=(-60, -110), zone='PNT'),
+    dict(text='periplasm', anchor='2096', offset=(-60, -110), zone='PNT'),
 ]
 EXIT_OWNER = {}
 
@@ -71,11 +75,27 @@ def prepare(L):
     # duplicate '→ Central' exit labels that would land on the same merged node (f6p 52, g6p 299)
     for k in ('2328', '2317'): del L.T[k]; L.exit_owner.pop(k, None)
 
-ORIGIN = {'GLYC': (0, 0), 'HEX': (0, 0), 'DIS': (0, 0),          # main; detached pieces are packed
-          'RHA': (2500, -3000), 'LPS': (2200, 400), 'KDO': (3000, -3000), 'UGN': (-5500, -3000),
-          'AMS': (-5500, -3000), 'MAN': (4000, -2500), 'PEN': (2500, -1500), 'XYL': (5500, -3000),
-          'KGL': (4500, 1000), 'SAC': (2000, 3200), 'GLR': (4500, 3800), 'ALC': (-4000, 1500),
-          'GPD': (-5500, -1000), 'RHM': (6000, -500), 'SQ': (7000, 2500), 'SGA': (7000, 3500), 'PERI': (-3500, -3000)}
+# ------------------------------------------------------------------ global arrangement (by hand)
+# Middle: main component (g1p hub, glycogen/maltodextrins, Leloir, disaccharides), x -2500..1440.
+# West  : top band  - periplasmic glycerophosphodiesters/cardiolipin | periplasmic sugar hydrolases;
+#         middle    - the three single periplasmic phosphatases | cytoplasmic glycerophosphodiesterases;
+#         left      - amino sugars + UDP-GlcNAc (f6p/gam6p, next to the f6p side of the main block);
+#         bottom    - sugar alcohols (glycerol / hexitols / galactitol, glyc3p), below the GPD block.
+# East  : row 1 (top)    - nucleotide-sugar / glycan precursors: LPS core glucosylation, O16, CMP-KDO,
+#                          dTDP-L-rhamnose above GDP-mannose (D-mannose block), Dahms xylose pathway;
+#         row 2 (middle) - pentoses + ribose, L-rhamnose / L-fucose, sulfoquinovose, KDUI;
+#         row 3 (bottom) - sugar acids: ketogluconates, hexuronates/galactonate, glucarate/galactarate.
+ORIGIN = {'GLYC': (0, 0), 'HEX': (0, 0), 'DIS': (0, 0),          # main component
+          # west
+          'GPD': (-3850, 126), 'PGP': (-5304, -5786), 'PERI': (-3499, -2936), 'PNT': (-7640, -1096),
+          'UGN': (-8400, -3496), 'AMS': (-8400, -3496), 'ALC': (-3874, 2894),
+          # east, row 1
+          'LPS': (2056, -3556), 'O16': (1760, -3706), 'KDO': (3251, -3526), 'RHA': (4396, -3526),
+          'MAN': (4192, -2846), 'XYL': (6060, -2732),
+          # east, row 2
+          'PEN': (1760, 1), 'RIB': (3860, -2536), 'RHM': (5502, 864), 'SQ': (6752, -61), 'SGA': (6660, 964),
+          # east, row 3
+          'KGL': (2731, 2074), 'SAC': (4060, 2174), 'GLR': (4060, 3732)}
 FLIP = {}
 
 MERGES = [
@@ -162,13 +182,13 @@ def layout(L):
     L.reaction('204', 'RHA', side='U'); L.reaction('215', 'RHA', side='D')
     L.reaction('224', 'RHA', lab='U'); L.reaction('237', 'RHA', side='U')
     # LPS core chain with local UDP-glucose donors
-    L.setp('LPS', {'2236': (0, 0), '2237': (0, 450), '2274': (0, 900), '2286': (0, 1350), '2298': (0, 1800),
-                   '2058': (0, 2350), '2059': (550, 2350)})
+    L.setp('LPS', {'2236': (0, 0), '2237': (0, 450), '2274': (0, 900), '2286': (0, 1350), '2298': (0, 1800)})
+    L.setp('O16', {'2058': (0, 2350), '2059': (550, 2350)})
     for rid, y in (('2248', 225), ('2285', 675), ('2297', 1125), ('2309', 1575)):
         L.setp('LPS', {S['udpg_'+rid]: (-330, y-120)})
         L.reaction(rid, 'LPS', axis=(0, 1), mid=(0, y), side='R', dist=110)
-    L.setp('LPS', {S['udpg_2070']: (0, 2700)})
-    L.reaction('2070', 'LPS', axis=(1, 0), mid=(260, 2350), side='U', dist=110)        # O16GLCT2
+    L.setp('O16', {S['udpg_2070']: (0, 2700)})
+    L.reaction('2070', 'O16', axis=(1, 0), mid=(260, 2350), side='U', dist=110)        # O16GLCT2
     # CMP-KDO
     L.setp('KDO', {'1': (0, 0), '2': (0, 350), '27': (0, 750), '12': (0, 1150), '13': (0, 1550)})
     for r in ('10', '39', '51', '24'): L.reaction(r, 'KDO', side='R')
@@ -202,7 +222,8 @@ def layout(L):
                    '406': (0, 1000), '407': (450, 1000), '455': (900, 1000), '474': (1400, 1000),
                    '592': (900, 1500), '581': (1400, 1500),
                    '2164': (1400, -650), S['glc_2175']: (1800, -300),
-                   '430': (0, 2100), '432': (550, 2100)})
+                   })
+    L.setp('RIB', {'430': (0, 2100), '432': (550, 2100)})
     L.reaction('405', 'PEN', shift=(0, -70), side='U', dist=100); L.reaction('505', 'PEN', shift=(0, 70), side='D', dist=100)
     L.reaction('2120', 'PEN', side='U')                                                 # RU5PP
     L.reaction('473', 'PEN', shift=(-70, 0), side='L', dist=100); L.reaction('531', 'PEN', shift=(70, 0), side='R', dist=100)
@@ -215,7 +236,7 @@ def layout(L):
     L.reaction('591', 'PEN', shift=(-70, 0), side='L', dist=100); L.reaction('906', 'PEN', shift=(70, 0), side='R', dist=100)
     L.reaction('600', 'PEN', side='D')                                                  # LYXI
     L.reaction('2175', 'PEN', side='L')                                                 # XYHDL
-    L.reaction('442', 'PEN', shift=(0, -70), side='U', dist=100); L.reaction('2094', 'PEN', shift=(0, 70), side='D', dist=100)
+    L.reaction('442', 'RIB', shift=(0, -70), side='U', dist=100); L.reaction('2094', 'RIB', shift=(0, 70), side='D', dist=100)
     # Dahms pathway
     L.setp('XYL', {'179': (0, 0), '180': (450, 0), '445': (900, -350), '444': (900, 350),
                    '543': (1400, 350), '541': (1400, 850)})
@@ -309,21 +330,21 @@ def layout(L):
     L.reaction('1493', 'SGA', lab='R')
     # periplasm
     L.setp('PERI', {'1396': (0, 0), '1395': (0, -600), '1810': (600, 0), '1370': (-650, -450), '1371': (-650, 150),
-                    '1756': (0, 600), '2150': (0, 1200),
-                    '2136': (1400, 600), '2137': (1400, 1100), '2122': (1900, 600), '2123': (1900, 1100),
-                    '2096': (2400, 600), '2098': (2400, 1100)})
+                    '1756': (0, 600), '2150': (0, 1200)})
+    L.setp('PNT', {'2136': (1400, 600), '2137': (1400, 1100), '2122': (1900, 600), '2123': (1900, 1100),
+                   '2096': (2400, 600), '2098': (2400, 1100)})
     L.reaction('1405', 'PERI', side='R'); L.reaction('1822', 'PERI', side='U'); L.reaction('1382', 'PERI', side='L')
     L.reaction('1769', 'PERI', side='R'); L.reaction('2162', 'PERI', side='R')
-    L.reaction('2148', 'PERI', side='R'); L.reaction('2134', 'PERI', side='R'); L.reaction('2108', 'PERI', side='R')
-    L.setp('PERI', {'923': (0, 3000), '1883': (-250, 2250), '1884': (-650, 2750), '1870': (-250, 3750),
+    L.reaction('2148', 'PNT', side='R'); L.reaction('2134', 'PNT', side='R'); L.reaction('2108', 'PNT', side='R')
+    L.setp('PGP', {'923': (0, 3000), '1883': (-250, 2250), '1884': (-650, 2750), '1870': (-250, 3750),
                     '1872': (-650, 3250), '1928': (750, 3250), '1930': (350, 3650),
                     '1907': (-750, 3450), '1653': (-100, 3950)})
-    L.reaction('934', 'PERI', axis=(-0.7, 0.7), mid=(380, 2620), side='U', end_cof=True, step=80)   # GPDDA1pp
-    L.reaction('1894', 'PERI', side='R'); L.reaction('1882', 'PERI', side='R'); L.reaction('1940', 'PERI', side='R')
-    L.reaction('1918', 'PERI', side='L')                                               # GPDDA4pp
-    L.setp('PERI', {'1651': (-750, 4450), '1652': (-700, 3950), '1663': (-100, 4650), '1664': (300, 4850),
+    L.reaction('934', 'PGP', axis=(-0.7, 0.7), mid=(380, 2620), side='U', end_cof=True, step=80)   # GPDDA1pp
+    L.reaction('1894', 'PGP', side='R'); L.reaction('1882', 'PGP', side='R'); L.reaction('1940', 'PGP', side='R')
+    L.reaction('1918', 'PGP', side='L')                                               # GPDDA4pp
+    L.setp('PGP', {'1651': (-750, 4450), '1652': (-700, 3950), '1663': (-100, 4650), '1664': (300, 4850),
                     '1674': (550, 4450), '1675': (650, 3950)})
-    L.reaction('1662', 'PERI', side='L'); L.reaction('1673', 'PERI', side='R'); L.reaction('1684', 'PERI', side='R')
+    L.reaction('1662', 'PGP', side='L'); L.reaction('1673', 'PGP', side='R'); L.reaction('1684', 'PGP', side='R')
 
 NEW_EXITS = [('1344', '→ Leloir pathway'), ('192', '← glycogen metabolism (g1p)'), ('1', '← Central'),
              ('g3p_D', '→ sugar alcohols (glyc3p)'), ('1969', '→ D-mannose degradation'),
@@ -333,6 +354,6 @@ CURVES = dict(t=0.6, stacked=['1058', '1095', '1990', '1047', '2001', '1071', '1
                               '2023', '2045', '1638', '1183', '1696', '1170', '1567', '1195', '1207', '1219',
                               '1159', '1555', '947', '959', '971'],
               bend_override={}, special_links={})
-# two tiny keep-out markers widen the packing target (main component is tall) -> landscape canvas
-PACK = dict(keep_out=[('box', (-6500, -3400, -6490, -3390)), ('box', (7490, 4300, 7500, 4310))], auto_ring_keep_out=True)
+# every piece is placed by hand (ORIGIN above); nothing is moved by the packer
+PACK = dict(mode='keep')
 RENDER_SCALE = 0.25

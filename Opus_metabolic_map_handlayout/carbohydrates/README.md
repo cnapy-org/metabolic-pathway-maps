@@ -4,14 +4,14 @@ Input: `ecmapper/BRENDAmap/draft_map_iML1515/split/carbohydrates.escher.json` (B
 Layout: written by hand in `spec.py`, using the `escher_handlayout` toolkit (`../escher_handlayout_toolkit`).
 
 ```bash
-PYTHONPATH=../escher_handlayout_toolkit python -m escher_handlayout run spec.py --out v3 --render
+PYTHONPATH=../escher_handlayout_toolkit python -m escher_handlayout run spec.py --out v4 --render
 ```
 
 | file | content |
 |---|---|
-| `v3/carbohydrates.escher_final.json` | final Escher map |
-| `v3/qa_report.md`, `v3/run_log.json` | QA report and run log (splits, merges, packing) |
-| `v3/overview.png` | matplotlib preview (not Escher) |
+| `v4/carbohydrates.escher_final.json` | final Escher map |
+| `v4/qa_report.md`, `v4/run_log.json` | QA report and run log (splits, merges) |
+| `v4/overview.png` | matplotlib preview (not Escher) |
 | `inspect/phase0_report.md` | Phase 0 report on the draft |
 
 ## Counts
@@ -26,8 +26,10 @@ The toolkit split shared cofactors automatically. On top of that, `prepare()` ma
 and there are 45 merges. Most merges remove duplicate drawings of the same metabolite inside one
 pathway. The two effects roughly cancel out.
 
-Canvas: **14501 × 8198** (margin included). The bounding box was 14408 × 8390 before packing and
-14000 × 8054 after packing. Curvature t = 0.6.
+Canvas: **17431 × 8674** (margin included); the hand arrangement spans 17131 × 8370. Packing is off
+(`PACK = dict(mode='keep')`), so every piece stays where `spec.py` puts it. Curvature t = 0.6.
+v3 used automatic packing (canvas 14501 × 8198); v4 is about 1.27× that area but keeps related
+pathways next to each other.
 
 ## Layout
 
@@ -44,7 +46,7 @@ Canvas: **14501 × 8198** (margin included). The bounding box was 14408 × 8390 
     - lactose/melibiose fans from below;
     - fructose/f1p/f6p on the left;
     - GlcNAc/maltose acetylation and PAI2T on the right.
-- **Detached pieces, each with its own title, arranged by the packer:**
+- **Detached pieces, each with its own title, placed by hand (see "Global arrangement"):**
   - UDP-GlcNAc + amino sugars, joined by merged f6p/gam6p/UDP-GlcNAc;
   - CMP-KDO;
   - dTDP-L-rhamnose;
@@ -64,6 +66,30 @@ Canvas: **14501 × 8198** (margin included). The bounding box was 14408 × 8390 
   - sulfoquinovose;
   - sulfated GAG (KDUI);
   - periplasm pieces.
+
+## Global arrangement (v4, by hand)
+
+The main component sits in the middle (x −2500…1440). Around it:
+
+- **West, top band:** the periplasmic glycerophosphodiesters/cardiolipin piece and the periplasmic
+  sugar hydrolases/phosphatases side by side.
+- **West, middle band:** below them, the three single periplasmic nucleotide-sugar phosphatases
+  (UDPGALPpp, UACGAMPpp, R5PPpp) in a row on the left and cytoplasmic glycerophosphodiester
+  degradation on the right.
+- **West, far left:** amino sugars + UDP-GlcNAc (f6p/gam6p). Their only links to the rest are exit
+  labels to f6p.
+- **West, bottom:** sugar alcohols (glycerol / hexitols / galactitol), below the glycerophosphodiester
+  block they share glyc3p with.
+- **East, row 1 (glycan precursors, next to g1p/Leloir):** LPS core glucosylation (UDP-glucose),
+  O16 antigen, CMP-KDO, dTDP-L-rhamnose above the D-mannose block (GDP-mannose), and D-xylose (Dahms).
+- **East, row 2 (pentoses and methylpentoses):** pentoses, ribose, L-rhamnose/L-fucose,
+  sulfoquinovose and KDUI.
+- **East, row 3 (sugar acids):** ketogluconates, then hexuronates/galactonate with
+  D-glucarate/galactarate below.
+
+To place the periplasm, ribose and O16 pieces independently, three zones were split off without any
+change to the biochemistry: `PGP`, `PNT`, `RIB` and `O16` (from PERI, PEN and LPS). The QA report lists
+0 overlapping pieces.
 
 ## Decisions
 
@@ -106,16 +132,16 @@ Canvas: **14501 × 8198** (margin included). The bounding box was 14408 × 8390 
   These act as co-substrates or side products next to their reaction.
 - **Duplicate exit labels removed:** two draft exit labels would have landed twice on the same merged
   node (f6p `2328`, g6p `2317`), so they were deleted. `→ Central, Amino acids` stays on g6p.
-- **Packing:** `PACK.keep_out` holds two 10×10 marker boxes. They widen the packing target: without
-  them the packer stacked all pieces vertically next to the tall main component, giving 4693 × 18360.
-  With them the result is landscape at about the same area.
+- **Packing off (v4):** automatic packing stacked all pieces vertically next to the tall main
+  component (4693 × 18360). v3 worked around that with two tiny keep-out boxes, but the packer still
+  chose where each pathway went. v4 sets `PACK = dict(mode='keep')` and places every piece by hand.
 - **No toolkit change was needed.**
 
-## Known weak spots (from `v3/qa_report.md`)
+## Known weak spots (from `v4/qa_report.md`)
 
 **Structural validation:** all PASS.
 
-**Crossings: 4.** All are between reactions of one lane family; there are no crossings between
+**Crossings: 5.** All are between reactions of one lane family; there are no crossings between
 different pathways.
 
 | crossing | explanation |
@@ -124,13 +150,19 @@ different pathways.
 | TGBPA × TGBPA | the same happens with the duplicate fans to dhap + g3p |
 | DKGLCNR2x × DKGLCNR2y | stack-internal crossing on the shared diagonal lane |
 | MLTG5 × MLTP3 | stacked on the same maltodextrin level; the MLTP3 line to g1p leaves across the MLTG5 lane |
+| 2DGULRGx × 2DGULRGy | not a visible crossing: the two stacked rows share one straight lane, and the QA test reports overlapping collinear segments (cross products ≈ 0) depending on floating-point rounding. The geometry is the same as in v3, which by chance did not trigger it |
 
 **Other checks:**
 - Dots closer than 45: 0.
 - Foreign lines within 28 of a dot: 0.
 - Label overlaps: 0.
 - Titles on lines: 0.
-- Two primary labels touch a line (label score < 120).
+- All 697 labels are clean (no label touches a line).
+
+**Layout:**
+- The left column (amino sugars) leaves empty space below it, and the west middle band is sparse.
+  The width is set by the top bands (west: amino sugars + periplasm pieces; east: glycan-precursor
+  row), so moving pieces into those gaps would not shrink the canvas.
 
 **Not covered by QA:**
 - Text widths are estimates, and arrowheads are not modelled by QA.
