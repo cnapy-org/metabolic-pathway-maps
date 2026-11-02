@@ -122,6 +122,9 @@ class Layout:
             if isinstance(side, str): side = sw.get(side, side)
             if lab: lab = sw.get(lab, lab)
             if axis: axis = (axis[0], -axis[1])
+            if isinstance(side, (tuple, list)): side = (side[0], -side[1])
+            shift = (shift[0], -shift[1])
+            if sides: sides = {k: sw.get(v, v) for k, v in sides.items()}
         self.zone_of[rid] = zone
         pri = lambda l: [n for n in l if self.is_primary(n)]
         sec = lambda l: [n for n in l if not self.is_primary(n)]
