@@ -77,6 +77,22 @@ def translate(L, rids, text_ids, dx, dy):
                 if s[b]: s[b]['x'] += dx; s[b]['y'] += dy
     for k in text_ids: L.T[k]['x'] += dx; L.T[k]['y'] += dy
 
+def keep_overlaps(L, comps, piece_texts, main_texts):
+    """mode='keep': pairs of pieces whose occupied grid cells overlap (the spec placed them on top
+    of each other) -> list of (bigg ids of piece a, bigg ids of piece b), reported in the QA report"""
+    els = [elements(L, p, main_texts if i == 0 else piece_texts.get(tuple(sorted(p)), [])) for i, p in enumerate(comps)]
+    bbs = [bbox_of(e) for e in els]; out = []
+    for i in range(len(comps)):
+        for j in range(i+1, len(comps)):
+            a, b = bbs[i], bbs[j]
+            if a[2] < b[0] or b[2] < a[0] or a[3] < b[1] or b[3] < a[1]: continue
+            x0, y0 = min(a[0], b[0]), min(a[1], b[1])
+            W = int((max(a[2], b[2])-x0)//CELL)+1; H = int((max(a[3], b[3])-y0)//CELL)+1
+            if (raster(els[i], x0, y0, W, H) & raster(els[j], x0, y0, W, H)).any():
+                name = lambda p: sorted(L.R[r]['bigg_id'] for r in p)[:3]
+                out.append((name(comps[i]), name(comps[j])))
+    return out
+
 def ring_keep_out(L, rids):
     """interior discs of all rings (arc reactions) of the main component"""
     seen = {}
@@ -86,9 +102,17 @@ def ring_keep_out(L, rids):
             key = (round(m['c'][0]), round(m['c'][1])); seen[key] = max(seen.get(key, 0), m['R0'])
     return [('circ', (x, y, r)) for (x, y), r in seen.items()]
 
-def pack(L, piece_texts, main_texts, keep_out=(), auto_ring_keep_out=True):
-    """piece_texts: {tuple(sorted(rids)): [text label ids that move with the piece]}"""
+def pack(L, piece_texts, main_texts, keep_out=(), auto_ring_keep_out=True, mode='pack'):
+    """piece_texts: {tuple(sorted(rids)): [text label ids that move with the piece]}
+    mode='pack' moves detached pieces to the free spot giving the smallest overall rectangle;
+    mode='keep' leaves every piece at its hand-specified position (no moves, no grid snapping)."""
+    if mode not in ('pack', 'keep'): raise ValueError(f"PACK mode must be 'pack' or 'keep', not {mode!r}")
     comps = components(L); main = comps[0]; pieces = comps[1:]; log = []
+    if mode == 'keep':
+        bs = [bbox_of(elements(L, p, main_texts if i == 0 else piece_texts.get(tuple(sorted(p)), [])))
+              for i, p in enumerate(comps)]
+        u = (min(b[0] for b in bs), min(b[1] for b in bs), max(b[2] for b in bs), max(b[3] for b in bs))
+        return dict(before=u, after=u, moves=[], overlaps=keep_overlaps(L, comps, piece_texts, main_texts))
     occ = elements(L, main, main_texts)
     ko = list(keep_out)+(ring_keep_out(L, main) if auto_ring_keep_out else [])
     for kind, data in ko:

@@ -1,14 +1,14 @@
 # Lipids map (iML1515, BRENDA draft): hand layout
 
 - **Input:** `ecmapper/BRENDAmap/draft_map_iML1515/split/lipids.escher.json`
-- **Output:** `v5/lipids.escher_final.json`. This folder also holds `spec.py` (the hand coordinates), `v5/qa_report.md`, `v5/run_log.json`, `v5/overview.png` (matplotlib preview, not Escher) and `inspect/` (Phase 0 report).
+- **Output:** `v6/lipids.escher_final.json`. This folder also holds `spec.py` (the hand coordinates), `v6/qa_report.md`, `v6/run_log.json`, `v6/overview.png` (matplotlib preview, not Escher) and `inspect/` (Phase 0 report).
 
 The map was made with `escher_handlayout` and follows `PROMPT.md`. It is **validated structurally by the toolkit and has not been loaded in Escher.**
 
 Reproduce from the repository root:
 
 ```bash
-PYTHONPATH=Opus_metabolic_map_handlayout/escher_handlayout_toolkit python -m escher_handlayout run Opus_metabolic_map_handlayout/lipids/spec.py --out Opus_metabolic_map_handlayout/lipids/v5 --render
+PYTHONPATH=Opus_metabolic_map_handlayout/escher_handlayout_toolkit python -m escher_handlayout run Opus_metabolic_map_handlayout/lipids/spec.py --out Opus_metabolic_map_handlayout/lipids/v6 --render
 ```
 
 ## Counts
@@ -18,7 +18,7 @@ PYTHONPATH=Opus_metabolic_map_handlayout/escher_handlayout_toolkit python -m esc
 | reactions | 159 | 159 (same ids, stoichiometry, reversibility and genes) |
 | nodes | 924 (447 metabolite) | 992 (515 metabolite) |
 | text labels | 30 | 35 (8 zone titles, 2 sub-titles, 25 exit labels) |
-| canvas | 9556 × 6910 | 12215 × 9378 |
+| canvas | 9556 × 6910 | 12186 × 9364 |
 
 The extra metabolite nodes come from:
 - 12 automatic cofactor splits;
@@ -27,7 +27,7 @@ The extra metabolite nodes come from:
 
 `run_log.json` lists all 77 splits and 9 merges.
 
-**Area:** the hand arrangement is 11886 × 9046 = 107.5 M. After packing it is 12051 × 9301 = 112.1 M.
+**Area:** the hand arrangement is 11886 × 9046 = 107.5 M. Packing is off (`PACK = dict(mode='keep')`), so this is also the final extent.
 
 ## Layout (zones and sources)
 
@@ -80,7 +80,7 @@ Draft titles were reused and renamed where the content differed.
   - Kdo for MOAT3C;
   - FA161ACPHi's hexadecenoate placed in the lipid A zone, next to the second hdeACP.
 - **ACACT1r** (2 acetyl-CoA → acetoacetyl-CoA) sits in the 3-oxo slot of the C4 β-oxidation row instead of under 'mevalonate'.
-- **Packing.** The packer would move most of the hand-placed pieces into holes of other zones: the first run moved 40 pieces, e.g. the C14–C18 FAS rows by 4900 units. `PACK.keep_out` therefore holds two 1 × 1 boxes at the corners of the hand layout. The reference rectangle is then the whole map and every detached piece stays where it was placed. The trade-off is a larger canvas (112 M instead of the packer's 45 M), but the arrangement stays readable.
+- **Packing off.** Automatic packing would move most of the hand-placed pieces into holes of other zones (the first run moved 40 pieces, e.g. the C14–C18 FAS rows by 4900 units). v6 uses the toolkit's `PACK = dict(mode='keep')`: every detached piece stays exactly where the spec puts it, and the QA report confirms that no pieces overlap. (v5 got the same effect with two 1 × 1 keep-out boxes at the corners, at the cost of up to 20 units of grid-snap offset.) The canvas (107.5 M) is larger than the packer's 45 M, but the arrangement stays readable.
 - **Other settings:** curvature t = 0.6 (default); bend overrides only for the activation-pair ligases (0) and the 4-lane ACOAD1 family (15).
 
 ## QA (final run)
@@ -97,7 +97,6 @@ Draft titles were reused and renamed where the content differed.
 
 ## Known weak spots
 
-- **Packing jitter.** Packing quantises translations to its 40-unit grid, so detached pieces move by up to 20 units (TDPADGAT, the largest, by (−5, 18)). Rows of the FAS and β-oxidation snakes that are separate pieces can therefore be offset by a few units from perfect alignment.
 - **Empty slots.** The FAS and β-oxidation snakes contain empty slots wherever iML1515 lacks a step, e.g. rows C10/C8 of β-oxidation hold only the thiolases. This is intended (fixed grid) but leaves white space.
 - **Fragmented map.** Because of the side-product convention, the map is made of many small pieces. Connections between zones are shown by exit labels only.
 - **Estimates.** Text widths and all QA checks are heuristics (see the toolkit README). The map has not been opened in Escher.

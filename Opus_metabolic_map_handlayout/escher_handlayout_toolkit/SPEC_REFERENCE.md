@@ -21,7 +21,7 @@ wherever an id is expected.
 | `layout(L)` | yes | all `L.setp` / `L.reaction` calls (called twice) |
 | `NEW_EXITS` | no | `[(owner_node, '→ text')]` exit labels for copies not merged |
 | `CURVES` | no | `dict(t=0.6, bend=55, bend_stack=15, stacked=[rids], bend_override={rid: bend}, special_links={(rid, node): (tx, ty)}, nested_arc_lanes=True)` |
-| `PACK` | no | `dict(keep_out=[('box', (x0, y0, x1, y1)), ('circ', (x, y, r))], auto_ring_keep_out=True)` |
+| `PACK` | no | `dict(mode='pack', keep_out=[('box', (x0, y0, x1, y1)), ('circ', (x, y, r))], auto_ring_keep_out=True)`. `mode='keep'` leaves every detached piece exactly where `layout()` put it (no moves, no grid snapping) – use it when you place all pieces by hand; pieces that overlap are listed in the QA report (`piece_overlaps`). |
 | `CANVAS_MARGIN`, `RENDER_SCALE` | no | defaults 150, 0.5 |
 
 ## `L.setp(zone, {node_id: (x, y)})`

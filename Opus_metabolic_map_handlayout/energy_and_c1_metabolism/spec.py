@@ -10,7 +10,7 @@ INPUT = '../../ecmapper/BRENDAmap/draft_map_iML1515/split/energy_and_c1_metaboli
 
 ZONES = {
  'C1':  dict(title='formaldehyde oxidation', title_id='588', anchor=('125', (-520, -120)), color='#1f77b4'),
- 'THF': dict(title='reductive acetyl coenzyme A pathway', title_id='591', anchor=('558', (-60, 230)), color='#17becf'),
+ 'THF': dict(title='reductive acetyl coenzyme A pathway', title_id='591', anchor=('558', (-1000, 860)), color='#17becf'),
  'UB':  dict(title='ubiquinone biosynthesis', title_id='592', anchor=('306', (-150, -170)), color='#2ca02c'),
  'HPB': dict(title='CO2 fixation in Crenarchaeota (3-hydroxypropionate/4-hydroxybutyrate cycle)', title_id='587',
              anchor=('83', (-900, -330)), color='#d62728'),
@@ -106,9 +106,6 @@ NEW_EXITS = []
 EXTRA_TITLES = []
 TITLE_POS = {}
 CURVES = dict(t=0.6, stacked=['459', '471', '483', '190', '202'], bend_override={}, special_links={})
-# Every piece is placed by hand (ORIGIN). Two 1x1 keep-out boxes mark the corners of the intended
-# canvas, so the packer finds every piece already at a free spot inside the canvas and leaves it there.
-# (A keep-out disc for the 3HP/4HB ring interior is not needed - no piece has to move - and it would
-#  collide with the inner cofactor dots because keep-out circles are rasterised as squares.)
-PACK = dict(keep_out=[('box', (-900, -700, -899, -699)), ('box', (5600, 4200, 5601, 4201))], auto_ring_keep_out=True)
+# The hand arrangement is final: every detached piece stays exactly where layout() puts it.
+PACK = dict(mode='keep')
 RENDER_SCALE = 0.5

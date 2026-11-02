@@ -44,21 +44,12 @@
 
 ## Area
 - before packing 6236 x 4329 = 26.99 M
-- after packing  6501 x 4901 = 31.86 M
-- canvas 6560 x 4699 (margin incl.)
+- after packing  6236 x 4329 = 26.99 M
+- canvas 6554 x 4727 (margin incl.)
+
+## Packing: mode='keep' (pieces at hand positions); overlapping pieces: 0
 
 ## Moves of detached pieces
-- ['ACACT1r', 'ACCOAC', 'ECOAH1', 'ECOAH1', 'HACD1', 'HACD1']: dx=-2 dy=16
-- ['ARGSL', 'ARGSS', 'CBMKr', 'OCBT']: dx=5 dy=-12
-- ['CHRPL', 'HBZOPT', 'OCTDPS', 'OHPHM', 'OMPHHXy', 'OPHBDC', 'OPHHX3', 'OPHHXy']: dx=-5 dy=4
-- ['DHGLYH', 'GLXCL', 'GLYCLTDx', 'GLYCLTDy', 'GLYCTO2', 'GLYCTO3', 'GLYCTO4']: dx=7 dy=-6
-- ['DMQMT', 'OMMBLHX3', 'OMMBLHXy']: dx=6 dy=4
-- ['CAT']: dx=16 dy=4
-- ['GHBDHx']: dx=171 dy=158
-- ['GLYCK']: dx=-4 dy=18
-- ['PCNO']: dx=1 dy=-2
-- ['MSAR']: dx=-11 dy=16
-- ['MMM']: dx=52 dy=9
 
 ## Title nudges
 - CO2 fixation in Crenarchaeota (3-hydroxypropionate/4-hydroxybutyrate cycle): (-52, -193) ok

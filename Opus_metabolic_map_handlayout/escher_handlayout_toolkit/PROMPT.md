@@ -162,6 +162,9 @@ look at the overview as an extra check; it is optional.
 - A merged hub pulls the axis of every reaction attached to it – pin `axis`/`mid` where it matters.
 - Stacked rows on an arc fan out (each row draws its own arc) – use gap lanes on rings instead.
 - Lanes inside a ring collide with shunts; put extra lanes outside.
+- Packing ignores your global arrangement of detached pieces. If you place every piece by hand, set
+  `PACK = dict(mode='keep')` and fix any `piece_overlaps` the QA report lists (do not use tiny
+  keep-out boxes at the canvas corners as a workaround).
 - Packing may drop a small piece into an empty ring interior – ring interiors are kept free
   automatically (`auto_ring_keep_out`); add `('box', …)` keep-outs for other enclosed areas.
 - Duplicate reactions (same `bigg_id`) are kept and drawn as lanes; variant families with different

@@ -91,17 +91,21 @@ def run(spec_path, input_path=None, out_dir='out', render=False, name=None):
     moving = {k for v in piece_texts.values() for k in v}
     pk = getattr(spec, 'PACK', {})
     res = pack.pack(L, piece_texts, [k for k in L.T if k not in moving], keep_out=pk.get('keep_out', []),
-                    auto_ring_keep_out=pk.get('auto_ring_keep_out', True))
+                    auto_ring_keep_out=pk.get('auto_ring_keep_out', True), mode=pk.get('mode', 'pack'))
     log['packing'] = res
     log['title_nudges'] = T_.nudge_titles(L)
     log['canvas'] = T_.set_canvas(L, margin=getattr(spec, 'CANVAS_MARGIN', 150))
     out_json = os.path.join(out_dir, name+'.json'); L.save(out_json)
     summary, md = qa.report(L, out_json, input_path, scores); md = md.split('\n')
+    if 'overlaps' in res: summary['piece_overlaps'] = len(res['overlaps'])
     a = lambda b: (b[2]-b[0])*(b[3]-b[1])
     b0, b1 = res['before'], res['after']; c = log['canvas']
     md += ['', '## Area', f"- before packing {b0[2]-b0[0]:.0f} x {b0[3]-b0[1]:.0f} = {a(b0)/1e6:.2f} M",
            f"- after packing  {b1[2]-b1[0]:.0f} x {b1[3]-b1[1]:.0f} = {a(b1)/1e6:.2f} M",
            f"- canvas {c['width']:.0f} x {c['height']:.0f} (margin incl.)"]
+    if pk.get('mode', 'pack') == 'keep':
+        md += ['', f"## Packing: mode='keep' (pieces at hand positions); overlapping pieces: {len(res['overlaps'])}"]
+        md += [f'- {a} / {b}' for a, b in res['overlaps']]
     md += ['', '## Moves of detached pieces'] + [f"- {m['reactions']}: dx={m['dx']} dy={m['dy']}" for m in res['moves']]
     md += ['', '## Title nudges'] + [f'- {t}: ({dx}, {dy}) {"ok" if ok else "NO CLEAN SPOT"}' for t, dx, dy, ok in log['title_nudges']]
     open(os.path.join(out_dir, 'qa_report.md'), 'w').write('\n'.join(md))

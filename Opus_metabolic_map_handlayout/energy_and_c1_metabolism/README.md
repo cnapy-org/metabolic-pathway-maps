@@ -6,12 +6,12 @@ every primary metabolite and every zone origin were chosen by hand in `spec.py`.
 the routine steps: placing markers and cofactors, curves, labels, packing, QA and validation.
 
 ```bash
-PYTHONPATH=../escher_handlayout_toolkit python -m escher_handlayout run spec.py --out v7 --render
+PYTHONPATH=../escher_handlayout_toolkit python -m escher_handlayout run spec.py --out v8 --render
 ```
 
 ## Files
-- `v7/energy_and_c1_metabolism.escher_final.json`: the Escher map
-- `v7/qa_report.md`, `v7/run_log.json`, `v7/overview.png` (matplotlib preview, not Escher)
+- `v8/energy_and_c1_metabolism.escher_final.json`: the Escher map
+- `v8/qa_report.md`, `v8/run_log.json`, `v8/overview.png` (matplotlib preview, not Escher)
 - `spec.py`: the hand layout
 - `inspect/`: Phase 0 report
 
@@ -59,24 +59,24 @@ All 7 titles are the draft text labels. One was extended: "CO2 fixation in Crena
 - **Whole-map arrangement:**
   - Top row: formaldehyde + THF (main component, left), 3HP/4HB ring (middle), ubiquinone (right).
   - Bottom row: urea cycle, glycolate/glyoxylate (+ GLYCK), catalase.
-- **Packing is effectively disabled.**
-  - Every detached piece got a hand-chosen position.
-  - Two 1×1 keep-out boxes mark the intended canvas corners. The packer therefore finds each piece
-    already in a free spot inside the canvas and leaves it there.
-  - The only remaining shifts are grid-snap moves of ≤ 25 units, from the packer's 40-unit grid.
-  - Without the corner boxes the packer scattered the single-reaction pieces of the 3HP/4HB cycle all
-    over the map.
-- **Zone titles are anchored to a node of their piece.**
+- **Packing is off** (`PACK = dict(mode='keep')`, since v8).
+  - Every detached piece got a hand-chosen position and stays exactly there; the QA report lists no
+    overlapping pieces.
+  - Automatic packing scattered the single-reaction pieces of the 3HP/4HB cycle all over the map.
+    v7 avoided that with two 1×1 keep-out boxes at the canvas corners, which still left grid-snap
+    offsets of up to 25 units.
+- **Zone titles are anchored to a node of their piece.** v8 moves the reductive acetyl-CoA title below
+  the THF column; in v7 it ran into the 3HP/4HB ring.
 - **Curvature:** t = 0.6 (default).
 - **Exit labels:** 17, all assigned by the automatic owner rule.
 
 ## Area
-- Before packing: 6236 × 4329. After: 6501 × 4901, because of the corner keep-out boxes.
-- Final canvas: **6560 × 4699** (margin 150 included).
+- Hand arrangement: 6236 × 4329 (packing off, so unchanged).
+- Final canvas: **6554 × 4727** (margin 150 included).
 - The map is less compact than an automatically packed one. Earlier versions with automatic packing
   reached 3880 × 3623, but they broke up the 3HP/4HB ring and placed pieces at random.
 
-## QA (final run v7)
+## QA (final run v8)
 | check | result |
 |---|---|
 | structural validation | all PASS |
@@ -90,8 +90,6 @@ All 7 titles are the draft text labels. One was extended: "CO2 fixation in Crena
 - **GLYCLTDx × GLYCLTDy and GLYCTO2 × GLYCTO3 crossings.** These are stacked rows on one lane. Each row
   bows separately from glycolate/glyoxylate, so the bows of neighbouring rows cross. PROMPT.md accepts
   this.
-- **The 3HP/4HB singles are separate pieces.** Grid snapping moves them by up to ~25 units off the ring
-  circle. The offset is barely visible, but their arcs do not continue the ring arcs exactly.
 - **The ring interior and the space left of the urea cycle are empty.** That costs area; it was kept for
   readability.
 - **The "methane metabolism" title is kept from the draft.** It covers only catalase (CAT).
@@ -99,7 +97,6 @@ All 7 titles are the draft text labels. One was extended: "CO2 fixation in Crena
 Validated structurally by the toolkit (`validate`: all PASS). **Not loaded in Escher.**
 
 ## Toolkit observations
-- **Packing has no off-switch.** `pack.pack` always moves detached pieces. A `PACK['enabled']` /
-  "keep hand positions" option would replace the corner keep-out trick and avoid the grid-snap offsets.
+- **Packing had no off-switch** (fixed: the toolkit now has `PACK = dict(mode='keep')`, used since v8).
 - **Keep-out circles are rasterised as their bounding square.** A ring-interior keep-out disc therefore
   collides with inner cofactor dots near the diagonals. The same is true of `auto_ring_keep_out`.

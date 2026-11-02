@@ -28,5 +28,14 @@ def test_inspect_and_skeleton():
     assert rep['counts']['reactions'] == 91 and len(rep['exit_label_owner']) == 29
     ast.parse(skeleton(L, rep, 'central_metabolism_escher.json'))
 
+def test_pack_mode_keep():
+    """PACK mode='keep': detached pieces stay where layout() put them (no moves)"""
+    out = tempfile.mkdtemp(); spec = os.path.join(out, 'spec_keep.py'); ex = os.path.join(EX, 'spec.py')
+    open(spec, 'w').write(f"exec(open({ex!r}).read())\nINPUT = {os.path.join(EX, 'central_metabolism_escher.json')!r}\n"
+                          "PACK = dict(mode='keep')\n")
+    L, s = run(spec, None, out)
+    log = json.load(open(os.path.join(out, 'run_log.json')))
+    assert s['validation_ok'] and log['packing']['moves'] == [] and 'piece_overlaps' in s
+
 if __name__ == '__main__':
-    test_example_reproduces_reference(); test_inspect_and_skeleton(); print('all tests passed')
+    test_example_reproduces_reference(); test_inspect_and_skeleton(); test_pack_mode_keep(); print('all tests passed')

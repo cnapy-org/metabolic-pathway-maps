@@ -293,8 +293,6 @@ TITLE_POS = {'FAS': (100, -150), 'BOX': (3000, -150), 'PLS': (200, 6400), 'GLYC'
              'PLD': (6250, -150), 'LIPA': (6300, 4600), 'ISO': (8400, 4600), 'ECA': (9900, 4600)}
 CURVES = dict(t=0.6, stacked=[], special_links={},
               bend_override={'661': 0, '691': 0, '570': 0, '70': 0, '583': 15, '595': 15, '607': 15, '1096': 15})
-# The hand arrangement is final: two 1x1 keep-out boxes at the corners of the hand-laid-out extent make
-# the packer's reference rectangle the whole map, so every detached piece stays (within one 40-unit
-# grid cell) where it was placed instead of being dropped into a hole of another zone.
-PACK = dict(keep_out=[('box', (-400, -300, -399, -299)), ('box', (11650, 9000, 11651, 9001))], auto_ring_keep_out=True)
+# The hand arrangement is final: every detached piece stays exactly where layout() puts it.
+PACK = dict(mode='keep')
 RENDER_SCALE = 0.25
