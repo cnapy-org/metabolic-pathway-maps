@@ -1,0 +1,4 @@
+[submodule "ecmapper"]
+	path = ecmapper
+	url = https://github.com/elixir2026-project22/ecmapper.git
+	branch = main
