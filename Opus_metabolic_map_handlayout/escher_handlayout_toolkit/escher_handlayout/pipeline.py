@@ -14,11 +14,16 @@ def load_spec(path):
 
 def build(spec, input_path):
     L = Layout(input_path)
-    L.exit_owner = exit_owners(L); L.exit_owner.update(getattr(spec, 'EXIT_OWNER', None) or {})  # spec overrides auto
+    L.exit_owner = exit_owners(L)
+    for k, o in (getattr(spec, 'EXIT_OWNER', None) or {}).items():   # spec overrides auto
+        if k not in L.T: raise KeyError(f'EXIT_OWNER: text label {k!r} does not exist')
+        L.exit_owner[k] = L.resolve(o, f'EXIT_OWNER[{k!r}]')
     L.split_shared_secondaries()
     if hasattr(spec, 'prepare'): spec.prepare(L)
     for keep, others in getattr(spec, 'MERGES', []):
-        L.merge(L.S.get(keep, keep), *[L.S.get(o, o) for o in others])
+        L.merge(keep, *[L.S.get(o, o) for o in others])
+    L.drop_labels(getattr(spec, 'DROP_LABELS', []))
+    L.dropped_exits = L.drop_duplicate_exits()
     bad = [z for z, o in spec.ORIGIN.items() if o is None or None in tuple(o)]
     if bad: raise ValueError(f'ORIGIN not set for zones {bad} - choose zone positions by hand')
     L.origin = dict(spec.ORIGIN); L.flip = dict(getattr(spec, 'FLIP', {}))
@@ -44,7 +49,7 @@ def place_titles(spec, L):
         if tid is None or tid not in L.T: tid = L.newid(); L.T[tid] = {'text': d['title'], 'x': 0, 'y': 0}
         L.T[tid]['text'] = d['title']; used.add(tid); zone_of_title[tid] = z
         if d.get('anchor'):
-            n, (dx, dy) = d['anchor']; n = L.S.get(n, n); anchor_of[tid] = n
+            n, (dx, dy) = d['anchor']; n = L.resolve(n, f'ZONES[{z!r}] anchor'); anchor_of[tid] = n
             L.T[tid]['x'], L.T[tid]['y'] = L.N[n]['x']+dx, L.N[n]['y']+dy
         else:
             if z not in pos: raise KeyError(f'TITLE_POS has no position for zone {z!r}')
@@ -52,7 +57,7 @@ def place_titles(spec, L):
     for e in getattr(spec, 'EXTRA_TITLES', []):
         tid = L.newid(); L.T[tid] = {'text': e['text'], 'x': 0, 'y': 0}; used.add(tid); zone_of_title[tid] = e.get('zone')
         if 'anchor' in e:
-            n = L.S.get(e['anchor'], e['anchor']); anchor_of[tid] = n; dx, dy = e.get('offset', (0, 0))
+            n = L.resolve(e['anchor'], f"EXTRA_TITLES {e['text']!r} anchor"); anchor_of[tid] = n; dx, dy = e.get('offset', (0, 0))
             L.T[tid]['x'], L.T[tid]['y'] = L.N[n]['x']+dx, L.N[n]['y']+dy
         else: L.T[tid]['x'], L.T[tid]['y'] = e['pos']
     dropped = [k for k, t in list(L.T.items()) if not is_exit_text(t['text']) and k not in used]
@@ -66,14 +71,14 @@ def run(spec_path, input_path=None, out_dir='out', render=False, name=None):
     name = name or os.path.splitext(os.path.basename(input_path))[0]+'_final'
     log = {}
     L = build(spec, input_path)
-    log['splits'] = L.split_log; log['merges'] = L.merge_log
+    log['splits'] = L.split_log; log['merges'] = L.merge_log; log['dropped_duplicate_exits'] = L.dropped_exits
     zone_of_title, anchor_of, dropped = place_titles(spec, L)
     log['dropped_title_labels'] = dropped
     for owner, text in getattr(spec, 'NEW_EXITS', []):
-        o = L.S.get(owner, owner); k = L.newid(); L.T[k] = {'text': text, 'x': L.N[o]['x']+30, 'y': L.N[o]['y']+55}; L.exit_owner[k] = o
+        o = L.resolve(owner, f'NEW_EXITS {text!r} owner'); k = L.newid(); L.T[k] = {'text': text, 'x': L.N[o]['x']+30, 'y': L.N[o]['y']+55}; L.exit_owner[k] = o
     cfg = curves.apply(L, getattr(spec, 'CURVES', {}))
     log['curves'] = {k: (sorted(v) if isinstance(v, set) else v) for k, v in cfg.items() if k != 'special_links'}
-    hubs = {L.S.get(k, k) for k in getattr(spec, 'HUBS', [m[0] for m in getattr(spec, 'MERGES', [])])}
+    hubs = {L.resolve(k, 'HUBS') for k in getattr(spec, 'HUBS', [m[0] for m in getattr(spec, 'MERGES', [])])}
     title_ids = [k for k, t in L.T.items() if not is_exit_text(t['text'])]
     scores = labels.place_all(L, hubs=hubs, title_ids=title_ids)
     # ---- packing: which text labels travel with which piece
@@ -91,17 +96,21 @@ def run(spec_path, input_path=None, out_dir='out', render=False, name=None):
     moving = {k for v in piece_texts.values() for k in v}
     pk = getattr(spec, 'PACK', {})
     res = pack.pack(L, piece_texts, [k for k in L.T if k not in moving], keep_out=pk.get('keep_out', []),
-                    auto_ring_keep_out=pk.get('auto_ring_keep_out', True))
+                    auto_ring_keep_out=pk.get('auto_ring_keep_out', True), mode=pk.get('mode', 'pack'))
     log['packing'] = res
     log['title_nudges'] = T_.nudge_titles(L)
     log['canvas'] = T_.set_canvas(L, margin=getattr(spec, 'CANVAS_MARGIN', 150))
     out_json = os.path.join(out_dir, name+'.json'); L.save(out_json)
     summary, md = qa.report(L, out_json, input_path, scores); md = md.split('\n')
+    if 'overlaps' in res: summary['piece_overlaps'] = len(res['overlaps'])
     a = lambda b: (b[2]-b[0])*(b[3]-b[1])
     b0, b1 = res['before'], res['after']; c = log['canvas']
     md += ['', '## Area', f"- before packing {b0[2]-b0[0]:.0f} x {b0[3]-b0[1]:.0f} = {a(b0)/1e6:.2f} M",
            f"- after packing  {b1[2]-b1[0]:.0f} x {b1[3]-b1[1]:.0f} = {a(b1)/1e6:.2f} M",
            f"- canvas {c['width']:.0f} x {c['height']:.0f} (margin incl.)"]
+    if pk.get('mode', 'pack') == 'keep':
+        md += ['', f"## Packing: mode='keep' (pieces at hand positions); overlapping pieces: {len(res['overlaps'])}"]
+        md += [f'- {a} / {b}' for a, b in res['overlaps']]
     md += ['', '## Moves of detached pieces'] + [f"- {m['reactions']}: dx={m['dx']} dy={m['dy']}" for m in res['moves']]
     md += ['', '## Title nudges'] + [f'- {t}: ({dx}, {dy}) {"ok" if ok else "NO CLEAN SPOT"}' for t, dx, dy, ok in log['title_nudges']]
     open(os.path.join(out_dir, 'qa_report.md'), 'w').write('\n'.join(md))

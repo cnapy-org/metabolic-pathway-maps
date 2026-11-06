@@ -108,7 +108,8 @@ escher-handlayout render final.json out.png --scale 0.2 [--region x0 y0 x1 y1]
 ## What the pipeline does (`run`)
 
 1. **Load and split cofactors:** load the draft and give every reaction its own cofactor nodes.
-2. **Splits and merges:** apply the spec's `prepare()` (splits), then `MERGES`.
+2. **Splits and merges:** apply the spec's `prepare()` (splits), then `MERGES`, then `DROP_LABELS`.
+   Identical exit labels that now sit on one node are reduced to one.
 3. **Hand layout:** call `layout()` twice, so every reaction sees final primary positions.
    Unplaced nodes or reactions abort the run with a message.
 4. **Titles and exit labels:**
@@ -122,6 +123,8 @@ escher-handlayout render final.json out.png --scale 0.2 [--region x0 y0 x1 y1]
 7. **Packing:** every piece not connected to the main map is translated to the free position that
    gives the smallest overall rectangle (closest to its old position among near-equal ones).
    Ring interiors are kept free. Titles anchored to a piece travel with it.
+   With `PACK = dict(mode='keep')` nothing moves: every piece stays at its hand position and the QA
+   report lists pieces that overlap each other.
 8. **Titles, canvas and output:** nudge titles that touch something, compute the canvas (+150 margin),
    write the JSON, validate and write the QA report.
 

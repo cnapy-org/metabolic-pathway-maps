@@ -16,12 +16,13 @@ wherever an id is expected.
 | `prepare(L)` | no | splits: `L.S['name'] = L.split(node_id, reaction_id)`; early merges allowed |
 | `ORIGIN` | yes | `{zone: (x, y)}` global position of each zone's local (0, 0) |
 | `FLIP` | no | `{zone: -1}` mirror the zone vertically (side/axis/lab directions are mirrored too) |
-| `MERGES` | no | `[(keep, [duplicates])]` – key metabolites only; keepers are drawn larger (hubs) |
+| `MERGES` | no | `[(keep, [duplicates])]` – key metabolites only; keepers are drawn larger (hubs). After a merge, the merged-away ids still work everywhere a node id is expected (anchors, `NEW_EXITS`, `EXIT_OWNER`, `special_links`, `ends=` …); they resolve to the kept node. Unknown ids raise a clear error. |
+| `DROP_LABELS` | no | `[text_label_id, …]` – delete draft text labels (exit labels or titles). Identical exit labels that end up on one node after merges are reduced to one automatically (logged as `dropped_duplicate_exits` in `run_log.json`). |
 | `HUBS` | no | node ids drawn larger in previews (default: merge keepers) |
 | `layout(L)` | yes | all `L.setp` / `L.reaction` calls (called twice) |
 | `NEW_EXITS` | no | `[(owner_node, '→ text')]` exit labels for copies not merged |
 | `CURVES` | no | `dict(t=0.6, bend=55, bend_stack=15, stacked=[rids], bend_override={rid: bend}, special_links={(rid, node): (tx, ty)}, nested_arc_lanes=True)` |
-| `PACK` | no | `dict(keep_out=[('box', (x0, y0, x1, y1)), ('circ', (x, y, r))], auto_ring_keep_out=True)` |
+| `PACK` | no | `dict(mode='pack', keep_out=[('box', (x0, y0, x1, y1)), ('circ', (x, y, r))], auto_ring_keep_out=True)`. `mode='keep'` leaves every detached piece exactly where `layout()` put it (no moves, no grid snapping) – use it when you place all pieces by hand; pieces that overlap are listed in the QA report (`piece_overlaps`). Keep-out circles (and the automatic ring interiors) block the cells the disc touches, not its bounding square. |
 | `CANVAS_MARGIN`, `RENDER_SCALE` | no | defaults 150, 0.5 |
 
 ## `L.setp(zone, {node_id: (x, y)})`

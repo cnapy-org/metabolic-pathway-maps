@@ -1,0 +1,1720 @@
+{
+ "counts": {
+  "reactions": 45,
+  "nodes": 269,
+  "node_types": {
+   "metabolite": 134,
+   "midmarker": 45,
+   "multimarker": 90
+  },
+  "text_labels": 8,
+  "canvas": {
+   "x": -93.14,
+   "y": -200.0,
+   "width": 5213.950000000001,
+   "height": 3177.0
+  },
+  "primary": 55,
+  "secondary": 79
+ },
+ "titles": {
+  "581": {
+   "text": "C4 and CAM-carbon fixation",
+   "x": 3262,
+   "y": 2112
+  },
+  "582": {
+   "text": "acetyl CoA biosynthesis",
+   "x": 2562,
+   "y": 0
+  },
+  "583": {
+   "text": "aerobic toluene degradation",
+   "x": 3985,
+   "y": 0
+  },
+  "584": {
+   "text": "butanoate fermentation",
+   "x": 2760,
+   "y": 1119
+  },
+  "585": {
+   "text": "methylaspartate cycle",
+   "x": 957,
+   "y": 0
+  },
+  "586": {
+   "text": "photosynthesis",
+   "x": 768,
+   "y": 1577
+  }
+ },
+ "subsystem_proposal": [
+  {
+   "reactions": [
+    "300",
+    "315",
+    "326",
+    "339",
+    "351",
+    "363",
+    "374",
+    "391",
+    "402",
+    "411",
+    "426"
+   ],
+   "title_id": "585",
+   "title": "methylaspartate cycle",
+   "distance": 94,
+   "bbox": [
+    107,
+    105,
+    2230,
+    1317
+   ]
+  },
+  {
+   "reactions": [
+    "16",
+    "29",
+    "42",
+    "74",
+    "86",
+    "127",
+    "141",
+    "153",
+    "168",
+    "179"
+   ],
+   "title_id": "581",
+   "title": "C4 and CAM-carbon fixation",
+   "distance": 94,
+   "bbox": [
+    2101,
+    2217,
+    4174,
+    2661
+   ]
+  },
+  {
+   "reactions": [
+    "436",
+    "460",
+    "468",
+    "477",
+    "506",
+    "519",
+    "531",
+    "558",
+    "567",
+    "578"
+   ],
+   "title_id": "586",
+   "title": "photosynthesis",
+   "distance": 94,
+   "bbox": [
+    736,
+    1682,
+    1675,
+    2638
+   ]
+  },
+  {
+   "reactions": [
+    "209",
+    "220",
+    "235",
+    "248"
+   ],
+   "title_id": "583",
+   "title": "aerobic toluene degradation",
+   "distance": 94,
+   "bbox": [
+    3743,
+    105,
+    4710,
+    1061
+   ]
+  },
+  {
+   "reactions": [
+    "58",
+    "99",
+    "114"
+   ],
+   "title_id": "581",
+   "title": "C4 and CAM-carbon fixation",
+   "distance": 622,
+   "bbox": [
+    4244,
+    2217,
+    4921,
+    2777
+   ]
+  },
+  {
+   "reactions": [
+    "197"
+   ],
+   "title_id": "582",
+   "title": "acetyl CoA biosynthesis",
+   "distance": 102,
+   "bbox": [
+    2726,
+    110,
+    2860,
+    859
+   ]
+  },
+  {
+   "reactions": [
+    "260"
+   ],
+   "title_id": "584",
+   "title": "butanoate fermentation",
+   "distance": 253,
+   "bbox": [
+    2683,
+    1224,
+    2835,
+    1504
+   ]
+  },
+  {
+   "reactions": [
+    "272"
+   ],
+   "title_id": "584",
+   "title": "butanoate fermentation",
+   "distance": 326,
+   "bbox": [
+    3065,
+    1456,
+    3379,
+    1596
+   ]
+  },
+  {
+   "reactions": [
+    "286"
+   ],
+   "title_id": "584",
+   "title": "butanoate fermentation",
+   "distance": 495,
+   "bbox": [
+    2643,
+    1625,
+    3307,
+    1852
+   ]
+  },
+  {
+   "reactions": [
+    "450"
+   ],
+   "title_id": "586",
+   "title": "photosynthesis",
+   "distance": 413,
+   "bbox": [
+    1368,
+    1682,
+    1716,
+    2078
+   ]
+  },
+  {
+   "reactions": [
+    "493"
+   ],
+   "title_id": "586",
+   "title": "photosynthesis",
+   "distance": 413,
+   "bbox": [
+    113,
+    1794,
+    607,
+    2140
+   ]
+  },
+  {
+   "reactions": [
+    "547"
+   ],
+   "title_id": "586",
+   "title": "photosynthesis",
+   "distance": 655,
+   "bbox": [
+    124,
+    2137,
+    607,
+    2467
+   ]
+  }
+ ],
+ "components_all_nodes": [
+  11,
+  10,
+  10,
+  4,
+  3,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1
+ ],
+ "shared_secondary_nodes": [
+  {
+   "node": "155",
+   "bigg_id": "nad_c",
+   "reactions": [
+    "MALDDH",
+    "ME1"
+   ]
+  },
+  {
+   "node": "156",
+   "bigg_id": "co2_c",
+   "reactions": [
+    "MALDDH",
+    "ME1"
+   ]
+  },
+  {
+   "node": "157",
+   "bigg_id": "nadh_c",
+   "reactions": [
+    "MALDDH",
+    "ME1"
+   ]
+  }
+ ],
+ "duplicate_reactions": {
+  "ME2": [
+   "16",
+   "114",
+   "547"
+  ],
+  "ALATA_L": [
+   "29",
+   "42"
+  ],
+  "PPC": [
+   "58",
+   "493"
+  ],
+  "MDH": [
+   "99",
+   "127",
+   "300"
+  ],
+  "ASPTA": [
+   "141",
+   "153"
+  ]
+ },
+ "families_same_primaries": [
+  {
+   "primaries": [
+    "mal__L_c",
+    "pyr_c"
+   ],
+   "reactions": [
+    "16",
+    "114",
+    "179",
+    "547"
+   ],
+   "bigg": [
+    "ME2",
+    "ME2",
+    "ME1",
+    "ME2"
+   ]
+  },
+  {
+   "primaries": [
+    "ala__L_c",
+    "pyr_c"
+   ],
+   "reactions": [
+    "29",
+    "42"
+   ],
+   "bigg": [
+    "ALATA_L",
+    "ALATA_L"
+   ]
+  },
+  {
+   "primaries": [
+    "oaa_c",
+    "pep_c"
+   ],
+   "reactions": [
+    "58",
+    "74",
+    "493"
+   ],
+   "bigg": [
+    "PPC",
+    "PPCK",
+    "PPC"
+   ]
+  },
+  {
+   "primaries": [
+    "mal__L_c",
+    "oaa_c"
+   ],
+   "reactions": [
+    "99",
+    "127",
+    "300"
+   ],
+   "bigg": [
+    "MDH",
+    "MDH",
+    "MDH"
+   ]
+  },
+  {
+   "primaries": [
+    "asp__L_c",
+    "oaa_c"
+   ],
+   "reactions": [
+    "141",
+    "153"
+   ],
+   "bigg": [
+    "ASPTA",
+    "ASPTA"
+   ]
+  },
+  {
+   "primaries": [
+    "fum_c",
+    "succ_c"
+   ],
+   "reactions": [
+    "339",
+    "351",
+    "363"
+   ],
+   "bigg": [
+    "FRD2",
+    "FRD3",
+    "SUCDi"
+   ]
+  }
+ ],
+ "primary_metabolites_with_several_nodes": {
+  "mal__L_c": [
+   "1",
+   "87",
+   "115",
+   "287",
+   "532"
+  ],
+  "pyr_c": [
+   "5",
+   "32",
+   "103",
+   "182",
+   "536"
+  ],
+  "pep_c": [
+   "45",
+   "63",
+   "480"
+  ],
+  "oaa_c": [
+   "46",
+   "60",
+   "131",
+   "290",
+   "481"
+  ],
+  "accoa_c": [
+   "183",
+   "223",
+   "249",
+   "301"
+  ]
+ },
+ "far_primaries": [],
+ "metabolites_in_stoichiometry_not_drawn": {
+  "PPC#58": [
+   "h_c"
+  ],
+  "PYK#86": [
+   "h_c"
+  ],
+  "MDH#99": [
+   "h_c"
+  ],
+  "MDH#127": [
+   "h_c"
+  ],
+  "ACALD#235": [
+   "h_c"
+  ],
+  "MDH#300": [
+   "h_c"
+  ],
+  "CS#315": [
+   "h_c"
+  ],
+  "PPC#493": [
+   "h_c"
+  ]
+ },
+ "exit_label_owner": {
+  "579": {
+   "text": "\u2192 Central",
+   "owner": "249",
+   "bigg_id": "accoa_c"
+  },
+  "580": {
+   "text": "\u2192 Central",
+   "owner": "301",
+   "bigg_id": "accoa_c"
+  }
+ },
+ "reactions": {
+  "16": {
+   "bigg_id": "ME2",
+   "equation": "mal__L_c + nadp_c -> co2_c + nadph_c + pyr_c",
+   "substrates": [
+    [
+     "1",
+     "mal__L_c",
+     true
+    ],
+    [
+     "2",
+     "nadp_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "3",
+     "co2_c",
+     false
+    ],
+    [
+     "4",
+     "nadph_c",
+     false
+    ],
+    [
+     "5",
+     "pyr_c",
+     true
+    ]
+   ]
+  },
+  "29": {
+   "bigg_id": "ALATA_L",
+   "equation": "akg_c + ala__L_c <=> glu__L_c + pyr_c",
+   "substrates": [
+    [
+     "17",
+     "akg_c",
+     false
+    ],
+    [
+     "18",
+     "ala__L_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "19",
+     "glu__L_c",
+     false
+    ],
+    [
+     "5",
+     "pyr_c",
+     true
+    ]
+   ]
+  },
+  "42": {
+   "bigg_id": "ALATA_L",
+   "equation": "akg_c + ala__L_c <=> glu__L_c + pyr_c",
+   "substrates": [
+    [
+     "30",
+     "akg_c",
+     false
+    ],
+    [
+     "18",
+     "ala__L_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "31",
+     "glu__L_c",
+     false
+    ],
+    [
+     "32",
+     "pyr_c",
+     true
+    ]
+   ]
+  },
+  "58": {
+   "bigg_id": "PPC",
+   "equation": "co2_c + h2o_c + pep_c -> h_c + oaa_c + pi_c",
+   "substrates": [
+    [
+     "43",
+     "co2_c",
+     false
+    ],
+    [
+     "44",
+     "h2o_c",
+     false
+    ],
+    [
+     "45",
+     "pep_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "46",
+     "oaa_c",
+     true
+    ],
+    [
+     "47",
+     "pi_c",
+     false
+    ]
+   ]
+  },
+  "74": {
+   "bigg_id": "PPCK",
+   "equation": "atp_c + oaa_c -> adp_c + co2_c + pep_c",
+   "substrates": [
+    [
+     "59",
+     "atp_c",
+     false
+    ],
+    [
+     "60",
+     "oaa_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "61",
+     "adp_c",
+     false
+    ],
+    [
+     "62",
+     "co2_c",
+     false
+    ],
+    [
+     "63",
+     "pep_c",
+     true
+    ]
+   ]
+  },
+  "86": {
+   "bigg_id": "PYK",
+   "equation": "adp_c + h_c + pep_c -> atp_c + pyr_c",
+   "substrates": [
+    [
+     "75",
+     "adp_c",
+     false
+    ],
+    [
+     "63",
+     "pep_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "76",
+     "atp_c",
+     false
+    ],
+    [
+     "32",
+     "pyr_c",
+     true
+    ]
+   ]
+  },
+  "99": {
+   "bigg_id": "MDH",
+   "equation": "mal__L_c + nad_c <=> h_c + nadh_c + oaa_c",
+   "substrates": [
+    [
+     "87",
+     "mal__L_c",
+     true
+    ],
+    [
+     "88",
+     "nad_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "89",
+     "nadh_c",
+     false
+    ],
+    [
+     "46",
+     "oaa_c",
+     true
+    ]
+   ]
+  },
+  "114": {
+   "bigg_id": "ME2",
+   "equation": "mal__L_c + nadp_c -> co2_c + nadph_c + pyr_c",
+   "substrates": [
+    [
+     "87",
+     "mal__L_c",
+     true
+    ],
+    [
+     "100",
+     "nadp_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "101",
+     "co2_c",
+     false
+    ],
+    [
+     "102",
+     "nadph_c",
+     false
+    ],
+    [
+     "103",
+     "pyr_c",
+     true
+    ]
+   ]
+  },
+  "127": {
+   "bigg_id": "MDH",
+   "equation": "mal__L_c + nad_c <=> h_c + nadh_c + oaa_c",
+   "substrates": [
+    [
+     "115",
+     "mal__L_c",
+     true
+    ],
+    [
+     "116",
+     "nad_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "117",
+     "nadh_c",
+     false
+    ],
+    [
+     "60",
+     "oaa_c",
+     true
+    ]
+   ]
+  },
+  "141": {
+   "bigg_id": "ASPTA",
+   "equation": "akg_c + asp__L_c <=> glu__L_c + oaa_c",
+   "substrates": [
+    [
+     "128",
+     "akg_c",
+     false
+    ],
+    [
+     "129",
+     "asp__L_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "130",
+     "glu__L_c",
+     false
+    ],
+    [
+     "131",
+     "oaa_c",
+     true
+    ]
+   ]
+  },
+  "153": {
+   "bigg_id": "ASPTA",
+   "equation": "akg_c + asp__L_c <=> glu__L_c + oaa_c",
+   "substrates": [
+    [
+     "142",
+     "akg_c",
+     false
+    ],
+    [
+     "129",
+     "asp__L_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "143",
+     "glu__L_c",
+     false
+    ],
+    [
+     "60",
+     "oaa_c",
+     true
+    ]
+   ]
+  },
+  "168": {
+   "bigg_id": "MALDDH",
+   "equation": "mal__D_c + nad_c -> co2_c + nadh_c + pyr_c",
+   "substrates": [
+    [
+     "154",
+     "mal__D_c",
+     true
+    ],
+    [
+     "155",
+     "nad_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "156",
+     "co2_c",
+     false
+    ],
+    [
+     "157",
+     "nadh_c",
+     false
+    ],
+    [
+     "32",
+     "pyr_c",
+     true
+    ]
+   ]
+  },
+  "179": {
+   "bigg_id": "ME1",
+   "equation": "mal__L_c + nad_c -> co2_c + nadh_c + pyr_c",
+   "substrates": [
+    [
+     "115",
+     "mal__L_c",
+     true
+    ],
+    [
+     "155",
+     "nad_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "156",
+     "co2_c",
+     false
+    ],
+    [
+     "157",
+     "nadh_c",
+     false
+    ],
+    [
+     "32",
+     "pyr_c",
+     true
+    ]
+   ]
+  },
+  "197": {
+   "bigg_id": "PDH",
+   "equation": "coa_c + nad_c + pyr_c -> accoa_c + co2_c + nadh_c",
+   "substrates": [
+    [
+     "180",
+     "coa_c",
+     false
+    ],
+    [
+     "181",
+     "nad_c",
+     false
+    ],
+    [
+     "182",
+     "pyr_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "183",
+     "accoa_c",
+     true
+    ],
+    [
+     "184",
+     "co2_c",
+     false
+    ],
+    [
+     "185",
+     "nadh_c",
+     false
+    ]
+   ]
+  },
+  "209": {
+   "bigg_id": "OP4ENH",
+   "equation": "h2o_c + op4en_c -> 4h2opntn_c",
+   "substrates": [
+    [
+     "198",
+     "h2o_c",
+     false
+    ],
+    [
+     "199",
+     "op4en_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "200",
+     "4h2opntn_c",
+     true
+    ]
+   ]
+  },
+  "220": {
+   "bigg_id": "HOPNTAL",
+   "equation": "4h2opntn_c -> acald_c + pyr_c",
+   "substrates": [
+    [
+     "200",
+     "4h2opntn_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "210",
+     "acald_c",
+     true
+    ],
+    [
+     "211",
+     "pyr_c",
+     false
+    ]
+   ]
+  },
+  "235": {
+   "bigg_id": "ACALD",
+   "equation": "acald_c + coa_c + nad_c <=> accoa_c + h_c + nadh_c",
+   "substrates": [
+    [
+     "210",
+     "acald_c",
+     true
+    ],
+    [
+     "221",
+     "coa_c",
+     false
+    ],
+    [
+     "222",
+     "nad_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "223",
+     "accoa_c",
+     true
+    ],
+    [
+     "224",
+     "nadh_c",
+     false
+    ]
+   ]
+  },
+  "248": {
+   "bigg_id": "3OXCOAT",
+   "equation": "coa_c + oxadpcoa_c -> accoa_c + succoa_c",
+   "substrates": [
+    [
+     "236",
+     "coa_c",
+     false
+    ],
+    [
+     "237",
+     "oxadpcoa_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "223",
+     "accoa_c",
+     true
+    ],
+    [
+     "238",
+     "succoa_c",
+     false
+    ]
+   ]
+  },
+  "260": {
+   "bigg_id": "ACACT1r",
+   "equation": "2 accoa_c <=> aacoa_c + coa_c",
+   "substrates": [
+    [
+     "249",
+     "accoa_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "250",
+     "aacoa_c",
+     true
+    ],
+    [
+     "251",
+     "coa_c",
+     false
+    ]
+   ]
+  },
+  "272": {
+   "bigg_id": "ECOAH1",
+   "equation": "3hbcoa_c <=> b2coa_c + h2o_c",
+   "substrates": [
+    [
+     "261",
+     "3hbcoa_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "262",
+     "b2coa_c",
+     true
+    ],
+    [
+     "263",
+     "h2o_c",
+     false
+    ]
+   ]
+  },
+  "286": {
+   "bigg_id": "BUTCT",
+   "equation": "accoa_c + but_c -> ac_c + btcoa_c",
+   "substrates": [
+    [
+     "273",
+     "accoa_c",
+     false
+    ],
+    [
+     "274",
+     "but_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "275",
+     "ac_c",
+     false
+    ],
+    [
+     "276",
+     "btcoa_c",
+     true
+    ]
+   ]
+  },
+  "300": {
+   "bigg_id": "MDH",
+   "equation": "mal__L_c + nad_c <=> h_c + nadh_c + oaa_c",
+   "substrates": [
+    [
+     "287",
+     "mal__L_c",
+     true
+    ],
+    [
+     "288",
+     "nad_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "289",
+     "nadh_c",
+     false
+    ],
+    [
+     "290",
+     "oaa_c",
+     true
+    ]
+   ]
+  },
+  "315": {
+   "bigg_id": "CS",
+   "equation": "accoa_c + h2o_c + oaa_c -> cit_c + coa_c + h_c",
+   "substrates": [
+    [
+     "301",
+     "accoa_c",
+     true
+    ],
+    [
+     "302",
+     "h2o_c",
+     false
+    ],
+    [
+     "290",
+     "oaa_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "303",
+     "cit_c",
+     true
+    ],
+    [
+     "304",
+     "coa_c",
+     false
+    ]
+   ]
+  },
+  "326": {
+   "bigg_id": "FUM",
+   "equation": "fum_c + h2o_c <=> mal__L_c",
+   "substrates": [
+    [
+     "316",
+     "fum_c",
+     true
+    ],
+    [
+     "317",
+     "h2o_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "287",
+     "mal__L_c",
+     true
+    ]
+   ]
+  },
+  "339": {
+   "bigg_id": "FRD2",
+   "equation": "fum_c + mql8_c -> mqn8_c + succ_c",
+   "substrates": [
+    [
+     "316",
+     "fum_c",
+     true
+    ],
+    [
+     "327",
+     "mql8_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "328",
+     "mqn8_c",
+     false
+    ],
+    [
+     "329",
+     "succ_c",
+     true
+    ]
+   ]
+  },
+  "351": {
+   "bigg_id": "FRD3",
+   "equation": "2dmmql8_c + fum_c -> 2dmmq8_c + succ_c",
+   "substrates": [
+    [
+     "340",
+     "2dmmql8_c",
+     false
+    ],
+    [
+     "316",
+     "fum_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "341",
+     "2dmmq8_c",
+     false
+    ],
+    [
+     "329",
+     "succ_c",
+     true
+    ]
+   ]
+  },
+  "363": {
+   "bigg_id": "SUCDi",
+   "equation": "q8_c + succ_c -> fum_c + q8h2_c",
+   "substrates": [
+    [
+     "352",
+     "q8_c",
+     false
+    ],
+    [
+     "329",
+     "succ_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "316",
+     "fum_c",
+     true
+    ],
+    [
+     "353",
+     "q8h2_c",
+     false
+    ]
+   ]
+  },
+  "374": {
+   "bigg_id": "ACONTa",
+   "equation": "cit_c <=> acon_C_c + h2o_c",
+   "substrates": [
+    [
+     "303",
+     "cit_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "364",
+     "acon_C_c",
+     true
+    ],
+    [
+     "365",
+     "h2o_c",
+     false
+    ]
+   ]
+  },
+  "391": {
+   "bigg_id": "SUCOAS",
+   "equation": "atp_c + coa_c + succ_c <=> adp_c + pi_c + succoa_c",
+   "substrates": [
+    [
+     "375",
+     "atp_c",
+     false
+    ],
+    [
+     "376",
+     "coa_c",
+     false
+    ],
+    [
+     "329",
+     "succ_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "377",
+     "adp_c",
+     false
+    ],
+    [
+     "378",
+     "pi_c",
+     false
+    ],
+    [
+     "379",
+     "succoa_c",
+     true
+    ]
+   ]
+  },
+  "402": {
+   "bigg_id": "ACONTb",
+   "equation": "acon_C_c + h2o_c <=> icit_c",
+   "substrates": [
+    [
+     "364",
+     "acon_C_c",
+     true
+    ],
+    [
+     "392",
+     "h2o_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "393",
+     "icit_c",
+     true
+    ]
+   ]
+  },
+  "411": {
+   "bigg_id": "MMM",
+   "equation": "succoa_c -> mmcoa__S_c",
+   "substrates": [
+    [
+     "379",
+     "succoa_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "403",
+     "mmcoa__S_c",
+     true
+    ]
+   ]
+  },
+  "426": {
+   "bigg_id": "ICDHyr",
+   "equation": "icit_c + nadp_c <=> akg_c + co2_c + nadph_c",
+   "substrates": [
+    [
+     "393",
+     "icit_c",
+     true
+    ],
+    [
+     "412",
+     "nadp_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "413",
+     "akg_c",
+     true
+    ],
+    [
+     "414",
+     "co2_c",
+     false
+    ],
+    [
+     "415",
+     "nadph_c",
+     false
+    ]
+   ]
+  },
+  "436": {
+   "bigg_id": "RPI",
+   "equation": "r5p_c <=> ru5p__D_c",
+   "substrates": [
+    [
+     "427",
+     "r5p_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "428",
+     "ru5p__D_c",
+     true
+    ]
+   ]
+  },
+  "450": {
+   "bigg_id": "PGK",
+   "equation": "3pg_c + atp_c <=> 13dpg_c + adp_c",
+   "substrates": [
+    [
+     "437",
+     "3pg_c",
+     true
+    ],
+    [
+     "438",
+     "atp_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "439",
+     "13dpg_c",
+     true
+    ],
+    [
+     "440",
+     "adp_c",
+     false
+    ]
+   ]
+  },
+  "460": {
+   "bigg_id": "RBP4E",
+   "equation": "ru5p__L_c <=> xu5p__D_c",
+   "substrates": [
+    [
+     "451",
+     "ru5p__L_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "452",
+     "xu5p__D_c",
+     true
+    ]
+   ]
+  },
+  "468": {
+   "bigg_id": "RPE",
+   "equation": "ru5p__D_c <=> xu5p__D_c",
+   "substrates": [
+    [
+     "428",
+     "ru5p__D_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "452",
+     "xu5p__D_c",
+     true
+    ]
+   ]
+  },
+  "477": {
+   "bigg_id": "X5PL3E",
+   "equation": "xu5p__L_c -> ru5p__L_c",
+   "substrates": [
+    [
+     "469",
+     "xu5p__L_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "451",
+     "ru5p__L_c",
+     true
+    ]
+   ]
+  },
+  "493": {
+   "bigg_id": "PPC",
+   "equation": "co2_c + h2o_c + pep_c -> h_c + oaa_c + pi_c",
+   "substrates": [
+    [
+     "478",
+     "co2_c",
+     false
+    ],
+    [
+     "479",
+     "h2o_c",
+     false
+    ],
+    [
+     "480",
+     "pep_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "481",
+     "oaa_c",
+     true
+    ],
+    [
+     "482",
+     "pi_c",
+     false
+    ]
+   ]
+  },
+  "506": {
+   "bigg_id": "TKT2",
+   "equation": "e4p_c + xu5p__D_c <=> f6p_c + g3p_c",
+   "substrates": [
+    [
+     "494",
+     "e4p_c",
+     false
+    ],
+    [
+     "452",
+     "xu5p__D_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "495",
+     "f6p_c",
+     true
+    ],
+    [
+     "496",
+     "g3p_c",
+     false
+    ]
+   ]
+  },
+  "519": {
+   "bigg_id": "FBP",
+   "equation": "fdp_c + h2o_c -> f6p_c + pi_c",
+   "substrates": [
+    [
+     "507",
+     "fdp_c",
+     true
+    ],
+    [
+     "508",
+     "h2o_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "495",
+     "f6p_c",
+     true
+    ],
+    [
+     "509",
+     "pi_c",
+     false
+    ]
+   ]
+  },
+  "531": {
+   "bigg_id": "TKT1",
+   "equation": "r5p_c + xu5p__D_c <=> g3p_c + s7p_c",
+   "substrates": [
+    [
+     "427",
+     "r5p_c",
+     true
+    ],
+    [
+     "452",
+     "xu5p__D_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "520",
+     "g3p_c",
+     false
+    ],
+    [
+     "521",
+     "s7p_c",
+     true
+    ]
+   ]
+  },
+  "547": {
+   "bigg_id": "ME2",
+   "equation": "mal__L_c + nadp_c -> co2_c + nadph_c + pyr_c",
+   "substrates": [
+    [
+     "532",
+     "mal__L_c",
+     true
+    ],
+    [
+     "533",
+     "nadp_c",
+     false
+    ]
+   ],
+   "products": [
+    [
+     "534",
+     "co2_c",
+     false
+    ],
+    [
+     "535",
+     "nadph_c",
+     false
+    ],
+    [
+     "536",
+     "pyr_c",
+     true
+    ]
+   ]
+  },
+  "558": {
+   "bigg_id": "FBA",
+   "equation": "fdp_c <=> dhap_c + g3p_c",
+   "substrates": [
+    [
+     "507",
+     "fdp_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "548",
+     "dhap_c",
+     true
+    ],
+    [
+     "549",
+     "g3p_c",
+     false
+    ]
+   ]
+  },
+  "567": {
+   "bigg_id": "TPI",
+   "equation": "dhap_c <=> g3p_c",
+   "substrates": [
+    [
+     "548",
+     "dhap_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "559",
+     "g3p_c",
+     true
+    ]
+   ]
+  },
+  "578": {
+   "bigg_id": "FBA3",
+   "equation": "s17bp_c <=> dhap_c + e4p_c",
+   "substrates": [
+    [
+     "568",
+     "s17bp_c",
+     true
+    ]
+   ],
+   "products": [
+    [
+     "548",
+     "dhap_c",
+     true
+    ],
+    [
+     "569",
+     "e4p_c",
+     false
+    ]
+   ]
+  }
+ }
+}

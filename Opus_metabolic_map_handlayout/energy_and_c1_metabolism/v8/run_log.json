@@ -1,0 +1,89 @@
+{
+ "summary": {
+  "validation_ok": true,
+  "crossings": 2,
+  "dots_too_close": 0,
+  "lines_near_dots": 0,
+  "label_overlaps": 0,
+  "titles_on_lines": 0,
+  "piece_overlaps": 0
+ },
+ "splits": [
+  [
+   "h2o_c",
+   "ECOAH1",
+   "41",
+   "595"
+  ],
+  [
+   "nadh_c",
+   "HACD1",
+   "61",
+   "596"
+  ],
+  [
+   "nad_c",
+   "HACD1",
+   "62",
+   "597"
+  ]
+ ],
+ "merges": [
+  [
+   "for_c",
+   "151",
+   "227"
+  ]
+ ],
+ "dropped_title_labels": [],
+ "curves": {
+  "t": 0.6,
+  "bend": 55,
+  "bend_stack": 15,
+  "stacked": [
+   "190",
+   "202",
+   "459",
+   "471",
+   "483"
+  ],
+  "bend_override": {},
+  "nested_arc_lanes": true
+ },
+ "packing": {
+  "before": [
+   -702.0,
+   -336.7714535251703,
+   5533.6,
+   3991.845700514164
+  ],
+  "after": [
+   -702.0,
+   -336.7714535251703,
+   5533.6,
+   3991.845700514164
+  ],
+  "moves": [],
+  "overlaps": []
+ },
+ "title_nudges": [
+  [
+   "CO2 fixation in Crenarchaeota (3-hydroxypropionate/4-hydroxybutyrate cycle)",
+   -52,
+   -193,
+   true
+  ],
+  [
+   "methane metabolism",
+   -69,
+   40,
+   true
+  ]
+ ],
+ "canvas": {
+  "x": -870.0,
+  "y": -567.1851652578137,
+  "width": 6553.6,
+  "height": 4727.030865771978
+ }
+}

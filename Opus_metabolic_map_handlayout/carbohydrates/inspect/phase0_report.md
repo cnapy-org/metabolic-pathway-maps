@@ -1,0 +1,493 @@
+# Phase 0 report
+
+- reactions 193, nodes 1041 {'metabolite': 462, 'midmarker': 193, 'multimarker': 386}, text labels 51
+- metabolite nodes: 231 primary, 231 secondary; canvas {'x': -352, 'y': -200, 'width': 10198, 'height': 6196}
+
+## Titles
+- `2346` 'CMP-KDO biosynthesis' at (5287, 1157)
+- `2347` 'UDP-GlcNAc biosynthesis' at (878, 5491)
+- `2348` 'd-mannose degradation' at (5225, 0)
+- `2349` 'd-xylose degradation' at (175, 1505)
+- `2350` 'dTDPLrhamnose biosynthesis' at (5277, 2184)
+- `2351` 'degradation of hexoses' at (7708, 0)
+- `2352` 'degradation of pentoses' at (7752, 1993)
+- `2353` 'degradation of sugar acids' at (2537, 0)
+- `2354` 'degradation of sugar alcohols' at (6996, 3604)
+- `2355` 'glycogen metabolism' at (3523, 3894)
+- `2356` 'ketogluconate metabolism' at (644, 2314)
+- `2357` 'metabolism of amino sugars and derivatives' at (544, 3894)
+- `2358` 'metabolism of disaccharids' at (3008, 1505)
+- `2359` 'sulfated glycosaminoglycan metabolism' at (90, 0)
+- `2360` 'sulfoquinovose degradation' at (1129, 1505)
+
+## Subsystem proposal (primary-node components -> nearest title). CHECK IT.
+- **degradation of sugar alcohols** (`2354`, dist 94) n=25: M1PD#829, SBTPD#842, TGBPA#854, GLTPD#868, PFK_2#880, GPDDA1#920, G3PD5#947, G3PD6#959, G3PD7#971, GLYK#984, GLYCDx#997, DHAPT#1009, ALKP#1605, F6PA#1718, G3PAT140#1782, GPDDA3#1857, GPDDA2#1869, GPDDA4#1906, LPLIPAL2A140#1953, AACPS1#2199, AGPAT140#2211, APG3PAT140#2223, FA140ACPHi#2235, ACPPAT140#2260, EDTXS4#2273
+- **glycogen metabolism** (`2355`, dist 31) n=21: PGMT#1019, HEX1#1033, AMALT1#1047, MLTG1#1058, MLTP1#1071, AMALT1#1083, MLTG1#1095, GLCP#1107, GLGC#1121, AMALT2#1616, AMALT3#1627, AMALT4#1638, G1PP#1755, GLCS1#1832, MLTG2#1990, MLTG3#2001, MLTG4#2012, MLTG5#2023, MLTP2#2034, MLTP3#2045, XYHDL#2175
+- **ketogluconate metabolism** (`2356`, dist 94) n=15: DKGLCNR1#1135, DKGLCNR1#1146, 2DGULRGy#1159, 2DGULRy#1170, DKGLCNR2y#1183, IDOND#1195, IDOND2#1207, IDOND#1219, 5DGLCNR#1231, 5DKGR#1243, GNK#1256, 2DGULRGx#1555, 2DGULRx#1567, DKGLCNR2x#1696, GNP#1844
+- **metabolism of disaccharids** (`2358`, dist 204) n=15: GALS3#1355, LACZ#1368, TREH#1393, PFK_2#1419, TRE6PH#1433, TRE6PP#1445, HEX7#1459, TRE6PS#1472, TGBPA#1483, BGLA1#1650, F6PP#1730, GLCATr#1807, MALTATr#1966, PAI2T#2082, XYLI2#2183
+- **degradation of pentoses** (`2352`, dist 698, LOW CONFIDENCE) n=13: RBP4E#464, RPE#473, X5PL3E#482, RBK_L1#495, ARABDI#505, ARAI#514, RBP4E#523, RPE#531, X5PL3E#540, XYLK#580, XYLK2#591, LYXI#600, RU5PP#2120
+- **degradation of hexoses** (`2351`, dist 94) n=11: GALKr#251, UDPG4E#261, UGLT#272, GALUi#298, PGMT#307, FRULYSDG#1743, O16GLCT2#2070, GLCTR1#2248, GALT1#2285, GLCTR2#2297, GLCTR3#2309
+- **d-mannose degradation** (`2348`, dist 94) n=8: GMAND#112, GDPMNP#125, PMANM#134, MAN1PT2#146, HEX4#159, MAN6PI#168, GDPMNH#1794, MN6PP#2057
+- **degradation of pentoses** (`2352`, dist 811, LOW CONFIDENCE) n=8: RMPA#319, RMK#332, RMI#341, FCI#351, FCLPA#361, FCLK#373, LKDRA#384, RHMND#395
+- **degradation of sugar alcohols** (`2354`, dist 169) n=8: GPDDA1pp#934, CLPNS161pp#1662, CLPNS181pp#1673, CLPNS160pp#1684, GPDDA3pp#1882, GPDDA2pp#1894, GPDDA4pp#1918, LPLIPAL1A140pp#1940
+- **degradation of sugar acids** (`2353`, dist 532, LOW CONFIDENCE) n=7: GLYCK2#650, TRSARr#703, GLCRAL#714, GLCRD#792, GALCTD#802, HPYRI#1927, MANPGH#1979
+- **metabolism of disaccharids** (`2358`, dist 764, LOW CONFIDENCE) n=7: GUI1#724, MANAO#737, MNNH#748, GUI2#758, TAGURr#771, ALTRH#781, DDGLK#815
+- **degradation of sugar acids** (`2353`, dist 94) n=6: DDPGALA#612, DDGALK#625, GALCTND#636, GALCTND#659, DDGALK#669, DDPGALA#678
+- **metabolism of amino sugars and derivatives** (`2357`, dist 94) n=6: AMANK#1270, AMANAPEr#1279, AGDC#1292, ACNML#1303, G6PDA#1316, ACM6PH#1580
+- **CMP-KDO biosynthesis** (`2346`, dist 99) n=4: A5PISO#10, KDOCT2#24, KDOPS#39, KDOPP#51
+- **UDP-GlcNAc biosynthesis** (`2347`, dist 94) n=4: GF6PTA#65, PGAMT#74, G1PACT#87, UAGDP#100
+- **dTDPLrhamnose biosynthesis** (`2350`, dist 94) n=4: G1PTT#204, TDPGDH#215, TDPDRE#224, TDPDRR#237
+- **UDP-GlcNAc biosynthesis** (`2347`, dist 671, LOW CONFIDENCE) n=3: UAG2E#1326, UACMAMO#1341, ACMAMUT#1593
+- **degradation of hexoses** (`2351`, dist 1101, LOW CONFIDENCE) n=2: FRUK#286, F1PP#1709
+- **degradation of pentoses** (`2352`, dist 205) n=2: ARAI#415, RBK_L1#428
+- **degradation of pentoses** (`2352`, dist 500, LOW CONFIDENCE) n=2: RBK#442, R5PP#2094
+- **degradation of pentoses** (`2352`, dist 803, LOW CONFIDENCE) n=2: PGLYCP#554, GCALDD#569
+- **metabolism of disaccharids** (`2358`, dist 466, LOW CONFIDENCE) n=2: TREHpp#1405, GLCDpp#1822
+- **sulfated glycosaminoglycan metabolism** (`2359`, dist 490, LOW CONFIDENCE) n=2: DDGLK#1507, EDA#1518
+- **sulfoquinovose degradation** (`2360`, dist 94) n=2: 3SLAR#1532, 6D6SPA#1543
+- **d-xylose degradation** (`2349`, dist 94) n=1: XYLI1#178
+- **d-xylose degradation** (`2349`, dist 99) n=1: DXYLTD#190
+- **degradation of pentoses** (`2352`, dist 244) n=1: ARABDI#405
+- **degradation of pentoses** (`2352`, dist 637, LOW CONFIDENCE) n=1: 2DDARAA#454
+- **degradation of sugar acids** (`2353`, dist 365, LOW CONFIDENCE) n=1: GALCTND#690
+- **degradation of sugar alcohols** (`2354`, dist 1487, LOW CONFIDENCE) n=1: XYLK#894
+- **degradation of sugar alcohols** (`2354`, dist 1493, LOW CONFIDENCE) n=1: XYLK2#906
+- **metabolism of disaccharids** (`2358`, dist 634, LOW CONFIDENCE) n=1: LACZpp#1382
+- **sulfated glycosaminoglycan metabolism** (`2359`, dist 320, LOW CONFIDENCE) n=1: KDUI#1493
+- **glycogen metabolism** (`2355`, dist 237) n=1: G1PPpp#1769
+- **degradation of pentoses** (`2352`, dist 583, LOW CONFIDENCE) n=1: R5PPpp#2108
+- **UDP-GlcNAc biosynthesis** (`2347`, dist 114) n=1: UACGAMPpp#2134
+- **degradation of hexoses** (`2351`, dist 384, LOW CONFIDENCE) n=1: UDPGALPpp#2148
+- **degradation of hexoses** (`2351`, dist 654, LOW CONFIDENCE) n=1: UDPGPpp#2162
+
+## Components over all shared nodes (draft as is): [25, 21, 15, 15, 13, 11, 8, 8, 8, 7, 7, 6, 6, 4, 4, 4, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+## Shared secondary nodes (split automatically, one per reaction)
+- atp_c `483`: ['RBK_L1', 'XYLK', 'XYLK2']
+- adp_c `485`: ['RBK_L1', 'XYLK', 'XYLK2']
+- atp_c `614`: ['DDGALK', 'DDGALK']
+- adp_c `615`: ['DDGALK', 'DDGALK']
+- h2o_c `627`: ['GALCTND', 'GALCTND']
+- h2o_c `783`: ['GALCTD', 'GLCRD']
+- atp_c `881`: ['XYLK', 'XYLK2']
+- adp_c `883`: ['XYLK', 'XYLK2']
+- nadph_c `1123`: ['DKGLCNR1', 'DKGLCNR1']
+- nadp_c `1125`: ['DKGLCNR1', 'DKGLCNR1']
+- nadph_c `1147`: ['2DGULRGy', '2DGULRy']
+- nadp_c `1149`: ['2DGULRGy', '2DGULRy']
+- h2o_c `1846`: ['GPDDA2', 'GPDDA3']
+- h2o_p `1871`: ['GPDDA2pp', 'GPDDA3pp']
+
+## Duplicate reactions (keep; draw as lanes)
+- PGMT: ['307', '1019']
+- ARABDI: ['405', '505']
+- ARAI: ['415', '514']
+- RBK_L1: ['428', '495']
+- RBP4E: ['464', '523']
+- RPE: ['473', '531']
+- X5PL3E: ['482', '540']
+- XYLK: ['580', '894']
+- XYLK2: ['591', '906']
+- DDPGALA: ['612', '678']
+- DDGALK: ['625', '669']
+- GALCTND: ['636', '659', '690']
+- DDGLK: ['815', '1507']
+- TGBPA: ['854', '1483']
+- PFK_2: ['880', '1419']
+- AMALT1: ['1047', '1083']
+- MLTG1: ['1058', '1095']
+- DKGLCNR1: ['1135', '1146']
+- IDOND: ['1195', '1219']
+
+## Families between the same primary metabolites
+- ['f6p_c', 'gam6p_c']: [('GF6PTA', '65'), ('G6PDA', '1316')]
+- ['gdpmann_c', 'man1p_c']: [('GDPMNP', '125'), ('MAN1PT2', '146')]
+- ['man6p_c', 'man_c']: [('HEX4', '159'), ('MN6PP', '2057')]
+- ['g1p_c', 'g6p_c']: [('PGMT', '307'), ('PGMT', '1019')]
+- ['arab__D_c', 'rbl__D_c']: [('ARABDI', '405'), ('ARABDI', '505')]
+- ['arab__L_c', 'rbl__L_c']: [('ARAI', '415'), ('ARAI', '514')]
+- ['rbl__L_c', 'ru5p__L_c']: [('RBK_L1', '428'), ('RBK_L1', '495')]
+- ['r5p_c', 'rib__D_c']: [('RBK', '442'), ('R5PP', '2094')]
+- ['ru5p__L_c', 'xu5p__D_c']: [('RBP4E', '464'), ('RBP4E', '523')]
+- ['ru5p__D_c', 'xu5p__D_c']: [('RPE', '473'), ('RPE', '531')]
+- ['ru5p__L_c', 'xu5p__L_c']: [('X5PL3E', '482'), ('X5PL3E', '540')]
+- ['xu5p__D_c', 'xylu__D_c']: [('XYLK', '580'), ('XYLK', '894')]
+- ['xu5p__L_c', 'xylu__L_c']: [('XYLK2', '591'), ('XYLK2', '906')]
+- ['2dh3dgal6p_c', 'g3p_c', 'pyr_c']: [('DDPGALA', '612'), ('DDPGALA', '678')]
+- ['2dh3dgal6p_c', '2dh3dgal_c']: [('DDGALK', '625'), ('DDGALK', '669')]
+- ['2dh3dgal_c', 'galctn__D_c']: [('GALCTND', '636'), ('GALCTND', '659'), ('GALCTND', '690')]
+- ['2ddg6p_c', '2ddglcn_c']: [('DDGLK', '815'), ('DDGLK', '1507')]
+- ['dhap_c', 'g3p_c', 'tagdp__D_c']: [('TGBPA', '854'), ('TGBPA', '1483')]
+- ['tag6p__D_c', 'tagdp__D_c']: [('PFK_2', '880'), ('PFK_2', '1419')]
+- ['dhap_c', 'glyc3p_c']: [('G3PD5', '947'), ('G3PD6', '959'), ('G3PD7', '971')]
+- ['dha_c', 'dhap_c']: [('DHAPT', '1009'), ('ALKP', '1605')]
+- ['glc__D_c', 'malt_c', 'malttr_c']: [('AMALT1', '1047'), ('MLTG1', '1058'), ('MLTG1', '1095')]
+- ['25dkglcn_c', '2dhguln_c']: [('DKGLCNR1', '1135'), ('DKGLCNR1', '1146')]
+- ['2dhguln_c', 'glcn_c']: [('2DGULRGy', '1159'), ('2DGULRGx', '1555')]
+- ['2dhguln_c', 'idon__L_c']: [('2DGULRy', '1170'), ('2DGULRx', '1567')]
+- ['25dkglcn_c', '5dglcn_c']: [('DKGLCNR2y', '1183'), ('DKGLCNR2x', '1696')]
+- ['5dglcn_c', 'idon__L_c']: [('IDOND', '1195'), ('IDOND2', '1207'), ('IDOND', '1219')]
+- ['5dglcn_c', 'glcn_c']: [('5DGLCNR', '1231'), ('5DKGR', '1243')]
+- ['6pgc_c', 'glcn_c']: [('GNK', '1256'), ('GNP', '1844')]
+- ['f6p_c', 'fru_c']: [('HEX7', '1459'), ('F6PP', '1730')]
+- ['myrsACP_c', 'ttdca_c']: [('AACPS1', '2199'), ('FA140ACPHi', '2235')]
+
+## Primary metabolites drawn as several nodes (merge candidates)
+- ru5p__D_c: ['1', '465']
+- f6p_c: ['52', '160', '818', '1305', '1449']
+- gam6p_c: ['54', '1282']
+- uacgam_c: ['90', '1317']
+- man6p_c: ['126', '1969']
+- xyl__D_c: ['169', '2165']
+- xylu__D_c: ['170', '570', '882']
+- 2ddara_c: ['180', '443']
+- g1p_c: ['192', '262', '1010', '1098', '1109']
+- gal_c: ['239', '1344']
+- g6p_c: ['299', '1011', '1023', '1460']
+- dhap_c: ['309', '844', '936', '1473', '1533']
+- pyr_c: ['375', '445', '603', '1509']
+- arab__D_c: ['396', '496']
+- rbl__D_c: ['397', '497']
+- arab__L_c: ['406', '506']
+- rbl__L_c: ['407', '484']
+- ru5p__L_c: ['418', '455']
+- gcald_c: ['444', '555']
+- xu5p__D_c: ['456', '515', '884']
+- xu5p__L_c: ['474', '532', '896']
+- xylu__L_c: ['581', '895']
+- g3p_c: ['602', '845', '1474', '1508']
+- 2dh3dgal_c: ['613', '680']
+- galctn__D_c: ['626', '679']
+- 2ddglcn_c: ['738', '1494']
+- 2ddg6p_c: ['804', '1496']
+- tagdp__D_c: ['843', '1409']
+- tag6p__D_c: ['858', '1407']
+- glc__D_c: ['1021', '1036', '1085', '1345', '1358']
+- malt_c: ['1034', '1954']
+- 2dhguln_c: ['1124', '1136']
+- glc__D_p: ['1372', '1396', '1758']
+- fru_c: ['1447', '1698']
+- g1p_p: ['1756', '2151']
+
+## Primaries > 900 units from their reaction
+- GLYCDx#997: dha_c `986` 911
+- GPDDA4#1906: glyc3p_c `909` 1002
+- APG3PAT140#2223: glyc3p_c `909` 1088
+- APG3PAT140#2223: ttdcap_c `2212` 1033
+- APG3PAT140#2223: 1tdecg3p_c `1771` 922
+
+## In stoichiometry but not drawn (usually protons; leave as is)
+- G1PACT#87: ['h_c']
+- UAGDP#100: ['h_c']
+- GDPMNP#125: ['h_c']
+- MAN1PT2#146: ['h_c']
+- HEX4#159: ['h_c']
+- G1PTT#204: ['h_c']
+- TDPDRR#237: ['h_c']
+- GALKr#251: ['h_c']
+- FRUK#286: ['h_c']
+- GALUi#298: ['h_c']
+- RMK#332: ['h_c']
+- FCLK#373: ['h_c']
+- RBK_L1#428: ['h_c']
+- RBK#442: ['h_c']
+- RBK_L1#495: ['h_c']
+- GCALDD#569: ['h_c']
+- XYLK#580: ['h_c']
+- XYLK2#591: ['h_c']
+- DDGALK#625: ['h_c']
+- GLYCK2#650: ['h_c']
+- DDGALK#669: ['h_c']
+- TRSARr#703: ['h_c']
+- MANAO#737: ['h_c']
+- TAGURr#771: ['h_c']
+- DDGLK#815: ['h_c']
+- M1PD#829: ['h_c']
+- SBTPD#842: ['h_c']
+- GLTPD#868: ['h_c']
+- PFK_2#880: ['h_c']
+- XYLK#894: ['h_c']
+- XYLK2#906: ['h_c']
+- GPDDA1#920: ['h_c']
+- GPDDA1pp#934: ['h_p']
+- GLYK#984: ['h_c']
+- GLYCDx#997: ['h_c']
+- HEX1#1033: ['h_c']
+- GLGC#1121: ['h_c']
+- DKGLCNR1#1135: ['h_c']
+- DKGLCNR1#1146: ['h_c']
+- 2DGULRGy#1159: ['h_c']
+- 2DGULRy#1170: ['h_c']
+- DKGLCNR2y#1183: ['h_c']
+- IDOND#1195: ['h_c']
+- IDOND2#1207: ['h_c']
+- IDOND#1219: ['h_c']
+- 5DGLCNR#1231: ['h_c']
+- 5DKGR#1243: ['h_c']
+- GNK#1256: ['h_c']
+- AMANK#1270: ['h_c']
+- UACMAMO#1341: ['h_c']
+- PFK_2#1419: ['h_c']
+- HEX7#1459: ['h_c']
+- TRE6PS#1472: ['h_c']
+- DDGLK#1507: ['h_c']
+- 3SLAR#1532: ['h_c']
+- 2DGULRGx#1555: ['h_c']
+- 2DGULRx#1567: ['h_c']
+- ACMAMUT#1593: ['h_c']
+- DKGLCNR2x#1696: ['h_c']
+- GDPMNH#1794: ['h_c']
+- GLCDpp#1822: ['h_p']
+- GLCS1#1832: ['h_c']
+- GPDDA3#1857: ['h_c']
+- GPDDA2#1869: ['h_c']
+- GPDDA3pp#1882: ['h_p']
+- GPDDA2pp#1894: ['h_p']
+- GPDDA4#1906: ['h_c']
+- GPDDA4pp#1918: ['h_p']
+- LPLIPAL1A140pp#1940: ['h_p']
+- LPLIPAL2A140#1953: ['h_c']
+- O16GLCT2#2070: ['h_c']
+- UACGAMPpp#2134: ['h_p']
+- UDPGALPpp#2148: ['h_p']
+- UDPGPpp#2162: ['h_p']
+- APG3PAT140#2223: ['h_c']
+- FA140ACPHi#2235: ['h_c']
+- GLCTR1#2248: ['h_c']
+- ACPPAT140#2260: ['h_c']
+- GALT1#2285: ['h_c']
+- GLCTR2#2297: ['h_c']
+- GLCTR3#2309: ['h_c']
+
+## Exit labels -> owner node (row rule)
+- `2310` '→ Lipids' -> ckdo_c `13`
+- `2311` '→ Central' -> f6p_c `52`
+- `2312` '→ Lipids, Amino acids' -> uacgam_p `2122`
+- `2313` '→ Central' -> f6p_c `160`
+- `2314` '→ Nucleotides' -> dtdprmn_c `226`
+- `2315` '→ Amino acids' -> udpg_c `252`
+- `2316` '→ Central' -> fdp_c `276`
+- `2317` '→ Central' -> g6p_c `299`
+- `2318` '→ Fermentation' -> lald__L_c `310`
+- `2319` '→ Energy' -> glyclt_c `543`
+- `2320` '→ Amino acids' -> gcald_c `555`
+- `2321` '→ Energy' -> glyc__R_c `638`
+- `2322` '→ Central' -> 2pg_c `639`
+- `2323` '→ Energy' -> 2h3oppan_c `691`
+- `2324` '→ Lipids' -> glyc3p_c `909`
+- `2325` '→ Central' -> dhap_c `936`
+- `2326` '→ Lipids' -> glyc_c `973`
+- `2327` '→ Central' -> 6pgc_c `1245`
+- `2328` '→ Central' -> f6p_c `1305`
+- `2329` '→ Central' -> glc__D_p `1396`
+- `2330` '→ Central' -> f6p_c `1449`
+- `2331` '→ Central' -> g3p_c `1474`
+- `2332` '→ Amino acids' -> g3p_c `1508`
+- `2333` '→ Central' -> lac__D_c `1570`
+- `2334` '→ Lipids' -> unaga_c `1581`
+- `2335` '→ Nucleotides' -> unagamu_c `1583`
+- `2336` '→ Lipids, Amino acids' -> pg161_p `1651`
+- `2337` '→ Amino acids' -> lys__L_c `1733`
+- `2338` '→ Lipids' -> myrsACP_c `1770`
+- `2339` '→ Central' -> accoa_c `1795`
+- `2340` '→ Central, Amino acids' -> g6p_c `1023`
+- `2341` '→ Lipids' -> g3pg_c `1895`
+- `2342` '→ Amino acids' -> hpyr_c `1919`
+- `2343` '→ Amino acids' -> o16aund_c `2059`
+- `2344` '→ Nucleotides' -> icolipa_c `2236`
+- `2345` '→ Lipids' -> kdo2lipid4p_c `2261`
+
+## Reactions
+- `10` A5PISO: ru5p__D_c <=> ara5p_c
+- `24` KDOCT2: ctp_c + kdo_c -> ckdo_c + ppi_c
+- `39` KDOPS: ara5p_c + h2o_c + pep_c -> kdo8p_c + pi_c
+- `51` KDOPP: h2o_c + kdo8p_c -> kdo_c + pi_c
+- `65` GF6PTA: f6p_c + gln__L_c -> gam6p_c + glu__L_c
+- `74` PGAMT: gam1p_c <=> gam6p_c
+- `87` G1PACT: accoa_c + gam1p_c -> acgam1p_c + coa_c + h_c
+- `100` UAGDP: acgam1p_c + h_c + utp_c -> ppi_c + uacgam_c
+- `112` GMAND: gdpmann_c -> gdpddman_c + h2o_c
+- `125` GDPMNP: gdpmann_c + h2o_c -> gmp_c + 2 h_c + man1p_c
+- `134` PMANM: man1p_c <=> man6p_c
+- `146` MAN1PT2: gdp_c + h_c + man1p_c -> gdpmann_c + pi_c
+- `159` HEX4: atp_c + man_c -> adp_c + h_c + man6p_c
+- `168` MAN6PI: man6p_c <=> f6p_c
+- `178` XYLI1: xyl__D_c <=> xylu__D_c
+- `190` DXYLTD: dxylnt_c <=> 2ddara_c + h2o_c
+- `204` G1PTT: dttp_c + g1p_c + h_c -> dtdpglu_c + ppi_c
+- `215` TDPGDH: dtdpglu_c -> dtdp4d6dg_c + h2o_c
+- `224` TDPDRE: dtdp4d6dg_c -> dtdp4d6dm_c
+- `237` TDPDRR: dtdp4d6dm_c + h_c + nadph_c -> dtdprmn_c + nadp_c
+- `251` GALKr: atp_c + gal_c <=> adp_c + gal1p_c + h_c
+- `261` UDPG4E: udpg_c <=> udpgal_c
+- `272` UGLT: gal1p_c + udpg_c <=> g1p_c + udpgal_c
+- `286` FRUK: atp_c + f1p_c -> adp_c + fdp_c + h_c
+- `298` GALUi: g1p_c + h_c + utp_c -> ppi_c + udpg_c
+- `307` PGMT: g1p_c <=> g6p_c
+- `319` RMPA: rml1p_c <=> dhap_c + lald__L_c
+- `332` RMK: atp_c + rml_c -> adp_c + h_c + rml1p_c
+- `341` RMI: rmn_c <=> rml_c
+- `351` FCI: fuc__L_c <=> fcl__L_c
+- `361` FCLPA: fc1p_c <=> dhap_c + lald__L_c
+- `373` FCLK: atp_c + fcl__L_c -> adp_c + fc1p_c + h_c
+- `384` LKDRA: lkdr_c <=> lald__L_c + pyr_c
+- `395` RHMND: rhmn_c <=> h2o_c + lkdr_c
+- `405` ARABDI: arab__D_c <=> rbl__D_c
+- `415` ARAI: arab__L_c <=> rbl__L_c
+- `428` RBK_L1: atp_c + rbl__L_c -> adp_c + h_c + ru5p__L_c
+- `442` RBK: atp_c + rib__D_c -> adp_c + h_c + r5p_c
+- `454` 2DDARAA: 2ddara_c <=> gcald_c + pyr_c
+- `464` RBP4E: ru5p__L_c <=> xu5p__D_c
+- `473` RPE: ru5p__D_c <=> xu5p__D_c
+- `482` X5PL3E: xu5p__L_c -> ru5p__L_c
+- `495` RBK_L1: atp_c + rbl__L_c -> adp_c + h_c + ru5p__L_c
+- `505` ARABDI: arab__D_c <=> rbl__D_c
+- `514` ARAI: arab__L_c <=> rbl__L_c
+- `523` RBP4E: ru5p__L_c <=> xu5p__D_c
+- `531` RPE: ru5p__D_c <=> xu5p__D_c
+- `540` X5PL3E: xu5p__L_c -> ru5p__L_c
+- `554` PGLYCP: 2pglyc_c + h2o_c -> glyclt_c + pi_c
+- `569` GCALDD: gcald_c + h2o_c + nad_c -> glyclt_c + 2 h_c + nadh_c
+- `580` XYLK: atp_c + xylu__D_c -> adp_c + h_c + xu5p__D_c
+- `591` XYLK2: atp_c + xylu__L_c -> adp_c + h_c + xu5p__L_c
+- `600` LYXI: lyx__L_c -> xylu__L_c
+- `612` DDPGALA: 2dh3dgal6p_c <=> g3p_c + pyr_c
+- `625` DDGALK: 2dh3dgal_c + atp_c -> 2dh3dgal6p_c + adp_c + h_c
+- `636` GALCTND: galctn__D_c -> 2dh3dgal_c + h2o_c
+- `650` GLYCK2: atp_c + glyc__R_c -> 2pg_c + adp_c + h_c
+- `659` GALCTND: galctn__D_c -> 2dh3dgal_c + h2o_c
+- `669` DDGALK: 2dh3dgal_c + atp_c -> 2dh3dgal6p_c + adp_c + h_c
+- `678` DDPGALA: 2dh3dgal6p_c <=> g3p_c + pyr_c
+- `690` GALCTND: galctn__D_c -> 2dh3dgal_c + h2o_c
+- `703` TRSARr: 2h3oppan_c + h_c + nadh_c <=> glyc__R_c + nad_c
+- `714` GLCRAL: 5dh4dglc_c -> 2h3oppan_c + pyr_c
+- `724` GUI1: glcur_c <=> fruur_c
+- `737` MANAO: mana_c + nad_c <=> fruur_c + h_c + nadh_c
+- `748` MNNH: mana_c -> 2ddglcn_c + h2o_c
+- `758` GUI2: galur_c <=> tagur_c
+- `771` TAGURr: altrn_c + nad_c <=> h_c + nadh_c + tagur_c
+- `781` ALTRH: altrn_c -> 2ddglcn_c + h2o_c
+- `792` GLCRD: glcr_c -> 5dh4dglc_c + h2o_c
+- `802` GALCTD: galct__D_c -> 5dh4dglc_c + h2o_c
+- `815` DDGLK: 2ddglcn_c + atp_c -> 2ddg6p_c + adp_c + h_c
+- `829` M1PD: mnl1p_c + nad_c <=> f6p_c + h_c + nadh_c
+- `842` SBTPD: nad_c + sbt6p_c <=> f6p_c + h_c + nadh_c
+- `854` TGBPA: tagdp__D_c <=> dhap_c + g3p_c
+- `868` GLTPD: galt1p_c + nad_c <=> h_c + nadh_c + tag6p__D_c
+- `880` PFK_2: atp_c + tag6p__D_c -> adp_c + h_c + tagdp__D_c
+- `894` XYLK: atp_c + xylu__D_c -> adp_c + h_c + xu5p__D_c
+- `906` XYLK2: atp_c + xylu__L_c -> adp_c + h_c + xu5p__L_c
+- `920` GPDDA1: g3pc_c + h2o_c -> chol_c + glyc3p_c + h_c
+- `934` GPDDA1pp: g3pc_p + h2o_p -> chol_p + glyc3p_p + h_p
+- `947` G3PD5: glyc3p_c + q8_c -> dhap_c + q8h2_c
+- `959` G3PD6: glyc3p_c + mqn8_c -> dhap_c + mql8_c
+- `971` G3PD7: 2dmmq8_c + glyc3p_c -> 2dmmql8_c + dhap_c
+- `984` GLYK: atp_c + glyc_c -> adp_c + glyc3p_c + h_c
+- `997` GLYCDx: glyc_c + nad_c -> dha_c + h_c + nadh_c
+- `1009` DHAPT: dha_c + pep_c -> dhap_c + pyr_c
+- `1019` PGMT: g1p_c <=> g6p_c
+- `1033` HEX1: atp_c + glc__D_c -> adp_c + g6p_c + h_c
+- `1047` AMALT1: malt_c + malttr_c -> glc__D_c + maltttr_c
+- `1058` MLTG1: h2o_c + malttr_c -> glc__D_c + malt_c
+- `1071` MLTP1: maltpt_c + pi_c <=> g1p_c + maltttr_c
+- `1083` AMALT1: malt_c + malttr_c -> glc__D_c + maltttr_c
+- `1095` MLTG1: h2o_c + malttr_c -> glc__D_c + malt_c
+- `1107` GLCP: glycogen_c + pi_c -> g1p_c
+- `1121` GLGC: atp_c + g1p_c + h_c -> adpglc_c + ppi_c
+- `1135` DKGLCNR1: 25dkglcn_c + h_c + nadph_c -> 2dhguln_c + nadp_c
+- `1146` DKGLCNR1: 25dkglcn_c + h_c + nadph_c -> 2dhguln_c + nadp_c
+- `1159` 2DGULRGy: 2dhguln_c + h_c + nadph_c -> glcn_c + nadp_c
+- `1170` 2DGULRy: 2dhguln_c + h_c + nadph_c -> idon__L_c + nadp_c
+- `1183` DKGLCNR2y: 25dkglcn_c + h_c + nadph_c -> 5dglcn_c + nadp_c
+- `1195` IDOND: 5dglcn_c + h_c + nadh_c <=> idon__L_c + nad_c
+- `1207` IDOND2: 5dglcn_c + h_c + nadph_c -> idon__L_c + nadp_c
+- `1219` IDOND: 5dglcn_c + h_c + nadh_c <=> idon__L_c + nad_c
+- `1231` 5DGLCNR: 5dglcn_c + h_c + nadph_c -> glcn_c + nadp_c
+- `1243` 5DKGR: glcn_c + nad_c <=> 5dglcn_c + h_c + nadh_c
+- `1256` GNK: atp_c + glcn_c -> 6pgc_c + adp_c + h_c
+- `1270` AMANK: acmana_c + atp_c -> acmanap_c + adp_c + h_c
+- `1279` AMANAPEr: acmanap_c <=> acgam6p_c
+- `1292` AGDC: acgam6p_c + h2o_c -> ac_c + gam6p_c
+- `1303` ACNML: acnam_c -> acmana_c + pyr_c
+- `1316` G6PDA: gam6p_c + h2o_c -> f6p_c + nh4_c
+- `1326` UAG2E: uacgam_c <=> uacmam_c
+- `1341` UACMAMO: h2o_c + 2 nad_c + uacmam_c -> 3 h_c + 2 nadh_c + uacmamu_c
+- `1355` GALS3: h2o_c + melib_c -> gal_c + glc__D_c
+- `1368` LACZ: h2o_c + lcts_c -> gal_c + glc__D_c
+- `1382` LACZpp: h2o_p + lcts_p -> gal_p + glc__D_p
+- `1393` TREH: h2o_c + tre_c -> 2 glc__D_c
+- `1405` TREHpp: h2o_p + tre_p -> 2 glc__D_p
+- `1419` PFK_2: atp_c + tag6p__D_c -> adp_c + h_c + tagdp__D_c
+- `1433` TRE6PH: h2o_c + tre6p_c -> g6p_c + glc__D_c
+- `1445` TRE6PP: h2o_c + tre6p_c -> pi_c + tre_c
+- `1459` HEX7: atp_c + fru_c -> adp_c + f6p_c + h_c
+- `1472` TRE6PS: g6p_c + udpg_c -> h_c + tre6p_c + udp_c
+- `1483` TGBPA: tagdp__D_c <=> dhap_c + g3p_c
+- `1493` KDUI: dt5hsu_c -> dkdglcn_c
+- `1507` DDGLK: 2ddglcn_c + atp_c -> 2ddg6p_c + adp_c + h_c
+- `1518` EDA: 2ddg6p_c -> g3p_c + pyr_c
+- `1532` 3SLAR: h_c + nadh_c + sla_c -> dhps_c + nad_c
+- `1543` 6D6SPA: sfp_c -> dhap_c + sla_c
+- `1555` 2DGULRGx: 2dhguln_c + h_c + nadh_c -> glcn_c + nad_c
+- `1567` 2DGULRx: 2dhguln_c + h_c + nadh_c -> idon__L_c + nad_c
+- `1580` ACM6PH: acmum6p_c + h2o_c -> acgam6p_c + lac__D_c
+- `1593` ACMAMUT: uacmamu_c + unaga_c -> h_c + udp_c + unagamu_c
+- `1605` ALKP: dhap_c + h2o_c -> dha_c + pi_c
+- `1616` AMALT2: malt_c + maltttr_c -> glc__D_c + maltpt_c
+- `1627` AMALT3: malt_c + maltpt_c -> glc__D_c + malthx_c
+- `1638` AMALT4: malt_c + malthx_c -> glc__D_c + malthp_c
+- `1650` BGLA1: 6pgg_c + h2o_c -> g6p_c + glc__D_c
+- `1662` CLPNS161pp: 2 pg161_p <=> clpn161_p + glyc_p
+- `1673` CLPNS181pp: 2 pg181_p <=> clpn181_p + glyc_p
+- `1684` CLPNS160pp: 2 pg160_p <=> clpn160_p + glyc_p
+- `1696` DKGLCNR2x: 25dkglcn_c + h_c + nadh_c -> 5dglcn_c + nad_c
+- `1709` F1PP: f1p_c + h2o_c -> fru_c + pi_c
+- `1718` F6PA: f6p_c <=> dha_c + g3p_c
+- `1730` F6PP: f6p_c + h2o_c -> fru_c + pi_c
+- `1743` FRULYSDG: frulysp_c + h2o_c <=> g6p_c + lys__L_c
+- `1755` G1PP: g1p_c + h2o_c -> glc__D_c + pi_c
+- `1769` G1PPpp: g1p_p + h2o_p -> glc__D_p + pi_p
+- `1782` G3PAT140: glyc3p_c + myrsACP_c -> 1tdecg3p_c + ACP_c
+- `1794` GDPMNH: gdpmann_c + h2o_c -> gdp_c + h_c + man_c
+- `1807` GLCATr: accoa_c + glc__D_c <=> acglc__D_c + coa_c
+- `1822` GLCDpp: glc__D_p + h2o_p + q8_c -> glcn_p + h_p + q8h2_c
+- `1832` GLCS1: adpglc_c -> adp_c + glycogen_c + h_c
+- `1844` GNP: 6pgc_c + h2o_c -> glcn_c + pi_c
+- `1857` GPDDA3: g3ps_c + h2o_c -> glyc3p_c + h_c + ser__L_c
+- `1869` GPDDA2: g3pe_c + h2o_c -> etha_c + glyc3p_c + h_c
+- `1882` GPDDA3pp: g3ps_p + h2o_p -> glyc3p_p + h_p + ser__L_p
+- `1894` GPDDA2pp: g3pe_p + h2o_p -> etha_p + glyc3p_p + h_p
+- `1906` GPDDA4: g3pg_c + h2o_c -> glyc3p_c + glyc_c + h_c
+- `1918` GPDDA4pp: g3pg_p + h2o_p -> glyc3p_p + glyc_p + h_p
+- `1927` HPYRI: hpyr_c <=> 2h3oppan_c
+- `1940` LPLIPAL1A140pp: 1tdecg3p_p + h2o_p -> glyc3p_p + h_p + ttdca_p
+- `1953` LPLIPAL2A140: 2tdecg3p_c + h2o_c -> glyc3p_c + 2 h_c + ttdca_c
+- `1966` MALTATr: accoa_c + malt_c <=> acmalt_c + coa_c
+- `1979` MANPGH: h2o_c + man6pglyc_c -> glyc__R_c + man6p_c
+- `1990` MLTG2: h2o_c + maltttr_c -> glc__D_c + malttr_c
+- `2001` MLTG3: h2o_c + maltpt_c -> glc__D_c + maltttr_c
+- `2012` MLTG4: h2o_c + malthx_c -> glc__D_c + maltpt_c
+- `2023` MLTG5: h2o_c + malthp_c -> glc__D_c + malthx_c
+- `2034` MLTP2: malthx_c + pi_c <=> g1p_c + maltpt_c
+- `2045` MLTP3: malthp_c + pi_c <=> g1p_c + malthx_c
+- `2057` MN6PP: h2o_c + man6p_c -> man_c + pi_c
+- `2070` O16GLCT2: gfgaragund_c + udpg_c -> h_c + o16aund_c + udp_c
+- `2082` PAI2T: coa_c + dhptdd_c -> accoa_c + dhap_c
+- `2094` R5PP: h2o_c + r5p_c -> pi_c + rib__D_c
+- `2108` R5PPpp: h2o_p + r5p_p -> pi_p + rib__D_p
+- `2120` RU5PP: h2o_c + ru5p__D_c -> pi_c + rbl__D_c
+- `2134` UACGAMPpp: h2o_p + uacgam_p -> acgam1p_p + 2 h_p + ump_p
+- `2148` UDPGALPpp: h2o_p + udpgal_p -> gal1p_p + 2 h_p + ump_p
+- `2162` UDPGPpp: h2o_p + udpg_p -> g1p_p + 2 h_p + ump_p
+- `2175` XYHDL: h2o_c + iprimv_c -> glc__D_c + xyl__D_c
+- `2183` XYLI2: glc__D_c <=> fru_c
+- `2199` AACPS1: ACP_c + atp_c + ttdca_c -> amp_c + myrsACP_c + ppi_c
+- `2211` AGPAT140: 1tdecg3p_c + myrsACP_c -> ACP_c + pa140_c
+- `2223` APG3PAT140: glyc3p_c + ttdcap_c -> 1tdecg3p_c + h_c + pi_c
+- `2235` FA140ACPHi: h2o_c + myrsACP_c -> ACP_c + h_c + ttdca_c
+- `2248` GLCTR1: icolipa_c + udpg_c -> gicolipa_c + h_c + udp_c
+- `2260` ACPPAT140: h_c + myrsACP_c + pi_c -> ACP_c + ttdcap_c
+- `2273` EDTXS4: kdo2lipid4p_c + myrsACP_c -> ACP_c + lipa_cold_c
+- `2285` GALT1: gicolipa_c + udpg_c -> gagicolipa_c + h_c + udp_c
+- `2297` GLCTR2: gagicolipa_c + udpg_c -> ggagicolipa_c + h_c + udp_c
+- `2309` GLCTR3: ggagicolipa_c + udpg_c -> gggagicolipa_c + h_c + udp_c

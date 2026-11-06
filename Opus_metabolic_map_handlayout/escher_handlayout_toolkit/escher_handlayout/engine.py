@@ -15,7 +15,7 @@ class Layout:
         self._next = max(int(k) for k in ids if str(k).isdigit())+1
         self.zone_of = {}; self.placed = set(); self.zone_nodes = defaultdict(set)
         self.origin = {}; self.flip = {}; self.meta = {}; self.S = {}
-        self.exit_owner = {}; self.split_log = []; self.merge_log = []
+        self.exit_owner = {}; self.split_log = []; self.merge_log = []; self.merged_into = {}
         self._topology()
 
     def newid(self):
@@ -64,10 +64,24 @@ class Layout:
             if self.is_primary(n) or len(rs) < 2: continue
             for rid in sorted(rs, key=int)[1:]: self.split(n, rid)
 
+    def resolve(self, nid, what='node'):
+        """node id as written in the spec -> current node id: split names (L.S) are looked up, ids that
+        were merged away are followed to the node they were merged into. Unknown ids raise a clear error."""
+        n = self.S.get(nid, nid)
+        while n in self.merged_into: n = self.merged_into[n]
+        if n not in self.N:
+            raise KeyError(f'{what}: node {nid!r} does not exist (not a node id of the draft, not a split '
+                           f'name in L.S, not merged into an existing node)')
+        return n
+
     def merge(self, keep, *others):
-        """re-point all segments of `others` to `keep`, delete `others` (exit labels follow)"""
+        """re-point all segments of `others` to `keep`, delete `others` (exit labels follow).
+        Spec references to a merged-away id keep working through resolve()."""
+        keep = self.resolve(keep, 'merge keep')
         for o in others:
+            if o in self.merged_into: o = self.resolve(o, 'merge')
             if o not in self.N: raise KeyError(f'merge: node {o} does not exist')
+            if o == keep: continue                  # already merged into keep
             if self.N[o]['bigg_id'] != self.N[keep]['bigg_id']:
                 raise ValueError(f"merge: {o} is {self.N[o]['bigg_id']}, keep {keep} is {self.N[keep]['bigg_id']}")
             for r in self.R.values():
@@ -76,8 +90,27 @@ class Layout:
                     if s['to_node_id'] == o: s['to_node_id'] = keep
             for tl, own in list(self.exit_owner.items()):
                 if own == o: self.exit_owner[tl] = keep
-            del self.N[o]; self.merge_log.append((self.N[keep]['bigg_id'], keep, o))
+            del self.N[o]; self.merged_into[o] = keep; self.merge_log.append((self.N[keep]['bigg_id'], keep, o))
         self._topology()
+
+    def drop_duplicate_exits(self):
+        """after merges several identical exit labels can belong to one node: keep the one with the
+        smallest id, delete the others. Returns [(dropped_id, kept_id, text)]."""
+        first, out = {}, []
+        for k in sorted(self.exit_owner, key=lambda x: (len(x), x)):
+            if k not in self.T: continue
+            key = (self.exit_owner[k], self.T[k]['text'])
+            if key in first:
+                del self.T[k]; out.append((k, first[key], key[1]))
+            else: first[key] = k
+        for k, _, _ in out: del self.exit_owner[k]
+        return out
+
+    def drop_labels(self, ids):
+        """delete text labels (exit labels or draft titles) by id"""
+        for k in ids:
+            if k not in self.T: raise KeyError(f'DROP_LABELS: text label {k!r} does not exist')
+            del self.T[k]; self.exit_owner.pop(k, None)
 
     # ---------------------------------------------------------------- placement
     def gp(self, zone, xy):
@@ -116,12 +149,15 @@ class Layout:
         lab     : provisional label direction (final labels are placed automatically)"""
         if rid not in self.R: raise KeyError(f'reaction {rid} not in map')
         t = self.top[rid]
-        ends = tuple(self.S.get(e, e) for e in ends) if ends else None
+        ends = tuple(self.resolve(e, f'reaction {rid} ends') for e in ends) if ends else None
         if self.flip.get(zone, 1) < 0:                            # mirrored zone: mirror directions
             sw = {'U': 'D', 'D': 'U'}
             if isinstance(side, str): side = sw.get(side, side)
             if lab: lab = sw.get(lab, lab)
             if axis: axis = (axis[0], -axis[1])
+            if isinstance(side, (tuple, list)): side = (side[0], -side[1])
+            shift = (shift[0], -shift[1])
+            if sides: sides = {k: sw.get(v, v) for k, v in sides.items()}
         self.zone_of[rid] = zone
         pri = lambda l: [n for n in l if self.is_primary(n)]
         sec = lambda l: [n for n in l if not self.is_primary(n)]

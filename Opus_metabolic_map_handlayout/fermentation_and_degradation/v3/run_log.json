@@ -1,0 +1,171 @@
+{
+ "summary": {
+  "validation_ok": true,
+  "crossings": 0,
+  "dots_too_close": 0,
+  "lines_near_dots": 0,
+  "label_overlaps": 0,
+  "titles_on_lines": 0
+ },
+ "splits": [
+  [
+   "ppcoa_c",
+   "PPCSCT",
+   "477",
+   "673"
+  ]
+ ],
+ "merges": [
+  [
+   "alltn_c",
+   "169",
+   "160"
+  ],
+  [
+   "mmcoa__S_c",
+   "468",
+   "547"
+  ],
+  [
+   "ppcoa_c",
+   "477",
+   "417"
+  ]
+ ],
+ "dropped_title_labels": [],
+ "curves": {
+  "t": 0.6,
+  "bend": 55,
+  "bend_stack": 15,
+  "stacked": [],
+  "bend_override": {},
+  "nested_arc_lanes": true
+ },
+ "packing": {
+  "before": [
+   -1626,
+   -776,
+   5612.96,
+   2652.0
+  ],
+  "after": [
+   -476,
+   -3728.2,
+   2364.0,
+   1549.8000000000002
+  ],
+  "moves": [
+   {
+    "reactions": [
+     "3HPPPNH",
+     "ACALD",
+     "DHPPD",
+     "HKNDDH",
+     "HKNTDH",
+     "HOPNTAL",
+     "HPPPNDO",
+     "OP4ENH",
+     "PPPNDO"
+    ],
+    "dx": -2563,
+    "dy": -542
+   },
+   {
+    "reactions": [
+     "ALLTAMH2",
+     "ALLTN",
+     "OXAMTC",
+     "UGCIAMH",
+     "UGLYCH",
+     "URDGLYCD",
+     "URIC"
+    ],
+    "dx": -2461,
+    "dy": -3704
+   },
+   {
+    "reactions": [
+     "3OXCOAT",
+     "DHACOAH",
+     "HADPCOADH3",
+     "OXCOAHDH",
+     "OXDHCOAT",
+     "PACCOAE",
+     "PACCOAL",
+     "PACOAT",
+     "REPHACCOAI"
+    ],
+    "dx": -2582,
+    "dy": -3686
+   },
+   {
+    "reactions": [
+     "GLYOX",
+     "GLYOX3",
+     "LDH_D2",
+     "LGTHL"
+    ],
+    "dx": 2720,
+    "dy": -106
+   },
+   {
+    "reactions": [
+     "LCADi",
+     "LCARS",
+     "LCARSyi"
+    ],
+    "dx": 2372,
+    "dy": -2876
+   },
+   {
+    "reactions": [
+     "FACOAE80",
+     "FACOAL80t2pp"
+    ],
+    "dx": -3171,
+    "dy": 98
+   },
+   {
+    "reactions": [
+     "3HBZCT"
+    ],
+    "dx": -3969,
+    "dy": -5202
+   },
+   {
+    "reactions": [
+     "SARCOX"
+    ],
+    "dx": -4771,
+    "dy": -5928
+   },
+   {
+    "reactions": [
+     "ACACCT"
+    ],
+    "dx": 3007,
+    "dy": -4954
+   }
+  ]
+ },
+ "title_nudges": [
+  [
+   "3-phenylpropionate degradation",
+   -208,
+   120,
+   true
+  ],
+  [
+   "propionate fermentation",
+   -41,
+   -155,
+   true
+  ]
+ ],
+ "canvas": {
+  "x": -780.4460969082656,
+  "y": -3878.2,
+  "width": 3294.4460969082656,
+  "height": 5596.0
+ }
+}
